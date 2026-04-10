@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olismo Integrato — Portale delle Discipline Olistiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:#f9f5ef;color:#2a2520;overflow-x:hidden;font-size:16px}
+
+/* ── VARIABLES ── */
+:root{
+  --ivory:#f9f5ef;--ivory2:#f3ede3;--ivory3:#ece4d8;--ivory4:#e2d8cc;
+  --ink:#2a2520;--ink2:#4a4540;--ink3:#7a7268;--ink4:#a89e92;
+  --gold:#b8935a;--gold2:#d4a96a;--gold3:#e8c990;--gold-pale:#f5ecd8;
+  --sage:#5a7a6a;--sage2:#7a9a88;--sage3:#c8dcd0;
+  --dusty:#8a6a7a;--dusty2:#b49aaa;--dusty3:#e8d8e0;
+  --slate:#3a4a5a;--slate2:#5a6a7a;--slate3:#d0d8e0;
+  --border:rgba(184,147,90,.2);--border2:rgba(184,147,90,.38);
+  --shadow:0 2px 20px rgba(42,37,32,.07);
+  --shadow2:0 8px 48px rgba(42,37,32,.12);
+  --r:8px;--rl:14px;--rxl:22px;
+}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--ivory2)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(249,245,239,.93);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:68px;
+  transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:0 4px 32px rgba(42,37,32,.1)}
+.logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;
+  letter-spacing:.1em;color:var(--ink);text-decoration:none;
+  display:flex;align-items:center;gap:.75rem;
+}
+.logo-mark{
+  width:32px;height:32px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;color:var(--gold);
+}
+.logo span{color:var(--gold)}
+nav{display:flex;align-items:center;gap:.1rem}
+.nav-link{
+  padding:.4rem .85rem;border-radius:4px;
+  font-size:.78rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink3);text-decoration:none;
+  transition:color .2s,background .2s;cursor:pointer;border:none;background:transparent;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:rgba(184,147,90,.07)}
+.search-btn{
+  margin-left:.5rem;padding:.5rem .95rem;
+  border:1px solid var(--border2);border-radius:20px;
+  background:transparent;color:var(--ink3);cursor:pointer;
+  font-size:.78rem;letter-spacing:.06em;font-family:'Outfit',sans-serif;
+  transition:all .2s;display:flex;align-items:center;gap:.4rem;
+}
+.search-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;background:transparent;border:none}
+.hamburger span{width:22px;height:1.5px;background:var(--ink3);transition:.3s}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:7rem 2rem 5rem;
+  position:relative;overflow:hidden;
+  background:var(--ivory);
+  --hero-photo: url('');
+}
+#hero.has-photo{
+  background-image:var(--hero-photo);
+  background-size:cover;
+  background-position:center;
+}
+#hero.has-photo .hero-overlay{display:block}
+.hero-overlay{
+  display:none;
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(160deg,rgba(249,245,239,.84) 0%,rgba(243,237,227,.76) 40%,rgba(236,228,216,.70) 100%);
+  backdrop-filter:blur(1.5px);
+}
+.hero-bg-circle{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,147,90,.08) 0%,transparent 70%);
+}
+.hbc1{width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hbc2{width:400px;height:400px;top:10%;right:-100px;background:radial-gradient(circle,rgba(90,122,106,.06) 0%,transparent 70%)}
+.hbc3{width:300px;height:300px;bottom:10%;left:-80px;background:radial-gradient(circle,rgba(138,106,122,.06) 0%,transparent 70%)}
+.sacred-ring{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:480px;height:480px;border-radius:50%;
+  border:1px solid rgba(184,147,90,.12);pointer-events:none;
+}
+.sacred-ring2{width:320px;height:320px;border:1px solid rgba(184,147,90,.08)}
+.sacred-ring3{width:160px;height:160px;border:1px solid rgba(184,147,90,.15)}
+.hero-eyebrow{
+  position:relative;
+  font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.75rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:50px;height:1px;background:var(--gold3)}
+h1.hero-title{
+  position:relative;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7.5vw,5.8rem);font-weight:300;line-height:1.08;
+  color:var(--ink);margin-bottom:1.5rem;letter-spacing:-.01em;
+}
+h1.hero-title em{color:var(--gold);font-style:italic}
+.hero-sub{
+  position:relative;
+  font-size:1.05rem;font-weight:300;color:var(--ink3);
+  line-height:1.85;max-width:580px;margin:0 auto 3rem;
+}
+.hero-pills{
+  position:relative;
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:3.5rem;
+}
+.pill{
+  padding:.42rem 1.15rem;border:1px solid var(--border2);border-radius:20px;
+  font-size:.8rem;color:var(--ink3);cursor:pointer;
+  transition:all .2s;background:rgba(249,245,239,.7);
+}
+.pill:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.pill-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
+.cta-row{position:relative;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{
+  padding:.78rem 2.2rem;
+  background:var(--gold);color:#fff;
+  font-weight:500;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  border:none;border-radius:var(--r);cursor:pointer;
+  transition:background .2s,transform .15s;font-family:'Outfit',sans-serif;
+}
+.btn-gold:hover{background:#a07840;transform:translateY(-1px)}
+.btn-ghost{
+  padding:.78rem 2.2rem;background:transparent;
+  border:1.5px solid var(--border2);color:var(--ink2);
+  font-weight:400;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  border-radius:var(--r);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:var(--ink4);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  animation:float 2.8s ease-in-out infinite;
+}
+.scroll-hint::after{content:'';display:block;width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent)}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+
+/* ── SECTION COMMON ── */
+section{padding:6rem 0}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem}
+.sec-hd{text-align:center;margin-bottom:4rem}
+.sec-eye{font-size:.7rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.1rem);font-weight:300;
+  color:var(--ink);line-height:1.18;
+}
+.sec-title em{color:var(--gold);font-style:italic}
+.sec-div{width:56px;height:1px;background:var(--gold3);margin:1.4rem auto 1.6rem}
+.sec-desc{font-size:.92rem;font-weight:300;color:var(--ink3);line-height:1.9;max-width:600px;margin:0 auto}
+
+/* ── SEARCH OVERLAY ── */
+#search-overlay{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(249,245,239,.97);backdrop-filter:blur(16px);
+  display:none;flex-direction:column;align-items:center;padding-top:14vh;
+}
+#search-overlay.open{display:flex}
+.s-close{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--ink3);width:40px;height:40px;border-radius:50%;
+  cursor:pointer;font-size:1rem;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.s-close:hover{border-color:var(--gold);color:var(--gold)}
+.s-inner{width:100%;max-width:700px;padding:0 1.5rem}
+.s-label{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+  font-weight:300;font-style:italic;color:var(--ink3);
+  margin-bottom:1.5rem;display:block;
+}
+.s-wrap{position:relative;margin-bottom:1.75rem}
+.s-wrap input{
+  width:100%;padding:1rem 1.5rem 1rem 3.5rem;
+  background:white;border:1.5px solid var(--border2);border-radius:var(--rl);
+  font-family:'Outfit',sans-serif;font-size:1rem;font-weight:300;color:var(--ink);
+  outline:none;transition:border-color .2s;
+  box-shadow:var(--shadow);
+}
+.s-wrap input:focus{border-color:var(--gold)}
+.s-wrap input::placeholder{color:var(--ink4)}
+.s-icon{position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:var(--gold);font-size:1.1rem}
+#s-list{max-height:56vh;overflow-y:auto}
+.s-cat-lbl{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);padding:.85rem 0 .4rem;
+  border-bottom:1px solid var(--border);margin-bottom:.35rem;
+}
+.s-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:.75rem .9rem;border-radius:var(--r);
+  cursor:pointer;transition:background .15s;
+}
+.s-item:hover{background:var(--ivory2)}
+.s-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.s-name{font-size:.92rem;font-weight:400;color:var(--ink)}
+.s-meta{font-size:.78rem;color:var(--ink3)}
+
+/* ── EXPLORER ── */
+#explorer{background:white}
+.exp-tabs{
+  display:flex;gap:.3rem;flex-wrap:wrap;
+  border-bottom:1.5px solid var(--ivory3);margin-bottom:2.5rem;padding-bottom:1.25rem;
+}
+.exp-tab{
+  padding:.55rem 1.3rem;border-radius:4px;
+  font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink3);background:transparent;border:none;cursor:pointer;
+  transition:all .2s;position:relative;
+}
+.exp-tab.active{color:var(--gold)}
+.exp-tab.active::after{
+  content:'';position:absolute;bottom:-1.4rem;left:0;right:0;
+  height:2px;background:var(--gold);border-radius:1px;
+}
+.exp-tab:hover:not(.active){color:var(--ink)}
+.exp-body{display:grid;grid-template-columns:290px 1fr;gap:2rem;align-items:start}
+@media(max-width:820px){.exp-body{grid-template-columns:1fr}}
+.exp-list{display:flex;flex-direction:column;gap:.45rem;max-height:72vh;overflow-y:auto;padding-right:.5rem}
+.exp-card{
+  padding:.85rem 1.05rem;border:1.5px solid var(--ivory3);
+  border-radius:var(--r);cursor:pointer;transition:all .18s;background:var(--ivory);
+}
+.exp-card:hover{border-color:var(--border2);background:var(--gold-pale)}
+.exp-card.sel{border-color:var(--gold);background:var(--gold-pale);box-shadow:0 0 0 3px rgba(184,147,90,.08)}
+.exp-card-name{font-size:.88rem;font-weight:400;color:var(--ink);display:flex;align-items:center;gap:.6rem;line-height:1.35}
+.exp-card-sub{font-size:.74rem;color:var(--ink3);margin-top:.2rem;padding-left:1.45rem}
+.cdot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.exp-panel{
+  background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);overflow:hidden;min-height:520px;
+}
+.panel-empty{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:520px;gap:1.25rem;
+  color:var(--ink4);text-align:center;padding:2rem;
+}
+.panel-empty-icon{font-size:2.2rem;opacity:.35}
+.panel-empty p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic}
+.panel-top{
+  padding:2rem 2.2rem 1.75rem;
+  background:white;border-bottom:1px solid var(--ivory3);
+}
+.panel-stripe{height:3px;border-radius:3px;margin-bottom:1.5rem}
+.panel-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.9rem;font-weight:300;color:var(--ink);
+  margin-bottom:.35rem;line-height:1.18;
+}
+.panel-badge{
+  display:inline-block;padding:.28rem .85rem;border-radius:12px;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--border);color:var(--ink3);
+  font-family:'Outfit',sans-serif;margin-left:.6rem;vertical-align:middle;
+}
+.panel-desc{font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9;margin-top:.75rem}
+.panel-body{padding:1.75rem 2.2rem}
+.props{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.7rem;margin-bottom:1.75rem}
+.prop{padding:.8rem 1rem;background:white;border-radius:var(--r);border:1px solid var(--ivory3)}
+.prop-l{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.prop-v{font-size:.83rem;color:var(--ink);line-height:1.4}
+.conn-blk{margin-bottom:1.75rem}
+.conn-lbl{
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.85rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.conn-lbl::after{content:'';flex:1;height:1px;background:var(--ivory3)}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{
+  padding:.42rem 1rem;border:1.5px solid var(--ivory3);
+  border-radius:20px;font-size:.8rem;color:var(--ink3);
+  cursor:pointer;transition:all .18s;background:white;
+  display:flex;align-items:center;gap:.45rem;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.chip-dot{width:6px;height:6px;border-radius:50%}
+
+/* ── DISCIPLINE CARDS ── */
+#discipline{background:var(--ivory)}
+.disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem}
+.disc-card{
+  padding:2.2rem;background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);transition:all .28s;position:relative;overflow:hidden;
+}
+.disc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:var(--rxl) var(--rxl) 0 0;
+}
+.disc-card:hover{border-color:var(--border2);box-shadow:var(--shadow2);transform:translateY(-3px)}
+.disc-icon{
+  width:52px;height:52px;border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;margin-bottom:1.35rem;
+  background:var(--ivory);border:1.5px solid var(--ivory3);
+}
+.disc-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:.65rem;
+}
+.disc-text{font-size:.83rem;font-weight:300;color:var(--ink3);line-height:1.85}
+
+/* ── CHAKRA ── */
+#chakra-sec{background:white}
+.chakra-wrap{display:grid;grid-template-columns:1fr 400px;gap:4.5rem;align-items:start}
+@media(max-width:920px){.chakra-wrap{grid-template-columns:1fr}}
+.chakra-rows{display:flex;flex-direction:column;gap:.55rem}
+.cRow{
+  display:flex;align-items:flex-start;gap:1.25rem;
+  padding:1.1rem 1.3rem;border-radius:var(--rl);
+  border:1.5px solid transparent;cursor:pointer;transition:all .2s;
+}
+.cRow:hover{border-color:var(--ivory3);background:var(--ivory)}
+.cRow.act{border-color:var(--border2);background:var(--gold-pale)}
+.cRow-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-style:italic;color:var(--gold);
+  width:22px;flex-shrink:0;padding-top:2px;
+}
+.cRow-sw{width:13px;height:13px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.cRow-info{flex:1}
+.cRow-name{font-size:.9rem;font-weight:400;color:var(--ink);margin-bottom:.18rem}
+.cRow-theme{font-size:.76rem;color:var(--ink3)}
+.c-detail{
+  position:sticky;top:84px;
+  background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);padding:2rem;
+}
+.cd-strip{height:4px;border-radius:4px;margin-bottom:1.4rem}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--gold);margin-bottom:.3rem}
+.cd-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:.6rem}
+.cd-desc{font-size:.83rem;font-weight:300;color:var(--ink3);line-height:1.88;margin-bottom:1.4rem}
+.cd-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:1.25rem}
+.cd-cell{padding:.6rem .85rem;background:white;border-radius:var(--r);border:1px solid var(--ivory3)}
+.cd-cl{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.22rem}
+.cd-cv{font-size:.82rem;color:var(--ink)}
+.cd-sub{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;margin:.85rem 0 .5rem}
+.crystal-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.ctag{
+  padding:.3rem .8rem;border-radius:12px;border:1px solid var(--ivory3);
+  font-size:.75rem;color:var(--ink3);cursor:pointer;transition:all .15s;background:white;
+}
+.ctag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── ENNEAGRAM ── */
+#enneagram{background:var(--ivory)}
+.enn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:720px){.enn-grid{grid-template-columns:1fr}}
+.enn-card{
+  padding:1.6rem;background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);cursor:pointer;transition:all .25s;position:relative;
+}
+.enn-card:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-2px)}
+.enn-big-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:300;
+  color:rgba(184,147,90,.13);line-height:1;
+  position:absolute;top:.6rem;right:1rem;
+}
+.enn-centro{
+  display:inline-block;padding:.22rem .75rem;border-radius:12px;
+  font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--ivory3);color:var(--ink3);margin-bottom:.85rem;
+}
+.enn-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.enn-italic{font-size:.8rem;font-style:italic;color:var(--ink3);margin-bottom:.75rem;font-family:'Cormorant Garamond',serif}
+.enn-line{display:flex;justify-content:space-between;font-size:.75rem;margin-top:.35rem}
+.enn-ll{color:var(--ink4)}
+.enn-lr{color:var(--gold)}
+.enn-path{font-size:.73rem;color:var(--ink4);line-height:1.55;margin-top:.75rem;font-style:italic;font-family:'Cormorant Garamond',serif}
+
+/* ── MUSIC ── */
+#musica{background:white}
+.music-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
+.mc{
+  padding:1.8rem;background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);transition:all .22s;position:relative;
+}
+.mc:hover{border-color:var(--border2);background:var(--gold-pale)}
+.mc-hz{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:.2rem;
+}
+.mc-note{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink4);margin-bottom:.85rem}
+.mc-name{font-size:.92rem;font-weight:400;color:var(--ink);margin-bottom:.5rem}
+.mc-effect{font-size:.8rem;font-weight:300;color:var(--ink3);line-height:1.75;margin-bottom:.85rem}
+.mc-str{font-size:.75rem;color:var(--ink4);font-style:italic;padding-top:.75rem;border-top:1px solid var(--ivory3)}
+
+/* ── BACH FLOWERS ── */
+#bach{background:var(--ivory)}
+.bach-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+  margin-bottom:3.5rem;
+}
+@media(max-width:760px){.bach-intro{grid-template-columns:1fr}}
+.bach-text h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:.85rem}
+.bach-text p{font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9}
+.bach-quote{
+  padding:2rem;background:white;border-radius:var(--rxl);
+  border-left:3px solid var(--gold);border:1.5px solid var(--ivory3);
+  border-left:3px solid var(--gold);
+}
+.bach-quote blockquote{
+  font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;
+  font-style:italic;color:var(--ink2);line-height:1.75;
+}
+.bach-quote cite{display:block;font-size:.78rem;color:var(--gold);margin-top:.85rem;letter-spacing:.1em}
+.bach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.bach-card{
+  padding:1.6rem;background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rl);transition:all .22s;
+}
+.bach-card:hover{border-color:var(--border2);background:var(--gold-pale)}
+.bach-flower{font-size:1.4rem;margin-bottom:.75rem}
+.bach-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:.25rem}
+.bach-it{font-size:.78rem;font-style:italic;color:var(--gold);margin-bottom:.65rem;font-family:'Cormorant Garamond',serif}
+.bach-stato{
+  font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink4);margin-bottom:.3rem;
+}
+.bach-desc{font-size:.8rem;font-weight:300;color:var(--ink3);line-height:1.75}
+.bach-chakra{
+  display:inline-block;margin-top:.65rem;padding:.22rem .7rem;
+  border-radius:10px;font-size:.7rem;color:white;font-weight:400;
+}
+
+/* ── ALIMENTAZIONE ── */
+#alimentazione{background:white}
+.alim-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+  margin-bottom:3.5rem;align-items:center;
+}
+@media(max-width:760px){.alim-intro{grid-template-columns:1fr}}
+.alim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.alim-card{
+  padding:1.6rem;background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rl);transition:all .22s;
+}
+.alim-card:hover{border-color:var(--border2)}
+.alim-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;font-style:italic;color:var(--gold);margin-bottom:.5rem;
+}
+.alim-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.alim-foods{font-size:.8rem;font-weight:400;color:var(--ink2);margin-bottom:.5rem;line-height:1.55}
+.alim-effect{font-size:.78rem;font-weight:300;color:var(--ink3);line-height:1.75}
+.alim-avoid{font-size:.73rem;color:var(--dusty);margin-top:.5rem;font-style:italic}
+
+/* ── DANZA DEL CONFLITTO ── */
+#danza{background:var(--ivory)}
+.danza-hero{
+  display:grid;grid-template-columns:1fr 420px;gap:4rem;
+  align-items:center;margin-bottom:4rem;
+}
+@media(max-width:900px){.danza-hero{grid-template-columns:1fr}}
+.danza-text h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;color:var(--ink);margin-bottom:1rem}
+.danza-text p{font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9;margin-bottom:.85rem}
+.danza-diagram{
+  background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);padding:2rem;
+}
+.dd-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:1.5rem;text-align:center}
+.dd-step{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:.85rem;border-radius:var(--r);margin-bottom:.5rem;
+  border:1px solid var(--ivory3);background:var(--ivory);
+}
+.dd-n{
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:500;flex-shrink:0;
+  color:white;
+}
+.dd-info h4{font-size:.85rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
+.dd-info p{font-size:.78rem;font-weight:300;color:var(--ink3);line-height:1.65}
+.tipi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
+@media(max-width:600px){.tipi-grid{grid-template-columns:1fr}}
+.tipo-card{
+  padding:2rem;background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);
+}
+.tipo-card h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.tipo-sub{font-size:.8rem;font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;margin-bottom:.85rem}
+.tipo-row{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.5rem}
+.tipo-lbl{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);min-width:80px;padding-top:.15rem}
+.tipo-val{font-size:.82rem;color:var(--ink3);line-height:1.55}
+.danza-tools{margin-top:3.5rem}
+.danza-tools h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--ink);margin-bottom:2rem;text-align:center}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.tool-card{
+  padding:1.6rem;background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rl);transition:all .2s;
+}
+.tool-card:hover{border-color:var(--border2)}
+.tool-card h4{font-size:.9rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.tool-card p{font-size:.8rem;font-weight:300;color:var(--ink3);line-height:1.75}
+
+/* ── PRANOTERAPIA ── */
+#prano{background:white}
+.prano-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3.5rem;align-items:center}
+@media(max-width:760px){.prano-wrap{grid-template-columns:1fr}}
+.prano-text h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:.85rem}
+.prano-text p{font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9;margin-bottom:.65rem}
+.prano-steps{display:flex;flex-direction:column;gap:.75rem}
+.prano-step{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1.1rem 1.25rem;background:var(--ivory);
+  border:1px solid var(--ivory3);border-radius:var(--r);
+}
+.prano-step-num{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--gold);color:white;font-size:.8rem;font-weight:500;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.prano-step-info h4{font-size:.88rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
+.prano-step-info p{font-size:.78rem;font-weight:300;color:var(--ink3);line-height:1.65}
+.prano-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.prano-card{
+  padding:1.5rem;background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rl);text-align:center;transition:all .22s;
+}
+.prano-card:hover{border-color:var(--border2);background:var(--gold-pale)}
+.prano-card-icon{font-size:1.8rem;margin-bottom:.75rem}
+.prano-card-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.prano-card-text{font-size:.8rem;font-weight:300;color:var(--ink3);line-height:1.7}
+
+/* ── AI CONSULENTE ── */
+#consulente{background:var(--ivory2)}
+.chat-wrap{
+  max-width:820px;margin:0 auto;
+  background:white;border:1.5px solid var(--ivory3);
+  border-radius:var(--rxl);overflow:hidden;
+  box-shadow:var(--shadow2);
+}
+.chat-header{
+  padding:1.4rem 1.75rem;
+  background:linear-gradient(135deg,var(--ink) 0%,#3a3028 100%);
+  display:flex;align-items:center;gap:1rem;
+}
+.chat-header-icon{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(184,147,90,.2);border:1.5px solid rgba(184,147,90,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.chat-header-text h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:400;color:var(--gold3);
+}
+.chat-header-text p{font-size:.76rem;color:rgba(249,245,239,.5);margin-top:.15rem}
+.chat-status{
+  margin-left:auto;display:flex;align-items:center;gap:.5rem;
+  font-size:.72rem;color:rgba(249,245,239,.5);
+}
+.chat-status-dot{width:7px;height:7px;border-radius:50%;background:#6dbf7e;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.chat-suggestions{
+  padding:1.1rem 1.5rem;
+  background:var(--ivory);border-bottom:1px solid var(--ivory3);
+  display:flex;flex-wrap:wrap;gap:.5rem;
+}
+.sugg{
+  padding:.4rem 1rem;border:1.5px solid var(--border);
+  border-radius:20px;font-size:.78rem;color:var(--ink3);
+  cursor:pointer;transition:all .18s;background:white;white-space:nowrap;
+}
+.sugg:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+
+.chat-messages{
+  height:420px;overflow-y:auto;
+  padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem;
+}
+.msg{display:flex;gap:.85rem;align-items:flex-start;animation:fadeUp .3s ease forwards}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:500;
+}
+.msg-avatar.ai{background:linear-gradient(135deg,var(--ink),#3a3028);color:var(--gold3);border:1.5px solid var(--border)}
+.msg-avatar.user{background:var(--gold);color:white}
+.msg-bubble{
+  max-width:75%;padding:.85rem 1.1rem;
+  border-radius:var(--rl);font-size:.86rem;line-height:1.75;
+}
+.msg-bubble.ai{
+  background:var(--ivory);border:1.5px solid var(--ivory3);color:var(--ink);
+  border-bottom-left-radius:4px;
+}
+.msg-bubble.user{
+  background:var(--gold);color:white;
+  border-bottom-right-radius:4px;
+}
+.msg-bubble strong{color:var(--gold);font-weight:500}
+.msg-bubble.ai strong{color:var(--ink)}
+.msg-bubble ul{padding-left:1.1rem;margin:.4rem 0}
+.msg-bubble li{margin-bottom:.3rem}
+.msg-bubble .tag-chip{
+  display:inline-block;padding:.18rem .65rem;
+  background:var(--gold-pale);border:1px solid var(--border);
+  border-radius:12px;font-size:.74rem;color:var(--gold);
+  margin:.15rem .2rem;cursor:pointer;
+}
+.msg-bubble .tag-chip:hover{background:var(--gold);color:white}
+.msg-time{font-size:.68rem;color:var(--ink4);margin-top:.35rem}
+
+.typing-indicator{display:flex;align-items:center;gap:.35rem;padding:.75rem 1rem;background:var(--ivory);border:1.5px solid var(--ivory3);border-radius:var(--rl);border-bottom-left-radius:4px;width:fit-content}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--ink4)}
+.typing-dot:nth-child(1){animation:typ .9s .0s ease-in-out infinite}
+.typing-dot:nth-child(2){animation:typ .9s .18s ease-in-out infinite}
+.typing-dot:nth-child(3){animation:typ .9s .36s ease-in-out infinite}
+@keyframes typ{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
+
+.chat-input-area{
+  padding:1.1rem 1.5rem;
+  border-top:1.5px solid var(--ivory3);
+  display:flex;gap:.75rem;align-items:flex-end;
+  background:white;
+}
+.chat-input-area textarea{
+  flex:1;padding:.75rem 1rem;
+  background:var(--ivory);border:1.5px solid var(--ivory3);
+  border-radius:var(--rl);
+  font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);
+  resize:none;outline:none;line-height:1.6;max-height:120px;
+  transition:border-color .2s;
+}
+.chat-input-area textarea:focus{border-color:var(--gold)}
+.chat-input-area textarea::placeholder{color:var(--ink4)}
+.send-btn{
+  padding:.75rem 1.3rem;background:var(--gold);
+  color:white;border:none;border-radius:var(--r);
+  cursor:pointer;font-size:.85rem;font-family:'Outfit',sans-serif;
+  transition:background .2s,transform .15s;white-space:nowrap;
+  display:flex;align-items:center;gap:.45rem;
+}
+.send-btn:hover{background:#a07840;transform:translateY(-1px)}
+.send-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.chat-footer-note{
+  text-align:center;padding:.75rem;
+  font-size:.72rem;color:var(--ink4);
+  border-top:1px solid var(--ivory3);background:var(--ivory);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(249,245,239,.85);
+  padding:4rem 2rem 2.5rem;
+}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+  margin-bottom:3rem;padding-bottom:2.5rem;
+  border-bottom:1px solid rgba(249,245,239,.12);
+}
+@media(max-width:760px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+.f-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:300;letter-spacing:.1em;color:var(--gold3);
+  margin-bottom:.75rem;
+}
+.f-brand-text{font-size:.82rem;font-weight:300;color:rgba(249,245,239,.55);line-height:1.75}
+.f-col-title{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.f-link{display:block;font-size:.82rem;color:rgba(249,245,239,.6);margin-bottom:.5rem;cursor:pointer;transition:color .2s;text-decoration:none}
+.f-link:hover{color:var(--gold3)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.f-copy{font-size:.75rem;color:rgba(249,245,239,.4)}
+.f-disclaimer{font-size:.73rem;color:rgba(249,245,239,.35);max-width:500px;text-align:right}
+
+/* ── MOBILE MENU ── */
+#mob-menu{
+  display:none;position:fixed;top:68px;left:0;right:0;z-index:190;
+  background:rgba(249,245,239,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem 1.5rem;flex-direction:column;gap:.2rem;
+}
+#mob-menu.open{display:flex}
+.mob-link{
+  padding:.7rem 1rem;border-radius:var(--r);
+  font-size:.85rem;color:var(--ink3);
+  cursor:pointer;transition:all .2s;border:none;background:transparent;text-align:left;
+}
+.mob-link:hover{color:var(--gold);background:var(--gold-pale)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  header{padding:0 1.25rem}
+  nav{display:none}
+  .hamburger{display:flex}
+  section{padding:4rem 0}
+}
+@media(max-width:600px){.enn-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.enn-grid{grid-template-columns:1fr}}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fadeUp .65s ease forwards}
+.d1{animation-delay:.12s}.d2{animation-delay:.24s}.d3{animation-delay:.36s}.d4{animation-delay:.48s}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="#" class="logo">
+    <span class="logo-mark">◉</span>
+    Olismo<span> Integrato</span>
+  </a>
+  <nav>
+    <button class="nav-link" onclick="st('explorer')">Database</button>
+    <button class="nav-link" onclick="st('chakra-sec')">Chakra</button>
+    <button class="nav-link" onclick="st('enneagram')">Enneatipi</button>
+    <button class="nav-link" onclick="st('bach')">Fiori di Bach</button>
+    <button class="nav-link" onclick="st('danza')">Conflitto</button>
+    <button class="nav-link" onclick="st('prano')">Pranoterapia</button>
+    <button class="nav-link" style="color:var(--gold);border:1px solid var(--border2);border-radius:20px;padding:.4rem 1rem" onclick="st('consulente')">✦ Consulente AI</button>
+    <button class="search-btn" onclick="openSearch()">⌕ Cerca</button>
+  </nav>
+  <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <button class="mob-link" onclick="st('explorer');toggleMob()">Database interconnesso</button>
+  <button class="mob-link" onclick="st('chakra-sec');toggleMob()">Chakra</button>
+  <button class="mob-link" onclick="st('enneagram');toggleMob()">Enneatipi</button>
+  <button class="mob-link" onclick="st('musica');toggleMob()">Musica Curativa</button>
+  <button class="mob-link" onclick="st('bach');toggleMob()">Fiori di Bach</button>
+  <button class="mob-link" onclick="st('alimentazione');toggleMob()">Alimentazione</button>
+  <button class="mob-link" onclick="st('danza');toggleMob()">Danza del Conflitto</button>
+  <button class="mob-link" onclick="st('prano');toggleMob()">Pranoterapia</button>
+  <button class="mob-link" style="color:var(--gold);font-weight:500" onclick="st('consulente');toggleMob()">✦ Consulente Olistica AI</button>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay">
+  <button class="s-close" onclick="closeSearch()">✕</button>
+  <div class="s-inner">
+    <span class="s-label">Cerca nel database olistico…</span>
+    <div class="s-wrap">
+      <span class="s-icon">⌕</span>
+      <input type="text" id="s-input" placeholder="Ametista, Tipo 9, Anahata, 528 Hz, Bach, grounding…" autocomplete="off">
+    </div>
+    <div id="s-list"></div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-bg-circle hbc1"></div>
+  <div class="hero-bg-circle hbc2"></div>
+  <div class="hero-bg-circle hbc3"></div>
+  <div class="sacred-ring"></div>
+  <div class="sacred-ring sacred-ring2"></div>
+  <div class="sacred-ring sacred-ring3"></div>
+  <div class="hero-eyebrow fu" style="position:relative;z-index:1">Portale delle Discipline Olistiche</div>
+  <h1 class="hero-title fu d1" style="position:relative;z-index:1">
+    Tutto è <em>connesso</em><br>nell'essere umano
+  </h1>
+  <p class="hero-sub fu d2" style="position:relative;z-index:1">
+    Un archivio vivente che unisce chakra, cristalli curativi, enneatipi, musica terapeutica, fiori di Bach, alimentazione, counseling ed esercizi in un unico sistema interconnesso.
+  </p>
+  <div class="hero-pills fu d3" style="position:relative;z-index:1">
+    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>Chakra</span>
+    <span class="pill" onclick="openExp('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>Cristalli</span>
+    <span class="pill" onclick="st('enneagram')"><span class="pill-dot" style="background:#a83232"></span>Enneatipi</span>
+    <span class="pill" onclick="st('musica')"><span class="pill-dot" style="background:#2e7d4f"></span>Musica</span>
+    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#5a7a6a"></span>Fiori di Bach</span>
+    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>Alimentazione</span>
+    <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>Conflitto</span>
+    <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>Pranoterapia</span>
+  </div>
+  <div class="cta-row fu d4" style="position:relative;z-index:1">
+    <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
+    <button class="btn-ghost" onclick="st('explorer')">Esplora tutti i domini</button>
+  </div>
+  <div class="scroll-hint" style="z-index:1">scopri</div>
+</section>
+
+<!-- ══ EXPLORER ══ -->
+<section id="explorer">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Motore di Ricerca Relazionale</div>
+      <h2 class="sec-title">Il <em>database</em> interconnesso</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Seleziona un dominio, scegli un elemento e scopri tutte le sue connessioni trasversali con gli altri domini. Ogni elemento rimanda a tutti gli altri.</p>
+    </div>
+    <div class="exp-tabs" id="exp-tabs"></div>
+    <div class="exp-body">
+      <div class="exp-list" id="exp-list"></div>
+      <div class="exp-panel" id="exp-panel">
+        <div class="panel-empty">
+          <div class="panel-empty-icon">◈</div>
+          <p>Seleziona un elemento per esplorare le sue connessioni</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DISCIPLINE ══ -->
+<section id="discipline">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Le Otto Dimensioni</div>
+      <h2 class="sec-title">Un approccio <em>olistico</em> alla persona</h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="disc-grid">
+      <div class="disc-card" onclick="st('chakra-sec')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◉</div>
+        <div class="disc-title">Sistema dei Chakra</div>
+        <p class="disc-text">Sette centri energetici che mappano lo sviluppo psico-emotivo dell'essere umano. Dal Muladhara (sopravvivenza) al Sahasrara (coscienza), ogni chakra governa un'area fondamentale della vita.</p>
+      </div>
+      <div class="disc-card" onclick="openExp('cristalli')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1565c0,#4527a0);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◆</div>
+        <div class="disc-title">Cristalloterapia</div>
+        <p class="disc-text">Le pietre curative amplificano le frequenze energetiche e supportano i processi di guarigione. Ogni cristallo è associato a chakra specifici, disturbi, enneatipi e abbinamenti terapeutici precisi.</p>
+      </div>
+      <div class="disc-card" onclick="st('enneagram')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a83232,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⬟</div>
+        <div class="disc-title">Enneagramma Evolutivo</div>
+        <p class="disc-text">I 9 tipi di personalità attraversano fasi evolutive legate all'età. Il ciclo breve (3-6-9) e il ciclo lungo (1-2-4-5-7-8) descrivono percorsi di trasformazione precisi con punti di shock e di crescita.</p>
+      </div>
+      <div class="disc-card" onclick="st('musica')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2e7d4f,#5a7a6a);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">♬</div>
+        <div class="disc-title">Musicoterapia e Frequenze</div>
+        <p class="disc-text">Le frequenze solfeggio (396–963 Hz) e l'accordatura naturale a 432 Hz producono effetti neurobiologici misurabili. Ogni nota risuona con chakra e stati emotivi specifici.</p>
+      </div>
+      <div class="disc-card" onclick="st('bach')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5a7a6a,#7a9a88);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">✿</div>
+        <div class="disc-title">Fiori di Bach</div>
+        <p class="disc-text">38 rimedi floreali individuati da Eduard Bach per trasformare gli stati emotivi negativi in virtù. Ogni fiore corrisponde a una paura, una difficoltà o una qualità dell'anima da risvegliare.</p>
+      </div>
+      <div class="disc-card" onclick="st('alimentazione')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c49a1a,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◈</div>
+        <div class="disc-title">Alimentazione Terapeutica</div>
+        <p class="disc-text">Gli alimenti portano frequenze specifiche che risuonano con i chakra. Una dieta consapevole supporta il percorso evolutivo scegliendo cibi che amplificano gli stati emotivi desiderati.</p>
+      </div>
+      <div class="disc-card" onclick="st('danza')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8a6a7a,#b49aaa);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⟳</div>
+        <div class="disc-title">La Danza del Conflitto</div>
+        <p class="disc-text">I conflitti relazionali seguono schemi neurobiologici prevedibili. Conoscere la "danza" tra tipo 8 (il fuoco) e tipo 9 (l'acqua) permette al mediatore di intervenire prima della rottura.</p>
+      </div>
+      <div class="disc-card" onclick="st('prano')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c45a22,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⊕</div>
+        <div class="disc-title">Pranoterapia</div>
+        <p class="disc-text">La pratica di guarigione più antica: la trasmissione di energia pranale attraverso le mani. Il pranoterapeuta agisce su piani fisici, emotivi, mentali e spirituali, lavorando direttamente sui chakra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAKRA ══ -->
+<section id="chakra-sec">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Fisiologia Energetica</div>
+      <h2 class="sec-title">I sette <em>chakra</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Trasduttori dell'energia cosmica. Dal radicamento fisico alla coscienza universale, ogni centro governa uno stadio evolutivo, una ghiandola endocrina e un diritto fondamentale.</p>
+    </div>
+    <div class="chakra-wrap">
+      <div class="chakra-rows" id="chakra-rows"></div>
+      <div class="c-detail" id="c-detail">
+        <div class="cd-num">Seleziona un chakra</div>
+        <div class="cd-name">dalla lista</div>
+        <div class="cd-desc">Clicca su uno dei sette chakra per visualizzare i dettagli completi, i cristalli associati e le connessioni con gli enneatipi e le frequenze curative.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ENNEAGRAM ══ -->
+<section id="enneagram">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo</div>
+      <h2 class="sec-title">I nove <em>enneatipi</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Il ciclo breve (3-6-9) attraversa tre fasi in 0-30, 30-60 e 60+ anni. Il ciclo lungo (1-2-4-5-7-8) ne attraversa sei. Non categorie fisse, ma percorsi di trasformazione viventi.</p>
+    </div>
+    <div class="enn-grid" id="enn-grid"></div>
+  </div>
+</section>
+
+<!-- ══ MUSICA ══ -->
+<section id="musica">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Musicoterapia Olistica</div>
+      <h2 class="sec-title">Le frequenze <em>curative</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Le frequenze solfeggio e l'accordatura a 432 Hz interagiscono direttamente con il sistema nervoso autonomo, producendo stati di coerenza cardiaca e riequilibrio energetico.</p>
+    </div>
+    <div class="music-grid" id="music-grid"></div>
+  </div>
+</section>
+
+<!-- ══ FIORI DI BACH ══ -->
+<section id="bach">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Medicina Vibrazionale</div>
+      <h2 class="sec-title">I Fiori <em>di Bach</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="bach-intro">
+      <div class="bach-text">
+        <h3>La trasformazione degli stati emotivi</h3>
+        <p>Eduard Bach, medico e omeopata gallese (1886–1936), identificò 38 rimedi floreali capaci di trasformare gli stati emotivi negativi nelle virtù opposte. La sua visione era semplice e rivoluzionaria: la malattia è il conflitto tra l'anima e la personalità.</p>
+        <p>Ogni rimedio agisce su una specifica paura, difficoltà o qualità da sviluppare. Non trattano il sintomo fisico, ma l'attitudine mentale e il terreno emotivo da cui esso emerge. Il metodo è sicuro, non tossico e compatibile con qualsiasi altro trattamento.</p>
+        <p>I fiori di Bach si collegano ai chakra attraverso il piano emotivo: agiscono là dove il blocco energetico ha la sua radice psicologica più profonda.</p>
+      </div>
+      <div class="bach-quote">
+        <blockquote>«Non è la nostra funzione quella di sapere che cosa fare per guarire la malattia del corpo — questo è compito del medico. Il nostro lavoro è capire la condizione spirituale e mentale della persona e aiutarla ad armonizzarsi.»</blockquote>
+        <cite>— Eduard Bach</cite>
+      </div>
+    </div>
+    <div class="bach-grid" id="bach-grid"></div>
+  </div>
+</section>
+
+<!-- ══ ALIMENTAZIONE ══ -->
+<section id="alimentazione">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Nutrizione Energetica</div>
+      <h2 class="sec-title">Alimentazione <em>terapeutica</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="alim-intro">
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ink);margin-bottom:.85rem">Ogni alimento porta una frequenza</h3>
+        <p style="font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9;margin-bottom:.65rem">Nel sistema olistico, ogni alimento non è solo nutrimento biochimico ma anche un portatore di frequenze vibrazionali che risuonano con specifici chakra e stati emotivi.</p>
+        <p style="font-size:.88rem;font-weight:300;color:var(--ink3);line-height:1.9">Una dieta consapevole seleziona cibi che amplificano il percorso evolutivo di ciascun tipo. I colori degli alimenti rispecchiano i colori dei chakra, e questo non è casuale: è la saggezza della natura che parla il linguaggio dell'energia.</p>
+      </div>
+      <div style="padding:2rem;background:var(--gold-pale);border:1.5px solid var(--border);border-radius:var(--rxl)">
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:1rem">Principi chiave</h4>
+        <div style="display:flex;flex-direction:column;gap:.65rem">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;font-size:.83rem;color:var(--ink3)"><span style="color:var(--gold);font-size:1rem;flex-shrink:0">◈</span>I cibi rossi e arancioni supportano il 1° e 2° chakra (radice, creatività)</div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;font-size:.83rem;color:var(--ink3)"><span style="color:var(--gold);font-size:1rem;flex-shrink:0">◈</span>I cibi gialli stimolano il fuoco del 3° chakra (volontà, autostima)</div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;font-size:.83rem;color:var(--ink3)"><span style="color:var(--gold);font-size:1rem;flex-shrink:0">◈</span>I cibi verdi nutrono il cuore e il 4° chakra (amore, guarigione)</div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;font-size:.83rem;color:var(--ink3)"><span style="color:var(--gold);font-size:1rem;flex-shrink:0">◈</span>I cibi blu e viola supportano i chakra superiori (espressione, intuizione)</div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;font-size:.83rem;color:var(--ink3)"><span style="color:var(--gold);font-size:1rem;flex-shrink:0">◈</span>Il bianco e il trasparente (acqua) nutrono il 7° chakra (spiritualità)</div>
+        </div>
+      </div>
+    </div>
+    <div class="alim-grid" id="alim-grid"></div>
+  </div>
+</section>
+
+<!-- ══ DANZA DEL CONFLITTO ══ -->
+<section id="danza">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Mediazione e Neurobiologia</div>
+      <h2 class="sec-title">La Danza <em>del Conflitto</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="danza-hero">
+      <div class="danza-text">
+        <h3>Il conflitto è prevedibile. Si può interrompere.</h3>
+        <p>I conflitti relazionali — soprattutto nelle coppie — non sono caotici. Seguono schemi neurobiologici precisi, determinati dall'interazione tra i sistemi nervosi dei partecipanti. Il mediatore che conosce questi schemi può intervenire prima della rottura.</p>
+        <p>La "danza del conflitto" descrive il ciclo automatico tra chi combatte (tipo 8, sistema simpatico attivato) e chi si congela (tipo 9, sistema dorsovagale in shutdown). Più lui si chiude, più lei si intensifica. Più lei si intensifica, più lui si chiude.</p>
+        <p>La via d'uscita non è chiedere alla persona di "essere ragionevole" — la neocorteccia è offline. La via d'uscita passa dal corpo: respiro, pausa, regolazione del sistema nervoso.</p>
+      </div>
+      <div class="danza-diagram">
+        <div class="dd-title">I 5 passi della danza</div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#c45a22">1</div>
+          <div class="dd-info"><h4>Sempronia (Tipo 8) si attiva</h4><p>Stato 2 — combatti. La voce si alza, i gesti si espandono, il linguaggio diventa assoluto: "mai", "sempre".</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#4a5a6a">2</div>
+          <div class="dd-info"><h4>Tizio (Tipo 9) si congela</h4><p>Stato 3 — shutdown. Silenzio, sguardo nel vuoto, risposte automatiche: "va bene", "come vuoi".</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#a83232">3</div>
+          <div class="dd-info"><h4>Sempronia interpreta il silenzio</h4><p>"Non gli importo!" → aumenta l'intensità per ottenere risposta. Entra in Stato 2 più profondo.</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#2a3a4a">4</div>
+          <div class="dd-info"><h4>Tizio si disconnette ulteriormente</h4><p>Il sistema nervoso entra in shutdown più profondo. La corteccia pensante è offline.</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#7b2fa0">5</div>
+          <div class="dd-info"><h4>Circolo vizioso</h4><p>Il loop si auto-alimenta. La soluzione: riportare entrambi allo Stato 1 (connessione) prima di qualsiasi dialogo.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="tipi-grid">
+      <div class="tipo-card">
+        <h4>Tizio — Il Tipo 9</h4>
+        <div class="tipo-sub">"L'acqua: fluida, adattabile… ma può ristagnare"</div>
+        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per essere amato devo: non avere bisogni, non creare conflitti, fare felici gli altri»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Silenzio, sguardo nel vuoto, monosillabi, disconnessione corporea</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">Sopraffazione, incapacità di rispondere — non indifferenza</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "questo mi ferisce" senza aspettare che passi</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Segnale di pausa fisico, diario dei bisogni, pratica del "voglio"</span></div>
+      </div>
+      <div class="tipo-card">
+        <h4>Sempronia — Il Tipo 8</h4>
+        <div class="tipo-sub">"Il fuoco: intenso, trasformativo… ma può bruciare"</div>
+        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per sopravvivere devo: essere forte, non mostrare debolezza, attaccare prima»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Volume alto, gesti espansivi, interruzioni, linguaggio assoluto</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">«Ho paura di non essere importante. Mi sta lasciando sola.»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "ho paura" invece di "sono arrabbiata"</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Filtro dei 3 secondi, diario della vulnerabilità, forza morbida</span></div>
+      </div>
+    </div>
+    <div class="danza-tools">
+      <h3>Strumenti pratici per il mediatore</h3>
+      <div class="tools-grid" id="tools-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRANOTERAPIA ══ -->
+<section id="prano">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">La Pratica Più Antica</div>
+      <h2 class="sec-title">Pranoterapia <em>e guarigione</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="prano-wrap">
+      <div class="prano-text">
+        <h3>L'energia personale come strumento terapeutico</h3>
+        <p>La pranoterapia è la trasmissione consapevole di energia pranale (prana, chi, ki) attraverso le mani di un operatore formato. A differenza del Reiki, che usa energia universale, la pranoterapia utilizza l'energia personale del pranoterapeuta.</p>
+        <p>Chiunque può praticarla: siamo tutti esseri energetici. La spontaneità è innata — quando un bambino ha dolore, la madre istintivamente posa la mano sul punto dolente. Questo è pranoterapia.</p>
+        <p>Un trattamento dura circa 20 minuti per gli adulti, 10 per i bambini. L'operatore impara a riconoscere quale mano irradia e quale assorbe l'energia, sviluppando nel tempo un metodo personale.</p>
+      </div>
+      <div class="prano-steps">
+        <div class="prano-step">
+          <div class="prano-step-num">1</div>
+          <div class="prano-step-info"><h4>Test delle mani</h4><p>Identificare quale mano irradia e quale assorbe. Entrambi i palmi possono variare nel tempo.</p></div>
+        </div>
+        <div class="prano-step">
+          <div class="prano-step-num">2</div>
+          <div class="prano-step-info"><h4>Lettura del campo</h4><p>Percepire le variazioni energetiche nell'aura e nei chakra del ricevente attraverso il movimento delle mani.</p></div>
+        </div>
+        <div class="prano-step">
+          <div class="prano-step-num">3</div>
+          <div class="prano-step-info"><h4>Trasmissione pranale</h4><p>Canalizzare il prana verso i chakra o le aree che necessitano di riequilibrio, con o senza contatto fisico.</p></div>
+        </div>
+        <div class="prano-step">
+          <div class="prano-step-num">4</div>
+          <div class="prano-step-info"><h4>Pulizia energetica</h4><p>Al termine, schermatura e pulizia del campo del pranoterapeuta per prevenire l'assorbimento di energia densa.</p></div>
+        </div>
+        <div class="prano-step">
+          <div class="prano-step-num">5</div>
+          <div class="prano-step-info"><h4>Integrazione</h4><p>Il ricevente riposa alcuni minuti. L'energia integrata continua a lavorare nelle 24–48 ore successive.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="prano-grid" id="prano-grid"></div>
+  </div>
+</section>
+
+<!-- ══ AI CONSULENTE ══ -->
+<section id="consulente">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Consulente Olistica AI</div>
+      <h2 class="sec-title">Fai una <em>domanda</em> al database</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach, frequenze, alimentazione ed esercizi. Descriviti e ricevi indicazioni personalizzate.</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="chat-header-icon">◉</div>
+        <div class="chat-header-text">
+          <h3>Consulente Olistica</h3>
+          <p>Integrazione di chakra · cristalli · enneatipi · Bach · frequenze · alimentazione</p>
+        </div>
+        <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
+      </div>
+      <div class="chat-suggestions">
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
+        <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
+        <span class="sugg" onclick="askSugg(this)">Sento ansia e paura, da dove inizio?</span>
+        <span class="sugg" onclick="askSugg(this)">Quali cristalli per dormire meglio?</span>
+        <span class="sugg" onclick="askSugg(this)">Ho difficoltà ad esprimermi, quale chakra lavoro?</span>
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-input-area">
+        <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMsg()">
+          <span>Invia</span><span style="font-size:1rem">→</span>
+        </button>
+      </div>
+      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico o dello psicologo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">Olismo Integrato</div>
+        <p class="f-brand-text">Un archivio vivente che connette le discipline olistiche in un unico sistema integrato di conoscenza per counselor, terapeuti e chiunque cammini verso la propria crescita.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Database</div>
+        <a class="f-link" onclick="openExp('chakra')">Chakra</a>
+        <a class="f-link" onclick="openExp('cristalli')">Cristalli</a>
+        <a class="f-link" onclick="openExp('enneatipi')">Enneatipi</a>
+        <a class="f-link" onclick="openExp('frequenze')">Frequenze</a>
+      </div>
+      <div>
+        <div class="f-col-title">Sezioni</div>
+        <a class="f-link" onclick="st('bach')">Fiori di Bach</a>
+        <a class="f-link" onclick="st('alimentazione')">Alimentazione</a>
+        <a class="f-link" onclick="st('danza')">Danza del Conflitto</a>
+        <a class="f-link" onclick="st('prano')">Pranoterapia</a>
+      </div>
+      <div>
+        <div class="f-col-title">Discipline</div>
+        <a class="f-link" onclick="openExp('adattamenti')">Counseling</a>
+        <a class="f-link" onclick="openExp('esercizi')">Esercizi</a>
+        <a class="f-link" onclick="st('musica')">Musicoterapia</a>
+        <a class="f-link" onclick="st('enneagram')">Enneagramma Evo.</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="f-copy">© 2026 Olismo Integrato · Carlo Alberto Calcagno</span>
+      <span class="f-disclaimer">Le informazioni contenute in questo sito hanno scopo esclusivamente formativo e non sostituiscono il parere del medico curante o dello psicologo.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// DATABASE COMPLETO
+// ════════════════════════════════════════
+const DB={
+chakra:[
+  {id:"c1",name:"Muladhara — Radice",short:"1° Chakra",color:"#a83232",pos:"Cintura in giù",elem:"Terra",nota:"Do / 396 Hz",ghiandola:"Surrenali",demone:"Paura",diritto:"Diritto di esistere",tema:"Sopravvivenza, Radicamento",cristalli:["cr6","cr4","cr14","cr1_2"],enneatipi:["e8","e9","e1"],frequenze:["f396"],esercizi:["ex1","ex2"],adattamenti:["ad1","ad4"],desc:"Centro della sopravvivenza e del radicamento fisico. Governa le fondamenta materiali, la sicurezza, il senso di appartenenza. Quando è equilibrato offre stabilità e presenza nel corpo. Quando è bloccato genera ansia, paura esistenziale e disconnessione fisica."},
+  {id:"c2",name:"Svadhisthana — Dolcezza",short:"2° Chakra",color:"#c45a22",pos:"Sotto l'ombelico",elem:"Acqua",nota:"Re / 417 Hz",ghiandola:"Gonadi",demone:"Senso di colpa",diritto:"Diritto di sentire",tema:"Piacere, Creatività, Emozioni",cristalli:["cr9","cr6_2","cr13_2"],enneatipi:["e2","e3","e4"],frequenze:["f417"],esercizi:["ex3","ex4"],adattamenti:["ad2","ad5"],desc:"Centro delle emozioni, della sessualità e della creatività. Governa il piacere, i legami affettivi e la fluidità interiore. La sua disfunzione produce rigidità emotiva, blocchi creativi e senso di colpa profondo."},
+  {id:"c3",name:"Manipura — Città dei Gioielli",short:"3° Chakra",color:"#c49a1a",pos:"Plesso solare",elem:"Fuoco",nota:"Mi / 528 Hz",ghiandola:"Pancreas",demone:"Rabbia, Ego",diritto:"Diritto di agire",tema:"Potere personale, Volontà",cristalli:["cr5","cr12","cr9"],enneatipi:["e2","e3","e4"],frequenze:["f528"],esercizi:["ex5","ex6"],adattamenti:["ad3","ad4"],desc:"Centro della volontà, dell'autostima e del potere personale. Governa la forza dell'Io e l'autoaffermazione sana. La disfunzione si manifesta come iperaggressività o sottomissione e vergogna."},
+  {id:"c4",name:"Anahata — Inattaccabile",short:"4° Chakra",color:"#2e7d4f",pos:"Centro del petto",elem:"Aria",nota:"Fa / 639 Hz",ghiandola:"Timo",demone:"Odio, Dolore",diritto:"Diritto di amare",tema:"Amore, Relazioni, Empatia",cristalli:["cr2","cr8","cr3"],enneatipi:["e2","e4","e9"],frequenze:["f639","f432"],esercizi:["ex7","ex8"],adattamenti:["ad2","ad5"],desc:"Il trasformatore centrale: integra gli opposti, la dualità maschile-femminile, la ferita e la guarigione. La stella a sei punte (Shatkona) ne simboleggia l'integrazione. Governa l'amore incondizionato e l'empatia."},
+  {id:"c5",name:"Vishuddha — Purezza",short:"5° Chakra",color:"#1565c0",pos:"Gola",elem:"Etere / Suono",nota:"Sol / 741 Hz",ghiandola:"Tiroide",demone:"Vergogna, Bugie",diritto:"Diritto di esprimersi",tema:"Espressione autentica, Verità",cristalli:["cr3","cr7_2","cr11_2","cr7"],enneatipi:["e5","e6","e7"],frequenze:["f741"],esercizi:["ex9","ex10"],adattamenti:["ad3","ad6"],desc:"Centro della comunicazione autentica e dell'espressione creativa. Governa la voce, l'ascolto profondo e l'assertività. La disfunzione si manifesta come timidezza patologica o comunicazione aggressiva."},
+  {id:"c6",name:"Ajna — Terzo Occhio",short:"6° Chakra",color:"#4527a0",pos:"Tra le sopracciglia",elem:"Luce / Prana",nota:"La / 852 Hz",ghiandola:"Ipofisi",demone:"Dispercezione",diritto:"Diritto di vedere",tema:"Intuizione, Visione interiore",cristalli:["cr1","cr13","cr10"],enneatipi:["e5","e6","e7"],frequenze:["f852"],esercizi:["ex11","ex12"],adattamenti:["ad6"],desc:"Centro dell'intuizione, della saggezza interiore e della visione. Governa la percezione oltre il visibile, i sogni e gli archetipi. La disfunzione produce razionalismo rigido o, all'eccesso, pensiero magico."},
+  {id:"c7",name:"Sahasrara — Mille Petali",short:"7° Chakra",color:"#7b2fa0",pos:"Sommità del capo",elem:"Universo / Pensiero",nota:"Si / 963 Hz",ghiandola:"Epifisi",demone:"Sfiducia, Pessimismo",diritto:"Diritto di conoscere",tema:"Spiritualità, Fede, Coscienza",cristalli:["cr10","cr11","cr14_2"],enneatipi:["e9","e5","e3"],frequenze:["f963"],esercizi:["ex12","ex13"],adattamenti:["ad6"],desc:"Centro della coscienza cosmica e della connessione con il divino. Governa la fede, il senso del sacro e l'integrazione totale di corpo-mente-spirito. È il punto di arrivo evolutivo di ogni percorso di crescita."}
+],
+cristalli:[
+  {id:"cr1",name:"Ametista",color:"#7b2fa0",chakra:["c6","c1"],funzione:"Calma, purificazione, rilassamento mentale",disturbo:"Insonnia, Ansia, Stress cronico",enneatipi:["e5","e6","e1"],frequenze:["f852"],esercizi:["ex12"],desc:"Pietra di trasformazione spirituale. Calma la mente iperattiva e favorisce il sonno profondo. Indicata per i tipi mentali (5-6-7) e per chi attraversa fasi di stress intenso. Non abbinare con pietre radicanti."},
+  {id:"cr2",name:"Quarzo Rosa",color:"#d4899a",chakra:["c4"],funzione:"Amore incondizionato, guarigione emotiva",disturbo:"Ferite del cuore, Perdita affettiva",enneatipi:["e2","e4","e9"],frequenze:["f639"],esercizi:["ex7"],desc:"La pietra dell'amore per eccellenza. Ammorbidisce le difese emotive e apre il cuore. Fondamentale nel percorso di guarigione delle ferite d'abbandono e di rifiuto."},
+  {id:"cr3",name:"Lapis Lazuli",color:"#1565c0",chakra:["c5","c6"],funzione:"Verità, comunicazione autentica, saggezza",disturbo:"Blocco vocale, Timidezza, Paura del giudizio",enneatipi:["e5","e1","e6"],frequenze:["f741"],esercizi:["ex9"],desc:"Pietra della verità e della saggezza. Usata da faraoni e sacerdoti per il discernimento. Stimola l'espressione autentica e la comunicazione con chiarezza."},
+  {id:"cr4",name:"Ossidiana Nera",color:"#3a3030",chakra:["c1"],funzione:"Protezione profonda, rispecchiamento della verità",disturbo:"Vulnerabilità, Mancanza di confini",enneatipi:["e8","e9"],frequenze:["f396"],esercizi:["ex1"],desc:"Specchio dell'anima: riflette senza filtri ciò che va trasformato. Pietra di protezione forte, ideale per chi lavora in campo energetico. Da usare con gradualità data la sua potenza."},
+  {id:"cr5",name:"Citrino",color:"#c49a1a",chakra:["c3"],funzione:"Ottimismo, abbondanza, forza solare",disturbo:"Pessimismo, Scarsa autostima, Mancanza di motivazione",enneatipi:["e3","e7","e1"],frequenze:["f528"],esercizi:["ex6"],desc:"La pietra del sole e dell'abbondanza. Non accumula energie negative. Stimola l'autostima, la gioia e la capacità di manifestare i propri obiettivi nel mondo."},
+  {id:"cr6",name:"Granato",color:"#a83232",chakra:["c1","c2"],funzione:"Vitalità, passione, forza istintiva",disturbo:"Calo energetico, Paura esistenziale, Mancanza di grounding",enneatipi:["e8","e1"],frequenze:["f396"],esercizi:["ex1","ex5"],desc:"Pietra del fuoco e dell'energia vitale. Rafforza il senso di sicurezza e la radicalizzazione nel corpo fisico. Ideale nelle fasi di stanchezza profonda o disconnessione fisica."},
+  {id:"cr7",name:"Labradorite",color:"#4527a0",chakra:["c6","c7"],funzione:"Intuizione, protezione energetica, sincronicità",disturbo:"Dispersione energetica, Perdita di confini",enneatipi:["e5","e7","e4"],frequenze:["f852"],esercizi:["ex11"],desc:"Pietra della trasformazione e del mistero. Protegge il campo aurico e stimola le capacità intuitive. Indicata nei momenti di transizione evolutiva."},
+  {id:"cr8",name:"Malachite",color:"#2e7d4f",chakra:["c4","c3"],funzione:"Trasformazione profonda, apertura emotiva",disturbo:"Rigidità emotiva, Schemi relazionali ripetitivi",enneatipi:["e4","e2","e1"],frequenze:["f639"],esercizi:["ex7","ex8"],desc:"La pietra della trasformazione profonda. Porta in superficie ciò che è nascosto nel cuore. Da usare con consapevolezza poiché accelera i processi di cambiamento."},
+  {id:"cr9",name:"Corniola",color:"#c45a22",chakra:["c2","c3"],funzione:"Coraggio, azione, vitalità creativa",disturbo:"Insicurezza, Blocco creativo, Procrastinazione",enneatipi:["e3","e8","e2"],frequenze:["f417","f528"],esercizi:["ex3","ex5"],desc:"Pietra dell'azione e del coraggio. Stimola la motivazione e la determinazione. Ideale per chi attraversa fasi di stasi o blocco creativo."},
+  {id:"cr10",name:"Howlite",color:"#b0a898",chakra:["c7","c6"],funzione:"Calma, pazienza, connessione spirituale",disturbo:"Rabbia, Impazienza, Autocritica",enneatipi:["e1","e6","e9"],frequenze:["f963"],esercizi:["ex12"],desc:"Pietra della calma e della mente silenziosa. Scioglie la tensione muscolare e mentale. Particolarmente indicata per i tipi con tendenza al perfezionismo e all'autocritica."},
+  {id:"cr11",name:"Selenite",color:"#d8d0c8",chakra:["c7"],funzione:"Pulizia energetica, connessione superiore",disturbo:"Confusione mentale, Disconnessione spirituale",enneatipi:["e9","e5","e7"],frequenze:["f963"],esercizi:["ex13"],desc:"La grande purificatrice. Non ha bisogno di essere caricata e pulisce il campo energetico di sé e degli altri cristalli. Apre al silenzio interiore."},
+  {id:"cr12",name:"Occhio di Tigre",color:"#b88a1a",chakra:["c3","c1"],funzione:"Protezione, discernimento, forza pratica",disturbo:"Indecisione, Mancanza di focus",enneatipi:["e8","e6","e3"],frequenze:["f528"],esercizi:["ex5","ex1"],desc:"Pietra del guerriero consapevole. Favorisce decisioni chiare e azioni efficaci. Riduce l'ansia e rafforza la capacità di discernere la realtà."},
+  {id:"cr13",name:"Fluorite",color:"#4a7a9a",chakra:["c6","c7"],funzione:"Chiarezza mentale, ordine interiore",disturbo:"Confusione, Scatter mentale",enneatipi:["e5","e1","e6"],frequenze:["f852"],esercizi:["ex11","ex12"],desc:"La pietra dell'intelletto ordinato. Favorisce la concentrazione e la capacità di strutturare i pensieri. Utile per i tipi mentali in fase di studio o ricerca."},
+  {id:"cr14",name:"Tormalina Nera",color:"#2a2a2a",chakra:["c1"],funzione:"Protezione assoluta, grounding",disturbo:"Vulnerabilità, Ansia, Dispersione energetica",enneatipi:["e6","e9","e8"],frequenze:["f396"],esercizi:["ex1"],desc:"Il più potente scudo energetico del regno minerale. Assorbe e neutralizza le energie negative. Ideale per terapeuti e mediatori che lavorano con persone in difficoltà."},
+  {id:"cr15",name:"Quarzo Ialino",color:"#a8c8d8",chakra:["c7","c1"],funzione:"Amplificazione, chiarezza totale",disturbo:"Qualsiasi squilibrio energetico",enneatipi:["e5","e7","e9"],frequenze:["f963"],esercizi:["ex13","ex12"],desc:"Il maestro guaritore universale. Amplifica le intenzioni e le frequenze di tutti gli altri cristalli. Punto di partenza ideale in qualsiasi percorso di cristalloterapia."}
+],
+enneatipi:[
+  {id:"e1",name:"Tipo 1 — Il Perfezionista",short:"Tipo 1",centro:"Istintivo",virtu:"Serenità",vizio:"Ira repressa",integrazione:"→ Tipo 7",disintegrazione:"→ Tipo 4",fasci:"0–30: rigidità moralistica · 30–60: saggezza disciplinata · 60+: integrazione gioiosa",chakra:["c1","c3"],cristalli:["cr10","cr3","cr5","cr6"],frequenze:["f528","f396"],adattamenti:["ad4","ad1"],esercizi:["ex5","ex1"],desc:"Il Perfezionista vive la tensione costante tra l'ideale e il reale. La sua passione è l'ira repressa — non la rabbia esplosiva ma l'indignazione silenziosa. Il percorso evolutivo lo porta dal giudizio rigido alla saggezza compassionevole."},
+  {id:"e2",name:"Tipo 2 — L'Altruista",short:"Tipo 2",centro:"Emotivo",virtu:"Umiltà",vizio:"Orgoglio",integrazione:"→ Tipo 4",disintegrazione:"→ Tipo 8",fasci:"0–30: aiuto compulsivo · 30–60: equilibrio dare/ricevere · 60+: amore incondizionato",chakra:["c4","c2"],cristalli:["cr2","cr8","cr9"],frequenze:["f639","f417"],adattamenti:["ad2","ad5"],esercizi:["ex7","ex3"],desc:"L'Altruista costruisce l'identità attraverso il dare agli altri. La sfida è imparare a ricevere e a riconoscere i propri bisogni senza vergogna. L'integrazione porta alla vera umiltà."},
+  {id:"e3",name:"Tipo 3 — Il Realizzatore",short:"Tipo 3",centro:"Emotivo",virtu:"Autenticità",vizio:"Vanità",integrazione:"→ Tipo 6",disintegrazione:"→ Tipo 9",fasci:"0–30: identità nell'immagine · 30–60: efficienza autentica · 60+: servizio umile",chakra:["c3","c2"],cristalli:["cr5","cr9","cr12"],frequenze:["f528","f417"],adattamenti:["ad3","ad4"],esercizi:["ex5","ex6"],desc:"Il Realizzatore trasforma l'energia in risultati. La trappola è confondere il fare con l'essere. Il percorso evolutivo porta dalla performance all'autenticità profonda."},
+  {id:"e4",name:"Tipo 4 — L'Individualista",short:"Tipo 4",centro:"Emotivo",virtu:"Equanimità",vizio:"Invidia",integrazione:"→ Tipo 1",disintegrazione:"→ Tipo 2",fasci:"0–30: romanticismo drammatico · 30–60: creatività strutturata · 60+: bellezza nell'ordinario",chakra:["c4","c6"],cristalli:["cr2","cr7","cr8"],frequenze:["f639","f852"],adattamenti:["ad2","ad6"],esercizi:["ex7","ex11"],desc:"L'Individualista vive nell'intensità emotiva e nella ricerca di profondità. La sfida è trasformare il senso di mancanza in creatività autentica. La sensibilità straordinaria è il dono più prezioso."},
+  {id:"e5",name:"Tipo 5 — L'Investigatore",short:"Tipo 5",centro:"Mentale",virtu:"Distacco sano",vizio:"Avarizia di sé",integrazione:"→ Tipo 8",disintegrazione:"→ Tipo 7",fasci:"0–30: accumulo di conoscenza · 30–60: condivisione del sapere · 60+: saggezza incarnata",chakra:["c5","c6","c7"],cristalli:["cr7","cr13","cr11","cr15"],frequenze:["f741","f852"],adattamenti:["ad6","ad1"],esercizi:["ex9","ex12"],desc:"L'Investigatore osserva il mondo dalla distanza sicura della mente. La sfida è incarnare la conoscenza e permettersi di essere visti. L'integrazione porta a un'assertività radicata."},
+  {id:"e6",name:"Tipo 6 — Il Leale",short:"Tipo 6",centro:"Mentale",virtu:"Coraggio",vizio:"Paura",integrazione:"→ Tipo 9",disintegrazione:"→ Tipo 3",fasci:"0–30: dipendenza dall'autorità · 30–60: lealtà consapevole · 60+: fede in sé",chakra:["c5","c1"],cristalli:["cr14","cr12","cr10","cr13"],frequenze:["f741","f396"],adattamenti:["ad1","ad5"],esercizi:["ex1","ex9"],desc:"Il Leale naviga il mondo attraverso la fiducia e la sfiducia alternante. Il dono è la lealtà profonda. La sfida è sviluppare la fede in sé oltre ogni autorità esterna."},
+  {id:"e7",name:"Tipo 7 — L'Entusiasta",short:"Tipo 7",centro:"Mentale",virtu:"Sobrietà",vizio:"Gola",integrazione:"→ Tipo 5",disintegrazione:"→ Tipo 1",fasci:"0–30: fuga nel piacere · 30–60: profondità gioiosa · 60+: gratitudine per il presente",chakra:["c5","c2"],cristalli:["cr5","cr7","cr15"],frequenze:["f741","f417"],adattamenti:["ad3","ad2"],esercizi:["ex3","ex9"],desc:"L'Entusiasta fugge dal dolore attraverso la molteplicità delle esperienze. La sfida è fermarsi e integrare il dolore come parte della vita piena. La sua gioia è contagiosa."},
+  {id:"e8",name:"Tipo 8 — Il Protettore",short:"Tipo 8",centro:"Istintivo",virtu:"Innocenza",vizio:"Lussuria di controllo",integrazione:"→ Tipo 2",disintegrazione:"→ Tipo 5",fasci:"0–25: espressione istintiva · 25–30: shock vulnerabilità · 30–60: protezione consapevole · 60+: autorità servente",chakra:["c1","c3"],cristalli:["cr4","cr6","cr12"],frequenze:["f396","f528"],adattamenti:["ad4","ad1"],esercizi:["ex1","ex5"],desc:"Il Protettore è il guerriero del gruppo, colui che non teme il conflitto. La sfida è permettersi la vulnerabilità. La rabbia nasconde sempre la paura di essere traditi."},
+  {id:"e9",name:"Tipo 9 — Il Pacificatore",short:"Tipo 9",centro:"Istintivo",virtu:"Azione",vizio:"Pigrizia di sé",integrazione:"→ Tipo 3",disintegrazione:"→ Tipo 6",fasci:"0–30: pace nella fusione · 30–60: azione consapevole · 60+: mediatore saggio",chakra:["c1","c4","c7"],cristalli:["cr4","cr2","cr11"],frequenze:["f396","f639"],adattamenti:["ad5","ad2"],esercizi:["ex1","ex7"],desc:"Il Pacificatore percepisce tutti i punti di vista e mantiene l'armonia. La sfida è non perdersi negli altri dimenticando sé stessi. Il percorso porta dal sonno alla presenza piena."}
+],
+frequenze:[
+  {id:"f396",name:"396 Hz — Liberazione dalla paura",short:"396 Hz",nota:"Do / Ut",chakra:["c1"],enneatipi:["e8","e9","e1","e6"],effetto:"Libera sensi di colpa e paure radicali, stabilizza il sistema nervoso",strumenti:"Cimbali tibetani gravi, tamburo a cornice, didgeridoo",esercizi:["ex1","ex2"],adattamenti:["ad1"],desc:"Frequenza Ut del sistema solfeggio. Scioglie i blocchi energetici profondi legati alla sopravvivenza e al senso di colpa ancestrale. Indicata nella pranoterapia per riattivare il senso di sicurezza."},
+  {id:"f417",name:"417 Hz — Cambiamento e fluidità",short:"417 Hz",nota:"Re",chakra:["c2"],enneatipi:["e2","e3","e4","e7"],effetto:"Facilita il cambiamento, scioglie blocchi creativi, purifica dai traumi",strumenti:"Flauto, campane d'acqua, canto armonico",esercizi:["ex3","ex4"],adattamenti:["ad5"],desc:"Frequenza solfeggio del secondo chakra. Facilita la risoluzione delle situazioni bloccate e sostiene la trasformazione emotiva. Usata nelle fasi di transizione."},
+  {id:"f528",name:"528 Hz — Riparazione del DNA",short:"528 Hz",nota:"Mi",chakra:["c3"],enneatipi:["e1","e3","e8"],effetto:"Rinforza l'autostima, stimola la guarigione cellulare, riattiva la gioia",strumenti:"Campana di cristallo in Do, piano accordato a 528",esercizi:["ex5","ex6"],adattamenti:["ad4"],desc:"La frequenza dell'amore e della riparazione. Stimola il plesso solare, rafforza l'identità personale e la capacità di agire con fiducia nel mondo."},
+  {id:"f639",name:"639 Hz — Connessione e armonia",short:"639 Hz",nota:"Fa",chakra:["c4"],enneatipi:["e2","e4","e9"],effetto:"Migliora le relazioni, apre il cuore, favorisce empatia e riconciliazione",strumenti:"Campana di cristallo in Fa, arpa, canto devozionale",esercizi:["ex7","ex10"],adattamenti:["ad2","ad5"],desc:"Frequenza del cuore per eccellenza. Favorisce la comunicazione nelle relazioni, la riconciliazione e l'empatia. Ideale nelle sessioni di counseling di coppia."},
+  {id:"f741",name:"741 Hz — Espressione e intuizione",short:"741 Hz",nota:"Sol",chakra:["c5","c6"],enneatipi:["e5","e6","e7"],effetto:"Libera l'espressione autentica, rafforza l'intuizione, dissolve blocchi vocali",strumenti:"Canto armonico tibetano, flauto alto, campana tibetana acuta",esercizi:["ex9","ex11"],adattamenti:["ad6"],desc:"Frequenza del quinto e sesto chakra. Stimola la chiarezza mentale e l'espressione della verità interiore."},
+  {id:"f852",name:"852 Hz — Risveglio interiore",short:"852 Hz",nota:"La",chakra:["c6"],enneatipi:["e4","e5","e6"],effetto:"Amplifica l'intuizione, apre il terzo occhio, sostiene la visione interiore",strumenti:"Gong cristallino, campana tibetana acuta, mantra OM",esercizi:["ex11","ex12"],adattamenti:["ad6"],desc:"Frequenza del sesto chakra e del risveglio spirituale. Sostiene la meditazione profonda e l'accesso agli archetipi junghiani."},
+  {id:"f963",name:"963 Hz — Coscienza cosmica",short:"963 Hz",nota:"Si",chakra:["c7"],enneatipi:["e9","e5","e3"],effetto:"Connette alla coscienza universale, produce stati contemplativi profondi",strumenti:"Canto gregoriano, OM prolungato, gong planetari",esercizi:["ex12","ex13"],adattamenti:["ad6"],desc:"La frequenza più elevata del sistema solfeggio. Apre alla dimensione transpersonale. Usata nelle pratiche contemplative avanzate e nella pranoterapia per il settimo chakra."},
+  {id:"f432",name:"432 Hz — Accordatura della natura",short:"432 Hz",nota:"La naturale",chakra:["c4","c1"],enneatipi:["e9","e2","e6"],effetto:"Genera risonanza armonica naturale, riduce ansia e stress sistemico",strumenti:"Qualsiasi strumento riaccordato a 432 Hz",esercizi:["ex4","ex7"],adattamenti:["ad2"],desc:"L'accordatura basata sulla matematica della natura (Phi, spirale di Fibonacci). Produce stati di calma e coerenza cardiaca. Base per tutto il lavoro con le frequenze nel contesto olistico."}
+],
+adattamenti:[
+  {id:"ad1",name:"Attaccamento Ansioso",short:"Ansioso",categoria:"Teoria dell'Attaccamento (Bowlby)",desc:"Ipervigilanza e paura dell'abbandono. La persona cerca costante rassicurazione e interpreta le distanze come rifiuto. Correlato alle ferite di abbandono e rifiuto.",chakra:["c2","c4"],enneatipi:["e6","e2","e4"],cristalli:["cr2","cr14"],esercizi:["ex7","ex1"],frequenze:["f639","f396"]},
+  {id:"ad2",name:"Attaccamento Sicuro",short:"Sicuro",categoria:"Teoria dell'Attaccamento (Bowlby)",desc:"Capacità di stare nell'intimità senza perdere sé. Fiducia di base nel mondo e negli altri. Flessibilità nelle relazioni. È il punto di arrivo evolutivo di ogni percorso terapeutico.",chakra:["c4","c1"],enneatipi:["e9","e2","e6"],cristalli:["cr2","cr15"],esercizi:["ex7","ex8"],frequenze:["f639","f432"]},
+  {id:"ad3",name:"Attaccamento Evitante",short:"Evitante",categoria:"Teoria dell'Attaccamento (Bowlby)",desc:"Tendenza a mantenere le distanze emotive per proteggersi dall'intimità. Difficoltà a chiedere aiuto o a mostrare bisogno. Correlato alle ferite di umiliazione e rifiuto.",chakra:["c5","c3"],enneatipi:["e5","e3","e7"],cristalli:["cr7","cr3"],esercizi:["ex9","ex5"],frequenze:["f741","f528"]},
+  {id:"ad4",name:"Adulto — Analisi Transazionale",short:"Adulto (AT)",categoria:"Analisi Transazionale (Berne)",desc:"Stato dell'Io che elabora le informazioni in modo obiettivo e presente. Decide consapevolmente, senza essere condizionato dai copioni del passato.",chakra:["c3","c6"],enneatipi:["e1","e3","e8"],cristalli:["cr5","cr13"],esercizi:["ex5","ex11"],frequenze:["f528","f852"]},
+  {id:"ad5",name:"Bambino Libero — AT",short:"Bambino Libero",categoria:"Analisi Transazionale (Berne)",desc:"La parte creativa, gioiosa e spontanea. Il serbatoio dell'energia vitale e del piacere. Quando è bloccato, emerge come Bambino Adattato compiacente o ribelle.",chakra:["c2","c4"],enneatipi:["e2","e9","e7"],cristalli:["cr9","cr2"],esercizi:["ex3","ex7"],frequenze:["f417","f639"]},
+  {id:"ad6",name:"Stato Ventrale — Polivagale",short:"Ventrale",categoria:"Teoria Polivagale (Porges)",desc:"Stato di sicurezza e connessione sociale. In questo stato il sistema nervoso supporta l'empatia e la risoluzione dei conflitti. È l'obiettivo di ogni intervento del counselor.",chakra:["c4","c5","c6"],enneatipi:["e9","e4","e5"],cristalli:["cr2","cr11","cr3"],esercizi:["ex7","ex10","ex12"],frequenze:["f639","f432"]}
+],
+esercizi:[
+  {id:"ex1",name:"Grounding radicato",short:"Grounding",tipo:"Corporeo",chakra:["c1"],enneatipi:["e8","e9","e6"],frequenze:["f396"],cristalli:["cr6","cr4","cr14"],adattamenti:["ad1"],desc:"Piedi nudi a terra, respiro addominale profondo, pressione consapevole sul pavimento. 5 minuti, 3 volte al giorno. Riattiva il senso di sicurezza e di appartenenza al corpo."},
+  {id:"ex2",name:"Cammino meditativo",short:"Walking meditation",tipo:"Corporeo",chakra:["c1","c2"],enneatipi:["e9","e6","e5"],frequenze:["f396","f432"],cristalli:["cr6"],adattamenti:["ad2"],desc:"Camminare lentamente e in silenzio, prestando piena attenzione alle sensazioni dei piedi. 20 minuti in natura. Riattiva il collegamento corpo-terra."},
+  {id:"ex3",name:"Danza creativa libera",short:"Danza libera",tipo:"Espressivo",chakra:["c2","c3"],enneatipi:["e4","e7","e2"],frequenze:["f417","f528"],cristalli:["cr9"],adattamenti:["ad5"],desc:"Movimento libero del corpo sulla musica scelta intuitivamente. L'obiettivo è permettere al corpo di esprimere ciò che le parole non possono."},
+  {id:"ex4",name:"Bagno di suono",short:"Sound bath",tipo:"Sonoro",chakra:["c2","c4"],enneatipi:["e2","e9","e4"],frequenze:["f432","f639"],cristalli:["cr2"],adattamenti:["ad2"],desc:"Immersione in un campo sonoro creato da campane tibetane e gong. Il paziente è in posizione supina. Le vibrazioni penetrano nel corpo fisico e sottile."},
+  {id:"ex5",name:"Kapalbhati",short:"Respiro del guerriero",tipo:"Pranayama",chakra:["c3","c1"],enneatipi:["e1","e8","e3"],frequenze:["f528","f396"],cristalli:["cr12","cr6"],adattamenti:["ad4"],desc:"Respiro a pompa forzato: inspirazione naturale ed espirazione potente e rapida. 30–60 cicli, 3 round. Purifica il terzo chakra e attiva il fuoco interiore."},
+  {id:"ex6",name:"Giornale dei successi",short:"Successi quotidiani",tipo:"Riflessivo",chakra:["c3"],enneatipi:["e3","e1","e6"],frequenze:["f528"],cristalli:["cr5"],adattamenti:["ad4"],desc:"Ogni sera: scrivere tre azioni compiute efficacemente. Contrastare il critico interiore con prove concrete. Rinforza l'autostima e la percezione di efficacia personale."},
+  {id:"ex7",name:"Loving-Kindness (Metta)",short:"Loving-Kindness",tipo:"Meditativo",chakra:["c4"],enneatipi:["e2","e9","e4","e1"],frequenze:["f639","f432"],cristalli:["cr2","cr8"],adattamenti:["ad2","ad6"],desc:"Generare intenzionalmente sentimenti di amore verso sé stessi, le persone care, quelle difficili, poi tutti gli esseri. 20 minuti."},
+  {id:"ex8",name:"Voice Dialogue",short:"Dialogo con l'ombra",tipo:"Psicologico",chakra:["c4","c6"],enneatipi:["e1","e4","e8"],frequenze:["f639","f852"],cristalli:["cr8","cr7"],adattamenti:["ad6"],desc:"Tecnica di Hal & Sidra Stone: dare voce alle sub-personalità che si rifiutano di vedere. Il counselor facilita il dialogo tra parti opposte."},
+  {id:"ex9",name:"Scrittura espressiva",short:"Scrittura della verità",tipo:"Creativo",chakra:["c5"],enneatipi:["e5","e1","e7"],frequenze:["f741"],cristalli:["cr3"],adattamenti:["ad3"],desc:"Scrivere senza censura per 20 minuti su un tema emotivo attivo. Non per comunicare agli altri, ma per dare voce alla propria verità interiore."},
+  {id:"ex10",name:"Co-regolazione respiratoria",short:"Co-regolazione",tipo:"Relazionale",chakra:["c4","c5"],enneatipi:["e9","e2","e6"],frequenze:["f639","f432"],cristalli:["cr2"],adattamenti:["ad6","ad2"],desc:"Due persone sincronizzano il respiro per 5–10 minuti. Attiva i neuroni specchio e la co-regolazione del sistema nervoso. Potente in terapia di coppia e mediazione."},
+  {id:"ex11",name:"Visualizzazione archetipica",short:"Visualizzazione",tipo:"Meditativo-immaginativo",chakra:["c6"],enneatipi:["e5","e4","e9"],frequenze:["f852"],cristalli:["cr7","cr13"],adattamenti:["ad6"],desc:"Meditazione guidata con immagini simboliche (il viaggio dell'eroe, l'incontro con l'Ombra). Lavora con il linguaggio del sesto chakra: simboli, sogni, miti."},
+  {id:"ex12",name:"Zazen — Silenzio meditativo",short:"Zazen",tipo:"Contemplativo",chakra:["c6","c7"],enneatipi:["e5","e9","e4"],frequenze:["f852","f963"],cristalli:["cr1","cr11"],adattamenti:["ad6"],desc:"Sedersi in silenzio, schiena diritta, senza oggetto di meditazione. 20–40 minuti. Fondamentale per lo sviluppo del sesto e settimo chakra."},
+  {id:"ex13",name:"Pranoterapia attiva",short:"Pranoterapia",tipo:"Energetico",chakra:["c7","c4"],enneatipi:["e9","e2","e5"],frequenze:["f963","f639"],cristalli:["cr11","cr15"],adattamenti:["ad6"],desc:"Trasmissione di energia pranale attraverso le mani. Il pranoterapeuta lavora sull'aura e sui chakra per ristabilire il flusso energetico. Richiede formazione specifica."}
+]
+};
+
+const CMETA={
+  chakra:{label:"Chakra",color:"#7b2fa0",icon:"◉"},
+  cristalli:{label:"Cristalli",color:"#1565c0",icon:"◆"},
+  enneatipi:{label:"Enneatipi",color:"#a83232",icon:"⬟"},
+  frequenze:{label:"Musica Curativa",color:"#2e7d4f",icon:"♬"},
+  adattamenti:{label:"Adattamenti",color:"#c45a22",icon:"▲"},
+  esercizi:{label:"Esercizi",color:"#00695c",icon:"◎"}
+};
+
+function getAll(){return Object.entries(DB).flatMap(([cat,items])=>items.map(i=>({...i,cat})))}
+function byId(id){return getAll().find(x=>x.id===id)}
+function gc(item){if(!item)return"#888";if(item.cat==="chakra"||item.color)return item.color||CMETA[item.cat]?.color||"#888";return CMETA[item.cat]?.color||"#888"}
+
+// ── SEARCH ──
+function openSearch(){document.getElementById("search-overlay").classList.add("open");setTimeout(()=>document.getElementById("s-input").focus(),50)}
+function closeSearch(){document.getElementById("search-overlay").classList.remove("open");document.getElementById("s-input").value="";document.getElementById("s-list").innerHTML=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSearch()});
+document.getElementById("s-input").addEventListener("input",function(){
+  const q=this.value.trim().toLowerCase();
+  const el=document.getElementById("s-list");
+  if(!q){el.innerHTML="";return}
+  const res=getAll().filter(i=>[i.name,i.desc,i.funzione,i.effetto,i.tema,i.disturbo,i.categoria].filter(Boolean).some(s=>s.toLowerCase().includes(q))).slice(0,20);
+  if(!res.length){el.innerHTML='<p style="padding:1.5rem;color:var(--ink4);text-align:center;font-style:italic">Nessun risultato</p>';return}
+  const bc={};res.forEach(r=>{if(!bc[r.cat])bc[r.cat]=[];bc[r.cat].push(r)});
+  el.innerHTML=Object.entries(bc).map(([cat,its])=>`
+    <div class="s-cat-lbl">${CMETA[cat].icon} ${CMETA[cat].label}</div>
+    ${its.map(i=>`<div class="s-item" onclick="goTo('${i.id}','${i.cat}')">
+      <span class="s-dot" style="background:${gc(i)}"></span>
+      <div><div class="s-name">${i.name}</div><div class="s-meta">${(i.funzione||i.tema||i.categoria||i.tipo||"").slice(0,65)}</div></div>
+    </div>`).join("")}
+  `).join("");
+});
+function goTo(id,cat){
+  closeSearch();curCat=cat;selId=id;
+  renderTabs();renderList();renderPanel(byId(id));
+  st("explorer");
+}
+
+// ── EXPLORER ──
+let curCat="chakra",selId=null;
+function renderTabs(){
+  document.getElementById("exp-tabs").innerHTML=Object.entries(CMETA).map(([c,m])=>
+    `<button class="exp-tab${c===curCat?" active":""}" onclick="swCat('${c}')">${m.icon} ${m.label}</button>`
+  ).join("");
+}
+function swCat(cat){curCat=cat;selId=null;renderTabs();renderList();renderPanel(null)}
+function renderList(){
+  document.getElementById("exp-list").innerHTML=(DB[curCat]||[]).map(item=>{
+    const col=gc({...item,cat:curCat});
+    const sub=item.nota||item.centro||item.tipo||item.categoria||"";
+    return`<div class="exp-card${item.id===selId?" sel":""}" onclick="selItem('${item.id}')">
+      <div class="exp-card-name"><span class="cdot" style="background:${col}"></span>${item.name}</div>
+      ${sub?`<div class="exp-card-sub">${sub}</div>`:""}
+    </div>`;
+  }).join("");
+}
+function selItem(id){selId=id;renderList();renderPanel(byId(id))}
+function renderPanel(item){
+  const el=document.getElementById("exp-panel");
+  if(!item){el.innerHTML='<div class="panel-empty"><div class="panel-empty-icon">◈</div><p>Seleziona un elemento per esplorare le sue connessioni</p></div>';return}
+  const col=gc(item);const cat=item.cat;const meta=CMETA[cat];
+  const connIds=[...(item.chakra||[]),...(item.cristalli||[]),...(item.enneatipi||[]),...(item.frequenze||[]),...(item.adattamenti||[]),...(item.esercizi||[])];
+  const groups={};
+  connIds.forEach(id=>{const c=byId(id);if(!c||c.id===item.id)return;if(!groups[c.cat])groups[c.cat]=[];if(!groups[c.cat].find(x=>x.id===id))groups[c.cat].push(c)});
+  const pp=[];
+  if(item.pos)pp.push({l:"Posizione",v:item.pos});
+  if(item.elem)pp.push({l:"Elemento",v:item.elem});
+  if(item.nota)pp.push({l:"Nota / Hz",v:item.nota});
+  if(item.ghiandola)pp.push({l:"Ghiandola",v:item.ghiandola});
+  if(item.demone)pp.push({l:"Blocco",v:item.demone});
+  if(item.diritto)pp.push({l:"Diritto",v:item.diritto});
+  if(item.virtu)pp.push({l:"Virtù",v:item.virtu});
+  if(item.vizio)pp.push({l:"Vizio",v:item.vizio});
+  if(item.integrazione)pp.push({l:"Integrazione",v:item.integrazione});
+  if(item.disintegrazione)pp.push({l:"Disintegrazione",v:item.disintegrazione});
+  if(item.fasci)pp.push({l:"Fasi evolutive",v:item.fasci});
+  if(item.centro)pp.push({l:"Centro",v:item.centro});
+  if(item.effetto)pp.push({l:"Effetto",v:item.effetto});
+  if(item.strumenti)pp.push({l:"Strumenti",v:item.strumenti});
+  if(item.tipo)pp.push({l:"Tipo",v:item.tipo});
+  if(item.categoria)pp.push({l:"Categoria",v:item.categoria});
+  if(item.disturbo)pp.push({l:"Disturbi",v:item.disturbo});
+  if(item.funzione)pp.push({l:"Funzione",v:item.funzione});
+  el.innerHTML=`
+    <div class="panel-top">
+      <div class="panel-stripe" style="background:${col}"></div>
+      <div class="panel-title">${item.name}<span class="panel-badge">${meta.icon} ${meta.label}</span></div>
+      ${item.desc?`<p class="panel-desc">${item.desc}</p>`:""}
+    </div>
+    <div class="panel-body">
+      ${pp.length?`<div class="props">${pp.map(p=>`<div class="prop"><div class="prop-l">${p.l}</div><div class="prop-v">${p.v}</div></div>`).join("")}</div>`:""}
+      ${Object.entries(groups).map(([c,its])=>`
+        <div class="conn-blk">
+          <div class="conn-lbl">${CMETA[c].icon} ${CMETA[c].label}</div>
+          <div class="chips">${its.map(ci=>`<span class="chip" onclick="goTo('${ci.id}','${ci.cat}')">
+            <span class="chip-dot" style="background:${gc(ci)}"></span>${ci.name}
+          </span>`).join("")}</div>
+        </div>`).join("")}
+    </div>`;
+}
+function openExp(cat){curCat=cat;renderTabs();renderList();renderPanel(null);st("explorer")}
+
+// ── CHAKRA ──
+function renderChakra(){
+  document.getElementById("chakra-rows").innerHTML=DB.chakra.map(c=>`
+    <div class="cRow" id="cr-${c.id}" onclick="selChakra('${c.id}')">
+      <div class="cRow-num">${c.id.replace("c","")}</div>
+      <span class="cRow-sw" style="background:${c.color}"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">${c.name}</div>
+        <div class="cRow-theme">${c.tema}</div>
+      </div>
+    </div>`).join("");
+  selChakra("c1");
+}
+function selChakra(id){
+  document.querySelectorAll(".cRow").forEach(r=>r.classList.remove("act"));
+  const row=document.getElementById("cr-"+id);if(row)row.classList.add("act");
+  const c=DB.chakra.find(x=>x.id===id);if(!c)return;
+  const crNames=c.cristalli.map(cid=>{const cr=byId(cid);return cr?cr.name:cid});
+  const ennNames=c.enneatipi.map(eid=>{const e=byId(eid);return e?e.short:eid});
+  document.getElementById("c-detail").innerHTML=`
+    <div class="cd-strip" style="background:${c.color}"></div>
+    <div class="cd-num">${c.id.replace("c","°")} chakra · ${c.elem}</div>
+    <div class="cd-name">${c.name}</div>
+    <p class="cd-desc">${c.desc}</p>
+    <div class="cd-grid">
+      <div class="cd-cell"><div class="cd-cl">Frequenza</div><div class="cd-cv">${c.nota}</div></div>
+      <div class="cd-cell"><div class="cd-cl">Ghiandola</div><div class="cd-cv">${c.ghiandola}</div></div>
+      <div class="cd-cell"><div class="cd-cl">Diritto</div><div class="cd-cv">${c.diritto}</div></div>
+      <div class="cd-cell"><div class="cd-cl">Blocco</div><div class="cd-cv">${c.demone}</div></div>
+    </div>
+    <div class="cd-sub" style="color:${c.color}">Enneatipi correlati</div>
+    <div class="crystal-tags">${ennNames.map(n=>`<span class="ctag">${n}</span>`).join("")}</div>
+    <div class="cd-sub" style="color:${c.color};margin-top:.75rem">Cristalli</div>
+    <div class="crystal-tags">${crNames.map(n=>`<span class="ctag">${n}</span>`).join("")}</div>`;
+}
+
+// ── ENNEAGRAM ──
+function renderEnn(){
+  const cc={"Istintivo":"#a83232","Emotivo":"#c45a22","Mentale":"#1565c0"};
+  document.getElementById("enn-grid").innerHTML=DB.enneatipi.map(e=>`
+    <div class="enn-card" onclick="goTo('${e.id}','enneatipi')">
+      <div class="enn-big-num">${e.id.replace("e","")}</div>
+      <div class="enn-centro" style="border-color:${cc[e.centro]||"#ccc"}40;color:${cc[e.centro]||"#888"}">${e.centro}</div>
+      <div class="enn-name">${e.name}</div>
+      <div class="enn-italic">${e.virtu} · ${e.vizio}</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">${e.integrazione}</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">${e.disintegrazione}</span></div>
+      <div class="enn-path">${e.fasci}</div>
+    </div>`).join("");
+}
+
+// ── MUSIC ──
+function renderMusic(){
+  document.getElementById("music-grid").innerHTML=DB.frequenze.map(f=>`
+    <div class="mc" onclick="goTo('${f.id}','frequenze')">
+      <div class="mc-hz">${f.id.replace("f","").toUpperCase()} Hz</div>
+      <div class="mc-note">Nota ${f.nota}</div>
+      <div class="mc-name">${f.name}</div>
+      <div class="mc-effect">${f.effetto}</div>
+      <div class="mc-str">${f.strumenti}</div>
+    </div>`).join("");
+}
+
+// ── BACH FLOWERS DATA & RENDER ──
+const BACH=[
+  {name:"Rescue Remedy",it:"Rimedio d'emergenza",emoji:"🌟",stato:"Shock, trauma acuto, panico improvviso",trasformazione:"Da reazione automatica a risposta consapevole",chakra:"c1",cColor:"#a83232",enneatipi:"Tutti",desc:"La combinazione di 5 fiori più nota. Si usa in situazioni di emergenza emotiva: panico, trauma, shock, prima di eventi stressanti. Riporta rapidamente al centro."},
+  {name:"Mimulus",it:"Mimolo",emoji:"🌼",stato:"Paura di cose specifiche e note",trasformazione:"Da timidezza e paura a coraggio e forza",chakra:"c1",cColor:"#a83232",enneatipi:"Tipo 6, Tipo 1",desc:"Per le paure conosciute e nominabili: paura del buio, degli animali, delle malattie, della morte, della gente. Indicato per i tipi introversi e timidi che non rivelano le loro paure."},
+  {name:"Rock Rose",it:"Elianthemum",emoji:"🌸",stato:"Terrore, panico, paura paralizzante",trasformazione:"Da terrore a coraggio eroico",chakra:"c1",cColor:"#a83232",enneatipi:"Tipo 6",desc:"Per situazioni di emergenza estrema dove il panico prende il sopravvento. Indicato dopo incidenti, nightmares, quando il corpo trema per la paura."},
+  {name:"Larch",it:"Larice",emoji:"🌲",stato:"Mancanza di fiducia in sé, aspettarsi il fallimento",trasformazione:"Da insicurezza a fiducia autentica",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 3, Tipo 6",desc:"Per chi non si aspetta di riuscire e quindi non cerca nemmeno di provare. Blocca l'iniziativa per paura del fallimento. Ripristina la fiducia nel proprio valore."},
+  {name:"Centaury",it:"Centaurea",emoji:"💛",stato:"Incapacità di dire no, servire gli altri dimenticando sé",trasformazione:"Da compiacenza a servizio autentico con volontà propria",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 2, Tipo 9",desc:"Per chi ha difficoltà a dire no e lascia che gli altri lo sfruttino per gentilezza o debolezza di volontà. Rafforza la volontà personale e il confine sano."},
+  {name:"Wild Rose",it:"Rosa canina",emoji:"🌹",stato:"Rassegnazione, apatia, mancanza di motivazione",trasformazione:"Da rassegnazione a rinnovato interesse per la vita",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 9, Tipo 5",desc:"Per chi si è arreso alla propria situazione senza sforzo di migliorarla. Ristabilisce l'entusiasmo e la voglia di partecipare attivamente alla vita."},
+  {name:"Holly",it:"Agrifoglio",emoji:"🍃",stato:"Odio, invidia, gelosia, sospetto",trasformazione:"Da odio e sospetto a amore e generosità",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 8, Tipo 4",desc:"Per stati di odio, invidia, gelosia, vendetta e sospetto. Quando il cuore si è chiuso all'amore. Apre alla generosità e alla connessione autentica."},
+  {name:"Chicory",it:"Cicoria",emoji:"💙",stato:"Possessività, amore condizionato, manipolazione affettiva",trasformazione:"Da amore possessivo a amore incondizionato",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 2, Tipo 8",desc:"Per chi ama in modo possessivo e chiede costantemente l'attenzione degli altri. Trasforma l'attaccamento egoistico in amore libero e incondizionato."},
+  {name:"Red Chestnut",it:"Castagno rosso",emoji:"🌰",stato:"Paura per i propri cari, ansia per la salute degli altri",trasformazione:"Da preoccupazione in fiducia e serenità",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 2, Tipo 6",desc:"Per chi è eccessivamente preoccupato per i propri cari, immaginando sempre disastri che potrebbero capitare loro. Porta fiducia nel benessere degli altri."},
+  {name:"Agrimony",it:"Agrimonia",emoji:"🌾",stato:"Nascondere i problemi dietro una facciata allegra",trasformazione:"Da maschera gioiosa a pace interiore autentica",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 3, Tipo 7",desc:"Per chi soffre interiormente ma lo nasconde dietro una maschera di allegria, non volendo preoccupare gli altri. Porta vera pace interiore e apertura."},
+  {name:"Vervain",it:"Verbena",emoji:"🌿",stato:"Iper-entusiasmo, sovra-impegno, fanatismo",trasformazione:"Da tensione e forza eccessiva a quiete e tolleranza",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 1, Tipo 8",desc:"Per chi ha ideali forti e vuole convincere tutti della propria visione. Portano il proprio corpo all'esaurimento per le proprie cause. Porta equilibrio e rispetto dei ritmi."},
+  {name:"Water Violet",it:"Violetta d'acqua",emoji:"🌸",stato:"Orgoglio, distanza, preferire la solitudine",trasformazione:"Da isolamento orgoglioso a connessione serena",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 5, Tipo 4",desc:"Per le persone capaci, competenti ma tendenti all'isolamento. Si sentono al di sopra degli altri. Porta umiltà e la gioia della connessione autentica con il prossimo."},
+  {name:"Clematis",it:"Clematide",emoji:"🌺",stato:"Sognare ad occhi aperti, mancanza di presenza",trasformazione:"Da assenza mentale a radicamento nel presente",chakra:"c6",cColor:"#4527a0",enneatipi:"Tipo 9, Tipo 7, Tipo 4",desc:"Per chi vive nel futuro o nei sogni, non essendo presente al momento attuale. Porta la mente nel corpo e nel presente. Ideale per chi è perso nei propri mondi interiori."},
+  {name:"Cerato",it:"Cerato",emoji:"💜",stato:"Non fidarsi del proprio giudizio, cercare consigli continui",trasformazione:"Da dubbio a intuizione e fiducia in sé",chakra:"c6",cColor:"#4527a0",enneatipi:"Tipo 6, Tipo 9",desc:"Per chi non si fida del proprio giudizio e chiede continuamente consiglio ad altri, spesso seguendo poi consigli sbagliati contro il proprio istinto."},
+  {name:"Crown Chestnut",it:"Castagno bianco",emoji:"⚪",stato:"Pensieri indesiderati ripetitivi, mente che non si ferma",trasformazione:"Da circolo vizioso mentale a pace e chiarezza",chakra:"c7",cColor:"#7b2fa0",enneatipi:"Tipo 1, Tipo 6, Tipo 5",desc:"Per la mente che continua a ripetere gli stessi pensieri indesiderati, specialmente di notte. Porta calma mentale, chiarezza e capacità di dormire."}
+];
+
+function renderBach(){
+  document.getElementById("bach-grid").innerHTML=BACH.map(b=>`
+    <div class="bach-card">
+      <div class="bach-flower">${b.emoji}</div>
+      <div class="bach-name">${b.name}</div>
+      <div class="bach-it">${b.it}</div>
+      <div class="bach-stato">Stato negativo</div>
+      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>${b.stato}</em></p>
+      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+      <p class="bach-desc">${b.trasformazione}</p>
+      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+      <p class="bach-desc" style="margin-bottom:.5rem">${b.enneatipi}</p>
+      <span class="bach-chakra" style="background:${b.cColor}">${b.chakra.replace("c","")+"° Chakra"}</span>
+    </div>`).join("");
+}
+
+// ── ALIMENTAZIONE DATA & RENDER ──
+const ALIM=[
+  {num:"1°",name:"Radice · Muladhara",color:"#a83232",foods:"Carote, barbabietola, ravanelli, cipolle rosse, fragole, ciliegie, carne rossa biologica, legumi rossi, peperoni rossi",effect:"Radicamento, senso di sicurezza fisica, forza istintiva. Cibo denso e nutriente che \"ancora\" al corpo.",avoid:"Eccesso di caffeina, zuccheri raffinati, cibo spazzatura che destabilizzano il sistema nervoso"},
+  {num:"2°",name:"Dolcezza · Svadhisthana",color:"#c45a22",foods:"Arance, mango, papaya, albicocche, zucca, carote, salmone, noci, semi di zucca, cioccolato fondente",effect:"Vitalità creativa, piacere sano, fluidità emotiva. Alimenti che sostengono il sistema endocrino e la sessualità sana.",avoid:"Eccesso di alcol, zucchero raffinato, grassi trans che bloccano la fluidità energetica"},
+  {num:"3°",name:"Fuoco · Manipura",color:"#c49a1a",foods:"Banane, mais, zenzero, curcuma, finocchio, riso integrale, cereali gialli, miele biologico, tigri al limone",effect:"Forza della volontà, autostima, digestione attiva. Il fuoco del plesso solare si nutre di cibi caldi e speziati.",avoid:"Eccesso di amidi raffinati, pasti pesanti a base di fritto che affaticano il pancreas"},
+  {num:"4°",name:"Cuore · Anahata",color:"#2e7d4f",foods:"Spinaci, broccoli, kale, piselli, avocado, erba di grano, kiwi, menta, basilico, tè verde, asparagi",effect:"Apertura del cuore, empatia, guarigione emotiva. I cibi verdi supportano il timo e il sistema immunitario emotivo.",avoid:"Eccesso di zuccheri e alcol che creano chiusura emotiva; caffè in eccesso che irrigidisce"},
+  {num:"5°",name:"Gola · Vishuddha",color:"#1565c0",foods:"Mirtilli, more, ribes nero, fichi, datteri, acqua pura, tè alle erbe, alghe, frutti di mare, pera",effect:"Espressione autentica, voce chiara, comunicazione fluida. L'idratazione è fondamentale per la salute del quinto chakra.",avoid:"Eccesso di latticini, dolci e farine raffinate che creano muco e ostruiscono la gola"},
+  {num:"6°",name:"Terzo Occhio · Ajna",color:"#4527a0",foods:"Uva nera, melanzane, prugne, lavanda, salvia, rosmarino, cibi fermentati, cacao crudo, omega-3, semi di lino",effect:"Chiarezza mentale, intuizione, vision. Gli alimenti viola e i fermentati supportano la salute del cervello e l'asse intestino-cervello.",avoid:"Eccesso di alcol, droghe e farmaci non necessari che alterano la percezione"},
+  {num:"7°",name:"Corona · Sahasrara",color:"#7b2fa0",foods:"Digiuno consapevole, acqua di sorgente, succhi freschi, cibo crudo integrale, meditazione come 'nutrimento', frutti bianchi e viola",effect:"Connessione spirituale, silenzio interiore, coscienza. Il settimo chakra si nutre di leggerezza fisica e purezza.",avoid:"Tutto ciò che appesantisce: eccesso di proteine animali, alcol, cibo spazzatura, pasti consumati distrattamente"}
+];
+
+function renderAlim(){
+  document.getElementById("alim-grid").innerHTML=ALIM.map(a=>`
+    <div class="alim-card">
+      <div class="alim-num" style="color:${a.color}">${a.num} Chakra</div>
+      <div class="alim-name" style="border-left:3px solid ${a.color};padding-left:.65rem">${a.name}</div>
+      <div class="alim-foods" style="margin-top:.6rem">${a.foods}</div>
+      <div class="alim-effect">${a.effect}</div>
+      <div class="alim-avoid">Evitare: ${a.avoid}</div>
+    </div>`).join("");
+}
+
+// ── DANZA TOOLS ──
+const TOOLS=[
+  {title:"Il segnale di pausa",desc:"Insegnare a Tizio un gesto fisico (mano alzata) che significa «sono sovraccarico, ho bisogno di pausa». Quando lo usa, Sempronia DEVE rispettarlo. Lui dice QUANDO torna a dialogare (es. «20 minuti»)."},
+  {title:"Il filtro dei tre secondi",desc:"Prima di dire qualcosa di intenso, Sempronia fa tre respiri profondi e si chiede: È vero? È necessario dirlo ADESSO? C'è un modo più morbido? Questo separa la reazione istintiva dalla risposta consapevole."},
+  {title:"La domanda sulla paura",desc:"Script per il mediatore: «Sento molta energia in quello che dici. Sotto questa forza, cosa temi che possa succedere?» Quando la persona si sente VISTA nella sua paura, il tono cambia immediatamente."},
+  {title:"Il diario dei bisogni",desc:"Tizio scrive ogni sera tre cose che voleva dire ma ha taciuto. Non deve dirle — solo riconoscerle. Dopo due settimane, la consapevolezza dei propri bisogni aumenta significativamente."},
+  {title:"La co-regolazione respiratoria",desc:"Il mediatore porta entrambi a sincronizzare il respiro per 3-5 minuti prima del dialogo. Il sistema nervoso del mediatore (calmo e ventrale) «trasmette» sicurezza ai partecipanti."},
+  {title:"Il diario della vulnerabilità",desc:"Sempronia scrive ogni sera: una critica che voleva fare + la paura che c'era sotto. Es: «Volevo dire: sei un codardo! / Sotto c'era: ho paura che non mi proteggerai»."},
+  {title:"La pratica del «Voglio»",desc:"Una volta al giorno, Tizio completa con Sempronia: «Oggi quello che voglio davvero è…». Anche piccole cose (pizza per cena) va bene. L'obiettivo è abituarsi a esprimere i desideri."},
+  {title:"La tecnica del riformulazione empatica",desc:"Il mediatore non risponde all'attacco, ma all'emozione sotto: «Sento che per te è molto importante… sotto questa intensità, cosa senti davvero?» Questa domanda apre il dialogo autentico."}
+];
+
+function renderTools(){
+  document.getElementById("tools-grid").innerHTML=TOOLS.map(t=>`
+    <div class="tool-card">
+      <h4>${t.title}</h4>
+      <p>${t.desc}</p>
+    </div>`).join("");
+}
+
+// ── PRANOTERAPIA ──
+function renderPrano(){
+  const items=[
+    {icon:"🙌",title:"I Piani del Trattamento",text:"La pranoterapia agisce simultaneamente su quattro livelli: fisico (dolore, infiammazioni), emotivo (blocchi, traumi), mentale (schemi ripetitivi) e spirituale (allineamento con il proprio percorso)."},
+    {icon:"⚡",title:"La Mano Radiante",text:"Ogni pranoterapeuta ha una mano prevalentemente radiante e una assorbente, ma entrambe possono variare. Il test si esegue avvicinando i palmi a un'altra persona e osservando le sensazioni."},
+    {icon:"🛡️",title:"La Schermatura",text:"Tecnica fondamentale per proteggere il campo energetico del pranoterapeuta durante il trattamento. Impedisce l'assorbimento eccessivo dell'energia densa del ricevente."},
+    {icon:"💎",title:"Cristalli nel Trattamento",text:"I cristalli amplificano e stabilizzano il flusso pranale. Si posizionano sui chakra da trattare: granato sul primo, quarzo rosa sul quarto, ametista sul sesto e settimo."},
+    {icon:"🔊",title:"Frequenze di Supporto",text:"La musica a 432 Hz o le frequenze solfeggio in sottofondo durante il trattamento supportano il lavoro pranale, creando un campo armonico che facilita il riequilibrio."},
+    {icon:"🌸",title:"Fiori di Bach a Supporto",text:"I Fiori di Bach si usano prima o dopo il trattamento pranale per sostenere la trasformazione emotiva avviata dall'imposizione delle mani. Rescue Remedy è ideale per la fase post-trattamento."}
+  ];
+  document.getElementById("prano-grid").innerHTML=items.map(i=>`
+    <div class="prano-card">
+      <div class="prano-card-icon">${i.icon}</div>
+      <div class="prano-card-title">${i.title}</div>
+      <div class="prano-card-text">${i.text}</div>
+    </div>`).join("");
+}
+
+// ── AI CONSULENTE ──
+const SYSTEM_PROMPT = `Sei la Consulente Olistica di questo portale. Rispondi SEMPRE in italiano, in modo caldo, preciso e professionale.
+Hai accesso all'intero database olistico qui sotto. Quando rispondi a una domanda, crea connessioni trasversali tra più discipline.
+
+REGOLE DI RISPOSTA:
+- Inizia sempre riconoscendo la situazione della persona
+- Struttura la risposta con piccole sezioni chiare (usa **titolo** per i grassetti)
+- Sii specifica: cita i nomi esatti di cristalli, frequenze, fiori di Bach, alimenti, esercizi
+- Collegamento trasversale: per ogni domanda coinvolgi almeno 3 discipline diverse
+- Tono: caldo, autorevole, mai prescrittivo. Usa "potrebbe aiutare", "ti consiglio di esplorare"
+- Chiudi sempre con una domanda aperta per approfondire
+- Lunghezza ideale: 200-320 parole. Mai troppo corta, mai troppo lunga.
+- IMPORTANTE: Non dire mai "come AI" o "come assistente". Sei la consulente olistica del portale.
+
+DATABASE COMPLETO:
+
+CHAKRA (7 centri energetici):
+1° Muladhara (Radice) - Terra, 396Hz, sopravvivenza, paura. Cristalli: Granato, Ossidiana, Tormalina Nera, Diaspro Rosso. Enneatipi: 8,9,1
+2° Svadhisthana (Dolcezza) - Acqua, 417Hz, emozioni, senso di colpa. Cristalli: Corniola, Agata di Fuoco. Enneatipi: 2,3,4
+3° Manipura (Plesso Solare) - Fuoco, 528Hz, potere personale, rabbia. Cristalli: Citrino, Pirite, Occhio di Tigre. Enneatipi: 2,3,4
+4° Anahata (Cuore) - Aria, 639Hz, amore/relazioni, dolore. Cristalli: Quarzo Rosa, Malachite, Avventurina Verde. Enneatipi: 2,4,9
+5° Vishuddha (Gola) - Etere, 741Hz, espressione/verità, vergogna. Cristalli: Lapis Lazuli, Amazzonite, Calcedonio Blu. Enneatipi: 5,6,7
+6° Ajna (Terzo Occhio) - Luce, 852Hz, intuizione, dispercezione. Cristalli: Ametista, Fluorite, Labradorite. Enneatipi: 5,6,7
+7° Sahasrara (Corona) - Universo, 963Hz, spiritualità, sfiducia. Cristalli: Howlite, Selenite, Quarzo Ialino. Enneatipi: 9,5,3
+
+ENNEATIPI (percorsi evolutivi):
+T1 Perfezionista: ira repressa→serenità. Integra in T7. Centro istintivo. Cristalli: Howlite, Lapis, Citrino.
+T2 Altruista: orgoglio→umiltà. Integra in T4. Centro emotivo. Cristalli: Quarzo Rosa, Malachite.
+T3 Realizzatore: vanità→autenticità. Integra in T6. Centro emotivo. Cristalli: Citrino, Corniola.
+T4 Individualista: invidia→equanimità. Integra in T1. Centro emotivo. Cristalli: Quarzo Rosa, Labradorite.
+T5 Investigatore: avarizia di sé→distacco sano. Integra in T8. Centro mentale. Chakra 5°-6°-7°. Cristalli: Labradorite, Fluorite, Selenite. Sfida: incarnare la conoscenza, uscire dall'isolamento.
+T6 Leale: paura→coraggio. Integra in T9. Centro mentale. Cristalli: Tormalina Nera, Occhio di Tigre.
+T7 Entusiasta: gola→sobrietà. Integra in T5. Centro mentale. Cristalli: Citrino, Labradorite.
+T8 Protettore: lussuria controllo→innocenza. Integra in T2. Centro istintivo. Sfida: permettersi vulnerabilità. La rabbia nasconde la paura di essere traditi.
+T9 Pacificatore: pigrizia di sé→azione. Integra in T3. Centro istintivo. Sfida: non perdersi negli altri, dire i propri bisogni.
+
+FIORI DI BACH principali:
+- Mimulus: paura di cose note → coraggio (T6, T1) - Chakra 1°
+- Larch: mancanza di fiducia → autostima (T3, T6) - Chakra 3°
+- Centaury: incapacità di dire no → volontà (T2, T9) - Chakra 3°
+- Wild Rose: apatia → motivazione (T9, T5) - Chakra 3°
+- Holly: odio/invidia → amore (T8, T4) - Chakra 4°
+- Chicory: possessività → amore incondizionato (T2, T8) - Chakra 4°
+- Agrimony: maschera allegra → pace interiore (T3, T7) - Chakra 5°
+- Water Violet: isolamento → connessione (T5, T4) - Chakra 5°
+- Clematis: sogni ad occhi aperti → presenza (T9, T7, T4) - Chakra 6°
+- Cerato: non fidarsi del proprio giudizio → intuizione (T6, T9) - Chakra 6°
+- White Chestnut: pensieri ripetitivi → pace mentale (T1, T6, T5) - Chakra 7°
+- Rescue Remedy: shock acuto → risposta consapevole (tutti)
+- Red Chestnut: paura per i propri cari → fiducia (T2, T6) - Chakra 4°
+- Vervain: iper-entusiasmo → quiete (T1, T8) - Chakra 5°
+
+FREQUENZE SOLFEGGIO:
+396Hz - Do - paura/radicamento - Chakra 1°
+417Hz - Re - cambiamento/trauma - Chakra 2°
+528Hz - Mi - autostima/guarigione - Chakra 3°
+639Hz - Fa - relazioni/cuore - Chakra 4°
+741Hz - Sol - espressione/intuizione - Chakra 5°-6°
+852Hz - La - terzo occhio/archetipi - Chakra 6°
+963Hz - Si - coscienza cosmica - Chakra 7°
+432Hz - La naturale - riduce ansia sistemica, coerenza cardiaca
+
+ALIMENTAZIONE PER CHAKRA:
+1°: carote, barbabietola, legumi rossi, proteine radicate
+2°: arance, mango, salmone, noci, semi di zucca
+3°: zenzero, curcuma, banane, cereali integrali gialli
+4°: spinaci, broccoli, avocado, tè verde, kale
+5°: mirtilli, acqua pura, alghe, frutti di mare
+6°: uva nera, melanzane, cacao crudo, omega-3, fermentati
+7°: digiuno leggero, acqua di sorgente, cibo crudo
+
+DISTURBI FISICI E CHAKRA CORRELATI:
+- Stomaco/digestione → 3° chakra (Manipura) + cristalli Citrino, Occhio di Tigre + 528Hz + curcuma/zenzero
+- Gola/tiroide → 5° chakra + Lapis Lazuli, Amazzonite + 741Hz
+- Mal di testa/cefalea → 6° chakra + Ametista, Fluorite + 852Hz
+- Cuore/pressione → 4° chakra + Quarzo Rosa + 639Hz
+- Schiena bassa/gambe → 1° chakra + Granato, Tormalina + 396Hz
+- Insonnia → 6°-7° chakra + Ametista, Howlite, Selenite + 963Hz
+- Ansia → 1°-3° chakra + Tormalina Nera, Ametista + 396Hz + Bach: Mimulus, Rock Rose
+
+ESERCIZI TERAPEUTICI:
+- Grounding (Chakra 1°, T8-T9-T6): piedi nudi, respiro addominale
+- Kapalbhati (Chakra 3°, T1-T8-T3): respiro del guerriero
+- Loving-Kindness Metta (Chakra 4°, T2-T9-T4): meditazione amore
+- Scrittura espressiva (Chakra 5°, T5-T1-T7): verità interiore
+- Visualizzazione archetipica (Chakra 6°, T5-T4-T9): simboli
+- Zazen (Chakra 6°-7°, T5-T9): silenzio meditativo
+- Voice Dialogue (Chakra 4°-6°, T1-T4-T8): sub-personalità
+- Co-regolazione respiratoria (Chakra 4°-5°, T9-T2-T6): sincronia respiratoria
+
+LA DANZA DEL CONFLITTO (T8-T9):
+T8 combatte, T9 si congela → circolo vizioso. Il mediatore lavora sul corpo prima della mente. Script: "Sotto questa intensità, cosa temi?". Strumenti: segnale di pausa, filtro 3 secondi, co-regolazione respiratoria.
+
+PRANOTERAPIA: trasmissione pranale per mani. Cristalli sui chakra durante il trattamento. Frequenze di supporto a 432Hz. Fiori di Bach pre/post trattamento.`;
+
+let chatHistory = [];
+let isLoading = false;
+
+function timeNow(){const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')}
+
+function addMsg(role, html, time){
+  const el=document.getElementById("chat-messages");
+  const div=document.createElement("div");
+  div.className=`msg ${role}`;
+  const avatar=role==="ai"?`<div class="msg-avatar ai">◉</div>`:`<div class="msg-avatar user">T</div>`;
+  div.innerHTML=`${avatar}<div>
+    <div class="msg-bubble ${role}">${html}</div>
+    <div class="msg-time">${time||timeNow()}</div>
+  </div>`;
+  el.appendChild(div);
+  el.scrollTop=el.scrollHeight;
+}
+
+function showTyping(){
+  const el=document.getElementById("chat-messages");
+  const div=document.createElement("div");
+  div.className="msg ai";div.id="typing-indicator";
+  div.innerHTML=`<div class="msg-avatar ai">◉</div>
+    <div class="typing-indicator">
+      <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+    </div>`;
+  el.appendChild(div);el.scrollTop=el.scrollHeight;
+}
+function hideTyping(){const t=document.getElementById("typing-indicator");if(t)t.remove()}
+
+function formatAiReply(text){
+  return text
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/\n- /g,'<br>• ')
+    .replace(/\n/g,'<br>')
+    .replace(/^/,'<p>').replace(/$/,'</p>');
+}
+
+async function sendMsg(){
+  if(isLoading)return;
+  const inp=document.getElementById("chat-input");
+  const text=inp.value.trim();
+  if(!text)return;
+  inp.value="";inp.style.height="auto";
+  addMsg("user", text.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+  chatHistory.push({role:"user",content:text});
+  isLoading=true;
+  document.getElementById("send-btn").disabled=true;
+  showTyping();
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        system:SYSTEM_PROMPT,
+        messages:chatHistory
+      })
+    });
+    const data=await res.json();
+    hideTyping();
+    const reply=data.content?.[0]?.text||"Mi dispiace, non ho ricevuto una risposta. Riprova.";
+    chatHistory.push({role:"assistant",content:reply});
+    addMsg("ai",formatAiReply(reply));
+  }catch(e){
+    hideTyping();
+    addMsg("ai","<em>Errore di connessione. Verifica la tua connessione e riprova.</em>");
+  }
+  isLoading=false;
+  document.getElementById("send-btn").disabled=false;
+}
+
+function askSugg(el){
+  document.getElementById("chat-input").value=el.textContent;
+  sendMsg();
+}
+function handleKey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMsg()}}
+function autoResize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,120)+"px"}
+
+// Messaggio di benvenuto
+window.addEventListener("DOMContentLoaded",()=>{
+  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
+});
+
+
+// ── PHOTO PICKER ──
+const PHOTO_PRESETS = [
+  {label:"Cristalli",url:"https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?w=1800&q=80"},
+  {label:"Meditazione",url:"https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1800&q=80"},
+  {label:"Loto",url:"https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1800&q=80"},
+  {label:"Pietra Luna",url:"https://images.unsplash.com/photo-1615361200141-f45040f367be?w=1800&q=80"},
+  {label:"Incenso",url:"https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1800&q=80"},
+  {label:"Natura",url:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1800&q=80"},
+];
+
+function renderPresets(){
+  document.getElementById("photo-presets").innerHTML = PHOTO_PRESETS.map(p=>`
+    <button onclick="applyPhoto('${p.url}');document.getElementById('photo-url-input').value='${p.url}'"
+      style="padding:.32rem .8rem;border:1.5px solid var(--border);border-radius:12px;font-size:.72rem;
+      background:var(--ivory);color:var(--ink3);cursor:pointer;transition:all .15s"
+      onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'"
+      onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink3)'"
+    >${p.label}</button>
+  `).join("");
+}
+
+function applyPhoto(url){
+  const hero = document.getElementById("hero");
+  if(!url){
+    hero.classList.remove("has-photo");
+    hero.style.setProperty("--hero-photo","url('')");
+    return;
+  }
+  hero.style.setProperty("--hero-photo",`url('${url}')`);
+  hero.classList.add("has-photo");
+}
+
+function previewPhoto(url){
+  if(url.startsWith("http")) applyPhoto(url);
+  else if(!url) applyPhoto("");
+}
+
+// Mostra il FAB dopo 3 secondi (solo in modalità sviluppatore — rimuovi in produzione)
+setTimeout(()=>{
+  const fab = document.getElementById("photo-fab");
+  if(fab) fab.style.display = "block";
+  renderPresets();
+}, 2500);
+
+// ── SCROLL & NAV ──
+function st(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
+function toggleMob(){document.getElementById("mob-menu").classList.toggle("open")}
+window.addEventListener("scroll",()=>{
+  document.getElementById("hdr").classList.toggle("scrolled",scrollY>60);
+});
+document.addEventListener("click",e=>{
+  if(!e.target.closest("#mob-menu")&&!e.target.closest(".hamburger"))
+    document.getElementById("mob-menu").classList.remove("open");
+});
+
+// ── INIT ──
+renderTabs();renderList();renderPanel(null);
+renderChakra();renderEnn();renderMusic();renderBach();renderAlim();renderTools();renderPrano();
+</script>
+
+<!-- PHOTO PICKER (tool per sviluppatore - invisibile agli utenti) -->
+<div id="photo-picker" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;background:white;border:1.5px solid var(--border2);border-radius:var(--rxl);padding:1.5rem;box-shadow:0 8px 40px rgba(42,37,32,.18);width:340px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink)">📷 Foto Hero</span>
+    <button onclick="document.getElementById('photo-picker').style.display='none'" style="background:transparent;border:none;cursor:pointer;font-size:1.1rem;color:var(--ink3)">✕</button>
+  </div>
+  <p style="font-size:.78rem;color:var(--ink3);line-height:1.65;margin-bottom:1rem">Incolla l'URL di una foto da Unsplash (o qualsiasi immagine) per vederla nell'hero.</p>
+  <input id="photo-url-input" type="text" placeholder="https://images.unsplash.com/photo-..." 
+    style="width:100%;padding:.65rem .9rem;border:1.5px solid var(--ivory3);border-radius:var(--r);font-size:.82rem;font-family:'Outfit',sans-serif;color:var(--ink);margin-bottom:.75rem;outline:none"
+    oninput="previewPhoto(this.value)">
+  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.85rem" id="photo-presets"></div>
+  <p style="font-size:.72rem;color:var(--ink4);line-height:1.6">
+    Suggerimenti Unsplash:<br>
+    <a href="https://unsplash.com/s/photos/healing-crystals" target="_blank" style="color:var(--gold)">healing crystals</a> · 
+    <a href="https://unsplash.com/s/photos/meditation-minimal" target="_blank" style="color:var(--gold)">meditation minimal</a> · 
+    <a href="https://unsplash.com/s/photos/singing-bowl" target="_blank" style="color:var(--gold)">singing bowl</a>
+  </p>
+</div>
+
+<!-- Bottone apri photo picker -->
+<button onclick="document.getElementById('photo-picker').style.display='block'" 
+  title="Aggiungi foto hero"
+  style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:499;
+  background:var(--gold);color:white;border:none;border-radius:50%;
+  width:48px;height:48px;font-size:1.3rem;cursor:pointer;
+  box-shadow:0 4px 20px rgba(184,147,90,.4);transition:transform .2s"
+  id="photo-fab"
+  onmouseover="this.style.transform='scale(1.1)'"
+  onmouseout="this.style.transform='scale(1)'"
+>📷</button>
+</body>
+</html>

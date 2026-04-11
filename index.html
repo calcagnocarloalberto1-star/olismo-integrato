@@ -1005,6 +1005,75 @@ footer{
 .at-conn-lbl2{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
 .at-conn-val2{font-size:.82rem;color:var(--ink);line-height:1.4}
 
+
+/* ── CITAZIONE ZELAND ── */
+#citazione-zeland{
+  background:var(--ink);
+  padding:5rem 2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+#citazione-zeland::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center,rgba(184,147,90,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.zeland-ornament{
+  color:var(--gold);
+  font-size:1.8rem;
+  opacity:.4;
+  letter-spacing:.5em;
+  margin-bottom:2rem;
+  display:block;
+}
+.zeland-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.25rem,3vw,1.85rem);
+  font-weight:300;
+  font-style:italic;
+  color:rgba(249,245,239,.88);
+  line-height:1.75;
+  max-width:820px;
+  margin:0 auto 2rem;
+  position:relative;
+}
+.zeland-quote::before{
+  content:'\201C';
+  position:absolute;
+  top:-.5em;
+  left:-.4em;
+  font-size:4em;
+  color:var(--gold);
+  opacity:.18;
+  font-style:normal;
+  line-height:1;
+}
+.zeland-divider{
+  width:48px;
+  height:1px;
+  background:var(--gold);
+  opacity:.4;
+  margin:.9rem auto .65rem;
+}
+.zeland-author{
+  font-family:'Outfit',sans-serif;
+  font-size:.75rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.7;
+}
+.zeland-source{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.88rem;
+  font-style:italic;
+  color:rgba(249,245,239,.35);
+  margin-top:.3rem;
+}
+
 </style>
 </head>
 <body>
@@ -1102,6 +1171,18 @@ footer{
 </section>
 
 <!-- ══ AI CONSULENTE ══ -->
+
+<!-- ▐▐ CITAZIONE ZELAND ▐▐ -->
+<section id="citazione-zeland">
+  <span class="zeland-ornament">· · ·</span>
+  <blockquote class="zeland-quote">
+    Non bisogna imporre al mondo il proprio scenario ma bisogna ammettere la possibilità che esso ci sia, permettere alla variante di realizzarsi e permettere a se stessi di ottenerla. Così smetterete di lottare contro il mondo e vi potrete permettere di scegliere solo quando l'anima e la ragione raggiungeranno l'unità.
+  </blockquote>
+  <div class="zeland-divider"></div>
+  <div class="zeland-author">Vadim Zeland</div>
+  <div class="zeland-source">Il fruscio delle stelle del mattino</div>
+</section>
+
 <section id="consulente">
   <div class="container">
     <div class="sec-hd">

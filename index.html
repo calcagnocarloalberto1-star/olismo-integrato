@@ -944,6 +944,67 @@ footer{
 .result-conn-val{font-size:.83rem;color:var(--ink);line-height:1.4}
 .result-actions{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;padding:1.5rem 2rem 0;border-top:1px solid var(--ivory3)}
 
+
+/* ── TEST ADATTAMENTI AT ── */
+#test-adattamenti{background:white}
+.at-test-groups{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+.at-group-btn{padding:.4rem 1rem;border-radius:20px;border:1.5px solid var(--ivory3);background:var(--ivory);font-size:.78rem;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:.4rem}
+.at-group-btn.active{border-width:2px;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+.at-group-btn.done{opacity:.7}
+.at-test-card2{max-width:680px;margin:0 auto;background:var(--ivory);border:1.5px solid var(--ivory3);border-radius:var(--rxl);overflow:hidden;box-shadow:var(--shadow2)}
+.at-card2-hdr{padding:1.4rem 1.8rem 1.2rem}
+.at-card2-hdr h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:white;margin-bottom:.18rem}
+.at-card2-hdr p{font-size:.72rem;color:rgba(255,255,255,.55)}
+.at-card2-extra{font-size:.62rem;color:rgba(255,255,255,.38);font-style:italic;margin-top:.15rem}
+.at-q-list{padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:.55rem;max-height:65vh;overflow-y:auto}
+.at-q-row{display:flex;align-items:flex-start;gap:.85rem;padding:.8rem .9rem;border-radius:var(--r);border:1.5px solid transparent;background:white;transition:all .15s}
+.at-q-row.yes{border-color:#86efac;background:#f0fdf4}
+.at-q-row.no{border-color:#d8b4fe;background:#faf5ff}
+.at-q-num{font-size:.68rem;color:var(--ink4);min-width:20px;padding-top:.2rem;font-family:'Cormorant Garamond',serif;flex-shrink:0}
+.at-q-txt{flex:1;font-size:.85rem;font-weight:300;color:var(--ink);line-height:1.65}
+.at-q-extra-tag{font-size:.58rem;color:var(--gold);margin-left:.4rem;vertical-align:top;font-style:italic;opacity:.7}
+.at-yn-btns{display:flex;gap:.3rem;flex-shrink:0;align-items:center}
+.at-yn{width:40px;height:32px;border-radius:var(--r);border:1.5px solid var(--ivory3);background:white;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .15s;font-family:'Outfit',sans-serif}
+.at-yn.si:hover,.at-yn.si.sel{border-color:#16a34a;background:#dcfce7;color:#166534}
+.at-yn.no:hover,.at-yn.no.sel{border-color:#7c3aed;background:#ede9fe;color:#4c1d95}
+.at-card2-footer{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-top:1px solid var(--ivory3);background:white}
+.at-card2-footer button{padding:.55rem 1.2rem;border-radius:var(--r);border:1.5px solid var(--border2);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;transition:all .2s}
+.at-card2-footer button:hover{border-color:var(--gold);color:var(--gold)}
+.at-card2-footer .btn-gold{background:var(--gold);color:white;border-color:var(--gold)}
+.at-card2-footer .btn-gold:hover{background:#a07840}
+.at-prog2{max-width:680px;margin:0 auto 1.75rem}
+
+/* RISULTATO AT */
+.at-result-wrap{max-width:720px;margin:0 auto;display:none}
+.at-result-wrap.active{display:block}
+.at-result-top{background:linear-gradient(135deg,var(--ink) 0%,#3a3028 100%);border-radius:var(--rxl) var(--rxl) 0 0;padding:2rem 2.2rem 1.6rem;text-align:center}
+.at-result-top h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--gold3)}
+.at-result-top p{font-size:.82rem;color:rgba(249,245,239,.55);margin-top:.3rem}
+.at-radar-section{padding:1.6rem 2rem;background:white;border-bottom:1px solid var(--ivory3)}
+.at-radar-section h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:1.25rem}
+.at-adapt-bars{display:flex;flex-direction:column;gap:.65rem}
+.at-adapt-row{display:grid;grid-template-columns:160px 1fr 80px;gap:.75rem;align-items:center}
+.at-adapt-name{font-size:.78rem;color:var(--ink2);display:flex;align-items:center;gap:.35rem}
+.at-adapt-bar-wrap{position:relative;height:18px;background:var(--ivory3);border-radius:10px;overflow:hidden}
+.at-adapt-bar{height:100%;border-radius:10px;transition:width .8s ease}
+.at-adapt-ei{font-size:.7rem;text-align:right}
+.at-ei-badge{display:inline-block;padding:.15rem .55rem;border-radius:8px;font-weight:500;font-size:.68rem}
+.at-ei-E{background:#dbeafe;color:#1d4ed8}
+.at-ei-I{background:#ede9fe;color:#4c1d95}
+.at-ei-eq{background:var(--ivory3);color:var(--ink3)}
+.at-overall-ei{display:flex;gap:1.5rem;justify-content:center;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--ivory3)}
+.at-overall-ei-block{text-align:center}
+.at-overall-ei-block .big{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1}
+.at-overall-ei-block .lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);margin-top:.2rem}
+.at-result-conns{padding:1.5rem 2rem 2rem;background:var(--ivory);border-radius:0 0 var(--rxl) var(--rxl)}
+.at-result-conns h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:1rem}
+.at-conn-grid2{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+@media(max-width:480px){.at-conn-grid2{grid-template-columns:1fr}}
+.at-conn-card2{padding:.9rem 1rem;background:white;border:1px solid var(--ivory3);border-radius:var(--r);cursor:pointer;transition:all .18s}
+.at-conn-card2:hover{border-color:var(--gold);background:var(--gold-pale)}
+.at-conn-lbl2{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.at-conn-val2{font-size:.82rem;color:var(--ink);line-height:1.4}
+
 </style>
 </head>
 <body>
@@ -957,6 +1018,7 @@ footer{
   <nav>
     <button class="nav-link" style="color:var(--gold);border:1px solid var(--border2);border-radius:20px;padding:.4rem 1rem" onclick="st('consulente')">✦ AI</button>
     <button class="nav-link" onclick="st('test-frutti')" style="color:var(--ink3)">🌳 Test</button>
+    <button class="nav-link" onclick="st('test-adattamenti')" style="color:var(--ink3)">🧠 AT</button>
     <button class="nav-link" onclick="st('explorer')">Database</button>
     <button class="nav-link" onclick="st('at-adattamenti')">AT</button>
     <button class="nav-link" onclick="st('egogramma')">Ego</button>
@@ -988,6 +1050,7 @@ footer{
   <button class="mob-link" onclick="st('faq');toggleMob()">FAQ</button>
   <button class="mob-link" onclick="st('guida');toggleMob()">Guida all'utilizzo</button>
   <button class="mob-link" style="color:var(--gold)" onclick="st('test-frutti');toggleMob()">🌳 Test dei 9 Frutti</button>
+  <button class="mob-link" style="color:var(--gold)" onclick="st('test-adattamenti');toggleMob()">🧠 Test Adattamenti AT</button>
 </div>
 
 <!-- SEARCH OVERLAY -->
@@ -1028,7 +1091,8 @@ footer{
     <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>Alimentazione</span>
     <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>Conflitto</span>
     <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>Pranoterapia</span>
-    <span class="pill" onclick="st('test-frutti')" style="border-color:var(--gold);color:var(--gold)">🌳 Fai il Test</span>
+    <span class="pill" onclick="st('test-frutti')" style="border-color:var(--gold);color:var(--gold)">🌳 Test Frutti</span>
+    <span class="pill" onclick="st('test-adattamenti')" style="border-color:var(--dusty);color:var(--dusty)">🧠 Test AT</span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
@@ -1147,6 +1211,12 @@ footer{
         <div class="disc-icon">⟳</div>
         <div class="disc-title">La Danza del Conflitto</div>
         <p class="disc-text">I conflitti relazionali seguono schemi neurobiologici prevedibili. Conoscere la "danza" tra tipo 8 (il fuoco) e tipo 9 (l'acqua) permette al mediatore di intervenire prima della rottura.</p>
+      </div>
+      <div class="disc-card" onclick="st('test-adattamenti')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6366f1,#ec4899);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">🧠</div>
+        <div class="disc-title">Test degli Adattamenti AT</div>
+        <p class="disc-text">40 domande per scoprire il tuo profilo tra i 6 adattamenti di personalità dell'Analisi Transazionale (DPL). Mostra intensità e polarità Estroversa/Introversa per ogni adattamento, con connessioni a porte, spinte, copioni, chakra e cristalli.</p>
       </div>
       <div class="disc-card" onclick="st('test-frutti')">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
@@ -1376,6 +1446,62 @@ footer{
 <!-- ▐▐ AT ADATTAMENTI ▐▐ -->
 
 <!-- ▐▐ TEST DEI 9 FRUTTI ▐▐ -->
+
+<!-- ▐▐ TEST ADATTAMENTI AT ▐▐ -->
+<section id="test-adattamenti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Transazionale · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Test degli <em>Adattamenti</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">40 domande (Sì / No) distribuite sui 6 adattamenti di personalità AT. Rispondi in base a ciò che accade più spesso, non a come vorresti che fosse. Il risultato mostra l'intensità e la polarità Estroversa/Introversa di ogni adattamento.</p>
+    </div>
+
+    <!-- WELCOME -->
+    <div id="at-test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1rem">🧠</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.65rem;margin-bottom:2rem;max-width:500px;margin:0 auto 2rem">
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #f59e0b40;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🔍</div><div style="color:#f59e0b;font-weight:500">Paranoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #6366f140;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🌙</div><div style="color:#6366f1;font-weight:500">Schizoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ef444440;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">⚡</div><div style="color:#ef4444;font-weight:500">Antisociale</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #3b82f640;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">📋</div><div style="color:#3b82f6;font-weight:500">Oss.-Comp.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ec4899;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">✨</div><div style="color:#ec4899;font-weight:500">Istrionico</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #10b98140;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🌊</div><div style="color:#10b981;font-weight:500">Pass.-Aggr.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
+      </div>
+      <button class="btn-gold" onclick="startAtTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
+      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~8–10 minuti · 40 domande · Risposta istintiva</p>
+    </div>
+
+    <!-- IN PROGRESS -->
+    <div id="at-test-progress" style="display:none">
+      <div class="at-prog2 test-progress-wrap">
+        <div class="test-progress-label">
+          <span id="at-prog-lbl">Sezione 1 di 6</span>
+          <span id="at-prog-cnt">0 / 40 risposte</span>
+        </div>
+        <div class="test-progress-bar"><div class="test-progress-fill" id="at-prog-fill" style="width:0%"></div></div>
+      </div>
+      <div class="at-test-groups" id="at-groups-nav"></div>
+      <div class="at-test-card2" id="at-test-card2"></div>
+    </div>
+
+    <!-- RISULTATO -->
+    <div class="at-result-wrap" id="at-result"></div>
+  </div>
+</section>
+
 <section id="test-frutti">
   <div class="container">
     <div class="sec-hd">
@@ -1964,7 +2090,9 @@ const FAQ_DATA = [
   {cat:"Sito",q:"Come usa il database la Consulente AI?",a:"La Consulente AI ha accesso all'intero database via system prompt: tutti i 7 chakra, 15 cristalli, 9 enneatipi, 8 frequenze, 6 adattamenti AT, 15 Fiori di Bach, 7 schede alimentazione e 13 esercizi. Quando descrivi la tua situazione crea connessioni trasversali tra almeno 3 discipline diverse."},
   {cat:"Sito",q:"Come funziona il Database Explorer?",a:"Seleziona un dominio nelle schede in alto (Chakra, Cristalli, Enneatipi, Musica, Adattamenti, Esercizi). Clicca su un elemento nella lista a sinistra. Il pannello a destra mostra tutti i campi e le connessioni con gli altri domini — ogni chip è cliccabile e porta al dettaglio dell'elemento correlato."},
   {cat:"Sito",q:"Cosa sono i percorsi consigliati nella Guida?",a:"Sono sequenze di utilizzo ottimizzate per diversi profili di utente: primo approccio olistico, approfondimento AT, cristalloterapia pratica, fiori di Bach. Ogni percorso suggerisce i passi da seguire nel sito per ottenere il massimo beneficio."}
-,
+,  ,{cat:"AT",q:"Cosa misura il Test degli Adattamenti AT?",a:"Il test misura l'intensità e la polarità (Estroversa/Introversa) dei 6 adattamenti di personalità secondo il modello DPL di Ware e Joines: Paranoide, Schizoide, Antisociale, Ossessivo-Compulsivo, Istrionico, Passivo-Aggressivo. 40 domande Sì/No, circa 8 minuti. Il risultato mostra l'adattamento primario, il secondario, le porte di accesso e le connessioni a chakra, cristalli e frequenze."},
+  {cat:"AT",q:"Cosa significano E e I nel test degli adattamenti?",a:"E (Estroverso) indica che quell'adattamento si esprime verso l'esterno: azione visibile, relazione, comportamento osservabile dagli altri. I (Introverso) indica che l'adattamento si esprime verso l'interno: ritiro, elaborazione silenziosa, difesa nascosta. La prevalenza E o I per ogni adattamento aiuta a capire come si manifesta nelle relazioni e nel lavoro."},
+  
   {cat:"Enneagramma",q:"Cosa sono i 9 Frutti dell\'Albero della Vita?",a:"I 9 Frutti sono il sistema di Carlo Alberto Calcagno: ogni enneatipo corrisponde a un frutto — Mela (T1), Pera (T2), Ciliegia (T3), Nespola (T4), Uva (T5), Mirtillo (T6), Ananas (T7), Albicocca (T8), Fragola (T9). Ogni frutto porta Dignità di Lullo, gerarchia angelica e musa greca."},
   {cat:"Enneagramma",q:"Come si usa la compatibilità di coppia?",a:"Vai alla sezione Compatibilità. Seleziona i due enneatipi dai menu. Il sistema mostra percentuale, livello (eccellente/ottima/buona/media/difficile), punti di forza, sfide e consigli pratici basati sulla ricerca di Carlo Alberto Calcagno."}];
 
@@ -2233,6 +2361,285 @@ function resetTest(){
   res.innerHTML='';
   document.getElementById("test-welcome").style.display="block";
   document.getElementById("test-in-progress").style.display="none";
+}
+
+const AT_TEST_QUESTIONS = [{"q":"Ti capita spesso di dubitare delle intenzioni degli altri anche in situazioni neutre?","ad":"paranoide","dir":"I","extra":false},{"q":"Interpreti gesti o parole come possibili minacce o critiche?","ad":"paranoide","dir":"E","extra":false},{"q":"Preferisci non condividere confidenze per timore che vengano usate contro di te?","ad":"paranoide","dir":"I","extra":false},{"q":"Controlli le versioni degli eventi raccontate da altri?","ad":"paranoide","dir":"E","extra":false},{"q":"Noti dettagli che altri ignorano e li interpreti come segnali di ostilità nascosta?","ad":"paranoide","dir":"I","extra":true},{"q":"Preferisci la solitudine anche quando potresti stare in compagnia?","ad":"schizoide","dir":"I","extra":false},{"q":"Ti senti spesso spettatore nelle tue relazioni?","ad":"schizoide","dir":"I","extra":false},{"q":"Vivi le emozioni con distacco, come se non ti appartenessero?","ad":"schizoide","dir":"I","extra":false},{"q":"Eviti coinvolgimenti emotivi profondi per mantenere indipendenza?","ad":"schizoide","dir":"I","extra":false},{"q":"Ti capita di sentirti \"fuori posto\" o \"fuori dal mondo\" in contesti sociali?","ad":"schizoide","dir":"I","extra":false},{"q":"Ti senti più a tuo agio con le idee e i concetti che con le persone?","ad":"schizoide","dir":"I","extra":true},{"q":"Hai difficoltà a capire spontaneamente le aspettative sociali degli altri?","ad":"schizoide","dir":"I","extra":true},{"q":"Infrangi deliberatamente regole o convenzioni che ritieni inutili?","ad":"antisociale","dir":"E","extra":false},{"q":"Ti diverte provocare reazioni sfidando norme sociali?","ad":"antisociale","dir":"E","extra":false},{"q":"Preferisci agire piuttosto che discutere regole o procedure?","ad":"antisociale","dir":"E","extra":false},{"q":"Ti senti in competizione anche quando non è richiesto?","ad":"antisociale","dir":"E","extra":false},{"q":"Ti è stato detto che metti in discussione valori sacri per altri?","ad":"antisociale","dir":"E","extra":false},{"q":"Le regole ti sembrano principalmente ostacoli da aggirare piuttosto che guide utili?","ad":"antisociale","dir":"E","extra":true},{"q":"Ti senti intrappolato quando devi seguire procedure stabilite da altri?","ad":"antisociale","dir":"E","extra":true},{"q":"Pianifichi le tue giornate in modo molto strutturato?","ad":"oc","dir":"E","extra":false},{"q":"Controlli più volte il tuo lavoro per essere sicuro che sia perfetto?","ad":"oc","dir":"E","extra":false},{"q":"Usi punteggi, classifiche o medie per valutare le tue esperienze?","ad":"oc","dir":"E","extra":false},{"q":"Rimugini a lungo su errori minori?","ad":"oc","dir":"E","extra":false},{"q":"Eviti di parlare se non sei certo al 100% della correttezza di ciò che dirai?","ad":"oc","dir":"I","extra":false},{"q":"Rinvii le decisioni finché non hai analizzato ogni possibile scenario?","ad":"oc","dir":"I","extra":true},{"q":"Hai difficoltà a delegare perché temi che gli altri non facciano le cose come si deve?","ad":"oc","dir":"E","extra":true},{"q":"Ti piace raccontare di te per coinvolgere chi ti ascolta?","ad":"istrionico","dir":"E","extra":false},{"q":"Ti capita di esprimere emozioni in modo evidente o teatrale?","ad":"istrionico","dir":"E","extra":false},{"q":"Preferisci condividere i tuoi successi piuttosto che tenerli per te?","ad":"istrionico","dir":"E","extra":false},{"q":"Amplifichi volontariamente le emozioni per renderle più interessanti agli altri?","ad":"istrionico","dir":"E","extra":false},{"q":"Ti senti a disagio se non ricevi attenzione dagli altri?","ad":"istrionico","dir":"E","extra":false},{"q":"Il tuo umore cambia rapidamente in base alle reazioni delle persone intorno a te?","ad":"istrionico","dir":"E","extra":true},{"q":"Ti piace essere al centro dell'attenzione in situazioni sociali?","ad":"istrionico","dir":"E","extra":true},{"q":"Eviti un confronto diretto quando sei in disaccordo?","ad":"pa","dir":"I","extra":false},{"q":"Usi il silenzio o l'assenza come forma di protesta?","ad":"pa","dir":"I","extra":false},{"q":"Rimandi un compito o una risposta per mostrare disaccordo?","ad":"pa","dir":"I","extra":false},{"q":"Saboti di proposito un'attività per sottrarti a una responsabilità?","ad":"pa","dir":"I","extra":false},{"q":"Esprimi disagio con gesti ambigui invece che con parole esplicite?","ad":"pa","dir":"I","extra":false},{"q":"Quando deluso, preferisci far capire il tuo disagio indirettamente piuttosto che dirlo?","ad":"pa","dir":"I","extra":true},{"q":"Ti senti spesso frustrato da richieste che percepisci come ingiuste, ma non lo dici apertamente?","ad":"pa","dir":"I","extra":true}];
+
+const AT_AD_META = {"paranoide":{"label":"Paranoide","alias":"Brillante-Scettico","icon":"🔍","color":"#f59e0b","tipo":"Sopravvivenza"},"schizoide":{"label":"Schizoide","alias":"Creativo-Sognatore","icon":"🌙","color":"#6366f1","tipo":"Sopravvivenza"},"antisociale":{"label":"Antisociale","alias":"Affascinante-Manipolatore","icon":"⚡","color":"#ef4444","tipo":"Sopravvivenza"},"oc":{"label":"Ossessivo-Compulsivo","alias":"Responsabile-Stakanovista","icon":"📋","color":"#3b82f6","tipo":"Performance"},"istrionico":{"label":"Istrionico","alias":"Entusiasta-Iperreattivo","icon":"✨","color":"#ec4899","tipo":"Performance"},"pa":{"label":"Passivo-Aggressivo","alias":"Scherzoso-Oppositivo","icon":"🌊","color":"#10b981","tipo":"Performance"}};
+
+const AT_AD_MAP = {"paranoide":"ad3","schizoide":"ad1","antisociale":"ad2","oc":"ad5","istrionico":"ad6","pa":"ad4"};
+
+
+// ── TEST ADATTAMENTI AT ──
+const AT_GROUPS = ["paranoide","schizoide","antisociale","oc","istrionico","pa"];
+let atAnswers = {}; // {idx: true/false/null}
+let atCurrentGroup = "paranoide";
+
+function startAtTest(){
+  atAnswers = {};
+  AT_TEST_QUESTIONS.forEach((_,i)=>atAnswers[i]=null);
+  document.getElementById("at-test-welcome").style.display="none";
+  document.getElementById("at-test-progress").style.display="block";
+  renderAtGroupsNav();
+  showAtGroup("paranoide");
+}
+
+function getGroupQuestions(grp){
+  return AT_TEST_QUESTIONS.map((q,i)=>({...q,idx:i})).filter(q=>q.ad===grp);
+}
+
+function isGroupComplete(grp){
+  return getGroupQuestions(grp).every(q=>atAnswers[q.idx]!==null);
+}
+function hasGroupSome(grp){
+  return getGroupQuestions(grp).some(q=>atAnswers[q.idx]!==null);
+}
+function countAtAnswered(){
+  return Object.values(atAnswers).filter(v=>v!==null).length;
+}
+
+function renderAtGroupsNav(){
+  const nav=document.getElementById("at-groups-nav");
+  nav.innerHTML=AT_GROUPS.map(g=>{
+    const m=AT_AD_META[g];
+    const done=isGroupComplete(g);
+    const partial=!done&&hasGroupSome(g);
+    return`<button class="at-group-btn ${g===atCurrentGroup?'active':''} ${done?'done':''}"
+      style="${g===atCurrentGroup?`border-color:${m.color};background:${m.color}15`:''}${done?';opacity:.6':''}"
+      onclick="showAtGroup('${g}')">
+      ${m.icon} ${m.label}
+      ${done?'✓':partial?'…':''}
+    </button>`;
+  }).join("");
+}
+
+function showAtGroup(grp){
+  atCurrentGroup=grp;
+  const m=AT_AD_META[grp];
+  const qs=getGroupQuestions(grp);
+  renderAtGroupsNav();
+  updateAtProgress();
+  
+  const grpIdx=AT_GROUPS.indexOf(grp);
+  const prevGrp=grpIdx>0?AT_GROUPS[grpIdx-1]:null;
+  const nextGrp=grpIdx<AT_GROUPS.length-1?AT_GROUPS[grpIdx+1]:null;
+  const isLast=grpIdx===AT_GROUPS.length-1;
+  
+  const answered=qs.filter(q=>atAnswers[q.idx]!==null).length;
+  
+  const card=document.getElementById("at-test-card2");
+  card.innerHTML=`
+    <div class="at-card2-hdr" style="background:linear-gradient(135deg,${m.color} 0%,${m.color}bb 100%)">
+      <h3>${m.icon} ${m.label} <span style="font-size:.8em;opacity:.7">— ${m.alias}</span></h3>
+      <p>${answered} / ${qs.length} domande risposte · ${m.tipo}</p>
+      <div class="at-card2-extra">* Le domande contrassegnate sono state aggiunte per migliorare la discriminazione del test</div>
+    </div>
+    <div class="at-q-list" id="at-q-list">
+      ${qs.map((q,i)=>{
+        const ans=atAnswers[q.idx];
+        return`<div class="at-q-row ${ans===true?'yes':ans===false?'no':''}" id="atq-${q.idx}">
+          <span class="at-q-num">${i+1}</span>
+          <span class="at-q-txt">${q.q}${q.extra?'<span class="at-q-extra-tag">*</span>':''}</span>
+          <div class="at-yn-btns">
+            <button class="at-yn si ${ans===true?'sel':''}" onclick="setAtAnswer(${q.idx},true)">Sì</button>
+            <button class="at-yn no ${ans===false?'sel':''}" onclick="setAtAnswer(${q.idx},false)">No</button>
+          </div>
+        </div>`;
+      }).join("")}
+    </div>
+    <div class="at-card2-footer">
+      ${prevGrp?`<button onclick="showAtGroup('${prevGrp}')">← Precedente</button>`:`<span></span>`}
+      <span style="font-size:.75rem;color:var(--ink4)">${isGroupComplete(grp)?'✓ Sezione completa':'Rispondi a tutte'}</span>
+      ${isLast
+        ?`<button class="btn-gold" onclick="calculateAtResult()" ${countAtAnswered()<40?'style="opacity:.55"':''}>Calcola →</button>`
+        :`<button class="btn-gold" onclick="showAtGroup('${nextGrp}')">Avanti →</button>`
+      }
+    </div>`;
+}
+
+function setAtAnswer(idx, val){
+  atAnswers[idx]=val;
+  const row=document.getElementById("atq-"+idx);
+  if(row){
+    row.className=`at-q-row ${val?'yes':'no'}`;
+    const btns=row.querySelectorAll('.at-yn');
+    btns[0].className=`at-yn si ${val===true?'sel':''}`;
+    btns[1].className=`at-yn no ${val===false?'sel':''}`;
+  }
+  updateAtProgress();
+  renderAtGroupsNav();
+  // Auto-advance
+  const grpQs=getGroupQuestions(atCurrentGroup);
+  if(isGroupComplete(atCurrentGroup)){
+    const grpIdx=AT_GROUPS.indexOf(atCurrentGroup);
+    if(grpIdx<AT_GROUPS.length-1){
+      setTimeout(()=>showAtGroup(AT_GROUPS[grpIdx+1]),500);
+    }
+  }
+}
+
+function updateAtProgress(){
+  const done=countAtAnswered();
+  const pct=Math.round(done/40*100);
+  const fill=document.getElementById("at-prog-fill");
+  const lbl=document.getElementById("at-prog-lbl");
+  const cnt=document.getElementById("at-prog-cnt");
+  if(fill) fill.style.width=pct+"%";
+  if(lbl) lbl.textContent=`Sezione ${AT_GROUPS.indexOf(atCurrentGroup)+1} di 6`;
+  if(cnt) cnt.textContent=`${done} / 40 risposte`;
+}
+
+function calculateAtResult(){
+  // For each adaptation: count Sì, count E-Sì, count I-Sì
+  const results={};
+  AT_GROUPS.forEach(grp=>{
+    const qs=getGroupQuestions(grp);
+    const total=qs.length;
+    let si=0, E=0, I=0;
+    qs.forEach(q=>{
+      const ans=atAnswers[q.idx];
+      if(ans===true){
+        si++;
+        if(q.dir==="E") E++; else I++;
+      } else if(ans===false){
+        // No contribuisce 0 punti per entrambe le direzioni
+      }
+    });
+    results[grp]={total,si,E,I,pct:Math.round(si/total*100),prevalenza:E>I?"E":I>E?"I":"="};
+  });
+  
+  // Overall E/I
+  let totalE=0,totalI=0;
+  AT_GROUPS.forEach(g=>{totalE+=results[g].E;totalI+=results[g].I;});
+  
+  // Top 2 adaptations
+  const sorted=AT_GROUPS.map(g=>({g,pct:results[g].pct})).sort((a,b)=>b.pct-a.pct);
+  const primary=sorted[0].g;
+  const secondary=sorted[1].g;
+  
+  showAtResult(results, primary, secondary, totalE, totalI);
+}
+
+function showAtResult(results, primary, secondary, totalE, totalI){
+  document.getElementById("at-test-progress").style.display="none";
+  const resEl=document.getElementById("at-result");
+  resEl.classList.add("active");
+  
+  const pm=AT_AD_META[primary];
+  const sm=AT_AD_META[secondary];
+  const pRes=results[primary];
+  const prevalenzaGlobal=totalE>totalI?"E":totalI>totalE?"I":"=";
+  
+  // Bar rows
+  const sorted=AT_GROUPS.map(g=>({g,r:results[g]})).sort((a,b)=>b.r.pct-a.r.pct);
+  const barsHtml=sorted.map(({g,r})=>{
+    const m=AT_AD_META[g];
+    const eiClass=r.prevalenza==="E"?"at-ei-E":r.prevalenza==="I"?"at-ei-I":"at-ei-eq";
+    const eiLabel=r.prevalenza==="E"?"Estroverso":r.prevalenza==="I"?"Introverso":"Bilanciato";
+    return`<div class="at-adapt-row">
+      <div class="at-adapt-name"><span style="color:${m.color}">${m.icon}</span> ${m.label}</div>
+      <div class="at-adapt-bar-wrap">
+        <div class="at-adapt-bar" style="width:${r.pct}%;background:${m.color}"></div>
+      </div>
+      <div class="at-adapt-ei">
+        <span class="at-ei-badge ${eiClass}">${eiLabel}</span>
+        <div style="font-size:.65rem;color:var(--ink4);margin-top:.15rem">${r.si}/${r.total} Sì</div>
+      </div>
+    </div>`;
+  }).join("");
+  
+  // Connections to DB
+  const primDbId=AT_AD_MAP[primary];
+  const primDb=byId(primDbId)||{};
+  const secDbId=AT_AD_MAP[secondary];
+  const secDb=byId(secDbId)||{};
+  const ennNames=((primDb.enneatipi||[]).map(id=>{const e=byId(id);return e?e.short:id})).join(", ");
+  const chakraNames=((primDb.chakra||[]).map(id=>{const c=byId(id);return c?c.name.split('–')[0].trim():id})).join(", ");
+  const cristNames=((primDb.cristalli||[]).slice(0,3).map(id=>{const c=byId(id);return c?c.name:id})).join(", ");
+  const freqNames=((primDb.frequenze||[]).slice(0,2).map(id=>{const f=byId(id);return f?f.short:id})).join(", ");
+  
+  // Porta aperta
+  const portaAperta=primDb.portaAperta||"";
+  const portaBersaglio=primDb.portaBersaglio||"";
+  const portaTrappola=primDb.portaTrappola||"";
+  const spinta=primDb.spinta||"";
+  const copione=primDb.copione||"";
+  
+  resEl.innerHTML=`
+    <div class="at-result-top">
+      <div style="font-size:2.2rem;margin-bottom:.5rem">${pm.icon}</div>
+      <h3>Adattamento primario: ${pm.label}</h3>
+      <div style="font-size:.9rem;color:rgba(249,245,239,.75);margin:.2rem 0;font-style:italic">${pm.alias} · ${pm.tipo}</div>
+      <div style="font-size:.78rem;color:rgba(249,245,239,.45);margin-top:.3rem">
+        Secondario: ${sm.icon} ${sm.label} (${sm.alias}) · 
+        Tendenza globale: ${totalE>totalI?"Estroverso":"Introverso"} (E:${totalE} / I:${totalI})
+      </div>
+    </div>
+    
+    <div class="at-radar-section">
+      <h4>Profilo completo dei 6 adattamenti</h4>
+      <div class="at-adapt-bars">${barsHtml}</div>
+      <div class="at-overall-ei">
+        <div class="at-overall-ei-block">
+          <div class="big" style="color:#1d4ed8">${totalE}</div>
+          <div class="lbl">Punteggio E</div>
+        </div>
+        <div class="at-overall-ei-block">
+          <div class="big" style="color:var(--gold)">${totalE>totalI?"E":totalI>totalE?"I":"="}</div>
+          <div class="lbl">Prevalenza</div>
+        </div>
+        <div class="at-overall-ei-block">
+          <div class="big" style="color:#4c1d95">${totalI}</div>
+          <div class="lbl">Punteggio I</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="at-result-conns">
+      <h4>Le tue connessioni nel database</h4>
+      <div class="at-conn-grid2">
+        ${portaAperta?`<div class="at-conn-card2" onclick="st('at-adattamenti')"><div class="at-conn-lbl2">Porta aperta</div><div class="at-conn-val2">✓ ${portaAperta}</div></div>`:''}
+        ${portaBersaglio?`<div class="at-conn-card2" onclick="st('at-adattamenti')"><div class="at-conn-lbl2">Porta bersaglio</div><div class="at-conn-val2">◎ ${portaBersaglio}</div></div>`:''}
+        ${spinta?`<div class="at-conn-card2" onclick="st('at-adattamenti')"><div class="at-conn-lbl2">Spinta del copione</div><div class="at-conn-val2">${spinta}</div></div>`:''}
+        ${copione?`<div class="at-conn-card2" onclick="st('at-adattamenti')"><div class="at-conn-lbl2">Copione</div><div class="at-conn-val2">${copione}</div></div>`:''}
+        ${ennNames?`<div class="at-conn-card2" onclick="st('enneagram')"><div class="at-conn-lbl2">Enneatipi correlati</div><div class="at-conn-val2">${ennNames}</div></div>`:''}
+        ${chakraNames?`<div class="at-conn-card2" onclick="st('chakra-sec')"><div class="at-conn-lbl2">Chakra coinvolti</div><div class="at-conn-val2">${chakraNames}</div></div>`:''}
+        ${cristNames?`<div class="at-conn-card2" onclick="st('explorer')"><div class="at-conn-lbl2">Cristalli curativi</div><div class="at-conn-val2">${cristNames}</div></div>`:''}
+        ${freqNames?`<div class="at-conn-card2" onclick="st('musica')"><div class="at-conn-lbl2">Frequenze solfeggio</div><div class="at-conn-val2">${freqNames}</div></div>`:''}
+      </div>
+      
+      ${portaTrappola?`<div style="margin-top:1rem;padding:.9rem 1rem;background:#fee2e2;border-radius:var(--r);border:1px solid #fecaca;font-size:.82rem;color:#9b1c1c">
+        <strong>⚠ Porta trappola: ${portaTrappola}</strong> — Evita di aprire questo canale nelle prime fasi di relazione o terapia.
+      </div>`:''}
+      
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--ivory3)">
+        <button class="btn-gold" onclick="goTo('${AT_AD_MAP[primary]}','adattamenti');st('at-adattamenti')">Vedi scheda completa →</button>
+        <button class="btn-ghost" onclick="askAiAboutAtResult('${primary}','${secondary}')">Chiedi alla AI →</button>
+        <button class="btn-ghost" onclick="st('egogramma')">Egogramma →</button>
+        <button onclick="resetAtTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
+      </div>
+    </div>`;
+  
+  resEl.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function askAiAboutAtResult(primary, secondary){
+  const pm=AT_AD_META[primary]||{};
+  const sm=AT_AD_META[secondary]||{};
+  const pd=byId(AT_AD_MAP[primary])||{};
+  const msg=`Ho appena completato il test degli adattamenti AT. Il mio adattamento primario è ${pm.label} (${pm.alias}), il secondario è ${sm.label} (${sm.alias}). La porta aperta è "${pd.portaAperta||''}", la spinta è "${pd.spinta||''}". Puoi spiegarmi come questi adattamenti influenzano le mie relazioni e darmi indicazioni pratiche per lavorarci? Collegami anche ai chakra, cristalli e frequenze correlate.`;
+  document.getElementById("chat-input").value=msg;
+  st("consulente");
+  setTimeout(()=>sendMsg(),400);
+}
+
+function resetAtTest(){
+  atAnswers={};
+  const res=document.getElementById("at-result");
+  res.classList.remove("active");
+  res.innerHTML='';
+  document.getElementById("at-test-welcome").style.display="block";
+  document.getElementById("at-test-progress").style.display="none";
 }
 
 function renderTabs(){

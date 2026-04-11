@@ -1074,6 +1074,52 @@ footer{
   margin-top:.3rem;
 }
 
+
+/* ── API KEY CONFIG ── */
+.api-key-banner{
+  background:rgba(184,147,90,.08);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:.75rem 1rem;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:wrap;
+}
+.api-key-banner p{font-size:.78rem;color:var(--ink3);margin:0;flex:1;min-width:200px}
+.api-key-banner a{color:var(--gold);text-decoration:underline;cursor:pointer}
+.api-key-input-wrap{display:flex;gap:.5rem;flex-wrap:wrap}
+.api-key-input{padding:.45rem .85rem;border:1.5px solid var(--border2);border-radius:var(--r);
+  font-size:.8rem;font-family:'Outfit',sans-serif;color:var(--ink);background:white;
+  outline:none;width:260px;transition:border-color .2s}
+.api-key-input:focus{border-color:var(--gold)}
+.api-key-save{padding:.45rem 1rem;background:var(--gold);color:white;border:none;
+  border-radius:var(--r);cursor:pointer;font-size:.78rem;font-family:'Outfit',sans-serif;
+  transition:background .2s}
+.api-key-save:hover{background:#a07840}
+.api-key-ok{font-size:.75rem;color:var(--sage);display:none}
+.api-key-clear{background:transparent;border:1px solid var(--border);color:var(--ink4);
+  padding:.45rem .75rem;border-radius:var(--r);cursor:pointer;font-size:.75rem;font-family:'Outfit',sans-serif}
+
+
+/* ── LINK UTILI ── */
+#link-utili{background:var(--ink);padding:4rem 2rem}
+.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.link-card{padding:1.5rem 1.6rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,147,90,.2);
+  border-radius:var(--rxl);transition:all .22s;text-decoration:none;display:block;position:relative;overflow:hidden}
+.link-card::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at top left,rgba(184,147,90,.06) 0%,transparent 70%);
+  pointer-events:none;transition:opacity .3s;opacity:0}
+.link-card:hover{border-color:var(--gold);background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.link-card:hover::before{opacity:1}
+.link-card-icon{font-size:1.6rem;margin-bottom:.65rem}
+.link-card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;color:var(--gold3);margin-bottom:.25rem}
+.link-card-url{font-size:.68rem;letter-spacing:.08em;color:rgba(184,147,90,.5);margin-bottom:.5rem;font-family:'Outfit',sans-serif}
+.link-card-desc{font-size:.78rem;font-weight:300;color:rgba(249,245,239,.5);line-height:1.65}
+.link-card-arrow{position:absolute;bottom:1.2rem;right:1.3rem;font-size:.7rem;color:var(--gold);opacity:.4;transition:opacity .2s}
+.link-card:hover .link-card-arrow{opacity:1}
+
 </style>
 </head>
 <body>
@@ -1118,6 +1164,7 @@ footer{
   <button class="mob-link" onclick="st('prano');toggleMob()">Pranoterapia</button>
   <button class="mob-link" onclick="st('faq');toggleMob()">FAQ</button>
   <button class="mob-link" onclick="st('guida');toggleMob()">Guida all'utilizzo</button>
+  <button class="mob-link" onclick="st('link-utili');toggleMob()">🔗 Link utili</button>
   <button class="mob-link" style="color:var(--gold)" onclick="st('test-frutti');toggleMob()">🌳 Test dei 9 Frutti</button>
   <button class="mob-link" style="color:var(--gold)" onclick="st('test-adattamenti');toggleMob()">🧠 Test Adattamenti AT</button>
 </div>
@@ -1167,6 +1214,9 @@ footer{
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
     <button class="btn-ghost" onclick="st('explorer')">Esplora tutti i domini</button>
   </div>
+  <p class="fu d4" style="position:relative;z-index:1;font-size:.72rem;color:var(--ink4);max-width:520px;margin:1.25rem auto 0;line-height:1.75;font-style:italic">
+    I contenuti di questo sito hanno finalità esclusivamente divulgativa e non sostituiscono la consulenza di operatori olistici qualificati, né il parere del medico o dello psicologo.
+  </p>
   <div class="scroll-hint" style="z-index:1">scopri</div>
 </section>
 
@@ -1200,7 +1250,18 @@ footer{
         </div>
         <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
       </div>
-      <div class="chat-suggestions">
+      <div id="api-key-section" style="padding:.85rem 1.5rem;background:var(--ivory);border-bottom:1px solid var(--ivory3)">
+      <div id="api-key-needed" class="api-key-banner" style="display:none">
+        <p>🔑 Per usare la Consulente AI su GitHub Pages inserisci la tua <a href="https://console.anthropic.com/settings/keys" target="_blank">API Key Anthropic</a>:</p>
+        <div class="api-key-input-wrap">
+          <input type="password" class="api-key-input" id="api-key-input" placeholder="sk-ant-..." oninput="checkApiKeyInput()">
+          <button class="api-key-save" onclick="saveApiKey()" id="api-key-save-btn" disabled>Salva</button>
+          <button class="api-key-clear" onclick="clearApiKey()" id="api-key-clear-btn" style="display:none">Rimuovi</button>
+        </div>
+        <span class="api-key-ok" id="api-key-ok">✓ Chiave salvata — la AI è attiva</span>
+      </div>
+    </div>
+    <div class="chat-suggestions">
         <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
         <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
         <span class="sugg" onclick="askSugg(this)">Sento ansia e paura, da dove inizio?</span>
@@ -1812,24 +1873,76 @@ footer{
       <div class="sec-div"></div>
     </div>
     <div class="guida-intro">
-      <p>Questo portale è un archivio vivente di conoscenza olistica integrata. Puoi usarlo in tre modi: come <strong>strumento di ricerca</strong> per esplorare connessioni tra discipline, come <strong>supporto al counseling</strong> per orientare il percorso terapeutico, o semplicemente come <strong>guida personale</strong> alla tua crescita interiore.</p>
+      <p>Questo portale è un archivio di conoscenza olistica integrata con finalità esclusivamente divulgativa. Puoi usarlo come <strong>strumento di ricerca</strong> per esplorare connessioni tra discipline, come <strong>supporto al counseling</strong> per orientare il percorso, o come <strong>guida personale</strong> alla crescita interiore. I contenuti non sostituiscono la consulenza di operatori qualificati.</p>
     </div>
     <div class="guida-steps">
-      <div class="guida-step"><div class="guida-num">1</div><div class="guida-icon">🔍</div><h3>Usa il motore di ricerca</h3><p>Premi il pulsante "Cerca" in alto o "Cerca nel database" nell'hero. Digita qualsiasi parola: un sintomo, un'emozione, un tipo di personalità, un cristallo. Il sistema ti mostrerà tutti i risultati in tutte le 8 discipline del database.</p></div>
-      <div class="guida-step"><div class="guida-num">2</div><div class="guida-icon">🌐</div><h3>Esplora il Database Interconnesso</h3><p>Nella sezione "Database" seleziona un dominio (Chakra, Cristalli, Enneatipi, Musica, Adattamenti AT, Esercizi) e clicca su qualsiasi elemento. Il pannello di destra mostrerà tutte le connessioni trasversali con gli altri domini.</p></div>
-      <div class="guida-step"><div class="guida-num">3</div><div class="guida-icon">🤖</div><h3>Chiedi alla Consulente AI</h3><p>Descrivi la tua situazione nella chat. La consulente AI ha accesso all'intero database e crea percorsi personalizzati integrando chakra, cristalli, enneatipi, AT, Bach e alimentazione in modo coerente.</p></div>
-      <div class="guida-step"><div class="guida-num">4</div><div class="guida-icon">🧬</div><h3>Scopri il tuo Adattamento AT</h3><p>Vai alla sezione "Adattamenti AT". Leggi le descrizioni dei 6 tipi e riconosci il tuo stile primario di sopravvivenza e di performance. Poi usa il database per trovare i cristalli, le frequenze e gli esercizi correlati.</p></div>
-      <div class="guida-step"><div class="guida-num">5</div><div class="guida-icon">📊</div><h3>Compila l'Egogramma</h3><p>Nella sezione "Egogramma" sposta i cursori dei 5 stati dell'Io (GN, GA, A, BL, BA). Il grafico mostra la tua struttura psichica secondo l'Analisi Transazionale. Uno stato basso indica un'area di sviluppo.</p></div>
-      <div class="guida-step"><div class="guida-num">6</div><div class="guida-icon">💫</div><h3>Valuta le tue Carezze</h3><p>Nella sezione "Carezze" esplora quanto liberamente dai, ricevi, chiedi e rifiuti riconoscimento positivo e negativo. Ogni squilibrio rivela un copione da trasformare.</p></div>
+      <div class="guida-step"><div class="guida-num">1</div><div class="guida-icon">🔍</div><h3>Cerca nel database</h3><p>Usa il bottone "Cerca" in alto o nell'hero. Digita un sintomo, un'emozione, un tipo di personalità, un cristallo. Il sistema collega automaticamente tutti i domini: chakra, cristalli, enneatipi, AT, Bach, frequenze.</p></div>
+      <div class="guida-step"><div class="guida-num">2</div><div class="guida-icon">🌳</div><h3>Fai il Test dei 9 Frutti</h3><p>180 domande per scoprire il tuo enneatipo. Rispondi in modo istintivo. Il risultato mostra il tuo profilo completo e lo collega automaticamente a chakra, cristalli, frequenze, adattamenti AT e Fiori di Bach.</p></div>
+      <div class="guida-step"><div class="guida-num">3</div><div class="guida-icon">🧠</div><h3>Fai il Test degli Adattamenti AT</h3><p>40 domande Sì/No per scoprire i tuoi 6 adattamenti di personalità secondo l'Analisi Transazionale DPL. Mostra intensità e polarità E/I per ogni adattamento, con porte aperta, bersaglio e trappola.</p></div>
+      <div class="guida-step"><div class="guida-num">4</div><div class="guida-icon">🌐</div><h3>Esplora il Database interconnesso</h3><p>Nella sezione Database seleziona un dominio e clicca su qualsiasi elemento. Il pannello di destra mostra tutte le connessioni trasversali. Ogni chip è cliccabile e porta al dettaglio dell'elemento correlato.</p></div>
+      <div class="guida-step"><div class="guida-num">5</div><div class="guida-icon">📊</div><h3>Compila Egogramma e Carezze</h3><p>Nella sezione Egogramma sposta i 5 cursori (GN, GA, A, BL, BA) per visualizzare la tua struttura psichica secondo l'AT. Nella sezione Carezze valuta quanto liberamente dai, ricevi, chiedi e rifiuti riconoscimento positivo e negativo.</p></div>
+      <div class="guida-step"><div class="guida-num">6</div><div class="guida-icon">❤️</div><h3>Scopri la compatibilità di coppia</h3><p>Nella sezione Compatibilità seleziona due enneatipi per vedere percentuale, punti di forza, sfide e consigli pratici. Basata sulla ricerca di Carlo Alberto Calcagno sulle 81 combinazioni possibili.</p></div>
+      <div class="guida-step"><div class="guida-num">7</div><div class="guida-icon">🔮</div><h3>Approfondisci gli Enneatipi</h3><p>Clicca su qualsiasi enneatipo nella sezione Enneatipi per aprire il pannello evolutivo completo: Dignità di Lullo, gerarchia angelica, musa, pianeta, ali, percorso evolutivo per fascia d'età con nomi delle fasi e trasformazioni lungo il percorso di integrazione.</p></div>
+      <div class="guida-step"><div class="guida-num">8</div><div class="guida-icon">🤖</div><h3>Chiedi alla Consulente AI</h3><p>Descrivi la tua situazione nella chat. La consulente AI conosce l'intero database e costruisce percorsi personalizzati che integrano almeno 3 discipline. Su GitHub Pages è necessaria una API Key Anthropic personale (vedi FAQ → Sito).</p></div>
     </div>
     <div class="guida-percorsi">
       <h3>Percorsi <em>consigliati</em></h3>
       <div class="percorsi-grid">
-        <div class="percorso-card"><h4>🌱 Primo approccio olistico</h4><p>Stai scoprendo le discipline olistiche per la prima volta.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Leggi le 8 discipline nella sezione "Dimensioni"</div><div class="ps"><span class="ps-n">2</span>Trova il tuo Enneatipo esplorando le 9 schede</div><div class="ps"><span class="ps-n">3</span>Chiedi alla Consulente AI: "Sono un tipo X, da dove inizio?"</div></div></div>
-        <div class="percorso-card"><h4>🔬 Approfondimento psicologico (AT)</h4><p>Sei un professionista che usa l'Analisi Transazionale.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Studia i 6 adattamenti DPL e le porte di accesso</div><div class="ps"><span class="ps-n">2</span>Compila l'Egogramma e valuta le Carezze</div><div class="ps"><span class="ps-n">3</span>Usa il database per trovare cristalli e frequenze correlate</div></div></div>
-        <div class="percorso-card"><h4>💎 Cristalloterapia pratica</h4><p>Usi i cristalli nel tuo lavoro terapeutico.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Nel Database seleziona "Cristalli"</div><div class="ps"><span class="ps-n">2</span>Cerca per disturbo o chakra nella barra di ricerca</div><div class="ps"><span class="ps-n">3</span>Verifica le connessioni con frequenze ed esercizi</div></div></div>
-        <div class="percorso-card"><h4>🌸 Fiori di Bach e chakra</h4><p>Lavori con i rimedi floreali.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Vai alla sezione "Fiori di Bach"</div><div class="ps"><span class="ps-n">2</span>Identifica lo stato emotivo e il rimedio corrispondente</div><div class="ps"><span class="ps-n">3</span>Chiedi alla AI di costruire un percorso completo con chakra correlati</div></div></div>
+        <div class="percorso-card"><h4>🌱 Primo approccio olistico</h4><p>Scopri il sito partendo dall'enneatipo.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Fai il Test dei 9 Frutti</div><div class="ps"><span class="ps-n">2</span>Leggi la tua scheda enneatipo con il percorso evolutivo</div><div class="ps"><span class="ps-n">3</span>Chiedi alla AI: "Sono un tipo X, da dove inizio?"</div></div></div>
+        <div class="percorso-card"><h4>🔬 Approfondimento AT</h4><p>Per counselor e professionisti dell'AT.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Fai il Test degli Adattamenti AT</div><div class="ps"><span class="ps-n">2</span>Studia la scheda del tuo adattamento primario con porte e copione</div><div class="ps"><span class="ps-n">3</span>Compila Egogramma e Carezze per completare il profilo</div></div></div>
+        <div class="percorso-card"><h4>💎 Cristalloterapia pratica</h4><p>Per chi lavora con i cristalli.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Cerca il disturbo o chakra nel Database</div><div class="ps"><span class="ps-n">2</span>Verifica le connessioni con frequenze solfeggio e esercizi</div><div class="ps"><span class="ps-n">3</span>Chiedi alla AI una seduta integrata con enneatipo del cliente</div></div></div>
+        <div class="percorso-card"><h4>💑 Lavoro sulla coppia</h4><p>Per percorsi di mediazione e relazione.</p><div class="percorso-steps"><div class="ps"><span class="ps-n">1</span>Scopri gli enneatipi di entrambi i partner con il Test Frutti</div><div class="ps"><span class="ps-n">2</span>Consulta la matrice Compatibilità di Coppia</div><div class="ps"><span class="ps-n">3</span>Usa la sezione Danza del Conflitto per le dinamiche T8-T9</div></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ▐▐ LINK UTILI ▐▐ -->
+<section id="link-utili">
+  <div class="container">
+    <div class="sec-hd" style="--sec-eye-color:rgba(184,147,90,.6)">
+      <div class="sec-eye" style="color:rgba(184,147,90,.6)">Risorse esterne</div>
+      <h2 class="sec-title" style="color:var(--gold3)">Link <em style="color:var(--gold)">utili</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc" style="color:rgba(249,245,239,.5)">Siti e risorse collegate all'Enneagramma Evolutivo, alla mediazione, alla danza del conflitto e ai percorsi di crescita personale.</p>
+    </div>
+    <div class="links-grid">
+      <a class="link-card" href="https://calcolomediazione.it" target="_blank" rel="noopener">
+        <div class="link-card-icon">⚖️</div>
+        <div class="link-card-name">Calcolo Mediazione</div>
+        <div class="link-card-url">calcolomediazione.it</div>
+        <div class="link-card-desc">Strumenti e risorse per la mediazione civile e commerciale.</div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://enneagrammaevolutivo.it" target="_blank" rel="noopener">
+        <div class="link-card-icon">🌀</div>
+        <div class="link-card-name">Enneagramma Evolutivo</div>
+        <div class="link-card-url">enneagrammaevolutivo.it</div>
+        <div class="link-card-desc">Il sito ufficiale del sistema Enneagramma Evolutivo di Carlo Alberto Calcagno con test, approfondimenti e percorsi.</div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://ladanzadelconflitto.it" target="_blank" rel="noopener">
+        <div class="link-card-icon">🕊️</div>
+        <div class="link-card-name">La Danza del Conflitto</div>
+        <div class="link-card-url">ladanzadelconflitto.it</div>
+        <div class="link-card-desc">Risorse sulla danza del conflitto, comunicazione non violenta e gestione delle relazioni conflittuali.</div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://percorsodicrescitalucca.it" target="_blank" rel="noopener">
+        <div class="link-card-icon">🌱</div>
+        <div class="link-card-name">Percorso di Crescita Lucca</div>
+        <div class="link-card-url">percorsodicrescitalucca.it</div>
+        <div class="link-card-desc">Centro di crescita personale e spirituale a Lucca con eventi, corsi e percorsi di consapevolezza.</div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://guarigionequantica.eu" target="_blank" rel="noopener">
+        <div class="link-card-icon">✨</div>
+        <div class="link-card-name">Guarigione Quantica</div>
+        <div class="link-card-url">guarigionequantica.eu</div>
+        <div class="link-card-desc">Approfondimenti sulla guarigione quantica, energia e pratiche olistiche avanzate.</div>
+        <div class="link-card-arrow">↗</div>
+      </a>
     </div>
   </div>
 </section>
@@ -1864,6 +1977,7 @@ footer{
         <a class="f-link" onclick="st('musica')">Musicoterapia</a>
         <a class="f-link" onclick="st('faq')">FAQ</a>
         <a class="f-link" onclick="st('guida')">Guida</a>
+        <a class="f-link" onclick="st('link-utili')">Link utili</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2151,31 +2265,47 @@ function analyzeCarezze(type){
 
 // ── FAQ ──
 const FAQ_DATA = [
-  {cat:"AT",q:"Cos'è l'Analisi Transazionale?",a:"L'AT è una teoria della personalità e della comunicazione sviluppata da Eric Berne negli anni '60. Studia come le persone interagiscono (transazioni), quali copioni di vita seguono e quali 'stati dell'Io' (Genitore, Adulto, Bambino) attivano nelle relazioni."},
-  {cat:"AT",q:"Cosa sono i 6 adattamenti di personalità DPL?",a:"Sono i 6 stili adattativi che sviluppiamo nei primi 6 anni di vita in risposta all'ambiente familiare: Schizoide, Antisociale, Paranoide (di sopravvivenza, 0-18m) e Passivo-Aggressivo, Ossessivo-Compulsivo, Istrionico (di performance, 18m-6y). Ogni adattamento ha una porta aperta, un bersaglio e una trappola comunicativa."},
-  {cat:"AT",q:"Cosa sono le spinte del copione?",a:"Le 5 spinte (Sii perfetto, Sii forte, Sforzati, Cerca di piacere, Sbrigati) sono messaggi genitoriali interiori che ci condizionano. Ogni spinta corrisponde a un copione di vita: 'Finché non finisco non mi diverto' (Sii perfetto), 'Non otterrò mai ciò che voglio' (Sii forte), ecc."},
-  {cat:"AT",q:"Cos'è l'Egogramma?",a:"L'Egogramma (Dusay, 1977) è una rappresentazione a barre dell'intensità relativa dei 5 stati dell'Io funzionali: GN (Genitore Normativo), GA (Genitore Affettivo), A (Adulto), BL (Bambino Libero), BA (Bambino Adattato). La somma tende a essere costante: alzare uno spesso abbassa un altro."},
-  {cat:"AT",q:"Cosa sono le carezze nell'AT?",a:"Le carezze sono unità di riconoscimento dell'altro. Possono essere positive (piacevoli), negative (spiacevoli), condizionate (per ciò che fai) o incondizionate (per ciò che sei). Qualsiasi carezza è meglio che nessuna carezza: da bambini, se non ottenevamo carezze positive, imparavamo a ottenere quelle negative."},
-  {cat:"AT",q:"Come si usa la porta aperta nel counseling AT?",a:"Prima di tutto vai alla porta aperta (l'area dove la persona investe più energie): emozioni per l'Istrionico, pensiero per Ossessivo-Compulsivo e Paranoide, comportamento per Schizoide, Antisociale e Passivo-Aggressivo. Da lì sposta verso il bersaglio. Evita la trappola soprattutto nelle prime fasi del lavoro."},
-  {cat:"Enneagramma",q:"Cos'è l'Enneagramma evolutivo?",a:"L'Enneagramma evolutivo non è una categorizzazione fissa ma un mappa di percorsi di trasformazione. I 9 tipi attraversano fasi evolutive legate all'età (ciclo breve: 3-6-9 in 3 fasi; ciclo lungo: 1-2-4-5-7-8 in 6 fasi). Ogni tipo ha un punto di integrazione (freccia opposta) e uno di disintegrazione (freccia diretta)."},
-  {cat:"Enneagramma",q:"Come si individuano i 3 sottotipi di ogni enneatipo?",a:"Ogni enneatipo ha 3 sottotipi legati agli istinti fondamentali: conservativo (autoconservazione), sociale (appartenenza al gruppo) e sessuale (relazione duale intensa). Lo stesso tipo 2 sarà molto diverso nel sottotipo conservativo (dedizione) rispetto al sessuale (seduzione)."},
-  {cat:"Enneagramma",q:"Qual è la differenza tra integrazione e disintegrazione?",a:"In integrazione (contro-freccia) la persona acquisisce le qualità positive del tipo verso cui si muove: un T1 in integrazione acquista la gioia del T7. In disintegrazione (verso-freccia), sotto stress, esprime le qualità negative del tipo: un T1 in disintegrazione va verso la malinconia del T4."},
-  {cat:"Chakra",q:"Come si usa il sistema dei chakra in terapia?",a:"I 7 chakra mappano lo sviluppo psico-emotivo: ogni centro governa un diritto fondamentale, uno stadio evolutivo e una ghiandola endocrina. Un chakra 'bloccato' si manifesta come pattern emotivo negativo ricorrente. Si lavora con cristalli, frequenze sonore, esercizi corporei e alimentazione mirata."},
-  {cat:"Chakra",q:"Qual è la connessione tra chakra ed enneatipi?",a:"Il 1° chakra (sopravvivenza) è correlato ai tipi 8-9-1; il 4° chakra (cuore) ai tipi 2-4-9; il 5°-6°-7° (testa/pensiero) ai tipi 5-6-7. Questa correlazione permette di creare percorsi integrati: un tipo 5 con blocco al 5° chakra beneficia delle stesse frequenze (741Hz) sia dalla prospettiva energetica che psicologica."},
-  {cat:"Cristalli",q:"Come si scelgono i cristalli per un lavoro terapeutico?",a:"Si parte dal chakra coinvolto, dal disturbo presentato e dall'enneatipo del cliente. Il database mostra le connessioni: cerca nel motore di ricerca il tuo sintomo o il chakra da lavorare. Ogni cristallo ha una funzione primaria, disturbi correlati e controindicazioni di abbinamento."},
-  {cat:"Bach",q:"Come si scelgono i Fiori di Bach?",a:"I Fiori di Bach si scelgono dallo stato emotivo negativo presente, non dal sintomo fisico. Ogni rimedio trasforma uno stato negativo nella sua qualità opposta (Larch: scarsa autostima → fiducia autentica). Correlano ai chakra attraverso il piano emotivo. Il Rescue Remedy è la combinazione d'emergenza per shock e traumi acuti."},
-  {cat:"Bach",q:"I Fiori di Bach sono compatibili con altri trattamenti?",a:"Sì. I Fiori di Bach sono sicuri, non tossici e compatibili con qualsiasi altro trattamento medico, psicologico o olistico. Non sostituiscono il parere del medico o dello psicologo ma agiscono sul terreno emotivo da cui i sintomi emergono."},
-  {cat:"Pranoterapia",q:"Cos'è la pranoterapia?",a:"La pranoterapia è la trasmissione consapevole di energia pranale (prana, chi, ki) attraverso le mani di un operatore formato. A differenza del Reiki che usa energia universale, la pranoterapia utilizza l'energia personale del pranoterapeutа. Agisce su quattro livelli: fisico, emotivo, mentale e spirituale."},
-  {cat:"Pranoterapia",q:"Chi può praticare la pranoterapia?",a:"Chiunque. Siamo tutti esseri energetici. La spontaneità è innata — quando un bambino ha dolore la madre istintivamente posa la mano sul punto dolente. Questo è pranoterapia. Un trattamento formale richiede formazione specifica per imparare a leggere il campo, trasmettere in modo consapevole e schermarsi."},
-  {cat:"Sito",q:"Come funziona la ricerca nel database?",a:"Premi il pulsante 'Cerca' in alto o nell'hero. Digita qualsiasi parola — un cristallo, un disturbo, un enneatipo, una frequenza. Il sistema cerca in tutti i campi di tutti i domini e raggruppa i risultati per categoria. Clicca su un risultato per aprirlo nel Database Explorer con tutte le sue connessioni."},
-  {cat:"Sito",q:"Come usa il database la Consulente AI?",a:"La Consulente AI ha accesso all'intero database via system prompt: tutti i 7 chakra, 15 cristalli, 9 enneatipi, 8 frequenze, 6 adattamenti AT, 15 Fiori di Bach, 7 schede alimentazione e 13 esercizi. Quando descrivi la tua situazione crea connessioni trasversali tra almeno 3 discipline diverse."},
-  {cat:"Sito",q:"Come funziona il Database Explorer?",a:"Seleziona un dominio nelle schede in alto (Chakra, Cristalli, Enneatipi, Musica, Adattamenti, Esercizi). Clicca su un elemento nella lista a sinistra. Il pannello a destra mostra tutti i campi e le connessioni con gli altri domini — ogni chip è cliccabile e porta al dettaglio dell'elemento correlato."},
-  {cat:"Sito",q:"Cosa sono i percorsi consigliati nella Guida?",a:"Sono sequenze di utilizzo ottimizzate per diversi profili di utente: primo approccio olistico, approfondimento AT, cristalloterapia pratica, fiori di Bach. Ogni percorso suggerisce i passi da seguire nel sito per ottenere il massimo beneficio."}
-,  ,{cat:"AT",q:"Cosa misura il Test degli Adattamenti AT?",a:"Il test misura l'intensità e la polarità (Estroversa/Introversa) dei 6 adattamenti di personalità secondo il modello DPL di Ware e Joines: Paranoide, Schizoide, Antisociale, Ossessivo-Compulsivo, Istrionico, Passivo-Aggressivo. 40 domande Sì/No, circa 8 minuti. Il risultato mostra l'adattamento primario, il secondario, le porte di accesso e le connessioni a chakra, cristalli e frequenze."},
-  {cat:"AT",q:"Cosa significano E e I nel test degli adattamenti?",a:"E (Estroverso) indica che quell'adattamento si esprime verso l'esterno: azione visibile, relazione, comportamento osservabile dagli altri. I (Introverso) indica che l'adattamento si esprime verso l'interno: ritiro, elaborazione silenziosa, difesa nascosta. La prevalenza E o I per ogni adattamento aiuta a capire come si manifesta nelle relazioni e nel lavoro."},
-  
-  {cat:"Enneagramma",q:"Cosa sono i 9 Frutti dell\'Albero della Vita?",a:"I 9 Frutti sono il sistema di Carlo Alberto Calcagno: ogni enneatipo corrisponde a un frutto — Mela (T1), Pera (T2), Ciliegia (T3), Nespola (T4), Uva (T5), Mirtillo (T6), Ananas (T7), Albicocca (T8), Fragola (T9). Ogni frutto porta Dignità di Lullo, gerarchia angelica e musa greca."},
-  {cat:"Enneagramma",q:"Come si usa la compatibilità di coppia?",a:"Vai alla sezione Compatibilità. Seleziona i due enneatipi dai menu. Il sistema mostra percentuale, livello (eccellente/ottima/buona/media/difficile), punti di forza, sfide e consigli pratici basati sulla ricerca di Carlo Alberto Calcagno."}];
+  // ── AT ──
+  {cat:"AT",q:"Cos'è l'Analisi Transazionale?",a:"L'AT è una teoria della personalità e della comunicazione sviluppata da Eric Berne negli anni '60. Studia come le persone interagiscono (transazioni), i copioni di vita e i tre stati dell'Io (Genitore, Adulto, Bambino). È uno strumento pratico per il counseling, la terapia e la crescita personale."},
+  {cat:"AT",q:"Cosa sono i 6 adattamenti di personalità DPL?",a:"Sono i 6 stili adattativi che sviluppiamo nei primi 6 anni di vita. Tre di sopravvivenza (Schizoide, Antisociale, Paranoide — 0-18 mesi) e tre di performance (Passivo-Aggressivo, Ossessivo-Compulsivo, Istrionico — 18 mesi-6 anni). Ogni adattamento ha una porta aperta, un bersaglio e una trappola comunicativa. Non indicano patologia, ma lo stile adattivo."},
+  {cat:"AT",q:"Come funzionano le porte di accesso nell'AT?",a:"Ogni adattamento ha tre porte: la porta aperta (dove investiamo più energia: emozioni, pensiero o comportamento), la porta bersaglio (su cui lavorare per il cambiamento) e la porta trappola (da evitare nelle prime fasi, perché blocca la relazione). Es: con un Istrionico si parte sempre dalle emozioni; proporre subito azioni concrete è la trappola."},
+  {cat:"AT",q:"Cosa sono le spinte del copione?",a:"Le 5 spinte (Sii perfetto, Sii forte, Sforzati, Cerca di piacere, Sbrigati) sono messaggi genitoriali interiori. Ognuna corrisponde a un copione di vita: 'Finché non finisco non mi diverto' (Sii perfetto), 'Non otterrò mai ciò che voglio' (Sii forte), 'Mi succede sempre questo' (Sforzati), 'Lo pagherò domani' (Cerca di piacere). Sbrigati rinforza le altre."},
+  {cat:"AT",q:"Cos'è l'Egogramma?",a:"L'Egogramma (Dusay, 1977) rappresenta graficamente i 5 stati dell'Io funzionali: GN (Genitore Normativo), GA (Genitore Affettivo), A (Adulto), BL (Bambino Libero), BA (Bambino Adattato). La somma tende a essere costante: alzare uno stato spesso ne abbassa un altro. Sposta i cursori nella sezione Egogramma del sito per esplorare il tuo profilo."},
+  {cat:"AT",q:"Cosa sono le carezze nell'AT?",a:"Le carezze sono unità di riconoscimento dell'altro. Possono essere positive o negative, condizionate (per ciò che fai) o incondizionate (per ciò che sei). Qualsiasi carezza è meglio che nessuna carezza: da bambini, se non ottenevamo carezze positive, imparavamo a ottenere quelle negative. Nella sezione Carezze puoi valutare quanto liberamente dai, ricevi, chiedi e rifiuti riconoscimento."},
+  {cat:"AT",q:"Cosa misura il Test degli Adattamenti AT?",a:"Il test misura l'intensità e la polarità Estroversa/Introversa dei 6 adattamenti di personalità DPL. 40 domande Sì/No (29 originali + 11 migliorative), circa 8-10 minuti. Il risultato mostra l'adattamento primario e secondario, le porte di accesso e le connessioni a chakra, cristalli e frequenze solfeggio."},
+  {cat:"AT",q:"Cosa significa E e I nel test degli adattamenti?",a:"E (Estroverso) = l'adattamento si esprime verso l'esterno: azione visibile, relazione, comportamento osservabile. I (Introverso) = si esprime verso l'interno: ritiro, elaborazione silenziosa, difesa nascosta. Conoscere la propria polarità aiuta a capire come l'adattamento si manifesta nelle relazioni e nel lavoro."},
+  {cat:"AT",q:"Come si usa la porta aperta nel counseling AT?",a:"Vai sempre alla porta aperta prima di tutto. Istrionico → parti dalle emozioni. Ossessivo-Compulsivo e Paranoide → parti dal pensiero. Schizoide, Antisociale, Passivo-Aggressivo → parti dal comportamento concreto. Dalla porta aperta spostati verso il bersaglio. Evita la trappola soprattutto nelle prime sessioni."},
+  {cat:"AT",q:"Cosa sono le carezze false e di plastica?",a:"La carezza falsa inizia con qualcosa di positivo e finisce con una critica ('Vedo che capisci, più o meno'). La carezza di plastica è insincera, esagerata, svuotata di significato. Entrambe distorcono la comunicazione e alimentano copioni negativi. Riconoscerle è il primo passo per costruire relazioni più autentiche."},
+  // ── Enneagramma ──
+  {cat:"Enneagramma",q:"Cos'è l'Enneagramma Evolutivo?",a:"L'Enneagramma Evolutivo di Carlo Alberto Calcagno non è solo un sistema di classificazione ma una mappa di percorsi di trasformazione. Integra le Dignità di Raimondo Lullo, le gerarchie angeliche, le muse greche, i chakra e i percorsi evolutivi per fascia d'età. I 9 tipi attraversano fasi diverse a seconda dell'età (0-3, 3-12, 12-19, 19-30, 30-60, 60+)."},
+  {cat:"Enneagramma",q:"Cosa sono i 9 Frutti dell'Albero della Vita?",a:"I 9 Frutti sono il sistema simbolico originale di Carlo Alberto Calcagno: Mela (T1-Il Perfezionista), Pera (T2-L'Altruista), Ciliegia (T3-Il Realizzatore), Nespola (T4-L'Individualista), Uva (T5-L'Investigatore), Mirtillo (T6-Il Leale), Ananas (T7-L'Entusiasta), Albicocca (T8-Il Challenger), Fragola (T9-Il Pacificatore). Ogni frutto porta attributi spirituali unici."},
+  {cat:"Enneagramma",q:"Come funziona il Test dei 9 Frutti?",a:"180 domande Sì/No (20 per ciascun frutto), circa 15-20 minuti. Risposta istintiva, non ragionata. Il frutto con il punteggio più alto determina il tuo enneatipo principale. Il secondo più alto tra i due adiacenti determina l'ala. Il risultato si connette automaticamente a chakra, cristalli, frequenze, adattamenti AT e Fiori di Bach."},
+  {cat:"Enneagramma",q:"Cosa sono le Dignità di Raimondo Lullo?",a:"Raimondo Lullo (XIII sec.) identificò 9 perfezioni divine: Grandezza, Eternità, Potenza, Sapienza, Volontà, Verità, Gloria, Bontà, Perfezione. Nell'Enneagramma Evolutivo ognuna corrisponde a un enneatipo come 'missione spirituale': T1-Volontà, T2-Eternità, T3-Sapienza, T4-Sapienza, T5-Verità, T6-Grandezza, T7-Grandezza, T8-Gloria, T9-Perfezione."},
+  {cat:"Enneagramma",q:"Come funziona il percorso evolutivo per fascia d'età?",a:"I tipi 3-6-9 hanno un ciclo breve (3 fasi); i tipi 1-2-4-5-7-8 hanno un ciclo lungo (6 fasi). Es. il Tipo 1 passa da 1→7→5→8→2→4 nel percorso di integrazione. Ogni fase porta una diversa dignità, gerarchia angelica, musa e chakra. Clicca su un enneatipo nella sezione Enneatipi per vedere il percorso completo."},
+  {cat:"Enneagramma",q:"Come si individuano i 3 sottotipi di ogni enneatipo?",a:"Ogni enneatipo ha 3 sottotipi: conservativo (autoconservazione), sociale (appartenenza al gruppo) e sessuale (relazione duale intensa). Lo stesso Tipo 2 sarà molto diverso: il conservativo è dedizione assoluta, il sociale è ambizione attraverso l'altruismo, il sessuale è seduzione magnetica."},
+  {cat:"Enneagramma",q:"Come si usa la matrice di compatibilità di coppia?",a:"Vai alla sezione 'Compatibilità di Coppia'. Seleziona i due enneatipi dai menu. Il sistema mostra percentuale di compatibilità, livello (eccellente/ottima/buona/media/difficile), punti di forza, sfide e consigli pratici basati sulla ricerca di Carlo Alberto Calcagno sui 81 possibili abbinamenti."},
+  // ── Chakra ──
+  {cat:"Chakra",q:"Come si usa il sistema dei chakra in terapia?",a:"I 7 chakra mappano lo sviluppo psico-emotivo: ogni centro governa un diritto fondamentale, uno stadio evolutivo e una ghiandola endocrina. Un chakra 'bloccato' si manifesta come pattern emotivo negativo ricorrente. Si lavora con cristalli, frequenze sonore, esercizi corporei e alimentazione mirata. Il Database del sito mostra tutte le connessioni."},
+  {cat:"Chakra",q:"Qual è la connessione tra chakra ed enneatipi?",a:"1° chakra (sopravvivenza) → T8-9-1; 2°-3° (emozioni/potere) → T2-3-4; 5°-6°-7° (pensiero/intuizione) → T5-6-7. Questa correlazione permette percorsi integrati: un T5 con blocco al 5° chakra beneficia delle stesse frequenze (741Hz) sia energeticamente che psicologicamente."},
+  // ── Cristalli ──
+  {cat:"Cristalli",q:"Come si scelgono i cristalli per un lavoro terapeutico?",a:"Si parte dal chakra coinvolto, dal disturbo presentato e dall'enneatipo. Nel Database seleziona 'Cristalli' e cerca per nome, chakra o disturbo. Ogni cristallo ha funzione primaria, disturbi correlati e frequenza solfeggio abbinata. Es: Ametista per il 6°-7° chakra, ansia e insonnia; Granato per il 1° chakra, paura e mancanza di radicamento."},
+  // ── Bach ──
+  {cat:"Bach",q:"Come si scelgono i Fiori di Bach?",a:"I Fiori di Bach si scelgono dallo stato emotivo negativo presente, non dal sintomo fisico. Ogni rimedio trasforma uno stato negativo nella sua qualità positiva (Larch: scarsa autostima → fiducia). Correlano ai chakra attraverso il piano emotivo. Il Rescue Remedy è la combinazione d'emergenza per shock e traumi acuti."},
+  {cat:"Bach",q:"I Fiori di Bach sono compatibili con altri trattamenti?",a:"Sì. Sono sicuri, non tossici e compatibili con qualsiasi trattamento medico, psicologico o olistico. Non sostituiscono il parere del medico ma agiscono sul terreno emotivo da cui i sintomi emergono. Utili come supporto complementare nei percorsi di counseling e terapia."},
+  // ── Pranoterapia ──
+  {cat:"Pranoterapia",q:"Cos'è la pranoterapia?",a:"La pranoterapia è la trasmissione consapevole di energia pranale attraverso le mani. A differenza del Reiki che usa energia universale, la pranoterapia utilizza l'energia personale dell'operatore formato. Agisce su quattro livelli: fisico, emotivo, mentale e spirituale. Utile come complemento a cristalloterapia e frequenze solfeggio."},
+  {cat:"Pranoterapia",q:"Chi può praticare la pranoterapia?",a:"Potenzialmente chiunque: siamo tutti esseri energetici. L'impulso è innato — una madre che posa la mano sul bambino ferito fa pranoterapia. Un trattamento formale richiede formazione specifica per leggere il campo energetico, trasmettere consapevolmente e proteggersi dall'esaurimento."},
+  // ── Test ──
+  {cat:"Test",q:"Come funziona il Test dei 9 Frutti?",a:"180 domande Sì/No in 9 sezioni da 20 domande ciascuna. Puoi navigare liberamente tra i frutti con i pulsanti emoji in cima. Quando completi un frutto si avanza automaticamente. Il risultato mostra il tuo profilo completo a barre e collega il tuo tipo a chakra, cristalli, frequenze, AT e Bach."},
+  {cat:"Test",q:"Come funziona il Test degli Adattamenti AT?",a:"40 domande Sì/No in 6 sezioni (una per adattamento). Risposta istintiva, non ragionata. Il risultato mostra l'intensità di ogni adattamento e se si esprime in modo estroverso o introverso. Tre pulsanti finali: vedi la scheda AT completa, scopri la compatibilità relazionale con il tuo tipo, oppure chiedi alla Consulente AI un percorso personalizzato."},
+  {cat:"Test",q:"Posso fare entrambi i test?",a:"Sì, anzi è consigliato. Il Test dei 9 Frutti identifica il tuo enneatipo principale; il Test degli Adattamenti AT rivela il tuo stile relazionale e comunicativo. I due risultati sono complementari: conoscere sia il tuo enneatipo che il tuo adattamento primario ti dà una mappa molto più precisa per il lavoro su di te."},
+  // ── Sito ──
+  {cat:"Sito",q:"Come funziona la ricerca nel database?",a:"Premi 'Cerca' in alto o nell'hero. Digita qualsiasi parola: un cristallo, un disturbo, un enneatipo, una frequenza. Il sistema cerca in tutti i campi di tutti i domini e raggruppa i risultati per categoria. Clicca su un risultato per aprirlo nel Database Explorer con tutte le sue connessioni."},
+  {cat:"Sito",q:"Come usa il database la Consulente AI?",a:"La Consulente AI ha accesso all'intero database via system prompt: 7 chakra, 15 cristalli, 9 enneatipi, 8 frequenze, 6 adattamenti AT, 15 Fiori di Bach, 7 schede alimentazione, 13 esercizi. Su GitHub Pages è necessaria una API Key Anthropic personale (gratuita al primo utilizzo). Il banner nella chat guida la configurazione."},
+  {cat:"Sito",q:"Come funziona il Database Explorer?",a:"Seleziona un dominio nelle schede (Chakra, Cristalli, Enneatipi, Musica, Adattamenti, Esercizi). Clicca un elemento nella lista. Il pannello di destra mostra tutti i campi e le connessioni con gli altri domini — ogni chip è cliccabile e porta al dettaglio dell'elemento correlato."},
+  {cat:"Sito",q:"Come si configura la Consulente AI su GitHub Pages?",a:"Vai su console.anthropic.com/settings/keys, crea una chiave (nome consigliato: olismo-integrato), copiala. Poi apri il sito, scorri alla sezione 'Consulente AI', incolla la chiave nel banner che appare e clicca Salva. La chiave viene memorizzata nel tuo browser (localStorage) e la AI è attiva da quel momento."},
+  {cat:"Sito",q:"Cosa sono i percorsi consigliati nella Guida?",a:"Sequenze di utilizzo ottimizzate per diversi profili: primo approccio olistico, approfondimento AT, cristalloterapia pratica, fiori di Bach. Ogni percorso suggerisce i passi nel sito per ottenere il massimo. Accessibile dalla sezione Guida nel menu."}
+];
 
 let activeFaqCat = "Tutti";
 function renderFaq(){
@@ -2723,6 +2853,51 @@ function resetAtTest(){
   document.getElementById("at-test-progress").style.display="none";
 }
 
+
+// ── API KEY MANAGEMENT ──
+function initApiKeyBanner(){
+  const stored = localStorage.getItem("olismo_api_key");
+  const section = document.getElementById("api-key-section");
+  const banner = document.getElementById("api-key-needed");
+  if(!banner) return;
+  if(stored){
+    document.getElementById("api-key-clear-btn").style.display="inline-block";
+    document.getElementById("api-key-ok").style.display="inline-block";
+    document.getElementById("api-key-input").value="●●●●●●●●●●●●●●●●";
+  } else {
+    banner.style.display="flex";
+  }
+}
+
+function showApiKeyBanner(){
+  const banner = document.getElementById("api-key-needed");
+  if(banner) banner.style.display="flex";
+}
+
+function checkApiKeyInput(){
+  const val = document.getElementById("api-key-input").value.trim();
+  document.getElementById("api-key-save-btn").disabled = !val.startsWith("sk-");
+}
+
+function saveApiKey(){
+  const val = document.getElementById("api-key-input").value.trim();
+  if(!val.startsWith("sk-")) return;
+  localStorage.setItem("olismo_api_key", val);
+  document.getElementById("api-key-input").value="●●●●●●●●●●●●●●●●";
+  document.getElementById("api-key-ok").style.display="inline-block";
+  document.getElementById("api-key-clear-btn").style.display="inline-block";
+  document.getElementById("api-key-save-btn").disabled=true;
+  addMsg("ai","<em>✓ API Key salvata. Ora puoi usare la Consulente AI. La chiave è memorizzata solo nel tuo browser.</em>");
+}
+
+function clearApiKey(){
+  localStorage.removeItem("olismo_api_key");
+  document.getElementById("api-key-input").value="";
+  document.getElementById("api-key-ok").style.display="none";
+  document.getElementById("api-key-clear-btn").style.display="none";
+  document.getElementById("api-key-save-btn").disabled=true;
+}
+
 function renderTabs(){
   document.getElementById("exp-tabs").innerHTML=Object.entries(CMETA).map(([c,m])=>
     `<button class="exp-tab${c===curCat?" active":""}" onclick="swCat('${c}')">${m.icon} ${m.label}</button>`
@@ -2784,9 +2959,20 @@ function renderPanel(item){
     </div>`;
 }
 function openExp(cat){curCat=cat;renderTabs();renderList();renderPanel(null);
-renderAtCards();renderEgogramma();renderFaq();
+renderAtCards();renderFaq();
 // Test is self-initializing
-analyzeCarezze("pos");analyzeCarezze("neg");st("explorer")}
+analyzeCarezze("pos");analyzeCarezze("neg");
+initApiKeyBanner();
+// Egogramma: chiamata all'init E tramite IntersectionObserver per sicurezza
+renderEgogramma();
+const _egoObserver = new IntersectionObserver((entries)=>{
+  if(entries[0].isIntersecting){
+    if(!document.getElementById("ego-bars").children.length) renderEgogramma();
+    _egoObserver.disconnect();
+  }
+},{threshold:0.1});
+const _egoSection = document.getElementById("egogramma");
+if(_egoSection) _egoObserver.observe(_egoSection);st("explorer")}
 
 // ── CHAKRA ──
 function renderChakra(){
@@ -3183,24 +3369,47 @@ async function sendMsg(){
   document.getElementById("send-btn").disabled=true;
   showTyping();
   try{
+    const apiKey = localStorage.getItem("olismo_api_key") || "";
+    const headers = {"Content-Type":"application/json"};
+    if(apiKey){
+      headers["x-api-key"] = apiKey;
+      headers["anthropic-version"] = "2023-06-01";
+      headers["anthropic-dangerous-direct-browser-access"] = "true";
+    }
     const res=await fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",
-      headers:{"Content-Type":"application/json"},
+      headers,
       body:JSON.stringify({
-        model:"claude-sonnet-4-20250514",
+        model: apiKey ? "claude-3-5-haiku-20241022" : "claude-sonnet-4-20250514",
         max_tokens:1000,
         system:SYSTEM_PROMPT,
         messages:chatHistory
       })
     });
+    if(!res.ok && res.status === 0){
+      throw new Error("CORS");
+    }
     const data=await res.json();
     hideTyping();
+    if(data.error){
+      const errMsg = data.error.message || "Errore API";
+      if(errMsg.includes("auth") || errMsg.includes("key") || errMsg.includes("401")){
+        showApiKeyBanner();
+      }
+      addMsg("ai","<em>⚠ "+errMsg+"</em>");
+      isLoading=false;document.getElementById("send-btn").disabled=false;return;
+    }
     const reply=data.content?.[0]?.text||"Mi dispiace, non ho ricevuto una risposta. Riprova.";
     chatHistory.push({role:"assistant",content:reply});
     addMsg("ai",formatAiReply(reply));
   }catch(e){
     hideTyping();
-    addMsg("ai","<em>Errore di connessione. Verifica la tua connessione e riprova.</em>");
+    if(e.message && (e.message.includes("CORS") || e.message.includes("Failed to fetch"))){
+      showApiKeyBanner();
+      addMsg("ai","<em>🔑 Connessione bloccata. Su GitHub Pages è necessaria una API Key Anthropic personale. Inseriscila nel banner qui sopra.</em>");
+    } else {
+      addMsg("ai","<em>Errore di connessione: "+e.message+". Verifica la tua connessione e riprova.</em>");
+    }
   }
   isLoading=false;
   document.getElementById("send-btn").disabled=false;

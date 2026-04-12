@@ -1411,17 +1411,7 @@ footer{
         </div>
         <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
       </div>
-      <div id="api-key-section" style="padding:.85rem 1.5rem;background:var(--ivory);border-bottom:1px solid var(--ivory3)">
-      <div id="api-key-needed" class="api-key-banner" style="display:none">
-        <p>🔑 Per usare la Consulente AI su GitHub Pages inserisci la tua <a href="https://console.anthropic.com/settings/keys" target="_blank">API Key Anthropic</a>:</p>
-        <div class="api-key-input-wrap">
-          <input type="password" class="api-key-input" id="api-key-input" placeholder="sk-ant-..." oninput="checkApiKeyInput()">
-          <button class="api-key-save" onclick="saveApiKey()" id="api-key-save-btn" disabled>Salva</button>
-          <button class="api-key-clear" onclick="clearApiKey()" id="api-key-clear-btn" style="display:none">Rimuovi</button>
-        </div>
-        <span class="api-key-ok" id="api-key-ok">✓ Chiave salvata — la AI è attiva</span>
-      </div>
-    </div>
+      
     <div class="chat-suggestions">
         <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
         <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
@@ -2540,8 +2530,17 @@ const FAQ_DATA = [
   {cat:"Sito",q:"Come funziona la ricerca nel database?",a:"Premi 'Cerca' in alto o nell'hero. Digita qualsiasi parola: un cristallo, un disturbo, un enneatipo, una frequenza. Il sistema cerca in tutti i campi di tutti i domini e raggruppa i risultati per categoria. Clicca su un risultato per aprirlo nel Database Explorer con tutte le sue connessioni."},
   {cat:"Sito",q:"Come usa il database la Consulente AI?",a:"La Consulente AI ha accesso all'intero database via system prompt: 7 chakra, 15 cristalli, 9 enneatipi, 8 frequenze, 6 adattamenti AT, 15 Fiori di Bach, 7 schede alimentazione, 13 esercizi. Su GitHub Pages è necessaria una API Key Anthropic personale (gratuita al primo utilizzo). Il banner nella chat guida la configurazione."},
   {cat:"Sito",q:"Come funziona il Database Explorer?",a:"Seleziona un dominio nelle schede (Chakra, Cristalli, Enneatipi, Musica, Adattamenti, Esercizi). Clicca un elemento nella lista. Il pannello di destra mostra tutti i campi e le connessioni con gli altri domini — ogni chip è cliccabile e porta al dettaglio dell'elemento correlato."},
-  {cat:"Sito",q:"Come si configura la Consulente AI su GitHub Pages?",a:"Vai su console.anthropic.com/settings/keys, crea una chiave (nome consigliato: olismo-integrato), copiala. Poi apri il sito, scorri alla sezione 'Consulente AI', incolla la chiave nel banner che appare e clicca Salva. La chiave viene memorizzata nel tuo browser (localStorage) e la AI è attiva da quel momento."},
+  {cat:"Sito",q:"Come funziona la Consulente AI?",a:"La Consulente AI è integrata direttamente nel sito e non richiede nessuna configurazione. Puoi usarla immediatamente su qualsiasi dispositivo. Basta descrivere la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo — e la consulente olistica ti risponde attingendo all'intero database di chakra, cristalli, enneatipi, frequenze, fiori di Bach e AT."},
   {cat:"Sito",q:"Cosa sono i percorsi consigliati nella Guida?",a:"Sequenze di utilizzo ottimizzate per diversi profili: primo approccio olistico, approfondimento AT, cristalloterapia pratica, fiori di Bach. Ogni percorso suggerisce i passi nel sito per ottenere il massimo. Accessibile dalla sezione Guida nel menu."}
+,
+
+  // ── Neuroscienze ──
+  {cat:"Neuroscienze",q:"Cosa sono le aree cerebrali degli enneatipi?",a:"Secondo Tony Nader (ricercatore vedico) ogni enneatipo corrisponde a una specifica area del cervello: T1→Amigdala, T2→Talamo, T3→Testa del nucleo caudato, T4→Nucleo subtalamico, T5→Putamen, T6→Coda del nucleo caudato, T7→Globo pallido, T8→Pars Reticolare e Substantia Nigra, T9→Ipotalamo. Queste aree sono collegate anche ai Chakra e ai pianeti vedici."},
+  {cat:"Neuroscienze",q:"Cos'è il cervello tripartito e come si collega all'Enneagramma?",a:"Paul MacLean (neuroscienziato) ha descritto tre cervelli sovrapposti: il Rettiliano (sopravvivenza, territorio, gangli della base), il Paleomammaliano/Limbico (emozioni, memoria, attaccamento) e il Neomammaliano/Corticale (ragione, linguaggio). Gli enneatipi T3, T4, T5, T6, T7, T8 hanno la loro area nel cervello rettiliano; T1, T2, T9 nel sistema limbico. Nell'AT il Bambino corrisponde al limbico, l'Adulto alla corteccia prefrontale."},
+  {cat:"Neuroscienze",q:"Cosa sono le Muse di Kircher e come si collegano agli enneatipi?",a:"Athanasius Kircher (1665) correlò le 9 gerarchie angeliche, le facoltà umane e le 9 Muse greche agli enneatipi: T1→Urania (astronomia/geometria), T2→Polimnia (memoria/retorica), T3→Euterpe (musica), T4→Erato (poesia amorosa), T5→Melpomene (tragedia), T6→Tersicore (danza), T7→Calliope (poesia epica), T8→Clio (storia), T9→Talia (poesia bucolica). Ogni enneatipo porta nel mondo una specifica 'conoscenza' legata alla propria Musa."},
+  {cat:"Neuroscienze",q:"Come si collega il cervello rettiliano all'Analisi Transazionale?",a:"Il cervello rettiliano (gangli della base, tronco encefalico) corrisponde al Bambino Somatico nell'AT — gli istinti primari di sopravvivenza, territorialità e riproduzione. Il sistema limbico (amigdala, talamo, ipotalamo) corrisponde al Bambino Emotivo — emozioni, attaccamento, memoria affettiva. La corteccia prefrontale corrisponde all'Adulto AT — razionalità, pianificazione, coscienza. Il Genitore AT risiede nella neocorteccia dove sono immagazzinati i valori introiettati."},
+  // ── Update Sito FAQ ──
+  {cat:"Sito",q:"La Consulente AI ha bisogno di una chiave API?",a:"No. La Consulente AI è ora integrata direttamente nel sito senza bisogno di inserire nessuna chiave. È disponibile automaticamente a tutti gli utenti su tutti i dispositivi."}
 ];
 
 let activeFaqCat = "Tutti";
@@ -3091,49 +3090,7 @@ function resetAtTest(){
 }
 
 
-// ── API KEY MANAGEMENT ──
-function initApiKeyBanner(){
-  const stored = localStorage.getItem("olismo_api_key");
-  const section = document.getElementById("api-key-section");
-  const banner = document.getElementById("api-key-needed");
-  if(!banner) return;
-  if(stored){
-    document.getElementById("api-key-clear-btn").style.display="inline-block";
-    document.getElementById("api-key-ok").style.display="inline-block";
-    document.getElementById("api-key-input").value="●●●●●●●●●●●●●●●●";
-  } else {
-    banner.style.display="flex";
-  }
-}
 
-function showApiKeyBanner(){
-  const banner = document.getElementById("api-key-needed");
-  if(banner) banner.style.display="flex";
-}
-
-function checkApiKeyInput(){
-  const val = document.getElementById("api-key-input").value.trim();
-  document.getElementById("api-key-save-btn").disabled = !val.startsWith("sk-");
-}
-
-function saveApiKey(){
-  const val = document.getElementById("api-key-input").value.trim();
-  if(!val.startsWith("sk-")) return;
-  localStorage.setItem("olismo_api_key", val);
-  document.getElementById("api-key-input").value="●●●●●●●●●●●●●●●●";
-  document.getElementById("api-key-ok").style.display="inline-block";
-  document.getElementById("api-key-clear-btn").style.display="inline-block";
-  document.getElementById("api-key-save-btn").disabled=true;
-  addMsg("ai","<em>✓ API Key salvata. Ora puoi usare la Consulente AI. La chiave è memorizzata solo nel tuo browser.</em>");
-}
-
-function clearApiKey(){
-  localStorage.removeItem("olismo_api_key");
-  document.getElementById("api-key-input").value="";
-  document.getElementById("api-key-ok").style.display="none";
-  document.getElementById("api-key-clear-btn").style.display="none";
-  document.getElementById("api-key-save-btn").disabled=true;
-}
 
 
 
@@ -3555,6 +3512,19 @@ DANZA DEL CONFLITTO (T8-T9): T8 combatte (simpatico attivato), T9 si congela (do
 I 9 FRUTTI DELL'ALBERO DELLA VITA (sistema Calcagno):
 T1=🍎Mela (Dignità:Volontà, Serafini, Urania), T2=🍐Pera (Eternità, Cherubini, Polimnia), T3=🍒Ciliegia (Sapienza, Troni, Euterpe), T4=🫐Nespola (Sapienza, Dominazioni, Erato), T5=🍇Uva (Verità, Potestà, Melpomene), T6=🫐Mirtillo (Grandezza, Virtù, Tersicore), T7=🍍Ananas (Grandezza, Principati, Calliope), T8=🍑Albicocca (Gloria, Arcangeli, Clio), T9=🍓Fragola (Perfezione, Angeli, Talia)
 
+AREE CEREBRALI DEGLI ENNEATIPI (Tony Nader — Enneagramma Vedico):
+T1=Amigdala (sistema limbico/emozionale) · T2=Talamo (sistema limbico) · T3=Testa del nucleo caudato (rettiliano) · T4=Nucleo subtalamico (rettiliano) · T5=Putamen (rettiliano) · T6=Coda del nucleo caudato (rettiliano) · T7=Globo pallido (rettiliano) · T8=Pars Reticolare e Substantia Nigra (rettiliano/mesencefalo) · T9=Ipotalamo (sistema limbico).
+
+CERVELLO TRIPARTITO (MacLean) e AT:
+- Rettiliano (gangli base, tronco encefalico) = Bambino Somatico AT — istinti sopravvivenza, territorialità
+- Paleomammaliano/Limbico (amigdala, talamo, ipotalamo) = Bambino Emotivo AT — emozioni, memoria, attaccamento  
+- Neomammaliano/Corticale (neocorteccia) = Adulto AT — ragione, linguaggio, pianificazione
+- Neocorteccia (valori introiettati) = Genitore AT
+
+MUSE DI KIRCHER (facoltà e sensi per enneatipo):
+T1=Mente/Urania · T2=Intelletto/Polimnia · T3=Ragione/Euterpe · T4=Immaginazione/Erato · T5=Udito/Melpomene · T6=Vista/Tersicore · T7=Olfatto/Calliope · T8=Gusto/Clio · T9=Tatto/Talia
+Gerarchie angeliche: T1=Serafini, T2=Cherubini, T3=Troni, T4=Dominazioni, T5=Potestà, T6=Virtù, T7=Principati, T8=Arcangeli, T9=Angeli.
+
 PERCORSI EVOLUTIVI: Ciclo lungo (T1,2,4,5,7,8) 6 fasi per età; Ciclo breve (T3,6,9) 3 fasi. T1: 1→7→5→8→2→4. T8 in integrazione→T2 (forza→tenerezza). T5 in integrazione→T8 (ritiro→azione). Ogni tipo ha ali (tipi adiacenti) che sfumano la personalità.
 
 COMPATIBILITÀ TOP: T1-T2 (85%), T4-T5 (88%), T8-T2 (85%). DIFFICILE: T3-T6 (45%), T7-T4 (50%). Quando parli di relazioni cita sempre la compatibilità dei tipi coinvolti.
@@ -3618,7 +3588,7 @@ async function sendMsg(){
       method:"POST",
       headers,
       body:JSON.stringify({
-        model: apiKey ? "claude-haiku-4-5-20251001" : "claude-sonnet-4-6",
+        model: "claude-haiku-4-5-20251001",
         max_tokens:1000,
         system:SYSTEM_PROMPT,
         messages:chatHistory

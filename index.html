@@ -2532,6 +2532,103 @@ body.dark .dark-toggle{background:#3a3632}
   background:var(--gold);color:white;
 }
 
+
+/* ══ TEST VETTORE COMUNICATIVO ══ */
+.trans-test-container{
+  background:white;border-radius:14px;
+  border:1px solid var(--border);
+  padding:2rem;margin-bottom:3rem;
+  box-shadow:0 2px 20px rgba(0,0,0,.04);
+}
+.trans-welcome-box{text-align:center;padding:.5rem 0 1rem}
+.trans-welcome-grid{
+  display:flex;justify-content:center;gap:2rem;
+  margin-bottom:1.5rem;flex-wrap:wrap;
+}
+.trans-welcome-item{display:flex;align-items:center;gap:.6rem}
+.trans-welcome-icon{font-size:1.4rem}
+.trans-welcome-text{font-size:.82rem;color:var(--ink2);text-align:left;line-height:1.45}
+.trans-start-btn{
+  padding:.7rem 2.4rem;background:var(--gold);color:white;
+  border:none;border-radius:24px;font-size:.9rem;font-weight:600;
+  cursor:pointer;letter-spacing:.04em;transition:opacity .2s;
+}
+.trans-start-btn:hover{opacity:.85}
+
+/* Progress bar */
+.trans-q-bar{
+  height:4px;background:var(--ivory3);border-radius:2px;
+  margin-bottom:1.2rem;overflow:hidden;
+}
+.trans-q-bar-fill{
+  height:100%;background:var(--gold);border-radius:2px;
+  transition:width .3s ease;
+}
+.trans-q-num{font-size:.7rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
+.trans-q-scenario{
+  font-size:1rem;font-weight:600;color:var(--ink1);
+  line-height:1.5;margin-bottom:1.4rem;
+}
+.trans-q-opts{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
+.trans-q-opt{
+  display:flex;align-items:flex-start;gap:.8rem;
+  padding:.8rem 1rem;
+  background:var(--ivory2);border:1px solid var(--ivory3);
+  border-radius:8px;cursor:pointer;text-align:left;
+  font-size:.85rem;color:var(--ink2);line-height:1.5;
+  transition:all .15s;
+}
+.trans-q-opt:hover{background:var(--gold-pale);border-color:var(--gold);color:var(--gold)}
+.trans-q-letter{
+  flex-shrink:0;width:22px;height:22px;
+  background:var(--gold);color:white;
+  font-size:.7rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;margin-top:.05rem;
+}
+.trans-back-btn{
+  background:none;border:1px solid var(--border);
+  border-radius:6px;padding:.35rem .9rem;
+  font-size:.75rem;color:var(--ink3);cursor:pointer;
+}
+.trans-q-nav{margin-top:.4rem}
+
+/* Result */
+.trans-res-header{
+  background:var(--ivory2);border-radius:10px;
+  padding:1.4rem 1.6rem;margin-bottom:1.2rem;
+  text-align:center;
+}
+.trans-res-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:.3rem}
+.trans-res-primary{font-size:2.5rem;font-weight:700;line-height:1.1;margin-bottom:.2rem;font-family:'Cormorant Garamond',serif}
+.trans-res-name{font-size:1rem;font-weight:600;color:var(--ink1);margin-bottom:.4rem}
+.trans-res-desc{font-size:.85rem;color:var(--ink3);font-style:italic}
+.trans-res-bars{margin-bottom:1.2rem}
+.trans-res-bar-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.trans-res-bar-label{width:36px;font-size:.73rem;font-weight:700;flex-shrink:0;text-align:right}
+.trans-res-bar-wrap{flex:1;height:10px;background:var(--ivory3);border-radius:5px;overflow:hidden}
+.trans-res-bar-fill{height:100%;border-radius:5px;transition:width .6s ease}
+.trans-res-bar-pct{width:36px;font-size:.72rem;color:var(--ink3)}
+.trans-res-risk{
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);
+  border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem;
+}
+.trans-res-risk-title{font-size:.75rem;font-weight:700;color:#b91c1c;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.trans-res-risk p{font-size:.82rem;color:var(--ink2);line-height:1.6;margin-bottom:.4rem}
+.trans-res-risk-meta{font-size:.72rem;color:var(--ink3);font-style:italic}
+.trans-res-fix{
+  background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);
+  border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.2rem;
+}
+.trans-res-fix-title{font-size:.75rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.trans-res-fix p{font-size:.82rem;color:var(--ink2);line-height:1.6}
+.trans-res-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem}
+.trans-restart-btn{
+  padding:.5rem 1.4rem;background:none;
+  border:1px solid var(--border);border-radius:20px;
+  font-size:.78rem;color:var(--ink3);cursor:pointer;
+}
+
 </style>
 
 
@@ -3143,7 +3240,41 @@ body.dark .dark-toggle{background:#3a3632}
 <!-- ▐▐ COMUNICAZIONE TRANSAZIONALE ══════════════════════════ -->
 <section id="transazioni">
   <div class="container">
-    <div class="sec-hd">
+    
+    <!-- TEST VETTORE COMUNICATIVO -->
+    <div class="trans-test-container">
+      <div class="sec-hd" style="margin-bottom:1.5rem">
+        <div class="sec-eye">Analisi Transazionale · Test interattivo</div>
+        <h2 class="sec-title">Test del <em>Vettore Comunicativo</em></h2>
+        <div class="sec-div"></div>
+        <p class="sec-desc">20 scenari di vita reale per scoprire quale stato dell'Io usi prevalentemente nelle relazioni. Scoprirai il tuo vettore primario, il rischio di transazione incrociata e come correggerlo.</p>
+      </div>
+
+      <!-- WELCOME -->
+      <div id="trans-test-welcome" class="trans-welcome-box">
+        <div class="trans-welcome-grid">
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">⏱</div>
+            <div class="trans-welcome-text"><strong>~8 minuti</strong><br>20 scenari</div>
+          </div>
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">🎯</div>
+            <div class="trans-welcome-text"><strong>Risposta istintiva</strong><br>Prima reazione = più vera</div>
+          </div>
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">🔀</div>
+            <div class="trans-welcome-text"><strong>9 vettori</strong><br>GN · GA · A · BL · BA</div>
+          </div>
+        </div>
+        <button class="trans-start-btn" onclick="startTransTest()">Scopri il tuo vettore →</button>
+      </div>
+
+      <!-- PROGRESS / RESULT -->
+      <div id="trans-test-progress" style="display:none"></div>
+    </div>
+
+
+    <div class="sec-hd" style="margin-top:3rem">
       <div class="sec-eye">Analisi Transazionale · Berne · Ware & Joines</div>
       <h2 class="sec-title">Comunicazione <em>transazionale</em></h2>
       <div class="sec-div"></div>
@@ -4723,6 +4854,375 @@ const AT_COLORS = {
   "ad1":"#6366f1","ad2":"#ef4444","ad3":"#f59e0b",
   "ad4":"#10b981","ad5":"#3b82f6","ad6":"#ec4899"
 };
+
+// ══════════════════════════════════════════════════════════
+// TEST DEL VETTORE COMUNICATIVO — 20 scenari AT
+// ══════════════════════════════════════════════════════════
+
+const VETTORI_TEST_QS = [
+  {
+    id:'v01', scenario:'Stai spiegando qualcosa e l\'altro capisce male. Come reagisci?',
+    opts:[
+      {t:'Rifaccio la spiegazione in modo diverso, più chiaro e metodico.', v:'A'},
+      {t:'Dico: «Non ha importanza, sono io che mi sono spiegato male» e lo rassicuro.', v:'GA+'},
+      {t:'Sento un filo d\'impazienza ma aspetto che capisca.', v:'BA-'},
+      {t:'Gli dico direttamente: «Devi prestare più attenzione quando ti parlo.»', v:'GN-'},
+    ]
+  },
+  {
+    id:'v02', scenario:'Un collega ti chiede aiuto su un problema che sai risolvere.',
+    opts:[
+      {t:'Gli spiego il procedimento passo dopo passo, assicurandomi che capisca.', v:'A'},
+      {t:'Lo aiuto subito con entusiasmo, ci metto del mio.', v:'BL+'},
+      {t:'Lo guido ma aspetto che trovi da solo la soluzione.', v:'GA+'},
+      {t:'Penso: «Dovrebbe già saperlo» ma lo aiuto lo stesso, un po\' seccato.', v:'GN-'},
+    ]
+  },
+  {
+    id:'v03', scenario:'Qualcuno ti critica davanti ad altri. Come ti senti e come reagisci?',
+    opts:[
+      {t:'Mi irrigidisco, non rispondo. Internamente la rimugino.', v:'BA-'},
+      {t:'Rispondo calmamente: «Grazie, ci penso. Hai qualche suggerimento specifico?»', v:'A'},
+      {t:'Mi sento ferito/a ma sorrido per mantenere l\'armonia.', v:'BA+'},
+      {t:'Contrattacco immediatamente o cambio argomento con una battuta.', v:'BL-'},
+    ]
+  },
+  {
+    id:'v04', scenario:'Devi dare un feedback negativo a qualcuno che rispetti.',
+    opts:[
+      {t:'Parto da quello che funziona, poi dico cosa migliorare con esempi concreti.', v:'A'},
+      {t:'Faccio fatica a dirlo, metto tanti "però" e "ma" per ammorbidire.', v:'GA+'},
+      {t:'Lo dico chiaramente, senza giri di parole: meglio così per tutti.', v:'GN+'},
+      {t:'Rimando finché non sono "sicuro/a del momento giusto".', v:'BA-'},
+    ]
+  },
+  {
+    id:'v05', scenario:'Sei in una riunione che si allunga oltre il previsto. Cosa pensi?',
+    opts:[
+      {t:'«Dobbiamo definire i prossimi passi e chiudere entro 15 minuti.»', v:'A'},
+      {t:'«Tutti sembrano stanchi, forse è meglio rimandare.»', v:'GA+'},
+      {t:'Guardo l\'orologio, tamburello con le dita, mi agito.', v:'BL-'},
+      {t:'«Questa riunione è un disastro, nessuno sa gestire il tempo.»', v:'GN-'},
+    ]
+  },
+  {
+    id:'v06', scenario:'Un amico ti racconta un problema serio. Come rispondi?',
+    opts:[
+      {t:'Ascolto, poi propongo possibili soluzioni concrete.', v:'A'},
+      {t:'Mi immedesimo, lo faccio sentire capito prima di qualsiasi soluzione.', v:'GA+'},
+      {t:'Mi coinvolgo emotivamente, mi sento anche io agitato/a.', v:'BL+'},
+      {t:'Penso: «Ha sbagliato lui/lei, doveva agire diversamente.»', v:'GN-'},
+    ]
+  },
+  {
+    id:'v07', scenario:'Stai lavorando su un progetto e qualcuno cambia i piani all\'ultimo.',
+    opts:[
+      {t:'Analizzo le nuove informazioni e mi adatto rapidamente.', v:'A'},
+      {t:'Mi arrabbio internamente ma accetto per non creare problemi.', v:'BA+'},
+      {t:'Dico chiaramente che questo crea difficoltà e propongo un piano B.', v:'A'},
+      {t:'Scoppio: «Non si fanno le cose così!»', v:'GN-'},
+    ]
+  },
+  {
+    id:'v08', scenario:'Qualcuno ti fa un complimento inaspettato. Come reagisci?',
+    opts:[
+      {t:'Ringrazio semplicemente e vado avanti.', v:'A'},
+      {t:'Mi illumino, mi fa davvero piacere e lo esprimo.', v:'BL+'},
+      {t:'Mi imbarazzo un po\', lo relativizzo: «Non ho fatto niente di speciale.»', v:'BA-'},
+      {t:'Penso: «Cosa vuole in cambio?»', v:'GN-'},
+    ]
+  },
+  {
+    id:'v09', scenario:'Devi prendere una decisione importante senza avere tutte le informazioni.',
+    opts:[
+      {t:'Valuto i pro e i contro con le informazioni disponibili e decido.', v:'A'},
+      {t:'Chiedo consiglio a chi mi è vicino prima di scegliere.', v:'BA+'},
+      {t:'Seguo l\'intuizione, mi fido del mio senso delle cose.', v:'BL+'},
+      {t:'Rimando finché non ho tutti i dati necessari.', v:'BA-'},
+    ]
+  },
+  {
+    id:'v10', scenario:'In una discussione accesa, il tono si alza. Come intervieni?',
+    opts:[
+      {t:'Dico: «Fermiamoci un momento. Qual è il vero problema?»', v:'A'},
+      {t:'Cerco di calmare tutti, propongo una pausa.', v:'GA+'},
+      {t:'Mi alzo di livello anche io, non lascio l\'ultima parola agli altri.', v:'BL-'},
+      {t:'Mi chiudo in silenzio finché non si calmano.', v:'BA-'},
+    ]
+  },
+  {
+    id:'v11', scenario:'Stai insegnando qualcosa e l\'allievo sbaglia più volte.',
+    opts:[
+      {t:'Analizzo dove avviene l\'errore e cambio il metodo di spiegazione.', v:'A'},
+      {t:'Lo incoraggi: «Stai migliorando, ci sei quasi.»', v:'GA+'},
+      {t:'Penso: «Non ci arriverà mai.» ma continui pazientemente.', v:'GN-'},
+      {t:'Ti senti frustrato/a e fai capire che ti aspettavi di più.', v:'GN-'},
+    ]
+  },
+  {
+    id:'v12', scenario:'Hai fatto un errore che ha avuto conseguenze su altri. Come ti comporti?',
+    opts:[
+      {t:'Lo ammetti, analizzi cosa è andato storto e proponi una soluzione.', v:'A'},
+      {t:'Ti scusi profusamente, ti senti molto in colpa.', v:'BA+'},
+      {t:'Cerchi inconsciamente di minimizzare o trovare attenuanti.', v:'BL-'},
+      {t:'Ti autoaccusi duramente: «Sono sempre lo/la stesso/a.»', v:'BA-'},
+    ]
+  },
+  {
+    id:'v13', scenario:'Qualcuno ti chiede di fare qualcosa che non vuoi fare.',
+    opts:[
+      {t:'Dico tranquillamente: «Non posso farlo, ma potrei aiutarti in un altro modo.»', v:'A'},
+      {t:'Accetto per non deluderlo/la, anche se dentro mi dispiace.', v:'BA+'},
+      {t:'Trovo una scusa plausibile per declinare.', v:'BA-'},
+      {t:'Dico chiaramente: «No, non è una cosa che rientra nei miei impegni.»', v:'GN+'},
+    ]
+  },
+  {
+    id:'v14', scenario:'Ti trovi in una situazione nuova e stimolante. Come ti senti?',
+    opts:[
+      {t:'Curioso/a, energico/a, mi butto con entusiasmo.', v:'BL+'},
+      {t:'Un po\' ansioso/a — preferisco sapere cosa mi aspetta.', v:'BA-'},
+      {t:'Valuto subito rischi e opportunità, poi procedo.', v:'A'},
+      {t:'Guardo prima come si comportano gli altri.', v:'BA+'},
+    ]
+  },
+  {
+    id:'v15', scenario:'Qualcuno piange davanti a te. Come reagisci?',
+    opts:[
+      {t:'Mi avvicino, lo/la abbraccio, sto in silenzio con lui/lei.', v:'GA+'},
+      {t:'Mi commuovo anche io, ci sento molto.', v:'BL+'},
+      {t:'Cerco di capire cosa è successo e cosa si può fare.', v:'A'},
+      {t:'Mi irrigidisco un po\', non so come gestire le emozioni altrui.', v:'BA-'},
+    ]
+  },
+  {
+    id:'v16', scenario:'Devi coordinare un gruppo su un compito urgente.',
+    opts:[
+      {t:'Definisco ruoli, tempi e obiettivi chiari per ognuno.', v:'A'},
+      {t:'Motivo il gruppo, mi assicuro che tutti stiano bene.', v:'GA+'},
+      {t:'Prendo il comando in modo diretto e deciso.', v:'GN+'},
+      {t:'Aspetto che qualcuno prenda l\'iniziativa, poi mi adeguo.', v:'BA+'},
+    ]
+  },
+  {
+    id:'v17', scenario:'Qualcuno non rispetta un accordo preso con te.',
+    opts:[
+      {t:'Gliene parlo direttamente: «Avevamo detto X, cosa è successo?»', v:'A'},
+      {t:'Mi arrabbio e glielo faccio pesare, anche con sarcasmo.', v:'GN-'},
+      {t:'Rimango deluso/a ma non lo dico per non creare conflitto.', v:'BA-'},
+      {t:'Cerco di capire se ha avuto difficoltà e gli/le vengo incontro.', v:'GA+'},
+    ]
+  },
+  {
+    id:'v18', scenario:'Sei di buon umore. Come lo esprimi nel quotidiano?',
+    opts:[
+      {t:'Sono produttivo/a, tutto scorre, lavoro bene.', v:'A'},
+      {t:'Sono solare, faccio complimenti, condivido l\'energia con gli altri.', v:'BL+'},
+      {t:'Sono gentile, mi preoccupo degli altri più del solito.', v:'GA+'},
+      {t:'Quasi non lo dico — non voglio "bruciarlo" mostrandolo troppo.', v:'BA-'},
+    ]
+  },
+  {
+    id:'v19', scenario:'Una persona nuova entra nel tuo gruppo di lavoro.',
+    opts:[
+      {t:'La accogliere, le spiego come funzionano le cose, mi rendo disponibile.', v:'GA+'},
+      {t:'Osservo prima come si comporta, poi decido quanto aprirmi.', v:'BA-'},
+      {t:'Le do subito le informazioni essenziali, poi lavoro.', v:'A'},
+      {t:'Mi entusiasmo, voglio conoscerla subito, creo subito connessione.', v:'BL+'},
+    ]
+  },
+  {
+    id:'v20', scenario:'Stai per concludere un lavoro importante. Come ti senti?',
+    opts:[
+      {t:'Soddisfatto/a, verifico che tutto sia a posto prima di dichiararlo finito.', v:'A'},
+      {t:'Euforico/a, non vedo l\'ora di condividerlo con gli altri.', v:'BL+'},
+      {t:'Penso già al prossimo: «Si potrebbe migliorare ancora...»', v:'GN-'},
+      {t:'Un po\' vuoto/a: finché dura il processo mi sento utile, poi…', v:'BA-'},
+    ]
+  }
+];
+
+const VETTORI_LABELS = {
+  'GN+': {name:'Genitore Normativo positivo', short:'GN+', color:'#ef4444', desc:'Dai regole chiare, guidi, proteggi. In eccesso: controllo, giudizio.'},
+  'GN-': {name:'Genitore Normativo negativo', short:'GN−', color:'#b91c1c', desc:'Critica, punisce, svaluta. Rompe le transazioni.'},
+  'GA+': {name:'Genitore Affettivo positivo', short:'GA+', color:'#f59e0b', desc:'Nutre, supporta, accudisce. In eccesso: salvataggio.'},
+  'GA-': {name:'Genitore Affettivo negativo', short:'GA−', color:'#b45309', desc:'Iperprotegge, soffoca, genera dipendenza.'},
+  'A':   {name:'Adulto', short:'A', color:'#3b82f6', desc:'Elabora il qui e ora, razionale, informativo. Vettore ideale.'},
+  'BL+': {name:'Bambino Libero positivo', short:'BL+', color:'#10b981', desc:'Spontaneo, creativo, curioso, vitale.'},
+  'BL-': {name:'Bambino Libero negativo', short:'BL−', color:'#059669', desc:'Egoistico, impulsivo, manipolativo.'},
+  'BA+': {name:'Bambino Adattato positivo', short:'BA+', color:'#8b5cf6', desc:'Coopera, rispetta, negozia, sa adattarsi.'},
+  'BA-': {name:'Bambino Adattato negativo', short:'BA−', color:'#6d28d9', desc:'Compiacente, ritirato, soppresso, evitante.'},
+};
+
+// Transazioni incrociate da vettore dominante
+const TRANS_RISCHIO = {
+  'GN-': {
+    incrociata:'Invii messaggi G→B (critici) attendendoti A→A. L\'altro percepisce un giudizio e risponde con difesa (B→G) o silenzio (BA-). Stallo.',
+    enneatipo:'Tipico di T1 (perfezione/critica) e T6 (ipervigilanza). Il controllo rompe le conversazioni.',
+    correzione:'Sostituisci la critica con la domanda: «Cosa ne pensi?» invece di «Dovresti fare così».',
+  },
+  'GA+': {
+    incrociata:'Offri supporto (G→B) quando l\'altro non lo ha chiesto (A→A). L\'altro si sente infantilizzato o in debito.',
+    enneatipo:'Tipico di T2 (dare/aiutare) e T9 (armonia a tutti i costi). Il salvataggio genera dipendenza.',
+    correzione:'Prima di aiutare, chiedi: «Vuoi che ti aiuti o vuoi che ascolti solo?»',
+  },
+  'A': {
+    incrociata:'Raramente. Rischio: freddo/distaccato quando l\'altro ha bisogno di un vettore emotivo (GA+ o BL+).',
+    enneatipo:'Tipico di T5 (analisi), T1 (logica), T6 (ragionamento). L\'eccessivo distacco emotivo isola.',
+    correzione:'Integra il vettore GA+ nelle situazioni emotive: «Capisco come ti senti» prima dei dati.',
+  },
+  'BL+': {
+    incrociata:'Entusiasmo (B→B) in contesti che richiedono A→A. L\'altro si sente non ascoltato o distratto.',
+    enneatipo:'Tipico di T7 (entusiasmo) e T4 (espressività). L\'impulsività può saltare le fasi di ascolto.',
+    correzione:'Prima di rispondere con l\'energia, fai una pausa: «Lasciami capire bene la situazione.»',
+  },
+  'BL-': {
+    incrociata:'Risposte impulsive/sarcasmo (BL−→GN−) a stimoli neutri (A→A). L\'altro si irrigidisce o si chiude.',
+    enneatipo:'Tipico di T8 (forza/dominio) e T4 in stress. La reattività escalation i conflitti.',
+    correzione:'Identifica il trigger. Pratica il \'timeout\': esci fisicamente 5 minuti prima di rispondere.',
+  },
+  'BA+': {
+    incrociata:'Compliance (BA+) quando l\'altro si aspetta una risposta diretta (A→A). Crei confusione: «Sei d\'accordo o no?»',
+    enneatipo:'Tipico di T2 (piacere) e T9 (pace). La compiacenza sistematica alimenta risentimenti silenti.',
+    correzione:'Allena il diritto a dissentire: «Non sono d\'accordo su questo specifico punto.»',
+  },
+  'BA-': {
+    incrociata:'Ritiro o silenzio (BA−) a qualsiasi stimolo. L\'altro non sa mai a cosa aggrapparsi. Frustrazione.',
+    enneatipo:'Tipico di T5 (ritiro) e T6 (paura). L\'evitamento sistematico non permette la risoluzione.',
+    correzione:'Pratiche di espressione graduale: inizia con piccole opinioni, poi aumenta la consistenza.',
+  },
+};
+
+let transAnswers = {};
+let transStarted = false;
+
+function startTransTest(){
+  transStarted = true;
+  transAnswers = {};
+  document.getElementById('trans-test-welcome').style.display='none';
+  document.getElementById('trans-test-progress').style.display='block';
+  renderTransQuestion(0);
+}
+
+function renderTransQuestion(qi){
+  const q = VETTORI_TEST_QS[qi];
+  if(!q) return showTransResult();
+
+  const progress = Math.round((qi/VETTORI_TEST_QS.length)*100);
+  const prog = document.getElementById('trans-test-progress');
+
+  // Shuffle options
+  const shuffled = [...q.opts].sort(()=>Math.random()-0.5);
+
+  prog.innerHTML = `
+    <div class="trans-q-bar">
+      <div class="trans-q-bar-fill" style="width:${progress}%"></div>
+    </div>
+    <div class="trans-q-num">Scenario ${qi+1} di ${VETTORI_TEST_QS.length}</div>
+    <div class="trans-q-scenario">${q.scenario}</div>
+    <div class="trans-q-opts">
+      ${shuffled.map((o,i)=>`
+        <button class="trans-q-opt" onclick="selectTransOpt('${q.id}','${o.v}',${qi})">
+          <span class="trans-q-letter">${String.fromCharCode(65+i)}</span>
+          ${o.t}
+        </button>
+      `).join('')}
+    </div>
+    <div class="trans-q-nav">
+      ${qi>0?`<button class="trans-back-btn" onclick="renderTransQuestion(${qi-1})">← Indietro</button>`:''}
+    </div>
+  `;
+}
+
+function selectTransOpt(qid, vettore, qi){
+  transAnswers[qid] = vettore;
+  // Highlight selected briefly then advance
+  setTimeout(()=>renderTransQuestion(qi+1), 300);
+}
+
+function showTransResult(){
+  // Count vettori scores
+  const scores = {'GN+':0,'GN-':0,'GA+':0,'GA-':0,'A':0,'BL+':0,'BL-':0,'BA+':0,'BA-':0};
+  Object.values(transAnswers).forEach(v=>{ if(scores[v]!==undefined) scores[v]++; });
+
+  // Group: positive vs negative
+  const positive = {
+    'A': scores['A'],
+    'GN+': scores['GN+'],
+    'GA+': scores['GA+'],
+    'BL+': scores['BL+'],
+    'BA+': scores['BA+'],
+  };
+  const negative = {
+    'GN-': scores['GN-'],
+    'BL-': scores['BL-'],
+    'BA-': scores['BA-'],
+  };
+
+  const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const primary = sorted[0][0];
+  const second  = sorted[1][0];
+  const total   = Object.values(scores).reduce((s,v)=>s+v,0)||1;
+
+  const pv = VETTORI_LABELS[primary]||VETTORI_LABELS['A'];
+  const sv = VETTORI_LABELS[second]||VETTORI_LABELS['A'];
+  const risk = TRANS_RISCHIO[primary]||TRANS_RISCHIO['A'];
+
+  // Bar chart data — top 5
+  const top5 = sorted.slice(0,5);
+
+  // Save to profile
+  saveProfileResult('trans',{
+    vettore_primario: primary,
+    vettore_sec: second,
+    scores,
+    pct_primario: Math.round((sorted[0][1]/total)*100)
+  });
+
+  const prog = document.getElementById('trans-test-progress');
+  prog.innerHTML = `
+    <div class="trans-res-header" style="border-top:4px solid ${pv.color}">
+      <div class="trans-res-label">Il tuo vettore comunicativo primario</div>
+      <div class="trans-res-primary" style="color:${pv.color}">${pv.short}</div>
+      <div class="trans-res-name">${pv.name}</div>
+      <div class="trans-res-desc">${pv.desc}</div>
+    </div>
+
+    <div class="trans-res-bars">
+      ${top5.map(([v,s])=>{
+        const vd = VETTORI_LABELS[v]||{};
+        const pct = Math.round((s/total)*100);
+        return `<div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:${vd.color||'#888'}">${v}</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:${pct}%;background:${vd.color||'#888'}"></div>
+          </div>
+          <span class="trans-res-bar-pct">${pct}%</span>
+        </div>`;
+      }).join('')}
+    </div>
+
+    ${risk?`<div class="trans-res-risk">
+      <div class="trans-res-risk-title">⚡ Rischio transazione incrociata</div>
+      <p>${risk.incrociata}</p>
+      <div class="trans-res-risk-meta">
+        <span>Enneatipi correlati: ${risk.enneatipo}</span>
+      </div>
+    </div>
+    <div class="trans-res-fix">
+      <div class="trans-res-fix-title">✦ Strategia correttiva</div>
+      <p>${risk.correzione}</p>
+    </div>`:''}
+
+    <div class="trans-res-actions">
+      <button onclick="startTransTest()" class="trans-restart-btn">↩ Rifai il test</button>
+      <button onclick="st('consulente');setTimeout(()=>document.getElementById('chat-input').value='Ho completato il Test del Vettore Comunicativo: vettore primario ${primary}. Analizza il mio stile comunicativo e collega alla mia personalità AT.',150)" style="padding:.5rem 1.4rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer">✦ Chiedi all\'AI una lettura</button>
+    </div>
+  `;
+
+  prog.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
 
 // ── Comunicazione Transazionale ──
 const TRANS_INCROCIATA = {
@@ -6403,7 +6903,7 @@ function getProfileResult(key){
 }
 
 function clearAllProfiles(){
-  ['check','frutti','at','vak','ego','diet'].forEach(k=>{
+  ['check','frutti','at','vak','ego','diet','trans'].forEach(k=>{
     try{ localStorage.removeItem('olismo_profile_'+k); }catch(e){}
   });
 }
@@ -6415,8 +6915,9 @@ function buildUserProfile(){
   const vak = getProfileResult('vak');
   const ego = getProfileResult('ego');
   const dt  = getProfileResult('diet');
+  const tr  = getProfileResult('trans');
 
-  const has = [ck,fr,at,vak,ego,dt].some(Boolean);
+  const has = [ck,fr,at,vak,ego,dt,tr].some(Boolean);
   if(!has) return '';
 
   const lines = [];
@@ -6470,6 +6971,13 @@ function buildUserProfile(){
     lines.push('');
   }
 
+  if(tr){
+    lines.push(`▶ TEST VETTORE COMUNICATIVO (${tr._date}):`);
+    lines.push(`  · Vettore primario: ${tr.vettore_primario} (${tr.pct_primario}%)`);
+    if(tr.vettore_sec) lines.push(`  · Vettore secondario: ${tr.vettore_sec}`);
+    lines.push('');
+  }
+
   if(dt){
     lines.push(`▶ PIANO ALIMENTARE (${dt._date}):`);
     lines.push(`  · Generato per: T${dt.tipo} / ${dt.adattamento}`);
@@ -6486,7 +6994,7 @@ function buildUserProfile(){
 
 function getProfileBadges(){
   const keys  = ['check','frutti','at','vak','ego','diet'];
-  const names = {'check':'Check','frutti':'9 Frutti','at':'Test AT','vak':'VAK','ego':'Egogramma','diet':'Dieta'};
+  const names = {'check':'Check','frutti':'9 Frutti','at':'Test AT','vak':'VAK','ego':'Egogramma','diet':'Dieta','trans':'Vettori AT'};
   return keys.filter(k=>getProfileResult(k)).map(k=>names[k]);
 }
 

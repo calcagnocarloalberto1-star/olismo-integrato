@@ -1359,6 +1359,7 @@ footer{
 .ego-test-btn:hover{background:var(--blue2)}
 .ego-test-result{max-width:680px;margin:2rem auto 0;padding:1.5rem;background:#fff;border:1.5px solid var(--border);border-radius:var(--r);display:none}
 .ego-test-result.show{display:block}
+.ego-test-result.show{display:block}
 .ego-test-result h4{font-family:'Cinzel',serif;font-size:.95rem;color:var(--ink);margin-bottom:1rem;text-align:center}
 .ego-result-bars{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .ego-res-col{display:flex;flex-direction:column;align-items:center;gap:.4rem;min-width:70px}
@@ -1438,6 +1439,19 @@ footer{
   text-decoration:underline;text-underline-offset:3px;
 }
 .danza-link:hover{color:var(--ink)}
+
+
+/* ── EGO TEST RESULT ENHANCED ── */
+.ego-res-dominant .ego-res-bar-fill{box-shadow:0 0 8px rgba(0,0,0,.2)}
+.ego-res-dominant .ego-res-label{font-weight:700}
+.ego-res-dominant .ego-res-score{font-size:1.1rem}
+.ego-res-sublabel{font-size:.65rem;color:var(--ink4);text-align:center;margin-top:.15rem;max-width:58px;line-height:1.2}
+.ego-profile-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ink);margin-bottom:.4rem;font-weight:500}
+.ego-profile-positivo{font-size:.78rem;color:var(--gold);font-weight:600;margin-bottom:.6rem;letter-spacing:.04em}
+.ego-profile-testo{font-size:.85rem;color:var(--ink2);line-height:1.75;margin-bottom:.8rem}
+.ego-profile-risorse{font-size:.82rem;color:var(--ink2);line-height:1.7;margin-bottom:.6rem;padding:.6rem .9rem;background:var(--ivory2);border-radius:6px;border-left:3px solid var(--gold)}
+.ego-profile-second{font-size:.78rem;color:var(--ink3);margin-bottom:.5rem}
+.ego-profile-total{font-size:.75rem;color:var(--ink4);text-align:right;margin-top:.5rem}
 
 </style>
 
@@ -2473,6 +2487,7 @@ footer{
 </footer>
 
 <script>
+// v202604131323
 // ════════════════════════════════════════
 // DATABASE COMPLETO
 // ════════════════════════════════════════
@@ -3725,9 +3740,9 @@ const COMPAT_COLORS = {
   media:"#f59e0b",bassa:"#f97316",difficile:"#ef4444"
 };
 const FRUITS_NAMES = {
-  1:"🍎 Il Perfezionista",2:"🍐 L'Altruista",3:"🍒 Il Manager",
-  4:"🫐 Il Romantico",5:"🍇 L'Eremita",6:"🫐 Il Leale",
-  7:"🍍 L'Entusiasta",8:"🍑 Il Capo",9:"🍓 Il Diplomatico"
+  1:"🍎 Il Perfezionista",2:"🍐 L\'Altruista",3:"🍒 Il Manager",
+  4:"🫐 Il Romantico",5:"🍇 L\'Eremita",6:"🫐 Il Leale",
+  7:"🍍 L\'Entusiasta",8:"🍑 Il Capo",9:"🍓 Il Diplomatico"
 };
 
 
@@ -3735,7 +3750,7 @@ const FRUITS_NAMES = {
 const CONFLICT_DYNAMICS = {
   "1": {
     attivazione: "Sistema simpatico — critica e correzione",
-    inConflitto: "Diventa rigido, critica i dettagli, usa il silenzio gelido o l'argomentazione infinita",
+    inConflitto: "Diventa rigido, critica i dettagli, usa il silenzio gelido o l\'argomentazione infinita",
     sotto: "«Devo che le cose siano fatte bene — ho paura del caos e del giudizio»",
     sfida: "Dire 'sono deluso' invece di elencare gli errori",
     regolazione: "Respiro diaframmatico 4-4-4, scrittura, ordine fisico",
@@ -3745,21 +3760,21 @@ const CONFLICT_DYNAMICS = {
     attivazione: "Sistema simpatico — risentimento da sacrificio",
     inConflitto: "Si offre ancora di più, poi esplode con accuse di ingratitudine",
     sotto: "«Non sono abbastanza importante, nessuno mi vede davvero»",
-    sfida: "Dire 'ho bisogno di...' senza aspettare che l'altro lo intuisca",
+    sfida: "Dire 'ho bisogno di...' senza aspettare che l\'altro lo intuisca",
     regolazione: "Contatto fisico gentile, riconoscimento verbale esplicito",
-    segnale: "Inizia a fare di più (iperattività affettiva) prima dell'esplosione"
+    segnale: "Inizia a fare di più (iperattività affettiva) prima dell\'esplosione"
   },
   "3": {
-    attivazione: "Sistema simpatico — minaccia all'immagine o all'efficacia",
+    attivazione: "Sistema simpatico — minaccia all\'immagine o all\'efficacia",
     inConflitto: "Diventa freddo, task-oriented, razionalizza tutto, nega le emozioni",
     sotto: "«Sto fallendo. Non sono abbastanza bravo/a»",
     sfida: "Fermarsi e sentire prima di agire",
-    regolazione: "Pausa strutturata, riconoscimento dell'emozione sottostante",
+    regolazione: "Pausa strutturata, riconoscimento dell\'emozione sottostante",
     segnale: "Aumenta il lavoro o le attività per evitare il confronto emotivo"
   },
   "4": {
-    attivazione: "Sistema limbico — dolore dell'abbandono o della non-unicità",
-    inConflitto: "Si ritira nel dolore, amplifica l'intensità emotiva, può diventare accusatorio",
+    attivazione: "Sistema limbico — dolore dell\'abbandono o della non-unicità",
+    inConflitto: "Si ritira nel dolore, amplifica l\'intensità emotiva, può diventare accusatorio",
     sotto: "«Non sono abbastanza speciale/a. Sarò abbandonato/a»",
     sfida: "Esprimere il bisogno senza amplificazione drammatica",
     regolazione: "Arte, musica, movimento corporeo, rispecchiamento emotivo",
@@ -3783,7 +3798,7 @@ const CONFLICT_DYNAMICS = {
   },
   "7": {
     attivazione: "Sistema simpatico — minaccia alla libertà o contatto col dolore",
-    inConflitto: "Cambia argomento, minimizza, usa l'umorismo come difesa, scappa fisicamente o mentalmente",
+    inConflitto: "Cambia argomento, minimizza, usa l\'umorismo come difesa, scappa fisicamente o mentalmente",
     sotto: "«Sto per essere intrappolato/a nel dolore. Devo uscirne»",
     sfida: "Restare presente nel momento difficile senza fuggire",
     regolazione: "Movimento fisico breve, poi ritorno al dialogo",
@@ -3795,7 +3810,7 @@ const CONFLICT_DYNAMICS = {
     sotto: "«Ho paura di non contare nulla. Mi sta lasciando solo/a»",
     sfida: "Dire 'ho paura' invece di 'sono arrabbiato/a'",
     regolazione: "Movimento fisico intenso, pausa da 20 minuti, poi ritorno",
-    segnale: "Aumenta il volume e la direttività prima dell'esplosione"
+    segnale: "Aumenta il volume e la direttività prima dell\'esplosione"
   },
   "9": {
     attivazione: "Sistema dorsovagale — sovraccarico da conflitto, shutdown",
@@ -3850,7 +3865,7 @@ function showCompat(){
       </div>
       <div class="conflict-mediator">
         <h5>🧭 Script per il mediatore</h5>
-        <p>«Sotto questa intensità, cosa temi?» — La domanda che bypassa la neocorteccia offline e raggiunge l'emozione primaria.</p>
+        <p>«Sotto questa intensità, cosa temi?» — La domanda che bypassa la neocorteccia offline e raggiunge l\'emozione primaria.</p>
         <p style="margin-top:.5rem">Strumenti: segnale di pausa fisico concordato · filtro dei 3 secondi · co-regolazione respiratoria · diario della vulnerabilità</p>
       </div>
     </div>`;
@@ -3885,18 +3900,18 @@ function renderMusic(){
 
 // ── BACH FLOWERS DATA & RENDER ──
 const BACH=[
-  {name:"Rescue Remedy",it:"Rimedio d'emergenza",emoji:"🌟",stato:"Shock, trauma acuto, panico improvviso",trasformazione:"Da reazione automatica a risposta consapevole",chakra:"c1",cColor:"#a83232",enneatipi:"Tutti",desc:"La combinazione di 5 fiori più nota. Si usa in situazioni di emergenza emotiva: panico, trauma, shock, prima di eventi stressanti. Riporta rapidamente al centro."},
+  {name:"Rescue Remedy",it:"Rimedio d\'emergenza",emoji:"🌟",stato:"Shock, trauma acuto, panico improvviso",trasformazione:"Da reazione automatica a risposta consapevole",chakra:"c1",cColor:"#a83232",enneatipi:"Tutti",desc:"La combinazione di 5 fiori più nota. Si usa in situazioni di emergenza emotiva: panico, trauma, shock, prima di eventi stressanti. Riporta rapidamente al centro."},
   {name:"Mimulus",it:"Mimolo",emoji:"🌼",stato:"Paura di cose specifiche e note",trasformazione:"Da timidezza e paura a coraggio e forza",chakra:"c1",cColor:"#a83232",enneatipi:"Tipo 6, Tipo 1",desc:"Per le paure conosciute e nominabili: paura del buio, degli animali, delle malattie, della morte, della gente. Indicato per i tipi introversi e timidi che non rivelano le loro paure."},
   {name:"Rock Rose",it:"Elianthemum",emoji:"🌸",stato:"Terrore, panico, paura paralizzante",trasformazione:"Da terrore a coraggio eroico",chakra:"c1",cColor:"#a83232",enneatipi:"Tipo 6",desc:"Per situazioni di emergenza estrema dove il panico prende il sopravvento. Indicato dopo incidenti, nightmares, quando il corpo trema per la paura."},
-  {name:"Larch",it:"Larice",emoji:"🌲",stato:"Mancanza di fiducia in sé, aspettarsi il fallimento",trasformazione:"Da insicurezza a fiducia autentica",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 3, Tipo 6",desc:"Per chi non si aspetta di riuscire e quindi non cerca nemmeno di provare. Blocca l'iniziativa per paura del fallimento. Ripristina la fiducia nel proprio valore."},
+  {name:"Larch",it:"Larice",emoji:"🌲",stato:"Mancanza di fiducia in sé, aspettarsi il fallimento",trasformazione:"Da insicurezza a fiducia autentica",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 3, Tipo 6",desc:"Per chi non si aspetta di riuscire e quindi non cerca nemmeno di provare. Blocca l\'iniziativa per paura del fallimento. Ripristina la fiducia nel proprio valore."},
   {name:"Centaury",it:"Centaurea",emoji:"💛",stato:"Incapacità di dire no, servire gli altri dimenticando sé",trasformazione:"Da compiacenza a servizio autentico con volontà propria",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 2, Tipo 9",desc:"Per chi ha difficoltà a dire no e lascia che gli altri lo sfruttino per gentilezza o debolezza di volontà. Rafforza la volontà personale e il confine sano."},
-  {name:"Wild Rose",it:"Rosa canina",emoji:"🌹",stato:"Rassegnazione, apatia, mancanza di motivazione",trasformazione:"Da rassegnazione a rinnovato interesse per la vita",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 9, Tipo 5",desc:"Per chi si è arreso alla propria situazione senza sforzo di migliorarla. Ristabilisce l'entusiasmo e la voglia di partecipare attivamente alla vita."},
-  {name:"Holly",it:"Agrifoglio",emoji:"🍃",stato:"Odio, invidia, gelosia, sospetto",trasformazione:"Da odio e sospetto a amore e generosità",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 8, Tipo 4",desc:"Per stati di odio, invidia, gelosia, vendetta e sospetto. Quando il cuore si è chiuso all'amore. Apre alla generosità e alla connessione autentica."},
-  {name:"Chicory",it:"Cicoria",emoji:"💙",stato:"Possessività, amore condizionato, manipolazione affettiva",trasformazione:"Da amore possessivo a amore incondizionato",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 2, Tipo 8",desc:"Per chi ama in modo possessivo e chiede costantemente l'attenzione degli altri. Trasforma l'attaccamento egoistico in amore libero e incondizionato."},
+  {name:"Wild Rose",it:"Rosa canina",emoji:"🌹",stato:"Rassegnazione, apatia, mancanza di motivazione",trasformazione:"Da rassegnazione a rinnovato interesse per la vita",chakra:"c3",cColor:"#c49a1a",enneatipi:"Tipo 9, Tipo 5",desc:"Per chi si è arreso alla propria situazione senza sforzo di migliorarla. Ristabilisce l\'entusiasmo e la voglia di partecipare attivamente alla vita."},
+  {name:"Holly",it:"Agrifoglio",emoji:"🍃",stato:"Odio, invidia, gelosia, sospetto",trasformazione:"Da odio e sospetto a amore e generosità",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 8, Tipo 4",desc:"Per stati di odio, invidia, gelosia, vendetta e sospetto. Quando il cuore si è chiuso all\'amore. Apre alla generosità e alla connessione autentica."},
+  {name:"Chicory",it:"Cicoria",emoji:"💙",stato:"Possessività, amore condizionato, manipolazione affettiva",trasformazione:"Da amore possessivo a amore incondizionato",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 2, Tipo 8",desc:"Per chi ama in modo possessivo e chiede costantemente l\'attenzione degli altri. Trasforma l\'attaccamento egoistico in amore libero e incondizionato."},
   {name:"Red Chestnut",it:"Castagno rosso",emoji:"🌰",stato:"Paura per i propri cari, ansia per la salute degli altri",trasformazione:"Da preoccupazione in fiducia e serenità",chakra:"c4",cColor:"#2e7d4f",enneatipi:"Tipo 2, Tipo 6",desc:"Per chi è eccessivamente preoccupato per i propri cari, immaginando sempre disastri che potrebbero capitare loro. Porta fiducia nel benessere degli altri."},
   {name:"Agrimony",it:"Agrimonia",emoji:"🌾",stato:"Nascondere i problemi dietro una facciata allegra",trasformazione:"Da maschera gioiosa a pace interiore autentica",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 3, Tipo 7",desc:"Per chi soffre interiormente ma lo nasconde dietro una maschera di allegria, non volendo preoccupare gli altri. Porta vera pace interiore e apertura."},
-  {name:"Vervain",it:"Verbena",emoji:"🌿",stato:"Iper-entusiasmo, sovra-impegno, fanatismo",trasformazione:"Da tensione e forza eccessiva a quiete e tolleranza",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 1, Tipo 8",desc:"Per chi ha ideali forti e vuole convincere tutti della propria visione. Portano il proprio corpo all'esaurimento per le proprie cause. Porta equilibrio e rispetto dei ritmi."},
-  {name:"Water Violet",it:"Violetta d'acqua",emoji:"🌸",stato:"Orgoglio, distanza, preferire la solitudine",trasformazione:"Da isolamento orgoglioso a connessione serena",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 5, Tipo 4",desc:"Per le persone capaci, competenti ma tendenti all'isolamento. Si sentono al di sopra degli altri. Porta umiltà e la gioia della connessione autentica con il prossimo."},
+  {name:"Vervain",it:"Verbena",emoji:"🌿",stato:"Iper-entusiasmo, sovra-impegno, fanatismo",trasformazione:"Da tensione e forza eccessiva a quiete e tolleranza",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 1, Tipo 8",desc:"Per chi ha ideali forti e vuole convincere tutti della propria visione. Portano il proprio corpo all\'esaurimento per le proprie cause. Porta equilibrio e rispetto dei ritmi."},
+  {name:"Water Violet",it:"Violetta d\'acqua",emoji:"🌸",stato:"Orgoglio, distanza, preferire la solitudine",trasformazione:"Da isolamento orgoglioso a connessione serena",chakra:"c5",cColor:"#1565c0",enneatipi:"Tipo 5, Tipo 4",desc:"Per le persone capaci, competenti ma tendenti all\'isolamento. Si sentono al di sopra degli altri. Porta umiltà e la gioia della connessione autentica con il prossimo."},
   {name:"Clematis",it:"Clematide",emoji:"🌺",stato:"Sognare ad occhi aperti, mancanza di presenza",trasformazione:"Da assenza mentale a radicamento nel presente",chakra:"c6",cColor:"#4527a0",enneatipi:"Tipo 9, Tipo 7, Tipo 4",desc:"Per chi vive nel futuro o nei sogni, non essendo presente al momento attuale. Porta la mente nel corpo e nel presente. Ideale per chi è perso nei propri mondi interiori."},
   {name:"Cerato",it:"Cerato",emoji:"💜",stato:"Non fidarsi del proprio giudizio, cercare consigli continui",trasformazione:"Da dubbio a intuizione e fiducia in sé",chakra:"c6",cColor:"#4527a0",enneatipi:"Tipo 6, Tipo 9",desc:"Per chi non si fida del proprio giudizio e chiede continuamente consiglio ad altri, spesso seguendo poi consigli sbagliati contro il proprio istinto."},
   {name:"Crown Chestnut",it:"Castagno bianco",emoji:"⚪",stato:"Pensieri indesiderati ripetitivi, mente che non si ferma",trasformazione:"Da circolo vizioso mentale a pace e chiarezza",chakra:"c7",cColor:"#7b2fa0",enneatipi:"Tipo 1, Tipo 6, Tipo 5",desc:"Per la mente che continua a ripetere gli stessi pensieri indesiderati, specialmente di notte. Porta calma mentale, chiarezza e capacità di dormire."}
@@ -3924,8 +3939,8 @@ const ALIM=[
   {num:"2°",name:"Dolcezza · Svadhisthana",color:"#c45a22",foods:"Arance, mango, papaya, albicocche, zucca, carote, salmone, noci, semi di zucca, cioccolato fondente",effect:"Vitalità creativa, piacere sano, fluidità emotiva. Alimenti che sostengono il sistema endocrino e la sessualità sana.",avoid:"Eccesso di alcol, zucchero raffinato, grassi trans che bloccano la fluidità energetica"},
   {num:"3°",name:"Fuoco · Manipura",color:"#c49a1a",foods:"Banane, mais, zenzero, curcuma, finocchio, riso integrale, cereali gialli, miele biologico, tigri al limone",effect:"Forza della volontà, autostima, digestione attiva. Il fuoco del plesso solare si nutre di cibi caldi e speziati.",avoid:"Eccesso di amidi raffinati, pasti pesanti a base di fritto che affaticano il pancreas"},
   {num:"4°",name:"Cuore · Anahata",color:"#2e7d4f",foods:"Spinaci, broccoli, kale, piselli, avocado, erba di grano, kiwi, menta, basilico, tè verde, asparagi",effect:"Apertura del cuore, empatia, guarigione emotiva. I cibi verdi supportano il timo e il sistema immunitario emotivo.",avoid:"Eccesso di zuccheri e alcol che creano chiusura emotiva; caffè in eccesso che irrigidisce"},
-  {num:"5°",name:"Gola · Vishuddha",color:"#1565c0",foods:"Mirtilli, more, ribes nero, fichi, datteri, acqua pura, tè alle erbe, alghe, frutti di mare, pera",effect:"Espressione autentica, voce chiara, comunicazione fluida. L'idratazione è fondamentale per la salute del quinto chakra.",avoid:"Eccesso di latticini, dolci e farine raffinate che creano muco e ostruiscono la gola"},
-  {num:"6°",name:"Terzo Occhio · Ajna",color:"#4527a0",foods:"Uva nera, melanzane, prugne, lavanda, salvia, rosmarino, cibi fermentati, cacao crudo, omega-3, semi di lino",effect:"Chiarezza mentale, intuizione, vision. Gli alimenti viola e i fermentati supportano la salute del cervello e l'asse intestino-cervello.",avoid:"Eccesso di alcol, droghe e farmaci non necessari che alterano la percezione"},
+  {num:"5°",name:"Gola · Vishuddha",color:"#1565c0",foods:"Mirtilli, more, ribes nero, fichi, datteri, acqua pura, tè alle erbe, alghe, frutti di mare, pera",effect:"Espressione autentica, voce chiara, comunicazione fluida. L\'idratazione è fondamentale per la salute del quinto chakra.",avoid:"Eccesso di latticini, dolci e farine raffinate che creano muco e ostruiscono la gola"},
+  {num:"6°",name:"Terzo Occhio · Ajna",color:"#4527a0",foods:"Uva nera, melanzane, prugne, lavanda, salvia, rosmarino, cibi fermentati, cacao crudo, omega-3, semi di lino",effect:"Chiarezza mentale, intuizione, vision. Gli alimenti viola e i fermentati supportano la salute del cervello e l\'asse intestino-cervello.",avoid:"Eccesso di alcol, droghe e farmaci non necessari che alterano la percezione"},
   {num:"7°",name:"Corona · Sahasrara",color:"#7b2fa0",foods:"Digiuno consapevole, acqua di sorgente, succhi freschi, cibo crudo integrale, meditazione come 'nutrimento', frutti bianchi e viola",effect:"Connessione spirituale, silenzio interiore, coscienza. Il settimo chakra si nutre di leggerezza fisica e purezza.",avoid:"Tutto ciò che appesantisce: eccesso di proteine animali, alcol, cibo spazzatura, pasti consumati distrattamente"}
 ];
 
@@ -3943,13 +3958,13 @@ function renderAlim(){
 // ── DANZA TOOLS ──
 const TOOLS=[
   {title:"Il segnale di pausa",desc:"Insegnare a Tizio un gesto fisico (mano alzata) che significa «sono sovraccarico, ho bisogno di pausa». Quando lo usa, Sempronia DEVE rispettarlo. Lui dice QUANDO torna a dialogare (es. «20 minuti»)."},
-  {title:"Il filtro dei tre secondi",desc:"Prima di dire qualcosa di intenso, Sempronia fa tre respiri profondi e si chiede: È vero? È necessario dirlo ADESSO? C'è un modo più morbido? Questo separa la reazione istintiva dalla risposta consapevole."},
+  {title:"Il filtro dei tre secondi",desc:"Prima di dire qualcosa di intenso, Sempronia fa tre respiri profondi e si chiede: È vero? È necessario dirlo ADESSO? C\'è un modo più morbido? Questo separa la reazione istintiva dalla risposta consapevole."},
   {title:"La domanda sulla paura",desc:"Script per il mediatore: «Sento molta energia in quello che dici. Sotto questa forza, cosa temi che possa succedere?» Quando la persona si sente VISTA nella sua paura, il tono cambia immediatamente."},
   {title:"Il diario dei bisogni",desc:"Tizio scrive ogni sera tre cose che voleva dire ma ha taciuto. Non deve dirle — solo riconoscerle. Dopo due settimane, la consapevolezza dei propri bisogni aumenta significativamente."},
   {title:"La co-regolazione respiratoria",desc:"Il mediatore porta entrambi a sincronizzare il respiro per 3-5 minuti prima del dialogo. Il sistema nervoso del mediatore (calmo e ventrale) «trasmette» sicurezza ai partecipanti."},
-  {title:"Il diario della vulnerabilità",desc:"Sempronia scrive ogni sera: una critica che voleva fare + la paura che c'era sotto. Es: «Volevo dire: sei un codardo! / Sotto c'era: ho paura che non mi proteggerai»."},
-  {title:"La pratica del «Voglio»",desc:"Una volta al giorno, Tizio completa con Sempronia: «Oggi quello che voglio davvero è…». Anche piccole cose (pizza per cena) va bene. L'obiettivo è abituarsi a esprimere i desideri."},
-  {title:"La tecnica del riformulazione empatica",desc:"Il mediatore non risponde all'attacco, ma all'emozione sotto: «Sento che per te è molto importante… sotto questa intensità, cosa senti davvero?» Questa domanda apre il dialogo autentico."}
+  {title:"Il diario della vulnerabilità",desc:"Sempronia scrive ogni sera: una critica che voleva fare + la paura che c\'era sotto. Es: «Volevo dire: sei un codardo! / Sotto c\'era: ho paura che non mi proteggerai»."},
+  {title:"La pratica del «Voglio»",desc:"Una volta al giorno, Tizio completa con Sempronia: «Oggi quello che voglio davvero è…». Anche piccole cose (pizza per cena) va bene. L\'obiettivo è abituarsi a esprimere i desideri."},
+  {title:"La tecnica del riformulazione empatica",desc:"Il mediatore non risponde all\'attacco, ma all\'emozione sotto: «Sento che per te è molto importante… sotto questa intensità, cosa senti davvero?» Questa domanda apre il dialogo autentico."}
 ];
 
 function renderTools(){
@@ -3964,11 +3979,11 @@ function renderTools(){
 function renderPrano(){
   const items=[
     {icon:"🙌",title:"I Piani del Trattamento",text:"La pranoterapia agisce simultaneamente su quattro livelli: fisico (dolore, infiammazioni), emotivo (blocchi, traumi), mentale (schemi ripetitivi) e spirituale (allineamento con il proprio percorso)."},
-    {icon:"⚡",title:"La Mano Radiante",text:"Ogni pranoterapeuta ha una mano prevalentemente radiante e una assorbente, ma entrambe possono variare. Il test si esegue avvicinando i palmi a un'altra persona e osservando le sensazioni."},
-    {icon:"🛡️",title:"La Schermatura",text:"Tecnica fondamentale per proteggere il campo energetico del pranoterapeuta durante il trattamento. Impedisce l'assorbimento eccessivo dell'energia densa del ricevente."},
+    {icon:"⚡",title:"La Mano Radiante",text:"Ogni pranoterapeuta ha una mano prevalentemente radiante e una assorbente, ma entrambe possono variare. Il test si esegue avvicinando i palmi a un\'altra persona e osservando le sensazioni."},
+    {icon:"🛡️",title:"La Schermatura",text:"Tecnica fondamentale per proteggere il campo energetico del pranoterapeuta durante il trattamento. Impedisce l\'assorbimento eccessivo dell\'energia densa del ricevente."},
     {icon:"💎",title:"Cristalli nel Trattamento",text:"I cristalli amplificano e stabilizzano il flusso pranale. Si posizionano sui chakra da trattare: granato sul primo, quarzo rosa sul quarto, ametista sul sesto e settimo."},
     {icon:"🔊",title:"Frequenze di Supporto",text:"La musica a 432 Hz o le frequenze solfeggio in sottofondo durante il trattamento supportano il lavoro pranale, creando un campo armonico che facilita il riequilibrio."},
-    {icon:"🌸",title:"Fiori di Bach a Supporto",text:"I Fiori di Bach si usano prima o dopo il trattamento pranale per sostenere la trasformazione emotiva avviata dall'imposizione delle mani. Rescue Remedy è ideale per la fase post-trattamento."}
+    {icon:"🌸",title:"Fiori di Bach a Supporto",text:"I Fiori di Bach si usano prima o dopo il trattamento pranale per sostenere la trasformazione emotiva avviata dall\'imposizione delle mani. Rescue Remedy è ideale per la fase post-trattamento."}
   ];
   document.getElementById("prano-grid").innerHTML=items.map(i=>`
     <div class="prano-card">
@@ -3989,7 +4004,7 @@ REGOLE DI RISPOSTA:
 - Lunghezza ideale: 220-320 parole. Mai troppo corta, mai troppo lunga
 - Chiudi sempre con una domanda aperta per approfondire
 - NON dire mai "come AI" o "come assistente"
-- Quando l'utente chiede una TABELLA o uno SCHEMA, usa SEMPRE il formato Markdown con | separatori e riga separatrice. Esempio:
+- Quando l\'utente chiede una TABELLA o uno SCHEMA, usa SEMPRE il formato Markdown con | separatori e riga separatrice. Esempio:
 | Fiore | Effetto | Chakra |
 |---|---|---|
 | Agrimony | Pace interiore | 4° |
@@ -3997,16 +4012,16 @@ REGOLE DI RISPOSTA:
 - Non troncare mai le risposte a metà: completa sempre il pensiero prima di chiudere
 
 I SEI ADATTAMENTI AT (AT — Ware & Joines):
-1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Porta APERTA: comportamento, bersaglio: pensiero, trappola: emozioni. Vettori: GN+, A. Il bambino ha imparato a fare da solo quando non si poteva fidare dell'ambiente. Da adulto: creativo, visionario, ma isolato come difesa.
+1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Porta APERTA: comportamento, bersaglio: pensiero, trappola: emozioni. Vettori: GN+, A. Il bambino ha imparato a fare da solo quando non si poteva fidare dell\'ambiente. Da adulto: creativo, visionario, ma isolato come difesa.
 2. ANTISOCIALE (Affascinante-Manipolatore): Sopravvivenza, 0-18m, genitore anticipatorio, T8. Spinta: Sii forte+Compiaci. Copione: Mai, Sempre, Quasi I. Porta APERTA: comportamento, bersaglio: emozioni, trappola: pensiero. Vettori: BL+, GA+, GN+. Ottiene ciò che vuole attraverso il fascino e la manipolazione.
 3. PARANOIDE (Brillante-Scettico): Sopravvivenza, 0-18m, genitore inconsistente, T6. Spinta: Sii perfetto=Sii forte. Copione: Finché+Mai. Porta APERTA: pensiero, bersaglio: emozioni, trappola: comportamento. Vettori: A, GN+. Ipervigilante, anticipa le minacce, brillante ma diffidente.
 4. PASSIVO-AGGRESSIVO (Scherzoso-Oppositivo): Performance, 18-36m, genitore ipercontrollante, T9. Spinta: Sforzati. Copione: Sempre, Quasi II. Porta APERTA: comportamento, bersaglio: emozioni, trappola: pensiero. Vettori: BL+. Cambia rotta proprio quando è vicino alla meta.
 5. OSSESSIVO-COMPULSIVO (Responsabile-Stakanovista): Performance, 18m-6a, enfasi risultato, T1. Spinta: Sii perfetto. Copione: Finché (Quasi II). Porta APERTA: pensiero, bersaglio: emozioni, trappola: comportamento. Vettori: A, GN+. Non si ferma mai perché non è mai abbastanza perfetto.
-6. ISTRIONICO (Entusiasta-Iperreattivo): Performance, 18m-6a, rendere felici gli altri, T2/3/4. Spinta: Compiaci. Copione: Dopo (Quasi I e II). Porta APERTA: emozioni, bersaglio: pensiero, trappola: comportamento. Vettori: GA+, BL+. Dipende dall'approvazione. Spada di Damocle: "posso divertirmi oggi, ma lo pagherò domani."
+6. ISTRIONICO (Entusiasta-Iperreattivo): Performance, 18m-6a, rendere felici gli altri, T2/3/4. Spinta: Compiaci. Copione: Dopo (Quasi I e II). Porta APERTA: emozioni, bersaglio: pensiero, trappola: comportamento. Vettori: GA+, BL+. Dipende dall\'approvazione. Spada di Damocle: "posso divertirmi oggi, ma lo pagherò domani."
 
 LE 5 SPINTE DEL COPIONE: Sii perfetto→Finché; Sii forte→Mai; Sforzati→Sempre; Cerca di piacere→Dopo; Sbrigati→rinforza le altre.
 
-EGOGRAMMA — 5 STATI DELL'IO FUNZIONALI:
+EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.
 - GA (Genitore Affettivo): cura, calore, permessi. Ok: nutre. Non ok: iperprotegge.
 - A (Adulto): elabora la realtà nel qui-ed-ora. Il "muscolo" da allenare.
@@ -4065,7 +4080,7 @@ Strumenti universali: segnale di pausa fisico concordato, filtro 3 secondi, co-r
 La sezione Compatibilità mostra la dinamica di conflitto SPECIFICA per ogni coppia di enneatipi.
 
 
-I 9 FRUTTI DELL'ALBERO DELLA VITA (sistema Calcagno):
+I 9 FRUTTI DELL\'ALBERO DELLA VITA (sistema Calcagno):
 T1=🍎Mela (Dignità:Volontà, Serafini, Urania), T2=🍐Pera (Eternità, Cherubini, Polimnia), T3=🍒Ciliegia (Sapienza, Troni, Euterpe), T4=🫐Nespola (Sapienza, Dominazioni, Erato), T5=🍇Uva (Verità, Potestà, Melpomene), T6=🫐Mirtillo (Grandezza, Virtù, Tersicore), T7=🍍Ananas (Grandezza, Principati, Calliope), T8=🍑Albicocca (Gloria, Arcangeli, Clio), T9=🍓Fragola (Perfezione, Angeli, Talia)
 
 AREE CEREBRALI DEGLI ENNEATIPI (Tony Nader — Enneagramma Vedico):
@@ -4086,10 +4101,10 @@ PERCORSI EVOLUTIVI: Ciclo lungo (T1,2,4,5,7,8) 6 fasi per età; Ciclo breve (T3,
 COMPATIBILITÀ TOP: T1-T2 (85%), T4-T5 (88%), T8-T2 (85%). DIFFICILE: T3-T6 (45%), T7-T4 (50%). Quando parli di relazioni cita sempre la compatibilità dei tipi coinvolti.
 
 FES FIORI CALIFORNIANI (selezione chiave):
-Angelica→protezione spirituale/solitudine(c7), Arnica→shock/trauma(c1), Baby Blue Eyes→sfiducia(c4), Borage→scoraggiamento(c4), California Poppy→dipendenze(c6), Cosmos→sopraffazione mentale(c5), Echinacea→identità frantumata(c3), Fairy Lantern→infantilismo(c1), Goldenrod→conformismo/identità(c3), Indian Paintbrush→esaurimento creativo(c2), Iris→mancanza ispirazione(c6), Lavender→iperattività nervosa(c6), Love-Lies-Bleeding→dolore isolato(c4), Morning Glory→dipendenze/ritmi caotici(c2), Pink Monkeyflower→vergogna(c4), Sagebrush→identità false(c3), Saint John's Wort→vulnerabilità psichica(c6), Scarlet Monkeyflower→rabbia repressa(c3), Self-Heal→auto-guarigione(c4), Shooting Star→alienazione dalla Terra(c1), Sunflower→ego squilibrato(c3), Wild Oat→scopo di vita(c3).
+Angelica→protezione spirituale/solitudine(c7), Arnica→shock/trauma(c1), Baby Blue Eyes→sfiducia(c4), Borage→scoraggiamento(c4), California Poppy→dipendenze(c6), Cosmos→sopraffazione mentale(c5), Echinacea→identità frantumata(c3), Fairy Lantern→infantilismo(c1), Goldenrod→conformismo/identità(c3), Indian Paintbrush→esaurimento creativo(c2), Iris→mancanza ispirazione(c6), Lavender→iperattività nervosa(c6), Love-Lies-Bleeding→dolore isolato(c4), Morning Glory→dipendenze/ritmi caotici(c2), Pink Monkeyflower→vergogna(c4), Sagebrush→identità false(c3), Saint John\'s Wort→vulnerabilità psichica(c6), Scarlet Monkeyflower→rabbia repressa(c3), Self-Heal→auto-guarigione(c4), Shooting Star→alienazione dalla Terra(c1), Sunflower→ego squilibrato(c3), Wild Oat→scopo di vita(c3).
 
 AUSTRALIAN BUSH FLOWER ESSENCES (selezione chiave):
-Banksia Robur→esaurimento degli interessi(c3), Billy Goat Plum→vergogna corporea(c2), Black-Eyed Susan→fretta/impazieza(c3), Bluebell→chiusura emotiva(c4), Boab→pattern familiari negativi(c1), Boronia→pensieri ossessivi(c6), Bottlebrush→transizioni(c1), Bush Fuchsia→ignorare l'intuizione(c6), Crowea→preoccupazione/ansia(c3), Dog Rose→timidezza/paure(c3), Emergency Essence→crisi acute, Five Corners→bassa autostima(c4), Grey Spider Flower→terrore(c1), Gymea Lily→arroganza(c3), Mint Bush→crisi spirituale(c6), Mountain Devil→odio/rabbia(c4), Paw Paw→sopraffazione da scelte(c3), Red Lily→disconnessione dalla realtà(c7), She Oak→squilibri ormonali femminili(c2), Silver Princess→mancanza direzione(c3), Southern Cross→vittimismo(c3), Sturt Desert Pea→dolore profondo(c4), Sturt Desert Rose→senso di colpa(c3), Sundew→dissociazione(c1), Waratah→disperazione nera(c4).
+Banksia Robur→esaurimento degli interessi(c3), Billy Goat Plum→vergogna corporea(c2), Black-Eyed Susan→fretta/impazieza(c3), Bluebell→chiusura emotiva(c4), Boab→pattern familiari negativi(c1), Boronia→pensieri ossessivi(c6), Bottlebrush→transizioni(c1), Bush Fuchsia→ignorare l\'intuizione(c6), Crowea→preoccupazione/ansia(c3), Dog Rose→timidezza/paure(c3), Emergency Essence→crisi acute, Five Corners→bassa autostima(c4), Grey Spider Flower→terrore(c1), Gymea Lily→arroganza(c3), Mint Bush→crisi spirituale(c6), Mountain Devil→odio/rabbia(c4), Paw Paw→sopraffazione da scelte(c3), Red Lily→disconnessione dalla realtà(c7), She Oak→squilibri ormonali femminili(c2), Silver Princess→mancanza direzione(c3), Southern Cross→vittimismo(c3), Sturt Desert Pea→dolore profondo(c4), Sturt Desert Rose→senso di colpa(c3), Sundew→dissociazione(c1), Waratah→disperazione nera(c4).
 
 PRANOTERAPIA: trasmissione pranale per mani. Cristalli sui chakra durante il trattamento. Frequenze di supporto a 432Hz. Fiori di Bach pre/post trattamento.`
 
@@ -4208,7 +4223,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   renderEgoTest();
   renderFlowerGrid("fes","fes-grid");
   renderFlowerGrid("bush","bush-grid");
-  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
+  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
 });
 
 
@@ -4338,7 +4353,7 @@ const EGO_DOMANDE = [
   {id:"ga6",stato:"GA",testo:"Tendo a fare le cose al posto degli altri per aiutarli"},
   {id:"ga7",stato:"GA",testo:"Gli altri mi descrivono come una persona premurosa e disponibile"},
   {id:"ga8",stato:"GA",testo:"Mi piace prendermi cura degli altri e renderli felici"},
-  {id:"ga9",stato:"GA",testo:"Sento che il mio valore dipende dall'aiuto che riesco a dare"},
+  {id:"ga9",stato:"GA",testo:"Sento che il mio valore dipende dall\'aiuto che riesco a dare"},
   {id:"ga10",stato:"GA",testo:"Sono il riferimento emotivo per chi mi sta vicino"},
   // A — Adulto (10)
   {id:"a1",stato:"A",testo:"Quando devo prendere una decisione, raccolgo dati prima di agire"},
@@ -4363,7 +4378,7 @@ const EGO_DOMANDE = [
   {id:"bl9",stato:"BL",testo:"Non mi preoccupo troppo delle conseguenze: vivere è la cosa più importante"},
   {id:"bl10",stato:"BL",testo:"Ho grande curiosità e voglia di sperimentare cose nuove"},
   // BA — Bambino Adattato (10)
-  {id:"ba1",stato:"BA",testo:"Faccio quello che mi si aspetta anche quando non sono d'accordo"},
+  {id:"ba1",stato:"BA",testo:"Faccio quello che mi si aspetta anche quando non sono d\'accordo"},
   {id:"ba2",stato:"BA",testo:"Ho difficoltà a dire no per paura di deludere gli altri"},
   {id:"ba3",stato:"BA",testo:"Mi sento in colpa quando non soddisfo le aspettative altrui"},
   {id:"ba4",stato:"BA",testo:"Tendo a rimandare le decisioni difficili per evitare conflitti"},
@@ -4398,35 +4413,76 @@ function calcEgogrammaTest(){
   });
   const total = Object.values(scores).reduce((a,b)=>a+b,0);
   if(total === 0){alert('Spunta almeno alcune affermazioni per calcolare il tuo profilo.');return;}
-  
-  // Show result
-  const resDiv = document.getElementById('ego-test-result');
-  const barsDiv = document.getElementById('ego-test-bars');
-  resDiv.classList.add('show');
-  
-  barsDiv.innerHTML = Object.entries(scores).map(([stato, score]) => {
-    const pct = Math.round(score / 10 * 100);
-    return '<div class="ego-res-col">' +
-      '<div class="ego-res-label">' + stato + '</div>' +
-      '<div class="ego-res-score" style="color:' + EGO_COLORS[stato] + '">' + score + '</div>' +
-      '<div class="ego-res-bar-wrap"><div class="ego-res-bar-fill" style="height:' + pct + '%;background:' + EGO_COLORS[stato] + '"></div></div>' +
-      '</div>';
-  }).join('');
-  
-  // Generate description
+
+  // Labels estesi
+  const LABELS = {GN:"Genitore Normativo",GA:"Genitore Affettivo",A:"Adulto",BL:"Bambino Libero",BA:"Bambino Adattato"};
+  const DESC_MAP = {
+    GN:{
+      titolo:"Genitore Normativo predominante",
+      testo:"Hai valori forti e senso del dovere. Tendi a guidare, correggere e mantenere gli standard. Quando è equilibrato, questo stato protegge e struttura. Quando è eccessivo, può diventare critico e rigido.",
+      risorse:"Allena l\'Adulto per verificare se le tue aspettative sono realistiche. Pratica il permesso: posso sbagliarmi, e va bene lo stesso.",
+      positivo:"Integrità, struttura, coerenza"
+    },
+    GA:{
+      titolo:"Genitore Affettivo predominante",
+      testo:"Sei caldo/a, premuroso/a e orientato/a alla cura degli altri. Grande risorsa nelle relazioni. Attenzione: quando è eccessivo tende all\'iperprotezione e a trascurare i propri bisogni.",
+      risorse:"Coltiva anche il Bambino Libero — prenderti cura di te non è egoismo. Allena il no affettuoso.",
+      positivo:"Empatia, calore, nutrimento relazionale"
+    },
+    A:{
+      titolo:"Adulto predominante",
+      testo:"Sei razionale, pragmatico/a e orientato/a alla realtà. Ottima risorsa per la mediazione e la risoluzione dei problemi. Attenzione a non escludere la dimensione emotiva: le emozioni sono dati preziosi.",
+      risorse:"Integra il Bambino Libero per creatività e spontaneità. Permetti alle emozioni di informarti, non solo la logica.",
+      positivo:"Lucidità, problem solving, equilibrio"
+    },
+    BL:{
+      titolo:"Bambino Libero predominante",
+      testo:"Sei spontaneo/a, creativo/a, vitale. Porti energia e autenticità nelle relazioni. Quando è predominante, può portare impulsività o difficoltà a rispettare strutture e confini altrui.",
+      risorse:"Rafforza l\'Adulto per gestire meglio le responsabilità. Lascia che il Genitore Affettivo si prenda cura anche di te.",
+      positivo:"Creatività, vitalità, autenticità"
+    },
+    BA:{
+      titolo:"Bambino Adattato predominante",
+      testo:"Sei sensibile alle aspettative altrui e tendi ad adeguarti. In versione sana, è rispetto e cooperazione. In versione non-ok, è compiacenza, paura del rifiuto, perdita del proprio punto di vista.",
+      risorse:"Pratica l\'assertività: esprimere i propri bisogni è un diritto, non una colpa. L\'Adulto può aiutarti a distinguere quando adattarti è utile e quando è un copione.",
+      positivo:"Adattabilità, rispetto, cooperazione"
+    }
+  };
+
+  // Sorted
   const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const dominant = sorted[0][0];
-  const desc_map = {
-    GN:"Il tuo stato dominante è il Genitore Normativo: tendi a essere esigente, hai valori forti e senti il bisogno di guidare e correggere. Attenzione a non diventare eccessivamente critico.",
-    GA:"Il tuo stato dominante è il Genitore Affettivo: sei premuroso, protettivo e orientato agli altri. Fai attenzione a non sacrificare i tuoi bisogni per gli altri.",
-    A:"Il tuo stato dominante è l'Adulto: sei razionale, obiettivo e concreto. Rappresenta un punto di forza per la mediazione e la risoluzione dei problemi.",
-    BL:"Il tuo stato dominante è il Bambino Libero: sei spontaneo, creativo ed entusiasta. Potresti beneficiare di un maggiore equilibrio con la dimensione razionale.",
-    BA:"Il tuo stato dominante è il Bambino Adattato: tendi ad adeguarti alle aspettative altrui. Lavorare sull'assertività può aiutarti a esprimere meglio i tuoi bisogni."
-  };
-  document.getElementById('ego-test-desc').textContent = desc_map[dominant] + 
-    ' Totale affermazioni selezionate: ' + total + '/50.';
-  
-  resDiv.scrollIntoView({behavior:'smooth',block:'nearest'});
+  const second = sorted[1][0];
+  const d = DESC_MAP[dominant];
+
+  // Render bars
+  const barsDiv = document.getElementById('ego-test-bars');
+  barsDiv.innerHTML = sorted.map(([stato, score]) => {
+    const pct = Math.round(score / 10 * 100);
+    const isDom = stato === dominant;
+    return '<div class="ego-res-col' + (isDom?' ego-res-dominant':'') + '">' +
+      '<div class="ego-res-score" style="color:' + EGO_COLORS[stato] + '">' + score + '/10</div>' +
+      '<div class="ego-res-bar-wrap"><div class="ego-res-bar-fill" style="height:' + pct + '%;background:' + EGO_COLORS[stato] + '"></div></div>' +
+      '<div class="ego-res-label" style="color:' + EGO_COLORS[stato] + '">' + stato + '</div>' +
+      '<div class="ego-res-sublabel">' + LABELS[stato] + '</div>' +
+      '</div>';
+  }).join('');
+
+  // Render description
+  const descEl = document.getElementById('ego-test-desc');
+  descEl.innerHTML =
+    '<div class="ego-profile-title">' + d.titolo + '</div>' +
+    '<div class="ego-profile-positivo">✦ ' + d.positivo + '</div>' +
+    '<p class="ego-profile-testo">' + d.testo + '</p>' +
+    '<div class="ego-profile-risorse"><strong>Risorse:</strong> ' + d.risorse + '</div>' +
+    (second && scores[second] > 0 ? '<div class="ego-profile-second">Secondo stato: <strong>' + LABELS[second] + '</strong> (' + scores[second] + '/10) — tieni conto anche di questa influenza.</div>' : '') +
+    '<div class="ego-profile-total">Affermazioni selezionate: <strong>' + total + '/50</strong></div>';
+
+  // Show and scroll
+  const resDiv = document.getElementById('ego-test-result');
+  resDiv.style.display = 'block';
+  resDiv.classList.add('show');
+  setTimeout(()=>resDiv.scrollIntoView({behavior:'smooth',block:'start'}), 100);
 }
 
 function applyEgoTestResult(){

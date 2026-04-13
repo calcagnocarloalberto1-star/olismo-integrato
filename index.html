@@ -4036,7 +4036,8 @@ body.dark .dark-toggle{background:#3a3632}
         <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
       </div>
       <div class="chat-messages" id="chat-messages"></div>
-      <div class="chat-input-area">
+      <div id="chat-profile-badge" style="display:none;font-size:.72rem;color:var(--gold);background:rgba(184,147,90,.1);border:1px solid rgba(184,147,90,.3);border-radius:8px;padding:.4rem .9rem;margin:.4rem .8rem;text-align:center;line-height:1.5"></div>
+<div class="chat-input-area">
         <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
         <button class="send-btn" id="send-btn" onclick="sendMsg()">
           <span>Invia</span><span style="font-size:1rem">→</span>
@@ -5228,6 +5229,9 @@ function showResult(scores, topTipo, ala){
   resEl.classList.add("active");
   
   const f=TEST_FRUTTI.find(x=>x.tipo===topTipo)||{};
+  // Save to profile
+  saveProfileResult('frutti',{tipo:topTipo, nome:f.nome||'', tipo2:sorted[1]?Number(sorted[1][0]):null, ala:ala||null});
+
   const e=DB.enneatipi.find(x=>x.id==="e"+topTipo)||{};
   const ex=ENNEAGRAMMA_EXTRA[String(topTipo)]||{};
   const col=TIPO_COLORS[topTipo]||"#888";
@@ -5476,6 +5480,19 @@ function calculateAtResult(){
 function showAtResult(results, primary, secondary, totalE, totalI){
   document.getElementById("at-test-progress").style.display="none";
   const resEl=document.getElementById("at-result");
+  // Save to profile
+  const _pm = AT_AD_META[primary]||{};
+  const _sm = AT_AD_META[secondary]||{};
+  const _pRes = results[primary]||{};
+  const _sRes = results[secondary]||{};
+  saveProfileResult('at',{
+    primario: _pm.name||primary,
+    primario_pct: Math.round(_pRes.pct||0),
+    secondario: _sm.name||secondary,
+    secondario_pct: Math.round(_sRes.pct||0),
+    prevalenza: totalE>totalI?'Estroversione (E)':totalI>totalE?'Introversione (I)':'Equilibrata'
+  });
+
   resEl.classList.add("active");
   
   const pm=AT_AD_META[primary];
@@ -6283,6 +6300,16 @@ function saveChatHistory(){
 }
 
 function loadChatHistory(){
+  // Show profile badges if data accumulated
+  const badges = getProfileBadges();
+  if(badges.length > 0){
+    const notifEl = document.getElementById('chat-profile-badge');
+    if(notifEl){
+      notifEl.textContent = '📊 Profilo rilevato: ' + badges.join(' · ');
+      notifEl.style.display = 'block';
+    }
+  }
+
   try {
     const saved = localStorage.getItem('olismo_chat');
     const savedHtml = localStorage.getItem('olismo_chat_html');
@@ -6354,6 +6381,114 @@ function formatAiReply(text){
     .replace(/^/,'<p>').replace(/$/,'</p>');
 }
 
+
+// ── SISTEMA PROFILO ACCUMULATO ─────────────────────────────
+
+const PROFILE_VERSION = 1;
+
+function saveProfileResult(key, data){
+  try{
+    data._date = new Date().toLocaleDateString('it-IT');
+    data._v = PROFILE_VERSION;
+    localStorage.setItem('olismo_profile_'+key, JSON.stringify(data));
+  }catch(e){}
+}
+
+function getProfileResult(key){
+  try{
+    const v = localStorage.getItem('olismo_profile_'+key);
+    return v ? JSON.parse(v) : null;
+  }catch(e){ return null; }
+}
+
+function clearAllProfiles(){
+  ['check','frutti','at','vak','ego','diet'].forEach(k=>{
+    try{ localStorage.removeItem('olismo_profile_'+k); }catch(e){}
+  });
+}
+
+function buildUserProfile(){
+  const ck  = getProfileResult('check');
+  const fr  = getProfileResult('frutti');
+  const at  = getProfileResult('at');
+  const vak = getProfileResult('vak');
+  const ego = getProfileResult('ego');
+  const dt  = getProfileResult('diet');
+
+  const has = [ck,fr,at,vak,ego,dt].some(Boolean);
+  if(!has) return '';
+
+  const lines = [];
+  lines.push('╔══════════════════════════════════════════════╗');
+  lines.push('║  PROFILO ACCUMULATO — DATI MOTORI COMPLETATI ║');
+  lines.push('╚══════════════════════════════════════════════╝');
+  lines.push('(Usa queste informazioni per personalizzare le risposte senza che l\'utente le ripeta.)');
+  lines.push('');
+
+  if(ck){
+    lines.push(`▶ CHECK INTEGRATO (${ck._date}):`);
+    if(ck.enneatipo)    lines.push(`  · Enneatipo ipotesi: T${ck.enneatipo}`);
+    if(ck.enn2)         lines.push(`  · 2° enneatipo: T${ck.enn2}`);
+    if(ck.vak)          lines.push(`  · Canale VAK: ${ck.vak}`);
+    if(ck.at_stato)     lines.push(`  · Stato AT prevalente: ${ck.at_stato}`);
+    if(ck.chakra_forte) lines.push(`  · Chakra di forza: ${ck.chakra_forte}`);
+    if(ck.chakra_debole)lines.push(`  · Chakra da lavorare: ${ck.chakra_debole}`);
+    if(ck.spinte?.length) lines.push(`  · Spinte copione: ${ck.spinte.join(', ')}`);
+    if(ck.conf_stile)   lines.push(`  · Stile conflitto: ${ck.conf_stile}`);
+    if(ck.cerca_di)     lines.push(`  · Sta cercando: ${ck.cerca_di}`);
+    lines.push('');
+  }
+
+  if(fr){
+    lines.push(`▶ TEST 9 FRUTTI (${fr._date}):`);
+    lines.push(`  · Enneatipo: T${fr.tipo} — ${fr.nome}`);
+    if(fr.tipo2)  lines.push(`  · 2° tipo: T${fr.tipo2}`);
+    if(fr.ala)    lines.push(`  · Ala dominante: ${fr.ala}`);
+    lines.push('');
+  }
+
+  if(at){
+    lines.push(`▶ TEST ADATTAMENTI AT (${at._date}):`);
+    lines.push(`  · Adattamento primario: ${at.primario} (${at.primario_pct}%)`);
+    if(at.secondario) lines.push(`  · Adattamento secondario: ${at.secondario} (${at.secondario_pct}%)`);
+    if(at.prevalenza) lines.push(`  · Prevalenza: ${at.prevalenza}`);
+    lines.push('');
+  }
+
+  if(vak){
+    lines.push(`▶ TEST VAK (${vak._date}):`);
+    lines.push(`  · Canale dominante: ${vak.canale} — ${vak.nome} (${vak.pct}%)`);
+    if(vak.secondo) lines.push(`  · 2° canale: ${vak.secondo}`);
+    lines.push('');
+  }
+
+  if(ego){
+    lines.push(`▶ EGOGRAMMA (${ego._date}):`);
+    lines.push(`  · Stato predominante: ${ego.dominante} (${ego.dominante_val}/10)`);
+    lines.push(`  · Stato più basso: ${ego.minimo} (${ego.minimo_val}/10)`);
+    lines.push('');
+  }
+
+  if(dt){
+    lines.push(`▶ PIANO ALIMENTARE (${dt._date}):`);
+    lines.push(`  · Generato per: T${dt.tipo} / ${dt.adattamento}`);
+    lines.push('');
+  }
+
+  lines.push('══════════════════════════════════════════════');
+  lines.push('ISTRUZIONE: Saluta l\'utente facendo riferimento al suo profilo specifico.');
+  lines.push('Esempio: "Ciao! Vedo che hai completato il Check Integrato: sei un T[N]..."');
+  lines.push('══════════════════════════════════════════════');
+  lines.push('');
+  return lines.join('\n');
+}
+
+function getProfileBadges(){
+  const keys  = ['check','frutti','at','vak','ego','diet'];
+  const names = {'check':'Check','frutti':'9 Frutti','at':'Test AT','vak':'VAK','ego':'Egogramma','diet':'Dieta'};
+  return keys.filter(k=>getProfileResult(k)).map(k=>names[k]);
+}
+
 async function sendMsg(){
   if(isLoading)return;
   const inp=document.getElementById("chat-input");
@@ -6374,7 +6509,7 @@ async function sendMsg(){
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
         max_tokens:2500,
-        system:SYSTEM_PROMPT,
+        system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
     });
@@ -6662,6 +6797,14 @@ function calcEgogrammaTest(){
 
   // Sorted
   const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  // Save ego profile
+  saveProfileResult('ego',{
+    dominante: sorted[0][0],
+    dominante_val: sorted[0][1],
+    minimo: sorted[sorted.length-1][0],
+    minimo_val: sorted[sorted.length-1][1]
+  });
+
   const dominant = sorted[0][0];
   const second = sorted[1][0];
   const d = DESC_MAP[dominant];
@@ -6889,6 +7032,15 @@ function calcVakResult(){
   const dominant = sorted[0][0];
   const second = sorted[1][0];
   const d = VAK_DATA[dominant];
+  // Save to profile
+  const _tot = sorted.reduce((s,[,v])=>s+v,0)||1;
+  saveProfileResult('vak',{
+    canale: dominant,
+    nome: VAK_DATA[dominant]?.title||dominant,
+    pct: Math.round((sorted[0][1]/_tot)*100),
+    secondo: second
+  });
+
   const s = VAK_DATA[second];
 
   // Colors
@@ -7370,6 +7522,14 @@ function calcCheckResult(){
   const at1  = topAt[0][0], at2 = topAt[1][0];
   const ck1  = topCk[0][0];
   const ckB  = topBlk[0][0];
+
+  // Save profile
+  saveProfileResult('check',{
+    enneatipo: Number(enn1), enn2: Number(enn2),
+    vak: topVak[0][0], at_stato: topAt[0][0],
+    chakra_forte: topCk[0][0], chakra_debole: topBlk[0][0]||null,
+    spinte: [...spinte], conf_stile: confStile, cerca_di: cercaDi
+  });
 
   const CHAKRA_NAMES = {c1:"1° Muladhara (Radice)",c2:"2° Svadhisthana (Sacrale)",c3:"3° Manipura (Plesso Solare)",c4:"4° Anahata (Cuore)",c5:"5° Vishuddha (Gola)",c6:"6° Ajna (Terzo Occhio)",c7:"7° Sahasrara (Corona)"};
   const ENN_NAMES = {1:"Perfezionista",2:"Altruista",3:"Manager",4:"Romantico",5:"Eremita",6:"Leale",7:"Artista",8:"Capo",9:"Diplomatico"};
@@ -8134,6 +8294,14 @@ const DIET_ADATT = {
 };
 
 function generateDiet(){
+  const _dEnn = document.getElementById('diet-enn')?.value;
+  const _dAdatt = document.getElementById('diet-adatt')?.value;
+  if(_dEnn && _dAdatt){
+    const _dEnnObj = DB.enneatipi.find(e=>e.id==='e'+_dEnn)||{};
+    const _dAdattObj = DB.adattamenti.find(a=>a.id===_dAdatt)||{};
+    saveProfileResult('diet',{tipo:Number(_dEnn), adattamento:_dAdattObj.short||_dAdatt});
+  }
+
   const ennVal = document.getElementById('diet-enn').value;
   const adattVal = document.getElementById('diet-adatt').value;
   const resDiv = document.getElementById('diet-result');

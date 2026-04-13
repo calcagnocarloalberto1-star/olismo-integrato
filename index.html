@@ -1535,6 +1535,81 @@ footer{
 .vak-restart-btn{display:block;margin:1.5rem auto 0;padding:.55rem 1.8rem;background:none;border:1.5px solid var(--border2);color:var(--ink3);border-radius:20px;font-size:.78rem;cursor:pointer}
 .vak-restart-btn:hover{border-color:var(--ink);color:var(--ink)}
 
+
+/* ══ CHI SONO ══ */
+#chi-sono{background:var(--ivory)}
+.chisono-grid{display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start}
+@media(max-width:760px){.chisono-grid{grid-template-columns:1fr}}
+.chisono-card{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);overflow:hidden;position:sticky;top:88px}
+.chisono-avatar{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--ivory2),var(--ivory3));display:flex;align-items:center;justify-content:center;font-size:5rem}
+.chisono-card-body{padding:1.5rem}
+.chisono-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
+.chisono-role{font-size:.78rem;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+.chisono-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;padding:.2rem .65rem;background:var(--ivory2);border-radius:12px;color:var(--ink3);margin:.2rem}
+.chisono-tags{flex-wrap:wrap;display:flex;gap:.2rem;margin-bottom:1rem}
+.chisono-contact-row{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:var(--ink2);margin:.3rem 0}
+.chisono-contact-row a{color:var(--ink2);text-decoration:none}
+.chisono-contact-row a:hover{color:var(--gold)}
+.chisono-divider{height:1px;background:var(--ivory3);margin:1rem 0}
+
+.chisono-content h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--ink);margin:1.8rem 0 .6rem}
+.chisono-content p{font-size:.9rem;color:var(--ink2);line-height:1.85;margin-bottom:.9rem}
+.chisono-content p:first-child{margin-top:0}
+
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1.2rem}
+.site-card{background:white;border-radius:10px;border:1.5px solid var(--border);padding:1.1rem;text-decoration:none;display:block;transition:all .2s}
+.site-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 20px rgba(184,147,90,.15)}
+.site-card-icon{font-size:1.6rem;margin-bottom:.4rem}
+.site-card-name{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.site-card-url{font-size:.72rem;color:var(--gold)}
+.site-card-desc{font-size:.75rem;color:var(--ink3);line-height:1.5;margin-top:.4rem}
+
+/* ══ CHECK INTEGRATO ══ */
+#check-integrato{background:var(--ivory2)}
+.check-intro-box{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);padding:2rem;margin-bottom:2.5rem}
+.check-intro-box p{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.6rem}
+
+.check-test-wrap{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);overflow:hidden}
+.check-header{padding:1.4rem 2rem;border-bottom:1px solid var(--ivory3);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.check-header-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--ink)}
+.check-header-meta{font-size:.75rem;color:var(--ink4)}
+.check-prog-bar{height:4px;background:var(--ivory3)}
+.check-prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),#e09060);transition:width .4s}
+.check-q-area{padding:2rem}
+.check-section-label{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.check-q-text{font-size:1rem;font-weight:500;color:var(--ink);line-height:1.6;margin-bottom:1.4rem}
+.check-options{display:flex;flex-direction:column;gap:.55rem}
+.check-opt{
+  display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  cursor:pointer;transition:all .15s;font-size:.85rem;color:var(--ink2);
+  background:white;text-align:left;width:100%;
+}
+.check-opt:hover{border-color:var(--ink3);background:var(--ivory2)}
+.check-opt.sel{border-color:var(--gold);background:rgba(184,147,90,.07);color:var(--ink);font-weight:500}
+.check-dot{width:16px;height:16px;min-width:16px;border-radius:50%;border:2px solid var(--border);transition:all .15s}
+.check-opt.sel .check-dot{background:var(--gold);border-color:var(--gold)}
+.check-nav-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem 1.5rem;border-top:1px solid var(--ivory3)}
+.check-btn-prev{background:none;border:1.5px solid var(--border);color:var(--ink3);padding:.45rem 1.1rem;border-radius:20px;font-size:.78rem;cursor:pointer}
+.check-btn-next{background:var(--gold);color:white;border:none;padding:.45rem 1.6rem;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer}
+.check-btn-next:disabled{background:var(--ivory3);color:var(--ink4);cursor:default}
+
+/* Risultato Check */
+.check-result{display:none;padding:2rem}
+.check-result.show{display:block}
+.check-res-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);margin-bottom:.5rem;text-align:center}
+.check-res-subtitle{font-size:.82rem;color:var(--ink3);text-align:center;margin-bottom:2rem}
+
+.check-profile-box{background:var(--ivory);border:1.5px solid var(--border2);border-radius:var(--r);padding:1.5rem;margin-bottom:1.5rem;font-family:'Courier New',monospace;font-size:.78rem;color:var(--ink2);line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.check-copy-btn{display:block;margin:0 auto 1.5rem;padding:.55rem 1.8rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer}
+.check-copy-btn:hover{background:var(--blue2)}
+.check-summary-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+.check-sum-card{background:white;border-radius:8px;border:1px solid var(--border);padding:.9rem}
+.check-sum-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.3rem}
+.check-sum-value{font-size:.95rem;font-weight:600;color:var(--ink)}
+.check-sum-sub{font-size:.72rem;color:var(--ink3);margin-top:.15rem}
+.check-restart-btn{display:block;margin:1rem auto 0;padding:.5rem 1.6rem;background:none;border:1.5px solid var(--border2);color:var(--ink3);border-radius:20px;font-size:.78rem;cursor:pointer}
+
 </style>
 
 
@@ -1571,6 +1646,8 @@ footer{
     <button class="nav-link" onclick="st('bach')">Bach</button>
     <button class="nav-link" onclick="st('fes-sec')">✿ FES</button>
     <button class="nav-link" onclick="st('bush-sec')">❋ Bush</button>
+    <button class="nav-link" onclick="st('chi-sono')">🧑 Chi sono</button>
+    <button class="nav-link" onclick="st('check-integrato')">✦ Check</button>
     <button class="nav-link" onclick="st('vak')">👁 VAK</button>
     <button class="nav-link" onclick="st('faq')">FAQ</button>
     <button class="nav-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--ink3)">🎵 Suno ↗</button>
@@ -2469,6 +2546,123 @@ footer{
       </div>
     </div>
     <div class="vak-result" id="vak-result"></div>
+  </div>
+</section>
+
+
+<!-- ▐▐ CHI SONO ▐▐ -->
+<section id="chi-sono">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Autore · Formatore · Mediatore</div>
+      <h2 class="sec-title">Chi <em>sono</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="chisono-grid">
+      <!-- Card laterale -->
+      <div>
+        <div class="chisono-card">
+          <div class="chisono-avatar">🧑‍🏫</div>
+          <div class="chisono-card-body">
+            <div class="chisono-name">Carlo Alberto Calcagno</div>
+            <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
+            <div class="chisono-tags">
+              <span class="chisono-tag">⬟ Enneagramma Evolutivo</span>
+              <span class="chisono-tag">⚙ Analisi Transazionale</span>
+              <span class="chisono-tag">👁 PNL / VAK</span>
+              <span class="chisono-tag">🤲 Pranoterapia</span>
+              <span class="chisono-tag">⚖ Mediazione Familiare</span>
+              <span class="chisono-tag">📚 35+ anni esperienza</span>
+            </div>
+            <div class="chisono-divider"></div>
+            <div class="chisono-contact-row">📱 <a href="https://wa.me/393473666508">+39 347 366 6508</a></div>
+            <div class="chisono-contact-row">📧 <a href="mailto:calcagnocarloalberto1@gmail.com">calcagnocarloalberto1@gmail.com</a></div>
+            <div class="chisono-contact-row">🌐 <a href="https://mediaresenzaconfini.org" target="_blank">mediaresenzaconfini.org</a></div>
+            <div class="chisono-divider"></div>
+            <div style="text-align:center">
+              <a href="https://wa.me/393473666508" target="_blank"
+                style="display:inline-block;background:var(--gold);color:white;padding:.5rem 1.4rem;border-radius:20px;font-size:.78rem;font-weight:600;text-decoration:none;margin-top:.3rem">
+                💬 Contattami su WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenuto -->
+      <div class="chisono-content">
+        <p style="font-size:1.05rem;color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.9;margin-bottom:1.5rem">
+          «L'incontro di due personalità è come il contatto tra due sostanze chimiche: se c'è una qualche reazione, entrambi ne vengono trasformati.» — C. G. Jung
+        </p>
+
+        <h3>Il percorso</h3>
+        <p>Avvocato di formazione, mi sono avvicinato alla mediazione come pratica di composizione dei conflitti — civile, commerciale e familiare. Nel corso di trentacinque anni di studio, insegnamento e pratica, ho progressivamente integrato le discipline del benessere e della crescita umana: dalla psicologia dinamica freudiana all'Analisi Transazionale di Berne, dalla psicologia umanistica di Rogers alla Programmazione Neuro-Linguistica, dalla neurobiologia del conflitto alle discipline olistiche orientali.</p>
+        <p>Sono mediatore familiare certificato (COA Genova) e formatore dei mediatori. Ho tenuto corsi e convegni a Genova, Milano e in vari contesti professionali, sempre con l'obiettivo di rendere accessibili saperi complessi a chi lavora quotidianamente con le persone.</p>
+
+        <h3>L'Enneagramma Evolutivo</h3>
+        <p>Ho sviluppato un sistema originale che chiamo <strong>Enneagramma Evolutivo</strong>: una sintesi tra l'Enneagramma tradizionale, le Dignità di Raimondo Lullo, le gerarchie angeliche, le Muse di Kircher, le aree cerebrali secondo Tony Nader e i percorsi evolutivi per fascia d'età. Non è un sistema di classificazione, ma una <em>mappa di trasformazione</em>: ogni enneatipo porta nel mondo una conoscenza specifica e segue un percorso di integrazione che si dispiegara nell'arco di tutta la vita.</p>
+        <p>Il sistema integra anche i 9 Frutti dell'Albero della Vita — simboli vegetali associati a ciascun tipo — e la correlazione con le aree cerebrali (gangli della base, sistema limbico, neocorteccia) che spiega la neurobiologia di ogni stile di personalità.</p>
+
+        <h3>La filosofia del lavoro</h3>
+        <p>Il mio approccio si fonda su tre caposaldi: <strong>impermanenza</strong> (ogni porta è aperta al cambiamento), <strong>compassione</strong> (capire che l'altro non può comportarsi altrimenti quando è preda di emozioni) e <strong>interdipendenza</strong> (conoscere l'altro è conoscere me stesso). Questi principi, mutuati dalla tradizione buddhista e radicati nelle neuroscienze, guidano tanto il lavoro di mediazione quanto la consulenza olistica.</p>
+        <p>Credo fermamente che le discipline olistiche — chakra, fiori di Bach, essenze FES e Bush, frequenze sonore, pranoterapia — non siano alternative alla medicina, ma strumenti complementari che agiscono sul campo bioenergetico della persona, facilitando quei processi di auto-guarigione che Rogers chiamava «tendenza attualizzante».</p>
+
+        <h3>I miei siti</h3>
+        <p>Nel tempo ho costruito un ecosistema digitale che raccoglie queste conoscenze e le rende accessibili gratuitamente:</p>
+        <div class="sites-grid">
+          <a class="site-card" href="https://olismo-integrato.it" target="_blank">
+            <div class="site-card-icon">🌿</div>
+            <div class="site-card-name">Olismo Integrato</div>
+            <div class="site-card-url">olismo-integrato.it</div>
+            <div class="site-card-desc">Il portale principale: database di chakra, cristalli, enneatipi, fiori di Bach, FES, Bush, frequenze, AT e consulente AI.</div>
+          </a>
+          <a class="site-card" href="https://frequenze-evolutive.it" target="_blank">
+            <div class="site-card-icon">🎵</div>
+            <div class="site-card-name">Frequenze Evolutive</div>
+            <div class="site-card-url">frequenze-evolutive.it</div>
+            <div class="site-card-desc">Generatore di musica terapeutica con AI (Suno). Frequenze solfeggio, enneatipi e stati di coscienza.</div>
+          </a>
+          <a class="site-card" href="https://guarigionequantica.eu" target="_blank">
+            <div class="site-card-icon">✨</div>
+            <div class="site-card-name">Guarigione Quantica</div>
+            <div class="site-card-url">guarigionequantica.eu</div>
+            <div class="site-card-desc">Portale dedicato alla guarigione quantica e alle pratiche energetiche avanzate.</div>
+          </a>
+          <a class="site-card" href="https://mediaresenzaconfini.org" target="_blank">
+            <div class="site-card-icon">⚖</div>
+            <div class="site-card-name">Mediare Senza Confini</div>
+            <div class="site-card-url">mediaresenzaconfini.org</div>
+            <div class="site-card-desc">ADR a 360°: conciliazione, mediazione, arbitrato, MAAN, ZOPA e bias cognitivi nella negoziazione.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ▐▐ CHECK INTEGRATO ▐▐ -->
+<section id="check-integrato">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Profilo Olistico Personale</div>
+      <h2 class="sec-title">Check <em>Integrato</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
+    </div>
+    <div class="check-test-wrap" id="check-wrap">
+      <div class="check-header">
+        <div class="check-header-title">Profilo Olistico Integrato</div>
+        <div class="check-header-meta" id="check-counter">1 / 32</div>
+      </div>
+      <div class="check-prog-bar"><div class="check-prog-fill" id="check-prog" style="width:3%"></div></div>
+      <div class="check-q-area" id="check-q-area"></div>
+      <div class="check-nav-row">
+        <button class="check-btn-prev" onclick="checkPrev()" id="check-prev-btn">← Indietro</button>
+        <button class="check-btn-next" onclick="checkNext()" id="check-next-btn" disabled>Avanti →</button>
+      </div>
+    </div>
+    <div class="check-result" id="check-result"></div>
   </div>
 </section>
 
@@ -4404,6 +4598,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   renderFlowerGrid("fes","fes-grid");
   renderFlowerGrid("bush","bush-grid");
   initVakTest();
+  initCheckTest();
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
 });
 
@@ -4923,6 +5118,514 @@ function restartVak(){
 }
 
 
+
+
+// ══════════════════════════════════════════════
+// CHECK INTEGRATO — 32 domande per profilo olistico
+// ══════════════════════════════════════════════
+
+/*
+  Ogni risposta ha un "peso" su più dimensioni.
+  Dimensioni: 
+    - enneatipo (1-9)
+    - vak (V/A/K)
+    - at_stato (GN/GA/A/BL/BA)
+    - chakra (c1-c7)
+    - conflitto (attacco/evita/freeze)
+    - forza (coraggio/amore/saggezza/creatività/servizio/equilibrio)
+*/
+
+const CHECK_QS = [
+  // ── BLOCCO 1: Chi sei (identità/enneatipo) ──
+  {
+    sez:"Identità e valori",
+    q:"Qual è il tuo driver più profondo nella vita?",
+    opts:[
+      {t:"Fare le cose bene e con integrità, migliorare sempre",     e:[1,1], f:"coraggio"},
+      {t:"Essere amato/a e sentirmi necessario/a agli altri",          e:[2,2], f:"amore"},
+      {t:"Raggiungere successo e risultati visibili",                  e:[3,3], f:"coraggio"},
+      {t:"Essere autentico/a e profondo/a, esprimere la mia unicità", e:[4,4], f:"creatività"}
+    ]
+  },
+  {
+    sez:"Identità e valori",
+    q:"Come reagisci quando qualcosa non va come previsto?",
+    opts:[
+      {t:"Analizzo cosa è andato storto e cerco di migliorare",       e:[1,5], f:"saggezza"},
+      {t:"Cerco supporto e mi preoccupo delle conseguenze sulle relazioni", e:[2,6], f:"amore"},
+      {t:"Mi adatto rapidamente e trovo un'altra strada",             e:[3,7], f:"creatività"},
+      {t:"Sento un peso interiore e ho bisogno di elaborare da solo/a", e:[4,9], f:"equilibrio"}
+    ]
+  },
+  {
+    sez:"Identità e valori",
+    q:"La tua relazione con l'autorità e le regole è...",
+    opts:[
+      {t:"Le rispetto e spesso le applico con rigore",                e:[1,6], f:"coraggio"},
+      {t:"Le accetto se mi permettono di aiutare e connettere",       e:[2,9], f:"amore"},
+      {t:"Le uso quando mi convengono, le bypasso quando no",         e:[3,8], f:"coraggio"},
+      {t:"Le metto in discussione, ho bisogno di autenticità",        e:[4,5], f:"saggezza"}
+    ]
+  },
+  {
+    sez:"Identità e valori",
+    q:"Cosa ti dà più soddisfazione nel lavoro?",
+    opts:[
+      {t:"Un lavoro ben fatto, preciso, senza errori",                e:[1], f:"coraggio"},
+      {t:"Sentirmi utile e vedere che ho fatto la differenza",        e:[2], f:"amore"},
+      {t:"Riconoscimento, successo e risultati tangibili",            e:[3], f:"creatività"},
+      {t:"Esprimere la mia creatività e profondità",                  e:[4], f:"creatività"},
+      {t:"Acquisire conoscenza e autonomia intellettuale",            e:[5], f:"saggezza"},
+      {t:"Sentirmi sicuro/a in un sistema affidabile",               e:[6], f:"equilibrio"},
+      {t:"Varietà, libertà e nuove esperienze",                       e:[7], f:"creatività"},
+      {t:"Avere controllo, impatto e rispetto",                       e:[8], f:"coraggio"},
+      {t:"Armonia, pace e collaborazione senza conflitti",            e:[9], f:"equilibrio"}
+    ]
+  },
+  {
+    sez:"Identità e valori",
+    q:"La tua paura più profonda è...",
+    opts:[
+      {t:"Sbagliare, essere imperfetto/a o corrotto/a moralmente",    e:[1]},
+      {t:"Non essere amato/a, non essere importante per gli altri",   e:[2]},
+      {t:"Fallire, essere inadeguato/a o perdere il successo",        e:[3]},
+      {t:"Non avere un'identità, essere ordinario/a",                 e:[4]},
+      {t:"Essere invaso/a, perdere privacy o autonomia",              e:[5]},
+      {t:"Non potersi fidare, essere senza sicurezza o supporto",     e:[6]},
+      {t:"Essere intrappolato/a nel dolore o limitato/a",             e:[7]},
+      {t:"Essere vulnerabile, controllato/a o tradito/a",             e:[8]},
+      {t:"Perdere la pace, creare conflitti, essere separato/a",      e:[9]}
+    ]
+  },
+  // ── BLOCCO 2: VAK ──
+  {
+    sez:"Come elabori la realtà",
+    q:"Quando devi risolvere un problema, la prima cosa che fai è...",
+    opts:[
+      {t:"Visualizzare il risultato desiderato come un'immagine mentale", vak:"V"},
+      {t:"Ragionare ad alta voce o discuterne con qualcuno",             vak:"A"},
+      {t:"Iniziare ad agire concretamente, sentire come 'si muove'",     vak:"K"}
+    ]
+  },
+  {
+    sez:"Come elabori la realtà",
+    q:"In una conversazione importante noti di più...",
+    opts:[
+      {t:"Le espressioni del viso, i gesti e l'abbigliamento",          vak:"V"},
+      {t:"Il tono di voce, le parole scelte e le pause",                vak:"A"},
+      {t:"L'energia che la persona trasmette e come ti fa sentire",      vak:"K"}
+    ]
+  },
+  {
+    sez:"Come elabori la realtà",
+    q:"Il tuo modo di imparare preferito è...",
+    opts:[
+      {t:"Vedere schemi, grafici, immagini e dimostrazioni visive",      vak:"V"},
+      {t:"Ascoltare spiegazioni, discutere e leggere attentamente",      vak:"A"},
+      {t:"Fare pratica, sperimentare direttamente con le mani",          vak:"K"}
+    ]
+  },
+  {
+    sez:"Come elabori la realtà",
+    q:"Quando ricordi un momento felice del passato...",
+    opts:[
+      {t:"Rivedi le immagini, i colori e i luoghi di quel momento",      vak:"V"},
+      {t:"Senti le voci, le parole e la musica di quell'atmosfera",      vak:"A"},
+      {t:"Riprovi le sensazioni fisiche ed emotive di allora",           vak:"K"}
+    ]
+  },
+  // ── BLOCCO 3: Stati AT ──
+  {
+    sez:"Analisi Transazionale",
+    q:"Nelle relazioni con gli altri come sei percepito/a più spesso?",
+    opts:[
+      {t:"Esigente, critico/a, strutturato/a",                           at:"GN"},
+      {t:"Premuroso/a, caldo/a, protettivo/a",                          at:"GA"},
+      {t:"Razionale, obiettivo/a, pragmatico/a",                        at:"A"},
+      {t:"Spontaneo/a, divertente, entusiasta",                         at:"BL"},
+      {t:"Adattabile, accomodante, rispettoso/a dei ruoli",             at:"BA"}
+    ]
+  },
+  {
+    sez:"Analisi Transazionale",
+    q:"Quando sei sotto pressione tendi a...",
+    opts:[
+      {t:"Diventare più critico/a e rigido/a nelle aspettative",        at:"GN"},
+      {t:"Fare ancora di più per gli altri, poi esplodere per ingratitudine", at:"GA"},
+      {t:"Analizzare freddamente la situazione, distaccarti emotivamente", at:"A"},
+      {t:"Cercare evasione, leggerezza, fuggire dalla situazione",      at:"BL"},
+      {t:"Cedere, compiacere, rimandare per evitare il conflitto",      at:"BA"}
+    ]
+  },
+  {
+    sez:"Analisi Transazionale",
+    q:"La tua spinta interiore più forte è...",
+    opts:[
+      {t:"Sii perfetto/a — le cose devono essere fatte bene",           at:"GN", sp:"Sii perfetto"},
+      {t:"Compiaci — devi piacere agli altri e fare felici",            at:"GA", sp:"Compiaci"},
+      {t:"Sii forte — non mostrare debolezza né bisogno",               at:"A",  sp:"Sii forte"},
+      {t:"Sforzati — il valore dipende dall'impegno continuo",          at:"BL", sp:"Sforzati"},
+      {t:"Sbrigati — non c'è mai abbastanza tempo",                     at:"BA", sp:"Sbrigati"}
+    ]
+  },
+  {
+    sez:"Analisi Transazionale",
+    q:"Nel tuo dialogo interiore prevale più spesso...",
+    opts:[
+      {t:"Una voce critica che valuta e corregge ('potevi fare meglio')",  at:"GN"},
+      {t:"Una voce affettuosa che si preoccupa per gli altri",           at:"GA"},
+      {t:"Una voce analitica che ragiona sui fatti",                     at:"A"},
+      {t:"Una voce spontanea piena di desideri e idee",                  at:"BL"},
+      {t:"Una voce che chiede permesso o teme la disapprovazione",       at:"BA"}
+    ]
+  },
+  // ── BLOCCO 4: Chakra dominante ──
+  {
+    sez:"Energia e chakra",
+    q:"Dove senti di avere più forza nella tua vita?",
+    opts:[
+      {t:"Nel radicamento fisico, nella sicurezza materiale e nella stabilità", ck:"c1"},
+      {t:"Nelle relazioni, nelle emozioni e nella sessualità",           ck:"c2"},
+      {t:"Nel potere personale, nella volontà e nella determinazione",  ck:"c3"},
+      {t:"Nell'amore, nell'empatia e nelle connessioni del cuore",      ck:"c4"},
+      {t:"Nell'espressione, nella comunicazione e nella verità",        ck:"c5"},
+      {t:"Nell'intuizione, nella visione e nella comprensione profonda",ck:"c6"},
+      {t:"Nella spiritualità, nella connessione con il tutto",          ck:"c7"}
+    ]
+  },
+  {
+    sez:"Energia e chakra",
+    q:"Dove senti maggiore difficoltà o blocco?",
+    opts:[
+      {t:"Paura, insicurezza, difficoltà a sentirsi stabili e radicati",  ck:"c1", blk:true},
+      {t:"Senso di colpa, emozioni represse, difficoltà nelle relazioni", ck:"c2", blk:true},
+      {t:"Bassa autostima, difficoltà ad agire o decidere",              ck:"c3", blk:true},
+      {t:"Dolore emotivo, difficoltà ad amare o ricevere amore",         ck:"c4", blk:true},
+      {t:"Difficoltà ad esprimersi autenticamente, vergogna",            ck:"c5", blk:true},
+      {t:"Pensieri confusi, mancanza di chiarezza o visione",            ck:"c6", blk:true},
+      {t:"Senso di separazione, mancanza di scopo o senso",              ck:"c7", blk:true}
+    ]
+  },
+  {
+    sez:"Energia e chakra",
+    q:"Il tuo corpo dove tende ad accumulare tensione?",
+    opts:[
+      {t:"Gambe, piedi, schiena bassa — difficoltà a stare radicato",    ck:"c1"},
+      {t:"Bacino, addome basso — tensione nelle relazioni",              ck:"c2"},
+      {t:"Plesso solare — nodi allo stomaco, ansia da prestazione",      ck:"c3"},
+      {t:"Petto, cuore — senso di oppressione al petto",                ck:"c4"},
+      {t:"Gola, cervicale — nodo in gola, difficoltà a parlare",        ck:"c5"},
+      {t:"Testa, fronte, occhi — cefalee, pensieri circolari",          ck:"c6"},
+      {t:"Tutta la testa o senso di 'stacco' dalla realtà",             ck:"c7"}
+    ]
+  },
+  // ── BLOCCO 5: Stile di conflitto (danza) ──
+  {
+    sez:"Conflitto e relazioni",
+    q:"Quando litighi con qualcuno che ami, tendi a...",
+    opts:[
+      {t:"Alzare la voce, essere diretto/a, dire tutto quello che pensi",    conf:"attacco"},
+      {t:"Ragionare, cercare di spiegare la tua posizione con logica",      conf:"razional"},
+      {t:"Silenziare, evitare il conflitto, aspettare che passi",            conf:"evita"},
+      {t:"Andartene fisicamente o emotivamente, non rispondere",             conf:"freeze"}
+    ]
+  },
+  {
+    sez:"Conflitto e relazioni",
+    q:"Cosa c'è sotto la tua reazione di conflitto più tipica?",
+    opts:[
+      {t:"Paura di non contare nulla, di non essere importante per l'altro", conf:"attacco", sotto:"paura"},
+      {t:"Paura di sbagliare, di essere criticato/a o di perdere il controllo", conf:"razional", sotto:"colpa"},
+      {t:"Paura di essere sopraffatto/a o di perdere la pace",              conf:"evita", sotto:"angoscia"},
+      {t:"Paura dell'abbandono o di essere ferito/a ancora",               conf:"freeze", sotto:"dolore"}
+    ]
+  },
+  {
+    sez:"Conflitto e relazioni",
+    q:"Nelle relazioni di coppia o amicizia intima, il tuo pattern più ricorrente è...",
+    opts:[
+      {t:"Dare tanto ma aspettarmi in cambio, arrabbiarmi se non ricevo",   pat:"2-8"},
+      {t:"Essere sempre il/la forte ma dentro soffrire in silenzio",       pat:"8-5"},
+      {t:"Adattarmi per evitare tensione, dimenticando i miei bisogni",    pat:"9-2"},
+      {t:"Alternare apertura totale a chiusura difensiva",                  pat:"4-1"},
+      {t:"Cercare sicurezza e poi dubitare di averla trovata",              pat:"6-3"}
+    ]
+  },
+  // ── BLOCCO 6: Rogers / tendenza attualizzante ──
+  {
+    sez:"Crescita e autorealizzazione",
+    q:"Come ti relazioni con il tuo potenziale inespresso?",
+    opts:[
+      {t:"Lo sento sempre, ma la paura di fallire mi blocca spesso",       rog:"ansia"},
+      {t:"So cosa voglio ma le aspettative altrui mi condizionano molto",  rog:"congruenza"},
+      {t:"Ho bisogno di condizioni perfette per esprimermi",               rog:"blocco"},
+      {t:"Mi esprimo liberamente — la crescita è un processo naturale",    rog:"fluido"}
+    ]
+  },
+  {
+    sez:"Crescita e autorealizzazione",
+    q:"Quanto c'è divario tra 'chi sei' e 'chi vorresti essere'?",
+    opts:[
+      {t:"Molto — sento una forte distanza tra sé reale e sé ideale",      rog:"alta_incong"},
+      {t:"Abbastanza — lavoro sulla crescita ma mi critico spesso",        rog:"media_incong"},
+      {t:"Poco — vivo abbastanza in accordo con i miei valori",            rog:"bassa_incong"},
+      {t:"Non ci penso quasi mai, vivo nel momento presente",              rog:"presente"}
+    ]
+  },
+  {
+    sez:"Crescita e autorealizzazione",
+    q:"Quale dimensione senti di dover sviluppare di più?",
+    opts:[
+      {t:"Autostima e fiducia in me stesso/a",                             cres:"autostima"},
+      {t:"Capacità di stabilire confini e dire no",                        cres:"confini"},
+      {t:"Presenza nel corpo e gestione delle emozioni",                   cres:"corpo"},
+      {t:"Capacità di ricevere amore e aiuto senza sensi di colpa",        cres:"ricevere"},
+      {t:"Chiarezza sul mio scopo di vita",                                cres:"scopo"},
+      {t:"Coraggio di esprimermi autenticamente",                          cres:"espressione"}
+    ]
+  },
+  // ── BLOCCO 7: Neurobiologia / cervello tripartito ──
+  {
+    sez:"Mente e neurobiologia",
+    q:"In situazioni stressanti il tuo sistema nervoso tende a...",
+    opts:[
+      {t:"Attivarsi (combatti): tensione, voce alta, reazioni rapide",      snv:"simpatico"},
+      {t:"Congelare (shutdown): silenzio, disconnessione, paralisi",        snv:"dorsovagale"},
+      {t:"Iper-analizzare: razionalizzare tutto, cercare di 'capire'",      snv:"neocortex"}
+    ]
+  },
+  {
+    sez:"Mente e neurobiologia",
+    q:"Quale cervello prevale di più nella tua vita quotidiana?",
+    opts:[
+      {t:"Il rettiliano: vivo per abitudine, routine, istinto, sopravvivenza",  cerv:"rettiliano"},
+      {t:"Il limbico: le emozioni guidano quasi tutto quello che faccio",       cerv:"limbico"},
+      {t:"La neocorteccia: ragiono prima di agire, mi fido della logica",       cerv:"corticale"}
+    ]
+  },
+  // ── BLOCCO 8: Integrazione e scopo ──
+  {
+    sez:"Scopo e integrazione",
+    q:"Quale delle seguenti frasi risuona di più con il tuo momento di vita attuale?",
+    opts:[
+      {t:"Sto cercando di capire chi sono davvero, oltre le maschere",      fase:"identità"},
+      {t:"So chi sono, sto cercando di trasformare i miei pattern limitanti", fase:"trasform"},
+      {t:"Voglio lasciare qualcosa di significativo, contribuire agli altri", fase:"servizio"},
+      {t:"Sto attraversando una crisi o una transizione importante",         fase:"crisi"},
+      {t:"Mi sento abbastanza in armonia, sto consolidando la mia crescita", fase:"consolidam"}
+    ]
+  },
+  {
+    sez:"Scopo e integrazione",
+    q:"Quale disciplina del sito senti come più urgente per te in questo momento?",
+    opts:[
+      {t:"Enneagramma — capire la mia personalità in profondità",           prio:"enneagramma"},
+      {t:"Analisi Transazionale — lavorare sui miei stati dell'Io e copioni", prio:"at"},
+      {t:"Fiori (Bach/FES/Bush) — supporto energetico emotivo",              prio:"fiori"},
+      {t:"Chakra e cristalli — riequilibrio energetico",                     prio:"chakra"},
+      {t:"Frequenze sonore — guarigione vibrazionale",                       prio:"frequenze"},
+      {t:"Pranoterapia — lavoro sul campo energetico",                       prio:"prano"},
+      {t:"Mediazione e conflitto — gestire relazioni difficili",             prio:"conflitto"}
+    ]
+  },
+  {
+    sez:"Scopo e integrazione",
+    q:"Con quale frase ti identifichi di più in questo momento?",
+    opts:[
+      {t:"Ho bisogno di essere visto/a e apprezzato/a per ciò che sono",    mot:"riconoscimento"},
+      {t:"Ho bisogno di sicurezza, stabilità e poter fidare",               mot:"sicurezza"},
+      {t:"Ho bisogno di libertà, di non sentirmi intrappolato/a",           mot:"libertà"},
+      {t:"Ho bisogno di connessione profonda con gli altri",                 mot:"connessione"},
+      {t:"Ho bisogno di sapere qual è il mio scopo",                        mot:"scopo"},
+      {t:"Ho bisogno di guarire qualcosa che porto da tempo",               mot:"guarigione"}
+    ]
+  }
+];
+
+// State
+let checkAnswers = new Array(CHECK_QS.length).fill(null);
+let checkCurrentQ = 0;
+
+function initCheckTest(){
+  checkAnswers = new Array(CHECK_QS.length).fill(null);
+  checkCurrentQ = 0;
+  renderCheckQ();
+}
+
+function renderCheckQ(){
+  const qd = CHECK_QS[checkCurrentQ];
+  const total = CHECK_QS.length;
+  document.getElementById('check-counter').textContent = (checkCurrentQ+1) + ' / ' + total;
+  document.getElementById('check-prog').style.width = (((checkCurrentQ+1)/total)*100) + '%';
+  document.getElementById('check-prev-btn').disabled = checkCurrentQ === 0;
+  document.getElementById('check-next-btn').disabled = checkAnswers[checkCurrentQ] === null;
+  document.getElementById('check-next-btn').textContent = checkCurrentQ === total-1 ? 'Crea il mio profilo →' : 'Avanti →';
+
+  const sel = checkAnswers[checkCurrentQ];
+  const optsHtml = qd.opts.map((opt, i) =>
+    '<button class="check-opt' + (sel===i?' sel':'') + '" onclick="checkSelect(' + i + ')">' +
+    '<span class="check-dot"></span>' +
+    '<span>' + opt.t + '</span>' +
+    '</button>'
+  ).join('');
+
+  document.getElementById('check-q-area').innerHTML =
+    '<div class="check-section-label">' + qd.sez + '</div>' +
+    '<div class="check-q-text">' + qd.q + '</div>' +
+    '<div class="check-options">' + optsHtml + '</div>';
+}
+
+function checkSelect(idx){
+  checkAnswers[checkCurrentQ] = idx;
+  document.getElementById('check-next-btn').disabled = false;
+  renderCheckQ();
+}
+
+function checkPrev(){
+  if(checkCurrentQ > 0){ checkCurrentQ--; renderCheckQ(); }
+}
+
+function checkNext(){
+  if(checkAnswers[checkCurrentQ] === null) return;
+  if(checkCurrentQ < CHECK_QS.length - 1){ checkCurrentQ++; renderCheckQ(); }
+  else { calcCheckResult(); }
+}
+
+function calcCheckResult(){
+  // Aggregate scores
+  const ennScores = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+  const vakScores = {V:0,A:0,K:0};
+  const atScores  = {GN:0,GA:0,A:0,BL:0,BA:0};
+  const ckScores  = {c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0};
+  const ckBlocked = {c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0};
+  let confStile = '', snvTipo = '', cercaDi = '', motivazione = '', fase = '', priorita = '';
+  const spinte = [];
+
+  CHECK_QS.forEach((qd, qi) => {
+    const ai = checkAnswers[qi];
+    if(ai === null) return;
+    const opt = qd.opts[ai];
+    if(!opt) return;
+    if(opt.e) opt.e.forEach(t => ennScores[t] = (ennScores[t]||0)+1);
+    if(opt.vak) vakScores[opt.vak]++;
+    if(opt.at) atScores[opt.at]++;
+    if(opt.sp) spinte.push(opt.sp);
+    if(opt.ck && !opt.blk) ckScores[opt.ck] = (ckScores[opt.ck]||0)+1;
+    if(opt.ck && opt.blk)  ckBlocked[opt.ck] = (ckBlocked[opt.ck]||0)+1;
+    if(opt.conf) confStile = opt.conf;
+    if(opt.snv)  snvTipo = opt.snv;
+    if(opt.cres) cercaDi = opt.cres;
+    if(opt.mot)  motivazione = opt.mot;
+    if(opt.fase) fase = opt.fase;
+    if(opt.prio) priorita = opt.prio;
+  });
+
+  // Find dominants
+  const topEnn = Object.entries(ennScores).sort((a,b)=>b[1]-a[1]);
+  const topVak = Object.entries(vakScores).sort((a,b)=>b[1]-a[1]);
+  const topAt  = Object.entries(atScores).sort((a,b)=>b[1]-a[1]);
+  const topCk  = Object.entries(ckScores).sort((a,b)=>b[1]-a[1]);
+  const topBlk = Object.entries(ckBlocked).sort((a,b)=>b[1]-a[1]);
+
+  const enn1 = topEnn[0][0], enn2 = topEnn[1][0];
+  const vak1 = topVak[0][0];
+  const at1  = topAt[0][0], at2 = topAt[1][0];
+  const ck1  = topCk[0][0];
+  const ckB  = topBlk[0][0];
+
+  const CHAKRA_NAMES = {c1:"1° Muladhara (Radice)",c2:"2° Svadhisthana (Sacrale)",c3:"3° Manipura (Plesso Solare)",c4:"4° Anahata (Cuore)",c5:"5° Vishuddha (Gola)",c6:"6° Ajna (Terzo Occhio)",c7:"7° Sahasrara (Corona)"};
+  const ENN_NAMES = {1:"Perfezionista",2:"Altruista",3:"Manager",4:"Romantico",5:"Eremita",6:"Leale",7:"Artista",8:"Capo",9:"Diplomatico"};
+  const AT_NAMES = {GN:"Genitore Normativo",GA:"Genitore Affettivo",A:"Adulto",BL:"Bambino Libero",BA:"Bambino Adattato"};
+  const VAK_NAMES = {V:"Visivo",A:"Auditivo",K:"Cenestesico"};
+  const VAK_EMOJI = {V:"👁",A:"🎵",K:"🤲"};
+  const CONF_NAMES = {attacco:"Combatti (sistema simpatico attivato)",razional:"Razionalizzazione (neocorteccia come difesa)",evita:"Eviti (riduzione del contatto)",freeze:"Ti congeli (sistema dorsovagale)"};
+
+  // Build the AI briefing text
+  const briefing = `=== PROFILO OLISTICO INTEGRATO ===
+Data: ${new Date().toLocaleDateString('it-IT')}
+
+ENNEATIPO (ipotesi):
+→ Tipo ${enn1} — ${ENN_NAMES[enn1]} (dominante)
+→ Tipo ${enn2} — ${ENN_NAMES[enn2]} (influenza secondaria)
+
+CANALE VAK:
+→ ${VAK_EMOJI[vak1]} ${VAK_NAMES[vak1]} (canale preferenziale)
+
+STATI AT PREVALENTI:
+→ ${AT_NAMES[at1]} (principale)
+→ ${AT_NAMES[at2]} (secondario)
+${spinte.length > 0 ? '→ Spinte copione rilevate: ' + spinte.join(', ') : ''}
+
+CHAKRA:
+→ Chakra di forza: ${CHAKRA_NAMES[ck1]}
+→ Chakra da lavorare: ${CHAKRA_NAMES[ckB]}
+
+STILE DI CONFLITTO:
+→ ${CONF_NAMES[confStile] || 'Non rilevato'}
+→ Sistema nervoso: ${snvTipo === 'simpatico' ? 'Simpatico (combatti/fuggi)' : snvTipo === 'dorsovagale' ? 'Dorsovagale (freeze/shutdown)' : 'Neocorteccia (razionalizzazione difensiva)'}
+
+MOTIVAZIONE ATTUALE:
+→ ${motivazione}
+
+FASE DI VITA:
+→ ${fase}
+
+PRIORITÀ DISCIPLINA:
+→ ${priorita}
+
+AREA DI CRESCITA:
+→ ${cercaDi}
+
+=== RICHIESTA ===
+Sulla base di questo profilo, forniscimi una consulenza olistica integrata che colleghi almeno 3 discipline, suggerisca pratiche concrete e mi aiuti a capire il mio pattern principale.`;
+
+  // Summary cards
+  const cards = [
+    {label:"Enneatipo",    value:"T"+enn1+" "+ENN_NAMES[enn1], sub:"Influenza T"+enn2},
+    {label:"VAK",          value:VAK_EMOJI[vak1]+" "+VAK_NAMES[vak1], sub:"Canale preferenziale"},
+    {label:"Stato AT",     value:AT_NAMES[at1], sub:"Secondario: "+AT_NAMES[at2]},
+    {label:"Chakra forza", value:CHAKRA_NAMES[ck1].split(' ')[0]+" "+CHAKRA_NAMES[ck1].split(' ')[1], sub:"Chakra attivo"},
+    {label:"Da lavorare",  value:CHAKRA_NAMES[ckB].split(' ')[0]+" "+CHAKRA_NAMES[ckB].split(' ')[1], sub:"Chakra da equilibrare"},
+    {label:"In conflitto", value:confStile==='attacco'?'Combatti':confStile==='freeze'?'Ti congeli':confStile==='evita'?'Eviti':'Razionalizzi', sub:"Stile difensivo"},
+  ];
+
+  const cardsHtml = cards.map(c =>
+    '<div class="check-sum-card"><div class="check-sum-label">'+c.label+'</div><div class="check-sum-value">'+c.value+'</div><div class="check-sum-sub">'+c.sub+'</div></div>'
+  ).join('');
+
+  // Show result
+  document.getElementById('check-wrap').style.display = 'none';
+  const res = document.getElementById('check-result');
+  res.classList.add('show');
+  res.innerHTML =
+    '<div class="check-res-title">Il tuo Profilo Olistico Integrato</div>' +
+    '<div class="check-res-subtitle">Copia il testo qui sotto e incollalo nella chat con la Consulente AI per una consulenza personalizzata.</div>' +
+    '<div class="check-summary-cards">' + cardsHtml + '</div>' +
+    '<div class="check-profile-box" id="check-briefing-text">' + briefing + '</div>' +
+    '<button class="check-copy-btn" onclick="copyCheckBriefing()">📋 Copia il profilo per l\'AI</button>' +
+    '<button class="check-restart-btn" onclick="restartCheck()">↩ Rifai il check</button>';
+  res.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function copyCheckBriefing(){
+  const text = document.getElementById('check-briefing-text').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.check-copy-btn');
+    btn.textContent = '✅ Copiato! Ora incollalo nella chat AI';
+    btn.style.background = '#059669';
+    // Also open AI chat
+    setTimeout(()=>{ st('consulente'); }, 1500);
+  });
+}
+
+function restartCheck(){
+  document.getElementById('check-wrap').style.display = 'block';
+  const res = document.getElementById('check-result');
+  res.classList.remove('show');
+  res.innerHTML = '';
+  initCheckTest();
+  document.getElementById('check-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 </script>
 

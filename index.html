@@ -2433,6 +2433,105 @@ body.dark .dark-toggle{background:#3a3632}
   opacity:.85;transition:opacity .2s;
 }
 .percorso-btn:hover{opacity:1}
+
+/* ══ DIAGRAMMA VIAGGIO ══ */
+#percorso-viaggio{
+  background:linear-gradient(180deg,var(--ivory) 0%,white 100%);
+  padding:3rem 0 2rem;
+}
+.viaggio-title{
+  text-align:center;margin-bottom:2.5rem;
+}
+.viaggio-title h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:600;color:var(--ink1);
+  margin:0 0 .4rem;
+}
+.viaggio-title h2 em{color:var(--gold);font-style:italic}
+.viaggio-title p{font-size:.9rem;color:var(--ink3);margin:0}
+
+/* Timeline orizzontale */
+.viaggio-timeline{
+  display:flex;align-items:stretch;
+  gap:0;margin-bottom:2rem;
+  overflow-x:auto;padding-bottom:.5rem;
+}
+.viaggio-timeline::-webkit-scrollbar{height:3px}
+.viaggio-timeline::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+.viaggio-fase{
+  flex:1;min-width:160px;
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;cursor:pointer;
+  padding:1.25rem .8rem 1rem;
+  border-radius:0;
+  transition:background .2s;
+}
+.viaggio-fase:hover{background:var(--ivory2)}
+.viaggio-fase:first-child{border-radius:12px 0 0 12px}
+.viaggio-fase:last-child{border-radius:0 12px 12px 0}
+
+/* Connector arrow between phases */
+.viaggio-fase:not(:last-child)::after{
+  content:'';
+  position:absolute;right:-1px;top:50%;
+  width:2px;height:40%;
+  transform:translateY(-50%);
+  background:var(--ivory3);
+}
+
+.viaggio-fase-num{
+  width:32px;height:32px;border-radius:50%;
+  font-size:.75rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  color:white;margin-bottom:.5rem;flex-shrink:0;
+}
+.viaggio-fase-icon{font-size:1.6rem;margin-bottom:.4rem;line-height:1}
+.viaggio-fase-label{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink4);
+  margin-bottom:.25rem;text-align:center;
+}
+.viaggio-fase-title{
+  font-size:.88rem;font-weight:600;color:var(--ink1);
+  text-align:center;line-height:1.3;margin-bottom:.4rem;
+}
+.viaggio-fase-tools{
+  display:flex;flex-wrap:wrap;gap:.25rem;justify-content:center;
+}
+.viaggio-tool{
+  font-size:.62rem;background:var(--ivory3);
+  color:var(--ink3);padding:.1rem .4rem;
+  border-radius:10px;white-space:nowrap;
+}
+
+/* Arrow between phases */
+.viaggio-arrow{
+  display:flex;align-items:center;
+  color:var(--gold);font-size:1.2rem;
+  flex-shrink:0;padding:0 .1rem;
+  align-self:center;margin-top:-1rem;
+}
+
+/* Bottom CTA strip */
+.viaggio-cta-strip{
+  display:flex;justify-content:center;
+  gap:.75rem;flex-wrap:wrap;margin-top:1.5rem;
+}
+.viaggio-btn{
+  padding:.55rem 1.4rem;border-radius:20px;
+  font-size:.78rem;font-weight:600;cursor:pointer;
+  border:1.5px solid var(--gold);
+  background:transparent;color:var(--gold);
+  transition:all .2s;
+}
+.viaggio-btn:hover,.viaggio-btn.active{
+  background:var(--gold);color:white;
+}
+.viaggio-btn.primary{
+  background:var(--gold);color:white;
+}
+
 </style>
 
 
@@ -2467,6 +2566,7 @@ body.dark .dark-toggle{background:#3a3632}
   </a>
   <nav>
     <!-- FASE 1: CONOSCI TE STESSO -->
+    <button class="nav-link" onclick="st('percorso-viaggio')" title="Mappa del viaggio">🗺 Mappa</button>
     <button class="nav-link nav-phase" onclick="st('check-integrato')" title="Profilo olistico completo">✦ Check</button>
     <button class="nav-link" onclick="st('test-frutti')" style="color:var(--ink3)">🌳 Test</button>
     <button class="nav-link" onclick="st('test-adattamenti')" style="color:var(--ink3)">🧠 AT</button>
@@ -2679,6 +2779,101 @@ body.dark .dark-toggle{background:#3a3632}
   <div class="zeland-divider"></div>
   <div class="zeland-author">Vadim Zeland</div>
   <div class="zeland-source">Il fruscio delle stelle del mattino</div>
+</section>
+
+<!-- ▐▐ DIAGRAMMA VIAGGIO ════════════════════════════ -->
+<section id="percorso-viaggio">
+  <div class="container">
+    <div class="viaggio-title">
+      <h2>Il tuo <em>viaggio</em> nel portale</h2>
+      <p>Cinque fasi progressive — puoi seguire l'ordine o saltare dove ti serve. Ogni fase si appoggia alle precedenti.</p>
+    </div>
+
+    <div class="viaggio-timeline">
+
+      <!-- FASE 0 — Accoglienza -->
+      <div class="viaggio-fase" onclick="st('chi-sono')" style="border-top:3px solid #b8935a">
+        <div class="viaggio-fase-num" style="background:#b8935a">0</div>
+        <div class="viaggio-fase-icon">🌿</div>
+        <div class="viaggio-fase-label">Fase 0</div>
+        <div class="viaggio-fase-title">Accoglienza</div>
+        <div class="viaggio-fase-tools">
+          <span class="viaggio-tool">Chi sono</span>
+        </div>
+      </div>
+
+      <div class="viaggio-arrow">›</div>
+
+      <!-- FASE 1 — Conosci te stesso -->
+      <div class="viaggio-fase" onclick="st('check-integrato')" style="border-top:3px solid #2e7d4f">
+        <div class="viaggio-fase-num" style="background:#2e7d4f">1</div>
+        <div class="viaggio-fase-icon">🔎</div>
+        <div class="viaggio-fase-label">Fase 1</div>
+        <div class="viaggio-fase-title">Conosci te stesso</div>
+        <div class="viaggio-fase-tools">
+          <span class="viaggio-tool">Check</span>
+          <span class="viaggio-tool">Enneatipo</span>
+          <span class="viaggio-tool">Test AT</span>
+          <span class="viaggio-tool">VAK</span>
+        </div>
+      </div>
+
+      <div class="viaggio-arrow">›</div>
+
+      <!-- FASE 2 — Approfondisci -->
+      <div class="viaggio-fase" onclick="st('enneagram')" style="border-top:3px solid #3a4a5a">
+        <div class="viaggio-fase-num" style="background:#3a4a5a">2</div>
+        <div class="viaggio-fase-icon">🧠</div>
+        <div class="viaggio-fase-label">Fase 2</div>
+        <div class="viaggio-fase-title">Approfondisci</div>
+        <div class="viaggio-fase-tools">
+          <span class="viaggio-tool">Enneagramma</span>
+          <span class="viaggio-tool">AT</span>
+          <span class="viaggio-tool">Transazioni</span>
+          <span class="viaggio-tool">Coppia</span>
+        </div>
+      </div>
+
+      <div class="viaggio-arrow">›</div>
+
+      <!-- FASE 3 — Guarigione -->
+      <div class="viaggio-fase" onclick="st('chakra-sec')" style="border-top:3px solid #7b2fa0">
+        <div class="viaggio-fase-num" style="background:#7b2fa0">3</div>
+        <div class="viaggio-fase-icon">💎</div>
+        <div class="viaggio-fase-label">Fase 3</div>
+        <div class="viaggio-fase-title">Guarigione</div>
+        <div class="viaggio-fase-tools">
+          <span class="viaggio-tool">Chakra</span>
+          <span class="viaggio-tool">Bach/FES/Bush</span>
+          <span class="viaggio-tool">Meditazione</span>
+          <span class="viaggio-tool">Dieta</span>
+        </div>
+      </div>
+
+      <div class="viaggio-arrow">›</div>
+
+      <!-- FASE 4 — Esplora -->
+      <div class="viaggio-fase" onclick="st('explorer')" style="border-top:3px solid #1565c0">
+        <div class="viaggio-fase-num" style="background:#1565c0">4</div>
+        <div class="viaggio-fase-icon">🔭</div>
+        <div class="viaggio-fase-label">Fase 4</div>
+        <div class="viaggio-fase-title">Esplora e integra</div>
+        <div class="viaggio-fase-tools">
+          <span class="viaggio-tool">Database</span>
+          <span class="viaggio-tool">Discipline</span>
+          <span class="viaggio-tool">AI Consulente</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA strip -->
+    <div class="viaggio-cta-strip">
+      <button class="viaggio-btn primary" onclick="st('check-integrato')">✦ Inizia dal Check Integrato</button>
+      <button class="viaggio-btn" onclick="st('guida')">📖 Leggi la Guida completa</button>
+      <button class="viaggio-btn" onclick="st('consulente')">🤖 Chiedi all'AI da dove partire</button>
+    </div>
+  </div>
 </section>
 
 <section id="check-integrato">
@@ -6224,6 +6419,8 @@ window.addEventListener("DOMContentLoaded",()=>{
   renderFaq();
   renderEgogramma();
   renderEgoTest();
+  renderAtCards();
+  renderTransCards();
   renderFlowerGrid("fes","fes-grid");
   renderFlowerGrid("bush","bush-grid");
   initVakTest();

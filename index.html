@@ -1992,14 +1992,31 @@ footer.site-footer{
 .diet-food-cat{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
 .diet-food-val{font-size:.8rem;color:var(--ink2);line-height:1.5}
 .diet-adatt-note{background:rgba(184,147,90,.08);padding:.7rem 1rem;border-radius:6px;border-left:3px solid var(--gold);font-size:.83rem!important}
-.diet-week-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -2rem;padding:0 2rem .5rem}
-.diet-week{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:.4rem;min-width:940px}
-@media(max-width:800px){.diet-week{grid-template-columns:repeat(7,130px)}}
-.diet-day{background:var(--ivory2);border-radius:6px;padding:.55rem .65rem}
-.diet-day-label{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;text-align:center}
-.diet-day-meals{display:flex;flex-direction:column;gap:.3rem}
-.diet-meal{display:flex;gap:.3rem;font-size:.68rem;color:var(--ink2);line-height:1.4}
-.diet-meal-type{flex-shrink:0;font-size:.65rem;opacity:.55;width:16px}
+.diet-week-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:.5rem}
+.diet-week-scroll::-webkit-scrollbar{height:4px}
+.diet-week-scroll::-webkit-scrollbar-track{background:var(--ivory3)}
+.diet-week-scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.diet-table{width:100%;border-collapse:collapse;min-width:780px;font-size:.78rem}
+.diet-table th{
+  background:var(--gold);color:white;
+  padding:.5rem .6rem;text-align:center;font-weight:600;
+  font-size:.72rem;letter-spacing:.05em;white-space:nowrap;
+}
+.diet-table th.dt-meal-head{
+  background:var(--ivory3);color:var(--ink3);font-size:.68rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  text-align:left;width:70px;
+}
+.diet-table td{
+  padding:.45rem .6rem;border:1px solid var(--ivory3);
+  vertical-align:top;font-size:.75rem;color:var(--ink2);line-height:1.5;
+}
+.diet-table td:first-child{
+  background:var(--ivory2);font-weight:600;font-size:.7rem;
+  color:var(--gold);white-space:nowrap;
+}
+.diet-table tr:hover td{background:var(--ivory2)}
+.diet-table tr:hover td:first-child{background:var(--ivory3)}
 .diet-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:640px){.diet-bottom-row{grid-template-columns:1fr}}
 .diet-extra-card{background:var(--gold-pale);border-radius:8px;padding:.9rem}
@@ -7452,16 +7469,19 @@ function generateDiet(){
     '</div>'
   ).join('');
 
-  const settHtml = enn.settimana.map(g =>
-    '<div class="diet-day">' +
-    '<div class="diet-day-label">'+g.g+'</div>' +
-    '<div class="diet-day-meals">' +
-    '<div class="diet-meal"><span class="diet-meal-type">☀</span><span>'+g.p+'</span></div>' +
-    '<div class="diet-meal"><span class="diet-meal-type">☀☀</span><span>'+g.pr+'</span></div>' +
-    '<div class="diet-meal"><span class="diet-meal-type">🌙</span><span>'+g.c+'</span></div>' +
-    '</div>' +
-    '</div>'
-  ).join('');
+  // Piano settimanale come tabella: righe=pasti, colonne=giorni
+  const days = enn.settimana;
+  const settHtml =
+    '<table class="diet-table">' +
+    '<thead><tr>' +
+    '<th class="dt-meal-head">Pasto</th>' +
+    days.map(g => '<th>'+g.g+'</th>').join('') +
+    '</tr></thead>' +
+    '<tbody>' +
+    '<tr><td>☀ Colazione</td>' + days.map(g => '<td>'+g.p+'</td>').join('') + '</tr>' +
+    '<tr><td>☀☀ Pranzo</td>'   + days.map(g => '<td>'+g.pr+'</td>').join('') + '</tr>' +
+    '<tr><td>🌙 Cena</td>'     + days.map(g => '<td>'+g.c+'</td>').join('') + '</tr>' +
+    '</tbody></table>';
 
   resDiv.innerHTML =
     '<div class="diet-res-header">' +
@@ -7487,7 +7507,7 @@ function generateDiet(){
     '</div>' +
     '<div class="diet-res-section diet-week-section">' +
     '<h4>📅 Piano settimanale</h4>' +
-    '<div class="diet-week-scroll"><div class="diet-week">'+settHtml+'</div></div>' +
+    '<div class="diet-week-scroll">'+settHtml+'</div>' +
     '</div>' +
     '<div class="diet-res-section diet-bottom-row">' +
     '<div class="diet-extra-card"><div class="diet-extra-label">🌸 Fiori di Bach correlati</div><div class="diet-extra-val">'+enn.fiori+'</div></div>' +

@@ -266,6 +266,8 @@ h1.hero-title em{color:var(--gold);font-style:italic}
   transition:all .2s;background:rgba(249,245,239,.7);
 }
 .pill:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.pill-cta{border-color:var(--gold)!important;background:rgba(184,147,90,.22)!important;color:#fff!important}
+.pill-cta:hover{background:rgba(184,147,90,.4)!important}
 .pill-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
 .cta-row{position:relative;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .btn-gold{
@@ -2265,19 +2267,18 @@ body.dark .dark-toggle{background:#3a3632}
   <p class="hero-sub fu d2" style="position:relative;z-index:1;background:rgba(0,0,0,.22);padding:.5rem 1.2rem;border-radius:8px;backdrop-filter:blur(2px)">
     Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
   </p>
-  <div class="hero-pills fu d3" style="position:relative;z-index:1">
-    <span class="pill" onclick="st('check-integrato')" style="border-color:var(--gold);background:rgba(184,147,90,.25)"><span class="pill-dot" style="background:var(--gold)"></span>✦ Profilo olistico</span>
-    <span class="pill" onclick="st('test-frutti')"><span class="pill-dot" style="background:#c45a22"></span>🌳 Scopri l'enneatipo</span>
+  <div class="hero-pills">
+    <span class="pill pill-cta" onclick="st('check-integrato')"><span class="pill-dot" style="background:var(--gold)"></span>✦ Profilo olistico</span>
+    <span class="pill" onclick="st('test-frutti')"><span class="pill-dot" style="background:#c45a22"></span>🌳 Enneatipo</span>
     <span class="pill" onclick="st('test-adattamenti')"><span class="pill-dot" style="background:#3a4a5a"></span>🧠 Test AT</span>
-    <span class="pill" onclick="st('vak')"><span class="pill-dot" style="background:#1565c0"></span>👁 Canale VAK</span>
-    <span class="pill" onclick="st('compatibilita')"><span class="pill-dot" style="background:#8a6a7a"></span>💑 Compatibilità coppia</span>
-    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>◉ Chakra & Cristalli</span>
-    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#2e7d4f"></span>✿ Fiori di Bach</span>
-    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c49a1a"></span>✿ FES Californiani</span>
+    <span class="pill" onclick="st('vak')"><span class="pill-dot" style="background:#1565c0"></span>👁 VAK</span>
+    <span class="pill" onclick="st('compatibilita')"><span class="pill-dot" style="background:#8a6a7a"></span>💑 Coppia</span>
+    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>◉ Chakra</span>
+    <span class="pill" onclick="st('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>💎 Cristalli</span>
+    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#2e7d4f"></span>✿ Bach</span>
     <span class="pill" onclick="st('meditazione')"><span class="pill-dot" style="background:#4527a0"></span>🧘 Meditazione</span>
-    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c87820"></span>🥗 Dieta per tipo</span>
-    <span class="pill" onclick="st('consulente')" style="border-color:var(--gold);background:rgba(184,147,90,.15)"><span class="pill-dot" style="background:var(--gold)"></span>✦ Chiedi all'AI</span>
-    <button class="nav-link" onclick="st('meditazione')">🧘 Medit</button>
+    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c87820"></span>🥗 Dieta</span>
+    <span class="pill pill-cta" onclick="st('consulente')"><span class="pill-dot" style="background:var(--gold)"></span>✦ Chiedi all'AI</span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
@@ -3743,7 +3744,7 @@ body.dark .dark-toggle{background:#3a3632}
       <button class="f-link" onclick="st('consulente')">✦ Consulente AI</button>
       <button class="f-link" onclick="st('check-integrato')">◈ Check Integrato</button>
       <button class="f-link" onclick="openExp('chakra')">◉ Chakra</button>
-      <button class="f-link" onclick="openExp('cristalli')">◆ Cristalli</button>
+      <button class="f-link" onclick="st('cristalli')">💎 Cristalli</button>
       <button class="f-link" onclick="openExp('enneatipi')">⬟ Enneatipi</button>
       <button class="f-link" onclick="openExp('frequenze')">♬ Frequenze</button>
       <button class="f-link" onclick="openExp('fes')">✿ Fiori FES</button>
@@ -3774,7 +3775,7 @@ body.dark .dark-toggle{background:#3a3632}
       <button class="f-link" onclick="st('musica')">♬ Musicoterapia</button>
       <button class="f-link" onclick="st('alimentazione')">🌿 Alimentazione olistica</button>
       <button class="f-link" onclick="st('prano')">🤲 Pranoterapia</button>
-    <button class="nav-link" onclick="st('meditazione')">🧘 Medit</button>
+    <button class="nav-link" onclick="st('meditazione')">🧘 Meditazione</button>
       <button class="f-link" onclick="st('suno-generator')">🎵 Generatore Suno</button>
     </div>
 
@@ -3783,9 +3784,9 @@ body.dark .dark-toggle{background:#3a3632}
       <div class="f-col-title">Psicologia & Mediazione</div>
       <button class="f-link" onclick="st('danza')">⚡ Danza del Conflitto</button>
       <button class="f-link" onclick="st('compatibilita')">⬟ Neurobiologia di coppia</button>
-      <button class="f-link" onclick="st('faq')" data-cat="Psicodinamica">🧠 Psicologia Dinamica</button>
-      <button class="f-link" onclick="st('faq')" data-cat="Rogers">🌱 Rogers & Umanistica</button>
-      <button class="f-link" onclick="st('faq')" data-cat="Neuroscienze">🔬 Neuroscienze</button>
+      <button class="f-link" onclick="st('discipline')" data-cat="Psicodinamica">🧠 Psicologia Dinamica</button>
+      <button class="f-link" onclick="st('discipline')" data-cat="Rogers">🌱 Rogers & Umanistica</button>
+      <button class="f-link" onclick="st('danza')" data-cat="Neuroscienze">🔬 Neuroscienze</button>
       <button class="f-link" onclick="st('vak')">👁 VAK e Satir</button>
       <button class="f-link" onclick="st('at-adattamenti')">⚙ Analisi Transazionale</button>
       <button class="f-link" onclick="st('chi-sono')">🧑 Chi sono</button>

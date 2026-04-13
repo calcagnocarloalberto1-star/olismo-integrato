@@ -2168,6 +2168,38 @@ body.dark .dark-toggle{background:#3a3632}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+
+/* ══ AT CARD ENGINE ══ */
+.at-section-title{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ac,var(--gold));margin:.9rem 0 .35rem;padding-top:.7rem;
+  border-top:1px solid var(--ivory3);
+}
+.at-giochi{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.3rem}
+.at-gioco{
+  display:flex;gap:.5rem;font-size:.78rem;color:var(--ink2);line-height:1.55;
+  background:var(--ivory2);border-radius:6px;padding:.45rem .6rem;
+}
+.at-gioco-icon{color:var(--ac,var(--gold));flex-shrink:0;font-size:.85rem}
+.at-copione-vita{
+  font-size:.8rem;color:var(--ink2);line-height:1.65;
+  border-left:3px solid var(--ac,var(--gold));padding:.4rem .7rem;
+  background:rgba(184,147,90,.06);border-radius:0 6px 6px 0;
+}
+.at-credenza{
+  display:flex;gap:.5rem;align-items:flex-start;margin:.5rem 0;
+  font-size:.78rem;color:var(--ink3);font-style:italic;line-height:1.6;
+  background:var(--ivory2);border-radius:6px;padding:.5rem .7rem;
+}
+.at-credenza-icon{flex-shrink:0;font-size:.9rem}
+.at-permesso{
+  display:flex;gap:.5rem;align-items:flex-start;
+  font-size:.78rem;color:var(--sage);line-height:1.6;
+  background:rgba(90,122,106,.08);border-radius:6px;padding:.5rem .7rem;
+  border:1px solid rgba(90,122,106,.2);margin:.4rem 0;
+}
+.at-permesso-icon{flex-shrink:0;color:var(--gold);font-size:.9rem}
+
 </style>
 
 
@@ -3908,25 +3940,25 @@ frequenze:[
 adattamenti:[
   {id:"ad1",name:"Schizoide — Creativo-Sognatore",short:"Schizoide",categoria:"Adattamento AT (AT)",tipo:"Sopravvivenza",eta:"0–18 mesi",stile:"Esitante",spinta:"Sii forte",copione:"Mai + Sempre",portaAperta:"Comportamento",portaBersaglio:"Pensiero",portaTrappola:"Emozioni",vettori:"GN+, A",
     chakra:["c1","c5","c7"],enneatipi:["e5"],cristalli:["cr7","cr11","cr13"],esercizi:["ex1","ex9","ex12"],frequenze:["f396","f741"],
-    desc:"Si sviluppa quando il bambino non si fida dell'ambiente nei primi 18 mesi (genitore esitante). Impara a fare da solo. Da adulto è creativo, visionario, ricco di mondo interiore ma tende alla solitudine come difesa. La porta d'accesso è il comportamento concreto; lavorare sulle emozioni troppo presto provoca chiusura. Il copione Mai-Sempre lo porta a credere che i suoi desideri non si realizzeranno mai e che la situazione dolorosa durerà sempre."},
+    desc:"Si sviluppa quando il bambino non si fida dell'ambiente nei primi 18 mesi (genitore esitante). Impara a fare da solo. Da adulto è creativo, visionario, ricco di mondo interiore ma tende alla solitudine come difesa. La porta d'accesso è il comportamento concreto; lavorare sulle emozioni troppo presto provoca chiusura. Il copione Mai-Sempre lo porta a credere che i suoi desideri non si realizzeranno mai e che la situazione dolorosa durerà sempre.",giochi:["«Il frigidario» — Si ritira nel silenzio e nella fantasia quando il contatto emotivo diventa intimo; l'altro sperimenta un muro di gelo", "«Vattene / Avvicinati» — Doppio messaggio: desidera contatto ma lo respinge quando arriva; l'altro si confonde e si allontana", "«Io non ho bisogno di nessuno» — Dimostra autosufficienza assoluta fino all'isolamento; raccoglie conferme che il mondo è inaffidabile"],copione_vita:"Mai (non avrò mai quello di cui ho bisogno dagli altri) · Sempre (sarò sempre solo/incompreso)",credenza:"«Se li lascio davvero entrare, mi abbandoneranno o mi faranno del male. Meglio farcela da solo»",permesso:"Hai il permesso di avere bisogno degli altri · Puoi esistere e avere bisogno allo stesso tempo"},
   {id:"ad2",name:"Antisociale — Affascinante-Manipolatore",short:"Antisociale",categoria:"Adattamento AT (AT)",tipo:"Sopravvivenza",eta:"0–18 mesi",stile:"Anticipatorio",spinta:"Sii forte · Compiaci",copione:"Mai, Sempre, Quasi tipo I",portaAperta:"Comportamento",portaBersaglio:"Emozioni",portaTrappola:"Pensiero",vettori:"BL+, GA+, GN+",
     chakra:["c1","c3"],enneatipi:["e8"],cristalli:["cr4","cr6","cr12"],esercizi:["ex1","ex5"],frequenze:["f396","f528"],
-    desc:"Il genitore anticipatorio agisce prima che il bambino abbia bisogno, poi quando è stanco lo lascia. Il bambino diventa affascinante e manipolatore per ottenere ciò che vuole. La porta d'accesso è il comportamento; il pensiero è la trappola perché razionalizza ogni manipolazione. Ha difficoltà a fidarsi genuinamente degli altri e tende a sfruttare le relazioni per i propri fini."},
+    desc:"Il genitore anticipatorio agisce prima che il bambino abbia bisogno, poi quando è stanco lo lascia. Il bambino diventa affascinante e manipolatore per ottenere ciò che vuole. La porta d'accesso è il comportamento; il pensiero è la trappola perché razionalizza ogni manipolazione. Ha difficoltà a fidarsi genuinamente degli altri e tende a sfruttare le relazioni per i propri fini.",giochi:["«Adesso ti faccio vedere io» (Kick Me rovesciato) — Provoca o manipola fino a ottenere la reazione dell'altro, poi contrattacca", "«Scopami» — Seduce attraverso il fascino per poi abbandonare o svalutare; l'altro si sente usato", "«Ti frego» — Ottiene risorse, favori o informazioni attraverso l'inganno; vince solo se l'altro \"perde\""],copione_vita:"Mai (non mi fiderò mai di nessuno) · Sempre (dovrò sempre controllarli prima che controllino me) · Quasi I (arriva vicino al legame e lo sabota)",credenza:"«Il mondo è un posto pericoloso. Devo ottenere quello che voglio prima che qualcuno me lo tolga. La forza è l'unica valuta»",permesso:"Puoi fidarti (selettivamente) · Puoi ottenere quello di cui hai bisogno senza manipolazione · Puoi essere vulnerabile senza essere sconfitto"},
   {id:"ad3",name:"Paranoide — Brillante-Scettico",short:"Paranoide",categoria:"Adattamento AT (AT)",tipo:"Sopravvivenza",eta:"0–18 mesi",stile:"Inconsistente",spinta:"Sii perfetto = Sii forte",copione:"Finché + Mai",portaAperta:"Pensiero",portaBersaglio:"Emozioni",portaTrappola:"Comportamento",vettori:"A, GN+",
     chakra:["c1","c5","c6"],enneatipi:["e6"],cristalli:["cr14","cr13","cr12"],esercizi:["ex1","ex9","ex11"],frequenze:["f396","f741","f852"],
-    desc:"Il genitore inconsistente alterna calore e freddezza senza logica. Il bambino impara a essere ipervigilante per anticipare le reazioni. Da adulto è brillante e analitico ma si aspetta sempre il peggio. Porta aperta: pensiero. È finché non sarò perfetto non sarò sicuro. La fiducia è il lavoro evolutivo centrale: imparare che non tutto è minaccia."},
+    desc:"Il genitore inconsistente alterna calore e freddezza senza logica. Il bambino impara a essere ipervigilante per anticipare le reazioni. Da adulto è brillante e analitico ma si aspetta sempre il peggio. Porta aperta: pensiero. È finché non sarò perfetto non sarò sicuro. La fiducia è il lavoro evolutivo centrale: imparare che non tutto è minaccia.",giochi:["«Sì, ma…» — Presenta il problema, accetta le soluzioni solo in superficie, poi trova il difetto in ognuna; l'altro si esaurisce", "«Guarda quanti ostacoli ho» — Raccoglie prove sistematiche che gli altri ce l'hanno con lui; conferma la propria visione persecutoria", "«Tribunale» — Porta a testimoni terzi la sua \"ingiustizia\"; vince quando l'altro sente di dover difendersi"],copione_vita:"Finché (non posso rilassarmi finché non ho verificato ogni pericolo) · Mai (non potrò mai fidarmi davvero)",credenza:"«Se abbasso la guardia, mi faranno del male. Devo anticipare ogni tradimento. La vigilanza è sopravvivenza»",permesso:"Puoi fidarti delle tue percezioni senza difenderle continuamente · Il mondo contiene persone affidabili · Puoi chiedere chiarimento invece di interpretare"},
   {id:"ad4",name:"Passivo-Aggressivo — Scherzoso-Oppositivo",short:"Passivo-Aggressivo",categoria:"Adattamento AT (AT)",tipo:"Performance",eta:"18–36 mesi",stile:"Ipercontrollante",spinta:"Sforzati",copione:"Sempre, Quasi tipo II",portaAperta:"Comportamento",portaBersaglio:"Emozioni",portaTrappola:"Pensiero",vettori:"BL+",
     chakra:["c1","c2","c3"],enneatipi:["e9"],cristalli:["cr4","cr9","cr2"],esercizi:["ex1","ex3","ex7"],frequenze:["f396","f417","f528"],
-    desc:"Il genitore ipercontrollante lotta con il bambino. Il bambino impara a resistere passivamente. Da adulto è scherzoso e creativo ma oppone resistenza indiretta. Il copione Sempre-Quasi lo porta a cambiare rotta proprio quando è vicino alla meta. Sforzarsi senza mai arrivare. La porta d'accesso è il comportamento concreto, che deve essere esplicitato e approvato. Lavoro evolutivo: esprimere il bisogno direttamente."},
+    desc:"Il genitore ipercontrollante lotta con il bambino. Il bambino impara a resistere passivamente. Da adulto è scherzoso e creativo ma oppone resistenza indiretta. Il copione Sempre-Quasi lo porta a cambiare rotta proprio quando è vicino alla meta. Sforzarsi senza mai arrivare. La porta d'accesso è il comportamento concreto, che deve essere esplicitato e approvato. Lavoro evolutivo: esprimere il bisogno direttamente.",giochi:["«Guarda quello che mi hai fatto fare» — Sabota un compito proprio quando ci avvicina alla meta, poi incolpa la richiesta dell'altro", "«Lo stupido» — Usa l'incompetenza strategica come resistenza passiva; finge di non capire per non obbedire", "«Ci sto provando» — Si sforza visibilmente ma non porta mai a termine; l'altro non può neanche lamentarsi perché \u00absì impegna\u00bb"],copione_vita:"Sempre (ripeterò sempre gli stessi schemi senza mai arrivare) · Quasi II (si ferma quando è a un passo dal traguardo)",credenza:"«Se obbedisco davvero, perdo me stesso. La resistenza è l'unico modo che ho per dire \u00abno\u00bb a chi vuole controllarmi»",permesso:"Puoi dire di no direttamente · Puoi completare le cose senza perdere la tua identità · Puoi avere potere senza sabotaggio"},
   {id:"ad5",name:"Ossessivo-Compulsivo — Responsabile-Stakanovista",short:"Ossessivo-Compulsivo",categoria:"Adattamento AT (AT)",tipo:"Performance",eta:"18 mesi–6 anni",stile:"Enfasi sul risultato",spinta:"Sii perfetto",copione:"Finché (Quasi tipo II)",portaAperta:"Pensiero",portaBersaglio:"Emozioni",portaTrappola:"Comportamento",vettori:"A, GN+",
     chakra:["c3","c5","c6"],enneatipi:["e1"],cristalli:["cr10","cr5","cr13"],esercizi:["ex5","ex6","ex9"],frequenze:["f528","f741"],
-    desc:"Il genitore che valuta il bambino per i risultati. Impara che vale quanto produce. Da adulto è responsabile, preciso, affidabile ma non si ferma mai perché non è mai abbastanza perfetto. Copione Finché: non posso rilassarmi finché non ho finito. La porta aperta è il pensiero analitico. Porta trappola: non proporre azioni concrete troppo presto, prima bisogna esplorare i significati. Evoluzione: imparare a essere, non solo fare."},
+    desc:"Il genitore che valuta il bambino per i risultati. Impara che vale quanto produce. Da adulto è responsabile, preciso, affidabile ma non si ferma mai perché non è mai abbastanza perfetto. Copione Finché: non posso rilassarmi finché non ho finito. La porta aperta è il pensiero analitico. Porta trappola: non proporre azioni concrete troppo presto, prima bisogna esplorare i significati. Evoluzione: imparare a essere, non solo fare.",giochi:["«Ti prego pestami» — Si offre oltre le proprie possibilità, poi si lamenta del sovraccarico; raccoglie conferme di non valere abbastanza", "«Guarda quanto mi sono sforzato» — Mostra il lavoro enorme fatto, aspettandosi validazione; quando non arriva, aumenta lo sforzo", "«Senza di me sarebbe un disastro» — Diventa indispensabile poi si sente intrappolato; l'altro non può farne a meno né liberarlo"],copione_vita:"Finché (non posso rilassarmi finché non è perfetto) · Quasi II (quasi perfetto non è mai abbastanza)",credenza:"«Il mio valore dipende da quello che produco. Se mi fermo o sbaglio, non valgo nulla. Non sarò mai abbastanza»",permesso:"Sei abbastanza così come sei · Puoi fermarti prima della perfezione · Hai il permesso di sbagliare e valere comunque"},
   {id:"ad6",name:"Istrionico — Entusiasta-Iperreattivo",short:"Istrionico",categoria:"Adattamento AT (AT)",tipo:"Performance",eta:"18 mesi–6 anni",stile:"Rendere felici gli altri",spinta:"Compiaci",copione:"Dopo (Quasi tipo I e II)",portaAperta:"Emozioni",portaBersaglio:"Pensiero",portaTrappola:"Comportamento",vettori:"GA+, BL+",
     chakra:["c2","c4","c5"],enneatipi:["e2","e3","e4"],cristalli:["cr2","cr8","cr3"],esercizi:["ex3","ex7","ex9"],frequenze:["f417","f639","f741"],
     desc:"Il bambino impara che rendere felici gli altri è la sua funzione. Da adulto è entusiasta, espressivo, magnetico ma dipende dall'approvazione. Porta aperta: le emozioni (parlare di come si sente). Porta trappola: il comportamento proposto troppo presto sembra giudicante. Il copione Dopo crea una spada di Damocle: posso divertirmi oggi, ma lo pagherò domani. Evoluzione: riconoscere i propri bisogni come legittimi."}
 ],
 esercizi:[
-  {id:"ex1",name:"Grounding radicato",short:"Grounding",tipo:"Corporeo",chakra:["c1"],enneatipi:["e8","e9","e6"],frequenze:["f396"],cristalli:["cr6","cr4","cr14"],adattamenti:["ad1"],desc:"Piedi nudi a terra, respiro addominale profondo, pressione consapevole sul pavimento. 5 minuti, 3 volte al giorno. Riattiva il senso di sicurezza e di appartenenza al corpo."},
+  {id:"ex1",name:"Grounding radicato",short:"Grounding",tipo:"Corporeo",chakra:["c1"],enneatipi:["e8","e9","e6"],frequenze:["f396"],cristalli:["cr6","cr4","cr14"],adattamenti:["ad1"],desc:"Piedi nudi a terra, respiro addominale profondo, pressione consapevole sul pavimento. 5 minuti, 3 volte al giorno. Riattiva il senso di sicurezza e di appartenenza al corpo.",giochi:["«Povero me» — Amplifica la sofferenza per ottenere conforto; l'altro si esaurisce a rassicurare senza che cambi nulla", "«Genova» (induci senso di colpa) — Ricorda all'altro tutto quello che ha fatto per lui; l'altro si sente in debito perpetuo", "«Spogliami» — Usa seduzione o entusiasmo per attrarre attenzione poi si ritrae quando il contatto diventa troppo intimo"],copione_vita:"Dopo (mi potrò divertire / sarò amato solo dopo aver soddisfatto tutti) · Quasi I e II (quasi abbastanza approvazione, ma mai del tutto)",credenza:"«Il mio valore dipende dall'approvazione degli altri. Se non li rendo felici, mi abbandoneranno. Devo dare tutto per essere amato»",permesso:"Puoi avere bisogni propri · Puoi deludere qualcuno e essere comunque amato · Il tuo valore non dipende dall'umore altrui"},
   {id:"ex2",name:"Cammino meditativo",short:"Walking meditation",tipo:"Corporeo",chakra:["c1","c2"],enneatipi:["e9","e6","e5"],frequenze:["f396","f432"],cristalli:["cr6"],adattamenti:["ad2"],desc:"Camminare lentamente e in silenzio, prestando piena attenzione alle sensazioni dei piedi. 20 minuti in natura. Riattiva il collegamento corpo-terra."},
   {id:"ex3",name:"Danza creativa libera",short:"Danza libera",tipo:"Espressivo",chakra:["c2","c3"],enneatipi:["e4","e7","e2"],frequenze:["f417","f528"],cristalli:["cr9"],adattamenti:["ad5"],desc:"Movimento libero del corpo sulla musica scelta intuitivamente. L'obiettivo è permettere al corpo di esprimere ciò che le parole non possono."},
   {id:"ex4",name:"Bagno di suono",short:"Sound bath",tipo:"Sonoro",chakra:["c2","c4"],enneatipi:["e2","e9","e4"],frequenze:["f432","f639"],cristalli:["cr2"],adattamenti:["ad2"],desc:"Immersione in un campo sonoro creato da campane tibetane e gong. Il paziente è in posizione supina. Le vibrazioni penetrano nel corpo fisico e sottile."},
@@ -4165,6 +4197,12 @@ function renderAtCards(){
   grid.innerHTML = DB.adattamenti.map(a => {
     const col = AT_COLORS[a.id]||"#888";
     const ennames = (a.enneatipi||[]).map(id=>{const e=byId(id);return e?e.short:id}).join(", ");
+
+    // ── Giochi psicologici ──
+    const giochiHtml = (a.giochi||[]).map(g =>
+      `<div class="at-gioco"><span class="at-gioco-icon">♟</span><span>${g}</span></div>`
+    ).join('');
+
     return `<div class="at-card" style="--ac:${col}">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:var(--rxl) var(--rxl) 0 0"></div>
       <div class="at-card-tipo">
@@ -4173,34 +4211,47 @@ function renderAtCards(){
       </div>
       <div class="at-card-name">${a.name}</div>
       <div class="at-card-alt">${a.short}</div>
+
+      <!-- Spinte e Porte -->
       <div class="at-props">
-        <div class="at-prop"><div class="at-pl">Spinta</div><div class="at-pv">${a.spinta||''}</div></div>
-        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv">${a.copione||''}</div></div>
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">${a.spinta||''}</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">${a.copione||''}</div></div>
         <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">${a.stile||''}</div></div>
         <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">${ennames}</div></div>
         <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">${a.vettori||''}</div></div>
-      </div
-      <div class="disc-card" onclick="st('at-adattamenti')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3a4a5a,#5a6a7a);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">🧠</div>
-        <div class="disc-title">Analisi Transazionale</div>
-        <p class="disc-text">I 6 adattamenti di personalità (Ware & Joines), i 5 stati dell'Io funzionali, le carezze e le spinte del copione. Strumento chiave per counselor, terapeuti e mediatori familiari.</p>
       </div>
-      <div class="disc-card" onclick="st('meditazione')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4527a0,#1565c0);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">🧘</div>
-        <div class="disc-title">Meditazione e Respiro</div>
-        <p class="disc-text">16 pratiche di meditazione, breathwork e mindfulness correlate a chakra, enneatipi e stati AT. Dal 4-7-8 al Tonglen tibetano, dal Body Scan MBSR alle Morning Pages.</p>
-      </div>>
+
+      <!-- Porte -->
       <div class="at-porte">
         <span class="at-porta aperta">✓ Porta aperta: ${a.portaAperta||''}</span>
         <span class="at-porta bersaglio">◎ Bersaglio: ${a.portaBersaglio||''}</span>
         <span class="at-porta trappola">⚠ Trappola: ${a.portaTrappola||''}</span>
       </div>
+
+      <!-- Giochi psicologici -->
+      ${giochiHtml ? `<div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi">${giochiHtml}</div>` : ''}
+
+      <!-- Copione di vita e Credenza core -->
+      ${a.copione_vita ? `<div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">${a.copione_vita}</div>` : ''}
+
+      ${a.credenza ? `<div class="at-credenza">
+        <span class="at-credenza-icon">💭</span>
+        <em>${a.credenza}</em>
+      </div>` : ''}
+
+      <!-- Permesso terapeutico -->
+      ${a.permesso ? `<div class="at-permesso">
+        <span class="at-permesso-icon">✦</span>
+        <div><strong>Permesso terapeutico:</strong> ${a.permesso}</div>
+      </div>` : ''}
+
       <div class="at-desc">${a.desc}</div>
     </div>`;
   }).join("");
 }
+
 
 // ── EGOGRAMMA ──
 const EGO = [

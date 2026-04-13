@@ -1344,6 +1344,30 @@ footer{
 }
 .flower-mini-name{font-weight:400;line-height:1.2}
 
+
+/* ── TEST EGOGRAMMA ── */
+#ego-test-section{background:var(--ivory2);padding:3rem 0;border-top:1px solid var(--border)}
+.ego-test-intro{max-width:680px;margin:0 auto 2.5rem;text-align:center;font-size:.88rem;color:var(--ink3);line-height:1.7}
+.ego-test-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;max-width:860px;margin:0 auto 2rem}
+@media(max-width:640px){.ego-test-grid{grid-template-columns:1fr}}
+.ego-q-item{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem 1rem;display:flex;align-items:center;gap:.8rem;font-size:.82rem;color:var(--ink2);transition:border-color .2s}
+.ego-q-item:has(input:checked){border-color:var(--blue2);background:rgba(45,106,106,.04)}
+.ego-q-item input[type=checkbox]{width:17px;height:17px;accent-color:var(--blue2);cursor:pointer;flex-shrink:0}
+.ego-q-label{cursor:pointer;line-height:1.4}
+.ego-q-state{font-size:.65rem;font-weight:700;padding:.15rem .45rem;border-radius:10px;background:var(--ivory3);color:var(--ink3);flex-shrink:0;margin-left:auto}
+.ego-test-btn{display:block;margin:0 auto;padding:.75rem 2.5rem;background:var(--blue);color:#fff;border:none;border-radius:20px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
+.ego-test-btn:hover{background:var(--blue2)}
+.ego-test-result{max-width:680px;margin:2rem auto 0;padding:1.5rem;background:#fff;border:1.5px solid var(--border);border-radius:var(--r);display:none}
+.ego-test-result.show{display:block}
+.ego-test-result h4{font-family:'Cinzel',serif;font-size:.95rem;color:var(--ink);margin-bottom:1rem;text-align:center}
+.ego-result-bars{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.ego-res-col{display:flex;flex-direction:column;align-items:center;gap:.4rem;min-width:70px}
+.ego-res-label{font-size:.72rem;font-weight:600;color:var(--ink3)}
+.ego-res-score{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;line-height:1}
+.ego-res-bar-wrap{width:50px;height:100px;background:var(--ivory3);border-radius:4px;display:flex;align-items:flex-end;overflow:hidden}
+.ego-res-bar-fill{width:100%;border-radius:4px;transition:height .6s ease}
+.ego-res-desc{font-size:.78rem;color:var(--ink3);line-height:1.6;margin-top:1.2rem;max-width:560px;margin-left:auto;margin-right:auto;text-align:center}
+
 </style>
 
 
@@ -2063,6 +2087,27 @@ footer{
       </div>
     </div>
   </div>
+
+    <!-- TEST EGOGRAMMA -->
+    <div id="ego-test-section">
+      <div class="container">
+        <div class="sec-hd" style="margin-bottom:1.5rem">
+          <div class="sec-eye">Autovalutazione</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ink)">Test dell'Egogramma</h3>
+        </div>
+        <p class="ego-test-intro">Leggi ogni affermazione e spunta quelle che ti descrivono <strong>abitualmente</strong>. Non ci sono risposte giuste o sbagliate — rispondi istintivamente senza pensarci troppo.</p>
+        <div class="ego-test-grid" id="ego-test-items"></div>
+        <button class="ego-test-btn" onclick="calcEgogrammaTest()">Calcola il mio Egogramma →</button>
+        <div class="ego-test-result" id="ego-test-result">
+          <h4>Il tuo profilo egografico</h4>
+          <div class="ego-result-bars" id="ego-test-bars"></div>
+          <p class="ego-res-desc" id="ego-test-desc"></p>
+          <div style="text-align:center;margin-top:1.2rem">
+            <button onclick="applyEgoTestResult()" style="padding:.5rem 1.4rem;background:var(--blue);color:#fff;border:none;border-radius:16px;font-size:.78rem;font-weight:600;cursor:pointer">Applica ai cursori sopra</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 
 <!-- ▐▐ CAREZZE ▐▐ -->
@@ -3953,6 +3998,7 @@ function autoResize(el){el.style.height="auto";el.style.height=Math.min(el.scrol
 window.addEventListener("DOMContentLoaded",()=>{
   renderFaq();
   renderEgogramma();
+  renderEgoTest();
   renderFlowerGrid("fes","fes-grid");
   renderFlowerGrid("bush","bush-grid");
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
@@ -4061,6 +4107,135 @@ function closeFlowerPopup(){
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeFlowerPopup(); });
 
+
+
+// ── TEST EGOGRAMMA ──
+const EGO_DOMANDE = [
+  // GN — Genitore Normativo (10)
+  {id:"gn1",stato:"GN",testo:"Correggo gli altri quando fanno errori, anche se non me lo chiedono"},
+  {id:"gn2",stato:"GN",testo:"Mi aspetto che le cose siano fatte correttamente e sono critico quando non lo sono"},
+  {id:"gn3",stato:"GN",testo:"Uso spesso espressioni come dovresti, non si fa così, bisogna"},
+  {id:"gn4",stato:"GN",testo:"Ho forti principi morali che tendo a far rispettare"},
+  {id:"gn5",stato:"GN",testo:"Quando vedo comportamenti scorretti, sento il bisogno di intervenire"},
+  {id:"gn6",stato:"GN",testo:"Pongo limiti chiari e li faccio rispettare con fermezza"},
+  {id:"gn7",stato:"GN",testo:"Tendo a giudicare le persone in base ai loro comportamenti"},
+  {id:"gn8",stato:"GN",testo:"Mi infastidisce quando qualcuno non rispetta le regole"},
+  {id:"gn9",stato:"GN",testo:"Do consigli non richiesti perché penso di sapere cosa è meglio"},
+  {id:"gn10",stato:"GN",testo:"Sono esigente con me stesso e con gli altri"},
+  // GA — Genitore Affettivo (10)
+  {id:"ga1",stato:"GA",testo:"Quando qualcuno sta male, sento immediatamente il bisogno di aiutarlo"},
+  {id:"ga2",stato:"GA",testo:"Trovo facile rassicurare e incoraggiare chi mi sta intorno"},
+  {id:"ga3",stato:"GA",testo:"Proteggo le persone a me care anche quando non me lo chiedono"},
+  {id:"ga4",stato:"GA",testo:"Uso spesso espressioni affettuose come dai, ce la fai, ti capisco"},
+  {id:"ga5",stato:"GA",testo:"Mi preoccupo per il benessere degli altri più che per il mio"},
+  {id:"ga6",stato:"GA",testo:"Tendo a fare le cose al posto degli altri per aiutarli"},
+  {id:"ga7",stato:"GA",testo:"Gli altri mi descrivono come una persona premurosa e disponibile"},
+  {id:"ga8",stato:"GA",testo:"Mi piace prendermi cura degli altri e renderli felici"},
+  {id:"ga9",stato:"GA",testo:"Sento che il mio valore dipende dall'aiuto che riesco a dare"},
+  {id:"ga10",stato:"GA",testo:"Sono il riferimento emotivo per chi mi sta vicino"},
+  // A — Adulto (10)
+  {id:"a1",stato:"A",testo:"Quando devo prendere una decisione, raccolgo dati prima di agire"},
+  {id:"a2",stato:"A",testo:"Affronto i problemi con approccio razionale e logico"},
+  {id:"a3",stato:"A",testo:"Verifico le informazioni prima di crederci o diffonderle"},
+  {id:"a4",stato:"A",testo:"Riesco a separare i fatti dalle emozioni nelle situazioni difficili"},
+  {id:"a5",stato:"A",testo:"Valuto i pro e i contro prima di esprimere un giudizio"},
+  {id:"a6",stato:"A",testo:"Gli altri mi cercano per avere consigli pratici e obiettivi"},
+  {id:"a7",stato:"A",testo:"Riesco a rimanere calmo e concentrato anche sotto pressione"},
+  {id:"a8",stato:"A",testo:"Parlo in modo preciso e cerco di essere chiaro nelle spiegazioni"},
+  {id:"a9",stato:"A",testo:"Affronto i conflitti cercando soluzioni concrete e condivise"},
+  {id:"a10",stato:"A",testo:"Mi aggiorno continuamente per migliorare le mie competenze"},
+  // BL — Bambino Libero (10)
+  {id:"bl1",stato:"BL",testo:"Rido facilmente e mi diverto con poco"},
+  {id:"bl2",stato:"BL",testo:"Seguo spesso i miei impulsi e il momento presente"},
+  {id:"bl3",stato:"BL",testo:"Amo le novità, le avventure e le esperienze insolite"},
+  {id:"bl4",stato:"BL",testo:"Quando mi annoio, cerco subito qualcosa di più stimolante"},
+  {id:"bl5",stato:"BL",testo:"Esprimo liberamente le mie emozioni, anche in pubblico"},
+  {id:"bl6",stato:"BL",testo:"Le persone mi descrivono come spontaneo, vivace e creativo"},
+  {id:"bl7",stato:"BL",testo:"Mi entusiasmo facilmente per nuove idee o progetti"},
+  {id:"bl8",stato:"BL",testo:"Il gioco e la leggerezza fanno parte del mio modo di stare al mondo"},
+  {id:"bl9",stato:"BL",testo:"Non mi preoccupo troppo delle conseguenze: vivere è la cosa più importante"},
+  {id:"bl10",stato:"BL",testo:"Ho grande curiosità e voglia di sperimentare cose nuove"},
+  // BA — Bambino Adattato (10)
+  {id:"ba1",stato:"BA",testo:"Faccio quello che mi si aspetta anche quando non sono d'accordo"},
+  {id:"ba2",stato:"BA",testo:"Ho difficoltà a dire no per paura di deludere gli altri"},
+  {id:"ba3",stato:"BA",testo:"Mi sento in colpa quando non soddisfo le aspettative altrui"},
+  {id:"ba4",stato:"BA",testo:"Tendo a rimandare le decisioni difficili per evitare conflitti"},
+  {id:"ba5",stato:"BA",testo:"Cerco continuamente approvazione e conferma dagli altri"},
+  {id:"ba6",stato:"BA",testo:"Mi adatto facilmente alle situazioni, anche a discapito di me stesso"},
+  {id:"ba7",stato:"BA",testo:"A volte mi arrabbio o mi irridigisco senza riuscire a dire perché"},
+  {id:"ba8",stato:"BA",testo:"Ho imparato a nascondere alcune emozioni per non disturbare"},
+  {id:"ba9",stato:"BA",testo:"Mi preoccupo molto di come gli altri mi percepiscono"},
+  {id:"ba10",stato:"BA",testo:"Sento ancora dentro la voce dei miei genitori che mi dice cosa fare"}
+]
+
+const EGO_COLORS = {GN:'#ef4444',GA:'#f97316',A:'#3b82f6',BL:'#22c55e',BA:'#a855f7'};
+const EGO_LABELS = {GN:"Genitore Normativo",GA:"Genitore Affettivo",A:"Adulto",BL:"Bambino Libero",BA:"Bambino Adattato"};
+
+function renderEgoTest(){
+  const grid = document.getElementById('ego-test-items');
+  if(!grid || grid.children.length > 0) return;
+  grid.innerHTML = EGO_DOMANDE.map(d =>
+    '<div class="ego-q-item">' +
+    '<input type="checkbox" id="' + d.id + '" name="ego-test">' +
+    '<label class="ego-q-label" for="' + d.id + '">' + d.testo + '</label>' +
+    '<span class="ego-q-state" style="background:' + EGO_COLORS[d.stato] + '22;color:' + EGO_COLORS[d.stato] + '">' + d.stato + '</span>' +
+    '</div>'
+  ).join('');
+}
+
+function calcEgogrammaTest(){
+  const scores = {GN:0,GA:0,A:0,BL:0,BA:0};
+  EGO_DOMANDE.forEach(d => {
+    const el = document.getElementById(d.id);
+    if(el && el.checked) scores[d.stato]++;
+  });
+  const total = Object.values(scores).reduce((a,b)=>a+b,0);
+  if(total === 0){alert('Spunta almeno alcune affermazioni per calcolare il tuo profilo.');return;}
+  
+  // Show result
+  const resDiv = document.getElementById('ego-test-result');
+  const barsDiv = document.getElementById('ego-test-bars');
+  resDiv.classList.add('show');
+  
+  barsDiv.innerHTML = Object.entries(scores).map(([stato, score]) => {
+    const pct = Math.round(score / 10 * 100);
+    return '<div class="ego-res-col">' +
+      '<div class="ego-res-label">' + stato + '</div>' +
+      '<div class="ego-res-score" style="color:' + EGO_COLORS[stato] + '">' + score + '</div>' +
+      '<div class="ego-res-bar-wrap"><div class="ego-res-bar-fill" style="height:' + pct + '%;background:' + EGO_COLORS[stato] + '"></div></div>' +
+      '</div>';
+  }).join('');
+  
+  // Generate description
+  const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const dominant = sorted[0][0];
+  const desc_map = {
+    GN:"Il tuo stato dominante è il Genitore Normativo: tendi a essere esigente, hai valori forti e senti il bisogno di guidare e correggere. Attenzione a non diventare eccessivamente critico.",
+    GA:"Il tuo stato dominante è il Genitore Affettivo: sei premuroso, protettivo e orientato agli altri. Fai attenzione a non sacrificare i tuoi bisogni per gli altri.",
+    A:"Il tuo stato dominante è l'Adulto: sei razionale, obiettivo e concreto. Rappresenta un punto di forza per la mediazione e la risoluzione dei problemi.",
+    BL:"Il tuo stato dominante è il Bambino Libero: sei spontaneo, creativo ed entusiasta. Potresti beneficiare di un maggiore equilibrio con la dimensione razionale.",
+    BA:"Il tuo stato dominante è il Bambino Adattato: tendi ad adeguarti alle aspettative altrui. Lavorare sull'assertività può aiutarti a esprimere meglio i tuoi bisogni."
+  };
+  document.getElementById('ego-test-desc').textContent = desc_map[dominant] + 
+    ' Totale affermazioni selezionate: ' + total + '/50.';
+  
+  resDiv.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function applyEgoTestResult(){
+  const scores = {GN:0,GA:0,A:0,BL:0,BA:0};
+  EGO_DOMANDE.forEach(d => {
+    const el = document.getElementById(d.id);
+    if(el && el.checked) scores[d.stato]++;
+  });
+  Object.entries(scores).forEach(([stato, score]) => {
+    const val = Math.max(1, Math.min(10, score + 1));
+    updateEgo(stato, val);
+    const sliders = document.querySelectorAll('.ego-slider'); const slider = Array.from(sliders).find(s => s.getAttribute('oninput') && s.getAttribute('oninput').includes(stato));
+    if(slider) slider.value = val;
+  });
+  document.getElementById('egogramma').scrollIntoView({behavior:'smooth'});
+}
 
 </script>
 

@@ -8,8 +8,8 @@
 <meta name="google-site-verification" content="b2392e1f3564a1be">
 
 <!-- ══ SEO PRIMARIO ══ -->
-<title>Olismo Integrato — Chakra, Enneagramma, Fiori di Bach, AT | Carlo Alberto Calcagno</title>
-<meta name="description" content="Portale olistico di Carlo Alberto Calcagno: database di chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, Analisi Transazionale e consulente AI per il benessere integrato.">
+<title>Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione | Carlo Alberto Calcagno</title>
+<meta name="description" content="Portale olistico di Carlo Alberto Calcagno: database di chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, Analisi Transazionale e consulente AI per il benessere integrato, comunicazione transazionale e meditazione olistica.">
 <meta name="keywords" content="enneagramma evolutivo, chakra, fiori di bach, analisi transazionale, VAK, mediazione familiare, pranoterapia, cristalli, frequenze solfeggio, FES californiani, Bush australiani, Carlo Alberto Calcagno, olismo integrato, counseling olistico">
 <meta name="author" content="Carlo Alberto Calcagno">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -1774,7 +1774,7 @@ footer.site-footer{
 @media(max-width:760px){.chisono-grid{grid-template-columns:1fr}}
 .chisono-card{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);overflow:hidden;position:sticky;top:88px}
 .chisono-avatar{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--ivory2),var(--ivory3));display:flex;align-items:center;justify-content:center;font-size:5rem;overflow:hidden}
-.chisono-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%}
+.chisono-avatar img{width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:50%}
 .chisono-card-body{padding:1.5rem}
 .chisono-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
 .chisono-role{font-size:.78rem;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
@@ -2629,6 +2629,19 @@ body.dark .dark-toggle{background:#3a3632}
   font-size:.78rem;color:var(--ink3);cursor:pointer;
 }
 
+
+/* Footer external sites row */
+.f-ext-sites{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem;
+  padding:.6rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);
+  margin-bottom:.5rem;
+}
+.f-ext-link{
+  font-size:.7rem;color:rgba(255,255,255,.55);text-decoration:none;
+  transition:color .2s;
+}
+.f-ext-link:hover{color:var(--gold)}
+
 </style>
 
 
@@ -2671,7 +2684,7 @@ body.dark .dark-toggle{background:#3a3632}
     <span class="nav-sep">·</span>
     <!-- FASE 2: APPROFONDISCI -->
     <button class="nav-link" onclick="st('enneagram')">Enneatipi</button>
-    <button class="nav-link" onclick="st('at-adattamenti')">AT</button>
+    <button class="nav-link" onclick="st('at-adattamenti')">ADATT.</button>
   <button class="nav-link" onclick="st('transazioni')">TRANSAZ.</button>
     <button class="nav-link" onclick="st('egogramma')">Ego</button>
     <button class="nav-link" onclick="st('compatibilita')">Coppia</button>
@@ -2682,7 +2695,8 @@ body.dark .dark-toggle{background:#3a3632}
     <button class="nav-link" onclick="st('bach')">Bach</button>
     <button class="nav-link" onclick="st('fes-sec')">✿ FES</button>
     <button class="nav-link" onclick="st('bush-sec')">❋ Bush</button>
-    <button class="nav-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--ink3)">🎵 Suno ↗</button>
+    <button class="nav-link" onclick="st('meditazione')">🧘 Medit.</button>
+  <button class="nav-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--ink3)">🎵 Suno ↗</button>
     <span class="nav-sep">·</span>
     <!-- FASE 4: ESPLORA + AI -->
     <button class="nav-link" onclick="st('explorer')">Database</button>
@@ -4489,6 +4503,8 @@ body.dark .dark-toggle{background:#3a3632}
       <button class="f-link" onclick="st('musica')">♬ Musicoterapia</button>
       <button class="f-link" onclick="st('alimentazione')">🌿 Alimentazione olistica</button>
       <button class="f-link" onclick="st('prano')">🤲 Pranoterapia</button>
+        <button class="f-link" onclick="st('meditazione')">🧘 Meditazione</button>
+        <button class="f-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--gold)">🎵 Generatore Suno ↗</button>
     <button class="nav-link" onclick="st('meditazione')">🧘 Meditazione</button>
       <button class="f-link" onclick="st('suno-generator')">🎵 Generatore Suno</button>
     </div>
@@ -4510,7 +4526,8 @@ body.dark .dark-toggle{background:#3a3632}
     <!-- INFO & LEGALE -->
     <div>
       <div class="f-col-title">Info & Legale</div>
-      <button class="f-link" onclick="st('faq')">FAQ</button>
+      <button class="f-link" onclick="st('percorso-viaggio')">🗺 Mappa del percorso</button>
+        <button class="f-link" onclick="st('faq')">FAQ</button>
       <button class="f-link" onclick="st('guida')">Guida all'uso</button>
       <button class="f-link" onclick="st('link-utili')">Link utili</button>
       <button class="f-link" onclick="openPrivacy()">🔒 Privacy Policy</button>
@@ -4519,18 +4536,14 @@ body.dark .dark-toggle{background:#3a3632}
       <a class="f-link" href="https://olismo-integrato.it/robots.txt" target="_blank">robots.txt</a>
       <a class="f-link" href="https://frequenze-evolutive.it" target="_blank" rel="noopener">Frequenze Evolutive ↗</a>
       <a class="f-link" href="https://mediaresenzaconfini.org" target="_blank" rel="noopener">Mediare Senza Confini ↗</a>
-        <a class="f-bar-link" href="https://percorsidicrescitalucca.it" target="_blank" rel="noopener">Percorsi Crescita ↗</a>
-        <a class="f-bar-link" href="https://ladanzadelconflitto.it" target="_blank" rel="noopener">Danza del Conflitto ↗</a>
-        <a class="f-bar-link" href="https://tieniinmanolaluce.me" target="_blank" rel="noopener">Tieni in Mano la Luce ↗</a>
-        <a class="f-site-link" href="https://percorsidicrescitalucca.it" target="_blank">Percorsi di Crescita ↗</a>
-        <a class="f-site-link" href="https://ladanzadelconflitto.it" target="_blank">La Danza del Conflitto ↗</a>
-        <a class="f-site-link" href="https://tieniinmanolaluce.me" target="_blank">Tieni in Mano la Luce ↗</a>
+        
     </div>
 
   </div>
 
   <!-- Footer bar -->
   <div class="footer-bar">
+    <div class="f-ext-sites"><a class="f-ext-link" href="https://frequenze-evolutive.it" target="_blank" rel="noopener">🎵 frequenze-evolutive.it ↗</a><a class="f-ext-link" href="https://guarigionequantica.eu" target="_blank" rel="noopener">✨ guarigionequantica.eu ↗</a><a class="f-ext-link" href="https://mediaresenzaconfini.org" target="_blank" rel="noopener">⚖ mediaresenzaconfini.org ↗</a><a class="f-ext-link" href="https://percorsidicrescitalucca.it" target="_blank" rel="noopener">🌱 percorsidicrescitalucca.it ↗</a><a class="f-ext-link" href="https://ladanzadelconflitto.it" target="_blank" rel="noopener">⚡ ladanzadelconflitto.it ↗</a><a class="f-ext-link" href="https://tieniinmanolaluce.me" target="_blank" rel="noopener">✦ tieniinmanolaluce.me ↗</a></div>
     <span class="f-copy">© 2026 Carlo Alberto Calcagno — Olismo Integrato</span>
     <div class="f-bar-links">
       <button class="f-bar-link" onclick="openPrivacy()">Privacy Policy</button>

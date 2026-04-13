@@ -4025,6 +4025,7 @@ body.dark .dark-toggle{background:#3a3632}
           </svg>
           Scarica PDF
         </button>
+          <button id="report-pdf-btn" onclick="exportReportPdf()" style="font-size:.72rem;padding:.35rem .9rem;background:linear-gradient(135deg,var(--gold),#c4a05a);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600" title="Report completo">📄 Scarica Report</button>
       </div>
       
     <div class="chat-suggestions">
@@ -7668,6 +7669,640 @@ document.addEventListener('keydown', e=>{
 // ══════════════════════════════════════════════════════════
 // EXPORT CHAT PDF
 // ══════════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════════════════════════════
+// REPORT OLISTICO INTEGRATO — PDF GENERATOR
+// ══════════════════════════════════════════════════════════════════
+
+function exportReportPdf(){
+  // Check profile data
+  const ck  = getProfileResult('check');
+  const fr  = getProfileResult('frutti');
+  const at  = getProfileResult('at');
+  const vak = getProfileResult('vak');
+  const ego = getProfileResult('ego');
+  const dt  = getProfileResult('diet');
+  const hasProfile = [ck,fr,at,vak,ego,dt].some(Boolean);
+
+  if(!hasProfile){
+    alert('Nessun dato di profilo rilevato.\n\nCompleta almeno uno dei test (Check Integrato, Test dei 9 Frutti, Test AT, VAK) per generare il Report.');
+    return;
+  }
+
+  const btn = document.getElementById('report-pdf-btn');
+  if(btn){ btn.textContent = '⏳ Generazione...'; btn.disabled = true; }
+
+  try{
+    const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+
+    // ── PALETTE ──
+    const GOLD    = [184,147,90];
+    const GOLD_L  = [245,236,216];
+    const IVORY   = [249,245,239];
+    const IVORY2  = [243,237,227];
+    const INK     = [42,37,32];
+    const INK2    = [74,69,64];
+    const INK3    = [122,114,104];
+    const WHITE   = [255,255,255];
+    const RED_L   = [254,226,226];
+    const RED_D   = [180,50,50];
+    const GREEN_L = [220,240,228];
+    const GREEN_D = [46,125,79];
+    const BLUE_L  = [224,234,248];
+    const BLUE_D  = [21,101,192];
+    const PURPLE_L= [237,225,245];
+    const PURPLE_D= [123,47,160];
+
+    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+    const W = 210, H = 297;
+    const ML = 20, MR = 20, MT = 20;
+    const CW = W - ML - MR; // content width = 170
+    let y = MT;
+    let pageNum = 0;
+
+    // ── HELPERS ──
+    function setFont(style, size, color){
+      doc.setFont('helvetica', style||'normal');
+      doc.setFontSize(size||10);
+      doc.setTextColor(...(color||INK));
+    }
+
+    function fill(r,g,b){ doc.setFillColor(r,g,b); }
+    function stroke(r,g,b){ doc.setDrawColor(r,g,b); }
+
+    function drawRect(x,xw,yy,yh,fillC,strokeC,rounding){
+      if(fillC){ fill(...fillC); }
+      if(strokeC){ stroke(...strokeC); doc.setLineWidth(0.3); }
+      else { doc.setLineWidth(0); }
+      if(rounding){
+        doc.roundedRect(x,yy,xw,yh,rounding,rounding, fillC?(strokeC?'FD':'F'):'S');
+      } else {
+        doc.rect(x,yy,xw,yh, fillC?(strokeC?'FD':'F'):'S');
+      }
+    }
+
+    function drawGoldBar(yy, h){ drawRect(ML,CW,yy,h||0.6,GOLD,null,0); }
+    function drawGoldLine(yy){ doc.setDrawColor(...GOLD); doc.setLineWidth(0.4); doc.line(ML,yy,ML+CW,yy); }
+
+    function text(txt, x, yy, opts){
+      doc.text(txt, x, yy, opts||{});
+    }
+
+    function wrapText(txt, x, yy, maxW, lineH){
+      const lines = doc.splitTextToSize(txt, maxW);
+      lines.forEach(l=>{ text(l,x,yy); yy+=lineH||5; });
+      return yy;
+    }
+
+    function checkNewPage(needed){
+      if(y + needed > H - 25){
+        addFooter();
+        doc.addPage();
+        pageNum++;
+        y = MT + 5;
+        drawTopBar();
+      }
+    }
+
+    function drawTopBar(){
+      drawRect(0,W,0,8,GOLD,null,0);
+      setFont('bold',7,WHITE);
+      text('OLISMO INTEGRATO  ·  olismo-integrato.it', ML, 5.5);
+      setFont('normal',7,WHITE);
+      text('Report Olistico Integrato', W-MR, 5.5, {align:'right'});
+    }
+
+    function addFooter(){
+      const fy = H - 12;
+      drawRect(0,W,fy,12,IVORY,null,0);
+      doc.setDrawColor(...GOLD); doc.setLineWidth(0.3);
+      doc.line(0,fy,W,fy);
+      setFont('normal',7,INK3);
+      text('© Carlo Alberto Calcagno  ·  olismo-integrato.it', ML, fy+5);
+      text('Pagina '+pageNum, W-MR, fy+5, {align:'right'});
+      setFont('italic',6,INK3);
+      text('Documento generato il '+new Date().toLocaleDateString('it-IT')+'. Solo a scopo divulgativo.', ML, fy+9);
+    }
+
+    function sectionTitle(label, icon){
+      checkNewPage(22);
+      y += 4;
+      drawRect(ML, CW, y, 9, GOLD_L, GOLD, 2);
+      setFont('bold', 10, GOLD);
+      text((icon?icon+' ':'')+label.toUpperCase(), ML+4, y+6);
+      y += 14;
+    }
+
+    function infoBox(lines, bgC, borderC, iconColor){
+      const lh = 5.5;
+      const boxH = lines.length * lh + 8;
+      checkNewPage(boxH + 4);
+      drawRect(ML, CW, y, boxH, bgC||IVORY, borderC||GOLD_L, 2);
+      setFont('normal', 9, INK2);
+      let ty = y + 6;
+      lines.forEach(l=>{
+        if(l.startsWith('__TITLE__')){
+          setFont('bold', 9.5, INK);
+          text(l.replace('__TITLE__',''), ML+4, ty);
+          setFont('normal', 9, INK2);
+        } else if(l.startsWith('__BOLD__')){
+          setFont('bold', 9, INK2);
+          text(l.replace('__BOLD__',''), ML+4, ty);
+          setFont('normal', 9, INK2);
+        } else if(l === '') {
+          ty += 2;
+          return;
+        } else {
+          text(l, ML+4, ty);
+        }
+        ty += lh;
+      });
+      y += boxH + 5;
+    }
+
+    function keyValueRow(label, value, bgC){
+      checkNewPage(8);
+      if(bgC){ drawRect(ML,CW,y,7,bgC,null,1); }
+      setFont('bold', 8.5, GOLD);
+      text(label, ML+3, y+5);
+      setFont('normal', 8.5, INK2);
+      const labelW = doc.getTextWidth(label);
+      text(String(value||'—'), ML+3+labelW+4, y+5);
+      y += 8;
+    }
+
+    // ── HELPER: get enneatipo data ──
+    function getEnn(tipoNum){
+      return DB?.enneatipi?.find(e=>e.id==='e'+tipoNum)||{};
+    }
+    function getAdatt(adId){
+      return DB?.adattamenti?.find(a=>a.id===adId || a.short===adId)||{};
+    }
+    function getChakra(cId){
+      return DB?.chakra?.find(c=>c.id===cId)||{};
+    }
+
+    // ══════════════════════════════════════════════
+    // PAGE 1 — COPERTINA
+    // ══════════════════════════════════════════════
+    pageNum = 1;
+    doc.addPage(); // will remove first blank
+
+    // Full background
+    fill(...IVORY);
+    doc.rect(0,0,W,H,'F');
+
+    // Top gold band
+    fill(...GOLD);
+    doc.rect(0,0,W,45,'F');
+
+    // Decorative circle
+    doc.setFillColor(255,255,255,0.1);
+    doc.circle(W-30, 25, 40, 'F');
+
+    // Logo area
+    setFont('bold', 28, WHITE);
+    text('Olismo', ML, 20);
+    setFont('italic', 28, [245,236,216]);
+    text('Integrato', ML+44, 20);
+
+    setFont('normal', 9, [245,236,216]);
+    text('olismo-integrato.it  ·  Carlo Alberto Calcagno', ML, 28);
+
+    // Gold circle ornament
+    doc.setFillColor(255,255,255,0.15);
+    doc.setDrawColor(255,255,255);
+    doc.setLineWidth(0.5);
+
+    // Central content
+    y = 70;
+    setFont('bold', 22, INK);
+    text('REPORT OLISTICO', W/2, y, {align:'center'});
+    setFont('italic', 22, GOLD);
+    text('Integrato', W/2, y+12, {align:'center'});
+
+    // Decorative line
+    doc.setDrawColor(...GOLD); doc.setLineWidth(1);
+    doc.line(W/2-30, y+18, W/2+30, y+18);
+
+    y += 28;
+    setFont('normal', 10, INK3);
+    text('Percorso personale di autoconoscenza olistica', W/2, y, {align:'center'});
+
+    // Profile summary box on cover
+    y += 15;
+    drawRect(ML+15, CW-30, y, 80, WHITE, GOLD_L, 4);
+
+    // Contents
+    y += 10;
+    const profileLines = [];
+    if(fr||ck){ profileLines.push(['Enneatipo', fr?('T'+fr.tipo+' — '+(fr.nome||'')):(ck?'T'+ck.enneatipo:null), PURPLE_L]); }
+    if(at){ profileLines.push(['Adattamento AT', at.primario||'—', BLUE_L]); }
+    if(vak){ profileLines.push(['Canale VAK', vak.nome||vak.canale||'—', GREEN_L]); }
+    if(ck && ck.chakra_forte){ 
+      const c = getChakra(ck.chakra_forte);
+      profileLines.push(['Chakra di forza', (c.short||ck.chakra_forte), [237,245,237]]); 
+    }
+
+    profileLines.forEach(([label, val, bg]) => {
+      if(!val) return;
+      drawRect(ML+20, CW-40, y, 9, bg||IVORY2, null, 2);
+      setFont('bold', 8.5, INK3);
+      text(label+':', ML+24, y+6);
+      const lw = doc.getTextWidth(label+': ');
+      setFont('bold', 9, INK);
+      text(String(val), ML+24+lw, y+6);
+      y += 11;
+    });
+
+    if(profileLines.length === 0){
+      setFont('italic', 9, INK3);
+      text('Dati dei test completati inclusi nel report', W/2, y+10, {align:'center'});
+      y += 20;
+    }
+
+    // Date
+    y = 225;
+    setFont('normal', 9, INK3);
+    text('Generato il: '+new Date().toLocaleDateString('it-IT', {day:'2-digit',month:'long',year:'numeric'}), W/2, y, {align:'center'});
+
+    // Bottom disclaimer
+    y = 245;
+    drawRect(ML, CW, y, 28, RED_L, RED_D, 3);
+    doc.setDrawColor(...RED_D); doc.setLineWidth(1);
+    doc.line(ML+4, y+2, ML+4, y+24);
+    setFont('bold', 9, RED_D);
+    text('⚠ AVVERTENZA IMPORTANTE', ML+8, y+8);
+    setFont('normal', 8, [120,30,30]);
+    const discLine1 = doc.splitTextToSize('Questo report ha finalità esclusivamente divulgative e non costituisce diagnosi medica, psicologica o psichiatrica. Si raccomanda di sottoporre il documento a un medico, psicologo o professionista della salute mentale qualificato.', CW-16);
+    discLine1.forEach((l,i)=>{ text(l, ML+8, y+15+(i*4.5)); });
+
+    // Footer
+    y = H-15;
+    doc.setDrawColor(...GOLD); doc.setLineWidth(0.5);
+    doc.line(ML, y, ML+CW, y);
+    setFont('normal', 7.5, INK3);
+    text('© Carlo Alberto Calcagno  ·  olismo-integrato.it', ML, y+6);
+    text('Pagina 1', W-MR, y+6, {align:'right'});
+
+    // ══════════════════════════════════════════════
+    // PAGES 2+ — CONTENT
+    // ══════════════════════════════════════════════
+    doc.addPage();
+    pageNum = 2;
+    drawTopBar();
+    y = MT + 10;
+
+    // ── SECTION: PROFILO DEI TEST ──
+    sectionTitle('PROFILO DEI TEST COMPLETATI', '📊');
+
+    if(ck){
+      infoBox([
+        '__TITLE__✦ Check Integrato  ['+ck._date+']',
+        '',
+        ck.enneatipo ? '· Enneatipo ipotesi: T'+ck.enneatipo+(ck.enn2?' (2°: T'+ck.enn2+')':'') : '',
+        ck.vak ? '· Canale VAK: '+ck.vak : '',
+        ck.at_stato ? '· Stato AT prevalente: '+ck.at_stato : '',
+        ck.chakra_forte ? '· Chakra di forza: '+ck.chakra_forte : '',
+        ck.chakra_debole ? '· Chakra da lavorare: '+ck.chakra_debole : '',
+        (ck.spinte&&ck.spinte.length) ? '· Spinte copione: '+ck.spinte.join(', ') : '',
+        ck.conf_stile ? '· Stile conflitto: '+ck.conf_stile : '',
+        ck.cerca_di ? '· Sta cercando: '+ck.cerca_di : '',
+      ].filter(Boolean), IVORY, GOLD_L);
+    }
+
+    if(fr){
+      const ennF = getEnn(fr.tipo);
+      infoBox([
+        '__TITLE__🌳 Test dei 9 Frutti  ['+fr._date+']',
+        '',
+        '· Enneatipo: T'+fr.tipo+' — '+(fr.nome||ennF.name||''),
+        fr.tipo2 ? '· 2° enneatipo: T'+fr.tipo2 : '',
+        fr.ala ? '· Ala dominante: '+fr.ala : '',
+        ennF.centro ? '· Centro: '+ennF.centro : '',
+        ennF.motivazione ? '· Motivazione: '+ennF.motivazione : '',
+      ].filter(Boolean), IVORY, GOLD_L);
+    }
+
+    if(at){
+      // Get full adattamento data
+      const adData = getAdatt(at.primario);
+      infoBox([
+        '__TITLE__🧠 Test Adattamenti AT  ['+at._date+']',
+        '',
+        '· Adattamento primario: '+at.primario+' ('+at.primario_pct+'%)',
+        at.secondario ? '· Adattamento secondario: '+at.secondario+' ('+at.secondario_pct+'%)' : '',
+        at.prevalenza ? '· Prevalenza: '+at.prevalenza : '',
+        adData.spinta ? '· Spinta: '+adData.spinta : '',
+        adData.copione ? '· Copione: '+adData.copione : '',
+        adData.portaAperta ? '· Porta aperta: '+adData.portaAperta+' · Bersaglio: '+adData.portaBersaglio : '',
+      ].filter(Boolean), IVORY, GOLD_L);
+    }
+
+    if(vak){
+      infoBox([
+        '__TITLE__👁 Test VAK  ['+vak._date+']',
+        '',
+        '· Canale dominante: '+vak.canale+' — '+(vak.nome||'')+ ' ('+vak.pct+'%)',
+        vak.secondo ? '· 2° canale: '+vak.secondo : '',
+      ].filter(Boolean), IVORY, GOLD_L);
+    }
+
+    if(ego){
+      const EGO_LABELS = {GN:'Genitore Normativo',GA:'Genitore Affettivo',A:'Adulto',BL:'Bambino Libero',BA:'Bambino Adattato'};
+      infoBox([
+        '__TITLE__⚙ Egogramma  ['+ego._date+']',
+        '',
+        '· Stato predominante: '+(EGO_LABELS[ego.dominante]||ego.dominante)+' ('+ego.dominante_val+'/10)',
+        '· Stato più basso: '+(EGO_LABELS[ego.minimo]||ego.minimo)+' ('+ego.minimo_val+'/10)',
+      ].filter(Boolean), IVORY, GOLD_L);
+    }
+
+    // ── SECTION: ENNEATIPO ──
+    const tipoNum = (fr&&fr.tipo) || (ck&&ck.enneatipo);
+    if(tipoNum){
+      sectionTitle('PROFILO ENNEAGRAMMATICO', '🌳');
+      const enn = getEnn(tipoNum);
+      if(enn && enn.name){
+        checkNewPage(40);
+
+        // Enneatipo header card
+        const ennColor = (typeof TIPO_COLORS !== 'undefined') ? TIPO_COLORS[tipoNum] : null;
+        drawRect(ML, CW, y, 14, GOLD_L, GOLD, 3);
+        setFont('bold', 13, GOLD);
+        text('Tipo '+tipoNum+' — '+enn.name, ML+5, y+9);
+        setFont('normal', 9, INK3);
+        text(enn.short||'', W-MR-2, y+9, {align:'right'});
+        y += 18;
+
+        // Description
+        if(enn.desc){
+          checkNewPage(20);
+          setFont('normal', 9, INK2);
+          y = wrapText(enn.desc, ML, y, CW, 5.5);
+          y += 4;
+        }
+
+        // Key properties
+        const ennProps = [
+          enn.centro ? ['Centro', enn.centro] : null,
+          enn.passione ? ['Passione', enn.passione] : null,
+          enn.virtu ? ['Virtù', enn.virtu] : null,
+          enn.motivazione ? ['Motivazione core', enn.motivazione] : null,
+          enn.paura ? ['Paura profonda', enn.paura] : null,
+          enn.desiderio ? ['Desiderio', enn.desiderio] : null,
+        ].filter(Boolean);
+
+        if(ennProps.length){
+          checkNewPage(ennProps.length * 8 + 5);
+          ennProps.forEach(([l,v])=>{ keyValueRow(l+':', v, IVORY2); });
+        }
+
+        // Chakra
+        if(enn.chakra && enn.chakra.length){
+          checkNewPage(25);
+          y += 3;
+          setFont('bold', 9, GOLD);
+          text('Chakra correlati:', ML, y); y += 5;
+          enn.chakra.forEach(cId => {
+            const c = getChakra(cId);
+            if(c.name){
+              checkNewPage(8);
+              drawRect(ML, CW, y, 7, IVORY, GOLD_L, 1);
+              setFont('bold', 8, GOLD);
+              text('◉ '+c.name, ML+3, y+5);
+              if(c.tema){ setFont('normal',8,INK3); text('— '+c.tema, ML+3+doc.getTextWidth('◉ '+c.name)+2, y+5); }
+              y += 8;
+            }
+          });
+          y += 3;
+        }
+      }
+    }
+
+    // ── SECTION: ANALISI AT ──
+    if(at){
+      sectionTitle('ANALISI TRANSAZIONALE', '🧠');
+
+      // Primary adaptation
+      const adData = getAdatt(at.primario);
+      if(adData && adData.name){
+        checkNewPage(40);
+        drawRect(ML, CW, y, 14, BLUE_L, BLUE_D, 3);
+        setFont('bold', 12, BLUE_D);
+        text(adData.name||at.primario, ML+5, y+9);
+        setFont('normal', 9, INK3);
+        text(adData.tipo||'', W-MR-2, y+9, {align:'right'});
+        y += 18;
+
+        if(adData.desc){
+          checkNewPage(20);
+          setFont('normal', 9, INK2);
+          y = wrapText(adData.desc, ML, y, CW, 5.5);
+          y += 4;
+        }
+
+        // Porte
+        if(adData.portaAperta){
+          checkNewPage(28);
+          const porteLines = [
+            '__TITLE__Le tre porte di accesso',
+            '',
+            '✓ Porta aperta: '+adData.portaAperta+' (punto di entrata — inizia da qui)',
+            '◎ Bersaglio: '+adData.portaBersaglio+' (porta su cui lavorare)',
+            '⚠ Trappola: '+adData.portaTrappola+' (evitare nelle fasi iniziali)',
+          ];
+          infoBox(porteLines, BLUE_L, BLUE_D);
+        }
+
+        // Giochi psicologici
+        if(adData.giochi && adData.giochi.length){
+          checkNewPage(adData.giochi.length * 7 + 20);
+          setFont('bold', 9, GOLD);
+          text('Giochi psicologici tipici:', ML, y); y += 6;
+          adData.giochi.forEach(g => {
+            checkNewPage(10);
+            drawRect(ML, CW, y, 7, IVORY2, null, 1);
+            setFont('normal', 8.5, INK2);
+            const gLines = doc.splitTextToSize('♟ '+g, CW-6);
+            text(gLines[0], ML+3, y+5);
+            y += 8;
+            if(gLines.length > 1){
+              gLines.slice(1).forEach(gl=>{
+                checkNewPage(6);
+                setFont('normal',8.5,INK2);
+                text(gl, ML+6, y);
+                y += 5.5;
+              });
+            }
+          });
+          y += 3;
+        }
+
+        // Copione di vita
+        if(adData.copione_vita){
+          checkNewPage(18);
+          infoBox([
+            '__TITLE__📜 Copione di vita',
+            '',
+            adData.copione_vita,
+          ], PURPLE_L, PURPLE_D);
+        }
+
+        // Credenza core
+        if(adData.credenza){
+          checkNewPage(18);
+          infoBox([
+            '__BOLD__💭 Credenza core',
+            '',
+            adData.credenza,
+          ], IVORY2, GOLD_L);
+        }
+
+        // Permesso terapeutico
+        if(adData.permesso){
+          checkNewPage(18);
+          infoBox([
+            '__BOLD__✦ Permesso terapeutico',
+            '',
+            adData.permesso,
+          ], GREEN_L, GREEN_D);
+        }
+
+        // Rimedi olistici AT
+        if(adData.rimedi){
+          sectionTitle('STRUMENTI OLISTICI (AT-SPECIFICI)', '🌿');
+          const r = adData.rimedi;
+          const rimLines = [
+            '__TITLE__Rimedi consigliati per '+adData.short,
+            '',
+            r.bach ? '🌸 Bach: '+r.bach : '',
+            r.fes ? '✿ FES: '+r.fes : '',
+            r.chakra ? '◉ Chakra: '+r.chakra : '',
+            r.frequenza ? '🎵 Frequenza: '+r.frequenza : '',
+            r.meditazione ? '🧘 Meditazione: '+r.meditazione : '',
+          ].filter(Boolean);
+          infoBox(rimLines, GREEN_L, GREEN_D);
+        }
+      }
+    }
+
+    // ── SECTION: PIANO ALIMENTARE ──
+    if(dt){
+      sectionTitle('PIANO ALIMENTARE TERAPEUTICO', '🥗');
+      const ennD = getEnn(dt.tipo);
+      const ennPlan = ennD;
+      if(ennPlan && ennPlan.dieta){
+        const d = ennPlan.dieta;
+        const dietLines = [
+          '__TITLE__Piano per T'+dt.tipo+(ennD.name?' — '+ennD.name:''),
+          '',
+          d.principio_guida ? '📋 '+d.principio_guida : '',
+          '',
+          d.cereali ? '__BOLD__Cereali: '+d.cereali : '',
+          d.verdure ? '__BOLD__Verdure: '+d.verdure : '',
+          d.legumi ? '__BOLD__Legumi: '+d.legumi : '',
+          d.frutta ? '__BOLD__Frutta: '+d.frutta : '',
+          d.erbe ? '__BOLD__Erbe: '+d.erbe : '',
+          d.evitare ? '⚠ Evitare: '+d.evitare : '',
+          d.modulazione ? '⚙ '+d.modulazione : '',
+        ].filter(l=>l&&l!=='__BOLD__');
+        infoBox(dietLines, GREEN_L, GREEN_D);
+      } else {
+        infoBox([
+          '__TITLE__Dieta Terapeutica  ['+dt._date+']',
+          '· Generata per: T'+dt.tipo+' / '+dt.adattamento,
+          '· Consultare la sezione Alimentazione nel portale per il piano dettagliato.',
+        ], GREEN_L, GREEN_D);
+      }
+    }
+
+    // ── SECTION: NOTE OPERATIVE ──
+    sectionTitle('NOTE OPERATIVE', '📌');
+    infoBox([
+      '__TITLE__Come leggere questo report',
+      '',
+      '1. I risultati dei test sono indicativi e rappresentano ipotesi di lavoro, non diagnosi.',
+      '2. I profili si integrano: Enneatipo + Adattamento AT + VAK formano un quadro coerente.',
+      '3. I rimedi olistici (fiori, frequenze, meditazione) sono complementari alla cura ordinaria.',
+      '4. Il percorso evolutivo è dinamico: ripeti i test dopo 3-6 mesi per rilevare cambiamenti.',
+      '5. La consulenza AI sul sito è disponibile 24h per approfondire qualunque aspetto.',
+    ], IVORY2, GOLD_L);
+
+    // ── SECTION: DISCLAIMER ──
+    sectionTitle('AVVERTENZA PROFESSIONALE', '⚠');
+    checkNewPage(80);
+
+    // Big disclaimer box
+    drawRect(ML, CW, y, 75, RED_L, RED_D, 4);
+    doc.setDrawColor(...RED_D); doc.setLineWidth(2);
+    doc.line(ML+5, y+5, ML+5, y+68);
+
+    setFont('bold', 11, RED_D);
+    text('ATTENZIONE — LEGGERE PRIMA DI CONSULTARE SPECIALISTI', ML+9, y+12);
+
+    setFont('normal', 9, [120,30,30]);
+    const disclaimer = [
+      'Il presente documento è generato automaticamente da Olismo Integrato (olismo-integrato.it),',
+      'un portale divulgativo di conoscenza olistica. Non costituisce diagnosi medica,',
+      'psicologica, psichiatrica o di alcun altro tipo.',
+      '',
+      'Si raccomanda di:',
+      '  · Sottoporre questo report a un medico, psicologo o psicoterapeuta qualificato',
+      '  · Non sostituire farmaci o terapie in corso senza consultare il proprio specialista',
+      '  · Utilizzare i rimedi olistici indicati (fiori, frequenze, meditazione) solo come',
+      '    strumenti complementari e mai sostitutivi delle cure ordinarie',
+      '  · Considerare i profili di personalità come ipotesi di lavoro, non come etichette',
+      '',
+      'In caso di disturbi psicologici, crisi emotive o sintomi fisici, consultare',
+      'immediatamente un professionista della salute qualificato.',
+    ];
+    let dy = y + 20;
+    disclaimer.forEach(l => {
+      text(l, ML+9, dy);
+      dy += l === '' ? 3 : 4.5;
+    });
+
+    y += 82;
+
+    // Contact
+    checkNewPage(30);
+    infoBox([
+      '__TITLE__Contatti per consulenza con Carlo Alberto Calcagno',
+      '',
+      '📧 calcagnocarloalberto1@gmail.com',
+      '📱 WhatsApp: +39 347 366 6508',
+      '🌐 olismo-integrato.it  ·  mediaresenzaconfini.org',
+      '🤖 Consulente AI disponibile sul portale 24h/24',
+    ], IVORY2, GOLD_L);
+
+    // ── DELETE PAGE 1 (blank) ──
+    // jsPDF always starts with 1 page — since we called addPage early, remove initial
+    // Actually we need to check if there's a blank page
+    // The doc was created with 0 content then addPage adds second — let me check
+    // We'll just move on since doc creation auto-starts with page 1 and we called addPage for cover
+
+    // ── Finalize last page footer ──
+    addFooter();
+
+    // ── DELETE INITIAL BLANK PAGE ──
+    // jsPDF 2.x doesn't easily support deletePage but we started correctly
+    // Actually doc was new jsPDF then we called doc.addPage immediately so page 1 is blank
+    // Let's check by removing page 1 if it's blank — jsPDF 2.5 has deletePage
+    try{ if(doc.getNumberOfPages() > 1) doc.deletePage(1); } catch(e){}
+
+    // Save
+    const dateStr = new Date().toISOString().slice(0,10);
+    doc.save('Report_Olistico_'+dateStr+'.pdf');
+
+  } catch(err){
+    console.error('PDF error:', err);
+    alert('Errore durante la generazione del PDF: '+err.message);
+  } finally {
+    if(btn){ btn.textContent = '📄 Scarica Report'; btn.disabled = false; }
+  }
+}
+
 
 async function exportChatPdf(){
   const btn = document.querySelector('.chat-pdf-btn');

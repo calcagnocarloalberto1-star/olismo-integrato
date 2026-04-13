@@ -1971,6 +1971,36 @@ footer.site-footer{
 }
 .diet-restart:hover{border-color:var(--gold);color:var(--gold)}
 
+
+/* ══ DIET RESULT ══ */
+.diet-result{display:none;margin-top:2rem;border:1.5px solid var(--border);border-radius:var(--rxl);overflow:hidden;background:white}
+.diet-res-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:1.5rem 2rem;color:white}
+.diet-res-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;margin-bottom:.25rem}
+.diet-res-sub{font-size:.78rem;opacity:.85}
+.diet-res-section{padding:1.2rem 2rem;border-bottom:1px solid var(--ivory3)}
+.diet-res-section:last-child{border-bottom:none}
+.diet-res-section h4{font-size:.82rem;font-weight:700;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.7rem}
+.diet-res-section p{font-size:.85rem;color:var(--ink2);line-height:1.75}
+.diet-chakra-note{font-size:.78rem;color:var(--gold)!important;margin-top:.5rem;font-style:italic}
+.diet-food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.65rem}
+.diet-food-card{background:var(--ivory2);border-radius:8px;padding:.75rem 1rem}
+.diet-food-cat{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.diet-food-val{font-size:.8rem;color:var(--ink2);line-height:1.5}
+.diet-adatt-note{background:rgba(184,147,90,.08);padding:.7rem 1rem;border-radius:6px;border-left:3px solid var(--gold);font-size:.83rem!important}
+.diet-week{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
+@media(max-width:800px){.diet-week{grid-template-columns:1fr}}
+.diet-day{background:var(--ivory2);border-radius:6px;padding:.6rem .7rem}
+.diet-day-label{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;text-align:center}
+.diet-day-meals{display:flex;flex-direction:column;gap:.3rem}
+.diet-meal{display:flex;gap:.4rem;font-size:.72rem;color:var(--ink2);line-height:1.4}
+.diet-meal-type{flex-shrink:0;font-size:.7rem;opacity:.6}
+.diet-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.diet-bottom-row{grid-template-columns:1fr}}
+.diet-extra-card{background:var(--gold-pale);border-radius:8px;padding:.9rem}
+.diet-extra-label{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.diet-extra-val{font-size:.8rem;color:var(--ink2);line-height:1.5}
+.diet-disclaimer{padding:.8rem 2rem;font-size:.7rem;color:var(--ink4);text-align:center;border-top:1px solid var(--ivory3)}
+
 </style>
 
 
@@ -6495,6 +6525,339 @@ async function exportChatPdf(){
     btn.classList.remove('loading');
     btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"/></svg> Scarica PDF`;
   }
+}
+
+
+// ══════════════════════════════════════════════
+// MOTORE DIETETICO
+// ══════════════════════════════════════════════
+
+function checkDietReady(){
+  const enn = document.getElementById('diet-enn').value;
+  const adatt = document.getElementById('diet-adatt').value;
+  const btn = document.getElementById('diet-gen-btn');
+  if(btn) btn.disabled = !(enn && adatt);
+}
+
+// Dati alimentari per enneatipo
+const DIET_ENN = {
+  "1":{
+    nome:"Perfezionista",
+    chakra:"Plesso Solare (3°) e Radice (1°)",
+    principio:"L'alimentazione del T1 deve bilanciare la tensione interna e calmare il critico interiore. Cibi che stabilizzano il sistema nervoso e riducono l'iper-attivazione corticale.",
+    consigliati:[
+      {g:"Cereali","c":"#c49a1a","v":"Riso integrale, avena, farro, orzo — calmano il sistema nervoso e alimentano la riflessione"},
+      {g:"Verdure","c":"#2e7d4f","v":"Spinaci, cavolo nero, broccoli, zucchine — depurano e calmano il fegato (sede della tensione T1)"},
+      {g:"Legumi","c":"#8a6a2a","v":"Lenticchie, ceci, fagioli neri — proteina stabile senza eccitazione"},
+      {g:"Frutta","c":"#c87820","v":"Mela (frutto simbolo del T1!), pera, prugna, mirtilli — antiossidanti e stabilizzanti"},
+      {g:"Erbe","c":"#2e7d4f","v":"Valeriana, melissa, camomilla, lavanda — per l'ansia da perfezione"}
+    ],
+    evitare:"Caffeina e stimolanti (amplificano l'autocritica), zuccheri raffinati (crisi glicemica→irritabilità), alcol in eccesso (abbassa le difese del Super Io).",
+    ritmo:"3 pasti regolari a orari fissi (il T1 ama la struttura). Cena leggera, niente cibo dopo le 20. Masticare lentamente: il cibo non va 'analizzato' ma gustato.",
+    settimana:[
+      {g:"Lun","p":"Porridge avena + mela + cannella","pr":"Insalata di farro con verdure grigliate","c":"Minestrone di lenticchie + pane integrale"},
+      {g:"Mar","p":"Yogurt naturale + mirtilli","pr":"Riso integrale + tofu marinato","c":"Zuppa di verdure + uova in camicia"},
+      {g:"Mer","p":"Pane integrale + burro d'arachidi","pr":"Insalata greca + ceci","c":"Salmone al forno + spinaci saltati"},
+      {g:"Gio","p":"Frullato verde (spinaci, banana, mandorle)","pr":"Avocado toast integrale","c":"Pollo al limone + broccoli al vapore"},
+      {g:"Ven","p":"Porridge con semi di chia","pr":"Bowl di quinoa + verdure di stagione","c":"Pasta integrale al pesto + insalata"},
+      {g:"Sab","p":"Uova strapazzate + pane di segale","pr":"Zuppa miso + riso","c":"Pasto libero — pratica del 'permesso'"},
+      {g:"Dom","p":"Pancakes integrali + frutta fresca","pr":"Insalata di legumi misti","c":"Arrosto di verdure + patate dolci"}
+    ],
+    fiori:"Agrimony (pace interiore) · Rock Water (rigidità) · Pine (senso di colpa)",
+    frequenza:"528 Hz — riparazione e rilascio della tensione"
+  },
+  "2":{
+    nome:"Altruista",
+    chakra:"Cuore (4°) e Radice (1°)",
+    principio:"Il T2 tende a dimenticarsi di nutrirsi (troppo occupato a nutrire gli altri). L'alimentazione deve ricordare il piacere di prendersi cura di sé. Cibi che nutrono il cuore energetico.",
+    consigliati:[
+      {g:"Cereali","c":"#c49a1a","v":"Quinoa, miglio, amaranto — nutrono senza pesare, ideali per chi si muove molto"},
+      {g:"Verdure","c":"#2e7d4f","v":"Barbabietola rossa, radicchio, pomodori — supportano il sistema cardiovascolare"},
+      {g:"Legumi","c":"#8a6a2a","v":"Fagioli rossi, azuki, soia — supportano il rene e la vitalità affettiva"},
+      {g:"Frutta","c":"#c87820","v":"Fragola, lampone, ciliegia, anguria — frutti del cuore, ricchi in liconene e vitamina C"},
+      {g:"Grassi","c":"#b8935a","v":"Olio d'oliva extravergine, avocado, noci — nutrono il sistema nervoso parasimpatico"}
+    ],
+    evitare:"Eccesso di dolci come compensazione emotiva, fast food durante le crisi da 'non valorizzato', sale in eccesso (ritenzione idrica e gonfiori).",
+    ritmo:"Il T2 spesso salta i pasti quando è concentrato sugli altri. Regola: prima mangio io, poi mi occupo degli altri. Un pasto al giorno da consumare da soli, in silenzio.",
+    settimana:[
+      {g:"Lun","p":"Smoothie di fragole + banana + latte di mandorla","pr":"Insalata di quinoa + barbabietola + feta","c":"Zuppa di fagioli rossi + pane di mais"},
+      {g:"Mar","p":"Avocado toast + uovo in camicia","pr":"Riso rosso + verdure saltate","c":"Salmone + insalata di pomodori e basilico"},
+      {g:"Mer","p":"Yogurt di soia + lamponi + granola","pr":"Pasta integrale al pomodoro fresco","c":"Pollo arrosto + patate dolci"},
+      {g:"Gio","p":"Porridge di miglio + frutta secca","pr":"Bowl di riso + edamame + avocado","c":"Minestrone + crostini integrali"},
+      {g:"Ven","p":"Frullato rosso (barbabietola, mela, zenzero)","pr":"Insalata di lenticchie rosse","c":"Pizza integrale con verdure (pasto conviviale)"},
+      {g:"Sab","p":"Pancakes alle fragole","pr":"Sushi vegano","c":"Cena con chi ami — il cibo del T2 è la condivisione"},
+      {g:"Dom","p":"Brunch festivo con uova, frutta e pane artigianale","pr":"Zuppa di azuki","c":"Lasagne di verdure"}
+    ],
+    fiori:"Chicory (amore condizionato) · Red Chestnut (preoccupazione per gli altri) · Centaury (confini)",
+    frequenza:"528 Hz — amore · 639 Hz — connessione relazionale"
+  },
+  "3":{
+    nome:"Manager",
+    chakra:"Plesso Solare (3°) e Gola (5°)",
+    principio:"Il T3 mangia spesso di fretta o salta i pasti per non perdere tempo. Necessita di proteine per la performance, ma soprattutto di ritualizzare i pasti come momento di presenza.",
+    consigliati:[
+      {g:"Proteine","c":"#a83232","v":"Uova, pollo, pesce, legumi — sostengono l'energia e la lucidità mentale per la performance"},
+      {g:"Cereali","c":"#c49a1a","v":"Riso basmati, pasta integrale, kamut — carboidrati complessi per energia sostenuta"},
+      {g:"Verdure","c":"#2e7d4f","v":"Peperoni, mais, zucca — gialli e arancioni per il 3° chakra (fuoco, volontà)"},
+      {g:"Frutta","c":"#c87820","v":"Ciliegia (frutto del T3!), arancia, mandarino, kiwi — vitamina C per l'immunità sotto stress"},
+      {g:"Integratori","c":"#1565c0","v":"Magnesio (contro crampi da tensione), B12 (energia), Omega 3 (focus)"}
+    ],
+    evitare:"Energy drink e caffeina in eccesso (esaurimento surrenalico), cibo processato 'on the go', alcol come decompressore serale.",
+    ritmo:"Il T3 ha bisogno di PAUSE. Almeno un pasto seduto, senza telefono, al giorno. Colazione proteica per la performance. Cena leggera per dormire.",
+    settimana:[
+      {g:"Lun","p":"Uova strapazzate + avocado + pane di segale","pr":"Bowl di pollo + riso basmati + verdure","c":"Pesce al forno + insalata di rucola"},
+      {g:"Mar","p":"Frullato proteico + frutta","pr":"Pasta integrale al pesto di basilico","c":"Zuppa di legumi + crostini"},
+      {g:"Mer","p":"Yogurt greco + granola + arancia","pr":"Insalata di quinoa + pollo","c":"Bistecca di tofu + peperoni grigliati"},
+      {g:"Gio","p":"Porridge proteico con semi","pr":"Poke bowl","c":"Pasta al salmone + spinaci"},
+      {g:"Ven","p":"Pancakes proteici","pr":"Sushi o poke","c":"Pizza con proteine (tonno, gamberetti)"},
+      {g:"Sab","p":"Brunch nutriente con uova e verdure","pr":"Insalata caesar rivisitata","c":"Cena sociale — il T3 brilla in tavola"},
+      {g:"Dom","p":"Colazione lenta e gustosa (giorno senza agenda)","pr":"Pasta fresca","c":"Arrosto con verdure di stagione"}
+    ],
+    fiori:"Impatiens (impazienza) · Hornbeam (stanchezza mentale) · Oak (esaurimento da eccesso di dovere)",
+    frequenza:"528 Hz — vitalità · 741 Hz — espressione autentica"
+  },
+  "4":{
+    nome:"Romantico",
+    chakra:"Cuore (4°) e Terzo Occhio (6°)",
+    principio:"Il T4 può avere un rapporto discontinuo col cibo: abbuffate emotive nei momenti di tristezza, perdita d'appetito quando è nel dolore profondo. Necessita di cibi che stabilizzino l'umore.",
+    consigliati:[
+      {g:"Omega 3","c":"#1565c0","v":"Salmone, sardine, noci, semi di lino — stabilizzatori dell'umore e anti-depressivi naturali"},
+      {g:"Verdure","c":"#2e7d4f","v":"Broccoli, cavolfiore, kale — contengono folati che supportano la serotonina"},
+      {g:"Frutta","c":"#4527a0","v":"Mirtilli (frutto T4!), more, uva nera, melograno — antidepressivi vibrazionali"},
+      {g:"Cereali","c":"#c49a1a","v":"Segale, farro, amaranto — cereali scuri che radicano il T4 nel presente"},
+      {g:"Cacao","c":"#5d3a1a","v":"Cioccolato fondente 85%+ — fonte di serotonina e piacere autentico (con moderazione)"}
+    ],
+    evitare:"Zuccheri raffinati (amplificano gli sbalzi d'umore), alcol come anestetico emotivo, caffeina in eccesso (amplifica l'ansia della separazione).",
+    ritmo:"Rituali alimentari regolari aiutano il T4 a radicars. Un rituale mattutino (the o caffè con intenzione) e un rituale serale (cena come meditazione) stabilizzano.",
+    settimana:[
+      {g:"Lun","p":"Smoothie blu (mirtilli, banana, latte di cocco)","pr":"Insalata di farro + salmone affumicato + more","c":"Risotto al radicchio + noci"},
+      {g:"Mar","p":"Pane di segale + ricotta + miele","pr":"Zuppa di lenticchie nere","c":"Trota al forno + broccoli"},
+      {g:"Mer","p":"Yogurt + mirtilli + cioccolato fondente","pr":"Bowl di quinoa nera + avocado","c":"Pasta al sugo di olive e capperi"},
+      {g:"Gio","p":"Porridge di farro + more + nocciole","pr":"Insalata greca con olive kalamata","c":"Salmone + spinaci + limone"},
+      {g:"Ven","p":"Crêpes di grano saraceno + marmellata di mirtilli","pr":"Piatto di formaggi artigianali + noci","c":"Risotto al nero di seppia (creatività in cucina)"},
+      {g:"Sab","p":"Colazione artistica: frutta tagliata come un quadro","pr":"Insalata di melograno e rucola","c":"Cena romantica — il T4 cucina come atto d'amore"},
+      {g:"Dom","p":"Frullato viola + pane artigianale","pr":"Zuppa di amaranto","c":"Torta di mirtilli (il T4 ama cucinare dolci)"}
+    ],
+    fiori:"Sweet Chestnut (disperazione profonda) · Gentian (scoraggiamento) · Willow (risentimento)",
+    frequenza:"639 Hz — connessione emotiva · 852 Hz — risveglio interiore"
+  },
+  "5":{
+    nome:"Eremita",
+    chakra:"Terzo Occhio (6°) e Gola (5°)",
+    principio:"Il T5 tende a dimenticarsi del corpo: mangia in modo spartano, spesso da solo, di fretta. Necessita di cibi che radicino e che nutrono la concentrazione mentale senza pesare.",
+    consigliati:[
+      {g:"Proteine","c":"#a83232","v":"Uova, pesce, tofu, legumi — nutrono il cervello senza distrarre con pesantezza digestiva"},
+      {g:"Cereali","c":"#c49a1a","v":"Avena, quinoa, riso selvatico — energia cerebrale prolungata"},
+      {g:"Verdure","c":"#2e7d4f","v":"Sedano, finocchio, cetriolo — rinfrescano la mente surriscaldata"},
+      {g:"Frutta","c":"#8050d0","v":"Uva (frutto T5!), mirtilli, fichi — alimentano la mente contemplativa"},
+      {g:"Noci e semi","c":"#c87820","v":"Noci, mandorle, semi di zucca — DHA e zinco per la funzione cognitiva"}
+    ],
+    evitare:"Pasti troppo elaborati (distrazione dal pensiero), alcol (offusca la lucidità), eccesso di caffeina (amplifica l'isolamento ansioso).",
+    ritmo:"Il T5 ha bisogno di pasti semplici e prevedibili. Meal prep domenicale per tutta la settimana: elimina la variabile 'cosa mangio' dalla mente analitica.",
+    settimana:[
+      {g:"Lun","p":"Porridge di avena + noci + mirtilli","pr":"Riso integrale + tofu al sesamo","c":"Zuppa di lenticchie + pane di segale"},
+      {g:"Mar","p":"Uova sode + pane integrale","pr":"Insalata di quinoa + feta + noci","c":"Pasta integrale al pesto di noci"},
+      {g:"Mer","p":"Frullato verde (spinaci, banana, semi)","pr":"Bowl di farro + legumi + avocado","c":"Pesce al vapore + verdure"},
+      {g:"Gio","p":"Yogurt + granola + uva","pr":"Insalata nicoise","c":"Frittata di verdure + insalata"},
+      {g:"Ven","p":"Pane di segale + burro di mandorle","pr":"Riso selvatico + salmone","c":"Zuppa di farro + parmigiano"},
+      {g:"Sab","p":"Colazione lenta con lettura","pr":"Piatto di formaggi + noci + frutta secca","c":"Cena con un amico (pratica del contatto)"},
+      {g:"Dom","p":"Pancakes alle noci","pr":"Risotto ai funghi (meditativo da preparare)","c":"Minestrone casalingo — meal prep week"}
+    ],
+    fiori:"Water Violet (isolamento) · Cerato (dubitare di sé) · Mimulus (paura specifica)",
+    frequenza:"741 Hz — espressione · 852 Hz — intuizione"
+  },
+  "6":{
+    nome:"Leale",
+    chakra:"Plesso Solare (3°) e Radice (1°)",
+    principio:"Il T6 mangia in modo ansioso: spesso sceglie comfort food, teme le nuove diete, controlla le etichette. Necessita di cibi che stabilizzino il sistema nervoso e riducano l'ansia.",
+    consigliati:[
+      {g:"Magnesio","c":"#1565c0","v":"Cioccolato fondente, spinaci, avocado, banane — contro l'ansia e i crampi da tensione"},
+      {g:"Cereali","c":"#c49a1a","v":"Avena, farro, riso integrale — serotonina e stabilità glicemica"},
+      {g:"Probiotici","c":"#2e7d4f","v":"Yogurt, kefir, kimchi, tempeh — asse intestino-cervello per ridurre l'ansia"},
+      {g:"Frutta","c":"#4527a0","v":"Mirtillo (frutto T6!), banana, kiwi, papaya — vitamina C e potassio"},
+      {g:"Erbe","c":"#2e7d4f","v":"Valeriana, ashwagandha, rodiola — adattogeni contro lo stress cronico"}
+    ],
+    evitare:"Caffeina in eccesso (amplifica l'ipervigilanza), zuccheri raffinati (glicemia instabile = ansia amplificata), alcol come anestetico dell'ansia.",
+    ritmo:"Pasti regolari come ancore di sicurezza. Il T6 ha bisogno di prevedibilità: stesso orario ogni giorno riduce l'ansia alimentare. Non saltare mai la colazione.",
+    settimana:[
+      {g:"Lun","p":"Porridge + banana + mandorle","pr":"Insalata di farro + avocado","c":"Zuppa di verdure + kefir"},
+      {g:"Mar","p":"Yogurt + mirtilli + granola","pr":"Riso integrale + pollo + broccoli","c":"Minestrone + pane integrale"},
+      {g:"Mer","p":"Pane di segale + hummus","pr":"Pasta integrale + legumi","c":"Salmone + spinaci al vapore"},
+      {g:"Gio","p":"Frullato banana-avocado-spinaci","pr":"Bowl di quinoa + kimchi + tofu","c":"Zuppa di lenticchie"},
+      {g:"Ven","p":"Uova + pane integrale + kiwi","pr":"Insalata con probiotici (yogurt come condimento)","c":"Pizza integrale + insalata"},
+      {g:"Sab","p":"Brunch con amici (il T6 ama la sicurezza della comunità)","pr":"Cibo etnico sperimentale (sfida piccola)","c":"Cena casalinga con famiglia"},
+      {g:"Dom","p":"Colazione tranquilla + lettura","pr":"Zuppa casalinga","c":"Pollo al forno + patate (comfort food sano)"}
+    ],
+    fiori:"Aspen (paura vaga) · Mimulus (paura specifica) · Larch (fiducia in sé)",
+    frequenza:"396 Hz — liberazione dalla paura · 528 Hz — sicurezza"
+  },
+  "7":{
+    nome:"Artista/Entusiasta",
+    chakra:"Plesso Solare (3°) e Corona (7°)",
+    principio:"Il T7 ama il cibo come esperienza: ristoranti nuovi, cucine esotiche, esperienza sensoriale. Il rischio è la discontinuità. Necessita di varietà ma anche di radicarsi.",
+    consigliati:[
+      {g:"Spezie","c":"#c49a1a","v":"Curcuma, zenzero, cardamomo, cannella — accendono l'entusiasmo sensoriale e sono antinfiammatori"},
+      {g:"Frutta","c":"#f0a020","v":"Ananas (frutto T7!), mango, papaya, maracuja — frutti tropicali pieni di vita"},
+      {g:"Varietà","c":"#2e7d4f","v":"Cucina del mondo — il T7 ha bisogno di rotazione per mantenere l'entusiasmo"},
+      {g:"Adattogeni","c":"#8050d0","v":"Maca, ginseng, schisandra — per sostenere l'energia senza caffeina"},
+      {g:"Cereali","c":"#c49a1a","v":"Riso selvatico, tapioca, sorgo — varietà ed esoticità"}
+    ],
+    evitare:"Eccesso di stimolanti (il T7 è già abbastanza attivato), abbuffate per noia, alcol come amplificatore della serata.",
+    ritmo:"Il T7 ha bisogno di novità quindi: una cucina diversa a settimana. Ma anche un 'pasto radice' fisso (es. domenica: piatto tradizionale nonna) per bilanciare.",
+    settimana:[
+      {g:"Lun","p":"Frullato tropicale (ananas, mango, cocco)","pr":"Thai curry con tofu","c":"Mezze libanesi"},
+      {g:"Mar","p":"Açaí bowl","pr":"Sushi con varianti creative","c":"Pasta aglio, olio e peperoncino (classico)"},
+      {g:"Mer","p":"Shakshuka (uova in padella speziata)","pr":"Bowl messicana con guacamole","c":"Zuppa marocchina di ceci"},
+      {g:"Gio","p":"Pancakes matcha","pr":"Poke hawaiano","c":"Wok di verdure con salsa tamari"},
+      {g:"Ven","p":"Granola esotica + latte di cocco","pr":"Street food sano (food truck)","c":"Pizza gourmet con ingredienti insoliti"},
+      {g:"Sab","p":"Brunch internazionale","pr":"Tapas spagnole","c":"Cena etnica con amici — il T7 in tavola"},
+      {g:"Dom","p":"Colazione della tradizione (pasto radice)","pr":"Pasta della nonna","c":"Torta artigianale con frutta esotica"}
+    ],
+    fiori:"Agrimony (allegria mascherata) · Scleranthus (indecisione) · Impatiens (fretta)",
+    frequenza:"528 Hz — gioia · 963 Hz — connessione superiore"
+  },
+  "8":{
+    nome:"Capo/Leader",
+    chakra:"Plesso Solare (3°) e Radice (1°)",
+    principio:"Il T8 ha un rapporto intenso col cibo: mangia con forza, ama i sapori decisi. Il rischio è l'eccesso. Necessita di cibi che sostengano la forza senza appesantire e che ammorbidiscano la tensione.",
+    consigliati:[
+      {g:"Proteine","c":"#a83232","v":"Carne rossa di qualità (con moderazione), legumi, uova — sostengono la forza fisica"},
+      {g:"Piccante","c":"#c45a22","v":"Peperoncino, zenzero, aglio — il T8 ama i contrasti e i sapori forti"},
+      {g:"Verdure","c":"#2e7d4f","v":"Barbabietola, radicchio, rabarbaro — depurano il fegato affaticato dalla tensione"},
+      {g:"Frutta","c":"#e09060","v":"Pesca (frutto T8!), albicocca, fico — ammorbidiscono l'intensità"},
+      {g:"Antiinfiammatori","c":"#1565c0","v":"Curcuma, omega 3, ciliegia — contro l'infiammazione da stress cronico"}
+    ],
+    evitare:"Eccesso di carne rossa (acidità e infiammazione), alcol in grandi quantità (perdita controllo), cibo spazzatura come 'sfogo'.",
+    ritmo:"Il T8 mangia quando ha fame, spesso di notte o in modo caotico. Regola: pasto principale a pranzo (picco energetico), cena leggera per proteggere il cuore.",
+    settimana:[
+      {g:"Lun","p":"Uova in tutti i modi + pane di segale","pr":"Bistecca di manzo 150g + insalata + barbabietola","c":"Zuppa di legumi piccante"},
+      {g:"Mar","p":"Frullato rosso (barbabietola, mela, zenzero)","pr":"Bowl di riso rosso + pollo speziato","c":"Pesce spada alla griglia + peperoni"},
+      {g:"Mer","p":"Yogurt greco + granola","pr":"Pasta amatriciana (sapori forti)","c":"Frittata di verdure"},
+      {g:"Gio","p":"Porridge proteico con cannella","pr":"Kebab di agnello + verdure","c":"Zuppa piccante di lenticchie rosse"},
+      {g:"Ven","p":"Shakshuka speziata","pr":"Pizza piccante (il T8 ama intensità)","c":"Cena con vino rosso di qualità"},
+      {g:"Sab","p":"Brunch abbondante","pr":"Barbecue con amici — il T8 ama comandare la griglia","c":"Pesce intero al forno"},
+      {g:"Dom","p":"Colazione coi piedi per terra","pr":"Arrosto tradizionale","c":"Insalata di verdure crude — detox"}
+    ],
+    fiori:"Vervain (intensità) · Vine (controllo) · Rock Water (auto-severità)",
+    frequenza:"396 Hz — liberazione · 528 Hz — forza equilibrata"
+  },
+  "9":{
+    nome:"Diplomatico",
+    chakra:"Radice (1°) e Cuore (4°)",
+    principio:"Il T9 mangia per compiacere gli altri o per addormentarsi emotivamente (comfort food). Necessita di cibi che attivino e radichino, non che addormentino ulteriormente.",
+    consigliati:[
+      {g:"Radicanti","c":"#a83232","v":"Barbabietola, carota, patata dolce, zenzero — attivano il primo chakra e la vitalità"},
+      {g:"Proteine","c":"#c49a1a","v":"Uova, legumi, quinoa — energia stabile contro la tendenza alla letargia"},
+      {g:"Piccante","c":"#c45a22","v":"Peperoncino, curcuma, curry — stimolano e attivano il metabolismo pigro"},
+      {g:"Frutta","c":"#e03060","v":"Fragola (frutto T9!), lampone, ciliegia — attivano la vitalità e la presenza"},
+      {g:"Erbe stimolanti","c":"#2e7d4f","v":"Rosmarino, timo, salvia — contro la tendenza all'inerzia"}
+    ],
+    evitare:"Carboidrati raffinati in eccesso (amplificano la letargia), alcol come sedativo, dolci come comfort emotivo.",
+    ritmo:"Il T9 tende a saltare i pasti o a mangiare di continuo senza fame reale. Regola: pasto solo quando c'è vera fame. Colazione abbondante e attivante per iniziare il giorno con energia.",
+    settimana:[
+      {g:"Lun","p":"Frullato rosso attivante (fragola, barbabietola, zenzero)","pr":"Bowl di riso + pollo speziato + curry","c":"Zuppa piccante di carote"},
+      {g:"Mar","p":"Uova in camicia + pane integrale + pomodoro","pr":"Pasta integrale + salsa piccante","c":"Legumi in umido + cereali"},
+      {g:"Mer","p":"Yogurt + fragole + granola croccante","pr":"Bowl attivante con quinoa + verdure saltate","c":"Zuppa di patate dolci + rosmarino"},
+      {g:"Gio","p":"Porridge con cannella e zenzero","pr":"Insalata di farro + barbabietola","c":"Salmone + peperoni grigliati"},
+      {g:"Ven","p":"Pancakes proteici + sciroppo d'acero","pr":"Curry di ceci + riso basmati","c":"Pizza con ingredienti attivanti"},
+      {g:"Sab","p":"Brunch attivante con amici (uscire dal nido!)","pr":"Cibo etnico speziato","c":"Cena in famiglia — ma esprimi la TUA preferenza"},
+      {g:"Dom","p":"Colazione abbondante (giorno di cura di sé)","pr":"Arrosto di verdure + rosmarino","c":"Fragole e cioccolato — piacere consapevole"}
+    ],
+    fiori:"Wild Rose (rassegnazione) · Hornbeam (fatica del lunedì) · Clematis (sognare ad occhi aperti)",
+    frequenza:"396 Hz — vitalità · 528 Hz — radicamento"
+  }
+};
+
+// Modulazioni per adattamento AT
+const DIET_ADATT = {
+  "schiz": {
+    nome:"Schizoide/Creativo",
+    note:"Aggiungi cibi ricchi in ferro e vitamina B12 (carenza tipica in chi tende all'isolamento). Integra Omega 3 ad alto dosaggio (EPA). Un pasto al giorno in compagnia è indicato come 'pratica di connessione'."
+  },
+  "anti": {
+    nome:"Antisociale/Affascinante",
+    note:"Riduci gli stimolanti (caffeina, zuccheri veloci) che amplificano l'impulsività. Magnesio e L-teanina come modulatori. Pasti regolari per stabilizzare l'umore e ridurre le decisioni impulsive."
+  },
+  "para": {
+    nome:"Paranoide/Brillante",
+    note:"Priorità all'equilibrio glicemico (glicemia instabile = ipervigilanza). Riduci istamina (formaggi stagionati, vino, cibi fermentati se sensibile). Zinco e vitamina D supportano la risposta allo stress."
+  },
+  "pass": {
+    nome:"Passivo-Aggressivo/Oppositivo",
+    note:"Cibi antiinfiammatori (curcuma, omega 3, ciliegia) per ridurre la tensione cronica. Evita alcol serale. L-triptofano (tacchino, semi di zucca, banana) supporta la serotonina e riduce l'irritabilità latente."
+  },
+  "istri": {
+    nome:"Istrionico/Entusiasta",
+    note:"Bilanciare entusiasmo alimentare con radicamento. Riduci i pasti-spettacolo e coltiva un pasto minimalista quotidiano. Integra adattogeni (ashwagandha, rodiola) per stabilizzare l'energia emotiva."
+  },
+  "ocd": {
+    nome:"Ossessivo-Compulsivo/Stakanovista",
+    note:"Attenzione all'ortoressia (ossessione per il cibo sano): il cibo non deve essere 'analizzato' ma goduto. Magnesio glicinato per il rilassamento muscolare. Un 'pasto libero' settimanale è prescritto come pratica di flessibilità."
+  }
+};
+
+function generateDiet(){
+  const ennVal = document.getElementById('diet-enn').value;
+  const adattVal = document.getElementById('diet-adatt').value;
+  const resDiv = document.getElementById('diet-result');
+  if(!ennVal || !adattVal || !resDiv) return;
+
+  const enn = DIET_ENN[ennVal];
+  const adatt = DIET_ADATT[adattVal];
+  if(!enn || !adatt) return;
+
+  const cibiHtml = enn.consigliati.map(c =>
+    '<div class="diet-food-card">' +
+    '<div class="diet-food-cat" style="color:'+c.c+'">'+c.g+'</div>' +
+    '<div class="diet-food-val">'+c.v+'</div>' +
+    '</div>'
+  ).join('');
+
+  const settHtml = enn.settimana.map(g =>
+    '<div class="diet-day">' +
+    '<div class="diet-day-label">'+g.g+'</div>' +
+    '<div class="diet-day-meals">' +
+    '<div class="diet-meal"><span class="diet-meal-type">☀</span><span>'+g.p+'</span></div>' +
+    '<div class="diet-meal"><span class="diet-meal-type">☀☀</span><span>'+g.pr+'</span></div>' +
+    '<div class="diet-meal"><span class="diet-meal-type">🌙</span><span>'+g.c+'</span></div>' +
+    '</div>' +
+    '</div>'
+  ).join('');
+
+  resDiv.innerHTML =
+    '<div class="diet-res-header">' +
+    '<div class="diet-res-title">Piano alimentare per <span style="color:var(--gold)">Tipo '+ennVal+' — '+enn.nome+'</span></div>' +
+    '<div class="diet-res-sub">Modulato per adattamento '+adatt.nome+'</div>' +
+    '</div>' +
+    '<div class="diet-res-section">' +
+    '<h4>🎯 Principio guida</h4>' +
+    '<p>'+enn.principio+'</p>' +
+    '<p class="diet-chakra-note">🔮 Chakra chiave: <strong>'+enn.chakra+'</strong></p>' +
+    '</div>' +
+    '<div class="diet-res-section">' +
+    '<h4>✅ Alimenti consigliati</h4>' +
+    '<div class="diet-food-grid">'+cibiHtml+'</div>' +
+    '</div>' +
+    '<div class="diet-res-section">' +
+    '<h4>⚡ Modulazione '+adatt.nome+'</h4>' +
+    '<p class="diet-adatt-note">'+adatt.note+'</p>' +
+    '</div>' +
+    '<div class="diet-res-section">' +
+    '<h4>⏰ Ritmo alimentare</h4>' +
+    '<p>'+enn.ritmo+'</p>' +
+    '</div>' +
+    '<div class="diet-res-section diet-week-section">' +
+    '<h4>📅 Piano settimanale</h4>' +
+    '<div class="diet-week">'+settHtml+'</div>' +
+    '</div>' +
+    '<div class="diet-res-section diet-bottom-row">' +
+    '<div class="diet-extra-card"><div class="diet-extra-label">🌸 Fiori di Bach correlati</div><div class="diet-extra-val">'+enn.fiori+'</div></div>' +
+    '<div class="diet-extra-card"><div class="diet-extra-label">🎵 Frequenza di supporto</div><div class="diet-extra-val">'+enn.frequenza+'</div></div>' +
+    '</div>' +
+    '<div class="diet-disclaimer">Il piano ha finalità informativa e vibrazionale. Consulta un nutrizionista per esigenze cliniche specifiche.</div>';
+
+  resDiv.style.display = 'block';
+  resDiv.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 </script>

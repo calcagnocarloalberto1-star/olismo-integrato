@@ -2007,6 +2007,9 @@ footer.site-footer{
 .diet-week-scroll::-webkit-scrollbar-track{background:var(--ivory3);border-radius:2px}
 .diet-week-scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
 
+
+.nav-sep{color:var(--border2);font-size:.9rem;padding:0 .1rem;user-select:none;pointer-events:none}
+
 </style>
 
 
@@ -2032,23 +2035,32 @@ footer.site-footer{
     Olismo<span> Integrato</span>
   </a>
   <nav>
-    <button class="nav-link" style="color:var(--gold);border:1px solid var(--border2);border-radius:20px;padding:.4rem 1rem" onclick="st('consulente')">✦ AI</button>
+    <!-- FASE 1: CONOSCI TE STESSO -->
+    <button class="nav-link nav-phase" onclick="st('check-integrato')" title="Profilo olistico completo">✦ Check</button>
     <button class="nav-link" onclick="st('test-frutti')" style="color:var(--ink3)">🌳 Test</button>
     <button class="nav-link" onclick="st('test-adattamenti')" style="color:var(--ink3)">🧠 AT</button>
-    <button class="nav-link" onclick="st('explorer')">Database</button>
+    <button class="nav-link" onclick="st('vak')">👁 VAK</button>
+    <span class="nav-sep">·</span>
+    <!-- FASE 2: APPROFONDISCI -->
+    <button class="nav-link" onclick="st('enneagram')">Enneatipi</button>
     <button class="nav-link" onclick="st('at-adattamenti')">AT</button>
     <button class="nav-link" onclick="st('egogramma')">Ego</button>
+    <button class="nav-link" onclick="st('compatibilita')">Coppia</button>
+    <span class="nav-sep">·</span>
+    <!-- FASE 3: GUARIGIONE -->
     <button class="nav-link" onclick="st('chakra-sec')">Chakra</button>
-    <button class="nav-link" onclick="st('enneagram')">Enneatipi</button>
     <button class="nav-link" onclick="st('bach')">Bach</button>
     <button class="nav-link" onclick="st('fes-sec')">✿ FES</button>
     <button class="nav-link" onclick="st('bush-sec')">❋ Bush</button>
-    <button class="nav-link" onclick="st('chi-sono')">🧑 Chi sono</button>
-    <button class="nav-link" onclick="st('check-integrato')">✦ Check</button>
-    <button class="nav-link" onclick="st('vak')">👁 VAK</button>
-    <button class="nav-link" onclick="st('faq')">FAQ</button>
     <button class="nav-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--ink3)">🎵 Suno ↗</button>
-    <button class="nav-link" onclick="st('compatibilita')">Coppia</button>
+    <span class="nav-sep">·</span>
+    <!-- FASE 4: ESPLORA + AI -->
+    <button class="nav-link" onclick="st('explorer')">Database</button>
+    <button class="nav-link nav-phase" style="color:var(--gold);border:1px solid var(--border2);border-radius:20px;padding:.4rem 1rem" onclick="st('consulente')">✦ AI</button>
+    <span class="nav-sep">·</span>
+    <!-- INFO -->
+    <button class="nav-link" onclick="st('chi-sono')">🧑 Chi sono</button>
+    <button class="nav-link" onclick="st('faq')">FAQ</button>
     <button class="nav-link" onclick="st('guida')">Guida</button>
     <button class="nav-link" onclick="openPrivacy()" style="font-size:.68rem;color:var(--ink4)">Privacy</button>
     <button class="search-btn" onclick="openSearch()">⌕ Cerca</button>
@@ -2108,19 +2120,19 @@ footer.site-footer{
     Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
   </p>
   <div class="hero-pills fu d3" style="position:relative;z-index:1">
-    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>Chakra</span>
-    <span class="pill" onclick="openExp('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>Cristalli</span>
-    <span class="pill" onclick="st('enneagram')"><span class="pill-dot" style="background:#a83232"></span>Enneatipi</span>
-    <span class="pill" onclick="st('musica')"><span class="pill-dot" style="background:#2e7d4f"></span>Musica</span>
-    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#5a7a6a"></span>Fiori di Bach</span>
-    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c87820"></span>✿ FES</span>
-    <span class="pill" onclick="st('bush-sec')"><span class="pill-dot" style="background:#4a8040"></span>❋ Bush</span>
-    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>Alimentazione</span>
-    <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>Conflitto</span>
-    <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>Pranoterapia</span>
     <span class="pill" onclick="st('test-frutti')" style="border-color:var(--gold);color:var(--gold)">🌳 Test Frutti</span>
     <span class="pill" onclick="st('test-adattamenti')" style="border-color:var(--dusty);color:var(--dusty)">🧠 Test AT</span>
     <span class="pill" onclick="st('vak')" style="border-color:#6080f0;color:#6080f0">👁 Test VAK</span>
+    <span class="pill" onclick="st('enneagram')"><span class="pill-dot" style="background:#a83232"></span>
+    <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>
+    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>
+    <span class="pill" onclick="openExp('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>
+    <span class="pill" onclick="st('musica')"><span class="pill-dot" style="background:#2e7d4f"></span>
+    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#5a7a6a"></span>
+    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c87820"></span>
+    <span class="pill" onclick="st('bush-sec')"><span class="pill-dot" style="background:#4a8040"></span>
+    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>
+    <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
@@ -2132,9 +2144,95 @@ footer.site-footer{
   <div class="scroll-hint" style="z-index:1">scopri</div>
 </section>
 
-<!-- ══ AI CONSULENTE ══ -->
+<section id="chi-sono">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Autore · Formatore · Mediatore</div>
+      <h2 class="sec-title">Chi <em>sono</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="chisono-grid">
+      <!-- Card laterale -->
+      <div>
+        <div class="chisono-card">
+          <div class="chisono-avatar">🧑‍🏫</div>
+          <div class="chisono-card-body">
+            <div class="chisono-name">Carlo Alberto Calcagno</div>
+            <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
+            <div class="chisono-tags">
+              <span class="chisono-tag">⬟ Enneagramma Evolutivo</span>
+              <span class="chisono-tag">⚙ Analisi Transazionale</span>
+              <span class="chisono-tag">👁 PNL / VAK</span>
+              <span class="chisono-tag">🤲 Pranoterapia</span>
+              <span class="chisono-tag">⚖ Mediazione Familiare</span>
+              <span class="chisono-tag">📚 35+ anni esperienza</span>
+            </div>
+            <div class="chisono-divider"></div>
+            <div class="chisono-contact-row">📱 <a href="https://wa.me/393473666508">+39 347 366 6508</a></div>
+            <div class="chisono-contact-row">📧 <a href="/cdn-cgi/l/email-protection#c9aaa8a5aaa8aea7a6aaa8bba5a6a8a5abacbbbda6f889aea4a8a0a5e7aaa6a4"><span class="__cf_email__" data-cfemail="0b686a67686a6c6564686a7967646a67696e797f643a4b6c666a626725686466">[email&#160;protected]</span></a></div>
+            <div class="chisono-contact-row">🌐 <a href="https://mediaresenzaconfini.org" target="_blank">mediaresenzaconfini.org</a></div>
+            <div class="chisono-divider"></div>
+            <div style="text-align:center">
+              <a href="https://wa.me/393473666508" target="_blank"
+                style="display:inline-block;background:var(--gold);color:white;padding:.5rem 1.4rem;border-radius:20px;font-size:.78rem;font-weight:600;text-decoration:none;margin-top:.3rem">
+                💬 Contattami su WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- ▐▐ CITAZIONE ZELAND ▐▐ -->
+      <!-- Contenuto -->
+      <div class="chisono-content">
+        <p style="font-size:1.05rem;color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.9;margin-bottom:1.5rem">
+          «L'incontro di due personalità è come il contatto tra due sostanze chimiche: se c'è una qualche reazione, entrambi ne vengono trasformati.» — C. G. Jung
+        </p>
+
+        <h3>Il percorso</h3>
+        <p>Avvocato di formazione, mi sono avvicinato alla mediazione come pratica di composizione dei conflitti — civile, commerciale e familiare. Nel corso di trentacinque anni di studio, insegnamento e pratica, ho progressivamente integrato le discipline del benessere e della crescita umana: dalla psicologia dinamica freudiana all'Analisi Transazionale di Berne, dalla psicologia umanistica di Rogers alla Programmazione Neuro-Linguistica, dalla neurobiologia del conflitto alle discipline olistiche orientali.</p>
+        <p>Sono mediatore familiare certificato (COA Genova) e formatore dei mediatori. Ho tenuto corsi e convegni a Genova, Milano e in vari contesti professionali, sempre con l'obiettivo di rendere accessibili saperi complessi a chi lavora quotidianamente con le persone.</p>
+
+        <h3>L'Enneagramma Evolutivo</h3>
+        <p>Ho sviluppato un sistema originale che chiamo <strong>Enneagramma Evolutivo</strong>: una sintesi tra l'Enneagramma tradizionale, le Dignità di Raimondo Lullo, le gerarchie angeliche, le Muse di Kircher, le aree cerebrali secondo Tony Nader e i percorsi evolutivi per fascia d'età. Non è un sistema di classificazione, ma una <em>mappa di trasformazione</em>: ogni enneatipo porta nel mondo una conoscenza specifica e segue un percorso di integrazione che si dispiegara nell'arco di tutta la vita.</p>
+        <p>Il sistema integra anche i 9 Frutti dell'Albero della Vita — simboli vegetali associati a ciascun tipo — e la correlazione con le aree cerebrali (gangli della base, sistema limbico, neocorteccia) che spiega la neurobiologia di ogni stile di personalità.</p>
+
+        <h3>La filosofia del lavoro</h3>
+        <p>Il mio approccio si fonda su tre caposaldi: <strong>impermanenza</strong> (ogni porta è aperta al cambiamento), <strong>compassione</strong> (capire che l'altro non può comportarsi altrimenti quando è preda di emozioni) e <strong>interdipendenza</strong> (conoscere l'altro è conoscere me stesso). Questi principi, mutuati dalla tradizione buddhista e radicati nelle neuroscienze, guidano tanto il lavoro di mediazione quanto la consulenza olistica.</p>
+        <p>Credo fermamente che le discipline olistiche — chakra, fiori di Bach, essenze FES e Bush, frequenze sonore, pranoterapia — non siano alternative alla medicina, ma strumenti complementari che agiscono sul campo bioenergetico della persona, facilitando quei processi di auto-guarigione che Rogers chiamava «tendenza attualizzante».</p>
+
+        <h3>I miei siti</h3>
+        <p>Nel tempo ho costruito un ecosistema digitale che raccoglie queste conoscenze e le rende accessibili gratuitamente:</p>
+        <div class="sites-grid">
+          <a class="site-card" href="https://olismo-integrato.it" target="_blank">
+            <div class="site-card-icon">🌿</div>
+            <div class="site-card-name">Olismo Integrato</div>
+            <div class="site-card-url">olismo-integrato.it</div>
+            <div class="site-card-desc">Il portale principale: database di chakra, cristalli, enneatipi, fiori di Bach, FES, Bush, frequenze, AT e consulente AI.</div>
+          </a>
+          <a class="site-card" href="https://frequenze-evolutive.it" target="_blank">
+            <div class="site-card-icon">🎵</div>
+            <div class="site-card-name">Frequenze Evolutive</div>
+            <div class="site-card-url">frequenze-evolutive.it</div>
+            <div class="site-card-desc">Generatore di musica terapeutica con AI (Suno). Frequenze solfeggio, enneatipi e stati di coscienza.</div>
+          </a>
+          <a class="site-card" href="https://guarigionequantica.eu" target="_blank">
+            <div class="site-card-icon">✨</div>
+            <div class="site-card-name">Guarigione Quantica</div>
+            <div class="site-card-url">guarigionequantica.eu</div>
+            <div class="site-card-desc">Portale dedicato alla guarigione quantica e alle pratiche energetiche avanzate.</div>
+          </a>
+          <a class="site-card" href="https://mediaresenzaconfini.org" target="_blank">
+            <div class="site-card-icon">⚖</div>
+            <div class="site-card-name">Mediare Senza Confini</div>
+            <div class="site-card-url">mediaresenzaconfini.org</div>
+            <div class="site-card-desc">ADR a 360°: conciliazione, mediazione, arbitrato, MAAN, ZOPA e bias cognitivi nella negoziazione.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="citazione-zeland">
   <span class="zeland-ornament">· · ·</span>
   <blockquote class="zeland-quote">
@@ -2145,153 +2243,432 @@ footer.site-footer{
   <div class="zeland-source">Il fruscio delle stelle del mattino</div>
 </section>
 
-<section id="consulente">
+<section id="check-integrato">
   <div class="container">
     <div class="sec-hd">
-      <div class="sec-eye">Consulente Olistica AI</div>
-      <h2 class="sec-title">Fai una <em>domanda</em> al database</h2>
+      <div class="sec-eye">Profilo Olistico Personale</div>
+      <h2 class="sec-title">Check <em>Integrato</em></h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach, frequenze, alimentazione ed esercizi. Descriviti e ricevi indicazioni personalizzate.</p>
+      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
     </div>
-    <div class="chat-wrap">
-      <div class="chat-header">
-        <div class="chat-header-icon">◉</div>
-        <div class="chat-header-text">
-          <h3>Consulente Olistica</h3>
-          <p>Integrazione di chakra · cristalli · enneatipi · Bach · frequenze · alimentazione</p>
+    <div class="check-test-wrap" id="check-wrap">
+      <div class="check-header">
+        <div class="check-header-title">Profilo Olistico Integrato</div>
+        <div class="check-header-meta" id="check-counter">1 / 32</div>
+      </div>
+      <div class="check-prog-bar"><div class="check-prog-fill" id="check-prog" style="width:3%"></div></div>
+      <div class="check-q-area" id="check-q-area"><div style="padding:1rem;color:var(--ink3);font-size:.85rem">Caricamento domande...</div></div>
+      <div class="check-nav-row">
+        <button class="check-btn-prev" onclick="checkPrev()" id="check-prev-btn">← Indietro</button>
+        <button class="check-btn-next" onclick="checkNext()" id="check-next-btn" disabled>Avanti →</button>
+      </div>
+    </div>
+    <div class="check-result" id="check-result"></div>
+  </div>
+</section>
+
+<section id="test-frutti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Il Test dei <em>9 Frutti</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">180 domande, 20 per ciascuno dei 9 frutti dell'Albero della Vita. Rispondi <strong>Vero</strong> o <strong>Falso</strong> in modo spontaneo. Le prime risposte istintive sono le più accurate.</p>
+    </div>
+
+    <!-- WELCOME -->
+    <div id="test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1rem">🌳</div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem">
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍎 Mela · T1</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍐 Pera · T2</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍒 Ciliegia · T3</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Nespola · T4</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍇 Uva · T5</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Mirtillo · T6</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍍 Ananas · T7</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍑 Albicocca · T8</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍓 Fragola · T9</span>
+      </div>
+      <button class="btn-gold" onclick="startTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
+      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~15–20 minuti · Rispondi in modo spontaneo</p>
+    </div>
+
+    <!-- TEST IN PROGRESS -->
+    <div id="test-in-progress" style="display:none">
+      <div class="test-progress-wrap">
+        <div class="test-progress-label">
+          <span id="prog-label">Frutto 1 di 9</span>
+          <span id="prog-count">0 / 180 risposte</span>
         </div>
-        <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
-        <button class="chat-pdf-btn" onclick="exportChatPdf()" title="Scarica conversazione in PDF">
-          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          Scarica PDF
-        </button>
+        <div class="test-progress-bar"><div class="test-progress-fill" id="prog-fill" style="width:0%"></div></div>
       </div>
-      
-    <div class="chat-suggestions">
-        <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
-        <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
-        <span class="sugg" onclick="askSugg(this)">Sento ansia e paura, da dove inizio?</span>
-        <span class="sugg" onclick="askSugg(this)">Quali cristalli per dormire meglio?</span>
-        <span class="sugg" onclick="askSugg(this)">Ho difficoltà ad esprimermi, quale chakra lavoro?</span>
-        <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
+      <div class="test-frutti-nav" id="frutti-nav"></div>
+      <div class="test-card" id="test-card"></div>
+    </div>
+
+    <!-- RISULTATO -->
+    <div class="test-result" id="test-result"></div>
+  </div>
+</section>
+
+<section id="test-adattamenti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Transazionale · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Test degli <em>Adattamenti</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">40 domande (Sì / No) distribuite sui 6 adattamenti di personalità AT. Rispondi in base a ciò che accade più spesso, non a come vorresti che fosse. Il risultato mostra l'intensità e la polarità Estroversa/Introversa di ogni adattamento.</p>
+    </div>
+
+    <!-- WELCOME -->
+    <div id="at-test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1rem">🧠</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.65rem;margin-bottom:2rem;max-width:500px;margin:0 auto 2rem">
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #f59e0b40;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🔍</div><div style="color:#f59e0b;font-weight:500">Paranoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #6366f140;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🌙</div><div style="color:#6366f1;font-weight:500">Schizoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ef444440;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">⚡</div><div style="color:#ef4444;font-weight:500">Antisociale</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #3b82f640;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">📋</div><div style="color:#3b82f6;font-weight:500">Oss.-Comp.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ec4899;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">✨</div><div style="color:#ec4899;font-weight:500">Istrionico</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
+        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #10b98140;border-radius:var(--r);font-size:.78rem;text-align:center">
+          <div style="font-size:1.2rem">🌊</div><div style="color:#10b981;font-weight:500">Pass.-Aggr.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
+        </div>
       </div>
-      <div class="chat-messages" id="chat-messages"></div>
-      <div class="chat-input-area">
-        <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-        <button class="send-btn" id="send-btn" onclick="sendMsg()">
-          <span>Invia</span><span style="font-size:1rem">→</span>
-        </button>
+      <button class="btn-gold" onclick="startAtTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
+      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~8–10 minuti · 40 domande · Risposta istintiva</p>
+    </div>
+
+    <!-- IN PROGRESS -->
+    <div id="at-test-progress" style="display:none">
+      <div class="at-prog2 test-progress-wrap">
+        <div class="test-progress-label">
+          <span id="at-prog-lbl">Sezione 1 di 6</span>
+          <span id="at-prog-cnt">0 / 40 risposte</span>
+        </div>
+        <div class="test-progress-bar"><div class="test-progress-fill" id="at-prog-fill" style="width:0%"></div></div>
       </div>
-      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico o dello psicologo.</div>
+      <div class="at-test-groups" id="at-groups-nav"></div>
+      <div class="at-test-card2" id="at-test-card2"></div>
+    </div>
+
+    <!-- RISULTATO -->
+    <div class="at-result-wrap" id="at-result"></div>
+  </div>
+</section>
+
+<section id="vak">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Programmazione Neuro Linguistica · Calcagno</div>
+      <h2 class="sec-title">I Canali <em>VAK</em> — come elabori la realtà</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ognuno di noi elabora la realtà attraverso un canale preferenziale: Visivo, Auditivo o Cenestesico. Scopri il tuo e le sue correlazioni con enneatipi, stati AT, chakra e stile comunicativo.</p>
+    </div>
+    <div class="vak-channels">
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">👁</div>
+        <div class="vak-channel-name" style="color:#c87820">Visivo</div>
+        <div class="vak-channel-desc">Pensa per immagini. Postura eretta, gesti ampi verso l'alto. Voce veloce e alta. Parole: "vedere", "chiarire", "immaginare".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🎵</div>
+        <div class="vak-channel-name" style="color:#1565c0">Auditivo</div>
+        <div class="vak-channel-desc">Pensa in parole e suoni. Posizione "telefono". Voce melodica e cadenzata. Parole: "sentire", "risuonare", "sintonia".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🤲</div>
+        <div class="vak-channel-name" style="color:#2e7d4f">Cenestesico</div>
+        <div class="vak-channel-desc">Pensa per sensazioni ed emozioni. Postura verso il basso. Voce lenta e profonda. Parole: "sentire", "toccare", "peso".</div>
+      </div>
+    </div>
+    <div class="vak-test-wrap" id="vak-test-wrap">
+      <div class="vak-test-header">
+        <div class="vak-test-title">Test VAK — 24 domande</div>
+        <div id="vak-q-counter" style="font-size:.78rem;color:var(--ink4)">1 / 24</div>
+      </div>
+      <div style="padding:0"><div class="vak-prog-bar"><div class="vak-prog-fill" id="vak-prog" style="width:4%"></div></div></div>
+      <div class="vak-q-area" id="vak-q-area"></div>
+      <div class="vak-nav-row">
+        <button class="vak-btn-prev" onclick="vakPrev()" id="vak-prev-btn">← Indietro</button>
+        <button class="vak-btn-next" onclick="vakNext()" id="vak-next-btn" disabled>Avanti →</button>
+      </div>
+    </div>
+    <div class="vak-result" id="vak-result"></div>
+  </div>
+</section>
+
+<section id="enneagram">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo</div>
+      <h2 class="sec-title">I nove <em>enneatipi</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Il ciclo breve (3-6-9) attraversa tre fasi in 0-30, 30-60 e 60+ anni. Il ciclo lungo (1-2-4-5-7-8) ne attraversa sei. Non categorie fisse, ma percorsi di trasformazione viventi.</p>
+    </div>
+    <div class="enn-grid" id="enn-grid"></div>
+  </div>
+</section>
+
+<section id="at-adattamenti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Transazionale · Ware & Joines</div>
+      <h2 class="sec-title">I sei <em>adattamenti</em> di personalità</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ogni persona sviluppa adattamenti psicologici che dipendono dalla genetica e dalle relazioni nei primi sei anni di vita. Questi stili non implicano salute o malattia — sono la risposta migliore che il bambino ha trovato nella sua famiglia d'origine.</p>
+    </div>
+
+    <!-- TABELLA VISUALE -->
+    <div class="at-table-wrap">
+      <table class="at-table">
+        <thead>
+          <tr>
+            <th>Adattamento</th><th>Nome positivo</th><th>Tipo</th><th>Età sviluppo</th><th>Stile genitoriale</th><th>Enneagramma</th><th>Spinta</th><th>Copione</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Schizoide</td><td>Creativo-Sognatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Esitante</td><td>T5</td><td>Sii forte</td><td>Mai + Sempre</td></tr>
+          <tr><td>Antisociale</td><td>Affascinante-Manipolatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Anticipatorio</td><td>T8</td><td>Sii forte · Compiaci</td><td>Mai, Sempre, Quasi I</td></tr>
+          <tr><td>Paranoide</td><td>Brillante-Scettico</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Inconsistente</td><td>T6</td><td>Sii perfetto = Sii forte</td><td>Finché + Mai</td></tr>
+          <tr><td>Passivo-Aggressivo</td><td>Scherzoso-Oppositivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18–36 mesi</td><td>Ipercontrollante</td><td>T9</td><td>Sforzati</td><td>Sempre, Quasi II</td></tr>
+          <tr><td>Ossessivo-Compulsivo</td><td>Responsabile-Stakanovista</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Enfasi sul risultato</td><td>T1</td><td>Sii perfetto</td><td>Finché (Quasi II)</td></tr>
+          <tr><td>Istrionico</td><td>Entusiasta-Iperreattivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Rendere felici gli altri</td><td>T2/3/4</td><td>Compiaci</td><td>Dopo (Quasi I e II)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS DETTAGLIO -->
+    <div class="at-cards" id="at-cards-grid"></div>
+
+    <!-- LE 5 SPINTE -->
+    <div class="at-spinte">
+      <h3>Le cinque <em>spinte</em> del copione</h3>
+      <div class="spinte-grid">
+        <div class="spinta-card"><div class="spinta-hz">Sii</div><div class="spinta-name">Sii Perfetto</div><div class="spinta-copione">Copione: Finché…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">💪</div><div class="spinta-name">Sii Forte</div><div class="spinta-copione">Copione: Mai…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">∞</div><div class="spinta-name">Sforzati</div><div class="spinta-copione">Copione: Sempre…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">♡</div><div class="spinta-name">Cerca di Piacere</div><div class="spinta-copione">Copione: Dopo…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">⚡</div><div class="spinta-name">Sbrigati</div><div class="spinta-copione">Rinforza le altre spinte</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ EXPLORER ══ -->
-<section id="explorer">
+<section id="egogramma">
   <div class="container">
     <div class="sec-hd">
-      <div class="sec-eye">Motore di Ricerca Relazionale</div>
-      <h2 class="sec-title">Il <em>database</em> interconnesso</h2>
+      <div class="sec-eye">Analisi Strutturale · Berne</div>
+      <h2 class="sec-title">L'<em>Egogramma</em> — i cinque stati dell'Io</h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">Seleziona un dominio, scegli un elemento e scopri tutte le sue connessioni trasversali con gli altri domini. Ogni elemento rimanda a tutti gli altri.</p>
+      <p class="sec-desc">L'egogramma mostra quanto è presente ciascuno stato dell'Io nella tua personalità. Sposta i cursori per esplorare il tuo profilo. La somma dei cinque stati tende a essere costante: quando uno aumenta, un altro diminuisce.</p>
     </div>
-    <div class="exp-tabs" id="exp-tabs"></div>
-    <div class="exp-body">
-      <div class="exp-list" id="exp-list"></div>
-      <div class="exp-panel" id="exp-panel">
-        <div class="panel-empty">
-          <div class="panel-empty-icon">◈</div>
-          <p>Seleziona un elemento per esplorare le sue connessioni</p>
+    <div class="ego-wrap">
+      <div class="ego-text">
+        <div class="ego-states" id="ego-states-desc"></div>
+      </div>
+      <div class="ego-chart-wrap">
+        <div class="ego-bars" id="ego-bars"></div>
+        <div id="ego-sliders"></div>
+        <div class="ego-desc-box" id="ego-desc-box">Sposta i cursori per vedere la tua composizione psichica secondo l'AT.</div>
+      </div>
+    </div>
+  </div>
+
+    <!-- TEST EGOGRAMMA -->
+    <div id="ego-test-section">
+      <div class="container">
+        <div class="sec-hd" style="margin-bottom:1.5rem">
+          <div class="sec-eye">Autovalutazione</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ink)">Test dell'Egogramma</h3>
+        </div>
+        <p class="ego-test-intro">Leggi ogni affermazione e spunta quelle che ti descrivono <strong>abitualmente</strong>. Non ci sono risposte giuste o sbagliate — rispondi istintivamente senza pensarci troppo.</p>
+        <div class="ego-test-grid" id="ego-test-items"></div>
+        <button class="ego-test-btn" onclick="calcEgogrammaTest()">Calcola il mio Egogramma →</button>
+        <div class="ego-test-result" id="ego-test-result">
+          <h4>Il tuo profilo egografico</h4>
+          <div class="ego-result-bars" id="ego-test-bars"></div>
+          <p class="ego-res-desc" id="ego-test-desc"></p>
+          <div style="text-align:center;margin-top:1.2rem">
+            <button onclick="applyEgoTestResult()" style="padding:.5rem 1.4rem;background:var(--blue);color:#fff;border:none;border-radius:16px;font-size:.78rem;font-weight:600;cursor:pointer">Applica ai cursori sopra</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
 
-<!-- ══ DISCIPLINE ══ -->
-<section id="discipline">
+<section id="carezze">
   <div class="container">
     <div class="sec-hd">
-      <div class="sec-eye">Le Otto Dimensioni</div>
-      <h2 class="sec-title">Un approccio <em>olistico</em> alla persona</h2>
+      <div class="sec-eye">Analisi Transazionale · Berne</div>
+      <h2 class="sec-title">Le <em>carezze</em> — autovalutazione</h2>
       <div class="sec-div"></div>
+      <p class="sec-desc">Le carezze sono unità di riconoscimento dell'altro. Ogni transazione è determinata da due carezze. Qualsiasi carezza è meglio che nessuna carezza — da piccoli, se non ottenevamo carezze piacevoli, studiavamo come ottenere quelle spiacevoli. Quanto spesso usi queste modalità?</p>
     </div>
-    <div class="disc-grid">
-      <div class="disc-card" onclick="st('chakra-sec')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">◉</div>
-        <div class="disc-title">Sistema dei Chakra</div>
-        <p class="disc-text">Sette centri energetici che mappano lo sviluppo psico-emotivo dell'essere umano. Dal Muladhara (sopravvivenza) al Sahasrara (coscienza), ogni chakra governa un'area fondamentale della vita.</p>
+    <div class="carezze-grid">
+      <div class="carezza-col">
+        <h3>🌿 Carezze Positive</h3>
+        <p class="carezza-sub">Valutate piacevoli da chi le riceve</p>
+        <div class="carezza-row"><label>Dare carezze positive</label>
+          <div class="carezza-scale"><span>Mai (1)</span><input type="range" min="1" max="10" value="7" class="carezza-slider" data-type="pos" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-pos-dare">7</span></div>
+        </div>
+        <div class="carezza-row"><label>Ricevere (prendere) carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="6" class="carezza-slider" data-type="pos" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-prendere">6</span></div>
+        </div>
+        <div class="carezza-row"><label>Chiedere carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="4" class="carezza-slider" data-type="pos" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-chiedere">4</span></div>
+        </div>
+        <div class="carezza-row"><label>Rifiutarsi di dare carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="3" class="carezza-slider" data-type="pos" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-rifiutare">3</span></div>
+        </div>
+        <div class="carezza-result" id="carezza-pos-result">Il tuo profilo positivo apparirà qui.</div>
       </div>
-      <div class="disc-card" onclick="openExp('cristalli')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1565c0,#4527a0);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">◆</div>
-        <div class="disc-title">Cristalloterapia</div>
-        <p class="disc-text">Le pietre curative amplificano le frequenze energetiche e supportano i processi di guarigione. Ogni cristallo è associato a chakra specifici, disturbi, enneatipi e abbinamenti terapeutici precisi.</p>
-      </div>
-      <div class="disc-card" onclick="st('enneagram')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a83232,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">⬟</div>
-        <div class="disc-title">Enneagramma Evolutivo</div>
-        <p class="disc-text">I 9 tipi di personalità attraversano fasi evolutive legate all'età. Il ciclo breve (3-6-9) e il ciclo lungo (1-2-4-5-7-8) descrivono percorsi di trasformazione precisi con punti di shock e di crescita.</p>
-      </div>
-      <div class="disc-card" onclick="st('musica')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2e7d4f,#5a7a6a);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">♬</div>
-        <div class="disc-title">Musicoterapia e Frequenze</div>
-        <p class="disc-text">Le frequenze solfeggio (396–963 Hz) e l'accordatura naturale a 432 Hz producono effetti neurobiologici misurabili. Ogni nota risuona con chakra e stati emotivi specifici.</p>
-      </div>
-      <div class="disc-card" onclick="st('bach')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5a7a6a,#7a9a88);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">✿</div>
-        <div class="disc-title">Fiori di Bach</div>
-        <p class="disc-text">38 rimedi floreali individuati da Eduard Bach per trasformare gli stati emotivi negativi in virtù. Ogni fiore corrisponde a una paura, una difficoltà o una qualità dell'anima da risvegliare.</p>
-      </div>
-      <div class="disc-card" onclick="st('alimentazione')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c49a1a,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">◈</div>
-        <div class="disc-title">Alimentazione Terapeutica</div>
-        <p class="disc-text">Gli alimenti portano frequenze specifiche che risuonano con i chakra. Una dieta consapevole supporta il percorso evolutivo scegliendo cibi che amplificano gli stati emotivi desiderati.</p>
-      </div>
-      <div class="disc-card" onclick="st('danza')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8a6a7a,#b49aaa);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">⟳</div>
-        <div class="disc-title">La Danza del Conflitto</div>
-        <p class="disc-text">I conflitti relazionali seguono schemi neurobiologici prevedibili. Conoscere la "danza" tra tipo 8 (il fuoco) e tipo 9 (l'acqua) permette al mediatore di intervenire prima della rottura.</p>
-      </div>
-      <div class="disc-card" onclick="window.open('https://frequenze-evolutive.it','_blank')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c85050,#b8933c,#4caf82);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">🎵</div>
-        <div class="disc-title">Laboratorio delle Frequenze</div>
-        <p class="disc-text">Genera prompt musicali per Suno basati su enneatipo, adattamento AT e disturbo fisico-emotivo. Ogni combinazione produce prompt in inglese ottimizzati con la frequenza solfeggio terapeutica corretta.</p>
-      </div>
-      <div class="disc-card" onclick="st('test-adattamenti')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6366f1,#ec4899);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">🧠</div>
-        <div class="disc-title">Test degli Adattamenti AT</div>
-        <p class="disc-text">40 domande per scoprire il tuo profilo tra i 6 adattamenti di personalità dell'Analisi Transazionale (AT). Mostra intensità e polarità Estroversa/Introversa per ogni adattamento, con connessioni a porte, spinte, copioni, chakra e cristalli.</p>
-      </div>
-      <div class="disc-card" onclick="st('test-frutti')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">🌳</div>
-        <div class="disc-title">Test dei 9 Frutti</div>
-        <p class="disc-text">180 domande per scoprire il tuo enneatipo attraverso i frutti simbolici dell'Albero della Vita. Il risultato si collega automaticamente a chakra, cristalli, adattamenti AT, fiori di Bach e frequenze curative.</p>
-      </div>
-      <div class="disc-card" onclick="st('prano')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c45a22,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
-        <div class="disc-icon">⊕</div>
-        <div class="disc-title">Pranoterapia</div>
-        <p class="disc-text">La pratica di guarigione più antica: la trasmissione di energia pranale attraverso le mani. Il pranoterapeuta agisce su piani fisici, emotivi, mentali e spirituali, lavorando direttamente sui chakra.</p>
+      <div class="carezza-col neg">
+        <h3>🌑 Carezze Negative</h3>
+        <p class="carezza-sub">Qualsiasi carezza è meglio che nessuna</p>
+        <div class="carezza-row"><label>Dare carezze negative</label>
+          <div class="carezza-scale"><span>Mai (0)</span><input type="range" min="0" max="10" value="3" class="carezza-slider" data-type="neg" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-neg-dare">3</span></div>
+        </div>
+        <div class="carezza-row"><label>Ricevere carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="4" class="carezza-slider" data-type="neg" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-prendere">4</span></div>
+        </div>
+        <div class="carezza-row"><label>Chiedere carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="2" class="carezza-slider" data-type="neg" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-chiedere">2</span></div>
+        </div>
+        <div class="carezza-row"><label>Rifiutarsi di dare carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="8" class="carezza-slider" data-type="neg" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-rifiutare">8</span></div>
+        </div>
+        <div class="carezza-result" id="carezza-neg-result">Il tuo profilo negativo apparirà qui.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CHAKRA ══ -->
+<section id="compatibilita">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Compatibilità <em>di coppia</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Scopri il livello di compatibilità tra due enneatipi, i punti di forza, le sfide e i consigli pratici per la relazione.</p>
+    </div>
+    <div class="compat-selectors">
+      <div class="compat-select-wrap">
+        <label>Tipo 1</label>
+        <select class="compat-select" id="compat-t1" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🫐 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div class="compat-vs">✦</div>
+      <div class="compat-select-wrap">
+        <label>Tipo 2</label>
+        <select class="compat-select" id="compat-t2" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🫐 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+    </div>
+    <div class="compat-result" id="compat-result"></div>
+  </div>
+</section>
+
+<section id="danza">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Mediazione e Neurobiologia</div>
+      <h2 class="sec-title">La Danza <em>del Conflitto</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Modello neurobiologico del conflitto di coppia — come si innesca, come si rompe il ciclo, come il mediatore interviene.</p>
+    </div>
+    <div class="danza-intro-box">
+      <p>Il conflitto relazionale non è caotico: segue schemi neurobiologici precisi. La <strong>danza del conflitto</strong> è il ciclo automatico tra chi combatte e chi si congela, determinato dall'attivazione del sistema nervoso autonomo di ciascun partner.</p>
+      <p>La via d'uscita <em>non</em> passa dal "ragionare" — durante il conflitto la neocorteccia è offline. Passa dal corpo: regolazione, pausa, respiro.</p>
+      <p style="margin-top:.8rem"><strong>Analisi personalizzata per coppia →</strong> Vai alla sezione <a class="danza-link" onclick="st('compatibilita')">Compatibilità di Coppia</a> e seleziona i due enneatipi: troverai la dinamica di conflitto specifica, gli script del mediatore e gli strumenti pratici.</p>
+    </div>
+    <div class="danza-hero">
+      <div class="danza-text">
+        <h3>🔍 Caso esemplare: Tipo 8 ✦ Tipo 9</h3>
+        <p><em>(Sempronia e Tizio — un caso reale di mediazione familiare)</em></p>
+        <p>La coppia 8-9 è una delle più frequenti in mediazione: chi combatte (T8, simpatico attivato) e chi si congela (T9, dorsovagale in shutdown). I due sistemi nervosi si incastrano e si amplificano reciprocamente.</p>
+        <p><strong>Più Tizio si chiude, più Sempronia si intensifica. Più lei si intensifica, più lui si chiude.</strong> Il ciclo si auto-alimenta finché entrambi non tornano allo Stato 1 (connessione).</p>
+      </div>
+      <div class="danza-diagram">
+        <div class="dd-title">I 5 passi della danza</div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#c45a22">1</div>
+          <div class="dd-info"><h4>Sempronia (Tipo 8) si attiva</h4><p>Stato 2 — combatti. La voce si alza, i gesti si espandono, il linguaggio diventa assoluto: "mai", "sempre".</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#4a5a6a">2</div>
+          <div class="dd-info"><h4>Tizio (Tipo 9) si congela</h4><p>Stato 3 — shutdown. Silenzio, sguardo nel vuoto, risposte automatiche: "va bene", "come vuoi".</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#a83232">3</div>
+          <div class="dd-info"><h4>Sempronia interpreta il silenzio</h4><p>"Non gli importo!" → aumenta l'intensità per ottenere risposta. Entra in Stato 2 più profondo.</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#2a3a4a">4</div>
+          <div class="dd-info"><h4>Tizio si disconnette ulteriormente</h4><p>Il sistema nervoso entra in shutdown più profondo. La corteccia pensante è offline.</p></div>
+        </div>
+        <div class="dd-step">
+          <div class="dd-n" style="background:#7b2fa0">5</div>
+          <div class="dd-info"><h4>Circolo vizioso</h4><p>Il loop si auto-alimenta. La soluzione: riportare entrambi allo Stato 1 (connessione) prima di qualsiasi dialogo.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="tipi-grid">
+      <div class="tipo-card">
+        <h4>Tizio — Il Tipo 9</h4>
+        <div class="tipo-sub">"L'acqua: fluida, adattabile… ma può ristagnare"</div>
+        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per essere amato devo: non avere bisogni, non creare conflitti, fare felici gli altri»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Silenzio, sguardo nel vuoto, monosillabi, disconnessione corporea</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">Sopraffazione, incapacità di rispondere — non indifferenza</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "questo mi ferisce" senza aspettare che passi</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Segnale di pausa fisico, diario dei bisogni, pratica del "voglio"</span></div>
+      </div>
+      <div class="tipo-card">
+        <h4>Sempronia — Il Tipo 8</h4>
+        <div class="tipo-sub">"Il fuoco: intenso, trasformativo… ma può bruciare"</div>
+        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per sopravvivere devo: essere forte, non mostrare debolezza, attaccare prima»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Volume alto, gesti espansivi, interruzioni, linguaggio assoluto</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">«Ho paura di non essere importante. Mi sta lasciando sola.»</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "ho paura" invece di "sono arrabbiata"</span></div>
+        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Filtro dei 3 secondi, diario della vulnerabilità, forza morbida</span></div>
+      </div>
+    </div>
+    <div class="danza-tools">
+      <h3>Strumenti pratici per il mediatore</h3>
+      <div class="tools-grid" id="tools-grid"></div>
+    </div>
+  </div>
+</section>
+
 <section id="chakra-sec">
   <div class="container">
     <div class="sec-hd">
@@ -2311,20 +2688,6 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- ══ ENNEAGRAM ══ -->
-<section id="enneagram">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Enneagramma Evolutivo</div>
-      <h2 class="sec-title">I nove <em>enneatipi</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Il ciclo breve (3-6-9) attraversa tre fasi in 0-30, 30-60 e 60+ anni. Il ciclo lungo (1-2-4-5-7-8) ne attraversa sei. Non categorie fisse, ma percorsi di trasformazione viventi.</p>
-    </div>
-    <div class="enn-grid" id="enn-grid"></div>
-  </div>
-</section>
-
-<!-- ══ MUSICA ══ -->
 <section id="musica">
   <div class="container">
     <div class="sec-hd">
@@ -2337,9 +2700,6 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- ══ FIORI DI BACH ══ -->
-
-<!-- ▐▐ LABORATORIO FREQUENZE ▐▐ -->
 <section id="suno-generator" style="background:var(--ivory)">
   <div class="container">
     <div class="sec-hd">
@@ -2430,7 +2790,52 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- ══ ALIMENTAZIONE ══ -->
+<section id="fes-sec">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Medicina Vibrazionale</div>
+      <h2 class="sec-title">Fiori <em>Californiani FES</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="bach-intro">
+      <div class="bach-text">
+        <h3>La Flower Essence Society</h3>
+        <p>Le essenze floreali californiane della Flower Essence Society (FES) sono state sviluppate da Richard e Patricia Kaminski a partire dagli anni '70, ampliando il sistema originale di Bach. Le 100 essenze FES coprono un ampio spettro di stati psicologici e spirituali contemporanei, con particolare attenzione ai temi della creatività, della sessualità integrata, delle relazioni e della crescita spirituale incarnata.</p>
+        <p>Ogni fiore porta una specifica "firma" vibrazionale che risuona con particolari stati dell'anima umana. Le essenze agiscono attraverso il campo bioenergetico, portando chiarezza e trasformazione nei pattern emotivi e mentali profondi.</p>
+      </div>
+      <div class="bach-card" style="background:linear-gradient(135deg,#fdf6e8,#f8edd0)">
+        <div style="font-size:2rem;margin-bottom:.5rem">✿</div>
+        <h4 style="color:var(--gold)">100 Essenze</h4>
+        <p style="font-size:.82rem;color:var(--ink3)">California · USA<br>Richard & Patricia Kaminski<br>dagli anni '70</p>
+      </div>
+    </div>
+    <div id="fes-grid" class="flower-mini-grid" style="margin-top:2rem"></div>
+  </div>
+</section>
+
+<section id="bush-sec">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Medicina Vibrazionale</div>
+      <h2 class="sec-title">Fiori <em>Australiani Bush</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="bach-intro">
+      <div class="bach-text">
+        <h3>Australian Bush Flower Essences</h3>
+        <p>Le Australian Bush Flower Essences (ABFE) sono state sviluppate da Ian White, naturopata di quinta generazione, a partire dagli anni '80. Le 65 essenze australiane sono tra le più potenti al mondo — l'Australia ospita il più antico ecosistema vegetale del pianeta, con piante che hanno sviluppato straordinarie qualità vibrazionali in milioni di anni di evoluzione isolata.</p>
+        <p>Le Bush Essences si caratterizzano per la loro azione diretta, rapida e profonda. Sono particolarmente efficaci per i temi della chiarezza spirituale, della sessualità, delle relazioni familiari, della creatività e della guarigione interiore.</p>
+      </div>
+      <div class="bach-card" style="background:linear-gradient(135deg,#edf8e8,#d8f0d0)">
+        <div style="font-size:2rem;margin-bottom:.5rem">❋</div>
+        <h4 style="color:#4a8040">65 Essenze</h4>
+        <p style="font-size:.82rem;color:var(--ink3)">Australia<br>Ian White<br>dagli anni '80</p>
+      </div>
+    </div>
+    <div id="bush-grid" class="flower-mini-grid" style="margin-top:2rem"></div>
+  </div>
+</section>
+
 <section id="alimentazione">
   <div class="container">
     <div class="sec-hd">
@@ -2501,79 +2906,6 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- ══ DANZA DEL CONFLITTO ══ -->
-<section id="danza">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Mediazione e Neurobiologia</div>
-      <h2 class="sec-title">La Danza <em>del Conflitto</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Modello neurobiologico del conflitto di coppia — come si innesca, come si rompe il ciclo, come il mediatore interviene.</p>
-    </div>
-    <div class="danza-intro-box">
-      <p>Il conflitto relazionale non è caotico: segue schemi neurobiologici precisi. La <strong>danza del conflitto</strong> è il ciclo automatico tra chi combatte e chi si congela, determinato dall'attivazione del sistema nervoso autonomo di ciascun partner.</p>
-      <p>La via d'uscita <em>non</em> passa dal "ragionare" — durante il conflitto la neocorteccia è offline. Passa dal corpo: regolazione, pausa, respiro.</p>
-      <p style="margin-top:.8rem"><strong>Analisi personalizzata per coppia →</strong> Vai alla sezione <a class="danza-link" onclick="st('compatibilita')">Compatibilità di Coppia</a> e seleziona i due enneatipi: troverai la dinamica di conflitto specifica, gli script del mediatore e gli strumenti pratici.</p>
-    </div>
-    <div class="danza-hero">
-      <div class="danza-text">
-        <h3>🔍 Caso esemplare: Tipo 8 ✦ Tipo 9</h3>
-        <p><em>(Sempronia e Tizio — un caso reale di mediazione familiare)</em></p>
-        <p>La coppia 8-9 è una delle più frequenti in mediazione: chi combatte (T8, simpatico attivato) e chi si congela (T9, dorsovagale in shutdown). I due sistemi nervosi si incastrano e si amplificano reciprocamente.</p>
-        <p><strong>Più Tizio si chiude, più Sempronia si intensifica. Più lei si intensifica, più lui si chiude.</strong> Il ciclo si auto-alimenta finché entrambi non tornano allo Stato 1 (connessione).</p>
-      </div>
-      <div class="danza-diagram">
-        <div class="dd-title">I 5 passi della danza</div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#c45a22">1</div>
-          <div class="dd-info"><h4>Sempronia (Tipo 8) si attiva</h4><p>Stato 2 — combatti. La voce si alza, i gesti si espandono, il linguaggio diventa assoluto: "mai", "sempre".</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#4a5a6a">2</div>
-          <div class="dd-info"><h4>Tizio (Tipo 9) si congela</h4><p>Stato 3 — shutdown. Silenzio, sguardo nel vuoto, risposte automatiche: "va bene", "come vuoi".</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#a83232">3</div>
-          <div class="dd-info"><h4>Sempronia interpreta il silenzio</h4><p>"Non gli importo!" → aumenta l'intensità per ottenere risposta. Entra in Stato 2 più profondo.</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#2a3a4a">4</div>
-          <div class="dd-info"><h4>Tizio si disconnette ulteriormente</h4><p>Il sistema nervoso entra in shutdown più profondo. La corteccia pensante è offline.</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#7b2fa0">5</div>
-          <div class="dd-info"><h4>Circolo vizioso</h4><p>Il loop si auto-alimenta. La soluzione: riportare entrambi allo Stato 1 (connessione) prima di qualsiasi dialogo.</p></div>
-        </div>
-      </div>
-    </div>
-    <div class="tipi-grid">
-      <div class="tipo-card">
-        <h4>Tizio — Il Tipo 9</h4>
-        <div class="tipo-sub">"L'acqua: fluida, adattabile… ma può ristagnare"</div>
-        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per essere amato devo: non avere bisogni, non creare conflitti, fare felici gli altri»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Silenzio, sguardo nel vuoto, monosillabi, disconnessione corporea</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">Sopraffazione, incapacità di rispondere — non indifferenza</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "questo mi ferisce" senza aspettare che passi</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Segnale di pausa fisico, diario dei bisogni, pratica del "voglio"</span></div>
-      </div>
-      <div class="tipo-card">
-        <h4>Sempronia — Il Tipo 8</h4>
-        <div class="tipo-sub">"Il fuoco: intenso, trasformativo… ma può bruciare"</div>
-        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per sopravvivere devo: essere forte, non mostrare debolezza, attaccare prima»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Volume alto, gesti espansivi, interruzioni, linguaggio assoluto</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">«Ho paura di non essere importante. Mi sta lasciando sola.»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "ho paura" invece di "sono arrabbiata"</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Filtro dei 3 secondi, diario della vulnerabilità, forza morbida</span></div>
-      </div>
-    </div>
-    <div class="danza-tools">
-      <h3>Strumenti pratici per il mediatore</h3>
-      <div class="tools-grid" id="tools-grid"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PRANOTERAPIA ══ -->
 <section id="prano">
   <div class="container">
     <div class="sec-hd">
@@ -2615,501 +2947,147 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- FOOTER -->
-
-<!-- ▐▐ AT ADATTAMENTI ▐▐ -->
-
-<!-- ▐▐ TEST DEI 9 FRUTTI ▐▐ -->
-
-<!-- ▐▐ TEST ADATTAMENTI AT ▐▐ -->
-<section id="test-adattamenti">
+<section id="explorer">
   <div class="container">
     <div class="sec-hd">
-      <div class="sec-eye">Analisi Transazionale · Carlo Alberto Calcagno</div>
-      <h2 class="sec-title">Test degli <em>Adattamenti</em></h2>
+      <div class="sec-eye">Motore di Ricerca Relazionale</div>
+      <h2 class="sec-title">Il <em>database</em> interconnesso</h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">40 domande (Sì / No) distribuite sui 6 adattamenti di personalità AT. Rispondi in base a ciò che accade più spesso, non a come vorresti che fosse. Il risultato mostra l'intensità e la polarità Estroversa/Introversa di ogni adattamento.</p>
+      <p class="sec-desc">Seleziona un dominio, scegli un elemento e scopri tutte le sue connessioni trasversali con gli altri domini. Ogni elemento rimanda a tutti gli altri.</p>
     </div>
-
-    <!-- WELCOME -->
-    <div id="at-test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
-      <div style="font-size:3rem;margin-bottom:1rem">🧠</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.65rem;margin-bottom:2rem;max-width:500px;margin:0 auto 2rem">
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #f59e0b40;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">🔍</div><div style="color:#f59e0b;font-weight:500">Paranoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
-        </div>
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #6366f140;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">🌙</div><div style="color:#6366f1;font-weight:500">Schizoide</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
-        </div>
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ef444440;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">⚡</div><div style="color:#ef4444;font-weight:500">Antisociale</div><div style="font-size:.7rem;color:var(--ink4)">Sopravvivenza</div>
-        </div>
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #3b82f640;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">📋</div><div style="color:#3b82f6;font-weight:500">Oss.-Comp.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
-        </div>
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #ec4899;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">✨</div><div style="color:#ec4899;font-weight:500">Istrionico</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
-        </div>
-        <div style="padding:.8rem;background:var(--ivory);border:1.5px solid #10b98140;border-radius:var(--r);font-size:.78rem;text-align:center">
-          <div style="font-size:1.2rem">🌊</div><div style="color:#10b981;font-weight:500">Pass.-Aggr.</div><div style="font-size:.7rem;color:var(--ink4)">Performance</div>
-        </div>
-      </div>
-      <button class="btn-gold" onclick="startAtTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
-      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~8–10 minuti · 40 domande · Risposta istintiva</p>
-    </div>
-
-    <!-- IN PROGRESS -->
-    <div id="at-test-progress" style="display:none">
-      <div class="at-prog2 test-progress-wrap">
-        <div class="test-progress-label">
-          <span id="at-prog-lbl">Sezione 1 di 6</span>
-          <span id="at-prog-cnt">0 / 40 risposte</span>
-        </div>
-        <div class="test-progress-bar"><div class="test-progress-fill" id="at-prog-fill" style="width:0%"></div></div>
-      </div>
-      <div class="at-test-groups" id="at-groups-nav"></div>
-      <div class="at-test-card2" id="at-test-card2"></div>
-    </div>
-
-    <!-- RISULTATO -->
-    <div class="at-result-wrap" id="at-result"></div>
-  </div>
-</section>
-
-<section id="test-frutti">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
-      <h2 class="sec-title">Il Test dei <em>9 Frutti</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">180 domande, 20 per ciascuno dei 9 frutti dell'Albero della Vita. Rispondi <strong>Vero</strong> o <strong>Falso</strong> in modo spontaneo. Le prime risposte istintive sono le più accurate.</p>
-    </div>
-
-    <!-- WELCOME -->
-    <div id="test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
-      <div style="font-size:3rem;margin-bottom:1rem">🌳</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem">
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍎 Mela · T1</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍐 Pera · T2</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍒 Ciliegia · T3</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Nespola · T4</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍇 Uva · T5</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Mirtillo · T6</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍍 Ananas · T7</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍑 Albicocca · T8</span>
-        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍓 Fragola · T9</span>
-      </div>
-      <button class="btn-gold" onclick="startTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
-      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~15–20 minuti · Rispondi in modo spontaneo</p>
-    </div>
-
-    <!-- TEST IN PROGRESS -->
-    <div id="test-in-progress" style="display:none">
-      <div class="test-progress-wrap">
-        <div class="test-progress-label">
-          <span id="prog-label">Frutto 1 di 9</span>
-          <span id="prog-count">0 / 180 risposte</span>
-        </div>
-        <div class="test-progress-bar"><div class="test-progress-fill" id="prog-fill" style="width:0%"></div></div>
-      </div>
-      <div class="test-frutti-nav" id="frutti-nav"></div>
-      <div class="test-card" id="test-card"></div>
-    </div>
-
-    <!-- RISULTATO -->
-    <div class="test-result" id="test-result"></div>
-  </div>
-</section>
-
-<section id="at-adattamenti">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Analisi Transazionale · Ware & Joines</div>
-      <h2 class="sec-title">I sei <em>adattamenti</em> di personalità</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Ogni persona sviluppa adattamenti psicologici che dipendono dalla genetica e dalle relazioni nei primi sei anni di vita. Questi stili non implicano salute o malattia — sono la risposta migliore che il bambino ha trovato nella sua famiglia d'origine.</p>
-    </div>
-
-    <!-- TABELLA VISUALE -->
-    <div class="at-table-wrap">
-      <table class="at-table">
-        <thead>
-          <tr>
-            <th>Adattamento</th><th>Nome positivo</th><th>Tipo</th><th>Età sviluppo</th><th>Stile genitoriale</th><th>Enneagramma</th><th>Spinta</th><th>Copione</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Schizoide</td><td>Creativo-Sognatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Esitante</td><td>T5</td><td>Sii forte</td><td>Mai + Sempre</td></tr>
-          <tr><td>Antisociale</td><td>Affascinante-Manipolatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Anticipatorio</td><td>T8</td><td>Sii forte · Compiaci</td><td>Mai, Sempre, Quasi I</td></tr>
-          <tr><td>Paranoide</td><td>Brillante-Scettico</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Inconsistente</td><td>T6</td><td>Sii perfetto = Sii forte</td><td>Finché + Mai</td></tr>
-          <tr><td>Passivo-Aggressivo</td><td>Scherzoso-Oppositivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18–36 mesi</td><td>Ipercontrollante</td><td>T9</td><td>Sforzati</td><td>Sempre, Quasi II</td></tr>
-          <tr><td>Ossessivo-Compulsivo</td><td>Responsabile-Stakanovista</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Enfasi sul risultato</td><td>T1</td><td>Sii perfetto</td><td>Finché (Quasi II)</td></tr>
-          <tr><td>Istrionico</td><td>Entusiasta-Iperreattivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Rendere felici gli altri</td><td>T2/3/4</td><td>Compiaci</td><td>Dopo (Quasi I e II)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- CARDS DETTAGLIO -->
-    <div class="at-cards" id="at-cards-grid"></div>
-
-    <!-- LE 5 SPINTE -->
-    <div class="at-spinte">
-      <h3>Le cinque <em>spinte</em> del copione</h3>
-      <div class="spinte-grid">
-        <div class="spinta-card"><div class="spinta-hz">Sii</div><div class="spinta-name">Sii Perfetto</div><div class="spinta-copione">Copione: Finché…</div></div>
-        <div class="spinta-card"><div class="spinta-hz">💪</div><div class="spinta-name">Sii Forte</div><div class="spinta-copione">Copione: Mai…</div></div>
-        <div class="spinta-card"><div class="spinta-hz">∞</div><div class="spinta-name">Sforzati</div><div class="spinta-copione">Copione: Sempre…</div></div>
-        <div class="spinta-card"><div class="spinta-hz">♡</div><div class="spinta-name">Cerca di Piacere</div><div class="spinta-copione">Copione: Dopo…</div></div>
-        <div class="spinta-card"><div class="spinta-hz">⚡</div><div class="spinta-name">Sbrigati</div><div class="spinta-copione">Rinforza le altre spinte</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ▐▐ EGOGRAMMA ▐▐ -->
-<section id="egogramma">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Analisi Strutturale · Berne</div>
-      <h2 class="sec-title">L'<em>Egogramma</em> — i cinque stati dell'Io</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">L'egogramma mostra quanto è presente ciascuno stato dell'Io nella tua personalità. Sposta i cursori per esplorare il tuo profilo. La somma dei cinque stati tende a essere costante: quando uno aumenta, un altro diminuisce.</p>
-    </div>
-    <div class="ego-wrap">
-      <div class="ego-text">
-        <div class="ego-states" id="ego-states-desc"></div>
-      </div>
-      <div class="ego-chart-wrap">
-        <div class="ego-bars" id="ego-bars"></div>
-        <div id="ego-sliders"></div>
-        <div class="ego-desc-box" id="ego-desc-box">Sposta i cursori per vedere la tua composizione psichica secondo l'AT.</div>
-      </div>
-    </div>
-  </div>
-
-    <!-- TEST EGOGRAMMA -->
-    <div id="ego-test-section">
-      <div class="container">
-        <div class="sec-hd" style="margin-bottom:1.5rem">
-          <div class="sec-eye">Autovalutazione</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ink)">Test dell'Egogramma</h3>
-        </div>
-        <p class="ego-test-intro">Leggi ogni affermazione e spunta quelle che ti descrivono <strong>abitualmente</strong>. Non ci sono risposte giuste o sbagliate — rispondi istintivamente senza pensarci troppo.</p>
-        <div class="ego-test-grid" id="ego-test-items"></div>
-        <button class="ego-test-btn" onclick="calcEgogrammaTest()">Calcola il mio Egogramma →</button>
-        <div class="ego-test-result" id="ego-test-result">
-          <h4>Il tuo profilo egografico</h4>
-          <div class="ego-result-bars" id="ego-test-bars"></div>
-          <p class="ego-res-desc" id="ego-test-desc"></p>
-          <div style="text-align:center;margin-top:1.2rem">
-            <button onclick="applyEgoTestResult()" style="padding:.5rem 1.4rem;background:var(--blue);color:#fff;border:none;border-radius:16px;font-size:.78rem;font-weight:600;cursor:pointer">Applica ai cursori sopra</button>
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
-
-<!-- ▐▐ CAREZZE ▐▐ -->
-<section id="carezze">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Analisi Transazionale · Berne</div>
-      <h2 class="sec-title">Le <em>carezze</em> — autovalutazione</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Le carezze sono unità di riconoscimento dell'altro. Ogni transazione è determinata da due carezze. Qualsiasi carezza è meglio che nessuna carezza — da piccoli, se non ottenevamo carezze piacevoli, studiavamo come ottenere quelle spiacevoli. Quanto spesso usi queste modalità?</p>
-    </div>
-    <div class="carezze-grid">
-      <div class="carezza-col">
-        <h3>🌿 Carezze Positive</h3>
-        <p class="carezza-sub">Valutate piacevoli da chi le riceve</p>
-        <div class="carezza-row"><label>Dare carezze positive</label>
-          <div class="carezza-scale"><span>Mai (1)</span><input type="range" min="1" max="10" value="7" class="carezza-slider" data-type="pos" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-pos-dare">7</span></div>
-        </div>
-        <div class="carezza-row"><label>Ricevere (prendere) carezze positive</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="6" class="carezza-slider" data-type="pos" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-prendere">6</span></div>
-        </div>
-        <div class="carezza-row"><label>Chiedere carezze positive</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="4" class="carezza-slider" data-type="pos" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-chiedere">4</span></div>
-        </div>
-        <div class="carezza-row"><label>Rifiutarsi di dare carezze positive</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="3" class="carezza-slider" data-type="pos" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-rifiutare">3</span></div>
-        </div>
-        <div class="carezza-result" id="carezza-pos-result">Il tuo profilo positivo apparirà qui.</div>
-      </div>
-      <div class="carezza-col neg">
-        <h3>🌑 Carezze Negative</h3>
-        <p class="carezza-sub">Qualsiasi carezza è meglio che nessuna</p>
-        <div class="carezza-row"><label>Dare carezze negative</label>
-          <div class="carezza-scale"><span>Mai (0)</span><input type="range" min="0" max="10" value="3" class="carezza-slider" data-type="neg" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-neg-dare">3</span></div>
-        </div>
-        <div class="carezza-row"><label>Ricevere carezze negative</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="4" class="carezza-slider" data-type="neg" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-prendere">4</span></div>
-        </div>
-        <div class="carezza-row"><label>Chiedere carezze negative</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="2" class="carezza-slider" data-type="neg" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-chiedere">2</span></div>
-        </div>
-        <div class="carezza-row"><label>Rifiutarsi di dare carezze negative</label>
-          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="8" class="carezza-slider" data-type="neg" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-rifiutare">8</span></div>
-        </div>
-        <div class="carezza-result" id="carezza-neg-result">Il tuo profilo negativo apparirà qui.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ▐▐ FIORI FES CALIFORNIANI ▐▐ -->
-<section id="fes-sec">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Medicina Vibrazionale</div>
-      <h2 class="sec-title">Fiori <em>Californiani FES</em></h2>
-      <div class="sec-div"></div>
-    </div>
-    <div class="bach-intro">
-      <div class="bach-text">
-        <h3>La Flower Essence Society</h3>
-        <p>Le essenze floreali californiane della Flower Essence Society (FES) sono state sviluppate da Richard e Patricia Kaminski a partire dagli anni '70, ampliando il sistema originale di Bach. Le 100 essenze FES coprono un ampio spettro di stati psicologici e spirituali contemporanei, con particolare attenzione ai temi della creatività, della sessualità integrata, delle relazioni e della crescita spirituale incarnata.</p>
-        <p>Ogni fiore porta una specifica "firma" vibrazionale che risuona con particolari stati dell'anima umana. Le essenze agiscono attraverso il campo bioenergetico, portando chiarezza e trasformazione nei pattern emotivi e mentali profondi.</p>
-      </div>
-      <div class="bach-card" style="background:linear-gradient(135deg,#fdf6e8,#f8edd0)">
-        <div style="font-size:2rem;margin-bottom:.5rem">✿</div>
-        <h4 style="color:var(--gold)">100 Essenze</h4>
-        <p style="font-size:.82rem;color:var(--ink3)">California · USA<br>Richard & Patricia Kaminski<br>dagli anni '70</p>
-      </div>
-    </div>
-    <div id="fes-grid" class="flower-mini-grid" style="margin-top:2rem"></div>
-  </div>
-</section>
-
-<!-- ▐▐ FIORI AUSTRALIANI BUSH ▐▐ -->
-<section id="bush-sec">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Medicina Vibrazionale</div>
-      <h2 class="sec-title">Fiori <em>Australiani Bush</em></h2>
-      <div class="sec-div"></div>
-    </div>
-    <div class="bach-intro">
-      <div class="bach-text">
-        <h3>Australian Bush Flower Essences</h3>
-        <p>Le Australian Bush Flower Essences (ABFE) sono state sviluppate da Ian White, naturopata di quinta generazione, a partire dagli anni '80. Le 65 essenze australiane sono tra le più potenti al mondo — l'Australia ospita il più antico ecosistema vegetale del pianeta, con piante che hanno sviluppato straordinarie qualità vibrazionali in milioni di anni di evoluzione isolata.</p>
-        <p>Le Bush Essences si caratterizzano per la loro azione diretta, rapida e profonda. Sono particolarmente efficaci per i temi della chiarezza spirituale, della sessualità, delle relazioni familiari, della creatività e della guarigione interiore.</p>
-      </div>
-      <div class="bach-card" style="background:linear-gradient(135deg,#edf8e8,#d8f0d0)">
-        <div style="font-size:2rem;margin-bottom:.5rem">❋</div>
-        <h4 style="color:#4a8040">65 Essenze</h4>
-        <p style="font-size:.82rem;color:var(--ink3)">Australia<br>Ian White<br>dagli anni '80</p>
-      </div>
-    </div>
-    <div id="bush-grid" class="flower-mini-grid" style="margin-top:2rem"></div>
-  </div>
-</section>
-
-<!-- ▐▐ FAQ ▐▐ -->
-
-<!-- ▐▐ COMPATIBILITÀ ▐▐ -->
-<section id="compatibilita">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
-      <h2 class="sec-title">Compatibilità <em>di coppia</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Scopri il livello di compatibilità tra due enneatipi, i punti di forza, le sfide e i consigli pratici per la relazione.</p>
-    </div>
-    <div class="compat-selectors">
-      <div class="compat-select-wrap">
-        <label>Tipo 1</label>
-        <select class="compat-select" id="compat-t1" onchange="showCompat()">
-          <option value="">Seleziona enneatipo...</option>
-          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
-          <option value="2">🍐 Tipo 2 — L'Altruista</option>
-          <option value="3">🍒 Tipo 3 — Il Manager</option>
-          <option value="4">🫐 Tipo 4 — Il Romantico</option>
-          <option value="5">🍇 Tipo 5 — L'Eremita</option>
-          <option value="6">🫐 Tipo 6 — Il Leale</option>
-          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
-          <option value="8">🍑 Tipo 8 — Il Capo</option>
-          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
-        </select>
-      </div>
-      <div class="compat-vs">✦</div>
-      <div class="compat-select-wrap">
-        <label>Tipo 2</label>
-        <select class="compat-select" id="compat-t2" onchange="showCompat()">
-          <option value="">Seleziona enneatipo...</option>
-          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
-          <option value="2">🍐 Tipo 2 — L'Altruista</option>
-          <option value="3">🍒 Tipo 3 — Il Manager</option>
-          <option value="4">🫐 Tipo 4 — Il Romantico</option>
-          <option value="5">🍇 Tipo 5 — L'Eremita</option>
-          <option value="6">🫐 Tipo 6 — Il Leale</option>
-          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
-          <option value="8">🍑 Tipo 8 — Il Capo</option>
-          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
-        </select>
-      </div>
-    </div>
-    <div class="compat-result" id="compat-result"></div>
-  </div>
-</section>
-
-
-<!-- ▐▐ VAK / PNL ▐▐ -->
-<section id="vak">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Programmazione Neuro Linguistica · Calcagno</div>
-      <h2 class="sec-title">I Canali <em>VAK</em> — come elabori la realtà</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Ognuno di noi elabora la realtà attraverso un canale preferenziale: Visivo, Auditivo o Cenestesico. Scopri il tuo e le sue correlazioni con enneatipi, stati AT, chakra e stile comunicativo.</p>
-    </div>
-    <div class="vak-channels">
-      <div class="vak-channel-card">
-        <div class="vak-channel-icon">👁</div>
-        <div class="vak-channel-name" style="color:#c87820">Visivo</div>
-        <div class="vak-channel-desc">Pensa per immagini. Postura eretta, gesti ampi verso l'alto. Voce veloce e alta. Parole: "vedere", "chiarire", "immaginare".</div>
-      </div>
-      <div class="vak-channel-card">
-        <div class="vak-channel-icon">🎵</div>
-        <div class="vak-channel-name" style="color:#1565c0">Auditivo</div>
-        <div class="vak-channel-desc">Pensa in parole e suoni. Posizione "telefono". Voce melodica e cadenzata. Parole: "sentire", "risuonare", "sintonia".</div>
-      </div>
-      <div class="vak-channel-card">
-        <div class="vak-channel-icon">🤲</div>
-        <div class="vak-channel-name" style="color:#2e7d4f">Cenestesico</div>
-        <div class="vak-channel-desc">Pensa per sensazioni ed emozioni. Postura verso il basso. Voce lenta e profonda. Parole: "sentire", "toccare", "peso".</div>
-      </div>
-    </div>
-    <div class="vak-test-wrap" id="vak-test-wrap">
-      <div class="vak-test-header">
-        <div class="vak-test-title">Test VAK — 24 domande</div>
-        <div id="vak-q-counter" style="font-size:.78rem;color:var(--ink4)">1 / 24</div>
-      </div>
-      <div style="padding:0"><div class="vak-prog-bar"><div class="vak-prog-fill" id="vak-prog" style="width:4%"></div></div></div>
-      <div class="vak-q-area" id="vak-q-area"></div>
-      <div class="vak-nav-row">
-        <button class="vak-btn-prev" onclick="vakPrev()" id="vak-prev-btn">← Indietro</button>
-        <button class="vak-btn-next" onclick="vakNext()" id="vak-next-btn" disabled>Avanti →</button>
-      </div>
-    </div>
-    <div class="vak-result" id="vak-result"></div>
-  </div>
-</section>
-
-
-<!-- ▐▐ CHI SONO ▐▐ -->
-<section id="chi-sono">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Autore · Formatore · Mediatore</div>
-      <h2 class="sec-title">Chi <em>sono</em></h2>
-      <div class="sec-div"></div>
-    </div>
-    <div class="chisono-grid">
-      <!-- Card laterale -->
-      <div>
-        <div class="chisono-card">
-          <div class="chisono-avatar">🧑‍🏫</div>
-          <div class="chisono-card-body">
-            <div class="chisono-name">Carlo Alberto Calcagno</div>
-            <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
-            <div class="chisono-tags">
-              <span class="chisono-tag">⬟ Enneagramma Evolutivo</span>
-              <span class="chisono-tag">⚙ Analisi Transazionale</span>
-              <span class="chisono-tag">👁 PNL / VAK</span>
-              <span class="chisono-tag">🤲 Pranoterapia</span>
-              <span class="chisono-tag">⚖ Mediazione Familiare</span>
-              <span class="chisono-tag">📚 35+ anni esperienza</span>
-            </div>
-            <div class="chisono-divider"></div>
-            <div class="chisono-contact-row">📱 <a href="https://wa.me/393473666508">+39 347 366 6508</a></div>
-            <div class="chisono-contact-row">📧 <a href="/cdn-cgi/l/email-protection#c9aaa8a5aaa8aea7a6aaa8bba5a6a8a5abacbbbda6f889aea4a8a0a5e7aaa6a4"><span class="__cf_email__" data-cfemail="0b686a67686a6c6564686a7967646a67696e797f643a4b6c666a626725686466">[email&#160;protected]</span></a></div>
-            <div class="chisono-contact-row">🌐 <a href="https://mediaresenzaconfini.org" target="_blank">mediaresenzaconfini.org</a></div>
-            <div class="chisono-divider"></div>
-            <div style="text-align:center">
-              <a href="https://wa.me/393473666508" target="_blank"
-                style="display:inline-block;background:var(--gold);color:white;padding:.5rem 1.4rem;border-radius:20px;font-size:.78rem;font-weight:600;text-decoration:none;margin-top:.3rem">
-                💬 Contattami su WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contenuto -->
-      <div class="chisono-content">
-        <p style="font-size:1.05rem;color:var(--ink);font-family:'Cormorant Garamond',serif;line-height:1.9;margin-bottom:1.5rem">
-          «L'incontro di due personalità è come il contatto tra due sostanze chimiche: se c'è una qualche reazione, entrambi ne vengono trasformati.» — C. G. Jung
-        </p>
-
-        <h3>Il percorso</h3>
-        <p>Avvocato di formazione, mi sono avvicinato alla mediazione come pratica di composizione dei conflitti — civile, commerciale e familiare. Nel corso di trentacinque anni di studio, insegnamento e pratica, ho progressivamente integrato le discipline del benessere e della crescita umana: dalla psicologia dinamica freudiana all'Analisi Transazionale di Berne, dalla psicologia umanistica di Rogers alla Programmazione Neuro-Linguistica, dalla neurobiologia del conflitto alle discipline olistiche orientali.</p>
-        <p>Sono mediatore familiare certificato (COA Genova) e formatore dei mediatori. Ho tenuto corsi e convegni a Genova, Milano e in vari contesti professionali, sempre con l'obiettivo di rendere accessibili saperi complessi a chi lavora quotidianamente con le persone.</p>
-
-        <h3>L'Enneagramma Evolutivo</h3>
-        <p>Ho sviluppato un sistema originale che chiamo <strong>Enneagramma Evolutivo</strong>: una sintesi tra l'Enneagramma tradizionale, le Dignità di Raimondo Lullo, le gerarchie angeliche, le Muse di Kircher, le aree cerebrali secondo Tony Nader e i percorsi evolutivi per fascia d'età. Non è un sistema di classificazione, ma una <em>mappa di trasformazione</em>: ogni enneatipo porta nel mondo una conoscenza specifica e segue un percorso di integrazione che si dispiegara nell'arco di tutta la vita.</p>
-        <p>Il sistema integra anche i 9 Frutti dell'Albero della Vita — simboli vegetali associati a ciascun tipo — e la correlazione con le aree cerebrali (gangli della base, sistema limbico, neocorteccia) che spiega la neurobiologia di ogni stile di personalità.</p>
-
-        <h3>La filosofia del lavoro</h3>
-        <p>Il mio approccio si fonda su tre caposaldi: <strong>impermanenza</strong> (ogni porta è aperta al cambiamento), <strong>compassione</strong> (capire che l'altro non può comportarsi altrimenti quando è preda di emozioni) e <strong>interdipendenza</strong> (conoscere l'altro è conoscere me stesso). Questi principi, mutuati dalla tradizione buddhista e radicati nelle neuroscienze, guidano tanto il lavoro di mediazione quanto la consulenza olistica.</p>
-        <p>Credo fermamente che le discipline olistiche — chakra, fiori di Bach, essenze FES e Bush, frequenze sonore, pranoterapia — non siano alternative alla medicina, ma strumenti complementari che agiscono sul campo bioenergetico della persona, facilitando quei processi di auto-guarigione che Rogers chiamava «tendenza attualizzante».</p>
-
-        <h3>I miei siti</h3>
-        <p>Nel tempo ho costruito un ecosistema digitale che raccoglie queste conoscenze e le rende accessibili gratuitamente:</p>
-        <div class="sites-grid">
-          <a class="site-card" href="https://olismo-integrato.it" target="_blank">
-            <div class="site-card-icon">🌿</div>
-            <div class="site-card-name">Olismo Integrato</div>
-            <div class="site-card-url">olismo-integrato.it</div>
-            <div class="site-card-desc">Il portale principale: database di chakra, cristalli, enneatipi, fiori di Bach, FES, Bush, frequenze, AT e consulente AI.</div>
-          </a>
-          <a class="site-card" href="https://frequenze-evolutive.it" target="_blank">
-            <div class="site-card-icon">🎵</div>
-            <div class="site-card-name">Frequenze Evolutive</div>
-            <div class="site-card-url">frequenze-evolutive.it</div>
-            <div class="site-card-desc">Generatore di musica terapeutica con AI (Suno). Frequenze solfeggio, enneatipi e stati di coscienza.</div>
-          </a>
-          <a class="site-card" href="https://guarigionequantica.eu" target="_blank">
-            <div class="site-card-icon">✨</div>
-            <div class="site-card-name">Guarigione Quantica</div>
-            <div class="site-card-url">guarigionequantica.eu</div>
-            <div class="site-card-desc">Portale dedicato alla guarigione quantica e alle pratiche energetiche avanzate.</div>
-          </a>
-          <a class="site-card" href="https://mediaresenzaconfini.org" target="_blank">
-            <div class="site-card-icon">⚖</div>
-            <div class="site-card-name">Mediare Senza Confini</div>
-            <div class="site-card-url">mediaresenzaconfini.org</div>
-            <div class="site-card-desc">ADR a 360°: conciliazione, mediazione, arbitrato, MAAN, ZOPA e bias cognitivi nella negoziazione.</div>
-          </a>
+    <div class="exp-tabs" id="exp-tabs"></div>
+    <div class="exp-body">
+      <div class="exp-list" id="exp-list"></div>
+      <div class="exp-panel" id="exp-panel">
+        <div class="panel-empty">
+          <div class="panel-empty-icon">◈</div>
+          <p>Seleziona un elemento per esplorare le sue connessioni</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ▐▐ CHECK INTEGRATO ▐▐ -->
-<section id="check-integrato">
+<section id="discipline">
   <div class="container">
     <div class="sec-hd">
-      <div class="sec-eye">Profilo Olistico Personale</div>
-      <h2 class="sec-title">Check <em>Integrato</em></h2>
+      <div class="sec-eye">Le Otto Dimensioni</div>
+      <h2 class="sec-title">Un approccio <em>olistico</em> alla persona</h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
     </div>
-    <div class="check-test-wrap" id="check-wrap">
-      <div class="check-header">
-        <div class="check-header-title">Profilo Olistico Integrato</div>
-        <div class="check-header-meta" id="check-counter">1 / 32</div>
+    <div class="disc-grid">
+      <div class="disc-card" onclick="st('chakra-sec')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◉</div>
+        <div class="disc-title">Sistema dei Chakra</div>
+        <p class="disc-text">Sette centri energetici che mappano lo sviluppo psico-emotivo dell'essere umano. Dal Muladhara (sopravvivenza) al Sahasrara (coscienza), ogni chakra governa un'area fondamentale della vita.</p>
       </div>
-      <div class="check-prog-bar"><div class="check-prog-fill" id="check-prog" style="width:3%"></div></div>
-      <div class="check-q-area" id="check-q-area"><div style="padding:1rem;color:var(--ink3);font-size:.85rem">Caricamento domande...</div></div>
-      <div class="check-nav-row">
-        <button class="check-btn-prev" onclick="checkPrev()" id="check-prev-btn">← Indietro</button>
-        <button class="check-btn-next" onclick="checkNext()" id="check-next-btn" disabled>Avanti →</button>
+      <div class="disc-card" onclick="openExp('cristalli')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1565c0,#4527a0);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◆</div>
+        <div class="disc-title">Cristalloterapia</div>
+        <p class="disc-text">Le pietre curative amplificano le frequenze energetiche e supportano i processi di guarigione. Ogni cristallo è associato a chakra specifici, disturbi, enneatipi e abbinamenti terapeutici precisi.</p>
+      </div>
+      <div class="disc-card" onclick="st('enneagram')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a83232,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⬟</div>
+        <div class="disc-title">Enneagramma Evolutivo</div>
+        <p class="disc-text">I 9 tipi di personalità attraversano fasi evolutive legate all'età. Il ciclo breve (3-6-9) e il ciclo lungo (1-2-4-5-7-8) descrivono percorsi di trasformazione precisi con punti di shock e di crescita.</p>
+      </div>
+      <div class="disc-card" onclick="st('musica')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2e7d4f,#5a7a6a);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">♬</div>
+        <div class="disc-title">Musicoterapia e Frequenze</div>
+        <p class="disc-text">Le frequenze solfeggio (396–963 Hz) e l'accordatura naturale a 432 Hz producono effetti neurobiologici misurabili. Ogni nota risuona con chakra e stati emotivi specifici.</p>
+      </div>
+      <div class="disc-card" onclick="st('bach')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5a7a6a,#7a9a88);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">✿</div>
+        <div class="disc-title">Fiori di Bach</div>
+        <p class="disc-text">38 rimedi floreali individuati da Eduard Bach per trasformare gli stati emotivi negativi in virtù. Ogni fiore corrisponde a una paura, una difficoltà o una qualità dell'anima da risvegliare.</p>
+      </div>
+      <div class="disc-card" onclick="st('alimentazione')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c49a1a,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">◈</div>
+        <div class="disc-title">Alimentazione Terapeutica</div>
+        <p class="disc-text">Gli alimenti portano frequenze specifiche che risuonano con i chakra. Una dieta consapevole supporta il percorso evolutivo scegliendo cibi che amplificano gli stati emotivi desiderati.</p>
+      </div>
+      <div class="disc-card" onclick="st('danza')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8a6a7a,#b49aaa);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⟳</div>
+        <div class="disc-title">La Danza del Conflitto</div>
+        <p class="disc-text">I conflitti relazionali seguono schemi neurobiologici prevedibili. Conoscere la "danza" tra tipo 8 (il fuoco) e tipo 9 (l'acqua) permette al mediatore di intervenire prima della rottura.</p>
+      </div>
+      <div class="disc-card" onclick="window.open('https://frequenze-evolutive.it','_blank')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c85050,#b8933c,#4caf82);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">🎵</div>
+        <div class="disc-title">Laboratorio delle Frequenze</div>
+        <p class="disc-text">Genera prompt musicali per Suno basati su enneatipo, adattamento AT e disturbo fisico-emotivo. Ogni combinazione produce prompt in inglese ottimizzati con la frequenza solfeggio terapeutica corretta.</p>
+      </div>
+      <div class="disc-card" onclick="st('test-adattamenti')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6366f1,#ec4899);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">🧠</div>
+        <div class="disc-title">Test degli Adattamenti AT</div>
+        <p class="disc-text">40 domande per scoprire il tuo profilo tra i 6 adattamenti di personalità dell'Analisi Transazionale (AT). Mostra intensità e polarità Estroversa/Introversa per ogni adattamento, con connessioni a porte, spinte, copioni, chakra e cristalli.</p>
+      </div>
+      <div class="disc-card" onclick="st('test-frutti')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7b2fa0,#c45a22);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">🌳</div>
+        <div class="disc-title">Test dei 9 Frutti</div>
+        <p class="disc-text">180 domande per scoprire il tuo enneatipo attraverso i frutti simbolici dell'Albero della Vita. Il risultato si collega automaticamente a chakra, cristalli, adattamenti AT, fiori di Bach e frequenze curative.</p>
+      </div>
+      <div class="disc-card" onclick="st('prano')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c45a22,#a83232);border-radius:var(--rxl) var(--rxl) 0 0"></div>
+        <div class="disc-icon">⊕</div>
+        <div class="disc-title">Pranoterapia</div>
+        <p class="disc-text">La pratica di guarigione più antica: la trasmissione di energia pranale attraverso le mani. Il pranoterapeuta agisce su piani fisici, emotivi, mentali e spirituali, lavorando direttamente sui chakra.</p>
       </div>
     </div>
-    <div class="check-result" id="check-result"></div>
+  </div>
+</section>
+
+<section id="consulente">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Consulente Olistica AI</div>
+      <h2 class="sec-title">Fai una <em>domanda</em> al database</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach, frequenze, alimentazione ed esercizi. Descriviti e ricevi indicazioni personalizzate.</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="chat-header-icon">◉</div>
+        <div class="chat-header-text">
+          <h3>Consulente Olistica</h3>
+          <p>Integrazione di chakra · cristalli · enneatipi · Bach · frequenze · alimentazione</p>
+        </div>
+        <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
+        <button class="chat-pdf-btn" onclick="exportChatPdf()" title="Scarica conversazione in PDF">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          Scarica PDF
+        </button>
+      </div>
+      
+    <div class="chat-suggestions">
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
+        <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
+        <span class="sugg" onclick="askSugg(this)">Sento ansia e paura, da dove inizio?</span>
+        <span class="sugg" onclick="askSugg(this)">Quali cristalli per dormire meglio?</span>
+        <span class="sugg" onclick="askSugg(this)">Ho difficoltà ad esprimermi, quale chakra lavoro?</span>
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-input-area">
+        <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMsg()">
+          <span>Invia</span><span style="font-size:1rem">→</span>
+        </button>
+      </div>
+      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico o dello psicologo.</div>
+    </div>
   </div>
 </section>
 
@@ -3125,7 +3103,6 @@ footer.site-footer{
   </div>
 </section>
 
-<!-- ▐▐ GUIDA ▐▐ -->
 <section id="guida">
   <div class="container">
     <div class="sec-hd">
@@ -3159,8 +3136,6 @@ footer.site-footer{
   </div>
 </section>
 
-
-<!-- ▐▐ LINK UTILI ▐▐ -->
 <section id="link-utili">
   <div class="container">
     <div class="sec-hd" style="--sec-eye-color:rgba(184,147,90,.6)">
@@ -3208,6 +3183,8 @@ footer.site-footer{
     </div>
   </div>
 </section>
+
+
 
 <footer class="site-footer">
   <div class="footer-grid">

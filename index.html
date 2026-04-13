@@ -1460,6 +1460,81 @@ footer{
 .ego-profile-second{font-size:.78rem;color:var(--ink3);margin-bottom:.5rem}
 .ego-profile-total{font-size:.75rem;color:var(--ink4);text-align:right;margin-top:.5rem}
 
+
+/* ══ VAK SECTION ══ */
+#vak{background:var(--ivory2)}
+.vak-intro{display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:start;margin-bottom:3rem}
+@media(max-width:760px){.vak-intro{grid-template-columns:1fr}}
+.vak-channels{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:640px){.vak-channels{grid-template-columns:1fr}}
+.vak-channel-card{background:white;border-radius:var(--r);padding:1.2rem;border:1.5px solid var(--border);text-align:center}
+.vak-channel-icon{font-size:1.8rem;margin-bottom:.4rem}
+.vak-channel-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.vak-channel-desc{font-size:.78rem;color:var(--ink3);line-height:1.6}
+
+/* Test */
+.vak-test-wrap{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);overflow:hidden}
+.vak-test-header{padding:1.5rem 2rem;border-bottom:1px solid var(--ivory3);display:flex;align-items:center;justify-content:space-between}
+.vak-test-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--ink)}
+.vak-prog-bar{height:4px;background:var(--ivory3);margin:0;transition:width .3s}
+.vak-prog-fill{height:100%;background:linear-gradient(90deg,#6080f0,#a080f0);border-radius:2px;transition:width .4s}
+.vak-q-area{padding:2rem}
+.vak-q-num{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);margin-bottom:.6rem}
+.vak-q-text{font-size:1rem;font-weight:500;color:var(--ink);line-height:1.6;margin-bottom:1.5rem}
+.vak-options{display:flex;flex-direction:column;gap:.6rem}
+.vak-opt{
+  display:flex;align-items:flex-start;gap:.8rem;padding:.8rem 1rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  cursor:pointer;transition:all .15s;font-size:.88rem;color:var(--ink2);line-height:1.5;
+  background:white;text-align:left;width:100%;
+}
+.vak-opt:hover{border-color:var(--ink3);background:var(--ivory2);color:var(--ink)}
+.vak-opt.selected{border-color:#6080f0;background:rgba(96,128,240,.06);color:var(--ink)}
+.vak-opt-letter{
+  width:24px;height:24px;min-width:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;margin-top:.05rem;
+  background:var(--ivory3);color:var(--ink3);
+}
+.vak-opt.selected .vak-opt-letter{background:#6080f0;color:white}
+.vak-nav-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem 1.5rem;border-top:1px solid var(--ivory3)}
+.vak-btn-prev{background:none;border:1.5px solid var(--border);color:var(--ink3);padding:.45rem 1.1rem;border-radius:20px;font-size:.78rem;cursor:pointer}
+.vak-btn-prev:hover{border-color:var(--ink3);color:var(--ink)}
+.vak-btn-next{background:var(--ink);color:white;border:none;padding:.45rem 1.4rem;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer}
+.vak-btn-next:hover{background:var(--blue2)}
+.vak-btn-next:disabled{background:var(--ivory3);color:var(--ink4);cursor:default}
+
+/* Risultato */
+.vak-result{display:none;padding:2rem}
+.vak-result.show{display:block}
+.vak-res-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:1.5rem;text-align:center}
+.vak-bars{display:flex;gap:1rem;justify-content:center;align-items:flex-end;height:120px;margin-bottom:2rem}
+.vak-bar-col{display:flex;flex-direction:column;align-items:center;gap:.35rem;width:72px}
+.vak-bar-wrap{width:40px;flex:1;background:var(--ivory3);border-radius:4px;overflow:hidden;display:flex;align-items:flex-end}
+.vak-bar-fill{width:100%;border-radius:4px;transition:height .6s ease}
+.vak-bar-score{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400}
+.vak-bar-label{font-size:.78rem;font-weight:600;color:var(--ink)}
+
+.vak-profile{background:var(--ivory2);border-radius:var(--r);padding:1.5rem;margin-bottom:1.5rem;border-left:3px solid #6080f0}
+.vak-profile-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ink);margin-bottom:.3rem}
+.vak-profile-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6080f0;margin-bottom:.6rem}
+.vak-profile-text{font-size:.85rem;color:var(--ink2);line-height:1.75;margin-bottom:.8rem}
+.vak-profile-postura{font-size:.78rem;color:var(--ink3);font-style:italic;padding:.4rem .7rem;background:white;border-radius:5px}
+
+.vak-correlations{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+.vak-corr-card{background:white;border-radius:8px;padding:1rem;border:1px solid var(--border)}
+.vak-corr-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.4rem}
+.vak-corr-value{font-size:.9rem;color:var(--ink);font-weight:500;line-height:1.4}
+.vak-corr-sub{font-size:.75rem;color:var(--ink3);margin-top:.2rem}
+
+.vak-phrases{margin-top:1rem}
+.vak-phrases-title{font-size:.78rem;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.vak-phrases-list{display:flex;flex-wrap:wrap;gap:.3rem}
+.vak-phrase-chip{font-size:.72rem;padding:.2rem .6rem;background:var(--ivory3);border-radius:10px;color:var(--ink3);font-style:italic}
+
+.vak-restart-btn{display:block;margin:1.5rem auto 0;padding:.55rem 1.8rem;background:none;border:1.5px solid var(--border2);color:var(--ink3);border-radius:20px;font-size:.78rem;cursor:pointer}
+.vak-restart-btn:hover{border-color:var(--ink);color:var(--ink)}
+
 </style>
 
 
@@ -1496,6 +1571,7 @@ footer{
     <button class="nav-link" onclick="st('bach')">Bach</button>
     <button class="nav-link" onclick="st('fes-sec')">✿ FES</button>
     <button class="nav-link" onclick="st('bush-sec')">❋ Bush</button>
+    <button class="nav-link" onclick="st('vak')">👁 VAK</button>
     <button class="nav-link" onclick="st('faq')">FAQ</button>
     <button class="nav-link" onclick="window.open('https://frequenze-evolutive.it','_blank')" style="color:var(--ink3)">🎵 Suno ↗</button>
     <button class="nav-link" onclick="st('compatibilita')">Coppia</button>
@@ -1569,6 +1645,7 @@ footer{
     <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>Pranoterapia</span>
     <span class="pill" onclick="st('test-frutti')" style="border-color:var(--gold);color:var(--gold)">🌳 Test Frutti</span>
     <span class="pill" onclick="st('test-adattamenti')" style="border-color:var(--dusty);color:var(--dusty)">🧠 Test AT</span>
+    <span class="pill" onclick="st('vak')" style="border-color:#6080f0;color:#6080f0">👁 Test VAK</span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
@@ -2352,6 +2429,49 @@ footer{
   </div>
 </section>
 
+
+<!-- ▐▐ VAK / PNL ▐▐ -->
+<section id="vak">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Programmazione Neuro Linguistica · Calcagno</div>
+      <h2 class="sec-title">I Canali <em>VAK</em> — come elabori la realtà</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ognuno di noi elabora la realtà attraverso un canale preferenziale: Visivo, Auditivo o Cenestesico. Scopri il tuo e le sue correlazioni con enneatipi, stati AT, chakra e stile comunicativo.</p>
+    </div>
+    <div class="vak-channels">
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">👁</div>
+        <div class="vak-channel-name" style="color:#c87820">Visivo</div>
+        <div class="vak-channel-desc">Pensa per immagini. Postura eretta, gesti ampi verso l'alto. Voce veloce e alta. Parole: "vedere", "chiarire", "immaginare".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🎵</div>
+        <div class="vak-channel-name" style="color:#1565c0">Auditivo</div>
+        <div class="vak-channel-desc">Pensa in parole e suoni. Posizione "telefono". Voce melodica e cadenzata. Parole: "sentire", "risuonare", "sintonia".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🤲</div>
+        <div class="vak-channel-name" style="color:#2e7d4f">Cenestesico</div>
+        <div class="vak-channel-desc">Pensa per sensazioni ed emozioni. Postura verso il basso. Voce lenta e profonda. Parole: "sentire", "toccare", "peso".</div>
+      </div>
+    </div>
+    <div class="vak-test-wrap" id="vak-test-wrap">
+      <div class="vak-test-header">
+        <div class="vak-test-title">Test VAK — 24 domande</div>
+        <div id="vak-q-counter" style="font-size:.78rem;color:var(--ink4)">1 / 24</div>
+      </div>
+      <div style="padding:0"><div class="vak-prog-bar"><div class="vak-prog-fill" id="vak-prog" style="width:4%"></div></div></div>
+      <div class="vak-q-area" id="vak-q-area"></div>
+      <div class="vak-nav-row">
+        <button class="vak-btn-prev" onclick="vakPrev()" id="vak-prev-btn">← Indietro</button>
+        <button class="vak-btn-next" onclick="vakNext()" id="vak-next-btn" disabled>Avanti →</button>
+      </div>
+    </div>
+    <div class="vak-result" id="vak-result"></div>
+  </div>
+</section>
+
 <section id="faq">
   <div class="container">
     <div class="sec-hd">
@@ -3003,6 +3123,10 @@ const FAQ_DATA = [
   {cat:"Rogers",q:"Cos'è la tendenza attualizzante di Rogers?",a:"È la spinta innata in ogni organismo verso la crescita, l'autonomia, la maturità e la piena realizzazione. Per Rogers non è necessario 'riparare' le persone: la crescita avviene naturalmente quando si creano le condizioni giuste (congruenza, accettazione incondizionata, empatia). È analoga alla spinta evolutiva dell'Enneagramma Evolutivo di Calcagno."},
   {cat:"Rogers",q:"Cosa sono le tre condizioni di Rogers?",a:"Le condizioni necessarie e sufficienti per la crescita terapeutica (e per una buona mediazione): 1) Congruenza: il terapeuta/mediatore è autentico, non nasconde sé stesso dietro una maschera professionale. 2) Accettazione incondizionata: accettare la persona nella sua globalità, senza giudicarla. 3) Empatia: capire il frame interno dell'altro dall'interno, non dall'esterno. Queste condizioni creano un clima non minaccioso che permette esplorazione e cambiamento."},
   {cat:"Neuroscienze",q:"Come si attivano i tre cervelli in mediazione?",a:"Quando una parte è arrabbiata o spaventata il cervello rettiliano/limbico è dominante: il linguaggio si blocca (regola del blocco), la neocorteccia va offline. Il mediatore deve prima riportare il sistema nervoso allo Stato 1 (sicurezza/connessione) prima di qualsiasi dialogo razionale. I 6 stimoli che attivano il cervello rettiliano: sorpresa, egocentrismo, contrasto, concretezza, inizio/fine, immagini visive. La legge di Fechner spiega perché alzare la voce viene percepito molto più intensamente di quanto si creda."}
+,
+  {cat:"VAK",q:"Cosa sono i canali VAK?",a:"VAK è l'acronimo di Visivo, Auditivo, Cinestetico (Kinesthetic in inglese). Secondo la Programmazione Neuro-Linguistica (PNL), ogni persona elabora la realtà preferenzialmente attraverso uno di questi tre canali sensoriali. Il Visivo pensa per immagini, l'Auditivo per suoni e parole, il Cenestesico per sensazioni fisiche ed emozioni. Il canale dominante si rivela nel linguaggio usato, nella postura, nei movimenti degli occhi e nel tono di voce."},
+  {cat:"VAK",q:"Come si correlano VAK, Enneagramma e AT?",a:"Secondo Calcagno esiste una corrispondenza: Visivo → enneatipi 3,7,8 (tipi d'azione) → Asta/Accusatore di Satir → Genitore Normativo/Adulto AT; Auditivo → enneatipi 1,5,6 (tipi intellettuali) → Cerchio/Superlogico → Adulto AT; Cenestesico → enneatipi 2,4,9 (tipi emotivi) → Triangolo/Propiziatore → Bambino AT. Queste non sono correlazioni assolute ma tendenze frequenti che aiutano il mediatore/counselor a calibrare la comunicazione."},
+  {cat:"VAK",q:"Cos'è la Time Line nella PNL?",a:"La Time Line è uno strumento PNL in cui si traccia una linea immaginaria con passato, presente e futuro. Il soggetto si posiziona fisicamente su ciascun punto e risponde a domande usando il linguaggio del suo canale VAK (visivo: 'come visualizza il futuro?'; auditivo: 'cosa si dice?'; cenestesico: 'come si sente?'). In mediazione viene usata nella sessione privata per portare il mediant a ricordare un passato positivo e a costruire una visione di futuro che motivi l'accordo."}
 ];
 
 let activeFaqCat = "Tutti";
@@ -4120,6 +4244,16 @@ Angelica→protezione spirituale/solitudine(c7), Arnica→shock/trauma(c1), Baby
 AUSTRALIAN BUSH FLOWER ESSENCES (selezione chiave):
 Banksia Robur→esaurimento degli interessi(c3), Billy Goat Plum→vergogna corporea(c2), Black-Eyed Susan→fretta/impazieza(c3), Bluebell→chiusura emotiva(c4), Boab→pattern familiari negativi(c1), Boronia→pensieri ossessivi(c6), Bottlebrush→transizioni(c1), Bush Fuchsia→ignorare l\'intuizione(c6), Crowea→preoccupazione/ansia(c3), Dog Rose→timidezza/paure(c3), Emergency Essence→crisi acute, Five Corners→bassa autostima(c4), Grey Spider Flower→terrore(c1), Gymea Lily→arroganza(c3), Mint Bush→crisi spirituale(c6), Mountain Devil→odio/rabbia(c4), Paw Paw→sopraffazione da scelte(c3), Red Lily→disconnessione dalla realtà(c7), She Oak→squilibri ormonali femminili(c2), Silver Princess→mancanza direzione(c3), Southern Cross→vittimismo(c3), Sturt Desert Pea→dolore profondo(c4), Sturt Desert Rose→senso di colpa(c3), Sundew→dissociazione(c1), Waratah→disperazione nera(c4).
 
+VAK (Programmazione Neuro-Linguistica — Calcagno):
+VISIVO (V): elabora per immagini, pensa per fotogrammi. Postura eretta, voce alta/veloce, gesti ampi verso l'alto. Parole: "vedere", "chiarire", "immaginare", "quadro". Triade di Satir: Asta/Accusatore. Enneatipi: 3,7,8. Chakra: 3°/6°. AT: Genitore Normativo/Adulto. Onde: beta/gamma.
+AUDITIVO (A): elabora per parole e suoni, dialogo interiore. Posizione "telefono". Voce melodica, dizione corretta. Parole: "sentire", "risuonare", "sintonia". Triade Satir: Cerchio/Superlogico. Enneatipi: 1,5,6. Chakra: 5°/7°. AT: Adulto. Onde: alfa. Auditivo Digitale: molto logico, ragiona per dati.
+CENESTESICO (K): elabora per sensazioni fisiche ed emozioni. Postura bassa, voce lenta/profonda/con pause. Parole: "sentire", "peso", "toccare", "sensazione". Triade Satir: Triangolo/Propiziatore. Enneatipi: 2,4,9. Chakra: 1°/2°/4°. AT: Bambino Libero/Adattato. Onde: theta.
+SINESTESIA: integrazione di più canali. Chi ha maggiore abilità ha maggiore capacità sinestesica. Canale di accesso (sconosciuti) → elaborazione (conoscenti) → interiore (relazioni intime).
+TRIADE DI SATIR: Asta/Accusatore (V, conflitto con padre, indice puntato) · Triangolo/Propiziatore (K, conflitto con madre, palmi verso l'alto) · Cerchio/Superlogico (A, conflitto con ego, gesto OK).
+SGUARDO VAK: visivo→alto, auditivo→laterale, cenestesico→basso. Il movimento è involontario.
+COMUNICARE EFFICACE: Usare i predicati del canale dell'interlocutore. In pubblico: iniziare lento/basso (K) poi medio (A) poi veloce (V). Con un visivo: immagini e sintesi. Con un auditivo: logica e sequenza. Con un cenestesico: calore e contatto fisico appropriato.
+TIME LINE PNL: strumento per ristrutturare il ricordo passato e pianificare il futuro. In mediazione usata nella sessione privata per riportare i medianti a un passato positivo e a immaginare un futuro costruttivo. Il linguaggio usato segue il canale VAK del mediant.
+
 PRANOTERAPIA: trasmissione pranale per mani. Cristalli sui chakra durante il trattamento. Frequenze di supporto a 432Hz. Fiori di Bach pre/post trattamento.
 
 PSICOLOGIA DINAMICA (Freud) — applicazioni in mediazione:
@@ -4269,6 +4403,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   renderEgoTest();
   renderFlowerGrid("fes","fes-grid");
   renderFlowerGrid("bush","bush-grid");
+  initVakTest();
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
 });
 
@@ -4545,6 +4680,249 @@ function applyEgoTestResult(){
   });
   document.getElementById('egogramma').scrollIntoView({behavior:'smooth'});
 }
+
+
+// ══════════════════════════════════════════════
+// TEST VAK
+// ══════════════════════════════════════════════
+
+const VAK_QUESTIONS = [
+  // Domanda: [testo, [V, A, K]]
+  {q:"Quando apprendi qualcosa di nuovo preferisci...",
+   opts:["Vedere una dimostrazione visiva, schemi o illustrazioni","Ascoltare qualcuno spiegarlo o discuterne","Sperimentarlo praticamente, provare con le mani"]},
+  {q:"Quando ricordi una vacanza indimenticabile...",
+   opts:["Rivedi le immagini, i colori e i luoghi","Senti le voci, la musica o i suoni dell'ambiente","Riprovi le sensazioni fisiche ed emotive di quel momento"]},
+  {q:"Quando devi spiegare qualcosa di complesso, tendi a...",
+   opts:["Disegnare uno schema o usare gesti ampi","Parlare a lungo con spiegazioni dettagliate","Usare esempi concreti o far provare direttamente"]},
+  {q:"Nel prendere decisioni importanti ti basi principalmente su...",
+   opts:["Quello che riesci a visualizzare come risultato futuro","Quello che ti convince logicamente attraverso il ragionamento","Quello che senti 'giusto' dentro, la tua sensazione istintiva"]},
+  {q:"Quando sei in un luogo nuovo noti soprattutto...",
+   opts:["I colori, le forme, l'arredamento e l'ordine visivo","I suoni, le voci, la musica o il silenzio","L'atmosfera, il comfort fisico e le sensazioni che trasmette"]},
+  {q:"Il tuo modo di studiare o concentrarti preferito è...",
+   opts:["Con mappe mentali, colori e schemi visivi","Con la lettura ad alta voce o discutendo con qualcuno","Con pause fisiche, movimento o scrivendo a mano"]},
+  {q:"Quando sei arrabbiato o stressato, cosa ti aiuta di più?",
+   opts:["Andare in un posto bello o guardare qualcosa che ti piace","Parlare con qualcuno o ascoltare musica che ti calma","Fare attività fisica, camminare o avere un contatto fisico"]},
+  {q:"Nel comunicare con gli altri preferisci...",
+   opts:["Incontrarli di persona per vedere le loro espressioni","Telefonarci o scriverci messaggi dettagliati","Stare fisicamente vicino, camminare insieme o condividere un'attività"]},
+  {q:"Quando segui le istruzioni per montare qualcosa...",
+   opts:["Guardi prima tutte le figure e i disegni","Leggi attentamente tutte le istruzioni prima di cominciare","Inizi subito a montare pezzi capendo man mano"]},
+  {q:"La tua memoria è migliore per...",
+   opts:["I volti e i luoghi che hai visto","I nomi e le cose che ti hanno detto","I sentimenti ed i momenti vissuti fisicamente"]},
+  {q:"Quando sei annoiato tendi a...",
+   opts:["Guardare fuori dalla finestra o osservare l'ambiente","Canticchiare, tamburellare o parlare tra te e te","Muoverti, gesticolare o fare qualcosa con le mani"]},
+  {q:"Nel descrivere un problema a qualcuno usi spesso espressioni come...",
+   opts:["'Non riesco a vedere la soluzione', 'il quadro non è chiaro'","'Non risuona bene', 'c'è qualcosa che non va nel ragionamento'","'Non me la sento', 'sento che pesa', 'ho la sensazione che'"]},
+  {q:"Il tipo di libro o film che preferisci ha...",
+   opts:["Bellezza visiva, paesaggi e descrizioni vivide dei luoghi","Dialoghi profondi, sceneggiatura coinvolgente e musica perfetta","Personaggi con cui ti immedesimi emotivamente e fisicamente"]},
+  {q:"Quando conosci una persona nuova fai più attenzione a...",
+   opts:["Come è vestita, la sua espressione facciale e postura","Come parla, il suo tono di voce e cosa dice","Come ti fa sentire in sua presenza, l'energia che trasmette"]},
+  {q:"Nelle riunioni o nelle discussioni di gruppo preferisci...",
+   opts:["Avere presentazioni visive, slide o lavagna a cui fare riferimento","Discutere apertamente le idee e sentire le opinioni di tutti","Lavorare su casi concreti, scenari pratici da analizzare insieme"]},
+  {q:"Quando pensi al futuro nella tua mente...",
+   opts:["Vedi immagini e scenari come fotogrammi o film","Senti una voce interiore che ragiona e pianifica","Provi sensazioni di come ti sentiresti in quel futuro"]},
+  {q:"Quale frase rappresenta meglio il tuo modo di esprimere apprezzamento?",
+   opts:["'Questo progetto ha un aspetto davvero brillante!'","'Quello che hai detto mi ha davvero convinto'","'Mi sono sentito/a davvero bene in questo progetto'"]},
+  {q:"Quando sei in ascolto tendi a...",
+   opts:["Guardare intensamente il volto dell'altro cercando conferme visive","Concentrarti sulle parole e sul tono della voce","Sentirti coinvolto/a emotivamente, quasi assorbirne le sensazioni"]},
+  {q:"Il tuo modo di orientarti in una città sconosciuta è...",
+   opts:["Usare una mappa visiva o ricordare punti di riferimento visivi","Chiedere indicazioni verbali dettagliate e seguirle mentalmente","Seguire il senso di orientamento e 'sentire' la direzione giusta"]},
+  {q:"Quando stai bene nella vita in generale riesci a...",
+   opts:["Avere chiarezza, vedere i tuoi obiettivi con nitidezza","Essere in sintonia con te stesso, il dialogo interno è tranquillo","Sentirti a tuo agio nel corpo, rilassato/a fisicamente ed emotivamente"]},
+  {q:"Quale tipo di presentazione ti risulta più coinvolgente?",
+   opts:["Piena di immagini, video, infografiche e colori","Dettagliata, logica, con argomentazioni ben strutturate","Interattiva, con esempi pratici e momenti di partecipazione attiva"]},
+  {q:"Quando fai una scelta importante, il criterio principale è...",
+   opts:["Come immagino che sarà il risultato — la visione mi deve convincere","Che abbia senso logico — le ragioni devono reggere l'analisi","Come mi sento ad riguardo — la scelta deve 'sentirsi' giusta"]},
+  {q:"In una conversazione difficile o emotiva tendi a...",
+   opts:["Mantenere il contatto visivo e osservare le reazioni dell'altro","Scegliere con cura le parole per esprimere esattamente il concetto","Avvicinarti fisicamente, usare il contatto o parlare con calore nel tono"]},
+  {q:"Il tuo ideale di benessere e ricarica è...",
+   opts:["Guardare qualcosa di bello: arte, natura, cinema, paesaggi","Ascoltare musica, un podcast interessante o avere buone conversazioni","Fare attività fisica, massaggio, o semplicemente stare in un luogo confortevole"]}
+];
+
+// Correlations data per VAK
+const VAK_DATA = {
+  V: {
+    nome: "Visivo",
+    colore: "#c87820",
+    emoji: "👁",
+    descrizione: "Elabori la realtà attraverso immagini e rappresentazioni visive. Il tuo pensiero è rapido e per fotogrammi. Hai bisogno di 'vedere' per capire — schemi, grafici e mappe ti aiutano enormemente. Noti immediatamente ordine/disordine, colori e forma delle persone e degli ambienti.",
+    postura: "Postura eretta, spalle alte, collo proteso. Respirazione alta (toracica). Voce nasalizzata, rapida, volume alto. Gesti ampi verso l'alto. Sguardo in alto quando ricorda/costruisce.",
+    frasi: ["Mi pare che...", "Vedo chiaramente", "Quadro chiaro", "Illuminante", "Focalizziamo", "Sembra evidente", "Ho avuto un flash", "La vedo così"],
+    satir: "Asta/Accusatore",
+    satir_desc: "Tende ad un approccio diretto e assertivo. Sa imporre il punto di vista. Usa il linguaggio in modo deciso.",
+    enneatipi: "3, 7, 8",
+    enn_desc: "I tipi orientati all'azione e all'immagine (3-Manager, 7-Artista, 8-Capo) hanno spesso accesso visivo.",
+    chakra: "3° (Manipura) e 6° (Ajna)",
+    chakra_desc: "Plesso solare (potere, azione) e Terzo Occhio (visione, intuizione).",
+    at_stato: "Genitore Normativo / Adulto",
+    at_desc: "Il visivo tende al GN per la struttura e all'Adulto per l'analisi. In AT il canale Visivo corrisponde al pensiero strutturato.",
+    onde: "Beta/Gamma in accesso — mente veloce e orientata all'azione.",
+    comunicare: "Usa immagini, metafore visive e presentazioni grafiche. Sii sintetico/a. Mostragli il 'quadro complessivo' prima dei dettagli. Mantieni il contatto visivo. Evita discorsi lunghi senza supporto visivo.",
+    adattamento: "Schizoide/Creativo e Antisociale/Affascinante"
+  },
+  A: {
+    nome: "Auditivo",
+    colore: "#1565c0",
+    emoji: "🎵",
+    descrizione: "Elabori la realtà attraverso parole, suoni e dialogo interiore. Il tuo pensiero è sequenziale e verbale. Hai bisogno di 'sentire' le spiegazioni per capire. Sei molto sensibile al tono di voce, alle parole scelte e all'armonia della comunicazione.",
+    postura: "Posizione 'telefono': testa inclinata con mano vicino all'orecchio. Voce melodica, modulata, dizione corretta. Gesti all'altezza del petto. Tamburella le dita. Sguardo laterale quando ricorda.",
+    frasi: ["Mi suona giusto", "Sento la tua riluttanza", "Siamo in sintonia", "Sono tutt'orecchie", "Qualcosa mi dice che...", "Non hai risposto a tono", "Si esprime bene"],
+    satir: "Cerchio/Superlogico",
+    satir_desc: "Usa la logica per analizzare e convincere. Valuta ogni singola parola. Braccia conserte o mento poggiato sulla mano.",
+    enneatipi: "1, 5, 6",
+    enn_desc: "I tipi orientati all'intelletto e all'analisi (1-Perfezionista, 5-Eremita, 6-Leale) hanno spesso accesso auditivo.",
+    chakra: "5° (Vishuddha) e 7° (Sahasrara)",
+    chakra_desc: "Gola (espressione, comunicazione, parola) e Corona (intelletto, saggezza).",
+    at_stato: "Adulto / Genitore Normativo",
+    at_desc: "L'auditivo digitale è fortemente Adulto (logica, dati). L'auditivo analogico ha forte componente di Genitore Normativo (regole, struttura).",
+    onde: "Alfa in elaborazione — mente ordinante, organizza sequenzialmente le informazioni.",
+    comunicare: "Sii preciso/a nelle parole. Dai le spiegazioni in modo sequenziale e logico. Evita musica o rumori di fondo durante i colloqui importanti. Il tono di voce conta più delle parole. Lascia spazio ai silenzi per elaborare.",
+    adattamento: "Paranoide/Brillante e Ossessivo/Stakanovista"
+  },
+  K: {
+    nome: "Cenestesico",
+    colore: "#2e7d4f",
+    emoji: "🤲",
+    descrizione: "Elabori la realtà attraverso sensazioni fisiche ed emozioni. Il tuo pensiero è lento e profondo. Hai bisogno di 'sentire' fisicamente o emotivamente per capire e decidere. Sei molto empatico/a e assorbi le energie dell'ambiente e delle persone intorno a te.",
+    postura: "Corpo e testa verso il basso. Muscoli rilassati. Respirazione bassa (addominale). Voce lenta, profonda, con pause frequenti. Gesti verso il basso. Palmi verso l'alto. Sguardo in basso quando elabora.",
+    frasi: ["Me lo sento dentro", "Ho la sensazione che...", "Toccare con mano", "Peso sulle spalle", "Mi sento a disagio", "Non siamo affini", "Ho bisogno di contatto"],
+    satir: "Triangolo/Propiziatore",
+    satir_desc: "Cerca accordo e tende a rispondere sì. Postura accogliente. Palmi verso l'alto. Sa creare empatia e prendersi cura degli altri.",
+    enneatipi: "2, 4, 9",
+    enn_desc: "I tipi orientati alla relazione e all'emozione (2-Altruista, 4-Romantico, 9-Diplomatico) hanno spesso accesso cenestesico.",
+    chakra: "1° (Muladhara), 2° (Svadhisthana) e 4° (Anahata)",
+    chakra_desc: "Radice (corpo, terra), Sacrale (emozioni, relazioni) e Cuore (amore, connessione).",
+    at_stato: "Bambino Libero / Bambino Adattato",
+    at_desc: "Il cenestesico opera molto dal Bambino — sia il BL (spontaneità, sentire autentico) che il BA (adattarsi, sentire le aspettative altrui).",
+    onde: "Theta in accesso interiore — collegamento all'inconscio, creatività profonda, sensazioni viscerali.",
+    comunicare: "Usa il contatto fisico appropriato (stretta di mano calorosa, pat sulla spalla). Parla lentamente e con calore nel tono. Condividi esperienze pratiche. Valida prima le sue sensazioni, poi argomenta. Non affrettare le decisioni.",
+    adattamento: "Istrionico/Entusiasta e Passivo-Aggressivo/Oppositivo"
+  }
+};
+
+// State
+let vakAnswers = new Array(24).fill(null);
+let vakCurrentQ = 0;
+
+function initVakTest(){
+  renderVakQ();
+}
+
+function renderVakQ(){
+  const q = VAK_QUESTIONS[vakCurrentQ];
+  const letters = ['V','A','K'];
+  const icons = ['👁','🎵','🤲'];
+
+  document.getElementById('vak-q-counter').textContent = (vakCurrentQ+1) + ' / 24';
+  document.getElementById('vak-prog').style.width = (((vakCurrentQ+1)/24)*100) + '%';
+  document.getElementById('vak-prev-btn').disabled = vakCurrentQ === 0;
+
+  const sel = vakAnswers[vakCurrentQ];
+  document.getElementById('vak-next-btn').disabled = sel === null;
+  document.getElementById('vak-next-btn').textContent = vakCurrentQ === 23 ? 'Calcola il mio profilo →' : 'Avanti →';
+
+  document.getElementById('vak-q-area').innerHTML =
+    '<div class="vak-q-num">Domanda ' + (vakCurrentQ+1) + ' di 24</div>' +
+    '<div class="vak-q-text">' + q.q + '</div>' +
+    '<div class="vak-options">' +
+    q.opts.map((opt, i) =>
+      '<button class="vak-opt' + (sel===i?' selected':'') + '" onclick="vakSelect(' + i + ')">' +
+      '<span class="vak-opt-letter">' + icons[i] + '</span>' +
+      '<span>' + opt + '</span>' +
+      '</button>'
+    ).join('') +
+    '</div>';
+}
+
+function vakSelect(idx){
+  vakAnswers[vakCurrentQ] = idx;
+  document.getElementById('vak-next-btn').disabled = false;
+  renderVakQ();
+}
+
+function vakPrev(){
+  if(vakCurrentQ > 0){ vakCurrentQ--; renderVakQ(); }
+}
+
+function vakNext(){
+  if(vakAnswers[vakCurrentQ] === null) return;
+  if(vakCurrentQ < 23){ vakCurrentQ++; renderVakQ(); }
+  else { calcVakResult(); }
+}
+
+function calcVakResult(){
+  // Count V(0), A(1), K(2)
+  const scores = {V:0, A:0, K:0};
+  const keys = ['V','A','K'];
+  vakAnswers.forEach(a => { if(a!==null) scores[keys[a]]++; });
+
+  const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const dominant = sorted[0][0];
+  const second = sorted[1][0];
+  const d = VAK_DATA[dominant];
+  const s = VAK_DATA[second];
+
+  // Colors
+  const COL = {V:'#c87820', A:'#1565c0', K:'#2e7d4f'};
+
+  // Hide test, show result
+  document.getElementById('vak-test-wrap').style.display = 'none';
+  const res = document.getElementById('vak-result');
+  res.classList.add('show');
+
+  // Build bars HTML
+  const maxScore = sorted[0][1];
+  const barsHtml = sorted.map(([k, sc]) =>
+    '<div class="vak-bar-col">' +
+    '<div class="vak-bar-score" style="color:' + COL[k] + '">' + sc + '</div>' +
+    '<div class="vak-bar-wrap"><div class="vak-bar-fill" style="height:' + Math.round(sc/24*100) + '%;background:' + COL[k] + '"></div></div>' +
+    '<div class="vak-bar-label" style="color:' + COL[k] + '">' + VAK_DATA[k].emoji + ' ' + VAK_DATA[k].nome + '</div>' +
+    '</div>'
+  ).join('');
+
+  // Correlations
+  const corrHtml =
+    '<div class="vak-corr-card"><div class="vak-corr-label">Triade di Satir</div><div class="vak-corr-value">' + d.satir + '</div><div class="vak-corr-sub">' + d.satir_desc + '</div></div>' +
+    '<div class="vak-corr-card"><div class="vak-corr-label">Enneatipi correlati</div><div class="vak-corr-value">T' + d.enneatipi.split(',').join(' · T') + '</div><div class="vak-corr-sub">' + d.enn_desc + '</div></div>' +
+    '<div class="vak-corr-card"><div class="vak-corr-label">Chakra principali</div><div class="vak-corr-value">' + d.chakra + '</div><div class="vak-corr-sub">' + d.chakra_desc + '</div></div>' +
+    '<div class="vak-corr-card"><div class="vak-corr-label">Stato AT prevalente</div><div class="vak-corr-value">' + d.at_stato + '</div><div class="vak-corr-sub">' + d.at_desc + '</div></div>' +
+    '<div class="vak-corr-card"><div class="vak-corr-label">Onde cerebrali</div><div class="vak-corr-value">' + d.onde.split(' — ')[0] + '</div><div class="vak-corr-sub">' + (d.onde.split(' — ')[1]||'') + '</div></div>' +
+    '<div class="vak-corr-card"><div class="vak-corr-label">Adattamento AT</div><div class="vak-corr-value">' + d.adattamento + '</div><div class="vak-corr-sub">Adattamenti più frequenti in questo canale</div></div>';
+
+  // Phrases
+  const phrasesHtml = d.frasi.map(f => '<span class="vak-phrase-chip">' + f + '</span>').join('');
+
+  res.innerHTML =
+    '<div class="vak-res-title">Il tuo profilo: <span style="color:' + COL[dominant] + '">' + d.emoji + ' ' + d.nome + '</span>' +
+    (second ? ' con influenza <span style="color:' + COL[second] + '">' + s.emoji + ' ' + s.nome + '</span>' : '') + '</div>' +
+    '<div class="vak-bars">' + barsHtml + '</div>' +
+    '<div class="vak-profile" style="border-color:' + COL[dominant] + '">' +
+    '<div class="vak-profile-tag" style="color:' + COL[dominant] + '">Canale dominante</div>' +
+    '<div class="vak-profile-name">' + d.emoji + ' ' + d.nome + ' — come elabori la realtà</div>' +
+    '<div class="vak-profile-text">' + d.descrizione + '</div>' +
+    '<div class="vak-profile-postura">📐 ' + d.postura + '</div>' +
+    '</div>' +
+    '<div class="vak-phrases"><div class="vak-phrases-title">Frasi tipiche che usi</div><div class="vak-phrases-list">' + phrasesHtml + '</div></div>' +
+    '<div class="vak-correlations">' + corrHtml + '</div>' +
+    '<div class="vak-profile" style="border-color:var(--gold);margin-top:1.5rem">' +
+    '<div class="vak-profile-tag" style="color:var(--gold)">Come comunicare con te</div>' +
+    '<div class="vak-profile-text">' + d.comunicare + '</div>' +
+    '</div>' +
+    '<button class="vak-restart-btn" onclick="restartVak()">↩ Rifai il test</button>';
+
+  res.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function restartVak(){
+  vakAnswers = new Array(24).fill(null);
+  vakCurrentQ = 0;
+  document.getElementById('vak-test-wrap').style.display = 'block';
+  document.getElementById('vak-result').classList.remove('show');
+  document.getElementById('vak-result').innerHTML = '';
+  renderVakQ();
+  document.getElementById('vak-test-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+
 
 </script>
 

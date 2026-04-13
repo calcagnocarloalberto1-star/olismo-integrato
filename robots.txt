@@ -3,7 +3,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /cdn-cgi/
 
 # Principali crawler AI (opt-out dalla raccolta per training)
 User-agent: GPTBot

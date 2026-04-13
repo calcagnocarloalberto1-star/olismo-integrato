@@ -85,6 +85,8 @@ nav{display:flex;align-items:center;gap:.1rem}
   background-position:center 35%;
 }
 #hero.has-photo .hero-overlay{display:block}
+#hero.has-photo .pill{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4)}
+#hero.has-photo .pill:hover{background:rgba(255,255,255,.28)}
 #hero.has-photo .hero-title{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 #hero.has-photo .hero-title em{color:var(--gold)}
 #hero.has-photo .hero-subtitle{color:rgba(255,255,255,.88);text-shadow:0 1px 12px rgba(0,0,0,.4)}
@@ -1436,7 +1438,7 @@ footer{
     Tutto è <em>connesso</em><br>nell'essere umano
   </h1>
   <p class="hero-sub fu d2" style="position:relative;z-index:1">
-    Un archivio vivente che unisce chakra, cristalli curativi, enneatipi, musica terapeutica, fiori di Bach, alimentazione, counseling ed esercizi in un unico sistema interconnesso.
+    Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
   </p>
   <div class="hero-pills fu d3" style="position:relative;z-index:1">
     <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>Chakra</span>
@@ -1444,6 +1446,8 @@ footer{
     <span class="pill" onclick="st('enneagram')"><span class="pill-dot" style="background:#a83232"></span>Enneatipi</span>
     <span class="pill" onclick="st('musica')"><span class="pill-dot" style="background:#2e7d4f"></span>Musica</span>
     <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#5a7a6a"></span>Fiori di Bach</span>
+    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c87820"></span>✿ FES</span>
+    <span class="pill" onclick="st('bush-sec')"><span class="pill-dot" style="background:#4a8040"></span>❋ Bush</span>
     <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>Alimentazione</span>
     <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>Conflitto</span>
     <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>Pranoterapia</span>
@@ -1454,8 +1458,8 @@ footer{
     <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
     <button class="btn-ghost" onclick="st('explorer')">Esplora tutti i domini</button>
   </div>
-  <p class="fu d4" style="position:relative;z-index:1;font-size:.72rem;color:var(--ink4);max-width:520px;margin:1.25rem auto 0;line-height:1.75;font-style:italic">
-    I contenuti di questo sito hanno finalità esclusivamente divulgativa e non sostituiscono la consulenza di operatori olistici qualificati, né il parere del medico o dello psicologo.
+  <p style="position:relative;z-index:1;font-size:.84rem;font-weight:500;color:rgba(255,255,255,.88);max-width:580px;margin:1.5rem auto 0;line-height:1.7;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.4);background:rgba(0,0,0,.18);padding:.6rem 1.2rem;border-radius:8px">
+    ⚠️ I contenuti di questo sito hanno finalità esclusivamente divulgativa e non sostituiscono la consulenza di operatori olistici qualificati, né il parere del medico o dello psicologo.
   </p>
   <div class="scroll-hint" style="z-index:1">scopri</div>
 </section>
@@ -2226,12 +2230,13 @@ footer{
       <div class="sec-div"></div>
     </div>
     <div class="guida-intro">
-      <p>Questo portale è un archivio di conoscenza olistica integrata con finalità esclusivamente divulgativa. Puoi usarlo come <strong>strumento di ricerca</strong> per esplorare connessioni tra discipline, come <strong>supporto al counseling</strong> per orientare il percorso, o come <strong>guida personale</strong> alla crescita interiore. I contenuti non sostituiscono la consulenza di operatori qualificati.</p>
+      <p>Questo portale è un archivio di conoscenza olistica integrata con finalità esclusivamente divulgativa. Include Chakra, Cristalli, Enneagramma Evolutivo, Analisi Transazionale, Fiori di Bach, Fiori Californiani FES (100 essenze), Fiori Australiani Bush (65 essenze), Frequenze Sonore, Alimentazione e Pranoterapia. Puoi usarlo come <strong>strumento di ricerca</strong> per esplorare connessioni tra discipline, come <strong>supporto al counseling</strong> per orientare il percorso, o come <strong>guida personale</strong> alla crescita interiore. I contenuti non sostituiscono la consulenza di operatori qualificati.</p>
     </div>
     <div class="guida-steps">
       <div class="guida-step"><div class="guida-num">1</div><div class="guida-icon">🔍</div><h3>Cerca nel database</h3><p>Usa il bottone "Cerca" in alto o nell'hero. Digita un sintomo, un'emozione, un tipo di personalità, un cristallo. Il sistema collega automaticamente tutti i domini: chakra, cristalli, enneatipi, AT, Bach, frequenze.</p></div>
       <div class="guida-step"><div class="guida-num">2</div><div class="guida-icon">🌳</div><h3>Fai il Test dei 9 Frutti</h3><p>180 domande per scoprire il tuo enneatipo. Rispondi in modo istintivo. Il risultato mostra il tuo profilo completo e lo collega automaticamente a chakra, cristalli, frequenze, adattamenti AT e Fiori di Bach.</p></div>
-      <div class="guida-step"><div class="guida-num">3</div><div class="guida-icon">🧠</div><h3>Fai il Test degli Adattamenti AT</h3><p>40 domande Sì/No per scoprire i tuoi 6 adattamenti di personalità secondo l'Analisi Transazionale AT. Mostra intensità e polarità E/I per ogni adattamento, con porte aperta, bersaglio e trappola.</p></div>
+      <div class="guida-step"><div class="guida-num">3</div><div class="guida-icon">✿</div><h3>Esplora i Fiori Californiani e Australiani</h3><p>Sfoglia le 100 essenze FES (californiane) e le 65 Bush Essences (australiane). Clicca su ogni fiore per vedere funzione, disturbi, chakra ed enneatipi correlati.</p></div>
+      <div class="guida-step"><div class="guida-num">4</div><div class="guida-icon">🧠</div><h3>Fai il Test degli Adattamenti AT</h3><p>40 domande Sì/No per scoprire i tuoi 6 adattamenti di personalità secondo l'Analisi Transazionale AT. Mostra intensità e polarità E/I per ogni adattamento, con porte aperta, bersaglio e trappola.</p></div>
       <div class="guida-step"><div class="guida-num">4</div><div class="guida-icon">🌐</div><h3>Esplora il Database interconnesso</h3><p>Nella sezione Database seleziona un dominio e clicca su qualsiasi elemento. Il pannello di destra mostra tutte le connessioni trasversali. Ogni chip è cliccabile e porta al dettaglio dell'elemento correlato.</p></div>
       <div class="guida-step"><div class="guida-num">5</div><div class="guida-icon">📊</div><h3>Compila Egogramma e Carezze</h3><p>Nella sezione Egogramma sposta i 5 cursori (GN, GA, A, BL, BA) per visualizzare la tua struttura psichica secondo l'AT. Nella sezione Carezze valuta quanto liberamente dai, ricevi, chiedi e rifiuti riconoscimento positivo e negativo.</p></div>
       <div class="guida-step"><div class="guida-num">6</div><div class="guida-icon">❤️</div><h3>Scopri la compatibilità di coppia</h3><p>Nella sezione Compatibilità seleziona due enneatipi per vedere percentuale, punti di forza, sfide e consigli pratici. Basata sulla ricerca di Carlo Alberto Calcagno sulle 81 combinazioni possibili.</p></div>
@@ -2313,10 +2318,14 @@ footer{
         <a class="f-link" onclick="openExp('cristalli')">Cristalli</a>
         <a class="f-link" onclick="openExp('enneatipi')">Enneatipi</a>
         <a class="f-link" onclick="openExp('frequenze')">Frequenze</a>
+        <a class="f-link" onclick="openExp('fes')">✿ Fiori FES</a>
+        <a class="f-link" onclick="openExp('bush')">❋ Fiori Bush</a>
       </div>
       <div>
         <div class="f-col-title">Sezioni</div>
         <a class="f-link" onclick="st('bach')">Fiori di Bach</a>
+        <a class="f-link" onclick="st('fes-sec')">✿ FES Californiani</a>
+        <a class="f-link" onclick="st('bush-sec')">❋ Bush Australiani</a>
         <a class="f-link" onclick="st('alimentazione')">Alimentazione</a>
         <a class="f-link" onclick="st('danza')">Danza del Conflitto</a>
         <a class="f-link" onclick="st('prano')">Pranoterapia</a>

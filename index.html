@@ -1368,6 +1368,77 @@ footer{
 .ego-res-bar-fill{width:100%;border-radius:4px;transition:height .6s ease}
 .ego-res-desc{font-size:.78rem;color:var(--ink3);line-height:1.6;margin-top:1.2rem;max-width:560px;margin-left:auto;margin-right:auto;text-align:center}
 
+
+/* ── AI TABLE ── */
+.ai-table-wrap{overflow-x:auto;margin:1rem 0}
+.ai-table{border-collapse:collapse;width:100%;font-size:.82rem;font-family:'Outfit',sans-serif}
+.ai-table th{background:var(--ink);color:var(--ivory);padding:.5rem .8rem;text-align:left;font-weight:500;font-size:.75rem;letter-spacing:.04em}
+.ai-table td{padding:.45rem .8rem;border-bottom:1px solid var(--ivory3);color:var(--ink2)}
+.ai-table tr:hover td{background:var(--ivory2)}
+.ai-table tr:last-child td{border-bottom:none}
+
+
+/* ── COMPATIBILITÀ CONFLICT DYNAMICS ── */
+.compat-conflict{
+  margin-top:2rem;padding:1.5rem;
+  background:var(--ivory2);border-radius:var(--r);
+  border-left:3px solid var(--gold);
+}
+.compat-conflict h4{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;
+  color:var(--ink);margin-bottom:.4rem;
+}
+.compat-conflict-intro{
+  font-size:.82rem;color:var(--ink3);line-height:1.65;margin-bottom:1.2rem;
+}
+.conflict-cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;
+}
+@media(max-width:640px){.conflict-cards{grid-template-columns:1fr}}
+.conflict-card{
+  background:white;border-radius:8px;padding:1rem;
+  border:1px solid var(--ivory3);
+}
+.conflict-card-name{
+  font-weight:600;font-size:.82rem;color:var(--ink);
+  margin-bottom:.6rem;padding-bottom:.4rem;
+  border-bottom:1px solid var(--ivory3);
+}
+.conflict-row{
+  display:grid;grid-template-columns:90px 1fr;gap:.4rem;
+  margin-bottom:.35rem;font-size:.78rem;line-height:1.5;
+}
+.conflict-row.sotto{background:rgba(253,224,71,.12);padding:.3rem .4rem;border-radius:4px;margin-bottom:.4rem}
+.conflict-lbl{
+  font-weight:600;color:var(--ink3);font-size:.7rem;
+  text-transform:uppercase;letter-spacing:.04em;padding-top:.1rem;
+}
+.conflict-mediator{
+  background:rgba(184,147,90,.1);border-radius:8px;
+  padding:1rem;border:1px solid rgba(184,147,90,.25);
+}
+.conflict-mediator h5{
+  font-size:.82rem;font-weight:600;color:var(--gold);
+  margin-bottom:.4rem;
+}
+.conflict-mediator p{font-size:.8rem;color:var(--ink2);line-height:1.6}
+
+
+/* ── DANZA UPDATE ── */
+.danza-intro-box{
+  background:var(--ivory2);border-radius:var(--r);
+  padding:1.5rem 2rem;margin-bottom:2rem;
+  border-left:3px solid var(--dusty);
+  font-size:.9rem;color:var(--ink2);line-height:1.75;
+}
+.danza-intro-box p{margin-bottom:.5rem}
+.danza-intro-box p:last-child{margin-bottom:0}
+.danza-link{
+  color:var(--gold);font-weight:600;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px;
+}
+.danza-link:hover{color:var(--ink)}
+
 </style>
 
 
@@ -1815,13 +1886,19 @@ footer{
       <div class="sec-eye">Mediazione e Neurobiologia</div>
       <h2 class="sec-title">La Danza <em>del Conflitto</em></h2>
       <div class="sec-div"></div>
+      <p class="sec-desc">Modello neurobiologico del conflitto di coppia — come si innesca, come si rompe il ciclo, come il mediatore interviene.</p>
+    </div>
+    <div class="danza-intro-box">
+      <p>Il conflitto relazionale non è caotico: segue schemi neurobiologici precisi. La <strong>danza del conflitto</strong> è il ciclo automatico tra chi combatte e chi si congela, determinato dall'attivazione del sistema nervoso autonomo di ciascun partner.</p>
+      <p>La via d'uscita <em>non</em> passa dal "ragionare" — durante il conflitto la neocorteccia è offline. Passa dal corpo: regolazione, pausa, respiro.</p>
+      <p style="margin-top:.8rem"><strong>Analisi personalizzata per coppia →</strong> Vai alla sezione <a class="danza-link" onclick="st('compatibilita')">Compatibilità di Coppia</a> e seleziona i due enneatipi: troverai la dinamica di conflitto specifica, gli script del mediatore e gli strumenti pratici.</p>
     </div>
     <div class="danza-hero">
       <div class="danza-text">
-        <h3>Il conflitto è prevedibile. Si può interrompere.</h3>
-        <p>I conflitti relazionali — soprattutto nelle coppie — non sono caotici. Seguono schemi neurobiologici precisi, determinati dall'interazione tra i sistemi nervosi dei partecipanti. Il mediatore che conosce questi schemi può intervenire prima della rottura.</p>
-        <p>La "danza del conflitto" descrive il ciclo automatico tra chi combatte (tipo 8, sistema simpatico attivato) e chi si congela (tipo 9, sistema dorsovagale in shutdown). Più lui si chiude, più lei si intensifica. Più lei si intensifica, più lui si chiude.</p>
-        <p>La via d'uscita non è chiedere alla persona di "essere ragionevole" — la neocorteccia è offline. La via d'uscita passa dal corpo: respiro, pausa, regolazione del sistema nervoso.</p>
+        <h3>🔍 Caso esemplare: Tipo 8 ✦ Tipo 9</h3>
+        <p><em>(Sempronia e Tizio — un caso reale di mediazione familiare)</em></p>
+        <p>La coppia 8-9 è una delle più frequenti in mediazione: chi combatte (T8, simpatico attivato) e chi si congela (T9, dorsovagale in shutdown). I due sistemi nervosi si incastrano e si amplificano reciprocamente.</p>
+        <p><strong>Più Tizio si chiude, più Sempronia si intensifica. Più lei si intensifica, più lui si chiude.</strong> Il ciclo si auto-alimenta finché entrambi non tornano allo Stato 1 (connessione).</p>
       </div>
       <div class="danza-diagram">
         <div class="dd-title">I 5 passi della danza</div>
@@ -3653,6 +3730,83 @@ const FRUITS_NAMES = {
   7:"🍍 L'Entusiasta",8:"🍑 Il Capo",9:"🍓 Il Diplomatico"
 };
 
+
+// ── CONFLICT DYNAMICS PER TYPE ──
+const CONFLICT_DYNAMICS = {
+  "1": {
+    attivazione: "Sistema simpatico — critica e correzione",
+    inConflitto: "Diventa rigido, critica i dettagli, usa il silenzio gelido o l'argomentazione infinita",
+    sotto: "«Devo che le cose siano fatte bene — ho paura del caos e del giudizio»",
+    sfida: "Dire 'sono deluso' invece di elencare gli errori",
+    regolazione: "Respiro diaframmatico 4-4-4, scrittura, ordine fisico",
+    segnale: "Inizia a contare gli errori altrui o a correggere in modo ripetitivo"
+  },
+  "2": {
+    attivazione: "Sistema simpatico — risentimento da sacrificio",
+    inConflitto: "Si offre ancora di più, poi esplode con accuse di ingratitudine",
+    sotto: "«Non sono abbastanza importante, nessuno mi vede davvero»",
+    sfida: "Dire 'ho bisogno di...' senza aspettare che l'altro lo intuisca",
+    regolazione: "Contatto fisico gentile, riconoscimento verbale esplicito",
+    segnale: "Inizia a fare di più (iperattività affettiva) prima dell'esplosione"
+  },
+  "3": {
+    attivazione: "Sistema simpatico — minaccia all'immagine o all'efficacia",
+    inConflitto: "Diventa freddo, task-oriented, razionalizza tutto, nega le emozioni",
+    sotto: "«Sto fallendo. Non sono abbastanza bravo/a»",
+    sfida: "Fermarsi e sentire prima di agire",
+    regolazione: "Pausa strutturata, riconoscimento dell'emozione sottostante",
+    segnale: "Aumenta il lavoro o le attività per evitare il confronto emotivo"
+  },
+  "4": {
+    attivazione: "Sistema limbico — dolore dell'abbandono o della non-unicità",
+    inConflitto: "Si ritira nel dolore, amplifica l'intensità emotiva, può diventare accusatorio",
+    sotto: "«Non sono abbastanza speciale/a. Sarò abbandonato/a»",
+    sfida: "Esprimere il bisogno senza amplificazione drammatica",
+    regolazione: "Arte, musica, movimento corporeo, rispecchiamento emotivo",
+    segnale: "Inizia a paragonarsi agli altri o a sottolineare cosa manca"
+  },
+  "5": {
+    attivazione: "Sistema parasimpatico dorsovagale — sovraccarico sensoriale",
+    inConflitto: "Si ritira fisicamente o mentalmente, monosillabi, sguardo distante",
+    sotto: "«Sono sopraffatto/a. Ho bisogno di spazio per elaborare»",
+    sfida: "Dire 'ho bisogno di tempo, torno entro X ore' invece di sparire",
+    regolazione: "Solitudine strutturata, scrittura, spazio fisico garantito",
+    segnale: "Inizia a rispondere con fatti e teorie invece di emozioni"
+  },
+  "6": {
+    attivazione: "Sistema simpatico/dorsovagale — ipervigilanza alla minaccia",
+    inConflitto: "Oscilla tra attacco (combatti) e congelamento (shutdown), anticipa scenari peggiori",
+    sotto: "«Non mi fido. Qualcosa andrà storto. Non sono al sicuro»",
+    sfida: "Distinguere la paura reale dalla proiezione",
+    regolazione: "Routine di sicurezza, rassicurazione concreta, respiro",
+    segnale: "Inizia a fare domande 'e se...' oppure a ripetere le stesse preoccupazioni"
+  },
+  "7": {
+    attivazione: "Sistema simpatico — minaccia alla libertà o contatto col dolore",
+    inConflitto: "Cambia argomento, minimizza, usa l'umorismo come difesa, scappa fisicamente o mentalmente",
+    sotto: "«Sto per essere intrappolato/a nel dolore. Devo uscirne»",
+    sfida: "Restare presente nel momento difficile senza fuggire",
+    regolazione: "Movimento fisico breve, poi ritorno al dialogo",
+    segnale: "Inizia a parlare di altri piani, progetti futuri, cambia canale"
+  },
+  "8": {
+    attivazione: "Sistema simpatico — percezione di ingiustizia o debolezza altrui",
+    inConflitto: "Voce alta, gesti espansivi, linguaggio assoluto (mai/sempre), frontalità",
+    sotto: "«Ho paura di non contare nulla. Mi sta lasciando solo/a»",
+    sfida: "Dire 'ho paura' invece di 'sono arrabbiato/a'",
+    regolazione: "Movimento fisico intenso, pausa da 20 minuti, poi ritorno",
+    segnale: "Aumenta il volume e la direttività prima dell'esplosione"
+  },
+  "9": {
+    attivazione: "Sistema dorsovagale — sovraccarico da conflitto, shutdown",
+    inConflitto: "Silenzio, sguardo nel vuoto, risposte automatiche ('va bene', 'come vuoi')",
+    sotto: "«Sono sopraffatto/a. Se reagisco, peggiora. Meglio aspettare che passi»",
+    sfida: "Dire 'questo mi ferisce' prima di disconnettersi",
+    regolazione: "Segnale di pausa fisico, spazio garantito con tempo preciso di rientro",
+    segnale: "Inizia a dare risposte sempre più brevi e vaghe"
+  }
+};
+
 function showCompat(){
   const t1 = document.getElementById("compat-t1").value;
   const t2 = document.getElementById("compat-t2").value;
@@ -3667,9 +3821,43 @@ function showCompat(){
   const forze = (c.forza||[]).map(f=>`<span class="compat-chip forza">${f}</span>`).join("");
   const sfide = (c.sfide||[]).map(s=>`<span class="compat-chip sfida">${s}</span>`).join("");
   
+  const d1 = CONFLICT_DYNAMICS[t1]||{};
+  const d2 = CONFLICT_DYNAMICS[t2]||{};
+  const n1 = FRUITS_NAMES[t1], n2 = FRUITS_NAMES[t2];
+  const isSame = t1 === t2;
+
+  const conflictHtml = `
+    <div class="compat-conflict">
+      <h4>⚡ Dinamica del conflitto</h4>
+      <p class="compat-conflict-intro">In una situazione di tensione, questi due tipi attivano sistemi neurobiologici specifici che si influenzano reciprocamente. Conoscere la "danza" aiuta a interrompere il ciclo prima della rottura.</p>
+      <div class="conflict-cards">
+        <div class="conflict-card">
+          <div class="conflict-card-name">${n1}</div>
+          ${d1.attivazione ? `<div class="conflict-row"><span class="conflict-lbl">Attivazione</span><span>${d1.attivazione}</span></div>` : ''}
+          ${d1.inConflitto ? `<div class="conflict-row"><span class="conflict-lbl">In conflitto</span><span>${d1.inConflitto}</span></div>` : ''}
+          ${d1.sotto ? `<div class="conflict-row sotto"><span class="conflict-lbl">💛 Sotto</span><span>${d1.sotto}</span></div>` : ''}
+          ${d1.sfida ? `<div class="conflict-row"><span class="conflict-lbl">Sfida</span><span>${d1.sfida}</span></div>` : ''}
+          ${d1.regolazione ? `<div class="conflict-row"><span class="conflict-lbl">Regolazione</span><span>${d1.regolazione}</span></div>` : ''}
+        </div>
+        ${isSame ? '' : `<div class="conflict-card">
+          <div class="conflict-card-name">${n2}</div>
+          ${d2.attivazione ? `<div class="conflict-row"><span class="conflict-lbl">Attivazione</span><span>${d2.attivazione}</span></div>` : ''}
+          ${d2.inConflitto ? `<div class="conflict-row"><span class="conflict-lbl">In conflitto</span><span>${d2.inConflitto}</span></div>` : ''}
+          ${d2.sotto ? `<div class="conflict-row sotto"><span class="conflict-lbl">💛 Sotto</span><span>${d2.sotto}</span></div>` : ''}
+          ${d2.sfida ? `<div class="conflict-row"><span class="conflict-lbl">Sfida</span><span>${d2.sfida}</span></div>` : ''}
+          ${d2.regolazione ? `<div class="conflict-row"><span class="conflict-lbl">Regolazione</span><span>${d2.regolazione}</span></div>` : ''}
+        </div>`}
+      </div>
+      <div class="conflict-mediator">
+        <h5>🧭 Script per il mediatore</h5>
+        <p>«Sotto questa intensità, cosa temi?» — La domanda che bypassa la neocorteccia offline e raggiunge l'emozione primaria.</p>
+        <p style="margin-top:.5rem">Strumenti: segnale di pausa fisico concordato · filtro dei 3 secondi · co-regolazione respiratoria · diario della vulnerabilità</p>
+      </div>
+    </div>`;
+
   res.innerHTML = `
     <div class="compat-bar-wrap">
-      <div class="compat-bar-label">${FRUITS_NAMES[t1]} ✦ ${FRUITS_NAMES[t2]}</div>
+      <div class="compat-bar-label">${n1} ✦ ${n2}</div>
       <div class="compat-pct" style="color:${col}">${c.pct}%</div>
       <div class="compat-bar-outer"><div class="compat-bar-inner" style="width:${c.pct}%;background:${col}"></div></div>
       <div style="font-size:.75rem;font-style:italic;color:${col};text-transform:capitalize;margin-top:.3rem">${c.livello}</div>
@@ -3679,6 +3867,7 @@ function showCompat(){
       ${forze?`<div class="compat-section"><h4>Punti di forza</h4><div class="compat-chips">${forze}</div></div>`:''}
       ${sfide?`<div class="compat-section"><h4>Sfide</h4><div class="compat-chips">${sfide}</div></div>`:''}
       ${c.consigli?`<div class="compat-section"><h4>Consigli</h4><p>${c.consigli}</p></div>`:''}
+      ${conflictHtml}
     </div>`;
   res.classList.add("active");
 }
@@ -3800,8 +3989,12 @@ REGOLE DI RISPOSTA:
 - Lunghezza ideale: 220-320 parole. Mai troppo corta, mai troppo lunga
 - Chiudi sempre con una domanda aperta per approfondire
 - NON dire mai "come AI" o "come assistente"
-- Quando l'utente chiede una TABELLA o uno SCHEMA, usa sempre il formato Markdown con | separatori (es. | Fiore | Effetto | Chakra |) — sono incollabili direttamente in Word con formattazione tabella automatica
-- Se crei una tabella, aggiungi sempre una riga separatrice (|---|---|---|) dopo l'intestazione
+- Quando l'utente chiede una TABELLA o uno SCHEMA, usa SEMPRE il formato Markdown con | separatori e riga separatrice. Esempio:
+| Fiore | Effetto | Chakra |
+|---|---|---|
+| Agrimony | Pace interiore | 4° |
+- Le tabelle Markdown vengono renderizzate automaticamente nel chat e sono incollabili in Word
+- Non troncare mai le risposte a metà: completa sempre il pensiero prima di chiudere
 
 I SEI ADATTAMENTI AT (AT — Ware & Joines):
 1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Porta APERTA: comportamento, bersaglio: pensiero, trappola: emozioni. Vettori: GN+, A. Il bambino ha imparato a fare da solo quando non si poteva fidare dell'ambiente. Da adulto: creativo, visionario, ma isolato come difesa.
@@ -3864,7 +4057,12 @@ DISTURBI FISICI E CHAKRA: Stomaco/digestione→3° (528Hz+Citrino+curcuma); Gola
 
 ALIMENTAZIONE PER CHAKRA: 1°:carote,barbabietola; 2°:arance,mango; 3°:zenzero,curcuma; 4°:spinaci,broccoli; 5°:mirtilli,alghe; 6°:uva nera,cacao crudo; 7°:digiuno leggero,acqua pura.
 
-DANZA DEL CONFLITTO (T8-T9): T8 combatte (simpatico attivato), T9 si congela (dorsovagale in shutdown) → circolo vizioso. Soluzione: corpo prima della mente. Script mediatore: "Sotto questa intensità, cosa temi?". Strumenti: segnale di pausa fisico, filtro 3 secondi, co-regolazione respiratoria, diario della vulnerabilità.
+DANZA DEL CONFLITTO — NEUROBIOLOGIA: Ogni enneatipo attiva un pattern specifico in conflitto:
+T1→simpatico/critica; T2→simpatico/risentimento; T3→simpatico/razionalizzazione; T4→limbico/amplificazione; T5→dorsovagale/ritiro; T6→simpatico+dorsovagale/ipervigilanza; T7→simpatico/fuga; T8→simpatico/frontalità; T9→dorsovagale/shutdown.
+CASO ESEMPLARE T8-T9: T8 combatte (simpatico attivato), T9 si congela (dorsovagale in shutdown) → circolo vizioso. Più T9 si chiude, più T8 si intensifica.
+Script mediatore: "Sotto questa intensità, cosa temi?" — bypassa la neocorteccia offline.
+Strumenti universali: segnale di pausa fisico concordato, filtro 3 secondi, co-regolazione respiratoria, diario della vulnerabilità.
+La sezione Compatibilità mostra la dinamica di conflitto SPECIFICA per ogni coppia di enneatipi.
 
 
 I 9 FRUTTI DELL'ALBERO DELLA VITA (sistema Calcagno):
@@ -3926,6 +4124,15 @@ function showTyping(){
 function hideTyping(){const t=document.getElementById("typing-indicator");if(t)t.remove()}
 
 function formatAiReply(text){
+  // Render Markdown tables FIRST (before other replacements)
+  text = text.replace(/(?:^|\n)(\|.+\|)\n(\|[-| :]+\|)\n((\|.+\|\n?)+)/gm, function(match, header, sep, body){
+    const heads = header.split('|').filter(c=>c.trim()).map(c=>'<th>'+c.trim()+'</th>').join('');
+    const rows = body.trim().split('\n').map(row=>{
+      const cells = row.split('|').filter(c=>c.trim()).map(c=>'<td>'+c.trim()+'</td>').join('');
+      return '<tr>'+cells+'</tr>';
+    }).join('');
+    return '<div class="ai-table-wrap"><table class="ai-table"><thead><tr>'+heads+'</tr></thead><tbody>'+rows+'</tbody></table></div>';
+  });
   return text
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\n\n/g,'</p><p>')
@@ -3953,7 +4160,7 @@ async function sendMsg(){
       headers,
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens:1000,
+        max_tokens:2500,
         system:SYSTEM_PROMPT,
         messages:chatHistory
       })

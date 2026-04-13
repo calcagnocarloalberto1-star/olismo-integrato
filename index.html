@@ -1007,24 +1007,82 @@ footer.site-footer{
 #guida{background:white}
 .guida-intro{max-width:700px;margin:0 auto 3.5rem;text-align:center}
 .guida-intro p{font-size:.92rem;font-weight:300;color:var(--ink3);line-height:1.9}
-.guida-steps{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
-@media(max-width:680px){.guida-steps{grid-template-columns:1fr}}
-.guida-step{padding:2rem;background:var(--ivory);border:1.5px solid var(--ivory3);border-radius:var(--rxl);position:relative;transition:all .25s}
+.guida-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:3rem}
+@media(max-width:900px){.guida-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.guida-steps{grid-template-columns:1fr}}
+.guida-step{
+  padding:1.8rem 1.5rem 1.5rem;background:white;
+  border:1px solid var(--border);border-radius:12px;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.guida-step:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1);border-color:var(--gold)}
+.guida-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
 .guida-step:hover{border-color:var(--border2)}
-.guida-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(184,147,90,.15);position:absolute;top:.5rem;right:1rem;line-height:1}
-.guida-icon{font-size:1.6rem;margin-bottom:.9rem}
-.guida-step h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.5rem}
+.guida-num{width:28px;height:28px;border-radius:50%;background:var(--gold);color:white;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.7rem}
+.guida-icon{font-size:1.8rem;margin-bottom:.5rem;display:block}
+.guida-step h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
 .guida-step p{font-size:.83rem;font-weight:300;color:var(--ink3);line-height:1.8}
 .guida-percorsi{margin-top:1rem}
 .guida-percorsi h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:2rem}
-.percorsi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem}
-.percorso-card{padding:1.8rem;background:var(--ivory);border:1.5px solid var(--ivory3);border-radius:var(--rxl);transition:all .22s}
-.percorso-card:hover{border-color:var(--border2)}
-.percorso-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.5rem}
-.percorso-card p{font-size:.8rem;font-weight:300;color:var(--ink3);line-height:1.75}
-.percorso-steps{margin-top:.85rem;display:flex;flex-direction:column;gap:.3rem}
-.ps{font-size:.75rem;color:var(--ink3);display:flex;gap:.5rem;align-items:flex-start}
-.ps-n{color:var(--gold);font-weight:500;flex-shrink:0}
+.percorsi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+
+/* Percorso card redesign */
+.percorso-card{
+  background:white;border-radius:14px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  border:1px solid var(--border);
+  transition:transform .22s,box-shadow .22s;
+  display:flex;flex-direction:column;
+}
+.percorso-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.1)}
+.percorso-header{
+  padding:1.2rem 1.4rem .9rem;
+  display:flex;align-items:flex-start;gap:.9rem;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+.percorso-icon{
+  flex-shrink:0;width:46px;height:46px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;background:rgba(255,255,255,.25);
+}
+.percorso-header-text{}
+.percorso-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;color:white;
+  line-height:1.25;margin:0 0 .25rem;
+}
+.percorso-audience{
+  font-size:.72rem;color:rgba(255,255,255,.82);
+  line-height:1.4;margin:0;
+}
+.percorso-body{padding:1rem 1.4rem 1.4rem;flex:1}
+.percorso-steps{display:flex;flex-direction:column;gap:0}
+.ps{
+  font-size:.78rem;color:var(--ink2);
+  display:flex;align-items:flex-start;gap:.6rem;
+  line-height:1.5;padding:.45rem 0;
+  border-bottom:1px dashed var(--ivory3);
+}
+.ps:last-child{border-bottom:none}
+.ps-n{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  font-size:.63rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+  color:white;margin-top:.05rem;
+}
+/* Colori per ogni percorso */
+.percorso-card:nth-child(1) .percorso-header{background:linear-gradient(135deg,#5c8a5c,#3d6e3d)}
+.percorso-card:nth-child(1) .ps-n{background:#5c8a5c}
+.percorso-card:nth-child(2) .percorso-header{background:linear-gradient(135deg,#3a4a5a,#2a3848)}
+.percorso-card:nth-child(2) .ps-n{background:#3a4a5a}
+.percorso-card:nth-child(3) .percorso-header{background:linear-gradient(135deg,#7b4a22,#5a3518)}
+.percorso-card:nth-child(3) .ps-n{background:#7b4a22}
+.percorso-card:nth-child(4) .percorso-header{background:linear-gradient(135deg,#4527a0,#2d1a7a)}
+.percorso-card:nth-child(4) .ps-n{background:#4527a0}
+.percorso-card:nth-child(5) .percorso-header{background:linear-gradient(135deg,#8a3a5a,#6a2a42)}
+.percorso-card:nth-child(5) .ps-n{background:#8a3a5a}
+.percorso-card:nth-child(6) .percorso-header{background:linear-gradient(135deg,#b8935a,#8a6a3a)}
+.percorso-card:nth-child(6) .ps-n{background:#b8935a}
 
 
 /* ── ENNEAGRAMMA EVOLUTIVO DETTAGLIO ── */
@@ -2282,6 +2340,98 @@ body.dark .dark-toggle{background:#3a3632}
 .v-ba .vc-label{color:#8b5cf6}
 .v-ba-neg .vc-label{color:#6d28d9}
 
+/* ══ GUIDA PERCORSI — Redesign ══ */
+.guida-percorsi{margin-top:2rem}
+.guida-percorsi>h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:600;color:var(--ink1);
+  margin-bottom:1.5rem;
+}
+.guida-percorsi>h3 em{color:var(--gold);font-style:italic}
+.percorsi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+}
+@media(max-width:900px){.percorsi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.percorsi-grid{grid-template-columns:1fr}}
+
+.percorso-card{
+  border-radius:12px;
+  background:white;
+  border:1px solid var(--border);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .2s, box-shadow .2s;
+}
+.percorso-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(0,0,0,.1);
+}
+
+/* Top accent bar */
+.percorso-accent{height:4px;width:100%}
+
+/* Card content */
+.percorso-inner{padding:1.3rem 1.4rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:.9rem}
+
+/* Icon + Badge row */
+.percorso-meta{display:flex;align-items:center;gap:.75rem}
+.percorso-badge{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;flex-shrink:0;
+}
+.percorso-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink4);
+}
+
+/* Title & audience */
+.percorso-title-new{
+  font-size:.95rem;font-weight:700;color:var(--ink1);
+  line-height:1.3;margin:0 0 .2rem;
+}
+.percorso-tag{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.68rem;color:var(--ink3);line-height:1.4;
+  background:var(--ivory2);border-radius:20px;
+  padding:.18rem .6rem;
+}
+
+/* Steps list */
+.percorso-steps-new{
+  display:flex;flex-direction:column;gap:.5rem;
+  flex:1;
+}
+.ps-new{
+  display:flex;align-items:baseline;gap:.55rem;
+  font-size:.78rem;color:var(--ink2);line-height:1.55;
+  padding:.35rem 0;
+  border-bottom:1px solid var(--ivory3);
+}
+.ps-new:last-child{border-bottom:none}
+.ps-new-n{
+  flex-shrink:0;
+  width:18px;height:18px;border-radius:50%;
+  font-size:.62rem;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:white;margin-top:.1rem;
+}
+
+/* CTA button */
+.percorso-cta{
+  margin-top:auto;padding-top:.9rem;
+}
+.percorso-btn{
+  width:100%;padding:.45rem;
+  font-size:.72rem;font-weight:600;
+  border-radius:6px;border:none;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.06em;
+  opacity:.85;transition:opacity .2s;
+}
+.percorso-btn:hover{opacity:1}
 </style>
 
 
@@ -2401,19 +2551,21 @@ body.dark .dark-toggle{background:#3a3632}
     Tutto è <em>connesso</em><br>nell'essere umano
   </h1>
   <p class="hero-sub fu d2" style="position:relative;z-index:1;background:rgba(0,0,0,.22);padding:.5rem 1.2rem;border-radius:8px;backdrop-filter:blur(2px)">
-    Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
+    Un archivio vivente che connette chakra, cristalli, enneatipi, Analisi Transazionale e comunicazione transazionale, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, meditazione e counseling olistico in un unico sistema integrato.
   </p>
   <div class="hero-pills">
     <span class="pill pill-cta" onclick="st('check-integrato')"><span class="pill-dot" style="background:var(--gold)"></span>✦ Profilo olistico</span>
     <span class="pill" onclick="st('test-frutti')"><span class="pill-dot" style="background:#c45a22"></span>🌳 Enneatipo</span>
     <span class="pill" onclick="st('test-adattamenti')"><span class="pill-dot" style="background:#3a4a5a"></span>🧠 Test AT</span>
+    <span class="pill" onclick="st('transazioni')"><span class="pill-dot" style="background:#5a6a7a"></span>🔀 Transazioni</span>
     <span class="pill" onclick="st('vak')"><span class="pill-dot" style="background:#1565c0"></span>👁 VAK</span>
     <span class="pill" onclick="st('compatibilita')"><span class="pill-dot" style="background:#8a6a7a"></span>💑 Coppia</span>
     <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>◉ Chakra</span>
     <span class="pill" onclick="st('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>💎 Cristalli</span>
     <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#2e7d4f"></span>✿ Bach</span>
+    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c87820"></span>🌼 FES</span>
+    <span class="pill" onclick="st('bush-sec')"><span class="pill-dot" style="background:#4a7a40"></span>🌿 Bush</span>
     <span class="pill" onclick="st('meditazione')"><span class="pill-dot" style="background:#4527a0"></span>🧘 Meditazione</span>
-    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c87820"></span>🥗 Dieta</span>
     <span class="pill pill-cta" onclick="st('consulente')"><span class="pill-dot" style="background:var(--gold)"></span>✦ Chiedi all'AI</span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
@@ -3781,75 +3933,102 @@ body.dark .dark-toggle{background:#3a3632}
     <div class="guida-percorsi">
       <h3>Percorsi <em>consigliati</em></h3>
       <div class="percorsi-grid">
-
         <div class="percorso-card">
-          <h4>🌱 Primo approccio — scoprire il sistema</h4>
-          <p>Per chi arriva per la prima volta senza sapere da dove iniziare.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Fai il <strong>Check Integrato</strong> (27 domande, 8 minuti)</div>
-            <div class="ps"><span class="ps-n">2</span>Incolla il profilo nella <strong>Chat AI</strong> e chiedi «analizza il mio profilo»</div>
-            <div class="ps"><span class="ps-n">3</span>Fai il <strong>Test dei 9 Frutti</strong> per confermare l'enneatipo</div>
-            <div class="ps"><span class="ps-n">4</span>Esplora la scheda del tuo tipo nella sezione <strong>Enneatipi</strong></div>
+          <div class="percorso-accent" style="background:#2e7d4f"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#2e7d4f1a">🌱</div>
+              <div>
+                <div class="percorso-num">Percorso 1 / 6</div>
+                <div class="percorso-title-new">Primo approccio</div>
+                <div style="font-size:.72rem;color:#2e7d4f;font-weight:600;line-height:1.3">Scoprire il sistema da zero</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Per chi arriva per la prima volta</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#2e7d4f">1</span>Fai il <strong>Check Integrato</strong> (27 domande, 8 min)</div><div class="ps-new"><span class="ps-new-n" style="background:#2e7d4f">2</span>Incolla il profilo nella <strong>Chat AI</strong> → «analizza il mio profilo»</div><div class="ps-new"><span class="ps-new-n" style="background:#2e7d4f">3</span>Fai il <strong>Test dei 9 Frutti</strong> per confermare l'enneatipo</div><div class="ps-new"><span class="ps-new-n" style="background:#2e7d4f">4</span>Esplora la scheda del tuo tipo in <strong>Enneatipi</strong></div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#2e7d4f;color:white" onclick="st('check-integrato')">Inizia dal Check →</button></div>
           </div>
         </div>
-
         <div class="percorso-card">
-          <h4>🧠 Percorso AT completo</h4>
-          <p>Per counselor, terapeuti e chi vuole approfondire l'Analisi Transazionale.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Fai il <strong>Test Adattamenti AT</strong> (40 domande)</div>
-            <div class="ps"><span class="ps-n">2</span>Studia la scheda del tuo adattamento primario in <strong>AT Adattamenti</strong></div>
-            <div class="ps"><span class="ps-n">3</span>Compila <strong>Egogramma</strong> e <strong>Carezze</strong> per il profilo funzionale</div>
-            <div class="ps"><span class="ps-n">4</span>Fai il test <strong>VAK</strong> e incrocia con la Triade di Satir</div>
-            <div class="ps"><span class="ps-n">5</span>Chiedi all'AI una lettura integrata AT + enneatipo + copione</div>
+          <div class="percorso-accent" style="background:#3a4a5a"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#3a4a5a1a">🧠</div>
+              <div>
+                <div class="percorso-num">Percorso 2 / 6</div>
+                <div class="percorso-title-new">Percorso AT completo</div>
+                <div style="font-size:.72rem;color:#3a4a5a;font-weight:600;line-height:1.3">Analisi Transazionale in profondità</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Counselor, terapeuti, operatori AT</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#3a4a5a">1</span>Fai il <strong>Test Adattamenti AT</strong> (40 domande)</div><div class="ps-new"><span class="ps-new-n" style="background:#3a4a5a">2</span>Studia il tuo adattamento in <strong>AT Adattamenti</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#3a4a5a">3</span>Compila <strong>Egogramma</strong> e <strong>Carezze</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#3a4a5a">4</span>Analizza le <strong>Transazioni incrociate</strong> del tuo tipo</div><div class="ps-new"><span class="ps-new-n" style="background:#3a4a5a">5</span>Chiedi all'AI una lettura AT + enneatipo + copione</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#3a4a5a;color:white" onclick="st('test-adattamenti')">Test Adattamenti →</button></div>
           </div>
         </div>
-
         <div class="percorso-card">
-          <h4>💎 Guarigione energetica integrata</h4>
-          <p>Per operatori olistici, pranoterapisti e chi lavora con le energie sottili.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Identifica i <strong>chakra</strong> su cui lavorare (sezione Chakra)</div>
-            <div class="ps"><span class="ps-n">2</span>Scegli i <strong>cristalli</strong> correlati (filtro per chakra)</div>
-            <div class="ps"><span class="ps-n">3</span>Aggiungi <strong>Bach / FES / Bush</strong> specifici per il profilo emotivo</div>
-            <div class="ps"><span class="ps-n">4</span>Abbina la <strong>frequenza solfeggio</strong> (sezione Musica) e la meditazione chakra</div>
-            <div class="ps"><span class="ps-n">5</span>Chiedi all'AI una seduta integrata per l'enneatipo specifico del cliente</div>
+          <div class="percorso-accent" style="background:#7b2fa0"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#7b2fa01a">💎</div>
+              <div>
+                <div class="percorso-num">Percorso 3 / 6</div>
+                <div class="percorso-title-new">Guarigione energetica</div>
+                <div style="font-size:.72rem;color:#7b2fa0;font-weight:600;line-height:1.3">Chakra, cristalli, fiori e frequenze</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Operatori olistici e pranoterapisti</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#7b2fa0">1</span>Identifica i <strong>chakra</strong> da lavorare</div><div class="ps-new"><span class="ps-new-n" style="background:#7b2fa0">2</span>Scegli i <strong>cristalli</strong> correlati (filtro chakra)</div><div class="ps-new"><span class="ps-new-n" style="background:#7b2fa0">3</span>Abbina <strong>Bach / FES / Bush</strong> al profilo emotivo</div><div class="ps-new"><span class="ps-new-n" style="background:#7b2fa0">4</span>Imposta la <strong>frequenza solfeggio</strong> e meditazione chakra</div><div class="ps-new"><span class="ps-new-n" style="background:#7b2fa0">5</span>Chiedi all'AI la seduta per l'enneatipo del cliente</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#7b2fa0;color:white" onclick="st('chakra-sec')">Esplora Chakra →</button></div>
           </div>
         </div>
-
         <div class="percorso-card">
-          <h4>🧘 Benessere quotidiano</h4>
-          <p>Per chi vuole integrare pratiche olistiche nella vita di ogni giorno.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Trova la tua pratica di <strong>meditazione</strong> per tipo (tab Enneatipo)</div>
-            <div class="ps"><span class="ps-n">2</span>Genera il tuo <strong>piano alimentare</strong> (Alimentazione → Motore Dietetico)</div>
-            <div class="ps"><span class="ps-n">3</span>Imposta la <strong>frequenza solfeggio</strong> del tuo chakra più debole come sottofondo</div>
-            <div class="ps"><span class="ps-n">4</span>Attiva la <strong>dark mode 🌙</strong> per le sessioni serali di meditazione</div>
+          <div class="percorso-accent" style="background:#c87820"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#c878201a">🧘</div>
+              <div>
+                <div class="percorso-num">Percorso 4 / 6</div>
+                <div class="percorso-title-new">Benessere quotidiano</div>
+                <div style="font-size:.72rem;color:#c87820;font-weight:600;line-height:1.3">Pratiche integrate per ogni giorno</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Chi vuole l'olismo nella vita di tutti i giorni</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#c87820">1</span>Trova la tua <strong>meditazione</strong> per tipo (tab Enneatipo)</div><div class="ps-new"><span class="ps-new-n" style="background:#c87820">2</span>Genera il tuo <strong>piano alimentare</strong> (Motore Dietetico)</div><div class="ps-new"><span class="ps-new-n" style="background:#c87820">3</span>Imposta la <strong>frequenza solfeggio</strong> del chakra più debole</div><div class="ps-new"><span class="ps-new-n" style="background:#c87820">4</span>Pratica la <strong>respirazione</strong> specifica per il tuo adattamento AT</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#c87820;color:white" onclick="st('meditazione')">Meditazioni →</button></div>
           </div>
         </div>
-
         <div class="percorso-card">
-          <h4>💑 Mediazione e lavoro sulla coppia</h4>
-          <p>Per mediatori familiari, counselor di coppia e partner che vogliono capirsi.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Entrambi i partner fanno il <strong>Test dei 9 Frutti</strong></div>
-            <div class="ps"><span class="ps-n">2</span>Consulta la matrice <strong>Compatibilità</strong> (punti di forza, sfide, script)</div>
-            <div class="ps"><span class="ps-n">3</span>Studia la <strong>Danza del Conflitto</strong> per la coppia specifica</div>
-            <div class="ps"><span class="ps-n">4</span>Chiedi all'AI: «Sono T__ e il mio partner è T__, analizza la nostra dinamica»</div>
+          <div class="percorso-accent" style="background:#8a4a6a"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#8a4a6a1a">💑</div>
+              <div>
+                <div class="percorso-num">Percorso 5 / 6</div>
+                <div class="percorso-title-new">Coppia e mediazione</div>
+                <div style="font-size:.72rem;color:#8a4a6a;font-weight:600;line-height:1.3">Neurobiologia relazionale</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Mediatori familiari, counselor di coppia</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#8a4a6a">1</span>Entrambi i partner fanno il <strong>Test dei 9 Frutti</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#8a4a6a">2</span>Consulta la matrice <strong>Compatibilità</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#8a4a6a">3</span>Studia la <strong>Danza del Conflitto</strong> specifica</div><div class="ps-new"><span class="ps-new-n" style="background:#8a4a6a">4</span>Analizza i <strong>Vettori AT</strong> e le transazioni incrociate</div><div class="ps-new"><span class="ps-new-n" style="background:#8a4a6a">5</span>Chiedi all'AI: «Sono T__ e il mio partner è T__, analizza la nostra dinamica»</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#8a4a6a;color:white" onclick="st('compatibilita')">Compatibilità →</button></div>
           </div>
         </div>
-
         <div class="percorso-card">
-          <h4>🔬 Ricerca e approfondimento</h4>
-          <p>Per studenti, ricercatori e professionisti che usano il sito come strumento di studio.</p>
-          <div class="percorso-steps">
-            <div class="ps"><span class="ps-n">1</span>Usa il <strong>Database Explorer</strong> per ricerche cross-disciplinari</div>
-            <div class="ps"><span class="ps-n">2</span>Chiedi all'AI tabelle comparative, correlazioni, approfondimenti teorici</div>
-            <div class="ps"><span class="ps-n">3</span>Scarica la <strong>trascrizione PDF</strong> della consulenza per la documentazione</div>
-            <div class="ps"><span class="ps-n">4</span>Condividi il profilo del Check Integrato con il tuo supervisore o terapeuta</div>
+          <div class="percorso-accent" style="background:#1565c0"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#1565c01a">🔬</div>
+              <div>
+                <div class="percorso-num">Percorso 6 / 6</div>
+                <div class="percorso-title-new">Ricerca e studio</div>
+                <div style="font-size:.72rem;color:#1565c0;font-weight:600;line-height:1.3">Approfondimento sistematico</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Ricercatori, docenti, appassionati avanzati</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">1</span>Usa il <strong>Database Explorer</strong> per ricerche trasversali</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">2</span>Incrocia i 100 fiori <strong>FES</strong> e i 65 <strong>Bush</strong> con chakra/enneatipi</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">3</span>Genera con <strong>Suno AI</strong> la musica terapeutica per un enneatipo</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">4</span>Esplora le <strong>discipline</strong> nella sezione apposita</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#1565c0;color:white" onclick="st('explorer')">Database Explorer →</button></div>
           </div>
         </div>
-
       </div><!-- /percorsi-grid -->
     </div><!-- /guida-percorsi -->
 
@@ -3937,6 +4116,9 @@ body.dark .dark-toggle{background:#3a3632}
         <a class="f-site-link" href="https://frequenze-evolutive.it" target="_blank" rel="noopener">🎵 frequenze-evolutive.it</a>
         <a class="f-site-link" href="https://guarigionequantica.eu" target="_blank" rel="noopener">✨ guarigionequantica.eu</a>
         <a class="f-site-link" href="https://mediaresenzaconfini.org" target="_blank" rel="noopener">⚖ mediaresenzaconfini.org</a>
+        <a class="f-site-link" href="https://percorsidicrescitalucca.it" target="_blank" rel="noopener">🌱 percorsidicrescitalucca.it</a>
+        <a class="f-site-link" href="https://ladanzadelconflitto.it" target="_blank" rel="noopener">⚡ ladanzadelconflitto.it</a>
+        <a class="f-site-link" href="https://tieniinmanolaluce.me" target="_blank" rel="noopener">✦ tieniinmanolaluce.me</a>
       </div>
     </div>
 
@@ -3962,10 +4144,9 @@ body.dark .dark-toggle{background:#3a3632}
       <button class="f-link" onclick="st('test-adattamenti')">🧠 Test Adattamenti AT</button>
       <button class="f-link" onclick="st('egogramma')">⚙ Egogramma interattivo</button>
       <button class="f-link" onclick="st('at-adattamenti')">⬟ Adattamenti AT</button>
-        <button class="f-link" onclick="st('transazioni')">🔀 Comunicazione Transazionale</button>
-        <button class="f-link" onclick="st('transazioni')">🔀 Comunicazione AT</button>
       <button class="f-link" onclick="st('carezze')">◎ Carezze AT</button>
       <button class="f-link" onclick="st('compatibilita')">♡ Compatibilità di coppia</button>
+        <button class="f-link" onclick="st('transazioni')">🔀 Transazioni AT</button>
     </div>
 
     <!-- DISCIPLINE -->
@@ -3993,6 +4174,7 @@ body.dark .dark-toggle{background:#3a3632}
       <button class="f-link" onclick="st('danza')" data-cat="Neuroscienze">🔬 Neuroscienze</button>
       <button class="f-link" onclick="st('vak')">👁 VAK e Satir</button>
       <button class="f-link" onclick="st('at-adattamenti')">⚙ Analisi Transazionale</button>
+        <button class="f-link" onclick="st('transazioni')">🔀 Comunicazione Transazionale</button>
       <button class="f-link" onclick="st('chi-sono')">🧑 Chi sono</button>
     </div>
 
@@ -4008,6 +4190,9 @@ body.dark .dark-toggle{background:#3a3632}
       <a class="f-link" href="https://olismo-integrato.it/robots.txt" target="_blank">robots.txt</a>
       <a class="f-link" href="https://frequenze-evolutive.it" target="_blank" rel="noopener">Frequenze Evolutive ↗</a>
       <a class="f-link" href="https://mediaresenzaconfini.org" target="_blank" rel="noopener">Mediare Senza Confini ↗</a>
+        <a class="f-bar-link" href="https://percorsidicrescitalucca.it" target="_blank" rel="noopener">Percorsi Crescita ↗</a>
+        <a class="f-bar-link" href="https://ladanzadelconflitto.it" target="_blank" rel="noopener">Danza del Conflitto ↗</a>
+        <a class="f-bar-link" href="https://tieniinmanolaluce.me" target="_blank" rel="noopener">Tieni in Mano la Luce ↗</a>
         <a class="f-site-link" href="https://percorsidicrescitalucca.it" target="_blank">Percorsi di Crescita ↗</a>
         <a class="f-site-link" href="https://ladanzadelconflitto.it" target="_blank">La Danza del Conflitto ↗</a>
         <a class="f-site-link" href="https://tieniinmanolaluce.me" target="_blank">Tieni in Mano la Luce ↗</a>

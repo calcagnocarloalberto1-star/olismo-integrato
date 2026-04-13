@@ -115,6 +115,8 @@
 </script>
 
 <!-- ══ GOOGLE FONTS (consenso preferibile — vedi cookie banner) ══ -->
+<!-- jsPDF per export chat -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1786,6 +1788,32 @@ footer{
   font-size:.78rem;font-weight:600;cursor:pointer;
 }
 
+
+/* ══ PDF EXPORT BUTTON ══ */
+.chat-pdf-btn{
+  display:flex;align-items:center;gap:.35rem;
+  padding:.38rem .85rem;
+  background:transparent;border:1px solid var(--border2);
+  border-radius:16px;color:var(--ink3);font-size:.72rem;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+  font-family:'Outfit',sans-serif;
+}
+.chat-pdf-btn:hover{background:var(--gold);color:white;border-color:var(--gold)}
+.chat-pdf-btn svg{width:13px;height:13px;flex-shrink:0}
+
+
+/* ══ CHAT PDF BUTTON ══ */
+.chat-pdf-btn{
+  display:flex;align-items:center;gap:.4rem;margin-left:auto;
+  padding:.38rem .85rem;background:none;border:1.5px solid var(--border2);
+  color:var(--ink3);border-radius:20px;font-size:.72rem;font-weight:500;
+  cursor:pointer;font-family:'Outfit',sans-serif;letter-spacing:.04em;
+  transition:all .2s;white-space:nowrap;
+}
+.chat-pdf-btn:hover{background:var(--gold);color:white;border-color:var(--gold)}
+.chat-pdf-btn svg{width:13px;height:13px}
+.chat-pdf-btn.loading{opacity:.5;cursor:wait}
+
 </style>
 
 
@@ -1940,6 +1968,13 @@ footer{
           <p>Integrazione di chakra · cristalli · enneatipi · Bach · frequenze · alimentazione</p>
         </div>
         <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
+        <button class="chat-pdf-btn" onclick="exportChatPdf()" title="Scarica conversazione in PDF">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          Scarica PDF
+        </button>
       </div>
       
     <div class="chat-suggestions">
@@ -5841,6 +5876,703 @@ document.addEventListener('keydown', e=>{
   if(e.key === 'Escape') closePrivacy();
 });
 
+
+// ══════════════════════════════════════════════════════════
+// EXPORT CHAT PDF
+// ══════════════════════════════════════════════════════════
+function exportChatPdf(){
+  const msgs = document.querySelectorAll('#chat-messages .msg');
+  if(!msgs || msgs.length === 0){
+    alert('Nessun messaggio nella chat da esportare.');
+    return;
+  }
+
+  // Collect messages
+  const items = [];
+  msgs.forEach(msg => {
+    const isAi = msg.classList.contains('ai');
+    const bubble = msg.querySelector('.msg-bubble');
+    const time = msg.querySelector('.msg-time');
+    if(bubble){
+      items.push({
+        role: isAi ? 'ai' : 'user',
+        html: bubble.innerHTML,
+        time: time ? time.textContent : ''
+      });
+    }
+  });
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('it-IT', {day:'2-digit',month:'long',year:'numeric'});
+  const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit',minute:'2-digit'});
+
+  // Build messages HTML
+  const msgsHtml = items.map(m => {
+    if(m.role === 'ai'){
+      return `<div class="msg ai">
+        <div class="msg-header">
+          <span class="msg-avatar-ai">◉</span>
+          <span class="msg-sender">Consulente Olistica AI</span>
+          <span class="msg-time">${m.time}</span>
+        </div>
+        <div class="msg-body ai-body">${m.html}</div>
+      </div>`;
+    } else {
+      return `<div class="msg user">
+        <div class="msg-header user-hdr">
+          <span class="msg-time">${m.time}</span>
+          <span class="msg-sender">Tu</span>
+          <span class="msg-avatar-user">T</span>
+        </div>
+        <div class="msg-body user-body">${m.html}</div>
+      </div>`;
+    }
+  }).join('');
+
+  const printHtml = `<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Consulenza Olistica — ${dateStr}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap');
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Outfit',sans-serif;
+    font-size:11pt;
+    color:#2a2520;
+    background:white;
+    line-height:1.6;
+  }
+
+  /* ── COVER HEADER ── */
+  .pdf-header{
+    background:linear-gradient(135deg,#2a2520 0%,#3a3028 60%,#4a3820 100%);
+    color:white;
+    padding:2.4rem 2.8rem 2rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .pdf-header::before{
+    content:'';
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    background:radial-gradient(ellipse at 80% 50%, rgba(184,147,90,.18), transparent 70%);
+  }
+  .pdf-brand{
+    display:flex;align-items:center;gap:.9rem;
+    margin-bottom:1.4rem;
+    position:relative;
+  }
+  .pdf-brand-mark{
+    width:42px;height:42px;border-radius:50%;
+    border:1.5px solid rgba(184,147,90,.6);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;color:#b8935a;
+    background:rgba(184,147,90,.08);
+    flex-shrink:0;
+  }
+  .pdf-brand-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.45rem;font-weight:400;letter-spacing:.12em;
+    color:white;
+  }
+  .pdf-brand-name span{color:#b8935a}
+  .pdf-subtitle{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.4);margin-top:.1rem;
+  }
+  .pdf-session-info{
+    position:relative;
+    border-top:1px solid rgba(184,147,90,.2);
+    padding-top:1rem;
+  }
+  .pdf-session-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;font-weight:300;color:rgba(255,255,255,.9);
+    margin-bottom:.3rem;
+  }
+  .pdf-session-meta{
+    font-size:.78rem;color:rgba(255,255,255,.45);
+    display:flex;gap:1.5rem;flex-wrap:wrap;
+  }
+  .pdf-session-meta span::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#b8935a;margin-right:.4rem;vertical-align:middle}
+
+  /* ── GOLD BAND ── */
+  .pdf-band{
+    height:3px;
+    background:linear-gradient(90deg,#b8935a,#d4a96a,#e8c990,#d4a96a,#b8935a);
+  }
+
+  /* ── CONTENT AREA ── */
+  .pdf-content{
+    padding:1.8rem 2.8rem 1rem;
+  }
+
+  /* ── MESSAGES ── */
+  .msg{
+    margin-bottom:1.4rem;
+    page-break-inside:avoid;
+  }
+  .msg-header{
+    display:flex;align-items:center;gap:.5rem;
+    margin-bottom:.4rem;
+    font-size:.72rem;
+  }
+  .user-hdr{justify-content:flex-end}
+  .msg-avatar-ai{
+    width:20px;height:20px;border-radius:50%;
+    background:#b8935a;color:white;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:.65rem;flex-shrink:0;
+  }
+  .msg-avatar-user{
+    width:20px;height:20px;border-radius:50%;
+    background:#3a3028;color:white;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:.6rem;font-weight:600;flex-shrink:0;
+  }
+  .msg-sender{font-weight:600;color:#2a2520;font-size:.75rem}
+  .msg-time{color:#a89e92;font-size:.68rem;margin-left:.3rem}
+
+  .msg-body{
+    padding:.9rem 1.1rem;
+    border-radius:0 10px 10px 10px;
+    font-size:10pt;line-height:1.75;
+  }
+  .ai-body{
+    background:#f9f5ef;
+    border:1px solid rgba(184,147,90,.15);
+    border-left:3px solid #b8935a;
+    color:#2a2520;
+    max-width:90%;
+  }
+  .user-body{
+    background:#2a2520;
+    color:white;
+    border-radius:10px 0 10px 10px;
+    margin-left:auto;
+    max-width:75%;
+    text-align:left;
+  }
+  .user.msg .msg-body{
+    margin-left:auto;
+  }
+
+  /* Markdown rendering in AI messages */
+  .ai-body strong{font-weight:600;color:#1a1510}
+  .ai-body em{font-style:italic;color:#4a4540}
+  .ai-body p{margin-bottom:.5rem}
+  .ai-body p:last-child{margin-bottom:0}
+  .ai-body br + br{display:none}
+  .ai-body ul,.ai-body ol{padding-left:1.2rem;margin:.3rem 0}
+  .ai-body li{margin-bottom:.2rem}
+  .ai-body h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:#b8935a;margin:.6rem 0 .2rem}
+
+  /* Tables in AI */
+  .ai-table-wrap{overflow-x:auto;margin:.6rem 0}
+  .ai-table{border-collapse:collapse;width:100%;font-size:9pt}
+  .ai-table th{background:#2a2520;color:white;padding:.35rem .6rem;font-size:8pt;font-weight:500;text-align:left}
+  .ai-table td{padding:.3rem .6rem;border-bottom:1px solid rgba(184,147,90,.2);color:#2a2520}
+  .ai-table tr:last-child td{border-bottom:none}
+
+  /* ── DIVIDER ── */
+  .pdf-msg-divider{
+    display:flex;align-items:center;gap:.8rem;
+    margin:1.2rem 0;
+    font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+    color:#c8bfb4;
+  }
+  .pdf-msg-divider::before,.pdf-msg-divider::after{
+    content:'';flex:1;height:1px;background:rgba(184,147,90,.15);
+  }
+
+  /* ── FOOTER ── */
+  .pdf-footer{
+    margin-top:2rem;
+    padding:1.2rem 2.8rem;
+    border-top:1px solid rgba(184,147,90,.2);
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .pdf-footer-brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:.9rem;color:#b8935a;font-weight:400;
+  }
+  .pdf-footer-meta{
+    font-size:.68rem;color:#a89e92;text-align:right;line-height:1.6;
+  }
+  .pdf-disclaimer{
+    font-size:.65rem;color:#c8bfb4;
+    padding:.7rem 2.8rem 1.5rem;
+    line-height:1.6;
+  }
+
+  /* ── WATERMARK ── */
+  .pdf-watermark{
+    position:fixed;bottom:1.5rem;right:1.5rem;
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;color:rgba(184,147,90,.06);
+    font-weight:300;letter-spacing:.2em;
+    user-select:none;pointer-events:none;
+    transform:rotate(-15deg);
+  }
+
+  /* ── PRINT SETTINGS ── */
+  @media print{
+    @page{
+      margin:0;
+      size:A4 portrait;
+    }
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .no-print{display:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- Bottone stampa (visibile solo a schermo, non nel PDF) -->
+<div class="no-print" style="position:fixed;top:1rem;right:1rem;z-index:999;display:flex;gap:.6rem">
+  <button onclick="window.print()" style="padding:.55rem 1.4rem;background:#b8935a;color:white;border:none;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:sans-serif;box-shadow:0 2px 12px rgba(184,147,90,.35)">
+    ⬇ Salva PDF
+  </button>
+  <button onclick="window.close()" style="padding:.55rem 1rem;background:#f0e8de;color:#4a4540;border:none;border-radius:20px;font-size:.82rem;cursor:pointer;font-family:sans-serif">
+    ✕ Chiudi
+  </button>
+</div>
+
+<!-- WATERMARK -->
+<div class="pdf-watermark">✦</div>
+
+<!-- HEADER -->
+<div class="pdf-header">
+  <div class="pdf-brand">
+    <div class="pdf-brand-mark">✦</div>
+    <div>
+      <div class="pdf-brand-name">Olismo <span>Integrato</span></div>
+      <div class="pdf-subtitle">Portale delle Discipline Olistiche</div>
+    </div>
+  </div>
+  <div class="pdf-session-info">
+    <div class="pdf-session-title">Consulenza Olistica — Sessione del ${dateStr}</div>
+    <div class="pdf-session-meta">
+      <span>${timeStr}</span>
+      <span>${items.length} messaggi</span>
+      <span>olismo-integrato.it</span>
+      <span>Carlo Alberto Calcagno</span>
+    </div>
+  </div>
+</div>
+
+<!-- GOLD BAND -->
+<div class="pdf-band"></div>
+
+<!-- CONTENT -->
+<div class="pdf-content">
+  <div class="pdf-msg-divider">Inizio conversazione</div>
+  ${msgsHtml}
+  <div class="pdf-msg-divider">Fine conversazione</div>
+</div>
+
+<!-- FOOTER -->
+<div class="pdf-footer">
+  <div>
+    <div class="pdf-footer-brand">✦ Olismo Integrato</div>
+    <div style="font-size:.68rem;color:#a89e92;margin-top:.2rem">olismo-integrato.it</div>
+  </div>
+  <div class="pdf-footer-meta">
+    <div>Carlo Alberto Calcagno</div>
+    <div>calcagnocarloalberto1@gmail.com</div>
+    <div>+39 347 366 6508</div>
+    <div>Esportato il ${dateStr} alle ${timeStr}</div>
+  </div>
+</div>
+
+<div class="pdf-disclaimer">
+  ⚠ Le indicazioni fornite dalla Consulente AI hanno finalità esclusivamente divulgativa e non sostituiscono la consulenza di medici, psicologi o altri operatori sanitari qualificati.
+  Il contenuto di questa chat è confidenziale e destinato esclusivamente all'utente che ha condotto la sessione.
+  © ${now.getFullYear()} Carlo Alberto Calcagno — olismo-integrato.it
+</div>
+
+<script>
+  // Auto-open print dialog after fonts load
+  window.addEventListener('load', function(){
+    setTimeout(function(){ window.print(); }, 1200);
+  });
+\u003c/script>
+</body>
+</html>`;
+
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if(!win){
+    alert('Il browser ha bloccato il popup. Consenti i popup per questo sito e riprova.');
+    return;
+  }
+  win.document.write(printHtml);
+  win.document.close();
+}
+
+
+// ══════════════════════════════════════════════
+// EXPORT CHAT → PDF con jsPDF
+// ══════════════════════════════════════════════
+
+async function exportChatPdf(){
+  const btn = document.querySelector('.chat-pdf-btn');
+  if(!chatHistory || chatHistory.length < 2){
+    alert('Nessuna conversazione da scaricare. Invia almeno un messaggio prima.');
+    return;
+  }
+
+  if(btn){ btn.classList.add('loading'); btn.textContent = '⏳ Generazione...'; }
+
+  try {
+    // Wait for jsPDF to load
+    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+      throw new Error('jsPDF non disponibile. Ricarica la pagina e riprova.');
+    }
+    const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+
+    // ── Costanti design ──
+    const GOLD = [184, 147, 90];
+    const GOLD_LIGHT = [245, 236, 216];
+    const IVORY = [249, 245, 239];
+    const IVORY2 = [243, 237, 227];
+    const INK = [42, 37, 32];
+    const INK2 = [74, 69, 64];
+    const INK3 = [122, 114, 104];
+    const WHITE = [255, 255, 255];
+    const BLUE_LIGHT = [224, 234, 248];
+
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+
+    const PW = doc.internal.pageSize.getWidth();  // 210mm
+    const PH = doc.internal.pageSize.getHeight(); // 297mm
+    const ML = 16;   // margin left
+    const MR = 16;   // margin right
+    const MT = 30;   // margin top (after header)
+    const MB = 22;   // margin bottom (before footer)
+    const CW = PW - ML - MR; // content width
+
+    let page = 1;
+    let y = 0;
+
+    // ── Helper: strip HTML ──
+    function stripHtml(h){
+      const d = document.createElement('div');
+      d.innerHTML = h;
+      return (d.textContent || d.innerText || '').trim();
+    }
+
+    // ── Helper: wrap text ──
+    function wrapText(text, maxW, fontSize){
+      doc.setFontSize(fontSize);
+      return doc.splitTextToSize(text, maxW);
+    }
+
+    // ── Draw page header ──
+    function drawHeader(){
+      // Gold bar top
+      doc.setFillColor(...GOLD);
+      doc.rect(0, 0, PW, 7, 'F');
+
+      // Logo area
+      doc.setFillColor(...IVORY);
+      doc.rect(0, 7, PW, 18, 'F');
+
+      // Logo mark ◉
+      doc.setFillColor(...GOLD);
+      doc.circle(ML + 5, 16, 4, 'F');
+      doc.setTextColor(...WHITE);
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'bold');
+      doc.text('✦', ML + 3.5, 17.5);
+
+      // Site name
+      doc.setTextColor(...INK);
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'bold');
+      doc.text('OLISMO INTEGRATO', ML + 12, 14);
+
+      // Subtitle
+      doc.setFontSize(7.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...INK3);
+      doc.text('Consulente Olistica AI  ·  Carlo Alberto Calcagno', ML + 12, 19);
+
+      // URL right
+      doc.setFontSize(7);
+      doc.setTextColor(...GOLD);
+      doc.text('olismo-integrato.it', PW - MR - 2, 19, {align: 'right'});
+
+      // Thin gold separator
+      doc.setDrawColor(...GOLD);
+      doc.setLineWidth(0.3);
+      doc.line(ML, 25, PW - MR, 25);
+
+      y = MT;
+    }
+
+    // ── Draw page footer ──
+    function drawFooter(){
+      const fy = PH - 14;
+      doc.setDrawColor(...GOLD);
+      doc.setLineWidth(0.2);
+      doc.line(ML, fy, PW - MR, fy);
+
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...INK3);
+
+      const dateStr = new Date().toLocaleDateString('it-IT', {day:'2-digit', month:'long', year:'numeric'});
+      doc.text('olismo-integrato.it', ML, fy + 5);
+      doc.text('Pag. ' + page, PW / 2, fy + 5, {align: 'center'});
+      doc.text(dateStr, PW - MR, fy + 5, {align: 'right'});
+
+      // Disclaimer
+      doc.setFontSize(6.5);
+      doc.setTextColor(180, 175, 170);
+      doc.text('I contenuti hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche. © Carlo Alberto Calcagno', PW/2, fy + 9.5, {align: 'center'});
+    }
+
+    // ── Check page break ──
+    function checkBreak(neededH){
+      if(y + neededH > PH - MB){
+        drawFooter();
+        doc.addPage();
+        page++;
+        drawHeader();
+      }
+    }
+
+    // ── Draw a message bubble ──
+    function drawMessage(role, text, time){
+      const isUser = role === 'user';
+      const maxBubbleW = CW * 0.82;
+      const bubblePad = 3.5;
+      const lineH = 4.5;
+      const fs = 9;
+
+      // Set font for measurement
+      doc.setFontSize(fs);
+      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+
+      // Header label
+      const label = isUser ? '● Tu' : '◉ Consulente Olistica';
+      const labelColor = isUser ? GOLD : INK3;
+
+      // Wrap text
+      const lines = wrapText(text, maxBubbleW - bubblePad * 2, fs);
+      const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
+
+      // Space between messages
+      const spaceBefore = 4;
+      checkBreak(spaceBefore + 5 + bubbleH + 2);
+      y += spaceBefore;
+
+      // Label row
+      doc.setFontSize(7.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...labelColor);
+      const labelX = isUser ? PW - MR - maxBubbleW : ML;
+      doc.text(label, labelX, y);
+
+      // Time
+      if(time){
+        doc.setFontSize(6.5);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(...INK3);
+        const timeX = isUser ? PW - MR : ML + maxBubbleW;
+        doc.text(time, timeX, y, {align: isUser ? 'right' : 'left'});
+      }
+      y += 3.5;
+
+      // Bubble background
+      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
+      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
+
+      doc.setFillColor(...bubbleBgColor);
+      doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
+      doc.setLineWidth(0.3);
+      doc.roundedRect(bubbleX, y, maxBubbleW, bubbleH, 2.5, 2.5, 'FD');
+
+      // User: accent bar on left
+      if(!isUser){
+        doc.setFillColor(...GOLD);
+        doc.rect(bubbleX, y, 1.5, bubbleH, 'F');
+      }
+
+      // Bubble text
+      doc.setFontSize(fs);
+      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+      doc.setTextColor(...INK);
+      let ty = y + bubblePad + lineH - 0.5;
+
+      lines.forEach(line => {
+        // Check if line fits (split across pages not ideal but handled)
+        doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
+        ty += lineH;
+      });
+
+      y += bubbleH;
+    }
+
+    // ── Build the chat list from chatHistory ──
+    // chatHistory = [{role:"user",content:"..."}, {role:"assistant",content:"..."}]
+    // We skip the first AI welcome message if very long
+    const messages = [];
+    const msgEls = document.querySelectorAll('#chat-messages .msg');
+    msgEls.forEach(el => {
+      const isUser = el.classList.contains('user');
+      const bubble = el.querySelector('.msg-bubble');
+      const timeEl = el.querySelector('.msg-time');
+      if(bubble){
+        messages.push({
+          role: isUser ? 'user' : 'ai',
+          text: stripHtml(bubble.innerHTML),
+          time: timeEl ? timeEl.textContent : ''
+        });
+      }
+    });
+
+    if(messages.length === 0){
+      throw new Error('Nessun messaggio trovato nella chat.');
+    }
+
+    // ── Cover page ──
+    // Background
+    doc.setFillColor(...IVORY);
+    doc.rect(0, 0, PW, PH, 'F');
+
+    // Top gold bar
+    doc.setFillColor(...GOLD);
+    doc.rect(0, 0, PW, 55, 'F');
+
+    // Logo mark large
+    doc.setFillColor(255,255,255,0.2);
+    doc.setFillColor(255,255,255);
+    doc.circle(PW/2, 30, 16, 'F');
+    doc.setTextColor(...GOLD);
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.text('✦', PW/2 - 4, 34);
+
+    // Title
+    doc.setTextColor(...WHITE);
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('OLISMO INTEGRATO', PW/2, 63, {align: 'center'});
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Trascrizione della Consulenza Olistica AI', PW/2, 71, {align: 'center'});
+
+    // Gold line
+    doc.setDrawColor(...GOLD);
+    doc.setLineWidth(0.5);
+    doc.line(PW/2 - 40, 78, PW/2 + 40, 78);
+
+    // Date / meta
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('it-IT', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
+    const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+
+    doc.setFontSize(9.5);
+    doc.setTextColor(...INK2);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Data: ' + dateStr + '  |  Ora: ' + timeStr, PW/2, 88, {align: 'center'});
+    doc.text('Messaggi: ' + messages.length + '  |  ' + (messages.filter(m=>m.role==='user').length) + ' domande  ·  ' + (messages.filter(m=>m.role==='ai').length) + ' risposte', PW/2, 95, {align: 'center'});
+
+    // Info box
+    doc.setFillColor(255,255,255);
+    doc.setDrawColor(...GOLD);
+    doc.setLineWidth(0.4);
+    doc.roundedRect(ML + 15, 108, CW - 30, 42, 3, 3, 'FD');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...GOLD);
+    doc.text('Carlo Alberto Calcagno', PW/2, 118, {align: 'center'});
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...INK2);
+    doc.text('Mediatore Familiare Certificato · Formatore · Pranoterapista', PW/2, 124, {align: 'center'});
+    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, 130, {align: 'center'});
+
+    doc.setFontSize(8);
+    doc.setTextColor(...GOLD);
+    doc.text('<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b6b4b9b6b4b2bbbab6b4a7b9bab4b9b7b0a7a1bae495b2b8b4bcb9fbb6bab8">[email&#160;protected]</a>  ·  +39 347 366 6508', PW/2, 138, {align: 'center'});
+    doc.text('olismo-integrato.it', PW/2, 144, {align: 'center'});
+
+    // Discipline chips
+    const chips = ['Chakra','Enneagramma','Fiori di Bach','AT','Frequenze','Cristalli','VAK','Pranoterapia'];
+    const chipStartY = 160;
+    let cx = ML + 8;
+    chips.forEach((chip, i) => {
+      doc.setFontSize(7);
+      const w = doc.getTextWidth(chip) + 6;
+      doc.setFillColor(...GOLD_LIGHT);
+      doc.setDrawColor(...GOLD);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(cx, chipStartY, w, 6, 1.5, 1.5, 'FD');
+      doc.setTextColor(...INK2);
+      doc.text(chip, cx + 3, chipStartY + 4.2);
+      cx += w + 3;
+      if(cx > PW - MR - 30){cx = ML + 8; chipStartY += 10;}
+    });
+
+    // Disclaimer
+    doc.setFontSize(7.5);
+    doc.setTextColor(180, 175, 170);
+    doc.text('Le indicazioni hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche.', PW/2, PH - 30, {align: 'center'});
+
+    // Bottom bar
+    doc.setFillColor(...GOLD);
+    doc.rect(0, PH - 8, PW, 8, 'F');
+    doc.setTextColor(...WHITE);
+    doc.setFontSize(7);
+    doc.text('olismo-integrato.it', PW/2, PH - 3, {align: 'center'});
+
+    // ── Chat pages ──
+    doc.addPage();
+    page = 1;
+    drawHeader();
+
+    // Section title
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...INK);
+    doc.text('Trascrizione della conversazione', ML, y);
+    y += 8;
+
+    // Draw all messages
+    messages.forEach(m => {
+      drawMessage(m.role, m.text, m.time);
+    });
+
+    drawFooter();
+
+    // ── Save ──
+    const dateFile = new Date().toISOString().slice(0,10);
+    doc.save('Olismo-Integrato-Consulenza-' + dateFile + '.pdf');
+
+  } catch(err) {
+    console.error('PDF export error:', err);
+    alert('Errore nella generazione del PDF: ' + err.message);
+  }
+
+  if(btn){
+    btn.classList.remove('loading');
+    btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"/></svg> Scarica PDF`;
+  }
+}
+
 </script>
 
 <!-- PHOTO PICKER (tool per sviluppatore - invisibile agli utenti) -->
@@ -5879,8 +6611,4 @@ document.addEventListener('keydown', e=>{
   <div class="flower-popup-inner">
     <button class="flower-popup-close" onclick="closeFlowerPopup()">✕</button>
     <div class="flower-popup-cat" id="fp-cat"></div>
-    <div class="flower-popup-name">
-      <span class="flower-popup-dot" id="fp-dot"></span>
-      <span id="fp-name"></span>
-    </div>
-  
+    <

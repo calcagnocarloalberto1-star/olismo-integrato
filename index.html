@@ -1710,7 +1710,7 @@ footer.site-footer{
 .chisono-grid{display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start}
 @media(max-width:760px){.chisono-grid{grid-template-columns:1fr}}
 .chisono-card{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);overflow:hidden;position:sticky;top:88px}
-.chisono-avatar{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--ivory2),var(--ivory3));display:flex;align-items:center;justify-content:center;font-size:5rem}
+.chisono-avatar{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--ivory2),var(--ivory3));display:flex;align-items:center;justify-content:center;font-size:5rem;overflow:hidden}
 .chisono-card-body{padding:1.5rem}
 .chisono-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
 .chisono-role{font-size:.78rem;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
@@ -2266,19 +2266,17 @@ body.dark .dark-toggle{background:#3a3632}
     Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
   </p>
   <div class="hero-pills fu d3" style="position:relative;z-index:1">
-    <span class="pill" onclick="st('test-frutti')" style="border-color:var(--gold);color:var(--gold)">🌳 Test Frutti</span>
-    <span class="pill" onclick="st('test-adattamenti')" style="border-color:var(--dusty);color:var(--dusty)">🧠 Test AT</span>
-    <span class="pill" onclick="st('vak')" style="border-color:#6080f0;color:#6080f0">👁 Test VAK</span>
-    <span class="pill" onclick="st('enneagram')"><span class="pill-dot" style="background:#a83232"></span>
-    <span class="pill" onclick="st('danza')"><span class="pill-dot" style="background:#8a6a7a"></span>
-    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>
-    <span class="pill" onclick="openExp('cristalli')"><span class="pill-dot" style="background:#1565c0"></span>
-    <span class="pill" onclick="st('musica')"><span class="pill-dot" style="background:#2e7d4f"></span>
-    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#5a7a6a"></span>
-    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c87820"></span>
-    <span class="pill" onclick="st('bush-sec')"><span class="pill-dot" style="background:#4a8040"></span>
-    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c49a1a"></span>
-    <span class="pill" onclick="st('prano')"><span class="pill-dot" style="background:#c45a22"></span>
+    <span class="pill" onclick="st('check-integrato')" style="border-color:var(--gold);background:rgba(184,147,90,.25)"><span class="pill-dot" style="background:var(--gold)"></span>✦ Profilo olistico</span>
+    <span class="pill" onclick="st('test-frutti')"><span class="pill-dot" style="background:#c45a22"></span>🌳 Scopri l'enneatipo</span>
+    <span class="pill" onclick="st('test-adattamenti')"><span class="pill-dot" style="background:#3a4a5a"></span>🧠 Test AT</span>
+    <span class="pill" onclick="st('vak')"><span class="pill-dot" style="background:#1565c0"></span>👁 Canale VAK</span>
+    <span class="pill" onclick="st('compatibilita')"><span class="pill-dot" style="background:#8a6a7a"></span>💑 Compatibilità coppia</span>
+    <span class="pill" onclick="st('chakra-sec')"><span class="pill-dot" style="background:#7b2fa0"></span>◉ Chakra & Cristalli</span>
+    <span class="pill" onclick="st('bach')"><span class="pill-dot" style="background:#2e7d4f"></span>✿ Fiori di Bach</span>
+    <span class="pill" onclick="st('fes-sec')"><span class="pill-dot" style="background:#c49a1a"></span>✿ FES Californiani</span>
+    <span class="pill" onclick="st('meditazione')"><span class="pill-dot" style="background:#4527a0"></span>🧘 Meditazione</span>
+    <span class="pill" onclick="st('alimentazione')"><span class="pill-dot" style="background:#c87820"></span>🥗 Dieta per tipo</span>
+    <span class="pill" onclick="st('consulente')" style="border-color:var(--gold);background:rgba(184,147,90,.15)"><span class="pill-dot" style="background:var(--gold)"></span>✦ Chiedi all'AI</span>
     <button class="nav-link" onclick="st('meditazione')">🧘 Medit</button>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
@@ -2302,7 +2300,7 @@ body.dark .dark-toggle{background:#3a3632}
       <!-- Card laterale -->
       <div>
         <div class="chisono-card">
-          <div class="chisono-avatar">🧑‍🏫</div>
+          <div class="chisono-avatar"><img src="carloalberto.jpg" alt="Carlo Alberto Calcagno" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div class="chisono-card-body">
             <div class="chisono-name">Carlo Alberto Calcagno</div>
             <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
@@ -2379,22 +2377,6 @@ body.dark .dark-toggle{background:#3a3632}
     </div>
   </div>
 </section>
-
-
-<!-- ▐▐ CRISTALLI ▐▐ -->
-<section id="cristalli">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Cristalloterapia · Lapidarium</div>
-      <h2 class="sec-title">I <em>cristalli</em> — guarigione vibrazionale</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Ogni cristallo porta una frequenza specifica che risuona con chakra, enneatipi e stati emotivi. Seleziona il chakra che vuoi lavorare per trovare la pietra più adatta al tuo percorso.</p>
-    </div>
-    <div class="cristalli-filter" id="cristalli-filter"></div>
-    <div class="cristalli-grid" id="cristalli-grid"></div>
-  </div>
-</section>
-
 
 <section id="citazione-zeland">
   <span class="zeland-ornament">· · ·</span>
@@ -2851,6 +2833,19 @@ body.dark .dark-toggle{background:#3a3632}
   </div>
 </section>
 
+<section id="cristalli">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Cristalloterapia · Lapidarium</div>
+      <h2 class="sec-title">I <em>cristalli</em> — guarigione vibrazionale</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ogni cristallo porta una frequenza specifica che risuona con chakra, enneatipi e stati emotivi. Seleziona il chakra che vuoi lavorare per trovare la pietra più adatta al tuo percorso.</p>
+    </div>
+    <div class="cristalli-filter" id="cristalli-filter"></div>
+    <div class="cristalli-grid" id="cristalli-grid"></div>
+  </div>
+</section>
+
 <section id="musica">
   <div class="container">
     <div class="sec-hd">
@@ -3110,8 +3105,6 @@ body.dark .dark-toggle{background:#3a3632}
   </div>
 </section>
 
-
-<!-- ▐▐ MEDITAZIONE ▐▐ -->
 <section id="meditazione">
   <div class="container">
     <div class="sec-hd">
@@ -3357,7 +3350,6 @@ body.dark .dark-toggle{background:#3a3632}
     </div>
   </div>
 </section>
-
 
 <section id="explorer">
   <div class="container">
@@ -3720,6 +3712,8 @@ body.dark .dark-toggle{background:#3a3632}
     </div>
   </div>
 </section>
+
+
 
 
 

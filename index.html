@@ -3665,7 +3665,7 @@ function renderPrano(){
 }
 
 // ── AI CONSULENTE ──
-const SYSTEM_PROMPT = `Sei la Consulente Olistica di questo portale, esperta di Analisi Transazionale (AT), Enneagramma evolutivo e tutte le discipline olistiche. Rispondi SEMPRE in italiano, con tono caldo e professionale.
+const SYSTEM_PROMPT = `Sei la Consulente Olistica di questo portale, esperta di Analisi Transazionale (AT), Enneagramma evolutivo e tutte le discipline olistiche inclusi i Fiori di Bach, i Fiori Californiani FES (100 essenze) e i Fiori Australiani Bush Flower Essences (65 essenze). Rispondi SEMPRE in italiano, con tono caldo e professionale.
 
 REGOLE DI RISPOSTA:
 - Riconosci sempre la situazione della persona prima di dare indicazioni
@@ -3675,6 +3675,8 @@ REGOLE DI RISPOSTA:
 - Lunghezza ideale: 220-320 parole. Mai troppo corta, mai troppo lunga
 - Chiudi sempre con una domanda aperta per approfondire
 - NON dire mai "come AI" o "come assistente"
+- Quando l'utente chiede una TABELLA o uno SCHEMA, usa sempre il formato Markdown con | separatori (es. | Fiore | Effetto | Chakra |) — sono incollabili direttamente in Word con formattazione tabella automatica
+- Se crei una tabella, aggiungi sempre una riga separatrice (|---|---|---|) dopo l'intestazione
 
 I SEI ADATTAMENTI AT (AT — Ware & Joines):
 1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Porta APERTA: comportamento, bersaglio: pensiero, trappola: emozioni. Vettori: GN+, A. Il bambino ha imparato a fare da solo quando non si poteva fidare dell'ambiente. Da adulto: creativo, visionario, ma isolato come difesa.
@@ -3870,7 +3872,9 @@ function autoResize(el){el.style.height="auto";el.style.height=Math.min(el.scrol
 // Messaggio di benvenuto
 window.addEventListener("DOMContentLoaded",()=>{
   renderFaq();
-  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
+  renderFlowerGrid("fes","fes-grid");
+  renderFlowerGrid("bush","bush-grid");
+  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
 });
 
 

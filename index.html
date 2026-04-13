@@ -1866,6 +1866,111 @@ footer.site-footer{
 .chat-pdf-btn svg{width:13px;height:13px}
 .chat-pdf-btn.loading{opacity:.5;cursor:wait}
 
+
+/* ══ MOTORE DIETETICO ══ */
+.diet-engine{
+  background:white;border-radius:var(--rxl);border:1.5px solid var(--border);
+  overflow:hidden;margin-top:3rem;
+}
+.diet-engine-header{
+  padding:1.6rem 2rem;background:linear-gradient(135deg,var(--ivory2),var(--gold-pale));
+  border-bottom:1px solid var(--border);
+}
+.diet-engine-header h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;
+  color:var(--ink);margin-bottom:.25rem;
+}
+.diet-engine-header p{font-size:.82rem;color:var(--ink3);line-height:1.6}
+.diet-selectors{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+  padding:1.8rem 2rem;border-bottom:1px solid var(--ivory3);
+}
+@media(max-width:640px){.diet-selectors{grid-template-columns:1fr}}
+.diet-select-group label{
+  display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem;
+}
+.diet-select{
+  width:100%;padding:.65rem 1rem;
+  border:1.5px solid var(--border2);border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);
+  background:white;cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8935a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .9rem center;
+  padding-right:2.2rem;transition:border-color .2s;
+}
+.diet-select:focus{outline:none;border-color:var(--gold)}
+.diet-generate-btn{
+  display:block;margin:0 2rem 1.5rem;padding:.7rem 2rem;
+  background:var(--gold);color:white;border:none;border-radius:24px;
+  font-size:.88rem;font-weight:600;font-family:'Outfit',sans-serif;
+  cursor:pointer;letter-spacing:.04em;transition:all .2s;
+}
+.diet-generate-btn:hover{background:#a07840;transform:translateY(-1px);box-shadow:0 4px 16px rgba(184,147,90,.3)}
+.diet-generate-btn:disabled{background:var(--ivory3);color:var(--ink4);cursor:default;transform:none;box-shadow:none}
+
+/* Risultato */
+.diet-result{display:none;padding:2rem}
+.diet-result.show{display:block}
+
+.diet-header-bar{
+  display:flex;align-items:center;gap:1.2rem;
+  padding:1.2rem 1.5rem;background:var(--ivory2);
+  border-radius:var(--r);margin-bottom:1.5rem;
+  border-left:4px solid var(--gold);
+}
+.diet-header-emoji{font-size:2.2rem;line-height:1}
+.diet-header-info{}
+.diet-header-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--ink)}
+.diet-header-sub{font-size:.78rem;color:var(--gold);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.15rem}
+
+.diet-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem}
+@media(max-width:640px){.diet-grid{grid-template-columns:1fr}}
+.diet-card{background:var(--ivory);border-radius:10px;padding:1.1rem;border:1px solid var(--border)}
+.diet-card-title{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.diet-card-body{font-size:.82rem;color:var(--ink2);line-height:1.7}
+.diet-card-body li{margin-bottom:.2rem}
+.diet-card-full{grid-column:1/-1}
+
+.diet-food-chips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
+.diet-chip{
+  font-size:.72rem;padding:.2rem .65rem;border-radius:12px;
+  color:var(--ink2);cursor:default;
+}
+.diet-chip.ok{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32}
+.diet-chip.avoid{background:#fce4ec;border:1px solid #f48fb1;color:#880e4f}
+.diet-chip.neutral{background:var(--ivory3);border:1px solid var(--border);color:var(--ink3)}
+
+/* Piano settimanale */
+.diet-week{margin-top:.5rem}
+.diet-day{
+  display:grid;grid-template-columns:80px 1fr;
+  gap:.5rem;align-items:start;
+  padding:.6rem 0;border-bottom:1px solid var(--ivory3);
+  font-size:.8rem;
+}
+.diet-day:last-child{border-bottom:none}
+.diet-day-name{font-weight:700;color:var(--gold);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding-top:.1rem}
+.diet-day-meals{color:var(--ink2);line-height:1.65}
+.diet-day-meals strong{color:var(--ink);font-size:.73rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* Holistic tips */
+.diet-holistic{
+  background:linear-gradient(135deg,rgba(184,147,90,.08),rgba(184,147,90,.04));
+  border:1.5px solid var(--border2);border-radius:var(--r);
+  padding:1.2rem 1.5rem;margin-top:1rem;
+}
+.diet-holistic-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);margin-bottom:.8rem}
+.diet-holistic-row{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.5rem;font-size:.8rem;color:var(--ink2);line-height:1.6}
+.diet-holistic-icon{font-size:1rem;flex-shrink:0;margin-top:.05rem}
+
+.diet-restart{
+  display:block;margin:1.5rem auto 0;padding:.5rem 1.6rem;
+  background:none;border:1.5px solid var(--border2);color:var(--ink3);
+  border-radius:20px;font-size:.78rem;cursor:pointer;font-family:'Outfit',sans-serif;
+}
+.diet-restart:hover{border-color:var(--gold);color:var(--gold)}
+
 </style>
 
 
@@ -2315,6 +2420,48 @@ footer.site-footer{
       </div>
     </div>
     <div class="alim-grid" id="alim-grid"></div>
+
+    <!-- ══ MOTORE DIETETICO ══ -->
+    <div class="diet-engine">
+      <div class="diet-engine-header">
+        <h3>🥗 Motore Dietetico Personalizzato</h3>
+        <p>Seleziona il tuo enneatipo e il tuo adattamento AT per ricevere un piano nutrizionale olistico su misura — cibi specifici, piano settimanale, ritmi alimentari e correlazioni vibrazionali.</p>
+      </div>
+      <div class="diet-selectors">
+        <div class="diet-select-group">
+          <label>Il tuo enneatipo</label>
+          <select class="diet-select" id="diet-enn" onchange="checkDietReady()">
+            <option value="">— Scegli enneatipo —</option>
+            <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+            <option value="2">🍐 Tipo 2 — L'Altruista</option>
+            <option value="3">🍒 Tipo 3 — Il Manager</option>
+            <option value="4">🫐 Tipo 4 — Il Romantico</option>
+            <option value="5">🍇 Tipo 5 — L'Eremita</option>
+            <option value="6">🫐 Tipo 6 — Il Leale</option>
+            <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+            <option value="8">🍑 Tipo 8 — Il Capo</option>
+            <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+          </select>
+        </div>
+        <div class="diet-select-group">
+          <label>Il tuo adattamento AT</label>
+          <select class="diet-select" id="diet-adatt" onchange="checkDietReady()">
+            <option value="">— Scegli adattamento —</option>
+            <option value="schiz">Schizoide / Creativo</option>
+            <option value="anti">Antisociale / Affascinante</option>
+            <option value="para">Paranoide / Brillante</option>
+            <option value="pass">Passivo-Aggressivo / Oppositivo</option>
+            <option value="istri">Istrionico / Entusiasta</option>
+            <option value="ocd">Ossessivo-Compulsivo / Stakanovista</option>
+          </select>
+        </div>
+      </div>
+      <button class="diet-generate-btn" onclick="generateDiet()" id="diet-gen-btn" disabled>
+        Genera il mio piano alimentare →
+      </button>
+      <div class="diet-result" id="diet-result"></div>
+    </div>
+
   </div>
 </section>
 

@@ -89,10 +89,17 @@ nav{display:flex;align-items:center;gap:.1rem}
 #hero.has-photo .pill:hover{background:rgba(255,255,255,.28)}
 #hero.has-photo .hero-title{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 #hero.has-photo .hero-title em{color:var(--gold)}
-#hero.has-photo .hero-subtitle{color:rgba(255,255,255,.88);text-shadow:0 1px 12px rgba(0,0,0,.4)}
+#hero.has-photo .hero-sub,#hero.has-photo .hero-subtitle{color:rgba(255,255,255,.95)!important;text-shadow:0 1px 16px rgba(0,0,0,.75),0 0 30px rgba(0,0,0,.4)!important;font-weight:400}
+#hero.has-photo .hero-subtitle{color:rgba(255,255,255,.92);text-shadow:0 1px 14px rgba(0,0,0,.55)}
 #hero.has-photo .hero-eyebrow{color:rgba(255,220,120,.9)}
 #hero.has-photo .hero-badge{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
-#hero.has-photo .hero-cta-secondary{color:#fff;border-color:rgba(255,255,255,.5)}
+#hero.has-photo .hero-cta-secondary,#hero.has-photo .btn-ghost{
+  color:#fff!important;
+  border:2px solid rgba(255,255,255,.85)!important;
+  background:rgba(0,0,0,.35)!important;
+  text-shadow:0 1px 6px rgba(0,0,0,.6)!important;
+  font-weight:500!important;
+}
 #hero.has-photo .hero-disclaimer{color:rgba(255,255,255,.55)}
 .hero-overlay{
   display:none;
@@ -1546,7 +1553,7 @@ footer{
   <h1 class="hero-title fu d1" style="position:relative;z-index:1">
     Tutto è <em>connesso</em><br>nell'essere umano
   </h1>
-  <p class="hero-sub fu d2" style="position:relative;z-index:1">
+  <p class="hero-sub fu d2" style="position:relative;z-index:1;background:rgba(0,0,0,.22);padding:.5rem 1.2rem;border-radius:8px;backdrop-filter:blur(2px)">
     Un archivio vivente che unisce chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, alimentazione e counseling olistico in un unico sistema interconnesso.
   </p>
   <div class="hero-pills fu d3" style="position:relative;z-index:1">

@@ -1,0 +1,36 @@
+{
+  "name": "Olismo Integrato",
+  "short_name": "Olismo",
+  "description": "Portale delle discipline olistiche integrate: chakra, enneagramma, fiori di Bach, analisi transazionale, VAK e consulente AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f5ef",
+  "theme_color": "#b8935a",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%23f9f5ef' stroke='%23b8935a' stroke-width='8'/><text x='96' y='115' text-anchor='middle' font-size='80' fill='%23b8935a'>✦</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='240' fill='%23f9f5ef' stroke='%23b8935a' stroke-width='16'/><text x='256' y='310' text-anchor='middle' font-size='220' fill='%23b8935a'>✦</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "lifestyle", "education"],
+  "shortcuts": [
+    {
+      "name": "Consulente AI",
+      "url": "/#consulente",
+      "description": "Apri la consulente olistica AI"
+    },
+    {
+      "name": "Check Integrato",
+      "url": "/#check-integrato",
+      "description": "Scopri il tuo profilo olistico"
+    }
+  ]
+}

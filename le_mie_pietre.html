@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Mie Pietre · Olismo Integrato</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e0c;
+    --bg2: #1a1915;
+    --bg3: #242219;
+    --border: rgba(210,185,140,0.15);
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --amethyst: #9b72cf;
+    --rose: #d4878c;
+    --teal: #5eb8a4;
+    --text: #e8e2d5;
+    --text-muted: #9a9285;
+    --text-dim: #6a655c;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  /* ── HEADER ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    border-bottom: 0.5px solid var(--border);
+    background: rgba(15,14,12,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .logo span { color: var(--text-muted); font-weight: 300; font-size: 0.9em; }
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2.5rem 5rem;
+    text-align: center;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 40%, rgba(155,114,207,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 60%, rgba(94,184,164,0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 50% 10%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-crystal {
+    width: 80px; height: 80px;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+  .hero-crystal svg { width: 100%; height: 100%; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero p {
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.85rem 2.2rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+  /* ── MAIN ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  /* ── STEPS INDICATOR ── */
+  .steps-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .steps-nav.visible { opacity: 1; }
+  .step-dot {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+  }
+  .step-dot::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 55%;
+    right: -55%;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step-dot:last-child::after { display: none; }
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    background: var(--bg);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+  .step-dot.active .step-num { border-color: var(--gold); color: var(--gold); }
+  .step-dot.done .step-num { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .step-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+  .step-dot.active .step-label { color: var(--gold-light); }
+  /* ── QUIZ STEP ── */
+  .quiz-step { display: none; animation: fadeUp 0.5s ease forwards; }
+  .quiz-step.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+  .step-subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .option-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: var(--bg2);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .option-card:hover { border-color: rgba(210,185,140,0.4); background: var(--bg3); }
+  .option-card.selected {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+  }
+  .option-icon {
+    width: 28px; height: 28px;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .option-icon svg { width: 100%; height: 100%; }
+  .option-text h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .option-text p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+  /* ── NAV BUTTONS ── */
+  .step-nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+  }
+  .btn-sec {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.7rem 1.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .btn-sec:hover { border-color: var(--text-muted); color: var(--text); }
+  /* ── RESULTS ── */
+  .results-section { display: none; animation: fadeUp 0.6s ease forwards; }
+  .results-section.visible { display: block; }
+  .results-header { text-align: center; margin-bottom: 3rem; }
+  .results-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--gold-light);
+  }
+  .results-header p { color: var(--text-muted); max-width: 500px; margin: 0 auto; }
+  .stones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .stone-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .stone-card:hover { transform: translateY(-3px); border-color: rgba(210,185,140,0.4); }
+  .stone-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .stone-card[data-color="amethyst"]::before { background: linear-gradient(90deg, #7b4fb5, #b48dd4); }
+  .stone-card[data-color="rose"]::before { background: linear-gradient(90deg, #c46a6f, #e8aeb3); }
+  .stone-card[data-color="teal"]::before { background: linear-gradient(90deg, #3a8f7e, #7dd4c3); }
+  .stone-card[data-color="gold"]::before { background: linear-gradient(90deg, #a87c28, #e0bc6a); }
+  .stone-card[data-color="dark"]::before { background: linear-gradient(90deg, #3a3535, #6b6060); }
+  .stone-card[data-color="white"]::before { background: linear-gradient(90deg, #8a8a8a, #d8d8d8); }
+  .stone-card[data-color="blue"]::before { background: linear-gradient(90deg, #2d5c8a, #6ba3d4); }
+  .stone-card[data-color="green"]::before { background: linear-gradient(90deg, #3a7a4a, #7abf88); }
+  .stone-gem {
+    width: 44px; height: 44px;
+    margin-bottom: 1rem;
+  }
+  .stone-gem svg { width: 100%; height: 100%; }
+  .stone-rank {
+    position: absolute;
+    top: 1.1rem; right: 1.1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .stone-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+  .stone-chakra {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+  }
+  .stone-function {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .stone-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stone-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 0.5px solid var(--border);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+  /* ── AI SECTION ── */
+  .ai-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  .ai-header {
+    padding: 1.4rem 1.8rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .ai-orb {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(155,114,207,0.6), rgba(94,184,164,0.3));
+    border: 1px solid var(--amethyst);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .ai-orb::after {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+  }
+  .ai-header-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .ai-header-text p { font-size: 0.78rem; color: var(--text-dim); }
+  .chat-messages {
+    padding: 1.5rem 1.8rem;
+    min-height: 200px;
+    max-height: 420px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .msg {
+    display: flex;
+    gap: 0.8rem;
+    animation: fadeUp 0.3s ease;
+  }
+  .msg.user { flex-direction: row-reverse; }
+  .msg-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin-top: 0.1rem;
+  }
+  .msg-avatar.ai { background: rgba(155,114,207,0.2); border: 0.5px solid var(--amethyst); color: var(--amethyst); }
+  .msg-avatar.user { background: rgba(201,168,76,0.2); border: 0.5px solid var(--gold); color: var(--gold); }
+  .msg-bubble {
+    max-width: 78%;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .msg.ai .msg-bubble {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    color: var(--text);
+  }
+  .msg.user .msg-bubble {
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    color: var(--text);
+    text-align: right;
+  }
+  .typing { display: flex; gap: 4px; align-items: center; padding: 0.6rem 0.2rem; }
+  .typing span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    animation: bounce 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+  .chat-input-area {
+    padding: 1rem 1.8rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-end;
+  }
+  .chat-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    resize: none;
+    outline: none;
+    min-height: 42px;
+    max-height: 120px;
+    line-height: 1.5;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: rgba(210,185,140,0.4); }
+  .chat-input::placeholder { color: var(--text-dim); }
+  .send-btn {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    background: transparent;
+    border: 0.5px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .send-btn:hover { background: var(--gold); color: var(--bg); }
+  .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .quick-questions {
+    padding: 0 1.8rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .qq-btn {
+    background: transparent;
+    border: 0.5px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .qq-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+  /* ── SCROLLBAR ── */
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  /* ── RESTART ── */
+  .restart-bar { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); }
+  .restart-bar p { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 0.8rem; }
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 0.5px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: rgba(201,168,76,0.05);
+    border: 0.5px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .disclaimer strong { color: var(--gold); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://olismo-integrato.it" class="logo">Olismo Integrato <span>· Le Pietre</span></a>
+  <a href="https://olismo-integrato.it" class="btn-primary" style="padding:0.5rem 1.2rem;font-size:0.75rem;">← Sito</a>
+</header>
+
+<section class="hero" id="hero-section">
+  <div class="hero-crystal">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,5 68,25 68,55 40,75 12,55 12,25" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.6"/>
+      <polygon points="40,5 68,25 40,40" fill="#9b72cf" opacity="0.25"/>
+      <polygon points="68,25 68,55 40,40" fill="#5eb8a4" opacity="0.2"/>
+      <polygon points="68,55 40,75 40,40" fill="#7b4fb5" opacity="0.2"/>
+      <polygon points="40,75 12,55 40,40" fill="#3a8f7e" opacity="0.2"/>
+      <polygon points="12,55 12,25 40,40" fill="#9b72cf" opacity="0.15"/>
+      <polygon points="12,25 40,5 40,40" fill="#c9a84c" opacity="0.2"/>
+      <circle cx="40" cy="40" r="2" fill="#e8d08a" opacity="0.8"/>
+    </svg>
+  </div>
+  <h1>Scopri le tue<br><em>pietre guida</em></h1>
+  <p>Un percorso di consapevolezza in quattro passi per identificare le pietre che risuonano con il tuo stato attuale — fisico, emotivo, mentale e spirituale.</p>
+  <button class="btn-primary" onclick="startTest()">Inizia il test →</button>
+</section>
+
+<div class="main">
+  <nav class="steps-nav" id="stepsNav">
+    <div class="step-dot" id="dot-1">
+      <div class="step-num">1</div>
+      <div class="step-label">Corpo</div>
+    </div>
+    <div class="step-dot" id="dot-2">
+      <div class="step-num">2</div>
+      <div class="step-label">Emozioni</div>
+    </div>
+    <div class="step-dot" id="dot-3">
+      <div class="step-num">3</div>
+      <div class="step-label">Mente</div>
+    </div>
+    <div class="step-dot" id="dot-4">
+      <div class="step-num">4</div>
+      <div class="step-label">Spirito</div>
+    </div>
+  </nav>
+
+  <!-- STEP 1 -->
+  <div class="quiz-step" id="step-1">
+    <p class="step-title">Come sta il tuo corpo?</p>
+    <p class="step-subtitle">Seleziona uno o più disturbi fisici che stai vivendo in questo periodo</p>
+    <div class="options-grid" id="grid-1"></div>
+    <div class="step-nav">
+      <button class="btn-primary" onclick="nextStep(2)">Continua →</button>
+    </div>
+  </div>
+  <!-- STEP 2 -->
+  <div class="quiz-step" id="step-2">
+    <p class="step-title">Come ti senti emotivamente?</p>
+    <p class="step-subtitle">Seleziona le emozioni o i vissuti che ti appartengono in questo momento</p>
+    <div class="options-grid" id="grid-2"></div>
+    <div class="step-nav">
+      <button class="btn-sec" onclick="nextStep(1)">← Indietro</button>
+      <button class="btn-primary" onclick="nextStep(3)">Continua →</button>
+    </div>
+  </div>
+  <!-- STEP 3 -->
+  <div class="quiz-step" id="step-3">
+    <p class="step-title">Come funziona la tua mente?</p>
+    <p class="step-subtitle">Scegli le situazioni mentali che riconosci in te stesso/a</p>
+    <div class="options-grid" id="grid-3"></div>
+    <div class="step-nav">
+      <button class="btn-sec" onclick="nextStep(2)">← Indietro</button>
+      <button class="btn-primary" onclick="nextStep(4)">Continua →</button>
+    </div>
+  </div>
+  <!-- STEP 4 -->
+  <div class="quiz-step" id="step-4">
+    <p class="step-title">Di cosa hai bisogno a livello sottile?</p>
+    <p class="step-subtitle">Ascolta l'intuizione — cosa senti che ti manca o vuoi rafforzare?</p>
+    <div class="options-grid" id="grid-4"></div>
+    <div class="step-nav">
+      <button class="btn-sec" onclick="nextStep(3)">← Indietro</button>
+      <button class="btn-primary" onclick="showResults()">Vedi le mie pietre ✦</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-section" id="results">
+    <div class="results-header">
+      <h2>Le tue pietre</h2>
+      <p>Basandomi sulle tue risposte, queste sono le pietre che risuonano maggiormente con il tuo stato attuale.</p>
+    </div>
+    <div class="stones-grid" id="stonesGrid"></div>
+
+    <div class="disclaimer">
+      <strong>Nota importante:</strong> Le proprietà delle pietre appartengono alla tradizione olistica e non sostituiscono cure mediche. Per qualsiasi disturbo fisico o psicologico consultare sempre un professionista della salute. L'autore Carlo Alberto Calcagno è <a href="https://olismo-integrato.it" style="color:var(--gold)">operatore dell'energia</a>.
+    </div>
+
+    <!-- AI ASSISTANT -->
+    <div class="ai-section" style="margin-top:2.5rem;">
+      <div class="ai-header">
+        <div class="ai-orb"></div>
+        <div class="ai-header-text">
+          <h3>Consulta il nostro Esperto di Cristalloterapia AI</h3>
+          <p>Chiedi approfondimenti sulle tue pietre, abbinamenti, come usarle e molto altro</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg ai">
+          <div class="msg-avatar ai">✦</div>
+          <div class="msg-bubble" id="welcomeMsg">Benvenuto/a! Ho analizzato il tuo profilo energetico. Sono qui per aiutarti a comprendere meglio le tue pietre guida. Cosa vorresti sapere?</div>
+        </div>
+      </div>
+      <div class="quick-questions" id="quickQuestions"></div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" placeholder="Chiedi qualcosa sulle tue pietre..." rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="restart-bar">
+      <p>Vuoi ripetere il test con altre risposte?</p>
+      <button class="btn-sec" onclick="restartTest()">Ricomincia il test</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <a href="https://olismo-integrato.it">Olismo Integrato</a> · Carlo Alberto Calcagno, Operatore dell'Energia<br>
+  Le informazioni fornite hanno scopo informativo e non sostituiscono il parere medico professionale.</p>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const QUIZ_STEPS = [
+  {
+    id: 1,
+    options: [
+      { id:'muscoli', label:'Dolori muscolari', desc:'Tensione, rigidità, dolori diffusi', stones:['ametista','tormalina_nera','ematite','shungite','serpentino'], icon:'body' },
+      { id:'articolari', label:'Dolori articolari', desc:'Articolazioni rigide o doloranti', stones:['ematite','tormalina_nera','shungite','quarzo_affumicato'], icon:'joint' },
+      { id:'digestivo', label:'Disturbi digestivi', desc:'Gonfiore, spasmi, digestione lenta', stones:['calcite_gialla','corniola','agata_muschiata','calcite_arancione'], icon:'stomach' },
+      { id:'immunitario', label:'Sistema immunitario', desc:'Vulnerabilità a raffreddori e infezioni', stones:['shungite','quarzo_ialino','ametista','diaspro_rosso','granato'], icon:'shield' },
+      { id:'testa', label:'Mal di testa / emicranie', desc:'Tensione, cefalee ricorrenti', stones:['ametista','howlite','lapis_lazuli','fluorite','cianite'], icon:'head' },
+      { id:'respiratorio', label:'Problemi respiratori', desc:'Difficoltà respiro, tensione al petto', stones:['celestite','apatite_blu','calcedonio_azzurro','angelite','amazzonite'], icon:'lungs' },
+      { id:'insonnia', label:'Insonnia / sonno disturbato', desc:'Difficoltà ad addormentarsi o svegliarsi', stones:['ametista','howlite','quarzo_affumicato','selenite','quarzo_rosa'], icon:'moon' },
+      { id:'stanchezza', label:'Affaticamento generale', desc:'Mancanza di energia, stanchezza cronica', stones:['granato','diaspro_giallo','quarzo_citrino','pietra_sole','diaspro_rosso'], icon:'energy' },
+      { id:'ormonale', label:'Squilibri ormonali', desc:'Irregolarità del ciclo, squilibri tiroidei', stones:['avventurina_verde','lapis_lazuli','quarzo_rosa','calcite_verde','angelite'], icon:'balance' },
+    ]
+  },
+  {
+    id: 2,
+    options: [
+      { id:'ansia', label:'Ansia e panico', desc:'Preoccupazione costante, crisi d\'ansia', stones:['howlite','selenite','amazzonite','quarzo_rosa','ametista'], icon:'anxiety' },
+      { id:'depressione', label:'Tristezza / depressione', desc:'Apatia, malinconia, vuoto interiore', stones:['quarzo_citrino','pietra_sole','quarzo_rosa','granato','charoite'], icon:'sad' },
+      { id:'autostima', label:'Scarsa autostima', desc:'Insicurezza, svalutazione di sé', stones:['occhio_tigre','granato','rodocrosite','quarzo_fragola','pirite'], icon:'star' },
+      { id:'traumi', label:'Traumi emotivi', desc:'Ferite del passato ancora attive', stones:['quarzo_rosa','malachite','selenite','dioptasio','rodonite'], icon:'heart' },
+      { id:'stress', label:'Stress generale', desc:'Sovraccarico, tensione continua', stones:['ametista','avventurina_verde','howlite','quarzo_rosa'], icon:'stress' },
+      { id:'solitudine', label:'Solitudine / isolamento', desc:'Difficoltà nelle relazioni, chiusura', stones:['quarzo_rosa','rodocrosite','calcedonio_azzurro','amazzonite'], icon:'connect' },
+      { id:'paura', label:'Paura e insicurezza', desc:'Timidezza, blocchi nell\'agire', stones:['occhio_tigre','avventurina_rossa','granato','diaspro_rosso'], icon:'courage' },
+      { id:'ira', label:'Rabbia / risentimento', desc:'Irritabilità, rancore difficile da lasciare', stones:['quarzo_rosa','malachite','rodonite','agata_muschiata'], icon:'flame' },
+    ]
+  },
+  {
+    id: 3,
+    options: [
+      { id:'confusione', label:'Confusione mentale', desc:'Difficoltà a concentrarsi, pensieri nebbiosi', stones:['fluorite','labradorite','cianite','lapis_lazuli','quarzo_ialino'], icon:'fog' },
+      { id:'blocco_creativo', label:'Blocco creativo', desc:'Ispirazione assente, freni all\'espressione', stones:['opale','lapis_lazuli','calcedonio_azzurro','sodalite','corniola'], icon:'creative' },
+      { id:'overthinking', label:'Pensieri ossessivi', desc:'Ruminazione, loop mentali, iperanalisi', stones:['howlite','fluorite','ametista','calcedonio_blu','sodalite'], icon:'loop' },
+      { id:'memoria', label:'Memoria e apprendimento', desc:'Difficoltà a memorizzare o studiare', stones:['fluorite','lapis_lazuli','sodalite','cianite'], icon:'book' },
+      { id:'decisioni', label:'Difficoltà nelle decisioni', desc:'Indecisione cronica, mancanza di direzione', stones:['occhio_tigre','labradorite','lapis_lazuli','cianite'], icon:'compass' },
+      { id:'chiarezza', label:'Bisogno di chiarezza', desc:'Voglia di fare ordine dentro di sé', stones:['fluorite','anidrite','cianite','quarzo_ialino','labradorite'], icon:'clarity' },
+    ]
+  },
+  {
+    id: 4,
+    options: [
+      { id:'protezione', label:'Protezione energetica', desc:'Sento di assorbire energie altrui', stones:['tormalina_nera','ematite','onice_nera','shungite','labradorite'], icon:'protect' },
+      { id:'radicamento', label:'Radicamento / grounding', desc:'Mi sento "fuori dal corpo" o instabile', stones:['diaspro_rosso','ematite','onice_nera','granato','legno_fossile'], icon:'root' },
+      { id:'intuizione', label:'Sviluppo dell\'intuizione', desc:'Voglio aprire il sesto senso', stones:['labradorite','ametista','lapis_lazuli','charoite','fluorite'], icon:'eye' },
+      { id:'connessione', label:'Connessione spirituale', desc:'Ricerca di significato, connessione al divino', stones:['selenite','angelite','celestite','charoite','sugilite'], icon:'divine' },
+      { id:'purificazione', label:'Purificazione aurica', desc:'Voglio purificare la mia energia e il mio spazio', stones:['selenite','quarzo_ialino','calcite_bianca','ametista','quarzo_affumicato'], icon:'clean' },
+      { id:'trasformazione', label:'Trasformazione e crescita', desc:'Sono in un momento di cambiamento profondo', stones:['malachite','charoite','labradorite','serpentino','moldavite'], icon:'transform' },
+      { id:'abbondanza', label:'Abbondanza e prosperità', desc:'Attirare opportunità, fiducia nella vita', stones:['quarzo_citrino','avventurina_verde','pirite','avventurina_gialla','occhio_tigre'], icon:'abundance' },
+    ]
+  }
+];
+
+const STONE_DB = {
+  ametista: {
+    name: 'Ametista',
+    chakra: '1° · 6° Chakra',
+    color: 'amethyst',
+    function: 'Calma, purificazione mentale, rilassamento profondo, protezione psichica.',
+    tags: ['Calma', 'Sonno', 'Anti-stress', 'Purificazione'],
+    ai_info: 'Ametista (1°,6° chakra): Calma, purificazione, rilassamento mentale. Indicata per insonnia, ansia, stress, confusione. Abbinamenti: Howlite (7°), Quarzo ialino. Sconsigliata con: Pirite, Diaspro rosso, Ematite.'
+  },
+  tormalina_nera: {
+    name: 'Tormalina Nera',
+    chakra: '1° Chakra',
+    color: 'dark',
+    function: 'Protezione, assorbimento energie negative, radicamento, scudo psichico.',
+    tags: ['Protezione', 'Radicamento', 'Scudo'],
+    ai_info: 'Tormalina Nera (1° chakra): Protezione energetica, assorbimento energie dense, radicamento. Per dolori articolari e muscolari. Con Shungite e Ematite.'
+  },
+  ematite: {
+    name: 'Ematite',
+    chakra: '1° Chakra',
+    color: 'dark',
+    function: 'Radicamento, forza vitale, purificazione del sangue, protezione.',
+    tags: ['Radicamento', 'Forza', 'Sangue'],
+    ai_info: 'Ematite (1° chakra): Radicamento, forza, purificazione sangue. Per dolori articolari/muscolari, anemia energetica. Con Granato, Spinel rosso. Non con Quarzo ialino o Selenite.'
+  },
+  shungite: {
+    name: 'Shungite',
+    chakra: '1° Chakra',
+    color: 'dark',
+    function: 'Purificazione, scudo elettromagnetico, rafforzamento sistema immunitario.',
+    tags: ['EMF', 'Immune', 'Purifica'],
+    ai_info: 'Shungite (1° chakra): Purificazione, scudo elettromagnetico, sistema immunitario. Con Quarzo ialino, Ametista. Non con Ambra o Quarzo rosa.'
+  },
+  quarzo_rosa: {
+    name: 'Quarzo Rosa',
+    chakra: '4° Chakra',
+    color: 'rose',
+    function: 'Amore incondizionato, guarigione emotiva, autocompassione, dolcezza.',
+    tags: ['Amore', 'Guarigione', 'Cuore'],
+    ai_info: 'Quarzo Rosa (4° chakra): Amore, guarigione emotiva, traumi. Con Rodocrosite, Avventurina verde. Non con Granato o Tormalina nera.'
+  },
+  quarzo_ialino: {
+    name: 'Quarzo Ialino',
+    chakra: '7° Chakra',
+    color: 'white',
+    function: 'Amplificazione energetica, purezza, allineamento di tutti i chakra.',
+    tags: ['Amplificazione', 'Purezza', 'Chakra'],
+    ai_info: 'Quarzo ialino (7° chakra): Amplificazione, purificazione, allineamento. Con Selenite, Ametista. Non con Ematite o Onice nera.'
+  },
+  selenite: {
+    name: 'Selenite',
+    chakra: '7° Chakra',
+    color: 'white',
+    function: 'Connessione spirituale, chiarezza superiore, purificazione delle pietre e dell\'ambiente.',
+    tags: ['Spirituale', 'Purifica', 'Luce'],
+    ai_info: 'Selenite (7° chakra): Connessione spirituale, chiarezza, purifica le pietre. Con Quarzo ialino, Howlite. Non con Malachite, Ematite.'
+  },
+  howlite: {
+    name: 'Howlite',
+    chakra: '7° Chakra',
+    color: 'white',
+    function: 'Calma profonda, riduzione ansia, favorisce il sonno, serenità mentale.',
+    tags: ['Sonno', 'Ansia', 'Calma'],
+    ai_info: 'Howlite (7° chakra): Calma ansia, insonnia, pensieri ossessivi. Con Selenite, Ametista. Non con Citrino o Corniola.'
+  },
+  fluorite: {
+    name: 'Fluorite',
+    chakra: '6° · 7° Chakra',
+    color: 'amethyst',
+    function: 'Chiarezza mentale, ordine interiore, concentrazione, decisioni lucide.',
+    tags: ['Mente', 'Focus', 'Ordine'],
+    ai_info: 'Fluorite (6°,7° chakra): Chiarezza mentale, concentrazione, ordine. Con Ametista, Quarzo ialino. Non con Malachite o Opale di fuoco.'
+  },
+  labradorite: {
+    name: 'Labradorite',
+    chakra: '6° Chakra',
+    color: 'teal',
+    function: 'Protezione aurica, sviluppo dell\'intuizione, magia interiore.',
+    tags: ['Intuizione', 'Aura', 'Magia'],
+    ai_info: 'Labradorite (6° chakra): Protezione aurica, intuizione, sensibilità energetica. Con Ametista, Fluorite. Non con Selenite o Celestite.'
+  },
+  lapis_lazuli: {
+    name: 'Lapislazzuli',
+    chakra: '5° · 6° Chakra',
+    color: 'blue',
+    function: 'Verità, comunicazione autentica, saggezza, chiarezza di espressione.',
+    tags: ['Verità', 'Comunicazione', 'Saggezza'],
+    ai_info: 'Lapislazzuli (5°,6° chakra): Verità, comunicazione, saggezza. Con Calcedonio blu, Angelite. Non con Ematite, Diaspro rosso.'
+  },
+  granato: {
+    name: 'Granato',
+    chakra: '1° Chakra',
+    color: 'rose',
+    function: 'Energia vitale, forza, motivazione, passione, radicamento.',
+    tags: ['Energia', 'Forza', 'Passione'],
+    ai_info: 'Granato (1° chakra): Energia vitale, forza, motivazione. Con Pietra del sole, Corniola. Non con Ametista o Quarzo ialino.'
+  },
+  occhio_tigre: {
+    name: 'Occhio di Tigre',
+    chakra: '3° Chakra',
+    color: 'gold',
+    function: 'Fiducia in sé, protezione, ottimismo, coraggio nelle scelte.',
+    tags: ['Fiducia', 'Coraggio', 'Ottimismo'],
+    ai_info: 'Occhio di tigre (3° chakra): Fiducia, protezione, ottimismo, autostima. Con Granato, Rodocrosite. Non con Ametista o Selenite.'
+  },
+  avventurina_verde: {
+    name: 'Avventurina Verde',
+    chakra: '4° Chakra',
+    color: 'green',
+    function: 'Equilibrio emotivo, prosperità, abbondanza, armonia cuore.',
+    tags: ['Cuore', 'Prosperità', 'Equilibrio'],
+    ai_info: 'Avventurina verde (4° chakra): Equilibrio emotivo, prosperità, armonia. Con Ametista, Howlite. Non con Ematite.'
+  },
+  quarzo_citrino: {
+    name: 'Quarzo Citrino',
+    chakra: '3° Chakra',
+    color: 'gold',
+    function: 'Energia solare, prosperità, autostima, creatività, vitalità.',
+    tags: ['Sole', 'Prosperità', 'Vitalità'],
+    ai_info: 'Quarzo Citrino (3° chakra): Energia solare, prosperità, autostima. Con Pietra del sole, Quarzo rosa. Non con Tormalina nera o Ossidiana.'
+  },
+  pietra_sole: {
+    name: 'Pietra del Sole',
+    chakra: '1° · 3° Chakra',
+    color: 'gold',
+    function: 'Gioia di vivere, vitalità, entusiasmo, uscire dalla depressione.',
+    tags: ['Gioia', 'Entusiasmo', 'Luce'],
+    ai_info: 'Pietra del sole (1°,3° chakra): Gioia, vitalità, entusiasmo. Per depressione, carenza di gioia. Con Citrino, Quarzo rosa. Non con Tormalina nera.'
+  },
+  rodocrosite: {
+    name: 'Rodocrosite',
+    chakra: '4° Chakra',
+    color: 'rose',
+    function: 'Guarigione emotiva, amore per sé, scioglimento blocchi del cuore.',
+    tags: ['Autoamore', 'Guarigione', 'Cuore'],
+    ai_info: 'Rodocrosite (4° chakra): Guarigione emotiva, autostima, amore per sé. Con Quarzo rosa, Occhio di tigre. Non con Ossidiana nera.'
+  },
+  malachite: {
+    name: 'Malachite',
+    chakra: '4° Chakra',
+    color: 'green',
+    function: 'Trasformazione, scioglimento blocchi emotivi profondi, rispecchiamento.',
+    tags: ['Trasformazione', 'Blocchi', 'Cuore'],
+    ai_info: 'Malachite (4° chakra): Trasformazione, scioglimento blocchi emotivi. Con Quarzo rosa, Selenite. Non con Calcite bianca (frena).'
+  },
+  charoite: {
+    name: 'Charoite',
+    chakra: '6° · 7° Chakra',
+    color: 'amethyst',
+    function: 'Trasformazione spirituale, intuizione, scioglimento blocchi karmici.',
+    tags: ['Karmica', 'Spirituale', 'Intuizione'],
+    ai_info: 'Charoite (6°,7° chakra): Trasformazione spirituale, blocchi karmici. Con Sugilite, Ametista, Lepidolite. Non con Ematite, Onice nera.'
+  },
+  celestite: {
+    name: 'Celestite',
+    chakra: '5° Chakra',
+    color: 'blue',
+    function: 'Calma respiratoria, connessione angelica, pace interiore.',
+    tags: ['Angeli', 'Pace', 'Respiro'],
+    ai_info: 'Celestite (5° chakra): Calma respiro, connessione angelica, pace. Con Angelite, Selenite. Non con Onice nera, Ematite.'
+  },
+  angelite: {
+    name: 'Angelite',
+    chakra: '5° Chakra',
+    color: 'blue',
+    function: 'Comunicazione angelica, pace, solitudine benefica, ascolto interiore.',
+    tags: ['Angeli', 'Comunicazione', 'Pace'],
+    ai_info: 'Angelite (5° chakra): Comunicazione angelica, pace, gola. Con Celestite, Selenite. Non con pietre radicanti (Diaspro rosso, Onice).'
+  },
+  diaspro_rosso: {
+    name: 'Diaspro Rosso',
+    chakra: '1° Chakra',
+    color: 'rose',
+    function: 'Radicamento profondo, vitalità, coraggio, stabilità nei momenti difficili.',
+    tags: ['Radicamento', 'Coraggio', 'Stabilità'],
+    ai_info: 'Diaspro rosso (1° chakra): Radicamento, vitalità, coraggio. Con Granato, Tormalina nera. Non con Turchesi, Selenite, Lapislazzuli.'
+  },
+  onice_nera: {
+    name: 'Onice Nera',
+    chakra: '1° Chakra',
+    color: 'dark',
+    function: 'Protezione, forza interiore, radicamento profondo, scudo dalle energie dense.',
+    tags: ['Protezione', 'Forza', 'Scudo'],
+    ai_info: 'Onice nera (1° chakra): Protezione, forza, radicamento. Con Tormalina nera, Ematite. Non con Selenite o Quarzo ialino.'
+  },
+  calcite_gialla: {
+    name: 'Calcite Gialla',
+    chakra: '3° Chakra',
+    color: 'gold',
+    function: 'Digestione, energia vitale, motivazione, ottimismo.',
+    tags: ['Digestione', 'Energia', 'Ottimismo'],
+    ai_info: 'Calcite gialla (3° chakra): Digestione, energia vitale, motivazione. Con Corniola, Agata muschiata. Non con Ametista (troppo calmante).'
+  },
+  corniola: {
+    name: 'Corniola',
+    chakra: '2° Chakra',
+    color: 'rose',
+    function: 'Creatività, motivazione, coraggio, vitalità sacrale.',
+    tags: ['Creatività', 'Motivazione', 'Sacrale'],
+    ai_info: 'Corniola (2° chakra): Creatività, motivazione, digestione. Con Calcite arancione, Agata muschiata. Non con Ametista o Selenite.'
+  },
+  agata_muschiata: {
+    name: 'Agata Muschiata',
+    chakra: '4° Chakra',
+    color: 'green',
+    function: 'Calma emotiva, connessione alla natura, spasmi gastrici, senso di stabilità.',
+    tags: ['Calma', 'Natura', 'Stomaco'],
+    ai_info: 'Agata muschiata (4° chakra): Calma emotiva, spasmi gastrici, stabilità. Con Quarzo rosa, Corniola. Non con Ossidiana nera.'
+  },
+  amazzonite: {
+    name: 'Amazzonite',
+    chakra: '5° Chakra',
+    color: 'teal',
+    function: 'Riduzione stress, comunicazione serena, equilibrio emotivo.',
+    tags: ['Stress', 'Comunicazione', 'Equilibrio'],
+    ai_info: 'Amazzonite (5° chakra): Riduzione stress, comunicazione, equilibrio. Con Lapislazzuli, Calcedonio blu. Non con pietre troppo attive.'
+  },
+  calcedonio_azzurro: {
+    name: 'Calcedonio Azzurro',
+    chakra: '5° Chakra',
+    color: 'blue',
+    function: 'Comunicazione serena, calma, armonia gola, riduzione balbuzie e ansia sociale.',
+    tags: ['Gola', 'Calma', 'Comunicazione'],
+    ai_info: 'Calcedonio azzurro (5° chakra): Comunicazione, calma, gola. Con Amazzonite, Apatite blu. Non con pietre energizzanti.'
+  },
+  pirite: {
+    name: 'Pirite',
+    chakra: '3° Chakra',
+    color: 'gold',
+    function: 'Protezione energetica, concretezza, realizzazione degli obiettivi.',
+    tags: ['Protezione', 'Concretezza', 'Obiettivi'],
+    ai_info: 'Pirite (3° chakra): Protezione energetica, concretezza, realizzazione. Con Citrino, Diaspro giallo. Non con Ametista o Quarzo rosa.'
+  },
+  quarzo_affumicato: {
+    name: 'Quarzo Affumicato',
+    chakra: '1° Chakra',
+    color: 'dark',
+    function: 'Protezione psichica, trasformazione energie dense, radicamento, scioglimento paure.',
+    tags: ['Paura', 'Protezione', 'Trasforma'],
+    ai_info: 'Quarzo affumicato (1° chakra): Protezione psichica, trasformazione energie dense, paure. Con Ametista, Howlite. Non con Celestite, Selenite.'
+  },
+  sodalite: {
+    name: 'Sodalite',
+    chakra: '2° · 6° Chakra',
+    color: 'blue',
+    function: 'Calma mentale, logica, superamento blocchi intellettuali.',
+    tags: ['Logica', 'Mente', 'Chiarezza'],
+    ai_info: 'Sodalite (2°,6° chakra): Calma mentale, logica, blocchi intellettuali. Con Ametista, Howlite. Non con Granato o Ossidiana.'
+  },
+  cianite: {
+    name: 'Cianite Azzurra',
+    chakra: '5° · 6° Chakra',
+    color: 'blue',
+    function: 'Comunicazione chiara, verità, allineamento dei chakra, connessione.',
+    tags: ['Verità', 'Allineamento', 'Gola'],
+    ai_info: 'Cianite azzurra (5°,6° chakra): Comunicazione chiara, verità, allineamento chakra. Con Lapislazzuli, Calcedonio blu. Non con pietre troppo mentali.'
+  },
+  calcite_bianca: {
+    name: 'Calcite Bianca',
+    chakra: 'Tutti',
+    color: 'white',
+    function: 'Purificazione generale, amplificazione delle altre pietre, leggerezza.',
+    tags: ['Purificazione', 'Amplifica', 'Luce'],
+    ai_info: 'Calcite bianca (tutti i chakra): Purificazione, amplificazione. Ottima in qualsiasi combinazione. Non con pietre non purificanti come Malachite o Ematite.'
+  },
+  apatite_blu: {
+    name: 'Apatite Blu',
+    chakra: '5° · 6° Chakra',
+    color: 'blue',
+    function: 'Verità, motivazione, comunicazione, sblocco voce.',
+    tags: ['Verità', 'Voce', 'Motivazione'],
+    ai_info: 'Apatite blu (5°,6° chakra): Verità, motivazione, comunicazione. Con Lapislazzuli, Calcedonio blu. Non con Quarzo ialino o Selenite.'
+  },
+  serpentino: {
+    name: 'Serpentino',
+    chakra: '1° · 4° Chakra',
+    color: 'green',
+    function: 'Radicamento, connessione spirituale, purificazione, blocchi emotivi.',
+    tags: ['Radicamento', 'Purifica', 'Natura'],
+    ai_info: 'Serpentino (1°,4° chakra): Radicamento, purificazione, blocchi emotivi. Con Diaspro rosso, Malachite. Non con Selenite o Fluorite.'
+  },
+  diaspro_giallo: {
+    name: 'Diaspro Giallo',
+    chakra: '3° · 7° Chakra',
+    color: 'gold',
+    function: 'Energia, motivazione, ottimismo, supporto fisico generale.',
+    tags: ['Energia', 'Ottimismo', 'Vitalità'],
+    ai_info: 'Diaspro giallo (3°,7° chakra): Energia, motivazione, ottimismo. Con Calcite gialla, Pirite. Non con Selenite o pietre spirituali fredde.'
+  },
+  legno_fossile: {
+    name: 'Legno Fossile',
+    chakra: '1° Chakra',
+    color: 'gold',
+    function: 'Radicamento alla terra, connessione con la natura, stabilità ancestrale.',
+    tags: ['Radici', 'Natura', 'Stabilità'],
+    ai_info: 'Legno fossile (1° chakra): Radicamento, connessione natura, stabilità. Con Serpentino, Diaspro rosso. Non con Selenite, pietre azzurre/cristalline.'
+  },
+  rodonite: {
+    name: 'Rodonite',
+    chakra: '4° Chakra',
+    color: 'rose',
+    function: 'Guarigione emotiva, perdono, rilascio del rancore, compassione.',
+    tags: ['Perdono', 'Guarigione', 'Compassione'],
+    ai_info: 'Rodonite (4° chakra): Perdono, guarigione emotiva, rilascio rancore. Con Quarzo rosa, Malachite. Non con Tormalina nera o Ematite.'
+  },
+  sugilite: {
+    name: 'Sugilite',
+    chakra: '6° · 7° Chakra',
+    color: 'amethyst',
+    function: 'Protezione spirituale, guarigione profonda, angoscia esistenziale.',
+    tags: ['Protezione', 'Spirituale', 'Angoscia'],
+    ai_info: 'Sugilite (6°,7° chakra): Protezione spirituale, depressione spirituale, angoscia. Con Ametista, Selenite. Non con pietre troppo leggere come Quarzo rosa, Howlite.'
+  },
+  dioptasio: {
+    name: 'Dioptasio',
+    chakra: '4° Chakra',
+    color: 'teal',
+    function: 'Scioglimento blocchi emotivi profondi, dolori antichi, amore incondizionato.',
+    tags: ['Traumi', 'Liberazione', 'Cuore'],
+    ai_info: 'Dioptasio (4° chakra): Scioglimento blocchi emotivi profondi, traumi, perdono. Con Malachite, Quarzo rosa. Non con Diaspro rosso o Onice nera.'
+  },
+  quarzo_fragola: {
+    name: 'Quarzo Fragola',
+    chakra: '4° Chakra',
+    color: 'rose',
+    function: 'Amore, ottimismo nelle relazioni, apertura del cuore.',
+    tags: ['Amore', 'Relazioni', 'Ottimismo'],
+    ai_info: 'Quarzo fragola (4° chakra): Amore, ottimismo relazionale, apertura cuore. Con Quarzo rosa, Rodocrosite. Non con Granato o Tormalina nera.'
+  },
+  avventurina_rossa: {
+    name: 'Avventurina Rossa',
+    chakra: '2° Chakra',
+    color: 'rose',
+    function: 'Motivazione, coraggio, prontezza all\'azione, superamento della paura.',
+    tags: ['Coraggio', 'Azione', 'Motivazione'],
+    ai_info: 'Avventurina rossa (2° chakra): Motivazione, coraggio, azione. Con Occhio di tigre, Granato. Non con Selenite o pietre bianche/cristalline.'
+  },
+  calcite_arancione: {
+    name: 'Calcite Arancione',
+    chakra: '2° Chakra',
+    color: 'gold',
+    function: 'Gioia, creatività, energia sacrale, digestione.',
+    tags: ['Gioia', 'Creatività', 'Digestione'],
+    ai_info: 'Calcite arancione (2° chakra): Gioia, creatività, energia sacrale, digestione. Con Corniola, Pietra del sole. Non con Onice nera, Ossidiana.'
+  },
+  anidrite: {
+    name: 'Anidrite',
+    chakra: '6° Chakra',
+    color: 'blue',
+    function: 'Chiarezza mentale, connessione spirituale, scioglimento blocchi di meditazione.',
+    tags: ['Chiarezza', 'Meditazione', 'Spirituale'],
+    ai_info: 'Anidrite (6° chakra): Chiarezza mentale, connessione spirituale. Con Fluorite, Sugilite. Non con pietre troppo terrene.'
+  },
+  opale: {
+    name: 'Opale',
+    chakra: 'Tutti',
+    color: 'teal',
+    function: 'Creatività, amplificazione emotiva, ispirazione, spontaneità.',
+    tags: ['Creatività', 'Ispirazione', 'Emozioni'],
+    ai_info: 'Opale (tutti i chakra): Creatività, ispirazione, amplificazione emotiva. Con Quarzo rosa, Lapislazzuli. Non con Fluorite o Cianite (troppo logiche).'
+  },
+  calcedonio_blu: {
+    name: 'Calcedonio Blu',
+    chakra: '5° · 6° Chakra',
+    color: 'blue',
+    function: 'Calma, comunicazione serena, pace interiore.',
+    tags: ['Calma', 'Pace', 'Comunicazione'],
+    ai_info: 'Calcedonio blu (5°,6° chakra): Calma, comunicazione, pace. Con Angelite, Cianite. Non con pietre troppo stimolanti.'
+  },
+  avventurina_gialla: {
+    name: 'Avventurina Gialla',
+    chakra: '3° Chakra',
+    color: 'gold',
+    function: 'Ottimismo, abbondanza, prosperità, apertura alle opportunità.',
+    tags: ['Prosperità', 'Ottimismo', 'Abbondanza'],
+    ai_info: 'Avventurina gialla (3° chakra): Ottimismo, abbondanza, opportunità. Con Pietra del sole, Citrino. Non con Ematite o Onice nera.'
+  },
+  moldavite: {
+    name: 'Moldavite',
+    chakra: '7° Chakra',
+    color: 'teal',
+    function: 'Trasformazione accelerata, cambiamento karmico profondo, evoluzione rapida.',
+    tags: ['Trasformazione', 'Karma', 'Evoluzione'],
+    ai_info: 'Moldavite (7° chakra): Trasformazione accelerata, cambiamento karmico, evoluzione. Con Charoite, Selenite. Non con pietre radicanti (Ematite, Granato).'
+  },
+  calcite_verde: {
+    name: 'Calcite Verde',
+    chakra: '4° Chakra',
+    color: 'green',
+    function: 'Bilanciamento emotivo, purificazione, guarigione del cuore.',
+    tags: ['Equilibrio', 'Cuore', 'Purifica'],
+    ai_info: 'Calcite verde (4° chakra): Bilanciamento emotivo, guarigione cuore. Con Avventurina verde, Quarzo rosa. Non con Granato o pietre fuoco.'
+  }
+};
+
+const ICONS = {
+  body: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 8h12l-1 8H7L6 8z"/><path d="M9 16v6M15 16v6"/></svg>`,
+  joint: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
+  stomach: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M8 5c-2 0-4 1-4 4s2 6 4 6h8c2 0 4-1 4-4s-2-6-4-6H8z"/><path d="M12 11v4M9 13h6"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  head: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M9 22v-4a3 3 0 0 1 6 0v4"/></svg>`,
+  lungs: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 5v4M8 9H5c-1.5 0-3 1.5-3 4v4c0 1.5 1 3 3 3h3"/><path d="M16 9h3c1.5 0 3 1.5 3 4v4c0 1.5-1 3-3 3h-3"/><path d="M8 9c0 3-2 5-2 8M16 9c0 3 2 5 2 8"/></svg>`,
+  moon: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+  energy: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  balance: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 2v20M2 7l10 5 10-5M2 17l10 5 10-5"/></svg>`,
+  anxiety: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4M12 16h.01"/></svg>`,
+  sad: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2M9 9h.01M15 9h.01"/></svg>`,
+  star: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  heart: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  stress: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>`,
+  connect: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  courage: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+  flame: `<svg viewBox="0 0 24 24" fill="none" stroke="#9b72cf" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+  fog: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><path d="M3 10h18M3 14h18M3 18h18M9 6l3-3 3 3"/></svg>`,
+  creative: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M14 19l-4.5-8.5M9.5 10.5l-5 9a1 1 0 0 0 .9 1.5H19a1 1 0 0 0 .9-1.5l-5-9"/></svg>`,
+  loop: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>`,
+  book: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+  compass: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
+  clarity: `<svg viewBox="0 0 24 24" fill="none" stroke="#5eb8a4" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>`,
+  protect: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  root: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 2v10M6 6c0 0 2 4 6 4s6-4 6-4M12 12c0 0-5 3-5 8M12 12c0 0 5 3 5 8"/></svg>`,
+  eye: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  divine: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  clean: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>`,
+  transform: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
+  abundance: `<svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`
+};
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let selections = { 1: [], 2: [], 3: [], 4: [] };
+let currentStep = 0;
+let topStones = [];
+let chatHistory = [];
+let userProfile = '';
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+function buildGrids() {
+  QUIZ_STEPS.forEach(step => {
+    const grid = document.getElementById('grid-' + step.id);
+    step.options.forEach(opt => {
+      const card = document.createElement('div');
+      card.className = 'option-card';
+      card.dataset.id = opt.id;
+      card.dataset.step = step.id;
+      card.onclick = () => toggleOption(card, step.id, opt.id);
+      card.innerHTML = `
+        <div class="option-icon">${ICONS[opt.icon] || ''}</div>
+        <div class="option-text">
+          <h4>${opt.label}</h4>
+          <p>${opt.desc}</p>
+        </div>`;
+      grid.appendChild(card);
+    });
+  });
+}
+
+function startTest() {
+  document.getElementById('hero-section').style.display = 'none';
+  const nav = document.getElementById('stepsNav');
+  nav.classList.add('visible');
+  nextStep(1);
+}
+
+function nextStep(n) {
+  if (currentStep > 0) {
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    document.getElementById('dot-' + currentStep).classList.remove('active');
+    if (n > currentStep) document.getElementById('dot-' + currentStep).classList.add('done');
+  }
+  currentStep = n;
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('dot-' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleOption(card, stepId, optId) {
+  card.classList.toggle('selected');
+  const arr = selections[stepId];
+  const idx = arr.indexOf(optId);
+  if (idx >= 0) arr.splice(idx, 1);
+  else arr.push(optId);
+}
+
+// ── RESULTS ───────────────────────────────────────────────────────────────
+function showResults() {
+  // Hide last step
+  document.getElementById('step-4').classList.remove('active');
+  document.getElementById('dot-4').classList.remove('active');
+  document.getElementById('dot-4').classList.add('done');
+  document.getElementById('stepsNav').style.display = 'none';
+
+  // Score stones
+  const scores = {};
+  QUIZ_STEPS.forEach(step => {
+    selections[step.id].forEach(selId => {
+      const opt = step.options.find(o => o.id === selId);
+      if (opt) {
+        opt.stones.forEach(stone => {
+          scores[stone] = (scores[stone] || 0) + 1;
+        });
+      }
+    });
+  });
+
+  // If nothing selected, give defaults
+  if (Object.keys(scores).length === 0) {
+    scores['quarzo_rosa'] = 3;
+    scores['ametista'] = 3;
+    scores['quarzo_ialino'] = 2;
+    scores['selenite'] = 2;
+    scores['howlite'] = 1;
+  }
+
+  // Sort and take top 6
+  topStones = Object.entries(scores)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([id]) => id)
+    .filter(id => STONE_DB[id]);
+
+  // Ensure we have at least 3
+  if (topStones.length < 3) {
+    ['quarzo_rosa','ametista','quarzo_ialino'].forEach(s => {
+      if (!topStones.includes(s)) topStones.push(s);
+    });
+    topStones = topStones.slice(0, 6);
+  }
+
+  // Build profile text for AI
+  buildUserProfile();
+
+  // Render stones
+  const grid = document.getElementById('stonesGrid');
+  grid.innerHTML = '';
+  const ranks = ['Prima pietra', 'Seconda', 'Terza', 'Quarta', 'Quinta', 'Sesta'];
+  topStones.forEach((id, i) => {
+    const s = STONE_DB[id];
+    if (!s) return;
+    const card = document.createElement('div');
+    card.className = 'stone-card';
+    card.dataset.color = s.color;
+    card.innerHTML = `
+      <div class="stone-rank">${ranks[i]}</div>
+      <div class="stone-gem">${gemSvg(s.color)}</div>
+      <div class="stone-name">${s.name}</div>
+      <div class="stone-chakra">${s.chakra}</div>
+      <p class="stone-function">${s.function}</p>
+      <div class="stone-tags">${s.tags.map(t=>`<span class="stone-tag">${t}</span>`).join('')}</div>`;
+    grid.appendChild(card);
+  });
+
+  // Welcome message
+  const welcomeEl = document.getElementById('welcomeMsg');
+  const stoneNames = topStones.slice(0, 3).map(id => STONE_DB[id].name).join(', ');
+  welcomeEl.textContent = `Ho analizzato il tuo profilo energetico. Le tue pietre principali sono ${stoneNames}. Posso aiutarti a capire come usarle, come abbinarle, quando portarle con te e molto altro. Cosa vorresti sapere?`;
+
+  // Quick questions
+  buildQuickQuestions();
+
+  const section = document.getElementById('results');
+  section.style.display = 'block';
+  section.classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildUserProfile() {
+  const selected = [];
+  QUIZ_STEPS.forEach(step => {
+    step.options.forEach(opt => {
+      if (selections[step.id].includes(opt.id)) {
+        selected.push(opt.label);
+      }
+    });
+  });
+
+  const stoneInfo = topStones.map(id => STONE_DB[id]?.ai_info || '').join('\n');
+  userProfile = `
+PROFILO DELL'UTENTE:
+Condizioni selezionate: ${selected.length > 0 ? selected.join(', ') : 'nessuna selezione specifica'}
+
+PIETRE CONSIGLIATE PER QUESTO UTENTE:
+${topStones.map((id,i) => `${i+1}. ${STONE_DB[id]?.name || id}: ${STONE_DB[id]?.function || ''}`).join('\n')}
+
+DETTAGLI TECNICI DELLE PIETRE:
+${stoneInfo}`;
+}
+
+function buildQuickQuestions() {
+  const qq = document.getElementById('quickQuestions');
+  const mainStone = topStones[0] ? STONE_DB[topStones[0]]?.name : 'questa pietra';
+  const qs = [
+    `Come uso ${mainStone} ogni giorno?`,
+    'Come purifico e ricarico le mie pietre?',
+    'Posso portarle tutte insieme?',
+    'Come le posiziono sui chakra?',
+    'Quanto tempo ci vuole per sentire gli effetti?',
+  ];
+  qq.innerHTML = qs.map(q => `<button class="qq-btn" onclick="sendQuick('${q.replace(/'/g,"\\'")}' )">${q}</button>`).join('');
+}
+
+function sendQuick(q) {
+  document.getElementById('chatInput').value = q;
+  sendMessage();
+}
+
+function gemSvg(color) {
+  const fills = {
+    amethyst: '#7b4fb5',
+    rose: '#c46a6f',
+    teal: '#3a8f7e',
+    gold: '#b08825',
+    dark: '#4a3f3f',
+    white: '#8a8a8a',
+    blue: '#2d5c8a',
+    green: '#3a7a4a'
+  };
+  const c = fills[color] || fills.gold;
+  return `<svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="22,3 38,13 38,31 22,41 6,31 6,13" fill="${c}" opacity="0.3" stroke="${c}" stroke-width="1"/>
+    <polygon points="22,3 38,13 22,22" fill="${c}" opacity="0.5"/>
+    <polygon points="38,13 38,31 22,22" fill="${c}" opacity="0.35"/>
+    <polygon points="38,31 22,41 22,22" fill="${c}" opacity="0.45"/>
+    <polygon points="22,41 6,31 22,22" fill="${c}" opacity="0.4"/>
+    <polygon points="6,31 6,13 22,22" fill="${c}" opacity="0.3"/>
+    <polygon points="6,13 22,3 22,22" fill="${c}" opacity="0.5"/>
+    <circle cx="22" cy="22" r="1.5" fill="white" opacity="0.7"/>
+  </svg>`;
+}
+
+// ── AI CHAT ───────────────────────────────────────────────────────────────
+const SYSTEM_PROMPT = `Sei un esperto di cristalloterapia e litoterapia del sito olismo-integrato.it, fondato dall'Operatore dell'Energia Carlo Alberto Calcagno.
+Rispondi SEMPRE in italiano, con tono caldo, empatico e professionale. Non usare linguaggio medico prescrittivo.
+Ricorda sempre che le pietre sono un supporto energetico-olistico e non sostituiscono cure mediche.
+
+DATABASE COMPLETO DELLE PIETRE (estratto dal manuale di Carlo Alberto Calcagno):
+
+PIETRE E CHAKRA:
+- Ametista (1°,6°): Calma, purificazione mentale, rilassamento. Per insonnia, ansia, stress. CON: Howlite, Quarzo ialino. NON CON: Pirite, Diaspro rosso, Ematite.
+- Quarzo Rosa (4°): Amore, guarigione emotiva, autocompassione. Per traumi, cuore chiuso. CON: Rodocrosite, Avventurina verde. NON CON: Granato, Tormalina nera.
+- Selenite (7°): Connessione spirituale, purificazione, chiarezza. Purifica anche le altre pietre. NON CON: Malachite, Ematite.
+- Tormalina Nera (1°): Protezione, assorbimento energie negative, radicamento. CON: Shungite, Ematite. NON CON: Selenite, Quarzo ialino.
+- Quarzo Ialino (7°): Amplificazione, purezza, allineamento chakra. NON CON: Ematite, Onice nera.
+- Granato (1°): Energia vitale, passione, radicamento. NON CON: Ametista, Quarzo ialino.
+- Howlite (7°): Calma profonda, insonnia, riduzione ansia. NON CON: Citrino, Corniola.
+- Labradorite (6°): Protezione aurica, intuizione, magia interiore. NON CON: Selenite, Celestite.
+- Lapislazzuli (5°,6°): Verità, comunicazione, saggezza. NON CON: Ematite, Diaspro rosso.
+- Fluorite (6°,7°): Chiarezza mentale, ordine, concentrazione. NON CON: Malachite, Opale di fuoco.
+- Occhio di Tigre (3°): Fiducia, coraggio, ottimismo. NON CON: Ametista, Selenite.
+- Avventurina Verde (4°): Prosperità, equilibrio emotivo, cuore. NON CON: Ematite.
+- Quarzo Citrino (3°): Energia solare, prosperità, autostima. NON CON: Tormalina nera, Ossidiana.
+- Pietra del Sole (1°,3°): Gioia, vitalità, anti-depressione. NON CON: Tormalina nera.
+- Rodocrosite (4°): Autoamore, guarigione emotiva, autostima. NON CON: Ossidiana nera.
+- Malachite (4°): Trasformazione, blocchi emotivi profondi. NON CON: Calcite bianca.
+- Charoite (6°,7°): Trasformazione spirituale, blocchi karmici. NON CON: Ematite, Onice nera.
+- Shungite (1°): Purificazione, scudo EMF, sistema immunitario. NON CON: Ambra, Quarzo rosa.
+- Celestite (5°): Pace, respiro, connessione angelica. NON CON: Onice nera, Ematite.
+- Angelite (5°): Comunicazione angelica, pace, ascolto. NON CON: Diaspro rosso, Onice.
+- Diaspro Rosso (1°): Radicamento profondo, vitalità, coraggio. NON CON: Turchesi, Selenite, Lapislazzuli.
+- Quarzo Affumicato (1°): Protezione psichica, paure, energie dense. NON CON: Celestite, Selenite.
+- Corniola (2°): Creatività, motivazione, vitalità sacrale. NON CON: Ametista, Selenite.
+- Ematite (1°): Radicamento, forza, purificazione sangue. NON CON: Quarzo ialino, Selenite.
+- Calcite Gialla (3°): Digestione, energia vitale, ottimismo. NON CON: Ametista.
+- Calcedonio Azzurro (5°): Comunicazione serena, gola, calma. NON CON: pietre energizzanti.
+- Sodalite (2°,6°): Calma mentale, logica, blocchi intellettuali. NON CON: Granato, Ossidiana.
+- Cianite Azzurra (5°,6°): Comunicazione chiara, verità, allineamento. Non necessita purificazione.
+- Onice Nera (1°): Protezione, forza, radicamento profondo. NON CON: Selenite, Quarzo ialino.
+- Pirite (3°): Protezione energetica, concretezza, obiettivi. NON CON: Ametista, Quarzo rosa.
+- Amazzonite (5°): Riduzione stress, comunicazione, equilibrio. 
+- Dioptasio (4°): Blocchi emotivi profondi, traumi, perdono. NON CON: Diaspro rosso, Onice.
+- Rodonite (4°): Perdono, guarigione emotiva, rilascio rancore. NON CON: Tormalina nera, Ematite.
+- Sugilite (6°,7°): Protezione spirituale, depressione spirituale, angoscia. NON CON: Quarzo rosa, Howlite.
+- Serpentino (1°,4°): Radicamento, purificazione, blocchi emotivi, connessione natura. NON CON: Selenite, Fluorite.
+
+DISTURBI E COMBINAZIONI DI PIETRE:
+- Dolori muscolari: Ametista+Selenite+Ematite OPPURE Tormalina nera+Shungite+Quarzo affumicato
+- Disturbi digestivi: Calcite gialla+Corniola+Agata muschiata OPPURE Tormalina nera+Quarzo ialino+Ametista+Selenite
+- Sistema immunitario: Shungite+Quarzo ialino+Ametista OPPURE Diaspro rosso+Ematite+Granato
+- Mal di testa: Ametista+Howlite+Lapislazzuli OPPURE Fluorite+Labradorite+Cianite
+- Squilibri ormonali: Avventurina verde+Lapislazzuli+Quarzo rosa OPPURE Ametista+Calcite verde+Rodocrosite
+- Insonnia: Ametista+Howlite+Quarzo affumicato OPPURE Selenite+Quarzo rosa+Angelite
+- Ansia/panico: Howlite+Selenite+Amazzonite OPPURE Quarzo rosa+Ametista+Avventurina verde
+- Depressione: Citrino+Pietra del sole+Quarzo rosa OPPURE Granato+Occhio di tigre+Rodocrosite
+- Scarsa autostima: Occhio di tigre+Granato+Rodocrosite OPPURE Quarzo rosa+Avventurina verde+Pietra del sole
+- Traumi emotivi: Quarzo rosa+Malachite+Selenite OPPURE Dioptasio+Rodocrosite+Howlite
+- Confusione mentale: Fluorite+Labradorite+Cianite OPPURE Lapislazzuli+Ametista+Quarzo ialino
+- Dolori articolari: Tormalina nera+Ematite+Shungite OPPURE Diaspro rosso+Quarzo affumicato+Ematite
+- Stress generale: Ametista+Avventurina verde+Howlite OPPURE Selenite+Quarzo ialino+Ametista
+- Stanchezza: Granato+Diaspro giallo+Citrino OPPURE Pietra del sole+Diaspro rosso+Quarzo ialino
+
+CORPI SOTTILI E PIETRE:
+- Corpo Fisico: Diaspro Rosso, Ematite, Granato. CON: Tormalina Nera, Shungite. NON: Selenite, Quarzo Ialino.
+- Corpo Eterico: Quarzo Ialino, Ametista, Fluorite. CON: Calcite Bianca, Selenite. NON: Granato, Ematite.
+- Corpo Emotivo: Quarzo Rosa, Avventurina Verde. CON: Rodocrosite, Agata Albicocca. NON: Tormalina Nera, Ossidiana.
+- Corpo Mentale: Fluorite, Lapislazzuli, Sodalite. CON: Cianite, Calcedonio Blu. NON: Granato, Pietra del Sole.
+- Corpo Astrale: Labradorite, Ametista, Pietra di Luna. CON: Opale, Sugilite. NON: Diaspro Rosso, Ematite.
+- Corpo Causale: Charoite, Moldavite, Fenacite. CON: Danburite, Cristallo di Rocca. NON: pietre radicanti.
+- Corpo Spirituale: Selenite, Angelite, Celestite. CON: Quarzo Ialino, Cianite Blu. NON: pietre dense.
+
+COME USARE LE PIETRE:
+- Posizionare sui chakra corrispondenti durante meditazione o riposo (15-30 minuti)
+- Portare in tasca, borsa o come gioiello
+- Mettere sotto il cuscino di notte (pietre calmanti)
+- Creare un altare o layout energetico nello spazio
+- Tenere in mano durante la meditazione
+- Bagno con pietre resistenti all'acqua (non Selenite, non Malachite!)
+
+COME PURIFICARE LE PIETRE:
+- Selenite: posizionarle sopra o vicino per 2-4 ore
+- Luce lunare (luna piena): notte all'aperto o sul davanzale
+- Acqua corrente (NON per Selenite, Malachite, Calcite, Fluorite - si deteriorano)
+- Luce solare: poche ore al mattino (NON per Ametista - perde colore)
+- Terra: seppellire 24-48 ore
+- Suono (campane tibetane, canto)
+- Visualizzazione/intenzione
+
+NOTE IMPORTANTI:
+- Le pietre sono un supporto energetico-olistico, non medicina
+- Meglio iniziare con 1-3 pietre e aggiungerne gradualmente
+- Ascoltare la propria intuizione: se una pietra disturba, toglierla
+- Lavorare su un chakra alla volta per 7-10 giorni
+- Abbinare a meditazione, respirazione e intenzione chiara
+
+Rispondi sempre in modo specifico, pratico e personalizzato per l'utente. Sii come un'amica/o esperta di cristalloterapia.`;
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const btn = document.getElementById('sendBtn');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  btn.disabled = true;
+
+  appendMsg('user', msg);
+  chatHistory.push({ role: 'user', content: msg });
+
+  const typingId = appendTyping();
+
+  try {
+    const messages = chatHistory.length === 1
+      ? [{ role: 'user', content: userProfile + '\n\nDomanda dell\'utente: ' + msg }]
+      : [...chatHistory.slice(0, -1).map((m, i) => i === 0 ? { ...m, content: userProfile + '\n\nDomanda: ' + m.content } : m), { role: 'user', content: msg }];
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: messages
+      })
+    });
+
+    const data = await resp.json();
+    removeTyping(typingId);
+
+    const reply = data.content?.[0]?.text || 'Mi dispiace, si è verificato un errore. Riprova.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    appendMsg('ai', reply);
+  } catch (e) {
+    removeTyping(typingId);
+    appendMsg('ai', 'Si è verificato un errore di connessione. Verifica la tua connessione internet e riprova.');
+  }
+
+  btn.disabled = false;
+  input.focus();
+}
+
+function appendMsg(role, text) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  const avatar = role === 'ai' ? '✦' : 'Tu';
+  div.innerHTML = `
+    <div class="msg-avatar ${role}">${avatar}</div>
+    <div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+
+function appendTyping() {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.id = 'typing-' + Date.now();
+  div.innerHTML = `<div class="msg-avatar ai">✦</div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div.id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function restartTest() {
+  selections = { 1: [], 2: [], 3: [], 4: [] };
+  currentStep = 0;
+  topStones = [];
+  chatHistory = [];
+  userProfile = '';
+
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.step-dot').forEach(d => { d.classList.remove('active','done'); });
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('chatMessages').innerHTML = `
+    <div class="msg ai">
+      <div class="msg-avatar ai">✦</div>
+      <div class="msg-bubble" id="welcomeMsg">Benvenuto/a! Ho analizzato il tuo profilo energetico. Sono qui per aiutarti a comprendere meglio le tue pietre guida. Cosa vorresti sapere?</div>
+    </div>`;
+
+  document.getElementById('hero-section').style.display = '';
+  document.getElementById('stepsNav').classList.remove('visible');
+  document.getElementById('stepsNav').style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── START ──────────────────────────────────────────────────────────────────
+buildGrids();
+</script>
+</body>
+</html>

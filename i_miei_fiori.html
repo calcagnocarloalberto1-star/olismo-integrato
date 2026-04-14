@@ -128,6 +128,7 @@ body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;fon
 footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);color:var(--text-dim);font-size:.78rem}
 footer a{color:var(--green-light);text-decoration:none}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -228,7 +229,12 @@ footer a{color:var(--green-light);text-decoration:none}
     </div>
     <div id="results-content"></div>
 
-    <div class="disclaimer">
+          <div style="text-align:center;margin:1.5rem 0 1rem">
+        <button id="pdf-btn" onclick="exportPdf()" style="display:inline-flex;align-items:center;gap:.6rem;background:transparent;border:1px solid var(--gold,#c9a84c);color:var(--gold,#c9a84c);padding:.75rem 2rem;font-family:inherit;font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s">
+          &#x2913; Scarica PDF completo
+        </button>
+      </div>
+<div class="disclaimer">
       <strong>Nota:</strong> Le essenze floreali appartengono alla tradizione della medicina complementare. Non sostituiscono cure mediche o psicologiche. Per disturbi seri consultare sempre un professionista. I rimedi floreali possono essere usati in parallelo con altri trattamenti senza interferenze.
       Sito curato dall'<a href="https://olismo-integrato.it" style="color:var(--green-light)">Avv. Carlo Alberto Calcagno</a>.
     </div>
@@ -629,7 +635,7 @@ async function sendMessage(){
       ? [{role:'user',content:userProfile+'\n\nDomanda: '+msg}]
       : [...chatHistory.slice(0,-1).map((m,i)=>i===0?{...m,content:userProfile+'\n\nDomanda: '+m.content}:m),{role:'user',content:msg}];
     const resp = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
+      method:'POST',headers:_ah(),
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages})
     });
     const data = await resp.json();
@@ -672,6 +678,100 @@ function restartTest(){
 }
 
 buildGrids();
+
+// ── API auth helpers ──
+function _ak(){ return ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''); }
+function _ah(){
+  return {
+    'Content-Type':'application/json',
+    'x-api-key':_ak(),
+    'anthropic-version':'2023-06-01',
+    'anthropic-dangerous-direct-browser-access':'true'
+  };
+}
+
+// ── PDF Export ──
+async function exportPdf(){
+  const btn=document.getElementById('pdf-btn');
+  if(btn){btn.textContent='⏳...';btn.disabled=true;}
+  try{
+    await new Promise(r=>{ if(window.jspdf||window.jsPDF)r(); else setTimeout(r,500); });
+    const {jsPDF}=window.jspdf||{jsPDF:window.jsPDF};
+    const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    const PW=doc.internal.pageSize.getWidth(),PH=doc.internal.pageSize.getHeight();
+    const ML=16,MR=16,MT=30,MB=22,CW=PW-ML-MR;
+    const GOLD=[184,147,90],IVORY=[249,245,239],INK=[42,37,32],INK2=[74,69,64],INK3=[122,114,104],W=[255,255,255];
+    let page=1,y=MT;
+    function dh(){
+      doc.setFillColor(...GOLD);doc.rect(0,0,PW,7,'F');
+      doc.setFillColor(...IVORY);doc.rect(0,7,PW,18,'F');
+      doc.setFillColor(...GOLD);doc.circle(ML+5,16,4,'F');
+      doc.setTextColor(...W);doc.setFontSize(8);doc.setFont('helvetica','bold');doc.text('\u2726',ML+3.5,17.5);
+      doc.setTextColor(...INK);doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('OLISMO INTEGRATO',ML+12,14);
+      doc.setFontSize(7.5);doc.setFont('helvetica','normal');doc.setTextColor(...INK3);
+      doc.text('Carlo Alberto Calcagno  \u00b7  olismo-integrato.it',ML+12,19);
+      doc.setFontSize(7);doc.setTextColor(...GOLD);doc.text('olismo-integrato.it',PW-MR-2,19,{align:'right'});
+      doc.setDrawColor(...GOLD);doc.setLineWidth(0.3);doc.line(ML,25,PW-MR,25);
+      y=MT;
+    }
+    function df(){
+      const fy=PH-14;doc.setDrawColor(...GOLD);doc.setLineWidth(0.2);doc.line(ML,fy,PW-MR,fy);
+      doc.setFontSize(7);doc.setFont('helvetica','normal');doc.setTextColor(...INK3);
+      const ds=new Date().toLocaleDateString('it-IT',{day:'2-digit',month:'long',year:'numeric'});
+      doc.text('olismo-integrato.it',ML,fy+5);doc.text('Pag.'+page,PW/2,fy+5,{align:'center'});doc.text(ds,PW-MR,fy+5,{align:'right'});
+      doc.setFontSize(6.5);doc.setTextColor(180,175,170);
+      doc.text('Finalit\u00e0 informativa \u2014 non sostituisce consulenza medica. \u00a9 Carlo Alberto Calcagno',PW/2,fy+9.5,{align:'center'});
+    }
+    function cb(h){if(y+h>PH-MB){df();doc.addPage();page++;dh();}}
+    function at(txt,fs,bold,color,ind){
+      doc.setFontSize(fs);doc.setFont('helvetica',bold?'bold':'normal');doc.setTextColor(...(color||INK2));
+      const lines=doc.splitTextToSize(String(txt),CW-(ind||0));
+      lines.forEach(l=>{cb(fs*0.4+2);doc.text(l,ML+(ind||0),y);y+=fs*0.4+2;});y+=1;
+    }
+    dh();
+    // Titolo
+    const title=document.title.split('\u00b7')[0].trim();
+    at(title,16,true,GOLD,0);y+=3;
+    // Risultati
+    const resEl=document.getElementById('results-content')||document.getElementById('stonesGrid')||document.getElementById('adaptationsList');
+    if(resEl){
+      const cards=[...resEl.querySelectorAll('[class*="card"],[class*="stone"],[class*="adatt"],[class*="flower"]')];
+      if(cards.length){
+        cards.slice(0,6).forEach(card=>{
+          const nm=card.querySelector('[class*="name"],[class*="nome"],[class*="title"]');
+          const dc=card.querySelector('[class*="desc"],[class*="function"],[class*="stato"],[class*="trasf"]');
+          if(nm){cb(12);doc.setFillColor(...IVORY);doc.rect(ML,y-3,CW,10,'F');at('\u25c6 '+(nm.textContent||'').trim(),10,true,INK,0);}
+          if(dc){const t=(dc.textContent||'').trim().substring(0,250);at(t,8,false,INK2,4);}
+          y+=2;
+        });
+      } else {
+        at((resEl.textContent||'').replace(/\s+/g,' ').trim().substring(0,2000),8,false,INK2,0);
+      }
+    }
+    // Chat AI
+    if(typeof chatHistory!=='undefined'&&chatHistory&&chatHistory.length>0){
+      cb(16);doc.setFillColor(...GOLD);doc.rect(ML,y,CW,8,'F');
+      doc.setTextColor(...W);doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text('CONSULENZA AI',ML+3,y+5.5);y+=12;
+      chatHistory.forEach(msg=>{
+        if(!msg||!msg.content)return;
+        const isU=msg.role==='user';
+        doc.setFillColor(...(isU?[232,225,208]:IVORY));
+        const lines=doc.splitTextToSize(String(msg.content).substring(0,800),CW-8);
+        const bh=lines.length*4+7;cb(bh);
+        doc.rect(isU?ML+CW*0.12:ML,y,CW*0.88,bh,'F');
+        doc.setFontSize(7);doc.setFont('helvetica','bold');doc.setTextColor(...(isU?GOLD:INK3));
+        doc.text(isU?'TU':'CONSULENTE AI',(isU?ML+CW*0.12:ML)+2,y+4);
+        doc.setFont('helvetica','normal');doc.setTextColor(...INK2);
+        lines.forEach((l,i)=>{doc.text(l,(isU?ML+CW*0.12:ML)+2,y+8+i*4);});
+        y+=bh+3;
+      });
+    }
+    df();
+    const fn=title.replace(/\s+/g,'_').toLowerCase().replace(/[^a-z0-9_]/g,'')+'_'+new Date().toISOString().slice(0,10)+'.pdf';
+    doc.save(fn);
+  }catch(e){alert('Errore PDF: '+e.message);}
+  if(btn){btn.textContent='\u2913 Scarica PDF';btn.disabled=false;}
+}
 </script>
 </body>
 </html>

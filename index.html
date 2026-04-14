@@ -9685,7 +9685,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miei Fiori · Olismo Integrato</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f0a;--bg2:#121910;--bg3:#192014;
+  --border:rgba(160,200,120,0.15);
+  --green:#7ab648;--green-light:#b8e08a;--green-dim:#4a7a28;
+  --gold:#c9a84c;--gold-light:#e8d08a;
+  --rose:#d4878c;--teal:#5eb8a4;--violet:#9b72cf;
+  --text:#e8f0e0;--text-muted:#9ab080;--text-dim:#5a6850;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Raleway',sans-serif;font-weight:300;line-height:1.7;min-height:100vh}
+
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:.5px solid var(--border);background:rgba(11,15,10,0.92);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;letter-spacing:.06em;color:var(--green-light);text-decoration:none}
+.logo span{color:var(--text-muted);font-weight:300;font-size:.9em}
+.btn-back{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:.5rem 1.2rem;font-family:'Raleway',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;text-decoration:none;transition:all .25s}
+.btn-back:hover{border-color:var(--text-muted);color:var(--text)}
+
+.hero{position:relative;overflow:hidden;padding:5rem 2.5rem 4rem;text-align:center;border-bottom:.5px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 40%,rgba(122,182,72,0.08) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 70% 60%,rgba(94,184,164,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 50% 5%,rgba(201,168,76,0.05) 0%,transparent 60%);pointer-events:none}
+.hero-symbol{width:72px;height:72px;margin:0 auto 1.8rem}
+.hero-symbol svg{width:100%;height:100%}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;letter-spacing:.04em;line-height:1.15;margin-bottom:.8rem}
+.hero h1 em{font-style:italic;color:var(--green-light)}
+.hero p{max-width:560px;margin:0 auto 2.5rem;color:var(--text-muted);font-size:1rem;font-weight:300}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid var(--green);color:var(--green-light);padding:.85rem 2.2rem;font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s;border-radius:2px}
+.btn-primary:hover{background:var(--green-dim);color:var(--text)}
+
+.main{max-width:900px;margin:0 auto;padding:4rem 2rem 6rem}
+
+.steps-nav{display:flex;align-items:center;margin-bottom:3.5rem;opacity:0;transition:opacity .4s}
+.steps-nav.visible{opacity:1}
+.step-dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative}
+.step-dot::after{content:'';position:absolute;top:13px;left:55%;right:-55%;height:1px;background:var(--border);z-index:0}
+.step-dot:last-child::after{display:none}
+.step-num{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:var(--text-dim);background:var(--bg);position:relative;z-index:1;transition:all .3s}
+.step-dot.active .step-num{border-color:var(--green);color:var(--green-light)}
+.step-dot.done .step-num{background:var(--green-dim);border-color:var(--green-dim);color:var(--text)}
+.step-label{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim)}
+.step-dot.active .step-label{color:var(--green-light)}
+
+.quiz-step{display:none;animation:fadeUp .5s ease forwards}
+.quiz-step.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:400;margin-bottom:.35rem}
+.step-subtitle{color:var(--text-muted);font-size:.88rem;margin-bottom:2rem}
+.options-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem;margin-bottom:2.5rem}
+.option-card{border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.3rem;cursor:pointer;transition:all .25s;background:var(--bg2);display:flex;align-items:flex-start;gap:.8rem}
+.option-card:hover{border-color:rgba(160,200,120,.4);background:var(--bg3)}
+.option-card.selected{border-color:var(--green);background:rgba(122,182,72,.07)}
+.opt-emoji{font-size:1.3rem;flex-shrink:0;margin-top:.05rem;line-height:1}
+.option-text h4{font-size:.88rem;font-weight:500;color:var(--text);margin-bottom:.15rem}
+.option-text p{font-size:.78rem;color:var(--text-muted);line-height:1.4}
+.step-nav{display:flex;gap:1rem;justify-content:flex-end;padding-top:1rem;border-top:.5px solid var(--border)}
+.btn-sec{background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:.7rem 1.8rem;font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .25s}
+.btn-sec:hover{border-color:var(--text-muted);color:var(--text)}
+
+/* RESULTS */
+.results-section{display:none;animation:fadeUp .6s ease forwards}
+.results-section.visible{display:block}
+.results-header{text-align:center;margin-bottom:3rem}
+.results-header h2{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;margin-bottom:.5rem;color:var(--green-light)}
+.results-header p{color:var(--text-muted);max-width:520px;margin:0 auto}
+
+.flowers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-bottom:2rem}
+.flower-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.flower-card:hover{transform:translateY(-3px);border-color:rgba(160,200,120,.4)}
+.flower-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.fc-bach::before{background:linear-gradient(90deg,#4a8a28,#96cc60)}
+.fc-fes::before{background:linear-gradient(90deg,#b07820,#e0b860)}
+.fc-bush::before{background:linear-gradient(90deg,#2880a8,#68b8e0)}
+.flower-type{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
+.flower-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:.15rem}
+.flower-it{font-size:.78rem;font-style:italic;color:var(--green-light);margin-bottom:.8rem;font-family:'Cormorant Garamond',serif}
+.flower-stato{font-size:.8rem;color:var(--rose);margin-bottom:.5rem;font-weight:400}
+.flower-trasf{font-size:.8rem;color:var(--teal);margin-bottom:.8rem}
+.flower-desc{font-size:.8rem;color:var(--text-muted);line-height:1.55}
+.flower-motivo{font-size:.72rem;color:var(--text-dim);margin-top:.6rem;padding-top:.6rem;border-top:.5px solid var(--border);font-style:italic}
+
+.section-label{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:.5px solid var(--border)}
+.section-label span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-left:.8rem;font-family:'Raleway',sans-serif;font-weight:300}
+
+/* AI */
+.ai-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:2rem}
+.ai-header{padding:1.4rem 1.8rem;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:1rem}
+.ai-orb{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(122,182,72,.6),rgba(94,184,164,.3));border:1px solid var(--green);flex-shrink:0;position:relative}
+.ai-orb::after{content:'';position:absolute;top:8px;left:8px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5)}
+.ai-header-text h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600}
+.ai-header-text p{font-size:.75rem;color:var(--text-dim)}
+.chat-messages{padding:1.5rem 1.8rem;min-height:200px;max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:1rem}
+.msg{display:flex;gap:.8rem;animation:fadeUp .3s ease}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:500;margin-top:.1rem}
+.msg-avatar.ai{background:rgba(122,182,72,.2);border:.5px solid var(--green);color:var(--green-light)}
+.msg-avatar.user{background:rgba(201,168,76,.2);border:.5px solid var(--gold);color:var(--gold)}
+.msg-bubble{max-width:78%;padding:.85rem 1.1rem;border-radius:10px;font-size:.875rem;line-height:1.6}
+.msg.ai .msg-bubble{background:var(--bg3);border:.5px solid var(--border);color:var(--text)}
+.msg.user .msg-bubble{background:rgba(122,182,72,.08);border:.5px solid rgba(122,182,72,.25);color:var(--text);text-align:right}
+.typing{display:flex;gap:4px;align-items:center;padding:.6rem .2rem}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--text-dim);animation:bounce 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.chat-input-area{padding:1rem 1.8rem 1.5rem;border-top:.5px solid var(--border);display:flex;gap:.8rem;align-items:flex-end}
+.chat-input{flex:1;background:var(--bg3);border:.5px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:'Raleway',sans-serif;font-size:.875rem;font-weight:300;resize:none;outline:none;min-height:42px;max-height:120px;line-height:1.5;transition:border-color .2s}
+.chat-input:focus{border-color:rgba(160,200,120,.4)}
+.chat-input::placeholder{color:var(--text-dim)}
+.send-btn{width:42px;height:42px;border-radius:8px;background:transparent;border:.5px solid var(--green);color:var(--green-light);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.send-btn:hover{background:var(--green-dim);color:var(--text)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed}
+.quick-questions{padding:0 1.8rem 1rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.qq-btn{background:transparent;border:.5px solid var(--border);color:var(--text-dim);padding:.35rem .9rem;border-radius:20px;font-size:.73rem;font-family:'Raleway',sans-serif;cursor:pointer;transition:all .2s}
+.qq-btn:hover{border-color:var(--green);color:var(--green-light)}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.disclaimer{background:rgba(122,182,72,.04);border:.5px solid rgba(122,182,72,.18);border-radius:8px;padding:1rem 1.4rem;margin-top:2rem;font-size:.78rem;color:var(--text-dim);line-height:1.5}
+.disclaimer strong{color:var(--green-light);font-weight:500}
+.restart-bar{text-align:center;margin-top:3rem;padding-top:2rem;border-top:.5px solid var(--border)}
+.restart-bar p{color:var(--text-dim);font-size:.85rem;margin-bottom:.8rem}
+footer{text-align:center;padding:2rem;border-top:.5px solid var(--border);color:var(--text-dim);font-size:.78rem}
+footer a{color:var(--green-light);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://olismo-integrato.it" class="logo">Olismo Integrato <span>· Fiori</span></a>
+  <a href="https://olismo-integrato.it" class="btn-back">← Sito</a>
+</header>
+
+<section class="hero" id="hero-section">
+  <div class="hero-symbol">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="36" cy="20" r="7" fill="#7ab648" opacity=".4"/>
+      <circle cx="36" cy="20" r="4" fill="#7ab648" opacity=".7"/>
+      <ellipse cx="20" cy="32" rx="7" ry="5" fill="#5eb8a4" opacity=".35" transform="rotate(-30 20 32)"/>
+      <ellipse cx="52" cy="32" rx="7" ry="5" fill="#c9a84c" opacity=".35" transform="rotate(30 52 32)"/>
+      <ellipse cx="14" cy="50" rx="7" ry="5" fill="#9b72cf" opacity=".3" transform="rotate(-60 14 50)"/>
+      <ellipse cx="58" cy="50" rx="7" ry="5" fill="#d4878c" opacity=".3" transform="rotate(60 58 50)"/>
+      <ellipse cx="36" cy="60" rx="7" ry="5" fill="#7ab648" opacity=".35"/>
+      <circle cx="36" cy="38" r="5" fill="#7ab648" opacity=".6"/>
+      <line x1="36" y1="27" x2="36" y2="33" stroke="#7ab648" stroke-width=".8" opacity=".5"/>
+      <line x1="26" y1="31" x2="32" y2="35" stroke="#5eb8a4" stroke-width=".8" opacity=".5"/>
+      <line x1="46" y1="31" x2="40" y2="35" stroke="#c9a84c" stroke-width=".8" opacity=".5"/>
+      <line x1="19" y1="47" x2="31" y2="39" stroke="#9b72cf" stroke-width=".8" opacity=".4"/>
+      <line x1="53" y1="47" x2="41" y2="39" stroke="#d4878c" stroke-width=".8" opacity=".4"/>
+      <line x1="36" y1="55" x2="36" y2="43" stroke="#7ab648" stroke-width=".8" opacity=".5"/>
+    </svg>
+  </div>
+  <h1>I miei<br><em>fiori</em></h1>
+  <p>Un percorso guidato per trovare i tuoi rimedi floreali — Bach, FES californiani e Bush australiani — basato sul tuo adattamento AT, enneatipo, stato emotivo e sintomi fisici.</p>
+  <button class="btn-primary" onclick="startTest()">Inizia il percorso →</button>
+</section>
+
+<div class="main">
+  <nav class="steps-nav" id="stepsNav">
+    <div class="step-dot" id="dot-1"><div class="step-num">1</div><div class="step-label">Emozioni</div></div>
+    <div class="step-dot" id="dot-2"><div class="step-num">2</div><div class="step-label">Fisico</div></div>
+    <div class="step-dot" id="dot-3"><div class="step-num">3</div><div class="step-label">Copione</div></div>
+    <div class="step-dot" id="dot-4"><div class="step-num">4</div><div class="step-label">Profilo</div></div>
+  </nav>
+
+  <div class="quiz-step" id="step-1">
+    <p class="step-title">Come ti senti emotivamente?</p>
+    <p class="step-subtitle">Seleziona gli stati emotivi che riconosci in te in questo periodo</p>
+    <div class="options-grid" id="grid-1"></div>
+    <div class="step-nav"><button class="btn-primary" onclick="nextStep(2)">Continua →</button></div>
+  </div>
+  <div class="quiz-step" id="step-2">
+    <p class="step-title">Hai sintomi fisici o psicologici?</p>
+    <p class="step-subtitle">I fiori agiscono sul piano fisico attraverso quello emotivo</p>
+    <div class="options-grid" id="grid-2"></div>
+    <div class="step-nav"><button class="btn-sec" onclick="nextStep(1)">← Indietro</button><button class="btn-primary" onclick="nextStep(3)">Continua →</button></div>
+  </div>
+  <div class="quiz-step" id="step-3">
+    <p class="step-title">Quale copione riconosci?</p>
+    <p class="step-subtitle">I pattern ripetitivi della tua vita sono la chiave per i fiori profondi</p>
+    <div class="options-grid" id="grid-3"></div>
+    <div class="step-nav"><button class="btn-sec" onclick="nextStep(2)">← Indietro</button><button class="btn-primary" onclick="nextStep(4)">Continua →</button></div>
+  </div>
+  <div class="quiz-step" id="step-4">
+    <p class="step-title">Il tuo profilo</p>
+    <p class="step-subtitle">Indica (facoltativamente) enneatipo e adattamento AT per una selezione più precisa</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:2rem">
+      <div>
+        <label style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.5rem">Enneatipo (opzionale)</label>
+        <select id="sel-enn" style="width:100%;background:var(--bg3);border:.5px solid var(--border);color:var(--text);padding:.65rem .9rem;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.85rem;outline:none">
+          <option value="">— Non lo so —</option>
+          <option value="1">Tipo 1 — Il Perfezionista</option>
+          <option value="2">Tipo 2 — L'Altruista</option>
+          <option value="3">Tipo 3 — Il Manager</option>
+          <option value="4">Tipo 4 — Il Romantico</option>
+          <option value="5">Tipo 5 — L'Eremita</option>
+          <option value="6">Tipo 6 — Il Leale</option>
+          <option value="7">Tipo 7 — L'Entusiasta</option>
+          <option value="8">Tipo 8 — Il Capo</option>
+          <option value="9">Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.5rem">Adattamento AT (opzionale)</label>
+        <select id="sel-adatt" style="width:100%;background:var(--bg3);border:.5px solid var(--border);color:var(--text);padding:.65rem .9rem;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.85rem;outline:none">
+          <option value="">— Non lo so —</option>
+          <option value="schizoide">Schizoide — Creativo Sognatore</option>
+          <option value="antisociale">Antisociale — Affascinante Manipolatore</option>
+          <option value="paranoide">Paranoide — Brillante Scettico</option>
+          <option value="passivo_agg">Passivo-Aggressivo — Scherzoso Oppositivo</option>
+          <option value="ossessivo">Ossessivo-Compulsivo — Responsabile Stakanovista</option>
+          <option value="istrionico">Istrionico — Entusiasta Iperreattivo</option>
+        </select>
+      </div>
+    </div>
+    <div class="step-nav"><button class="btn-sec" onclick="nextStep(3)">← Indietro</button><button class="btn-primary" onclick="showResults()">Vedi i miei fiori 🌸</button></div>
+  </div>
+
+  <div class="results-section" id="results">
+    <div class="results-header">
+      <h2>I tuoi fiori</h2>
+      <p>Una selezione personalizzata di essenze floreali basata sul tuo stato emotivo, fisico e psicologico.</p>
+    </div>
+    <div id="results-content"></div>
+
+    <div class="disclaimer">
+      <strong>Nota:</strong> Le essenze floreali appartengono alla tradizione della medicina complementare. Non sostituiscono cure mediche o psicologiche. Per disturbi seri consultare sempre un professionista. I rimedi floreali possono essere usati in parallelo con altri trattamenti senza interferenze.
+      Sito curato dall'<a href="https://olismo-integrato.it" style="color:var(--green-light)">Avv. Carlo Alberto Calcagno</a>.
+    </div>
+
+    <div class="ai-section" style="margin-top:2.5rem">
+      <div class="ai-header">
+        <div class="ai-orb"></div>
+        <div class="ai-header-text">
+          <h3>Consulta l'Esperto di Floriterapia AI</h3>
+          <p>Come usarli, come assumerli, combinazioni, dosaggi, controindicazioni e molto altro</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg ai"><div class="msg-avatar ai">🌸</div><div class="msg-bubble" id="welcomeMsg">Benvenuto/a! Ho analizzato il tuo profilo floreale. Sono qui per aiutarti a comprendere i tuoi fiori e come usarli al meglio. Cosa vorresti sapere?</div></div>
+      </div>
+      <div class="quick-questions" id="quickQuestions"></div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" placeholder="Chiedi dei tuoi fiori, come assumerli, combinarli..." rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="restart-bar">
+      <p>Vuoi ripetere con risposte diverse?</p>
+      <button class="btn-sec" onclick="restartTest()">Ricomincia</button>
+    </div>
+  </div>
+</div>
+
+<footer><p>© 2025 <a href="https://olismo-integrato.it">Olismo Integrato</a> · Avv. Carlo Alberto Calcagno<br>Finalità informativa. Non sostituisce la consulenza medica o psicologica.</p></footer>
+
+<script>
+// ── FLOWER DATABASE ───────────────────────────────────────────────────────
+const BACH = {
+  // Paure
+  aspen:{n:'Aspen',it:'Pioppo tremulo',t:'bach',stato:'Paura vaga, angoscia senza motivo',trasf:'Da paura a coraggio sereno',desc:'Per chi è tormentato da paure e ansie vaghe senza causa precisa, presagi sinistri, angoscia immotivata.',chakra:'1°',e:[6],a:['paranoide','schizoide']},
+  mimulus:{n:'Mimulus',it:'Mimo',t:'bach',stato:'Paura di cose note, timidezza',trasf:'Da timidezza a coraggio tranquillo',desc:'Paura di cose specifiche: malattia, buio, acqua, persone. Timidezza e sensibilità eccessiva.',chakra:'1°',e:[6],a:['schizoide']},
+  cherry_plum:{n:'Cherry Plum',it:'Ciliegio-susino',t:'bach',stato:'Paura di perdere il controllo',trasf:'Da paura di esplodere a calma spontanea',desc:'Terrore di perdere la testa, di fare cose incontrollabili. Impulsi irrazionali violenti.',chakra:'1°',e:[6,8],a:['paranoide','passivo_agg']},
+  rock_rose:{n:'Rock Rose',it:'Eliantemo',t:'bach',stato:'Terrore, panico acuto',trasf:'Da panico a coraggio eroico',desc:'Per situazioni di panico o terrore improvviso, momenti di emergenza o incidenti.',chakra:'1°',e:[6],a:['paranoide']},
+  red_chestnut:{n:'Red Chestnut',it:'Ippocastano rosso',t:'bach',stato:'Paura per i propri cari',trasf:'Da preoccupazione ossessiva a cura amorevole',desc:'Eccessiva preoccupazione per la salute e sicurezza delle persone care.',chakra:'4°',e:[2,6],a:['istrionico']},
+  // Incertezza
+  cerato:{n:'Cerato',it:'Ceratostigma',t:'bach',stato:'Dubitare di sé, cercare consiglio',trasf:'Da dipendenza a fiducia interiore',desc:'Chi non si fida del proprio giudizio, chiede consiglio continuamente, si lascia distrarre dalle opinioni altrui.',chakra:'6°',e:[6,5],a:['schizoide','istrionico']},
+  scleranthus:{n:'Scleranthus',it:'Annua',t:'bach',stato:'Indecisione, oscillazione',trasf:'Da instabilità a equilibrio interiore',desc:'Incapacità di scegliere tra due opzioni. Umore variabile, instabilità interiore.',chakra:'3°',e:[7,9],a:['passivo_agg','istrionico']},
+  gentian:{n:'Gentian',it:'Genziana',t:'bach',stato:'Scoraggiamento, dubbio',trasf:'Da scoraggiamento a fiducia nel processo',desc:'Facilmente scoraggiato dalle difficoltà. Dubbio e depressione di fronte agli ostacoli.',chakra:'3°',e:[4,6],a:['schizoide','paranoide']},
+  gorse:{n:'Gorse',it:'Ginestrone',t:'bach',stato:'Senza speranza, disperazione',trasf:'Da disperazione a speranza luminosa',desc:'Convinzione profonda che non ci sia più speranza. Abbandono alla sofferenza.',chakra:'3°',e:[4,9],a:['schizoide','passivo_agg']},
+  hornbeam:{n:'Hornbeam',it:'Carpino',t:'bach',stato:'Stanchezza mattutina, procrastinazione',trasf:'Da fatica mentale a forza vitale',desc:'Sensazione di non avere abbastanza forza per affrontare la giornata. Stanchezza del lunedì.',chakra:'3°',e:[9,3],a:['passivo_agg','ossessivo']},
+  wild_oat:{n:'Wild Oat',it:'Avena selvatica',t:'bach',stato:'Senza scopo, incertezza sul cammino',trasf:'Da vuoto a scopo chiaro',desc:'Ambizioni non definite, senso di non sapere quale strada prendere nella vita.',chakra:'3°',e:[7,9],a:['schizoide','passivo_agg']},
+  // Disinteresse/passato
+  clematis:{n:'Clematis',it:'Clematide',t:'bach',stato:'Sogno ad occhi aperti, disinteresse',trasf:'Da evasione a presenza consapevole',desc:'Vive in un mondo di fantasie e sogni, scarso interesse per il presente.',chakra:'7°',e:[4,7,9],a:['schizoide']},
+  honeysuckle:{n:'Honeysuckle',it:'Caprifoglio',t:'bach',stato:'Nostalgia, vivere nel passato',trasf:'Da rimpianto a pienezza nel presente',desc:'Rimpianto del passato, nostalgia. Vive in ricordi di momenti migliori.',chakra:'4°',e:[4,2],a:['istrionico']},
+  wild_rose:{n:'Wild Rose',it:'Rosa selvatica',t:'bach',stato:'Rassegnazione, apatia',trasf:'Da apatia a vitalità gioiosa',desc:'Rassegnazione alla vita, accettazione passiva della sofferenza senza tentare di cambiarla.',chakra:'2°',e:[9,4],a:['passivo_agg','schizoide']},
+  olive:{n:'Olive',it:'Olivo',t:'bach',stato:'Esaurimento fisico e mentale',trasf:'Da esaurimento a rinnovata energia',desc:'Completo esaurimento dopo lungo sforzo fisico o mentale. Non c\'è più forza per niente.',chakra:'3°',e:[1,3],a:['ossessivo']},
+  white_chestnut:{n:'White Chestnut',it:'Ippocastano bianco',t:'bach',stato:'Pensieri ossessivi, loop mentale',trasf:'Da ruminazione a mente quieta',desc:'Pensieri indesiderati che girano in testa senza sosta, dialogo interiore incessante.',chakra:'7°',e:[1,6],a:['ossessivo','paranoide']},
+  mustard:{n:'Mustard',it:'Senape selvatica',t:'bach',stato:'Depressione improvvisa senza causa',trasf:'Da buio improvviso a serenità',desc:'Nube di tristezza che cala improvvisamente senza motivo apparente.',chakra:'3°',e:[4,9],a:['schizoide','passivo_agg']},
+  chestnut_bud:{n:'Chestnut Bud',it:'Gemma di castagno',t:'bach',stato:'Ripetizione errori, non impara',trasf:'Da ripetizione a apprendimento',desc:'Difficoltà ad imparare dall\'esperienza, ripete gli stessi errori.',chakra:'6°',e:[7,9],a:['passivo_agg','antisociale']},
+  // Solitudine
+  water_violet:{n:'Water Violet',it:'Violetta d\'acqua',t:'bach',stato:'Orgoglio, isolamento, distanza',trasf:'Da superiorità a connessione umile',desc:'Tendenza all\'isolamento, difficoltà a farsi coinvolgere emotivamente, orgoglio silenzioso.',chakra:'5°',e:[5,1],a:['schizoide','paranoide']},
+  impatiens:{n:'Impatiens',it:'Non mi toccare',t:'bach',stato:'Impazienza, irritabilità',trasf:'Da fretta a calma efficace',desc:'Impazienza, irritabilità. Vuole fare le cose da solo perché gli altri sono troppo lenti.',chakra:'3°',e:[3,7,8],a:['ossessivo','antisociale']},
+  heather:{n:'Heather',it:'Brugo',t:'bach',stato:'Bisogno di attenzione, egocentrimo',trasf:'Da bisogno a presenza autentica',desc:'Ossessione per se stessi, necessità di essere sempre al centro dell\'attenzione.',chakra:'4°',e:[2,3],a:['istrionico']},
+  // Ipersensibilità
+  agrimony:{n:'Agrimony',it:'Agrimonia',t:'bach',stato:'Pace falsa, nasconde sofferenza',trasf:'Da maschera a autentica pace',desc:'Nasconde le preoccupazioni dietro una facciata allegra. Evita i conflitti.',chakra:'4°',e:[7,9],a:['passivo_agg','istrionico']},
+  centaury:{n:'Centaury',it:'Centaurea',t:'bach',stato:'Difficoltà a dire no, servilismo',trasf:'Da sottomissione a volontà propria',desc:'Incapacità di dire no, si lascia sfruttare dagli altri, difficoltà ad affermarsi.',chakra:'3°',e:[2,9],a:['istrionico','passivo_agg']},
+  walnut:{n:'Walnut',it:'Noce',t:'bach',stato:'Cambiamento, transizione, influenze',trasf:'Da vulnerabilità a stabilità nei cambiamenti',desc:'Protezione durante i periodi di cambiamento. Aiuta a non essere influenzati da forze esterne.',chakra:'2°',e:[4,6,9],a:['schizoide']},
+  holly:{n:'Holly',it:'Agrifoglio',t:'bach',stato:'Odio, gelosia, invidia, sospetto',trasf:'Da odio a amore aperto',desc:'Per chi prova sentimenti negativi: gelosia, invidia, vendetta, sospetto.',chakra:'4°',e:[8,4,6],a:['paranoide','antisociale']},
+  // Abbattimento
+  larch:{n:'Larch',it:'Larice',t:'bach',stato:'Mancanza di fiducia, aspettarsi fallimento',trasf:'Da mancanza di fiducia a coraggio creativo',desc:'Mancanza di fiducia in se stessi, si aspettano di fallire, non ci provano nemmeno.',chakra:'3°',e:[6,4],a:['schizoide','passivo_agg']},
+  pine:{n:'Pine',it:'Pino silvestre',t:'bach',stato:'Senso di colpa, autocritica',trasf:'Da auto-condanna a auto-accettazione',desc:'Senso di colpa pervasivo, si colpevolizzano anche per le colpe altrui.',chakra:'4°',e:[1,2],a:['ossessivo','istrionico']},
+  elm:{n:'Elm',it:'Olmo',t:'bach',stato:'Sopraffatto dal peso delle responsabilità',trasf:'Da sopraffazione a responsabilità consapevole',desc:'Momentaneo senso di inadeguatezza di persone normalmente capaci e competenti.',chakra:'3°',e:[1,3],a:['ossessivo']},
+  sweet_chestnut:{n:'Sweet Chestnut',it:'Castagno dolce',t:'bach',stato:'Disperazione estrema, limite sopportazione',trasf:'Da notte dell\'anima a trasformazione',desc:'Il più profondo dolore e angoscia della mente. Sensazione che non ci sia più nulla.',chakra:'4°',e:[4,9],a:['schizoide','passivo_agg']},
+  star_of_bethlehem:{n:'Star of Bethlehem',it:'Ornitogalo',t:'bach',stato:'Shock, trauma, dolore non elaborato',trasf:'Da trauma a integrazione guarita',desc:'Per shock, traumi passati e presenti, dolori non elaborati. Il grande consolatore.',chakra:'4°',e:[4,6],a:['schizoide','paranoide']},
+  willow:{n:'Willow',it:'Salice',t:'bach',stato:'Risentimento, rancore, vittimismo',trasf:'Da vittimismo a responsabilità gioiosa',desc:'Risentimento e amarezza. Tendenza a vedere se stessi come vittime della mala sorte.',chakra:'3°',e:[4,6,9],a:['passivo_agg']},
+  oak:{n:'Oak',it:'Quercia',t:'bach',stato:'Lottare oltre i propri limiti, esaurimento',trasf:'Da lotta a forza consapevole',desc:'Chi lotta senza sosta, non si arrende mai anche quando dovrebbe riposare.',chakra:'3°',e:[1,8],a:['ossessivo']},
+  crab_apple:{n:'Crab Apple',it:'Melo selvatico',t:'bach',stato:'Senso di impurità, vergogna del corpo',trasf:'Da purificazione ossessiva a accettazione',desc:'Senso di sporcizia o impurità. Ossessione per la pulizia, dettagli minori.',chakra:'2°',e:[1,4],a:['ossessivo']},
+  // Eccessiva preoccupazione altrui
+  chicory:{n:'Chicory',it:'Cicoria',t:'bach',stato:'Possessività, manipolazione affettiva',trasf:'Da possessività a amore liberante',desc:'Amore possessivo, bisogno di controllo sulle persone amate, manipolazione.',chakra:'4°',e:[2,6],a:['istrionico','antisociale']},
+  vervain:{n:'Vervain',it:'Verbena',t:'bach',stato:'Entusiasmo eccessivo, fanatismo',trasf:'Da fanatismo a saggezza moderata',desc:'Principi rigidi, entusiasmo eccessivo, tendenza a imporre le proprie idee.',chakra:'3°',e:[1,3,8],a:['ossessivo']},
+  vine:{n:'Vine',it:'Vite',t:'bach',stato:'Dominanza, prepotenza, tirannia',trasf:'Da controllo a leadership servente',desc:'Tendenza a dominare e comandare, sicurezza eccessiva nelle proprie capacità.',chakra:'3°',e:[8,1,3],a:['antisociale']},
+  beech:{n:'Beech',it:'Faggio',t:'bach',stato:'Intolleranza, critica degli altri',trasf:'Da critica a comprensione empatica',desc:'Intolleranza e critica verso gli altri, mancanza di comprensione e compassione.',chakra:'5°',e:[1,8],a:['paranoide','antisociale']},
+  rock_water:{n:'Rock Water',it:'Acqua di roccia',t:'bach',stato:'Rigidità, auto-repressione, perfezionismo',trasf:'Da rigidità a flessibilità gioiosa',desc:'Auto-repressione, rigidità morale, eccessiva severità con se stessi.',chakra:'3°',e:[1],a:['ossessivo','paranoide']},
+};
+
+const FES_SELECTED = {
+  shooting_star:{n:'Shooting Star',it:'Stella cadente',t:'fes',stato:'Senso di non appartenenza al mondo',trasf:'Da alieno a incarnato nella vita',desc:'Per chi si sente straniero sulla Terra, non si riconosce nel corpo o nella famiglia d\'origine.',chakra:'1°',a:['schizoide']},
+  pink_yarrow:{n:'Pink Yarrow',it:'Achillea rosa',t:'fes',stato:'Barriere emotive, assorbimento energie altrui',trasf:'Da permeabilità a confini sani',desc:'Per chi assorbe troppo le emozioni degli altri, perdendo se stesso nell\'altro.',chakra:'4°',a:['istrionico','schizoide']},
+  oregon_grape:{n:'Oregon Grape',it:'Uva dell\'Oregon',t:'fes',stato:'Sfiducia negli altri, aspettarsi ostilità',trasf:'Da sospetto a apertura benevola',desc:'Aspettativa di ostilità e malevolenza da parte degli altri. Paranoia latente.',chakra:'4°',a:['paranoide','antisociale']},
+  bleeding_heart:{n:'Bleeding Heart',it:'Cuore sanguinante',t:'fes',stato:'Dipendenza affettiva, attaccamento compulsivo',trasf:'Da dipendenza a amore libero',desc:'Attaccamento emotivo morboso. Incapacità di lasciare andare una persona amata.',chakra:'4°',a:['istrionico']},
+  filaree:{n:'Filaree',it:'Becco di gru',t:'fes',stato:'Preoccupazione ossessiva per i dettagli',trasf:'Da micro a macro prospettiva',desc:'Ossessione per i dettagli minori, incapacità di vedere il quadro d\'insieme.',chakra:'3°',a:['ossessivo']},
+  blackberry:{n:'Blackberry',it:'Mora',t:'fes',stato:'Incapacità di passare all\'azione',trasf:'Da blocco a manifestazione concreta',desc:'Difficoltà a concretizzare i pensieri, inerzia cronica, procrastinazione.',chakra:'2°',a:['passivo_agg','schizoide']},
+  tansy:{n:'Tansy',it:'Tanaceto',t:'fes',stato:'Procrastinazione, letargia deliberata',trasf:'Da inerzia a decisione proattiva',desc:'Evitamento intenzionale dell\'azione. Resistenza passiva nascosta da lentezza.',chakra:'3°',a:['passivo_agg']},
+  pretty_face:{n:'Pretty Face',it:'Bel viso',t:'fes',stato:'Dipendenza dalla validazione estetica',trasf:'Da immagine a bellezza interiore',desc:'Identità basata sull\'aspetto esteriore, bisogno di approvazione sul proprio aspetto.',chakra:'4°',a:['istrionico']},
+  golden_ear_drops:{n:'Golden Ear Drops',it:'Gocce d\'oro',t:'fes',stato:'Dolori del bambino interiore repressi',trasf:'Da ferita nascosta a guarigione',desc:'Trauma infantile represso che influenza il comportamento presente.',chakra:'2°',a:['paranoide','schizoide']},
+  dill:{n:'Dill',it:'Aneto',t:'fes',stato:'Sovraccarico sensoriale, iperstimolazione',trasf:'Da sopraffazione a assimilazione serena',desc:'Incapacità di assimilare le esperienze, sovraccarico sensoriale e informativo.',chakra:'3°',a:['ossessivo','schizoide']},
+};
+
+const BUSH_SELECTED = {
+  tall_yellow_top:{n:'Tall Yellow Top',it:'Cima gialla alta',t:'bush',stato:'Alienazione, senso di esclusione',trasf:'Da alienazione a senso di appartenenza',desc:'Profondo senso di non appartenenza alla famiglia o alla comunità umana.',chakra:'4°',a:['schizoide']},
+  bush_iris:{n:'Bush Iris',it:'Iris del bush',t:'bush',stato:'Blocco spirituale, paura della morte',trasf:'Da blocco a fiducia nel divino',desc:'Paura di morire, materialismo eccessivo, blocco alla vita spirituale.',chakra:'7°',a:['paranoide','ossessivo']},
+  philotheca:{n:'Philotheca',it:'Filoteca',t:'bush',stato:'Incapacità di ricevere amore',trasf:'Da rifiuto a accoglienza amorevole',desc:'Difficoltà a ricevere amore, complimenti, aiuto dagli altri.',chakra:'4°',a:['ossessivo','schizoide']},
+  gymea_lily:{n:'Gymea Lily',it:'Giglio Gymea',t:'bush',stato:'Arroganza, bisogno di dominare',trasf:'Da dominanza a leadership umile',desc:'Bisogno di essere al centro dell\'attenzione, difficoltà a collaborare.',chakra:'3°',a:['antisociale','istrionico']},
+  bottlebrush:{n:'Bottlebrush',it:'Pianta spazzola',t:'bush',stato:'Difficoltà con le transizioni della vita',trasf:'Da resistenza al cambiamento a fluidità',desc:'Incapacità di lasciare andare il passato durante i momenti di transizione.',chakra:'2°',a:['schizoide','passivo_agg']},
+  dog_rose:{n:'Dog Rose',it:'Rosa canina australiana',t:'bush',stato:'Paura, timidezza, bassa autostima',trasf:'Da paura a fiducia in sé',desc:'Paure e fobie, timidezza, bassa autostima, difficoltà a esprimersi.',chakra:'1°',a:['schizoide','istrionico']},
+  isopogon:{n:'Isopogon',it:'Isopogon',t:'bush',stato:'Controllare attraverso il potere, capo duro',trasf:'Da controllo a apprendimento dal passato',desc:'Personalità controllante. Difficoltà a imparare dalle esperienze passate.',chakra:'6°',a:['paranoide','antisociale']},
+  five_corners:{n:'Five Corners',it:'Cinque angoli',t:'bush',stato:'Bassa autostima, non si ama',trasf:'Da rifiuto di sé a celebrazione di sé',desc:'Mancanza di amore per se stessi, bassa autostima, tendenza a ritirarsi.',chakra:'4°',a:['schizoide','ossessivo']},
+  bauhinia:{n:'Bauhinia',it:'Baubinia',t:'bush',stato:'Resistenza al cambiamento, rigidità',trasf:'Da resistenza a apertura gioiosa',desc:'Resistenza ai cambiamenti e alle nuove idee, rigidità nelle abitudini.',chakra:'1°',a:['paranoide','ossessivo']},
+};
+
+// ── QUIZ DATA ─────────────────────────────────────────────────────────────
+const STEPS = [
+  { id:1, options:[
+    {id:'e1',label:'Ansia e paura',desc:'Tensione, preoccupazione, angoscia',emoji:'😰',flowers:['aspen','mimulus','cherry_plum','rock_rose'],fes:[],bush:['dog_rose']},
+    {id:'e2',label:'Senso di colpa e autocritica',desc:'Mi condanno, non mi perdono',emoji:'😔',flowers:['pine','crab_apple'],fes:['filaree'],bush:['five_corners']},
+    {id:'e3',label:'Tristezza e depressione',desc:'Malinconia, senso di vuoto, apatia',emoji:'😢',flowers:['mustard','sweet_chestnut','wild_rose','gorse'],fes:[],bush:[]},
+    {id:'e4',label:'Rabbia e risentimento',desc:'Rancore, irritabilità, invidia',emoji:'😠',flowers:['holly','willow','impatiens'],fes:['oregon_grape'],bush:['gymea_lily']},
+    {id:'e5',label:'Stanchezza e esaurimento',desc:'Non ho più energie, sono a pezzi',emoji:'😴',flowers:['olive','hornbeam','oak'],fes:['dill'],bush:[]},
+    {id:'e6',label:'Pensieri ossessivi',desc:'Loop mentali, non riesco a smettere di pensare',emoji:'🌀',flowers:['white_chestnut','rock_water'],fes:['filaree'],bush:['isopogon']},
+    {id:'e7',label:'Bassa autostima e insicurezza',desc:'Non mi sento abbastanza, mi svaluto',emoji:'🫥',flowers:['larch','cerato','gentian'],fes:[],bush:['five_corners','dog_rose']},
+    {id:'e8',label:'Solitudine e isolamento',desc:'Mi sento solo, non appartengo a nessun gruppo',emoji:'🏝️',flowers:['water_violet','heather'],fes:['shooting_star','pink_yarrow'],bush:['tall_yellow_top']},
+    {id:'e9',label:'Paure per gli altri',desc:'Preoccupazione eccessiva per chi amo',emoji:'💔',flowers:['red_chestnut','chicory'],fes:['bleeding_heart'],bush:[]},
+    {id:'e10',label:'Bisogno di controllo',desc:'Difficoltà a fidarmi, devo controllare tutto',emoji:'🔒',flowers:['vine','beech','rock_water'],fes:['oregon_grape'],bush:['isopogon','bauhinia']},
+  ]},
+  { id:2, options:[
+    {id:'f1',label:'Disturbi del sonno',desc:'Insonnia, sogni agitati, risvegli',emoji:'🌙',flowers:['white_chestnut','vervain','impatiens'],fes:[],bush:[]},
+    {id:'f2',label:'Problemi digestivi',desc:'Stomaco, intestino, tensione addominale',emoji:'🫁',flowers:['agrimony','centaury','mimulus'],fes:[],bush:[]},
+    {id:'f3',label:'Stanchezza cronica',desc:'Affaticamento anche dopo riposo',emoji:'⚡',flowers:['olive','hornbeam','wild_rose'],fes:[],bush:[]},
+    {id:'f4',label:'Tensione muscolare/cefalee',desc:'Rigidità, mal di testa da stress',emoji:'🤕',flowers:['vervain','rock_water','impatiens'],fes:['dill'],bush:[]},
+    {id:'f5',label:'Shock/trauma recente',desc:'Evento traumatico, lutto, separazione',emoji:'💥',flowers:['star_of_bethlehem','walnut'],fes:['golden_ear_drops'],bush:['bottlebrush']},
+    {id:'f6',label:'Disturbi immunitari',desc:'Mi ammalo spesso, corpo in difficoltà',emoji:'🛡️',flowers:['crab_apple','hornbeam'],fes:[],bush:[]},
+    {id:'f7',label:'Sensibilità eccessiva',desc:'Assorbo le emozioni altrui, mi sento sopraffatto',emoji:'📡',flowers:['walnut','centaury'],fes:['pink_yarrow'],bush:[]},
+    {id:'f8',label:'Problemi di concentrazione',desc:'Difficoltà di focus, mente dispersa',emoji:'🎯',flowers:['clematis','chestnut_bud','hornbeam'],fes:[],bush:[]},
+    {id:'f9',label:'Cambiamento di vita in corso',desc:'Transizione, nuova fase, tutto cambia',emoji:'🔄',flowers:['walnut','honeysuckle'],fes:[],bush:['bottlebrush','bauhinia']},
+    {id:'f10',label:'Nessun sintomo fisico specifico',desc:'Mi concentro solo sull\'aspetto emotivo',emoji:'✨',flowers:[],fes:[],bush:[]},
+  ]},
+  { id:3, options:[
+    {id:'c1',label:'Copione "Finché"',desc:'Non posso rilassarmi finché non finisco',emoji:'⏳',flowers:['rock_water','vervain','oak'],fes:['filaree'],bush:['bauhinia']},
+    {id:'c2',label:'Copione "Mai"',desc:'Non arriverò mai a quello che voglio',emoji:'🚫',flowers:['gorse','gentian','larch'],fes:['shooting_star'],bush:['five_corners']},
+    {id:'c3',label:'Copione "Sempre"',desc:'Rimango sempre nelle stesse situazioni negative',emoji:'🔁',flowers:['wild_rose','willow','chestnut_bud'],fes:['blackberry'],bush:['bottlebrush']},
+    {id:'c4',label:'Copione "Dopo"',desc:'Ora mi diverto ma poi pagherò',emoji:'⏭️',flowers:['agrimony','scleranthus','heather'],fes:['bleeding_heart'],bush:[]},
+    {id:'c5',label:'Copione "Quasi"',desc:'Arrivo vicino ma poi mi fermo',emoji:'🏁',flowers:['wild_oat','scleranthus','larch'],fes:['tansy','blackberry'],bush:[]},
+    {id:'c6',label:'Copione "Mai abbastanza bravo"',desc:'Non sono mai all\'altezza, sempre un difetto',emoji:'📉',flowers:['pine','elm','larch'],fes:['filaree'],bush:['five_corners']},
+    {id:'c7',label:'Non mi riconosco in nessun copione',desc:'Non so quale sia il mio schema ripetitivo',emoji:'🤷',flowers:['wild_oat','cerato'],fes:[],bush:[]},
+  ]}
+];
+
+// ── BACH PER ENNEATIPO ─────────────────────────────────────────────────────
+const ENN_BACH = {
+  1:['rock_water','vervain','pine'],
+  2:['chicory','red_chestnut','centaury'],
+  3:['impatiens','hornbeam','oak'],
+  4:['sweet_chestnut','gentian','willow'],
+  5:['water_violet','cerato','mimulus'],
+  6:['aspen','mimulus','larch'],
+  7:['agrimony','scleranthus','impatiens'],
+  8:['vervain','vine','rock_water'],
+  9:['wild_rose','hornbeam','clematis']
+};
+
+// ── BACH PER ADATTAMENTO AT ────────────────────────────────────────────────
+const ADATT_BACH = {
+  schizoide:['water_violet','cerato','mimulus'],
+  antisociale:['vine','holly','beech'],
+  paranoide:['mimulus','aspen','holly','cherry_plum'],
+  passivo_agg:['wild_rose','agrimony','willow'],
+  ossessivo:['rock_water','vervain','pine'],
+  istrionico:['chicory','heather','centaury']
+};
+const ADATT_FES = {
+  schizoide:['shooting_star','pink_yarrow'],
+  antisociale:['oregon_grape','blackberry'],
+  paranoide:['oregon_grape','golden_ear_drops'],
+  passivo_agg:['blackberry','tansy'],
+  ossessivo:['filaree','dill'],
+  istrionico:['bleeding_heart','pretty_face']
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let sel = {1:[],2:[],3:[]};
+let currentStep = 0;
+let topFlowers = {bach:[],fes:[],bush:[]};
+let chatHistory = [];
+let userProfile = '';
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+function buildGrids(){
+  STEPS.forEach(step => {
+    const g = document.getElementById('grid-'+step.id);
+    step.options.forEach(opt => {
+      const card = document.createElement('div');
+      card.className = 'option-card';
+      card.onclick = () => toggleOpt(card, step.id, opt.id);
+      card.innerHTML = `<div class="opt-emoji">${opt.emoji}</div><div class="option-text"><h4>${opt.label}</h4><p>${opt.desc}</p></div>`;
+      g.appendChild(card);
+    });
+  });
+}
+
+function startTest(){
+  document.getElementById('hero-section').style.display='none';
+  document.getElementById('stepsNav').classList.add('visible');
+  nextStep(1);
+}
+
+function nextStep(n){
+  if(currentStep>0){
+    document.getElementById('step-'+currentStep).classList.remove('active');
+    document.getElementById('dot-'+currentStep).classList.remove('active');
+    if(n>currentStep) document.getElementById('dot-'+currentStep).classList.add('done');
+  }
+  currentStep=n;
+  document.getElementById('step-'+n).classList.add('active');
+  document.getElementById('dot-'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleOpt(card, stepId, optId){
+  card.classList.toggle('selected');
+  const arr = sel[stepId];
+  const i = arr.indexOf(optId);
+  if(i>=0) arr.splice(i,1); else arr.push(optId);
+}
+
+// ── RESULTS ───────────────────────────────────────────────────────────────
+function showResults(){
+  document.getElementById('step-4').classList.remove('active');
+  document.getElementById('dot-4').classList.remove('active');
+  document.getElementById('dot-4').classList.add('done');
+  document.getElementById('stepsNav').style.display='none';
+
+  const enn = document.getElementById('sel-enn').value;
+  const adatt = document.getElementById('sel-adatt').value;
+
+  // Score fiori
+  const bachScore={}, fesScore={}, bushScore={};
+  STEPS.forEach(step => {
+    sel[step.id].forEach(selId => {
+      const opt = step.options.find(o=>o.id===selId);
+      if(!opt) return;
+      opt.flowers.forEach(f=>{bachScore[f]=(bachScore[f]||0)+2;});
+      opt.fes.forEach(f=>{fesScore[f]=(fesScore[f]||0)+2;});
+      opt.bush.forEach(f=>{bushScore[f]=(bushScore[f]||0)+2;});
+    });
+  });
+
+  // Aggiungi per enneatipo e adattamento
+  if(enn && ENN_BACH[enn]) ENN_BACH[enn].forEach(f=>{bachScore[f]=(bachScore[f]||0)+1;});
+  if(adatt){
+    (ADATT_BACH[adatt]||[]).forEach(f=>{bachScore[f]=(bachScore[f]||0)+1;});
+    (ADATT_FES[adatt]||[]).forEach(f=>{fesScore[f]=(fesScore[f]||0)+1;});
+  }
+
+  // Default se niente selezionato
+  if(Object.keys(bachScore).length===0){bachScore.walnut=2;bachScore.larch=1;bachScore.gentian=1;}
+
+  const topBach = Object.entries(bachScore).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([k])=>k);
+  const topFes = Object.entries(fesScore).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k])=>k);
+  const topBush = Object.entries(bushScore).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([k])=>k);
+
+  topFlowers = {bach:topBach, fes:topFes, bush:topBush};
+  buildUserProfile(enn, adatt);
+  renderResults(topBach, topFes, topBush);
+  buildQuickQuestions(topBach[0]);
+
+  const wm = document.getElementById('welcomeMsg');
+  const names = topBach.slice(0,3).map(k=>BACH[k]?.n||k).join(', ');
+  wm.textContent = `Ho analizzato il tuo profilo. I tuoi fiori principali sono ${names}. Posso aiutarti a capire come usarli, come prepararli, le dosi e le combinazioni. Da dove vuoi cominciare?`;
+
+  const s = document.getElementById('results');
+  s.style.display='block'; s.classList.add('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderResults(bach, fes, bush){
+  const c = document.getElementById('results-content');
+  let html = '';
+
+  if(bach.length){
+    html += '<div class="section-label">Fiori di Bach <span>38 rimedi originali di Edward Bach</span></div>';
+    html += '<div class="flowers-grid">';
+    bach.forEach((k,i)=>{
+      const f = BACH[k]; if(!f) return;
+      html += flowerCard(f,'fc-bach',i===0?'Fiore principale':'');
+    });
+    html += '</div>';
+  }
+  if(fes.length){
+    html += '<div class="section-label">Essenze FES Californiane <span>Fiori per stati emotivi complessi</span></div>';
+    html += '<div class="flowers-grid">';
+    fes.forEach(k=>{ const f=FES_SELECTED[k]; if(f) html+=flowerCard(f,'fc-fes',''); });
+    html += '</div>';
+  }
+  if(bush.length){
+    html += '<div class="section-label">Essenze Bush Australiane <span>Fiori per l\'anima moderna</span></div>';
+    html += '<div class="flowers-grid">';
+    bush.forEach(k=>{ const f=BUSH_SELECTED[k]; if(f) html+=flowerCard(f,'fc-bush',''); });
+    html += '</div>';
+  }
+  c.innerHTML = html;
+}
+
+function flowerCard(f, cls, badge){
+  return `<div class="flower-card ${cls}">
+    ${badge?`<div style="position:absolute;top:1rem;right:1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;background:rgba(122,182,72,.15);border:.5px solid var(--green);color:var(--green-light)">${badge}</div>`:''}
+    <div class="flower-type">${f.t==='bach'?'Bach Original':(f.t==='fes'?'FES Californiana':'Bush Australiana')}</div>
+    <div class="flower-name">${f.n}</div>
+    <div class="flower-it">${f.it||''}</div>
+    <div class="flower-stato">Stato negativo: ${f.stato}</div>
+    <div class="flower-trasf">✦ ${f.trasf}</div>
+    <div class="flower-desc">${f.desc}</div>
+    ${f.chakra?`<div class="flower-motivo">Chakra: ${f.chakra}</div>`:''}
+  </div>`;
+}
+
+function buildUserProfile(enn, adatt){
+  const selected = [];
+  STEPS.forEach(step=>{ step.options.forEach(o=>{ if(sel[step.id].includes(o.id)) selected.push(o.label); }); });
+  userProfile = `PROFILO FLOREALE DELL'UTENTE:
+Sintomi/stati selezionati: ${selected.length>0?selected.join(', '):'generico'}
+Enneatipo: ${enn?'Tipo '+enn:'non specificato'}
+Adattamento AT: ${adatt||'non specificato'}
+FIORI PRINCIPALI RACCOMANDATI:
+Bach: ${topFlowers.bach.map(k=>BACH[k]?.n||k).join(', ')}
+FES: ${topFlowers.fes.map(k=>FES_SELECTED[k]?.n||k).join(', ')||'nessuno'}
+Bush: ${topFlowers.bush.map(k=>BUSH_SELECTED[k]?.n||k).join(', ')||'nessuno'}`;
+}
+
+function buildQuickQuestions(mainFlower){
+  const n = mainFlower ? (BACH[mainFlower]?.n||'questo fiore') : 'questi fiori';
+  const qs=[`Come preparo la miscela con ${n}?`,'Quante gocce al giorno?','Posso combinarli con i medicinali?','Come si fa la bottiglia personalizzata?','Per quanto tempo li devo prendere?'];
+  document.getElementById('quickQuestions').innerHTML = qs.map(q=>`<button class="qq-btn" onclick="sendQuick('${q.replace(/'/g,"\\'")}' )">${q}</button>`).join('');
+}
+
+function sendQuick(q){ document.getElementById('chatInput').value=q; sendMessage(); }
+
+// ── AI CHAT ───────────────────────────────────────────────────────────────
+const SYSTEM = `Sei un esperto di floriterapia di olismo-integrato.it, fondato dall'Avv. Carlo Alberto Calcagno.
+Rispondi SEMPRE in italiano, tono caldo e professionale. Non prescrivere medicinali.
+
+FLORITERAPIA — GUIDA COMPLETA:
+
+FIORI DI BACH (38 rimedi di Edward Bach, 1930s):
+Preparazione base: 2 gocce di ogni fiore scelto in una bottiglia da 30ml con acqua minerale e 3 cucchiaini di brandy come conservante.
+Dosi standard: 4 gocce dalla bottiglia preparata, 4 volte al giorno (mattina, mezzogiorno, pomeriggio, sera). In emergenza anche più spesso.
+Massimo 6-7 fiori per miscela (idealmente 3-5).
+Durata: 3-4 settimane per ciclo. Se c\'è miglioramento, continuare. Se lo stato cambia, cambiare i fiori.
+Rescue Remedy: miscela di emergenza (Rock Rose, Impatiens, Clematis, Star of Bethlehem, Cherry Plum). 4 gocce dirette in bocca in situazioni acute.
+
+I 38 FIORI PRINCIPALI:
+PAURE: Rock Rose (panico), Mimulus (paure note), Cherry Plum (perdere controllo), Aspen (paura vaga), Red Chestnut (paura per gli altri)
+INCERTEZZA: Cerato (sfiducia in sé), Scleranthus (indecisione), Gentian (scoraggiamento), Gorse (senza speranza), Hornbeam (stanchezza mattutina), Wild Oat (senza scopo)
+DISINTERESSE: Clematis (sogni), Honeysuckle (nostalgia), Wild Rose (rassegnazione), Olive (esaurimento), White Chestnut (pensieri ossessivi), Mustard (depressione senza causa), Chestnut Bud (ripete errori)
+SOLITUDINE: Water Violet (orgoglio/isolamento), Impatiens (impazienza), Heather (bisogno di attenzione)
+IPERSENSIBILITÀ: Agrimony (pace falsa), Centaury (no confini), Walnut (protezione nei cambiamenti), Holly (odio/gelosia)
+ABBATTIMENTO: Larch (mancanza fiducia), Pine (senso di colpa), Elm (sopraffatto da responsabilità), Sweet Chestnut (disperazione), Star of Bethlehem (shock/trauma), Willow (risentimento), Oak (lottare senza fermarsi), Crab Apple (senso di impurità)
+ECCESSIVA PREOCCUPAZIONE: Chicory (possessività), Vervain (fanatismo), Vine (dominanza), Beech (intolleranza), Rock Water (rigidità)
+
+FES CALIFORNIANE:
+Integrano i Bach per stati più complessi: sessualità, creatività, spiritualità incarnata, identità.
+Shooting Star: non appartenenza al mondo. Pink Yarrow: assorbire emozioni altrui. Oregon Grape: sfiducia/paranoia. Bleeding Heart: dipendenza affettiva. Filaree: ossessione per dettagli. Blackberry: incapacità di agire. Tansy: procrastinazione. Pretty Face: identità basata sull\'aspetto. Golden Ear Drops: trauma infantile. Dill: sovraccarico sensoriale.
+
+BUSH AUSTRALIANI:
+Per l\'anima moderna, con accento su autostima e spiritualità pratica.
+Dog Rose: paura/timidezza. Tall Yellow Top: alienazione. Bush Iris: blocco spirituale. Philotheca: incapacità di ricevere. Gymea Lily: arroganza. Bottlebrush: transizioni. Five Corners: bassa autostima. Bauhinia: resistenza al cambiamento. Isopogon: controllo/apprendimento.
+
+ABBINAMENTI CON AT ED ENNEAGRAMMA:
+- Ossessivo-Compulsivo (Tipo 1): Rock Water, Vervain, Pine, Filaree
+- Istrionico (Tipo 2): Chicory, Heather, Centaury, Bleeding Heart
+- Paranoide (Tipo 6): Mimulus, Aspen, Holly, Oregon Grape
+- Schizoide (Tipo 5): Water Violet, Cerato, Shooting Star, Tall Yellow Top
+- Passivo-Aggressivo (Tipo 9): Wild Rose, Willow, Agrimony, Blackberry, Tansy
+- Antisociale (Tipo 8): Vine, Holly, Beech, Oregon Grape
+
+COPIONI E FIORI:
+- "Finché": Rock Water, Vervain, Oak, Bauhinia
+- "Mai": Gorse, Gentian, Larch, Shooting Star, Five Corners
+- "Sempre": Wild Rose, Willow, Chestnut Bud, Bottlebrush
+- "Dopo": Agrimony, Scleranthus, Heather, Bleeding Heart
+- "Quasi": Wild Oat, Scleranthus, Larch, Tansy, Blackberry
+
+CONTROINDICAZIONI: I fiori di Bach non hanno controindicazioni note, non interferiscono con farmaci. L\'unica nota: la bottiglia preparata contiene tracce di brandy. Chi evita l\'alcol può usare aceto di mele come conservante o dissolvere le gocce in acqua calda (l\'alcol evapora).
+
+COME SI SCELGONO: Non per la malattia ma per lo STATO EMOTIVO. Lo stesso sintomo fisico (es. insonnia) può richiedere fiori diversi a seconda della causa emotiva.
+
+Rispondi sempre in modo specifico e personalizzato per l\'utente. Sii come un esperto di floriterapia che accompagna con cura.`;
+
+async function sendMessage(){
+  const input = document.getElementById('chatInput');
+  const btn = document.getElementById('sendBtn');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value=''; input.style.height='auto'; btn.disabled=true;
+  appendMsg('user', msg);
+  chatHistory.push({role:'user',content:msg});
+  const typingId = appendTyping();
+  try{
+    const messages = chatHistory.length===1
+      ? [{role:'user',content:userProfile+'\n\nDomanda: '+msg}]
+      : [...chatHistory.slice(0,-1).map((m,i)=>i===0?{...m,content:userProfile+'\n\nDomanda: '+m.content}:m),{role:'user',content:msg}];
+    const resp = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages})
+    });
+    const data = await resp.json();
+    removeTyping(typingId);
+    const reply = data.content?.[0]?.text||'Si è verificato un errore. Riprova.';
+    chatHistory.push({role:'assistant',content:reply});
+    appendMsg('ai',reply);
+  }catch(e){removeTyping(typingId);appendMsg('ai','Errore di connessione. Riprova.');}
+  btn.disabled=false; input.focus();
+}
+
+function appendMsg(role, text){
+  const c=document.getElementById('chatMessages');
+  const d=document.createElement('div');
+  d.className='msg '+role;
+  d.innerHTML=`<div class="msg-avatar ${role}">${role==='ai'?'🌸':'Tu'}</div><div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
+}
+function appendTyping(){
+  const c=document.getElementById('chatMessages');
+  const d=document.createElement('div');
+  d.className='msg ai'; d.id='t'+Date.now();
+  d.innerHTML=`<div class="msg-avatar ai">🌸</div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight; return d.id;
+}
+function removeTyping(id){const el=document.getElementById(id);if(el)el.remove();}
+
+function restartTest(){
+  sel={1:[],2:[],3:[]}; currentStep=0; topFlowers={bach:[],fes:[],bush:[]}; chatHistory=[]; userProfile='';
+  document.querySelectorAll('.option-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.step-dot').forEach(d=>{d.classList.remove('active','done');});
+  document.getElementById('results').style.display='none';
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('results-content').innerHTML='';
+  document.getElementById('chatMessages').innerHTML='<div class="msg ai"><div class="msg-avatar ai">🌸</div><div class="msg-bubble" id="welcomeMsg">Benvenuto/a! Sono qui per aiutarti con i tuoi fiori. Cosa vorresti sapere?</div></div>';
+  document.getElementById('hero-section').style.display='';
+  document.getElementById('stepsNav').classList.remove('visible');
+  document.getElementById('stepsNav').style.display='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buildGrids();
+</script>
+</body>
+</html>

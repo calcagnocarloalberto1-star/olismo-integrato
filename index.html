@@ -2739,6 +2739,7 @@ body.dark .dark-toggle{background:#3a3632}
     <button class="nav-link" onclick="st('test-frutti')" style="color:var(--ink3)">🌳 Test</button>
     <button class="nav-link" onclick="st('test-adattamenti')" style="color:var(--ink3)">🧠 AT</button>
     <button class="nav-link" onclick="window.location.href='il_mio_copione.html'" style="color:var(--gold3)">✦ Copione</button>
+    <button class="nav-link" onclick="window.location.href='i_miei_fiori.html'" style="color:#7ab648">🌸 Fiori</button>
     <button class="nav-link" onclick="st('vak')">👁 VAK</button>
     <span class="nav-sep">·</span>
     <!-- FASE 2: APPROFONDISCI -->
@@ -3706,6 +3707,9 @@ body.dark .dark-toggle{background:#3a3632}
       </div>
     </div>
     <div class="bach-grid" id="bach-grid"></div>
+    <div style="text-align:center;margin-top:2.5rem;padding-bottom:.5rem">
+      <a href="i_miei_fiori.html" style="display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid #3a7a28;color:#7ab648;padding:.85rem 2.2rem;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;font-family:'Outfit',sans-serif">&#10022; Scopri i tuoi fiori personali &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -9638,12 +9642,58 @@ function generateDiet(){
     '<div class="diet-extra-card"><div class="diet-extra-label">🌸 Fiori di Bach correlati</div><div class="diet-extra-val">'+enn.fiori+'</div></div>' +
     '<div class="diet-extra-card"><div class="diet-extra-label">🎵 Frequenza di supporto</div><div class="diet-extra-val">'+enn.frequenza+'</div></div>' +
     '</div>' +
-    '<div class="diet-disclaimer">Il piano ha finalità informativa e vibrazionale. Consulta un nutrizionista per esigenze cliniche specifiche.</div>';
+    '<div class="diet-disclaimer">Il piano ha finalità informativa e vibrazionale. Consulta un nutrizionista per esigenze cliniche specifiche.</div>' +
+    '<div id="diet-ai-section" style="padding:1.5rem 2rem;border-top:1px solid var(--ivory3)">' +
+    '<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1rem">' +
+    '<div style="width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(100,160,60,.6),rgba(80,150,130,.3));border:1px solid var(--green3,#7ab648);flex-shrink:0"></div>' +
+    '<div><div style="font-family:\'Cormorant Garamond\',serif;font-size:1.05rem;font-weight:600;color:var(--ink)">Approfondisci con l\'AI Nutrizionale</div>' +
+    '<div style="font-size:.72rem;color:var(--ink4)">Chiedi varianti, sostituzioni, integrazioni vibrazionali</div></div></div>' +
+    '<div id="diet-chat-msgs" style="max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:.8rem;margin-bottom:1rem;padding:.8rem;background:var(--ivory);border-radius:var(--r);border:1px solid var(--ivory3)">' +
+    '<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div>' +
+    '<div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">Ho generato il tuo piano alimentare personalizzato. Posso aiutarti con varianti, sostituzioni, integrazioni con i Fiori di Bach e molto altro. Cosa vorresti approfondire?</div></div>' +
+    '</div>' +
+    '<div style="display:flex;gap:.6rem">' +
+    '<textarea id="diet-chat-input" placeholder="Es: Sostituisci il pesce... Aggiungi opzione vegetariana..." rows="1" style="flex:1;background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-family:\'Outfit\',sans-serif;font-size:.82rem;resize:none;outline:none;min-height:38px;max-height:100px;color:var(--ink)" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendDietMsg()}" oninput="this.style.height=\'auto\';this.style.height=this.scrollHeight+\'px\'"></textarea>' +
+    '<button onclick="sendDietMsg()" style="width:38px;height:38px;border-radius:8px;background:transparent;border:1px solid var(--gold);color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0">' +
+    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>' +
+    '</button></div></div>';
 
   resDiv.style.display = 'block';
   resDiv.scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Memorizza il contesto del piano per la chat AI
+  window._dietContext = {enn: ennVal, adatt: adattVal, piano: enn.principio + ' | Chakra: ' + enn.chakra + ' | Fiori: ' + enn.fiori};
+  window._dietChatHistory = [];
 }
 
+
+
+// ── Diet AI Chat ──
+async function sendDietMsg(){
+  const input = document.getElementById('diet-chat-input');
+  const msgs = document.getElementById('diet-chat-msgs');
+  if(!input||!msgs) return;
+  const msg = input.value.trim(); if(!msg) return;
+  input.value=''; input.style.height='auto';
+  const ctx = window._dietContext||{};
+  if(!window._dietChatHistory) window._dietChatHistory=[];
+  msgs.innerHTML += `<div style="display:flex;gap:.6rem;flex-direction:row-reverse"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">Tu</div><div style="background:var(--gold-pale);border:1px solid var(--gold3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55;text-align:right">${msg}</div></div>`;
+  const typId = 'dt'+Date.now();
+  msgs.innerHTML += `<div id="${typId}" style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink4)">...</div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  window._dietChatHistory.push({role:'user',content:msg});
+  try{
+    const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
+    const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
+    const data=await resp.json();
+    const reply=data.content?.[0]?.text||'Errore. Riprova.';
+    window._dietChatHistory.push({role:'assistant',content:reply});
+    document.getElementById(typId)?.remove();
+    msgs.innerHTML+=`<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">${reply.replace(/\n/g,'<br>')}</div></div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  }catch(e){document.getElementById(typId)?.remove();}
+}
 
 // ── AI Message Rating ──
 function rateMsg(btn, val){

@@ -43,7 +43,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;&gt;&lt;circle cx=&#39;16&#39; cy=&#39;16&#39; r=&#39;14&#39; fill=&#39;%23f9f5ef&#39; stroke=&#39;%23b8935a&#39; stroke-width=&#39;2&#39;/&gt;&lt;text x=&#39;16&#39; y=&#39;21&#39; text-anchor=&#39;middle&#39; font-size=&#39;16&#39; fill=&#39;%23b8935a&#39;&gt;%E2%9C%A6&lt;/text&gt;&lt;/svg&gt;">
 
 <!-- ══ STRUCTURED DATA JSON-LD ══ -->
-<link rel="stylesheet" crossorigin="anonymous" href="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/main.css"><script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -125,10 +125,10 @@
 
 <!-- ══ GOOGLE FONTS (consenso preferibile — vedi cookie banner) ══ -->
 <!-- jsPDF per export chat -->
-<script src="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/jspdf.umd.min.js.download"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -2743,7 +2743,64 @@ body.dark .dark-toggle{background:#3a3632}
             inset 0 0 30px rgba(217, 119, 87, 0.1);
         }
       }
-    </style><link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    
+/* ══════════════════════════════════════
+   MOBILE IMPROVEMENTS
+   ══════════════════════════════════════ */
+
+/* Hero: riduce padding su mobile */
+@media(max-width:600px){
+  #hero{padding:5.5rem 1.2rem 4rem}
+  h1.hero-title{font-size:clamp(2.4rem,9vw,3.2rem);margin-bottom:1rem}
+  .hero-sub{font-size:.92rem;margin-bottom:1.8rem;padding:.4rem .9rem}
+  .hero-pills{gap:.4rem;margin-bottom:2rem}
+  .pill{font-size:.72rem;padding:.35rem .85rem}
+  .cta-row{gap:.7rem}
+  .btn-gold,.btn-ghost{font-size:.8rem;padding:.65rem 1.4rem}
+  .hero-eyebrow{font-size:.72rem;margin-bottom:1.2rem}
+  .scroll-hint{display:none}
+}
+
+/* Chi sono: rimuove sticky su mobile */
+@media(max-width:760px){
+  .chisono-card{position:static;margin-bottom:2rem}
+  .chisono-avatar{max-width:200px;margin:0 auto}
+}
+
+/* Footer: migliora su schermi molto piccoli */
+@media(max-width:380px){
+  .footer-grid{grid-template-columns:1fr !important;padding:0 1rem 2rem}
+  .f-ext-sites{display:flex;flex-direction:column;gap:.4rem}
+  .f-ext-link{font-size:.73rem}
+}
+
+/* Mob menu: migliora scrollabilità */
+@media(max-width:768px){
+  #mob-menu{max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .mob-link{font-size:.83rem;padding:.65rem .9rem}
+}
+
+/* Sezioni generali: meno padding su mobile */
+@media(max-width:480px){
+  section{padding:3rem 0}
+  .container{padding:0 1rem}
+  .sec-title{font-size:1.6rem}
+  h2.sec-title{font-size:clamp(1.5rem,5vw,2rem)}
+}
+
+/* Viaggio timeline: scroll orizzontale su mobile */
+@media(max-width:700px){
+  .viaggio-timeline{
+    display:flex;flex-direction:column;
+    align-items:stretch;gap:.8rem
+  }
+  .viaggio-arrow{transform:rotate(90deg);text-align:center;font-size:1.5rem;color:var(--ink4)}
+  .viaggio-fase{flex-direction:row;align-items:center;gap:1rem;text-align:left}
+  .viaggio-fase-num{flex-shrink:0}
+  .viaggio-fase-tools{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.3rem}
+}
+
+</style><link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body>
 
@@ -2795,6 +2852,11 @@ body.dark .dark-toggle{background:#3a3632}
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
+  <button class="mob-link" style="color:var(--gold);font-weight:600" onclick="st(&#39;check-integrato&#39;);toggleMob()">✦ Check Integrato — Inizia qui</button>
+  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-frutti&#39;);toggleMob()">🌳 Test dei 9 Frutti</button>
+  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-adattamenti&#39;);toggleMob()">🧠 Test Adattamenti AT</button>
+  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;consulente&#39;);toggleMob()">✦ Consulente AI</button>
+  <div style="height:1px;background:var(--border);margin:.4rem 0"></div>
   <button class="mob-link" onclick="st(&#39;consulente&#39;);toggleMob()">✦ Consulente AI</button>
   <button class="mob-link" onclick="st(&#39;at-adattamenti&#39;);toggleMob()">Adattamenti AT</button>
     <button class="nav-link" onclick="st(&#39;transazioni&#39;);toggleMob()">🔀 Transazioni AT</button>
@@ -2812,8 +2874,6 @@ body.dark .dark-toggle{background:#3a3632}
   <button class="mob-link" onclick="st(&#39;faq&#39;);toggleMob()">FAQ</button>
   <button class="mob-link" onclick="st(&#39;guida&#39;);toggleMob()">Guida all'utilizzo</button>
   <button class="mob-link" onclick="st(&#39;link-utili&#39;);toggleMob()">🔗 Link utili</button>
-  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-frutti&#39;);toggleMob()">🌳 Test dei 9 Frutti</button>
-  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-adattamenti&#39;);toggleMob()">🧠 Test Adattamenti AT</button>
   <button class="mob-link" onclick="window.open(&#39;https://frequenze-evolutive.it&#39;,&#39;_blank&#39;);toggleMob()">🎵 Laboratorio Frequenze ↗</button>
 </div>
 
@@ -2883,7 +2943,7 @@ body.dark .dark-toggle{background:#3a3632}
       <!-- Card laterale -->
       <div>
         <div class="chisono-card">
-          <div class="chisono-avatar"><img src="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/carloalberto.jpg" alt="Carlo Alberto Calcagno" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+          <div class="chisono-avatar"><img src="https://olismo-integrato.it/carloalberto.jpg" alt="Carlo Alberto Calcagno" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div class="chisono-card-body">
             <div class="chisono-name">Carlo Alberto Calcagno</div>
             <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
@@ -6056,7 +6116,7 @@ body.dark .dark-toggle{background:#3a3632}
   </div>
 </footer>
 
-<script data-cfasync="false" src="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/email-decode.min.js.download"></script><script data-cfasync="false" src="./Olismo Integrato — Chakra, Enneagramma, AT, Cristalli, Meditazione _ Carlo Alberto Calcagno_files/email-decode.min.js.download"></script><script>
+<script>
 // v202604131323
 // ════════════════════════════════════════
 // DATABASE COMPLETO
@@ -7057,7 +7117,7 @@ const FAQ_DATA = [
 ,
   {cat:"VAK",q:"Cosa sono i canali VAK?",a:"VAK è l'acronimo di Visivo, Auditivo, Cinestetico (Kinesthetic in inglese). Secondo la Programmazione Neuro-Linguistica (PNL), ogni persona elabora la realtà preferenzialmente attraverso uno di questi tre canali sensoriali. Il Visivo pensa per immagini, l'Auditivo per suoni e parole, il Cenestesico per sensazioni fisiche ed emozioni. Il canale dominante si rivela nel linguaggio usato, nella postura, nei movimenti degli occhi e nel tono di voce."},
   {cat:"VAK",q:"Come si correlano VAK, Enneagramma e AT?",a:"Secondo Calcagno esiste una corrispondenza: Visivo → enneatipi 3,7,8 (tipi d'azione) → Asta/Accusatore di Satir → Genitore Normativo/Adulto AT; Auditivo → enneatipi 1,5,6 (tipi intellettuali) → Cerchio/Superlogico → Adulto AT; Cenestesico → enneatipi 2,4,9 (tipi emotivi) → Triangolo/Propiziatore → Bambino AT. Queste non sono correlazioni assolute ma tendenze frequenti che aiutano il mediatore/counselor a calibrare la comunicazione."},
-  {cat:"VAK",q:"Cos'è la Time Line nella PNL?",a:"La Time Line è uno strumento PNL in cui si traccia una linea immaginaria con passato, presente e futuro. Il soggetto si posiziona fisicamente su ciascun punto e risponde a domande usando il linguaggio del suo canale VAK (visivo: 'come visualizza il futuro?'; auditivo: 'cosa si dice?'; cenestesico: 'come si sente?'). In mediazione viene usata nella sessione privata per portare il mediant a ricordare un passato positivo e a costruire una visione di futuro che motivi l'accordo."}
+  {cat:"VAK",q:"Cos'è la Time Line nella PNL?",a:"La Time Line è uno strumento PNL in cui si traccia una linea immaginaria con passato, presente e futuro. Il soggetto si posiziona fisicamente su ciascun punto e risponde a domande usando il linguaggio del suo canale VAK (visivo: 'come visualizza il futuro?'; auditivo: 'cosa si dice?'; cenestesico: 'come si sente?'). In mediazione viene usata nella sessione privata per portare il mediant a ricordare un passato positivo e a costruire una visione di futuro che motivi l'accordo."},
 
   // ── Frequenze Solfeggio ──
   {cat:"Frequenze",q:"Cos'è la scala solfeggio e a cosa serve?",a:"Le frequenze solfeggio sono una scala di 9 toni (174Hz–963Hz) usata in musica terapeutica. Ogni frequenza è associata a uno stato emotivo e a un chakra specifico: 396Hz scioglie la paura (chakra radice), 528Hz è nota per la trasformazione (plesso solare), 639Hz favorisce le relazioni (chakra del cuore), 852Hz attiva l'intuizione (terzo occhio). Non sono frequenze magiche, ma strumenti di supporto meditativo e rilassamento profondo."},

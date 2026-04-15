@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- VERSIONE: 2025-04-15-v3 | olismo-integrato.it -->
 <!-- saved from url=(0028)https://olismo-integrato.it/ -->
 <html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -1038,6 +1039,33 @@ footer.site-footer{
 .guida-faq-block details[open]>summary{color:var(--gold)}
 .guida-faq-block summary:hover{color:var(--gold)}
 .guida-faq-block .gfaq-body{padding:.1rem 0 1.1rem;font-size:.84rem;font-weight:300;color:var(--ink3);line-height:1.9}
+/* ── Il Metodo ── */
+#metodo{background:var(--ivory)}
+.metodo-pilastri{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0}
+@media(max-width:700px){.metodo-pilastri{grid-template-columns:1fr}}
+.metodo-pilastro{background:white;border-radius:var(--rxl);border:1.5px solid var(--border);padding:1.8rem 1.5rem;text-align:center}
+.metodo-pilastro-icon{font-size:2rem;margin-bottom:.8rem}
+.metodo-pilastro h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin:0 0 .6rem}
+.metodo-pilastro p{font-size:.85rem;font-weight:300;color:var(--ink3);line-height:1.8;margin:0}
+.metodo-dims{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2rem 0 2.5rem}
+@media(max-width:700px){.metodo-dims{grid-template-columns:1fr}}
+.metodo-dim{padding:1.4rem 1.5rem;border-left:3px solid var(--gold);background:white;border-radius:0 var(--r) var(--r) 0}
+.metodo-dim-label{font-size:.75rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem}
+.metodo-dim p{font-size:.84rem;font-weight:300;color:var(--ink3);line-height:1.85;margin:0}
+.metodo-non-e{background:var(--gold-pale);border:1.5px solid var(--border2);border-radius:var(--rxl);padding:1.5rem 2rem;margin-top:1.5rem}
+.metodo-non-e-title{font-size:.78rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.8rem}
+.metodo-non-e ul{margin:0;padding-left:1.2rem}
+.metodo-non-e li{font-size:.85rem;font-weight:300;color:var(--ink3);line-height:1.7;margin-bottom:.4rem}
+/* ── Dove Cominciare ── */
+.dove-intro{max-width:680px;margin:0 auto 2rem;text-align:center;font-size:.9rem;color:var(--ink3);line-height:1.8}
+.dove-table-wrap{overflow-x:auto;margin:0 0 1.5rem;border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.dove-tab{width:100%;border-collapse:collapse;font-size:.84rem;background:white}
+.dove-tab th{background:var(--gold-pale);border:1px solid var(--border2);padding:.75rem 1rem;text-align:left;font-family:'Outfit',sans-serif;font-size:.73rem;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.dove-tab td{border:1px solid var(--border);padding:.75rem 1rem;vertical-align:top;color:var(--ink3);line-height:1.7}
+.dove-tab tr:hover td{background:var(--ivory)}
+.dove-tab td:first-child{color:var(--ink);font-style:italic}
+.dove-tab td:nth-child(2){color:var(--gold);font-weight:500}
+.dove-cta-note{text-align:center;font-size:.84rem;color:var(--ink3);font-style:italic;margin:1rem 0 2rem}
 .guida-percorsi{margin-top:1rem}
 .guida-percorsi h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:2rem}
 .percorsi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
@@ -2854,6 +2882,7 @@ body.dark .dark-toggle{background:#3a3632}
     <span class="nav-sep">·</span>
     <!-- INFO -->
     <button class="nav-link" onclick="st(&#39;chi-sono&#39;)">🧑 Chi sono</button>
+    <button class="nav-link" onclick="st(&#39;metodo&#39;)">◈ Il metodo</button>
     <button class="nav-link" onclick="st(&#39;faq&#39;)">FAQ</button>
     <button class="nav-link" onclick="st(&#39;guida&#39;)">Guida</button>
     <button class="nav-link" onclick="openPrivacy()" style="font-size:.68rem;color:var(--ink4)">Privacy</button>
@@ -2884,6 +2913,7 @@ body.dark .dark-toggle{background:#3a3632}
   <button class="mob-link" onclick="st(&#39;prano&#39;);toggleMob()">Pranoterapia</button>
     <button class="nav-link" onclick="st(&#39;meditazione&#39;);toggleMob()">🧘 Meditazione</button>
   <button class="mob-link" onclick="st(&#39;faq&#39;);toggleMob()">FAQ</button>
+  <button class="mob-link" onclick="st(&#39;metodo&#39;);toggleMob()">◈ Il metodo</button>
   <button class="mob-link" onclick="st(&#39;guida&#39;);toggleMob()">Guida all'utilizzo</button>
   <button class="mob-link" onclick="st(&#39;link-utili&#39;);toggleMob()">🔗 Link utili</button>
   <button class="mob-link" onclick="window.open(&#39;https://frequenze-evolutive.it&#39;,&#39;_blank&#39;);toggleMob()">🎵 Laboratorio Frequenze ↗</button>
@@ -3031,6 +3061,61 @@ body.dark .dark-toggle{background:#3a3632}
           <a class="site-card" href="https://ladanzadelconflitto.it/" target="_blank"><div class="site-card-icon">⚡</div><div class="site-card-name">La Danza del Conflitto</div><div class="site-card-url">ladanzadelconflitto.it</div><div class="site-card-desc">Il modello neurobiologico del conflitto relazionale.</div></a>
           <a class="site-card" href="https://tieniinmanolaluce.me/" target="_blank"><div class="site-card-icon">✦</div><div class="site-card-name">Tieni in Mano la Luce</div><div class="site-card-url">tieniinmanolaluce.me</div><div class="site-card-desc">Percorso spirituale: impermanenza, compassione, interdipendenza.</div></a></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ▐▐ IL METODO ════════════════════════════════════ -->
+<section id="metodo">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Fondamenti · Approccio · Limiti</div>
+      <h2 class="sec-title">Il <em>metodo</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Un approccio integrato che connette scienza, simbolo e pratica quotidiana. Non è terapia né prescrizione: è una mappa per chi vuole capire se stesso e scegliere strumenti consapevolmente.</p>
+    </div>
+
+    <div class="metodo-pilastri">
+      <div class="metodo-pilastro">
+        <div class="metodo-pilastro-icon">🌊</div>
+        <h3>Impermanenza</h3>
+        <p>Nessun profilo è una condanna. Enneatipo e adattamenti descrivono processi, non essenze fisse: ciò che sei oggi non è ciò che sarai domani.</p>
+      </div>
+      <div class="metodo-pilastro">
+        <div class="metodo-pilastro-icon">🤲</div>
+        <h3>Compassione</h3>
+        <p>Comprendere i propri automatismi riduce il giudizio e apre alla cura di sé. Non si tratta di cambiare chi si è, ma di incontrarlo con gentilezza.</p>
+      </div>
+      <div class="metodo-pilastro">
+        <div class="metodo-pilastro-icon">🕸</div>
+        <h3>Interdipendenza</h3>
+        <p>Lavorare su di sé cambia le relazioni. Ogni trasformazione personale ha un impatto sistemico: sul corpo, sulla coppia, sulla famiglia, sul lavoro.</p>
+      </div>
+    </div>
+
+    <div class="metodo-dims">
+      <div class="metodo-dim">
+        <div class="metodo-dim-label">🔬 La parte scientifica</div>
+        <p>Regolazione del sistema nervoso, dinamiche relazionali, copioni di vita, stati dell'Io. Psicologia, counseling e neuroscienze offrono il telaio su cui intrecciare tutto il resto.</p>
+      </div>
+      <div class="metodo-dim">
+        <div class="metodo-dim-label">🔮 Il linguaggio dei simboli</div>
+        <p>Enneagramma, chakra, cristalli, fiori di Bach, archetipi: mappe simboliche, non dogmi. Parlano alla parte immaginativa e profonda di te, là dove spesso le parole non bastano.</p>
+      </div>
+      <div class="metodo-dim">
+        <div class="metodo-dim-label">✦ La dimensione spirituale</div>
+        <p>Spiritualità qui non è religione, ma esperienza di connessione: con te stesso, con gli altri, con qualcosa di più grande. Il lavoro interiore diventa ponte tra corpo, mente e ciò che senti come anima.</p>
+      </div>
+    </div>
+
+    <div class="metodo-non-e">
+      <div class="metodo-non-e-title">⚠️ Cosa questo metodo non è</div>
+      <ul>
+        <li><strong>Non è diagnosi né terapia.</strong> Non sostituisce medico, psicologo o psicoterapeuta.</li>
+        <li><strong>Non è classificazione rigida.</strong> Enneatipi e adattamenti sono mappe dinamiche, non etichette fisse.</li>
+        <li><strong>Non è promessa miracolistica.</strong> Lavora per piccoli cambiamenti stabili nel tempo.</li>
+      </ul>
+      <p style="margin-top:.8rem;font-size:.84rem;color:var(--ink3)">Integra questo lavoro con le cure che stai già seguendo.</p>
     </div>
   </div>
 </section>
@@ -5968,6 +6053,69 @@ body.dark .dark-toggle{background:#3a3632}
       </details>
     </div><!-- /guida-faq-block -->
 
+    <!-- ── Dove cominciare ── -->
+    <div style="margin:0 0 2.5rem">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:.6rem">Dove <em>cominciare</em></h3>
+      <p class="dove-intro">Non sai da dove iniziare? Parti da ciò che senti oggi. Questa mappa ti aiuta a scegliere il primo passo più adatto al tuo momento di vita.</p>
+      <div class="dove-table-wrap">
+        <table class="dove-tab">
+          <thead>
+            <tr>
+              <th>Se senti che…</th>
+              <th>Inizia da qui</th>
+              <th>Poi esplora</th>
+              <th>Strumenti utili</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vivi ansia, agitazione o ipercontrollo</td>
+              <td>Check Integrato + Test Enneatipo</td>
+              <td>Muladhara, Manipura, Ajna</td>
+              <td>Meditazioni, frequenze, rimedi floreali per paura e sovraccarico</td>
+            </tr>
+            <tr>
+              <td>Ti senti stanco, svuotato o senza direzione</td>
+              <td>Check Integrato</td>
+              <td>Manipura e percorso sui bisogni profondi</td>
+              <td>Cristalli, fiori, pratiche di centratura e vitalità</td>
+            </tr>
+            <tr>
+              <td>Ripeti conflitti nelle relazioni</td>
+              <td>Test Adattamenti + stati dell'Io</td>
+              <td>Danza del conflitto, compatibilità, Enneagramma Evolutivo</td>
+              <td>Meditazioni, esercizi di consapevolezza relazionale, frequenze</td>
+            </tr>
+            <tr>
+              <td>Fai fatica a dire no o a mettere confini</td>
+              <td>Test Adattamenti</td>
+              <td>Anahata, Vishuddha, copioni relazionali</td>
+              <td>Rimedi floreali, pratiche di voce e autenticità, diario dei bisogni</td>
+            </tr>
+            <tr>
+              <td>Non capisci bene chi sei o da dove partire</td>
+              <td>Test dei 9 Frutti</td>
+              <td>Schede enneatipi, chakra collegati, Consulente AI</td>
+              <td>Percorso guidato in 5 fasi, mappe integrate</td>
+            </tr>
+            <tr>
+              <td>Ti senti scollegato dal corpo o poco radicato</td>
+              <td>Check Integrato</td>
+              <td>Chakra di base, meditazioni guidate, frequenze di grounding</td>
+              <td>Pratiche corporee, musica, respirazione, cristalli</td>
+            </tr>
+            <tr>
+              <td>Sei in una transizione di vita o in crisi identitaria</td>
+              <td>Test Enneatipo + Check Integrato</td>
+              <td>Enneagramma Evolutivo, Ajna, Sahasrara</td>
+              <td>Meditazioni, archetipi, frequenze, lavoro simbolico</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dove-cta-note">Se non ti riconosci in un solo tema, inizia dal Check Integrato oppure chiedi alla Consulente AI di orientarti.</p>
+    </div>
+
     <div class="guida-percorsi">
       <h3>Percorsi <em>consigliati</em></h3>
       <div class="percorsi-grid">
@@ -6065,6 +6213,40 @@ body.dark .dark-toggle{background:#3a3632}
             <span class="percorso-tag">👤 Ricercatori, docenti, appassionati avanzati</span>
             <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">1</span>Usa il <strong>Database Explorer</strong> per ricerche trasversali</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">2</span>Incrocia i 100 fiori <strong>FES</strong> e i 65 <strong>Bush</strong> con chakra/enneatipi</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">3</span>Genera con <strong>Suno AI</strong> la musica terapeutica per un enneatipo</div><div class="ps-new"><span class="ps-new-n" style="background:#1565c0">4</span>Esplora le <strong>discipline</strong> nella sezione apposita</div></div>
             <div class="percorso-cta"><button class="percorso-btn" style="background:#1565c0;color:white" onclick="st(&#39;explorer&#39;)">Database Explorer →</button></div>
+          </div>
+        </div>
+        <!-- Percorso 7: Ansia e Stress -->
+        <div class="percorso-card">
+          <div class="percorso-accent" style="background:#0d7377"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#0d73771a">😰</div>
+              <div>
+                <div class="percorso-num">Percorso 7 / 8</div>
+                <div class="percorso-title-new">Ansia e stress</div>
+                <div style="font-size:.72rem;color:#0d7377;font-weight:600;line-height:1.3">Radicamento, calma, regolazione</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Chi vive in iper-allerta o non riesce a riposare</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#0d7377">1</span>Fai il <strong>Check Integrato</strong> e il <strong>Test dei 9 Frutti</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#0d7377">2</span>Esplora le schede <strong>Muladhara, Manipura, Ajna</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#0d7377">3</span>Scegli rimedi floreali per <strong>paura, controllo, sovraccarico mentale</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#0d7377">4</span>Abbina <strong>respirazione, frequenza 396Hz</strong> e meditazione radicamento</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#0d7377;color:white" onclick="st(&#39;check-integrato&#39;)">Inizia dal Check →</button></div>
+          </div>
+        </div>
+        <!-- Percorso 8: Relazioni e Confini -->
+        <div class="percorso-card">
+          <div class="percorso-accent" style="background:#b5446e"></div>
+          <div class="percorso-inner">
+            <div class="percorso-meta">
+              <div class="percorso-badge" style="background:#b5446e1a">💔</div>
+              <div>
+                <div class="percorso-num">Percorso 8 / 8</div>
+                <div class="percorso-title-new">Relazioni e confini</div>
+                <div style="font-size:.72rem;color:#b5446e;font-weight:600;line-height:1.3">Schemi relazionali e autenticità</div>
+              </div>
+            </div>
+            <span class="percorso-tag">👤 Chi si perde negli altri o vive conflitti ricorrenti</span>
+            <div class="percorso-steps-new"><div class="ps-new"><span class="ps-new-n" style="background:#b5446e">1</span>Fai <strong>Enneatipo, Adattamenti AT</strong> e stati dell'Io</div><div class="ps-new"><span class="ps-new-n" style="background:#b5446e">2</span>Studia la <strong>Danza del Conflitto</strong> e la matrice <strong>Compatibilità</strong></div><div class="ps-new"><span class="ps-new-n" style="background:#b5446e">3</span>Esplora <strong>Anahata</strong> (cuore) e <strong>Vishuddha</strong> (voce, confini)</div><div class="ps-new"><span class="ps-new-n" style="background:#b5446e">4</span>Chiedi all'AI: «Come costruisco confini sani con il mio enneatipo?»</div></div>
+            <div class="percorso-cta"><button class="percorso-btn" style="background:#b5446e;color:white" onclick="st(&#39;test-frutti&#39;)">Test dei 9 Frutti →</button></div>
           </div>
         </div>
       </div><!-- /percorsi-grid -->

@@ -1027,6 +1027,17 @@ footer.site-footer{
 .guida-icon{font-size:1.8rem;margin-bottom:.5rem;display:block}
 .guida-step h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
 .guida-step p{font-size:.83rem;font-weight:300;color:var(--ink3);line-height:1.8}
+/* ── Guida FAQ inline ── */
+.guida-faq-block{margin:0 0 3rem;border-top:1px solid var(--border)}
+.guida-faq-block .gfaq-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:400;color:var(--ink3);margin:1.6rem 0 .8rem;letter-spacing:.05em;text-transform:uppercase}
+.guida-faq-block details{border-bottom:1px solid var(--border)}
+.guida-faq-block summary{padding:.85rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;list-style:none;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:400;color:var(--ink);user-select:none;transition:color .2s}
+.guida-faq-block summary::-webkit-details-marker{display:none}
+.guida-faq-block summary::after{content:'▼';font-size:.62rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.guida-faq-block details[open]>summary::after{transform:rotate(180deg)}
+.guida-faq-block details[open]>summary{color:var(--gold)}
+.guida-faq-block summary:hover{color:var(--gold)}
+.guida-faq-block .gfaq-body{padding:.1rem 0 1.1rem;font-size:.84rem;font-weight:300;color:var(--ink3);line-height:1.9}
 .guida-percorsi{margin-top:1rem}
 .guida-percorsi h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:2rem}
 .percorsi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
@@ -5940,6 +5951,22 @@ body.dark .dark-toggle{background:#3a3632}
       </div>
 
     </div><!-- /guida-steps -->
+
+    <div class="guida-faq-block">
+      <p class="gfaq-title">Domande frequenti su questo percorso</p>
+      <details>
+        <summary>Come si usa la Mappa del Viaggio?</summary>
+        <div class="gfaq-body">La Mappa guida il tuo percorso in 5 fasi: <strong>Fase 0</strong> Accoglienza (chi sono) → <strong>Fase 1</strong> Conosci te stesso (Check, Enneatipo, AT, VAK) → <strong>Fase 2</strong> Approfondisci (Enneagramma, AT, discipline) → <strong>Fase 3</strong> Esplora il database (chakra, cristalli, fiori) → <strong>Fase 4</strong> Integra (consulente AI, percorso di coppia) → <strong>Fase 5</strong> Pratica (esercizi, meditazione, alimentazione). Puoi seguire l'ordine suggerito o saltare direttamente alla sezione che ti serve.</div>
+      </details>
+      <details>
+        <summary>Qual è il percorso consigliato per chi inizia da zero?</summary>
+        <div class="gfaq-body">Parti dal <strong>Check Integrato</strong>: risponde a 5 domande rapide e ti indirizza nella sezione più adatta. Se preferisci autonomia, segui questo ordine: (1) Test dei 9 Frutti per l'enneatipo · (2) Test Adattamenti AT per lo stile relazionale · (3) Test VAK per il canale sensoriale · (4) Database per esplorare chakra e cristalli del tuo profilo · (5) Consulente AI per domande personalizzate.</div>
+      </details>
+      <details>
+        <summary>Come funziona il Check Integrato?</summary>
+        <div class="gfaq-body">Il Check Integrato (bottone <strong>✦</strong> in alto nella nav e nell'hero) è un wizard che ti chiede cosa stai cercando — lavoro su te stesso, relazioni, benessere fisico, spiritualità o crescita professionale — e ti propone il percorso più adatto tra le sezioni del sito. È il punto di ingresso ideale per chi arriva per la prima volta.</div>
+      </details>
+    </div><!-- /guida-faq-block -->
 
     <div class="guida-percorsi">
       <h3>Percorsi <em>consigliati</em></h3>

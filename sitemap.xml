@@ -1,141 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- Pagina principale -->
   <url>
     <loc>https://olismo-integrato.it/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Portale fiori personalizzato -->
+  <url>
+    <loc>https://olismo-integrato.it/i_miei_fiori.html</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Copione AT -->
+  <url>
+    <loc>https://olismo-integrato.it/il_mio_copione.html</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Sezioni principali (ancore) -->
   <url>
-    <loc>https://olismo-integrato.it/#check-integrato</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://olismo-integrato.it/#chi-sono</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://olismo-integrato.it/#consulente</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://olismo-integrato.it/#metodo</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://olismo-integrato.it/#percorso-viaggio</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#check-integrato</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Test e profilo -->
   <url>
     <loc>https://olismo-integrato.it/#test-frutti</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://olismo-integrato.it/#test-adattamenti</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://olismo-integrato.it/#vak</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#egogramma</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Enneagramma e AT -->
   <url>
     <loc>https://olismo-integrato.it/#enneagram</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#chakra-sec</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#cristalli</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#bach</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#fes-sec</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#bush-sec</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#musica</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://olismo-integrato.it/#at-adattamenti</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#transazioni</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#carezze</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://olismo-integrato.it/#compatibilita</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Chakra e Cristalli -->
+  <url>
+    <loc>https://olismo-integrato.it/#chakra-sec</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#cristalli</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Fiori di Bach -->
+  <url>
+    <loc>https://olismo-integrato.it/#bach</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Fiori FES Californiani + Motore AI -->
+  <url>
+    <loc>https://olismo-integrato.it/#fes-sec</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#ai-fes-sec</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Fiori Bush Australiani + Motore AI -->
+  <url>
+    <loc>https://olismo-integrato.it/#bush-sec</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#ai-bush-sec</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Altre sezioni terapeutiche -->
+  <url>
+    <loc>https://olismo-integrato.it/#meditazione</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://olismo-integrato.it/#vak</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://olismo-integrato.it/#prano</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#meditazione</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://olismo-integrato.it/#alimentazione</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://olismo-integrato.it/#percorso-viaggio</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://olismo-integrato.it/#musica</loc>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://olismo-integrato.it/#suno-generator</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Psicologia e Mediazione -->
+  <url>
+    <loc>https://olismo-integrato.it/#danza</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#discipline</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Database e AI -->
+  <url>
+    <loc>https://olismo-integrato.it/#explorer</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/#consulente</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Info -->
   <url>
     <loc>https://olismo-integrato.it/#faq</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://olismo-integrato.it/#guida</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://olismo-integrato.it/#chi-sono</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- File ausiliari -->
-  <url>
-    <loc>https://olismo-integrato.it/sitemap.xml</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

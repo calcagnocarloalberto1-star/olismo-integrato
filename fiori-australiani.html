@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miei Fiori Australiani · Assistente AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ochre:   #c8813a;
+  --rust:    #a0522d;
+  --sand:    #f5ede0;
+  --red-earth: #8b3a1a;
+  --bark:    #3d2410;
+  --leaf:    #5a7a3a;
+  --sage:    #8aab6e;
+  --sky:     #6b9fb8;
+  --cream:   #fdf8f0;
+  --warm-gray: #7a6a58;
+  --radius:  14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--bark);
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.page-header {
+  background: var(--bark);
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(200,129,58,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 30%, rgba(90,122,58,0.12) 0%, transparent 60%);
+}
+.dots-pattern {
+  position: absolute; inset: 0; opacity: .07;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.header-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.header-flag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(200,129,58,0.25);
+  border: 1px solid rgba(200,129,58,0.4);
+  color: var(--ochre);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: .3rem 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.2rem;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: .6rem;
+}
+.header-title em { font-style: italic; color: var(--ochre); }
+.header-sub {
+  font-size: .95rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.header-chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+  margin-top: 1.4rem;
+}
+.chip {
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .28rem .8rem; border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+}
+
+/* ─── MAIN LAYOUT ─── */
+.main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+/* ─── MODE SWITCHER ─── */
+.mode-bar {
+  display: flex; gap: .5rem;
+  background: var(--sand);
+  border-radius: 12px;
+  padding: .4rem;
+  margin-bottom: 2rem;
+}
+.mode-btn {
+  flex: 1;
+  padding: .65rem 1rem;
+  border: none; cursor: pointer;
+  border-radius: 9px;
+  font-family: 'Lato', sans-serif;
+  font-size: .85rem; font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--warm-gray);
+  background: transparent;
+  transition: all .25s;
+}
+.mode-btn.active {
+  background: var(--bark);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(61,36,16,0.25);
+}
+
+/* ─── INPUT AREA ─── */
+.input-wrap { position: relative; margin-bottom: 1rem; }
+.main-input {
+  width: 100%;
+  padding: 1.1rem 5rem 1.1rem 1.4rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  border: 2px solid var(--sand);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--bark);
+  outline: none;
+  transition: border .2s;
+  resize: none;
+  min-height: 60px;
+}
+.main-input:focus { border-color: var(--ochre); }
+.main-input::placeholder { color: #bbb; }
+.send-btn {
+  position: absolute; right: .9rem; bottom: .9rem;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--ochre);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .15s;
+  color: #fff; font-size: 1.1rem;
+}
+.send-btn:hover { background: var(--rust); transform: scale(1.05); }
+.send-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+/* ─── QUICK TAGS ─── */
+.quick-tags {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  margin-bottom: 1.8rem;
+}
+.quick-tag {
+  font-size: .75rem; font-weight: 700;
+  padding: .3rem .75rem;
+  border-radius: 9999px;
+  background: var(--sand);
+  border: 1.5px solid transparent;
+  color: var(--warm-gray);
+  cursor: pointer;
+  transition: all .2s;
+}
+.quick-tag:hover { border-color: var(--ochre); color: var(--ochre); }
+
+/* ─── CHAT AREA ─── */
+.chat-area {
+  display: flex; flex-direction: column; gap: 1.2rem;
+  min-height: 200px;
+}
+
+.msg-user {
+  align-self: flex-end;
+  max-width: 72%;
+  background: var(--ochre);
+  color: #fff;
+  padding: .85rem 1.2rem;
+  border-radius: 14px 14px 4px 14px;
+  font-size: .93rem;
+  line-height: 1.6;
+}
+.msg-ai {
+  align-self: flex-start;
+  max-width: 95%;
+  background: #fff;
+  border: 1px solid #ede5d8;
+  padding: 1.3rem 1.5rem;
+  border-radius: 4px 14px 14px 14px;
+  font-size: .93rem;
+  line-height: 1.75;
+  color: var(--bark);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.msg-ai-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ochre);
+  margin-bottom: .6rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.msg-ai h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--bark); margin: .9rem 0 .3rem;
+}
+.msg-ai h3:first-child { margin-top: 0; }
+.msg-ai p { margin-bottom: .6rem; }
+.msg-ai ul { padding-left: 1.2rem; margin-bottom: .6rem; }
+.msg-ai li { margin-bottom: .3rem; }
+.msg-ai strong { color: var(--rust); }
+.msg-ai em { color: var(--leaf); font-style: italic; }
+.msg-ai hr { border: none; border-top: 1px solid #ede5d8; margin: .8rem 0; }
+
+/* fiore card inline */
+.flower-tag-inline {
+  display: inline-block;
+  background: rgba(200,129,58,0.12);
+  border: 1px solid rgba(200,129,58,0.3);
+  color: var(--rust);
+  font-size: .75rem; font-weight: 700;
+  padding: .15rem .55rem; border-radius: 6px;
+  margin: .1rem;
+}
+
+.typing-dots {
+  display: flex; gap: 5px; align-items: center;
+  padding: .5rem 0;
+}
+.typing-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ochre); opacity: .5;
+  animation: bounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes bounce {
+  0%,80%,100% { transform: translateY(0); opacity:.4; }
+  40% { transform: translateY(-7px); opacity:1; }
+}
+
+/* ─── WELCOME CARD ─── */
+.welcome-card {
+  background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+  border: 1px solid #ede5d8;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+.welcome-icon { font-size: 3rem; margin-bottom: .8rem; }
+.welcome-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--bark); margin-bottom: .5rem;
+}
+.welcome-card p { font-size: .88rem; color: var(--warm-gray); line-height: 1.7; }
+
+/* ─── FOOTER ─── */
+.page-footer {
+  background: var(--bark); color: rgba(255,255,255,.45);
+  text-align: center; padding: 1.5rem 2rem;
+  font-size: .76rem; letter-spacing: .04em;
+}
+.page-footer a { color: var(--ochre); text-decoration: none; }
+
+@media(max-width:600px){
+  .mode-btn { font-size: .75rem; padding: .55rem .5rem; }
+  .msg-user, .msg-ai { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="dots-pattern"></div>
+  <div class="header-inner">
+    <div class="header-flag">🌿 Australian Bush Flower Essences</div>
+    <h1 class="header-title">I Miei Fiori<br><em>Australiani</em></h1>
+    <p class="header-sub">Assistente AI per la scelta dei rimedi floreali australiani — connesso a enneatipi, cristalli, adattamenti e confronto con i fiori di Bach e californiani.</p>
+    <div class="header-chips">
+      <span class="chip">🦘 Ian White · ABFE</span>
+      <span class="chip">🔯 Enneatipi</span>
+      <span class="chip">💎 Cristalli</span>
+      <span class="chip">🌸 Bach · California</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- MODE BAR -->
+  <div class="mode-bar">
+    <button class="mode-btn active" id="btnSintomo" onclick="setMode('sintomo')">🎯 Descrivi come ti senti</button>
+    <button class="mode-btn" id="btnFiore" onclick="setMode('fiore')">🌿 Cerca un fiore</button>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-wrap">
+    <textarea class="main-input" id="mainInput"
+      placeholder="Es: mi sento bloccata, non riesco a prendere decisioni e ho paura del futuro…"
+      rows="2"
+      onkeydown="handleKey(event)"></textarea>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Invia">➤</button>
+  </div>
+
+  <!-- QUICK TAGS -->
+  <div class="quick-tags" id="quickTags">
+    <span class="quick-tag" onclick="quickFill('ansia e paura del futuro')">😰 Ansia</span>
+    <span class="quick-tag" onclick="quickFill('bassa autostima e senso di inferiorità')">💔 Autostima</span>
+    <span class="quick-tag" onclick="quickFill('stanchezza emotiva e burnout')">😮‍💨 Esaurimento</span>
+    <span class="quick-tag" onclick="quickFill('difficoltà a lasciar andare il passato')">🌀 Attaccamento</span>
+    <span class="quick-tag" onclick="quickFill('mancanza di chiarezza e confusione mentale')">🌫 Confusione</span>
+    <span class="quick-tag" onclick="quickFill('senso di solitudine e isolamento')">🏝 Solitudine</span>
+    <span class="quick-tag" onclick="quickFill('gelosia e possessività')">🔒 Gelosia</span>
+    <span class="quick-tag" onclick="quickFill('mancanza di fiducia in sé stessi')">🌱 Fiducia</span>
+    <span class="quick-tag" onclick="quickFill('difficoltà nei rapporti di coppia')">💑 Coppia</span>
+    <span class="quick-tag" onclick="quickFill('shock o trauma recente')">⚡ Trauma</span>
+  </div>
+
+  <!-- CHAT -->
+  <div class="chat-area" id="chatArea">
+    <div class="welcome-card">
+      <div class="welcome-icon">🌿</div>
+      <h3>Benvenuto nel tuo spazio floreale australiano</h3>
+      <p>Descrivi come ti senti — emozioni, pensieri ricorrenti, stati fisici — oppure cerca direttamente un fiore per nome. L'assistente ti guiderà nella scelta, collegando il rimedio al tuo enneatipo, ai cristalli affini e spiegando quando preferire un fiore australiano rispetto a uno di Bach o californiano.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <a href="https://olismo-integrato.it">← Torna a olismo-integrato.it</a>
+  &nbsp;·&nbsp; Fiori Australiani AI · Ian White ABFE
+  &nbsp;·&nbsp; <a href="fiori-californiani.html">Vai ai Fiori Californiani →</a>
+</footer>
+
+<script>
+let currentMode = 'sintomo';
+let conversationHistory = [];
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btnSintomo').classList.toggle('active', mode === 'sintomo');
+  document.getElementById('btnFiore').classList.toggle('active', mode === 'fiore');
+
+  const input = document.getElementById('mainInput');
+  const tags = document.getElementById('quickTags');
+
+  if (mode === 'sintomo') {
+    input.placeholder = 'Es: mi sento bloccata, non riesco a prendere decisioni e ho paura del futuro…';
+    tags.style.display = 'flex';
+  } else {
+    input.placeholder = 'Es: Banksia Robur, oppure "fiore per la stanchezza cronica"…';
+    tags.style.display = 'none';
+  }
+}
+
+function quickFill(text) {
+  document.getElementById('mainInput').value = text;
+  document.getElementById('mainInput').focus();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function appendMsg(role, html) {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  if (role === 'user') {
+    div.className = 'msg-user';
+    div.textContent = html;
+  } else {
+    div.className = 'msg-ai';
+    div.innerHTML = `<div class="msg-ai-label">🌿 Assistente Fiori Australiani</div>${html}`;
+  }
+  area.appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  return div;
+}
+
+function showTyping() {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = 'msg-ai'; div.id = 'typingIndicator';
+  div.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+  area.appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function formatResponse(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/^[-•] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hpulio])(.+)$/gm, '<p>$1</p>')
+    .replace(/<p><\/p>/g, '');
+}
+
+const SYSTEM_PROMPT = `Sei un esperto assistente olisitico specializzato nei Fiori Australiani (Australian Bush Flower Essences — ABFE) di Ian White. Rispondi sempre in italiano, con tono caldo, professionale e spiritualmente consapevole.
+
+Il tuo sistema di conoscenza integrato comprende:
+
+**FIORI AUSTRALIANI (ABFE) — base primaria**
+Conosci tutti i 69 rimedi ABFE principali con le loro indicazioni emotive, mentali, fisiche e spirituali:
+- Banksia Robur (stanchezza cronica, mancanza di entusiasmo), Billy Goat Plum (disgusto fisico, vergogna corporea), Black-eyed Susan (fretta, impazienza, difficoltà a rallentare), Bluebell (cuore chiuso, avidità, difficoltà a dare), Boab (schemi familiari disfunzionali, karma ancestrale), Bottlebrush (cambiamenti di vita, relazione madre-figlio), Bush Fuchsia (intuizione bloccata, difficoltà di apprendimento), Bush Gardenia (rapporti di coppia distanti, comunicazione difficile), Bush Iris (paura della morte, materialismo eccessivo), Christmas Bell (abbondanza, prosperità materiale), Crowea (preoccupazione cronica, tensione allo stomaco), Dagger Hakea (risentimento verso persone care), Dog Rose (paura dei rapporti umani, timidezza), Dog Rose of the Wild Forces (paura di perdere il controllo), Five Corners (bassa autostima, mancanza di amore per sé), Flannel Flower (disagio col contatto fisico, difficoltà nell'intimità), Freshwater Mangrove (pregiudizi mentali, mente chiusa), Fringed Violet (protezione aurica, shock, trauma), Green Essence (disintossicazione emotiva, parassiti), Green Spider Orchid (telepatia, comunicazione spirituale), Grey Spider Flower (terrore nel sonno, panico estremo), Gymea Lily (arroganza, bisogno di attenzione), Hibbertia (perfezionismo dogmatico, rigidità mentale), Illawarra Flame Tree (rifiuto, paura della responsabilità), Isopogon (memoria, senilità, potere attraverso il controllo), Jacaranda (dispersività, indecisione cronica), Kangaroo Paw (mancanza di sensibilità sociale, goffaggine emotiva), Kapok Bush (rassegnazione, apatia lieve), Little Flannel Flower (recupero del bambino interiore, gioia), Macrocarpa (stanchezza surrenale profonda, esaurimento fisico), Mint Bush (purificazione spirituale, crisi dell'anima), Mountain Devil (odio, sospetto, rabbia), Mulla Mulla (paura del fuoco, del sole, del calore), Native Blueball (connessione con il femminile sacro), Old Man Banksia (frustrazione, scoraggiamento), Paw Paw (sopraffazione da informazioni, problemi da assimilare), Peach-flowered Tea-tree (instabilità emotiva, ipocondria), Philotheca (difficoltà a ricevere riconoscimenti), Pink Flannel Flower (gratitudine, presenza nel cuore), Pink Mulla Mulla (spine interiori, isolamento profondo), Red Grevillea (dipendenza dagli altri, sensibilità alle critiche), Red Helmet Orchid (ribellione verso l'autorità, figura paterna), Red Lily (dissociazione, testa fra le nuvole), Silver Princess (scopo di vita, direzione), Slender Rice Flower (razzismo, orgoglio di gruppo), Southern Cross (vittimismo, senso di impotenza), Spinifex (infezioni ricorrenti, senso di impurità), Sturt Desert Pea (dolore profondo, vecchie ferite del cuore), Sturt Desert Rose (senso di colpa, integrità personale), Sundew (procrastinazione, dissociazione dalla realtà), Sunshine Wattle (passato difficile proiettato nel futuro), Sydney Rose (separatezza, isolamento spirituale), Tall Mast (fiducia nel viaggio dell'anima), Tall Yellow Top (alienazione, senso di non appartenenza), Turkey Bush (blocco creativo, censura interiore), Waratah (disperazione, crisi profonda, sopravvivenza), Wedding Bush (impegno nelle relazioni), Wild Potato Bush (senso di pesantezza fisica, frustrazione corporea), Wisteria (sessualità femminile repressa), Yellow Cowslip Orchid (critica, burocrazia emotiva).
+
+**CONNESSIONI ENNEATIPI (Enneagramma)**
+Collega ogni fiore all'enneatipo più affine:
+- Tipo 1 (Perfezionista): Hibbertia, Sturt Desert Rose, Yellow Cowslip Orchid
+- Tipo 2 (Aiutante): Boab, Tall Yellow Top, Red Grevillea
+- Tipo 3 (Realizzatore): Gymea Lily, Kangaroo Paw, Five Corners
+- Tipo 4 (Individualista): Sturt Desert Pea, Pink Mulla Mulla, Tall Mast
+- Tipo 5 (Investigatore): Freshwater Mangrove, Isopogon, Bush Iris
+- Tipo 6 (Leale): Crowea, Dog Rose, Grey Spider Flower
+- Tipo 7 (Entusiasta): Jacaranda, Black-eyed Susan, Sundew
+- Tipo 8 (Sfidante): Mountain Devil, Dagger Hakea, Red Helmet Orchid
+- Tipo 9 (Pacificatore): Kapok Bush, Bluebell, Southern Cross
+
+**CRISTALLI CORRELATI**
+Abbina i cristalli che potenziano o completano ogni rimedio:
+- Waratah → Ossidiana nera, Granato
+- Five Corners → Rosa quarzo, Rodocrosite
+- Crowea → Ametista, Lepidolite
+- Dog Rose → Acquamarina, Crisocolla
+- Sturt Desert Pea → Rubino, Rhodonite
+- Bush Iris → Sodalite, Calcite blu
+- Macrocarpa → Citrino, Tormalina nera
+- Boab → Labradorite, Ossidiana
+- Banksia Robur → Citrino, Topazio dorato
+- Fringed Violet → Tormalina nera, Selenite
+
+**CONFRONTO CON BACH E CALIFORNIANI**
+Spiega quando preferire ogni sistema:
+- **BACH**: stati emotivi archetipici classici, work interiore su paure e stati d'animo base. Indicato quando si lavora su schemi emotivi fondamentali chiari.
+- **AUSTRALIANI**: profondità spirituale e karmico-familiare, guarigione del lignaggio, shock e trauma aurico, sessualità, creatività, scopo di vita. Ideali per chi è già in un percorso spirituale avanzato.
+- **CALIFORNIANI (FES)**: anima-mondo, relazione con la natura, chakra superiori, crescita spirituale evolutiva. Indicati per sensibilità alte e percorsi di espansione di coscienza.
+
+**ADATTAMENTI**
+Quando parli di adattamenti, intendi adattamenti dell'Enneagramma (direzione di integrazione e disintegrazione) e come i fiori supportano la persona nel muoversi verso il punto di integrazione piuttosto che verso quello di stress.
+
+**ISTRUZIONI DI RISPOSTA**
+- Se l'utente descrive come si sente: analizza lo stato, suggerisci 2-4 fiori australiani prioritari con spiegazione, poi aggiungi: cristalli correlati, enneatipo più probabile, confronto con Bach/californiani equivalenti, e un consiglio pratico sull'uso.
+- Se l'utente cerca un fiore per nome: dai la scheda completa (emozioni negative che tratta, potenziale positivo, enneatipo, cristalli, confronto con Bach/californiani, modalità d'uso).
+- Usa titoli chiari (###), grassetto per i nomi dei fiori, corsivo per note spirituali.
+- Sii sempre concreto, mai generico.
+- Ricorda: non fai diagnosi mediche. I rimedi floreali sono strumenti di supporto emotivo e spirituale.`;
+
+async function sendMessage() {
+  const input = document.getElementById('mainInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  input.value = '';
+
+  // welcome card remove
+  const wc = document.querySelector('.welcome-card');
+  if (wc) wc.remove();
+
+  appendMsg('user', text);
+
+  const userMsg = currentMode === 'fiore'
+    ? `[CERCA FIORE] ${text}`
+    : `[STATO EMOTIVO] ${text}`;
+
+  conversationHistory.push({ role: 'user', content: userMsg });
+  showTyping();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    conversationHistory.push({ role: 'assistant', content: aiText });
+
+    appendMsg('ai', formatResponse(aiText));
+  } catch (err) {
+    removeTyping();
+    appendMsg('ai', '<p>⚠️ Errore di connessione. Riprova tra un momento.</p>');
+  }
+
+  sendBtn.disabled = false;
+  input.focus();
+}
+</script>
+</body>
+</html>

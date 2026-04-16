@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miei Fiori Californiani · Assistente AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --violet:   #6a5acd;
+  --iris:     #8b78e6;
+  --ocean:    #3a7abf;
+  --mist:     #eef2ff;
+  --dusk:     #1a1630;
+  --lavender: #f3f0ff;
+  --gold:     #d4a843;
+  --sage-ca:  #6b9e78;
+  --warm-ca:  #5a4e7a;
+  --cream-ca: #fafaf8;
+  --radius:   14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream-ca);
+  color: var(--dusk);
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.page-header {
+  background: var(--dusk);
+  position: relative; overflow: hidden;
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 15% 40%, rgba(106,90,205,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 85% 60%, rgba(58,122,191,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 55%);
+}
+.stars-pattern {
+  position: absolute; inset: 0; opacity: .06;
+  background-image:
+    radial-gradient(circle, #fff 1px, transparent 1px),
+    radial-gradient(circle, #fff .5px, transparent .5px);
+  background-size: 40px 40px, 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+.header-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.header-flag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(106,90,205,0.28);
+  border: 1px solid rgba(139,120,230,0.4);
+  color: var(--iris);
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  padding: .3rem 1rem; border-radius: 9999px;
+  margin-bottom: 1.2rem;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; color: #fff;
+  line-height: 1.15; margin-bottom: .6rem;
+}
+.header-title em { font-style: italic; color: var(--iris); }
+.header-sub {
+  font-size: .95rem; color: rgba(255,255,255,0.6);
+  font-weight: 300; line-height: 1.7;
+  max-width: 540px; margin: 0 auto;
+}
+.header-chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+  margin-top: 1.4rem;
+}
+.chip {
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .28rem .8rem; border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+}
+
+/* ─── MAIN ─── */
+.main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+/* ─── MODE BAR ─── */
+.mode-bar {
+  display: flex; gap: .5rem;
+  background: var(--mist);
+  border-radius: 12px; padding: .4rem;
+  margin-bottom: 2rem;
+}
+.mode-btn {
+  flex: 1; padding: .65rem 1rem;
+  border: none; cursor: pointer;
+  border-radius: 9px;
+  font-family: 'Lato', sans-serif;
+  font-size: .85rem; font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--warm-ca);
+  background: transparent;
+  transition: all .25s;
+}
+.mode-btn.active {
+  background: var(--dusk);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(26,22,48,0.3);
+}
+
+/* ─── INPUT ─── */
+.input-wrap { position: relative; margin-bottom: 1rem; }
+.main-input {
+  width: 100%;
+  padding: 1.1rem 5rem 1.1rem 1.4rem;
+  font-family: 'Lato', sans-serif; font-size: 1rem;
+  border: 2px solid var(--mist);
+  border-radius: var(--radius);
+  background: #fff; color: var(--dusk);
+  outline: none; transition: border .2s;
+  resize: none; min-height: 60px;
+}
+.main-input:focus { border-color: var(--violet); }
+.main-input::placeholder { color: #bbb; }
+.send-btn {
+  position: absolute; right: .9rem; bottom: .9rem;
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--violet);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .15s;
+  color: #fff; font-size: 1.1rem;
+}
+.send-btn:hover { background: #5549b8; transform: scale(1.05); }
+.send-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+/* ─── QUICK TAGS ─── */
+.quick-tags {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  margin-bottom: 1.8rem;
+}
+.quick-tag {
+  font-size: .75rem; font-weight: 700;
+  padding: .3rem .75rem; border-radius: 9999px;
+  background: var(--mist);
+  border: 1.5px solid transparent;
+  color: var(--warm-ca);
+  cursor: pointer; transition: all .2s;
+}
+.quick-tag:hover { border-color: var(--violet); color: var(--violet); }
+
+/* ─── CHAT ─── */
+.chat-area {
+  display: flex; flex-direction: column; gap: 1.2rem;
+  min-height: 200px;
+}
+.msg-user {
+  align-self: flex-end; max-width: 72%;
+  background: var(--violet); color: #fff;
+  padding: .85rem 1.2rem;
+  border-radius: 14px 14px 4px 14px;
+  font-size: .93rem; line-height: 1.6;
+}
+.msg-ai {
+  align-self: flex-start; max-width: 95%;
+  background: #fff;
+  border: 1px solid #e0daf5;
+  padding: 1.3rem 1.5rem;
+  border-radius: 4px 14px 14px 14px;
+  font-size: .93rem; line-height: 1.75;
+  color: var(--dusk);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.msg-ai-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--violet);
+  margin-bottom: .6rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.msg-ai h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--dusk); margin: .9rem 0 .3rem;
+}
+.msg-ai h3:first-child { margin-top: 0; }
+.msg-ai p { margin-bottom: .6rem; }
+.msg-ai ul { padding-left: 1.2rem; margin-bottom: .6rem; }
+.msg-ai li { margin-bottom: .3rem; }
+.msg-ai strong { color: var(--violet); }
+.msg-ai em { color: var(--sage-ca); font-style: italic; }
+.msg-ai hr { border: none; border-top: 1px solid #e0daf5; margin: .8rem 0; }
+
+.typing-dots {
+  display: flex; gap: 5px; align-items: center; padding: .5rem 0;
+}
+.typing-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--violet); opacity: .5;
+  animation: bounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes bounce {
+  0%,80%,100% { transform: translateY(0); opacity:.4; }
+  40% { transform: translateY(-7px); opacity:1; }
+}
+
+/* ─── WELCOME ─── */
+.welcome-card {
+  background: linear-gradient(135deg, #f5f3ff 0%, #fff 100%);
+  border: 1px solid #e0daf5;
+  border-radius: 16px; padding: 2rem; text-align: center;
+}
+.welcome-icon { font-size: 3rem; margin-bottom: .8rem; }
+.welcome-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--dusk); margin-bottom: .5rem;
+}
+.welcome-card p { font-size: .88rem; color: var(--warm-ca); line-height: 1.7; }
+
+/* ─── FOOTER ─── */
+.page-footer {
+  background: var(--dusk); color: rgba(255,255,255,.45);
+  text-align: center; padding: 1.5rem 2rem;
+  font-size: .76rem; letter-spacing: .04em;
+}
+.page-footer a { color: var(--iris); text-decoration: none; }
+
+@media(max-width:600px){
+  .mode-btn { font-size: .75rem; padding: .55rem .5rem; }
+  .msg-user, .msg-ai { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="stars-pattern"></div>
+  <div class="header-inner">
+    <div class="header-flag">🌸 Flower Essence Services · FES</div>
+    <h1 class="header-title">I Miei Fiori<br><em>Californiani</em></h1>
+    <p class="header-sub">Assistente AI per la scelta dei rimedi FES — connesso a enneatipi, cristalli, adattamenti e confronto con i fiori di Bach e australiani.</p>
+    <div class="header-chips">
+      <span class="chip">🌺 Katz & Kaminski · FES</span>
+      <span class="chip">🔯 Enneatipi</span>
+      <span class="chip">💎 Cristalli</span>
+      <span class="chip">🌿 Bach · Australia</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="mode-bar">
+    <button class="mode-btn active" id="btnSintomo" onclick="setMode('sintomo')">🎯 Descrivi come ti senti</button>
+    <button class="mode-btn" id="btnFiore" onclick="setMode('fiore')">🌸 Cerca un fiore</button>
+  </div>
+
+  <div class="input-wrap">
+    <textarea class="main-input" id="mainInput"
+      placeholder="Es: mi sento disconnessa dalla mia anima, non riesco a trovare il mio scopo di vita…"
+      rows="2"
+      onkeydown="handleKey(event)"></textarea>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Invia">➤</button>
+  </div>
+
+  <div class="quick-tags" id="quickTags">
+    <span class="quick-tag" onclick="quickFill('sensazione di disconnessione spirituale e vuoto interiore')">✨ Anima</span>
+    <span class="quick-tag" onclick="quickFill('paura di incarnarsi, difficoltà a stare nel corpo')">🌍 Incarnazione</span>
+    <span class="quick-tag" onclick="quickFill('ipersensibilità e fragilità emotiva')">🌊 Sensibilità</span>
+    <span class="quick-tag" onclick="quickFill('difficoltà a trovare il proprio scopo di vita')">🧭 Scopo</span>
+    <span class="quick-tag" onclick="quickFill('rigidità mentale e difficoltà al cambiamento')">🪨 Rigidità</span>
+    <span class="quick-tag" onclick="quickFill('creatività bloccata e ispirazione assente')">🎨 Creatività</span>
+    <span class="quick-tag" onclick="quickFill('relazioni codipendenti e perdita di sé')">🔗 Confini</span>
+    <span class="quick-tag" onclick="quickFill('lutto e perdita, difficoltà ad accettare la morte')">🕊 Lutto</span>
+    <span class="quick-tag" onclick="quickFill('difficoltà di concentrazione e presenza mentale')">🧘 Presenza</span>
+    <span class="quick-tag" onclick="quickFill('orgoglio ferito e difficoltà a chiedere aiuto')">🦁 Orgoglio</span>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="welcome-card">
+      <div class="welcome-icon">🌸</div>
+      <h3>Benvenuto nel tuo spazio floreale californiano</h3>
+      <p>Descrivi il tuo stato interiore — emozioni, blocchi, domande sull'anima — oppure cerca un fiore FES per nome. L'assistente ti guiderà nella scelta, integrandola con enneatipo, cristalli e spiegando le differenze con i rimedi di Bach e australiani.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <a href="https://olismo-integrato.it">← Torna a olismo-integrato.it</a>
+  &nbsp;·&nbsp; Fiori Californiani AI · FES Katz & Kaminski
+  &nbsp;·&nbsp; <a href="fiori-australiani.html">Vai ai Fiori Australiani →</a>
+</footer>
+
+<script>
+let currentMode = 'sintomo';
+let conversationHistory = [];
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btnSintomo').classList.toggle('active', mode === 'sintomo');
+  document.getElementById('btnFiore').classList.toggle('active', mode === 'fiore');
+  const input = document.getElementById('mainInput');
+  const tags = document.getElementById('quickTags');
+  if (mode === 'sintomo') {
+    input.placeholder = 'Es: mi sento disconnessa dalla mia anima, non riesco a trovare il mio scopo di vita…';
+    tags.style.display = 'flex';
+  } else {
+    input.placeholder = 'Es: Yarrow, oppure "fiore per i confini emotivi"…';
+    tags.style.display = 'none';
+  }
+}
+
+function quickFill(text) {
+  document.getElementById('mainInput').value = text;
+  document.getElementById('mainInput').focus();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function appendMsg(role, html) {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  if (role === 'user') {
+    div.className = 'msg-user';
+    div.textContent = html;
+  } else {
+    div.className = 'msg-ai';
+    div.innerHTML = `<div class="msg-ai-label">🌸 Assistente Fiori Californiani</div>${html}`;
+  }
+  area.appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  return div;
+}
+
+function showTyping() {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = 'msg-ai'; div.id = 'typingIndicator';
+  div.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+  area.appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function formatResponse(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/^[-•] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hpulio])(.+)$/gm, '<p>$1</p>')
+    .replace(/<p><\/p>/g, '');
+}
+
+const SYSTEM_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Californiani FES (Flower Essence Services) di Richard Katz e Patricia Kaminski. Rispondi sempre in italiano, con tono caldo, poetico e spiritualmente raffinato.
+
+Il tuo sistema di conoscenza integrato comprende:
+
+**FIORI CALIFORNIANI FES — base primaria**
+Conosci tutti i principali rimedi FES con indicazioni emotive, mentali, spirituali e di anima:
+
+- Agrimony (maschera gioiosa che nasconde sofferenza interiore), Aloe Vera (esaurimento creativo, consumo del fuoco vitale), Angel's Trumpet (paura della morte e della trasformazione spirituale), Arnica (trauma profondo, dissociazione dal corpo), Aspen (paura del mondo invisibile, ansia senza causa), Baby Blue Eyes (fiducia tradita, cinismo, senso di abbandono dal padre), Basil (sessualità e spiritualità scisse), Blackberry (difficoltà a concretizzare i progetti, volontà bloccata), Black Cohosh (relazioni abusive, paura paralizzante), Black-eyed Susan (resistenza alla consapevolezza, repressione emotiva), Bleeding Heart (attaccamento romantico, dipendenza affettiva), Borage (scoraggiamento, pesantezza del cuore), Buttercup (bassa autostima, confronto con gli altri), California Poppy (ricerca spirituale superficiale, dipendenza da stati alterati), California Wild Rose (apatia, mancanza di volontà di vivere), Calendula (comunicazione ferita, parole taglienti), Canyon Dudleya (disfunzione psichica, fantasia eccessiva), Cayenne (procrastinazione, apatia profonda), Chamomile (tensione emotiva e solare, difficoltà a rilassarsi), Chaparral (accumulo di immagini oscure, purificazione psichica), Chrysanthemum (paura della mortalità, identificazione con il corpo), Clematis (sognare ad occhi aperti, evasione dalla realtà), Corn (perdita di connessione con la terra, alienazione urbana), Cosmos (mente sopraffatta, pensiero caotico), Dandelion (tensione muscolare cronica da stress), Deerbrush (intenzioni miste, purificazione delle motivazioni), Dill (sovraccarico sensoriale), Echinacea (senso del Sé frantumato, identità devastata dai traumi), Fairy Lantern (Peter Pan, rifiuto di crescere), Fawn Lily (isolamento spirituale, ritiro dal mondo), Filaree (ossessione per i piccoli problemi), Forget-me-not (relazioni karmiche inconsce, disconnessione dai defunti), Fuchsia (emozioni false che coprono quelle reali), Garlic (paura nervosa, vulnerabilità alle energie altrui), Golden Yarrow (ipersensibilità che porta all'isolamento), Goldenrod (pressione sociale sull'identità), Hibiscus (frigidità emotiva e sessuale femminile), Hound's Tongue (visione materialista, disconnessione dall'anima), Indian Paintbrush (creatività esaurita, difficoltà a incarnare la visione artistica), Indian Pink (tensione da multitasking, centro perso nel caos), Iris (mancanza di ispirazione, inaridimento creativo), Larkspur (leadership egoisca, carisma distorto), Lavender (ipertensione nervosa, eccesso di attività mentale), Lemon (mente confusa, incapacità di pensiero chiaro), Lotus (ego spirituale, superbia nella pratica), Love-Lies-Bleeding (sofferenza isolata, karma personale pesante), Madia (distrazione, scarsa concentrazione), Manzanita (rifiuto del corpo, disconnessione corporea), Mariposa Lily (ferita materna, mancanza di nutrimento), Milkweed (dipendenza egoica, dissoluzione dell'Io), Morning Glory (dipendenze, ritmi caotici), Mountain Pennyroyal (pensieri negativi altrui introiettati), Mountain Pride (resa di fronte alla sfida spirituale), Mugwort (sogni caotici, difficoltà col sogno lucido), Mullein (menzogna a sé stessi, voce interiore silenziata), Nasturtium (eccesso intellettivo, vitale drenato dai pensieri), Oregon Grape (paranoia, proiezione dell'ostilità), Penstemon (lamentela, vittimismo spirituale), Peppermint (torpore mentale), Pink Monkeyflower (vergogna profonda, paura di essere visti), Pink Yarrow (assorbimento delle emozioni altrui, empatia non protetta), Poison Oak (paura della vulnerabilità, chiusura difensiva), Pretty Face (bruttezza interiore percepita), Purple Monkeyflower (paura della spiritualità, controllo religioso), Queen Anne's Lace (distorsione psichica nella chiaroveggenza), Quince (difficoltà a integrare amore e potere femminile), Red Clover (isteria collettiva, panico di gruppo), Rosemary (dimenticanza del Sé, incarnazione povera), Sage (saggezza della vita, mancata comprensione degli insegnamenti), Sagebrush (pulizia del falso Sé), Scarlet Monkeyflower (rabbia repressa, potere ombra), Scotch Broom (pessimismo sul futuro del mondo), Self-Heal (potere di guarigione interiore, dipendenza dal terapeuta), Shasta Daisy (visione frammentata, incapacità di sintesi), Shooting Star (senso di non appartenere alla Terra), Snapdragon (aggressività orale, libido distorta), Star Thistle (paura della scarsità, avarizia), Star Tulip (insensibilità spirituale, difficoltà nella preghiera), Sticky Monkeyflower (paura dell'intimità e della sessualità), Sunflower (ego inflato o deflato, difficoltà con la figura paterna), Sweet Pea (senso di appartenza alla comunità), Tansy (pigrizia come resistenza passiva), Tiger Lily (aggressività femminile, eccessiva competizione), Trillium (brama di potere e ricchezza), Trumpet Vine (timidezza nell'espressione verbale), Violet (riservatezza estrema, dissoluzione nell'altro), Yarrow (vulnerabilità ambientale, protezione aurica), Yarrow Special Formula (protezione dalle radiazioni e ambienti tossici), Yellow Star Tulip (empatia con la sofferenza altrui), Yerba Santa (dolore del cuore represso, malincosia ancestrale), Zinnia (seriosità eccessiva, perdita del bambino interiore).
+
+**CONNESSIONI ENNEATIPI**
+- Tipo 1 (Perfezionista): Mullein, Agrimony, Larkspur
+- Tipo 2 (Aiutante): Pink Yarrow, Bleeding Heart, Mariposa Lily  
+- Tipo 3 (Realizzatore): Sunflower, Trillium, Blackberry
+- Tipo 4 (Individualista): Love-Lies-Bleeding, Bleeding Heart, Iris
+- Tipo 5 (Investigatore): Hound's Tongue, Shooting Star, Fawn Lily
+- Tipo 6 (Leale): Aspen, Garlic, Mimulus (Bach correlato)
+- Tipo 7 (Entusiasta): Morning Glory, California Poppy, Clematis
+- Tipo 8 (Sfidante): Scarlet Monkeyflower, Tiger Lily, Poison Oak
+- Tipo 9 (Pacificatore): Tansy, California Wild Rose, Goldenrod
+
+**ADATTAMENTI (Enneagramma)**
+Spiega come i fiori supportano il movimento verso il punto di integrazione:
+- Es. Tipo 4 verso 1: Iris + Mullein per trasformare la sofferenza in disciplina creativa
+- Es. Tipo 6 verso 9: Aspen + California Wild Rose per fidarsi del flusso della vita
+- Es. Tipo 8 verso 2: Scarlet Monkeyflower + Mariposa Lily per aprire il cuore nel potere
+
+**CRISTALLI CORRELATI**
+- Yarrow → Tormalina nera, Shungite
+- Bleeding Heart → Rosa quarzo, Rodocrosite
+- Shooting Star → Moldavite, Labradorite
+- Echinacea → Crisoprasio, Malachite
+- Iris → Ametista, Tanzanite
+- Mariposa Lily → Luna, Pietra di luna, Perla
+- Sunflower → Citrino, Ambra
+- Love-Lies-Bleeding → Rubino, Granato rosso
+- Self-Heal → Avventurina verde, Giada
+- Star Tulip → Selenite, Angelite
+- Morning Glory → Ametista, Cristallo di rocca
+
+**CONFRONTO TRA SISTEMI**
+Quando preferire i Fiori Californiani:
+- **Rispetto ai BACH**: FES lavora più in profondità sull'anima, sullo scopo evolutivo, sulla connessione spirito-materia e sui temi karmici complessi. Bach è più accessibile e diretto per stati emotivi quotidiani.
+- **Rispetto agli AUSTRALIANI**: FES è più orientato all'evoluzione spirituale e alla psicologia profonda dell'anima; gli Australiani lavorano più sul lignaggio familiare, sul trauma, sulla sessualità e sull'aura.
+- **Integrazione**: i tre sistemi si completano. FES per l'anima e la visione, Australiani per il corpo e il karma ancestrale, Bach per gli stati emotivi di base.
+
+**ISTRUZIONI DI RISPOSTA**
+- Se l'utente descrive come si sente: analizza lo stato, suggerisci 2-4 fiori FES prioritari con spiegazione profonda, poi aggiungi: cristalli correlati, enneatipo più affine, adattamento suggerito, confronto con Bach/australiani equivalenti.
+- Se l'utente cerca un fiore per nome: dai scheda completa (pattern negativo, potenziale positivo, anima, enneatipo, cristalli, confronto con altri sistemi, modalità d'uso).
+- Usa titoli chiari (###), grassetto per i nomi dei fiori, corsivo per note spirituali.
+- Mantieni un tono poetico e di profondità spirituale senza essere vago.
+- Ricorda: non fai diagnosi mediche. I rimedi floreali sono strumenti di evoluzione dell'anima.`;
+
+async function sendMessage() {
+  const input = document.getElementById('mainInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  input.value = '';
+
+  const wc = document.querySelector('.welcome-card');
+  if (wc) wc.remove();
+
+  appendMsg('user', text);
+
+  const userMsg = currentMode === 'fiore'
+    ? `[CERCA FIORE FES] ${text}`
+    : `[STATO EMOTIVO/ANIMA] ${text}`;
+
+  conversationHistory.push({ role: 'user', content: userMsg });
+  showTyping();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    conversationHistory.push({ role: 'assistant', content: aiText });
+
+    appendMsg('ai', formatResponse(aiText));
+  } catch (err) {
+    removeTyping();
+    appendMsg('ai', '<p>⚠️ Errore di connessione. Riprova tra un momento.</p>');
+  }
+
+  sendBtn.disabled = false;
+  input.focus();
+}
+</script>
+</body>
+</html>

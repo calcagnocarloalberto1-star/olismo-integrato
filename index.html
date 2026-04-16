@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- VERSIONE: 2025-04-15-v3 | olismo-integrato.it -->
 <!-- saved from url=(0028)https://olismo-integrato.it/ -->
 <html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -45,7 +44,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;&gt;&lt;circle cx=&#39;16&#39; cy=&#39;16&#39; r=&#39;14&#39; fill=&#39;%23f9f5ef&#39; stroke=&#39;%23b8935a&#39; stroke-width=&#39;2&#39;/&gt;&lt;text x=&#39;16&#39; y=&#39;21&#39; text-anchor=&#39;middle&#39; font-size=&#39;16&#39; fill=&#39;%23b8935a&#39;&gt;%E2%9C%A6&lt;/text&gt;&lt;/svg&gt;">
 
 <!-- ══ STRUCTURED DATA JSON-LD ══ -->
-<link rel="stylesheet" crossorigin="anonymous" href="/main.css"><script type="application/ld+json">
+<link rel="stylesheet" crossorigin="anonymous" href="./Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze _ Carlo Alberto Calcagno_files/main.css"><link rel="stylesheet" crossorigin="anonymous" href="./Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze _ Carlo Alberto Calcagno_files/main(1).css"><script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -127,10 +126,10 @@
 
 <!-- ══ GOOGLE FONTS (consenso preferibile — vedi cookie banner) ══ -->
 <!-- jsPDF per export chat -->
-<script src="/jspdf.umd.min.js"></script>
+<script src="./Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze _ Carlo Alberto Calcagno_files/jspdf.umd.min.js.download"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="./Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze _ Carlo Alberto Calcagno_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -2985,7 +2984,7 @@ body.dark .dark-toggle{background:#3a3632}
       <!-- Card laterale -->
       <div>
         <div class="chisono-card">
-          <div class="chisono-avatar"><img src="/carloalberto.jpg" alt="Carlo Alberto Calcagno" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+          <div class="chisono-avatar"><img src="./Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze _ Carlo Alberto Calcagno_files/carloalberto.jpg" alt="Carlo Alberto Calcagno" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div class="chisono-card-body">
             <div class="chisono-name">Carlo Alberto Calcagno</div>
             <div class="chisono-role">Mediatore · Formatore · Ricercatore</div>
@@ -4970,6 +4969,41 @@ body.dark .dark-toggle{background:#3a3632}
   </div>
 </section>
 
+
+<!-- ══ ASSISTENTE AI FIORI CALIFORNIANI ══ -->
+<section id="ai-fes-sec" style="background:var(--ink);padding:5rem max(2rem,calc((100vw - 1200px)/2 + 2rem));border-top:1px solid rgba(139,120,230,0.15)">
+  <div style="max-width:860px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div style="display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8b78e6;background:rgba(106,90,205,0.12);border:1px solid rgba(139,120,230,0.25);padding:.3rem .9rem;border-radius:9999px;margin-bottom:1rem">✿ Assistente AI · FES</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:.5rem">I Miei Fiori <em style="font-style:italic;color:#8b78e6">Californiani</em></h2>
+      <p style="font-size:.88rem;color:rgba(255,255,255,0.45);max-width:560px;margin:0 auto;line-height:1.7">Descrivi come ti senti oppure cerca un fiore per nome. Ricevi indicazioni collegate a enneatipo, adattamenti AT, cristalli e confronto con Bach e fiori australiani.</p>
+    </div>
+    <div style="display:flex;gap:.4rem;background:rgba(255,255,255,0.05);border-radius:10px;padding:.35rem;margin-bottom:1.2rem">
+      <button id="fes-btn-sintomo" onclick="fesSwitchMode('sintomo')" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:#6a5acd;color:#fff">🎯 Come ti senti</button>
+      <button id="fes-btn-fiore" onclick="fesSwitchMode('fiore')" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:transparent;color:rgba(255,255,255,0.5)">🌸 Cerca un fiore FES</button>
+    </div>
+    <div style="position:relative;margin-bottom:.7rem">
+      <textarea id="fes-input" placeholder="Es: mi sento disconnessa, non trovo il mio scopo di vita…" rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();fesSend()}" style="width:100%;padding:1rem 4.5rem 1rem 1.2rem;font-family:inherit;font-size:.92rem;border:2px solid rgba(139,120,230,0.2);border-radius:12px;background:rgba(255,255,255,0.05);color:#fff;outline:none;resize:none;min-height:54px"></textarea>
+      <button onclick="fesSend()" id="fes-send" style="position:absolute;right:.7rem;bottom:.7rem;width:38px;height:38px;border-radius:9px;background:#6a5acd;border:none;cursor:pointer;color:#fff;font-size:1rem">➤</button>
+    </div>
+    <div id="fes-tags" style="display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.5rem">
+      <span onclick="fesQuick('disconnessione spirituale e vuoto interiore')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">✨ Anima</span>
+      <span onclick="fesQuick('difficoltà a incarnarsi e stare nel corpo')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🌍 Incarnazione</span>
+      <span onclick="fesQuick('ipersensibilità e fragilità emotiva')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🌊 Sensibilità</span>
+      <span onclick="fesQuick('creatività bloccata')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🎨 Creatività</span>
+      <span onclick="fesQuick('relazioni codipendenti e perdita di sé')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🔗 Confini</span>
+      <span onclick="fesQuick('rabbia repressa e potere ombra')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🦁 Rabbia</span>
+      <span onclick="fesQuick('lutto e difficoltà ad accettare la perdita')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(106,90,205,0.1);border:1px solid rgba(139,120,230,0.2);color:#8b78e6;cursor:pointer">🕊 Lutto</span>
+    </div>
+    <div id="fes-chat" style="display:flex;flex-direction:column;gap:1rem;min-height:80px">
+      <div style="background:rgba(106,90,205,0.08);border:1px solid rgba(139,120,230,0.15);border-radius:4px 12px 12px 12px;padding:1.2rem 1.4rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>
+        <p style="font-size:.88rem;color:rgba(255,255,255,0.65);line-height:1.7;margin:0">Descrivi come ti senti oppure cerca un fiore per nome. Ogni risposta integra enneatipo, adattamenti AT, cristalli e confronto con i fiori di Bach e australiani.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="bush-sec">
   <div class="container">
     <div class="sec-hd">
@@ -4990,6 +5024,41 @@ body.dark .dark-toggle{background:#3a3632}
       </div>
     </div>
     <div id="bush-grid" class="flower-mini-grid" style="margin-top:2rem"><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush1&#39;)"><span class="flower-mini-dot" style="background:#c87820"></span><span class="flower-mini-name">Banksia Robur</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush2&#39;)"><span class="flower-mini-dot" style="background:#d0a840"></span><span class="flower-mini-name">Billy Goat Plum</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush3&#39;)"><span class="flower-mini-dot" style="background:#f06000"></span><span class="flower-mini-name">Black-Eyed Susan</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush4&#39;)"><span class="flower-mini-dot" style="background:#6080f0"></span><span class="flower-mini-name">Bluebell</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush5&#39;)"><span class="flower-mini-dot" style="background:#a07040"></span><span class="flower-mini-name">Boab</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush6&#39;)"><span class="flower-mini-dot" style="background:#e060e0"></span><span class="flower-mini-name">Boronia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush7&#39;)"><span class="flower-mini-dot" style="background:#e04000"></span><span class="flower-mini-name">Bottlebrush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush8&#39;)"><span class="flower-mini-dot" style="background:#f04080"></span><span class="flower-mini-name">Bush Fuchsia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush9&#39;)"><span class="flower-mini-dot" style="background:#f8f0d0"></span><span class="flower-mini-name">Bush Gardenia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush10&#39;)"><span class="flower-mini-dot" style="background:#8060c0"></span><span class="flower-mini-name">Bush Iris</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush11&#39;)"><span class="flower-mini-dot" style="background:#f8c000"></span><span class="flower-mini-name">Christmas Bell</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush12&#39;)"><span class="flower-mini-dot" style="background:#e060c0"></span><span class="flower-mini-name">Crowea</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush13&#39;)"><span class="flower-mini-dot" style="background:#f0d060"></span><span class="flower-mini-name">Dagger Hakea</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush14&#39;)"><span class="flower-mini-dot" style="background:#f8c0b0"></span><span class="flower-mini-name">Dog Rose</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush15&#39;)"><span class="flower-mini-dot" style="background:#f04060"></span><span class="flower-mini-name">Dog Rose Wild Forces</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush16&#39;)"><span class="flower-mini-dot" style="background:#f8d0e0"></span><span class="flower-mini-name">Five Corners</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush17&#39;)"><span class="flower-mini-dot" style="background:#f8f8f0"></span><span class="flower-mini-name">Flannel Flower</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush18&#39;)"><span class="flower-mini-dot" style="background:#e070c0"></span><span class="flower-mini-name">Fringed Violet</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush19&#39;)"><span class="flower-mini-dot" style="background:#60a040"></span><span class="flower-mini-name">Green Essence</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush20&#39;)"><span class="flower-mini-dot" style="background:#50a060"></span><span class="flower-mini-name">Green Spider Orchid</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush21&#39;)"><span class="flower-mini-dot" style="background:#c0c0d0"></span><span class="flower-mini-name">Grey Spider Flower</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush22&#39;)"><span class="flower-mini-dot" style="background:#e02020"></span><span class="flower-mini-name">Gymea Lily</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush23&#39;)"><span class="flower-mini-dot" style="background:#f0c000"></span><span class="flower-mini-name">Hibbertia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush24&#39;)"><span class="flower-mini-dot" style="background:#e02000"></span><span class="flower-mini-name">Illawarra Flame Tree</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush25&#39;)"><span class="flower-mini-dot" style="background:#f0d080"></span><span class="flower-mini-name">Isopogon</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush26&#39;)"><span class="flower-mini-dot" style="background:#c080e0"></span><span class="flower-mini-name">Jacaranda</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush27&#39;)"><span class="flower-mini-dot" style="background:#f04030"></span><span class="flower-mini-name">Kangaroo Paw</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush28&#39;)"><span class="flower-mini-dot" style="background:#f8e0a0"></span><span class="flower-mini-name">Kapok Bush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush29&#39;)"><span class="flower-mini-dot" style="background:#f8f0e8"></span><span class="flower-mini-name">Little Flannel Flower</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush30&#39;)"><span class="flower-mini-dot" style="background:#f8c060"></span><span class="flower-mini-name">Macrocarpa</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush31&#39;)"><span class="flower-mini-dot" style="background:#a0d090"></span><span class="flower-mini-name">Mint Bush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush32&#39;)"><span class="flower-mini-dot" style="background:#e03020"></span><span class="flower-mini-name">Mountain Devil</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush33&#39;)"><span class="flower-mini-dot" style="background:#f08080"></span><span class="flower-mini-name">Mulla Mulla</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush34&#39;)"><span class="flower-mini-dot" style="background:#e08020"></span><span class="flower-mini-name">Old Man Banksia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush35&#39;)"><span class="flower-mini-dot" style="background:#f0c060"></span><span class="flower-mini-name">Paw Paw</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush36&#39;)"><span class="flower-mini-dot" style="background:#f0c0a0"></span><span class="flower-mini-name">Peach-Flowered Tea-Tree</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush37&#39;)"><span class="flower-mini-dot" style="background:#f0e0f0"></span><span class="flower-mini-name">Philotheca</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush38&#39;)"><span class="flower-mini-dot" style="background:#f8c0d0"></span><span class="flower-mini-name">Pink Flannel Flower</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush39&#39;)"><span class="flower-mini-dot" style="background:#f090b0"></span><span class="flower-mini-name">Pink Mulla Mulla</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush40&#39;)"><span class="flower-mini-dot" style="background:#8070e0"></span><span class="flower-mini-name">Rough Bluebell</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush41&#39;)"><span class="flower-mini-dot" style="background:#e03040"></span><span class="flower-mini-name">Red Grevillea</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush42&#39;)"><span class="flower-mini-dot" style="background:#c02020"></span><span class="flower-mini-name">Red Helmet Orchid</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush43&#39;)"><span class="flower-mini-dot" style="background:#e02030"></span><span class="flower-mini-name">Red Lily</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush44&#39;)"><span class="flower-mini-dot" style="background:#f04070"></span><span class="flower-mini-name">Red Suva Frangipani</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush45&#39;)"><span class="flower-mini-dot" style="background:#d0a040"></span><span class="flower-mini-name">She Oak</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush46&#39;)"><span class="flower-mini-dot" style="background:#e0e8f0"></span><span class="flower-mini-name">Silver Princess</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush47&#39;)"><span class="flower-mini-dot" style="background:#f8f0f8"></span><span class="flower-mini-name">Slender Rice Flower</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush48&#39;)"><span class="flower-mini-dot" style="background:#f8f0d0"></span><span class="flower-mini-name">Southern Cross</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush49&#39;)"><span class="flower-mini-dot" style="background:#c0d060"></span><span class="flower-mini-name">Spinifex</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush50&#39;)"><span class="flower-mini-dot" style="background:#e01020"></span><span class="flower-mini-name">Sturt Desert Pea</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush51&#39;)"><span class="flower-mini-dot" style="background:#d04060"></span><span class="flower-mini-name">Sturt Desert Rose</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush52&#39;)"><span class="flower-mini-dot" style="background:#f04040"></span><span class="flower-mini-name">Sundew</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush53&#39;)"><span class="flower-mini-dot" style="background:#f8d020"></span><span class="flower-mini-name">Sunshine Wattle</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush54&#39;)"><span class="flower-mini-dot" style="background:#f0c0d8"></span><span class="flower-mini-name">Sydney Rose</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush55&#39;)"><span class="flower-mini-dot" style="background:#f8e040"></span><span class="flower-mini-name">Tall Yellow Top</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush56&#39;)"><span class="flower-mini-dot" style="background:#e08040"></span><span class="flower-mini-name">Turkey Bush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush57&#39;)"><span class="flower-mini-dot" style="background:#e01040"></span><span class="flower-mini-name">Waratah</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush58&#39;)"><span class="flower-mini-dot" style="background:#f8f8e8"></span><span class="flower-mini-name">Wedding Bush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush59&#39;)"><span class="flower-mini-dot" style="background:#f0d090"></span><span class="flower-mini-name">Wild Potato Bush</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush60&#39;)"><span class="flower-mini-dot" style="background:#c090e0"></span><span class="flower-mini-name">Wisteria</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush61&#39;)"><span class="flower-mini-dot" style="background:#f8e040"></span><span class="flower-mini-name">Yellow Cowslip Orchid</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush62&#39;)"><span class="flower-mini-dot" style="background:#d0a0d0"></span><span class="flower-mini-name">Bauhinia</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush63&#39;)"><span class="flower-mini-dot" style="background:#60a080"></span><span class="flower-mini-name">Freshwater Mangrove</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush64&#39;)"><span class="flower-mini-dot" style="background:#a8b880"></span><span class="flower-mini-name">Lichen</span></div><div class="flower-mini-card" onclick="openFlowerPopup(&#39;bush65&#39;)"><span class="flower-mini-dot" style="background:#80c040"></span><span class="flower-mini-name">Green Kangaroo Paw</span></div></div>
+  </div>
+</section>
+
+
+<!-- ══ ASSISTENTE AI FIORI AUSTRALIANI ══ -->
+<section id="ai-bush-sec" style="background:#0f0d1a;padding:5rem max(2rem,calc((100vw - 1200px)/2 + 2rem));border-top:1px solid rgba(200,129,58,0.12)">
+  <div style="max-width:860px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div style="display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8813a;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.25);padding:.3rem .9rem;border-radius:9999px;margin-bottom:1rem">❋ Assistente AI · Bush</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:.5rem">I Miei Fiori <em style="font-style:italic;color:#c8813a">Australiani</em></h2>
+      <p style="font-size:.88rem;color:rgba(255,255,255,0.45);max-width:560px;margin:0 auto;line-height:1.7">Descrivi come ti senti oppure cerca un fiore per nome. Ricevi indicazioni collegate a enneatipo, adattamenti AT, cristalli e confronto con Bach e fiori californiani.</p>
+    </div>
+    <div style="display:flex;gap:.4rem;background:rgba(255,255,255,0.04);border-radius:10px;padding:.35rem;margin-bottom:1.2rem">
+      <button id="bush-btn-sintomo" onclick="bushSwitchMode('sintomo')" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:#c8813a;color:#fff">🎯 Come ti senti</button>
+      <button id="bush-btn-fiore" onclick="bushSwitchMode('fiore')" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:transparent;color:rgba(255,255,255,0.5)">🌿 Cerca un fiore Bush</button>
+    </div>
+    <div style="position:relative;margin-bottom:.7rem">
+      <textarea id="bush-input" placeholder="Es: mi sento bloccata, non riesco a prendere decisioni…" rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();bushSend()}" style="width:100%;padding:1rem 4.5rem 1rem 1.2rem;font-family:inherit;font-size:.92rem;border:2px solid rgba(200,129,58,0.2);border-radius:12px;background:rgba(255,255,255,0.04);color:#fff;outline:none;resize:none;min-height:54px"></textarea>
+      <button onclick="bushSend()" id="bush-send" style="position:absolute;right:.7rem;bottom:.7rem;width:38px;height:38px;border-radius:9px;background:#c8813a;border:none;cursor:pointer;color:#fff;font-size:1rem">➤</button>
+    </div>
+    <div id="bush-tags" style="display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.5rem">
+      <span onclick="bushQuick('ansia e paura del futuro')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">😰 Ansia</span>
+      <span onclick="bushQuick('bassa autostima e senso di inferiorità')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">💔 Autostima</span>
+      <span onclick="bushQuick('stanchezza emotiva profonda')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">😮 Esaurimento</span>
+      <span onclick="bushQuick('difficoltà a lasciar andare il passato')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">🌀 Attaccamento</span>
+      <span onclick="bushQuick('mancanza di chiarezza e confusione mentale')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">🌫 Confusione</span>
+      <span onclick="bushQuick('shock o trauma recente')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">⚡ Trauma</span>
+      <span onclick="bushQuick('senso di solitudine e isolamento')" style="font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:9999px;background:rgba(200,129,58,0.1);border:1px solid rgba(200,129,58,0.2);color:#c8813a;cursor:pointer">🏝 Solitudine</span>
+    </div>
+    <div id="bush-chat" style="display:flex;flex-direction:column;gap:1rem;min-height:80px">
+      <div style="background:rgba(200,129,58,0.07);border:1px solid rgba(200,129,58,0.15);border-radius:4px 12px 12px 12px;padding:1.2rem 1.4rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>
+        <p style="font-size:.88rem;color:rgba(255,255,255,0.65);line-height:1.7;margin:0">Descrivi come ti senti oppure cerca un fiore per nome. Ogni risposta integra enneatipo, adattamenti AT, cristalli e confronto con i fiori di Bach e californiani.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -5966,6 +6035,42 @@ body.dark .dark-toggle{background:#3a3632}
         <span>Cosa sono i portali gemelli di Olismo Integrato?</span><span class="faq-arrow">▼</span>
       </button>
       <div class="faq-a" id="faq-a-58"><div class="faq-a-inner">Carlo Alberto Calcagno gestisce 6 portali specializzati: frequenze-evolutive.it (prompt musicali con Suno AI), guarigionequantica.eu (pranoterapia e guarigione energetica), mediaresenzaconfini.org (mediazione familiare), percorsidicrescitalucca.it (corsi e percorsi pratici), ladanzadelconflitto.it (danza del conflitto), tieniinmanolaluce.me (percorso spirituale). Tutti sono linkati nel footer.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-59">
+      <button class="faq-q" onclick="toggleFaq(59)">
+        <span>Cosa sono integrazione e disintegrazione nell'Enneagramma?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-59"><div class="faq-a-inner">Ogni enneatipo ha DUE percorsi possibili. Il percorso di integrazione (crescita, salute) porta a sviluppare le qualità positive dei tipi incontrati lungo le frecce: es. il T1 in integrazione diventa progressivamente più spontaneo (→7), poi più profondo (→5), poi più assertivo (→8), poi più generoso (→2), poi più autentico (→4). Il percorso di disintegrazione (stress, regressione) percorre le stesse frecce in senso opposto, manifestando le qualità negative di ciascun tipo. Gli incroci chiave di integrazione: 8→2 (forza→tenerezza), 5→8 (mente→azione), 1→7 (rigidità→spontaneità), 9→3 (inerzia→azione). Il percorso automatico tende verso la disintegrazione; l'integrazione richiede lavoro consapevole.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-60">
+      <button class="faq-q" onclick="toggleFaq(60)">
+        <span>Cosa sono i punti di shock nell'Enneagramma evolutivo?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-60"><div class="faq-a-inner">I punti di shock (Gurdjieff) sono momenti critici della vita in cui le strategie abituali non funzionano più: lutti, nascite, separazioni, crisi ai 30-40-50-60 anni, incontri con un mentore. In questi momenti si può scegliere (consciamente o no) tra Percorso 1 (crescita graduale) o Percorso 2 (regressione). Sono momenti delicati ma potentissimi: la persona è più aperta al cambiamento del solito e piccoli interventi del mediatore/counselor hanno grande impatto. Riconoscerli permette di 'cavalcare' la crisi invece di subirla.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-61">
+      <button class="faq-q" onclick="toggleFaq(61)">
+        <span>Perché il percorso evolutivo del T8 è più complesso di quello del T9?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-61"><div class="faq-a-inner">Il T8 appartiene al ciclo lungo (1-7-5-8-2-4) e percorre 6 tipi con 6 fasi evolutive intensive: 8(0-3)→2(3-12)→4(12-19)→1(19-30)→7(30-60)→5(60+) in integrazione. Il T9 appartiene al ciclo breve (3-6-9) e percorre solo 3 tipi con 3 grandi fasi: 9(0-30)→3(30-60)→6(60+). Questo significa che Sempronia (T8) vive più crisi evolutive e cambiamenti di personalità nel corso della vita — non è instabilità, è una struttura più complessa. Ha già superato 5 transizioni mentre Tizio (T9) ne ha affrontata solo una a 30 anni. La differenza spiega perché in coppia il T8 'sente' il cambiamento molto più intensamente.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-62">
+      <button class="faq-q" onclick="toggleFaq(62)">
+        <span>Cosa sono i 3 stati del sistema nervoso nella Teoria Polivagale?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-62"><div class="faq-a-inner">La Teoria Polivagale di Stephen Porges descrive tre stati del sistema nervoso autonomo. Stato 1 CONNESSIONE (ventrovagale): viso rilassato, voce calma, occhi presenti, curiosità e apertura — l'unico stato in cui mediazione e crescita sono davvero possibili. Stato 2 MOBILITAZIONE (simpatico/combatti o fuggi): voce alta o gelida, muscoli tesi, pensieri accelerati — il T8 in conflitto è tipicamente in questo stato. Stato 3 IMMOBILIZZAZIONE (dorsovagale/congelamento): silenzio, sguardo vuoto, monosillabi 'va bene/come vuoi', pesantezza emotiva — il T9 in conflitto è tipicamente in questo stato. Se il sistema nervoso non è in Stato 1, nessun dialogo razionale funziona: prima regola il corpo, poi lavora con la mente.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-63">
+      <button class="faq-q" onclick="toggleFaq(63)">
+        <span>Cos'è la co-regolazione e perché è fondamentale in mediazione?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-63"><div class="faq-a-inner">La co-regolazione è il fenomeno per cui i sistemi nervosi si sincronizzano automaticamente: quando parli con qualcuno calmo ti calmi, quando parli con qualcuno agitato ti agiti. Non è psicologia — è neurobiologia. In mediazione questo significa che lo stato interno del mediatore è il primo strumento di lavoro: un mediatore in Stato 1 (connessione) porta sicurezza nella stanza; un mediatore ansioso amplifica il conflitto. La prima regola prima di ogni sessione è regolare sé stessi: 5 respiri profondi, sciogliere le tensioni corporee, ricordare 'non sono qui per giudicare, sono qui per creare sicurezza'.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-64">
+      <button class="faq-q" onclick="toggleFaq(64)">
+        <span>Come si svolge la danza del conflitto tra T8 e T9?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-64"><div class="faq-a-inner">La danza T8-T9 ha 5 passi sempre uguali: (1) TRIGGER — un evento piccolo attiva il copione (Tizio dimentica una richiesta, Sempronia fa un commento critico). (2) LEI SI ATTIVA — Sempronia (T8) sente 'non gli importo' e va in Stato 2: alza il tono, attacca. (3) LUI SI CONGELA — Tizio (T9) sente 'sono sotto attacco' e va in Stato 3: silenzio, monosillabi, distacco emotivo. (4) CIRCOLO VIZIOSO — lei spinge di più vedendo il silenzio, lui si ritira ancora. (5) ESPLOSIONE O MURO — dopo settimane Tizio esplode improvvisamente, oppure si crea un muro gelido per giorni. Il mediatore interviene al passo 2 e 3, prima che il circolo si chiuda. Script universale: 'Sotto questa intensità, cosa temi?'</div></div>
     </div></div>
   </div>
 </section>
@@ -6055,7 +6160,7 @@ body.dark .dark-toggle{background:#3a3632}
 
     <!-- ── Dove cominciare ── -->
     <div style="margin:0 0 2.5rem">
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:.6rem">Dove <em>cominciare</em></h3>
+      <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:1.45rem;font-weight:300;color:var(--ink);text-align:center;margin-bottom:.6rem">Dove <em>cominciare</em></h3>
       <p class="dove-intro">Non sai da dove iniziare? Parti da ciò che senti oggi. Questa mappa ti aiuta a scegliere il primo passo più adatto al tuo momento di vita.</p>
       <div class="dove-table-wrap">
         <table class="dove-tab">
@@ -11817,4 +11922,114 @@ function showMedit(tab, btn){
 
 <!-- Bottone apri photo picker -->
 <div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out; animation: 2s ease-in-out 0s infinite normal none running claude-pulse; box-shadow: rgba(217, 119, 87, 0.5) 0px 0px 10px inset, rgba(217, 119, 87, 0.3) 0px 0px 20px inset, rgba(217, 119, 87, 0.1) 0px 0px 30px inset;"></div>
+
+
+<script>
+/* ══ ASSISTENTE FES ══ */
+let fesMode = 'sintomo', fesHistory = [];
+function fesSwitchMode(m) {
+  fesMode = m;
+  document.getElementById('fes-btn-sintomo').style.background = m==='sintomo' ? '#6a5acd' : 'transparent';
+  document.getElementById('fes-btn-sintomo').style.color = m==='sintomo' ? '#fff' : 'rgba(255,255,255,0.5)';
+  document.getElementById('fes-btn-fiore').style.background = m==='fiore' ? '#6a5acd' : 'transparent';
+  document.getElementById('fes-btn-fiore').style.color = m==='fiore' ? '#fff' : 'rgba(255,255,255,0.5)';
+  document.getElementById('fes-input').placeholder = m==='sintomo' ? 'Es: mi sento disconnessa, non trovo il mio scopo…' : 'Es: Yarrow, oppure "fiore per i confini emotivi"…';
+  document.getElementById('fes-tags').style.display = m==='sintomo' ? 'flex' : 'none';
+}
+function fesQuick(t) { document.getElementById('fes-input').value = t; document.getElementById('fes-input').focus(); }
+function fesAppend(role, html) {
+  const area = document.getElementById('fes-chat');
+  const d = document.createElement('div');
+  const isAi = role === 'ai';
+  d.style.cssText = isAi
+    ? 'background:rgba(106,90,205,0.08);border:1px solid rgba(139,120,230,0.15);border-radius:4px 12px 12px 12px;padding:1.2rem 1.4rem;font-size:.88rem;line-height:1.75;color:rgba(255,255,255,0.75)'
+    : 'align-self:flex-end;max-width:75%;background:#6a5acd;color:#fff;padding:.8rem 1.1rem;border-radius:12px 12px 4px 12px;font-size:.88rem;line-height:1.6';
+  if (isAi) d.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + html;
+  else d.textContent = html;
+  area.appendChild(d);
+  d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  return d;
+}
+async function fesSend() {
+  const inp = document.getElementById('fes-input');
+  const text = inp.value.trim();
+  if (!text) return;
+  document.getElementById('fes-send').disabled = true;
+  inp.value = '';
+  fesAppend('user', text);
+  fesHistory.push({ role: 'user', content: (fesMode==='fiore' ? '[CERCA FIORE FES] ' : '[STATO EMOTIVO] ') + text });
+  const typing = fesAppend('ai', '<div style="display:flex;gap:5px;align-items:center"><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s .4s infinite"></span></div>');
+  const FES_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Californiani FES (Flower Essence Services) di Richard Katz e Patricia Kaminski. Rispondi in italiano, con tono caldo e spiritualmente raffinato. Conosci tutte le 100 essenze FES (Agrimony, Alpine Lily, Angelica, Arnica, Baby Blue Eyes, Blackberry, Bleeding Heart, Borage, Buttercup, California Poppy, California Wild Rose, Cayenne, Chamomile, Chaparral, Cosmos, Dill, Echinacea, Fairy Lantern, Fawn Lily, Filaree, Forget-Me-Not, Fuchsia, Golden Yarrow, Goldenrod, Hound's Tongue, Indian Paintbrush, Indian Pink, Iris, Larkspur, Lavender, Lotus, Love-Lies-Bleeding, Madia, Manzanita, Mariposa Lily, Milkweed, Morning Glory, Mountain Pennyroyal, Mountain Pride, Mugwort, Mullein, Nasturtium, Oregon Grape, Penstemon, Pink Monkeyflower, Pink Yarrow, Poison Oak, Pretty Face, Purple Monkeyflower, Queen Anne's Lace, Quince, Red Clover, Sagebrush, Sage, Scarlet Monkeyflower, Self-Heal, Shasta Daisy, Shooting Star, Snapdragon, Star Thistle, Star Tulip, Sticky Monkeyflower, Sunflower, Sweet Pea, Tansy, Tiger Lily, Trillium, Trumpet Vine, Violet, White Yarrow, Yerba Santa, Yellow Star Tulip, Zinnia, e altri). Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, e quando preferire FES rispetto a Bach (stati emotivi di base archetipici) o australiani (karma familiare, trauma, sessualità). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa con pattern negativo, potenziale positivo, enneatipo, cristalli, confronto con altri sistemi. Non fai diagnosi mediche.`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: FES_PROMPT, messages: fesHistory })
+    });
+    const data = await res.json();
+    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    fesHistory.push({ role: 'assistant', content: aiText });
+    const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + fmt;
+  } catch(e) { typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div><p>⚠️ Errore. Riprova tra un momento.</p>'; }
+  document.getElementById('fes-send').disabled = false;
+}
+
+/* ══ ASSISTENTE BUSH ══ */
+let bushMode = 'sintomo', bushHistory = [];
+function bushSwitchMode(m) {
+  bushMode = m;
+  document.getElementById('bush-btn-sintomo').style.background = m==='sintomo' ? '#c8813a' : 'transparent';
+  document.getElementById('bush-btn-sintomo').style.color = m==='sintomo' ? '#fff' : 'rgba(255,255,255,0.5)';
+  document.getElementById('bush-btn-fiore').style.background = m==='fiore' ? '#c8813a' : 'transparent';
+  document.getElementById('bush-btn-fiore').style.color = m==='fiore' ? '#fff' : 'rgba(255,255,255,0.5)';
+  document.getElementById('bush-input').placeholder = m==='sintomo' ? 'Es: mi sento bloccata, non riesco a prendere decisioni…' : 'Es: Banksia Robur, oppure "fiore per la stanchezza cronica"…';
+  document.getElementById('bush-tags').style.display = m==='sintomo' ? 'flex' : 'none';
+}
+function bushQuick(t) { document.getElementById('bush-input').value = t; document.getElementById('bush-input').focus(); }
+function bushAppend(role, html) {
+  const area = document.getElementById('bush-chat');
+  const d = document.createElement('div');
+  const isAi = role === 'ai';
+  d.style.cssText = isAi
+    ? 'background:rgba(200,129,58,0.07);border:1px solid rgba(200,129,58,0.15);border-radius:4px 12px 12px 12px;padding:1.2rem 1.4rem;font-size:.88rem;line-height:1.75;color:rgba(255,255,255,0.75)'
+    : 'align-self:flex-end;max-width:75%;background:#c8813a;color:#fff;padding:.8rem 1.1rem;border-radius:12px 12px 4px 12px;font-size:.88rem;line-height:1.6';
+  if (isAi) d.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + html;
+  else d.textContent = html;
+  area.appendChild(d);
+  d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  return d;
+}
+async function bushSend() {
+  const inp = document.getElementById('bush-input');
+  const text = inp.value.trim();
+  if (!text) return;
+  document.getElementById('bush-send').disabled = true;
+  inp.value = '';
+  bushAppend('user', text);
+  bushHistory.push({ role: 'user', content: (bushMode==='fiore' ? '[CERCA FIORE BUSH] ' : '[STATO EMOTIVO] ') + text });
+  const typing = bushAppend('ai', '<div style="display:flex;gap:5px;align-items:center"><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s .4s infinite"></span></div>');
+  const BUSH_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Australiani ABFE (Australian Bush Flower Essences) di Ian White. Rispondi in italiano, con tono caldo e profondo. Conosci tutti i 65 rimedi ABFE: Banksia Robur (stanchezza cronica), Billy Goat Plum (vergogna corporea), Black-eyed Susan (fretta, impazienza), Bluebell (cuore chiuso), Boab (schemi familiari), Bottlebrush (cambiamenti), Bush Fuchsia (intuizione), Bush Gardenia (coppia), Bush Iris (paura morte), Crowea (preoccupazione), Dagger Hakea (risentimento), Dog Rose (timidezza), Five Corners (autostima), Flannel Flower (intimità), Fringed Violet (protezione aurica), Grey Spider Flower (terrore), Gymea Lily (arroganza), Hibbertia (perfezionismo), Isopogon (memoria), Jacaranda (dispersività), Kangaroo Paw (sensibilità sociale), Kapok Bush (apatia), Macrocarpa (stanchezza surrenale), Mountain Devil (odio), Paw Paw (sopraffazione), Pink Mulla Mulla (spine interiori), Red Lily (dissociazione), Silver Princess (scopo di vita), Southern Cross (vittimismo), Sturt Desert Pea (dolore profondo), Sturt Desert Rose (senso di colpa), Sundew (procrastinazione), Sunshine Wattle (pessimismo), Waratah (disperazione), Wedding Bush (impegno), Wild Potato Bush (pesantezza), Wisteria (sessualità repressa), Yellow Cowslip Orchid (critica), e altri. Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, quando preferire australiani rispetto a Bach (stati archetipici base) o FES (anima e scopo evolutivo). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa. Non fai diagnosi mediche.`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: BUSH_PROMPT, messages: bushHistory })
+    });
+    const data = await res.json();
+    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    bushHistory.push({ role: 'assistant', content: aiText });
+    const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + fmt;
+  } catch(e) { typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div><p>⚠️ Errore. Riprova tra un momento.</p>'; }
+  document.getElementById('bush-send').disabled = false;
+}
+
+/* animazione dot */
+if (!document.getElementById('ai-flower-style')) {
+  const s = document.createElement('style');
+  s.id = 'ai-flower-style';
+  s.textContent = '@keyframes fesdot{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}';
+  document.head.appendChild(s);
+}
+</script>
+
 </body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chakra — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="I 7 chakra principali: funzioni, sbilanciamenti, pratiche di riequilibrio.">
+<link rel="canonical" href="https://olismo-integrato.it/chakra.html">
+<meta property="og:title" content="Chakra — Olismo Integrato">
+<meta property="og:description" content="I 7 chakra principali: funzioni, sbilanciamenti, pratiche di riequilibrio.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chakra — Olismo Integrato">
+<meta name="twitter:description" content="I 7 chakra principali: funzioni, sbilanciamenti, pratiche di riequilibrio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="chakra-sec">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Fisiologia Energetica</div>
+      <h2 class="sec-title">I sette <em>chakra</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Trasduttori dell'energia cosmica. Dal radicamento fisico alla coscienza universale, ogni centro governa uno stadio evolutivo, una ghiandola endocrina e un diritto fondamentale.</p>
+    </div>
+    <div class="chakra-wrap">
+      <div class="chakra-rows" id="chakra-rows">
+    <div class="cRow act" id="cr-c1" onclick="selChakra(&#39;c1&#39;)">
+      <div class="cRow-num">1</div>
+      <span class="cRow-sw" style="background:#a83232"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Muladhara — Radice</div>
+        <div class="cRow-theme">Sopravvivenza, Radicamento</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c2" onclick="selChakra(&#39;c2&#39;)">
+      <div class="cRow-num">2</div>
+      <span class="cRow-sw" style="background:#c45a22"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Svadhisthana — Dolcezza</div>
+        <div class="cRow-theme">Piacere, Creatività, Emozioni</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c3" onclick="selChakra(&#39;c3&#39;)">
+      <div class="cRow-num">3</div>
+      <span class="cRow-sw" style="background:#c49a1a"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Manipura — Città dei Gioielli</div>
+        <div class="cRow-theme">Potere personale, Volontà</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c4" onclick="selChakra(&#39;c4&#39;)">
+      <div class="cRow-num">4</div>
+      <span class="cRow-sw" style="background:#2e7d4f"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Anahata — Inattaccabile</div>
+        <div class="cRow-theme">Amore, Relazioni, Empatia</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c5" onclick="selChakra(&#39;c5&#39;)">
+      <div class="cRow-num">5</div>
+      <span class="cRow-sw" style="background:#1565c0"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Vishuddha — Purezza</div>
+        <div class="cRow-theme">Espressione autentica, Verità</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c6" onclick="selChakra(&#39;c6&#39;)">
+      <div class="cRow-num">6</div>
+      <span class="cRow-sw" style="background:#4527a0"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Ajna — Terzo Occhio</div>
+        <div class="cRow-theme">Intuizione, Visione interiore</div>
+      </div>
+    </div>
+    <div class="cRow" id="cr-c7" onclick="selChakra(&#39;c7&#39;)">
+      <div class="cRow-num">7</div>
+      <span class="cRow-sw" style="background:#7b2fa0"></span>
+      <div class="cRow-info">
+        <div class="cRow-name">Sahasrara — Mille Petali</div>
+        <div class="cRow-theme">Spiritualità, Fede, Coscienza</div>
+      </div>
+    </div></div>
+      <div class="c-detail" id="c-detail">
+    <div class="cd-strip" style="background:#a83232"></div>
+    <div class="cd-num">°1 chakra · Terra</div>
+    <div class="cd-name">Muladhara — Radice</div>
+    <p class="cd-desc">Centro della sopravvivenza e del radicamento fisico. Governa le fondamenta materiali, la sicurezza, il senso di appartenenza. Quando è equilibrato offre stabilità e presenza nel corpo. Quando è bloccato genera ansia, paura esistenziale e disconnessione fisica.</p>
+    <div class="cd-grid">
+      <div class="cd-cell"><div class="cd-cl">Frequenza</div><div class="cd-cv">Do / 396 Hz</div></div>
+      <div class="cd-cell"><div class="cd-cl">Ghiandola</div><div class="cd-cv">Surrenali</div></div>
+      <div class="cd-cell"><div class="cd-cl">Diritto</div><div class="cd-cv">Diritto di esistere</div></div>
+      <div class="cd-cell"><div class="cd-cl">Blocco</div><div class="cd-cv">Paura</div></div>
+    </div>
+    <div class="cd-sub" style="color:#a83232">Enneatipi correlati</div>
+    <div class="crystal-tags"><span class="ctag">Capo</span><span class="ctag">Diplomatico</span><span class="ctag">Perfezionista</span></div>
+    <div class="cd-sub" style="color:#a83232;margin-top:.75rem">Cristalli</div>
+    <div class="crystal-tags"><span class="ctag">Granato</span><span class="ctag">Ossidiana Nera</span><span class="ctag">Tormalina Nera</span><span class="ctag">cr1_2</span></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

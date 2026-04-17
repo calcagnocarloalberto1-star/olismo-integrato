@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristalloterapia — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Schede di 15+ cristalli con proprietà, chakra e applicazioni terapeutiche.">
+<link rel="canonical" href="https://olismo-integrato.it/cristalli.html">
+<meta property="og:title" content="Cristalloterapia — Olismo Integrato">
+<meta property="og:description" content="Schede di 15+ cristalli con proprietà, chakra e applicazioni terapeutiche.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cristalloterapia — Olismo Integrato">
+<meta name="twitter:description" content="Schede di 15+ cristalli con proprietà, chakra e applicazioni terapeutiche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="cristalli">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Cristalloterapia · Lapidarium</div>
+      <h2 class="sec-title">I <em>cristalli</em> — guarigione vibrazionale</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ogni cristallo porta una frequenza specifica che risuona con chakra, enneatipi e stati emotivi. Seleziona il chakra che vuoi lavorare per trovare la pietra più adatta al tuo percorso.</p>
+    </div>
+    <div class="cristalli-filter" id="cristalli-filter"><button class="cr-filter-btn active" onclick="filterCristalli(&#39;all&#39;,this)">Tutti</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c1&#39;,this)">1° Radice</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c2&#39;,this)">2° Sacrale</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c3&#39;,this)">3° Plesso Solare</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c4&#39;,this)">4° Cuore</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c5&#39;,this)">5° Gola</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c6&#39;,this)">6° Terzo Occhio</button><button class="cr-filter-btn" onclick="filterCristalli(&#39;c7&#39;,this)">7° Corona</button></div>
+    <div class="cristalli-grid" id="cristalli-grid"><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr1&#39;)"><div class="cristallo-chakra">6°</div><div class="cristallo-dot" style="background:#4527a022;border:2px solid #4527a040"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Ametista</div><div class="cristallo-funzione">Calma, purificazione, rilassamento mentale</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr2&#39;)"><div class="cristallo-chakra">4°</div><div class="cristallo-dot" style="background:#2e7d4f22;border:2px solid #2e7d4f40"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Quarzo Rosa</div><div class="cristallo-funzione">Amore incondizionato, guarigione emotiva</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr3&#39;)"><div class="cristallo-chakra">5°</div><div class="cristallo-dot" style="background:#1565c022;border:2px solid #1565c040"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Lapis Lazuli</div><div class="cristallo-funzione">Verità, comunicazione autentica, saggezza</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr4&#39;)"><div class="cristallo-chakra">1°</div><div class="cristallo-dot" style="background:#c23b2222;border:2px solid #c23b2240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Ossidiana Nera</div><div class="cristallo-funzione">Protezione profonda, rispecchiamento della verità</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr5&#39;)"><div class="cristallo-chakra">3°</div><div class="cristallo-dot" style="background:#c49a1a22;border:2px solid #c49a1a40"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Citrino</div><div class="cristallo-funzione">Ottimismo, abbondanza, forza solare</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr6&#39;)"><div class="cristallo-chakra">1°</div><div class="cristallo-dot" style="background:#c23b2222;border:2px solid #c23b2240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Granato</div><div class="cristallo-funzione">Vitalità, passione, forza istintiva</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr7&#39;)"><div class="cristallo-chakra">6°</div><div class="cristallo-dot" style="background:#4527a022;border:2px solid #4527a040"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Labradorite</div><div class="cristallo-funzione">Intuizione, protezione energetica, sincronicità</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr8&#39;)"><div class="cristallo-chakra">4°</div><div class="cristallo-dot" style="background:#2e7d4f22;border:2px solid #2e7d4f40"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Malachite</div><div class="cristallo-funzione">Trasformazione profonda, apertura emotiva</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr9&#39;)"><div class="cristallo-chakra">2°</div><div class="cristallo-dot" style="background:#e0703022;border:2px solid #e0703040"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Corniola</div><div class="cristallo-funzione">Coraggio, azione, vitalità creativa</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr10&#39;)"><div class="cristallo-chakra">7°</div><div class="cristallo-dot" style="background:#7b1fa222;border:2px solid #7b1fa240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Howlite</div><div class="cristallo-funzione">Calma, pazienza, connessione spirituale</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr11&#39;)"><div class="cristallo-chakra">7°</div><div class="cristallo-dot" style="background:#7b1fa222;border:2px solid #7b1fa240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Selenite</div><div class="cristallo-funzione">Pulizia energetica, connessione superiore</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr12&#39;)"><div class="cristallo-chakra">3°</div><div class="cristallo-dot" style="background:#c49a1a22;border:2px solid #c49a1a40"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Occhio di Tigre</div><div class="cristallo-funzione">Protezione, discernimento, forza pratica</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr13&#39;)"><div class="cristallo-chakra">6°</div><div class="cristallo-dot" style="background:#4527a022;border:2px solid #4527a040"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Fluorite</div><div class="cristallo-funzione">Chiarezza mentale, ordine interiore</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr14&#39;)"><div class="cristallo-chakra">1°</div><div class="cristallo-dot" style="background:#c23b2222;border:2px solid #c23b2240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Tormalina Nera</div><div class="cristallo-funzione">Protezione assoluta, grounding</div></div><div class="cristallo-card" onclick="openFlowerPopup(&#39;cr15&#39;)"><div class="cristallo-chakra">7°</div><div class="cristallo-dot" style="background:#7b1fa222;border:2px solid #7b1fa240"><span style="font-size:1.1rem">💎</span></div><div class="cristallo-name">Quarzo Ialino</div><div class="cristallo-funzione">Amplificazione, chiarezza totale</div></div></div>
+    <div style="text-align:center;margin-top:2.5rem;padding-bottom:.5rem">
+      <a href="https://olismo-integrato.it/le_mie_pietre.html" style="display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid #8b6914;color:#8b6914;padding:.85rem 2.2rem;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;font-family:&#39;Outfit&#39;,sans-serif">✦ Scopri le tue pietre guida →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

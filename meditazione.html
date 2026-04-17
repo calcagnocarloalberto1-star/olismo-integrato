@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meditazione guidata — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Pratiche di meditazione mindfulness, vipassana, visualizzazione guidata.">
+<link rel="canonical" href="https://olismo-integrato.it/meditazione.html">
+<meta property="og:title" content="Meditazione guidata — Olismo Integrato">
+<meta property="og:description" content="Pratiche di meditazione mindfulness, vipassana, visualizzazione guidata.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meditazione guidata — Olismo Integrato">
+<meta name="twitter:description" content="Pratiche di meditazione mindfulness, vipassana, visualizzazione guidata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="meditazione">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Pratiche di Consapevolezza</div>
+      <h2 class="sec-title">Meditazione <em>e respiro</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Tecniche di meditazione, breathwork e mindfulness correlate a chakra, enneatipi e stati AT. Ogni pratica è calibrata sul tuo tipo di personalità.</p>
+    </div>
+    <p class="medit-intro">La meditazione non è una fuga dalla realtà ma un incontro più profondo con essa. Ogni enneatipo ha un modo preferenziale di entrare nello stato meditativo: il Tipo 1 attraverso l'ordine, il Tipo 5 attraverso l'osservazione, il Tipo 9 attraverso il dissolversi. Scegli il tuo approccio.</p>
+    <div class="medit-tabs">
+      <button class="medit-tab active" onclick="showMedit(&#39;respiro&#39;,this)">🌬 Respiro</button>
+      <button class="medit-tab" onclick="showMedit(&#39;chakra&#39;,this)">◉ Chakra</button>
+      <button class="medit-tab" onclick="showMedit(&#39;enneatipo&#39;,this)">⬟ Enneatipo</button>
+      <button class="medit-tab" onclick="showMedit(&#39;corpo&#39;,this)">🤲 Corpo</button>
+    </div>
+
+    <!-- RESPIRO -->
+    <div class="medit-content show" id="medit-respiro">
+      <div class="medit-grid">
+        <div class="medit-card" style="--card-color:#1565c0">
+          <div class="medit-card-icon">🌊</div>
+          <div class="medit-card-title">Respiro 4-7-8</div>
+          <div class="medit-card-tag">Sistema nervoso · Ansia · T1 T3 T6</div>
+          <div class="medit-card-desc">Tecnica di Dr. Andrew Weil che attiva il sistema parasimpatico, ideale prima di situazioni di stress o conflitto.</div>
+          <ul class="medit-card-steps">
+            <li>Inspira contando mentalmente fino a 4</li>
+            <li>Trattieni il respiro contando fino a 7</li>
+            <li>Espira lentamente contando fino a 8</li>
+            <li>Ripeti 4 cicli, poi aumenta gradualmente</li>
+          </ul>
+          <span class="medit-timer">⏱ 3-5 minuti · 4-7-8 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#2e7d4f">
+          <div class="medit-card-icon">💚</div>
+          <div class="medit-card-title">Respiro del Cuore</div>
+          <div class="medit-card-tag">Chakra 4° · Empatia · T2 T4 T9</div>
+          <div class="medit-card-desc">Tecnica HeartMath che crea coerenza cardiaca e apre il centro emotivo. Riduce il cortisolo del 23% in 10 minuti.</div>
+          <ul class="medit-card-steps">
+            <li>Porta l'attenzione al centro del petto</li>
+            <li>Inspira per 5 secondi immaginando il cuore che si espande</li>
+            <li>Espira per 5 secondi lasciando andare la tensione</li>
+            <li>Mantieni un'emozione positiva (gratitudine, amore)</li>
+          </ul>
+          <span class="medit-timer">⏱ 5-10 minuti · 639 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#c45a22">
+          <div class="medit-card-icon">🔥</div>
+          <div class="medit-card-title">Respiro del Fuoco (Kapalabhati)</div>
+          <div class="medit-card-tag">Chakra 3° · Energia · T8 T7 T3</div>
+          <div class="medit-card-desc">Pranayama attivante. Purifica il plesso solare, aumenta l'energia e la chiarezza mentale. Controindicato in gravidanza.</div>
+          <ul class="medit-card-steps">
+            <li>Inspirazione passiva, espirazione rapida e potente dal naso</li>
+            <li>Inizia con 30 esalazioni veloci in 30 secondi</li>
+            <li>Aumenta gradualmente a 60, 90 esalazioni</li>
+            <li>Termina con un respiro profondo e trattenuto</li>
+          </ul>
+          <span class="medit-timer">⏱ 3-5 minuti · 528 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#7b1fa2">
+          <div class="medit-card-icon">🌌</div>
+          <div class="medit-card-title">Respiro Coerente</div>
+          <div class="medit-card-tag">Sistema nervoso · Stress · Tutti i tipi</div>
+          <div class="medit-card-desc">5 respiri al minuto — la frequenza di risonanza del sistema nervoso autonomo umano. Riduce pressione e ansia.</div>
+          <ul class="medit-card-steps">
+            <li>Inspira lentamente per 6 secondi dal naso</li>
+            <li>Espira lentamente per 6 secondi dal naso</li>
+            <li>Nessuna pausa tra inspirazione e espirazione</li>
+            <li>Mantieni la mente sul conteggio ritmico</li>
+          </ul>
+          <span class="medit-timer">⏱ 10-20 minuti · 432 Hz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA -->
+    <div class="medit-content" id="medit-chakra">
+      <div class="medit-grid">
+        <div class="medit-card" style="--card-color:#c23b22">
+          <div class="medit-card-icon">🔴</div>
+          <div class="medit-card-title">Meditazione Radice</div>
+          <div class="medit-card-tag">1° Chakra · Terra · T8 T9 T6</div>
+          <div class="medit-card-desc">Radicamento e sicurezza. Connette il corpo alla terra, libera dalle paure primarie. Frequenza 396 Hz.</div>
+          <ul class="medit-card-steps">
+            <li>Siediti a terra o su una sedia con i piedi piatti</li>
+            <li>Visualizza una radice rossa che scende dal coccige alla terra</li>
+            <li>Con ogni espirazione, lascia scendere la tensione lungo la radice</li>
+            <li>Ripeti: «Sono al sicuro. Sono radicato. Sono supportato»</li>
+          </ul>
+          <span class="medit-timer">⏱ 10 min · 396 Hz · Granato/Tormalina Nera</span>
+        </div>
+        <div class="medit-card" style="--card-color:#2e7d4f">
+          <div class="medit-card-icon">💚</div>
+          <div class="medit-card-title">Meditazione del Cuore</div>
+          <div class="medit-card-tag">4° Chakra · Amore · T2 T4 T9</div>
+          <div class="medit-card-desc">Tonglen tibetano semplificato. Apre il cuore, dissolve il risentimento, espande l'empatia. Frequenza 639 Hz.</div>
+          <ul class="medit-card-steps">
+            <li>Porta l'attenzione al centro del petto — senti il suo calore</li>
+            <li>Con ogni inspirazione, accogli la sofferenza (tua e altrui)</li>
+            <li>Con ogni espirazione, irradia amore e compassione</li>
+            <li>Espandi gradualmente il raggio: te stesso → vicini → tutti gli esseri</li>
+          </ul>
+          <span class="medit-timer">⏱ 15 min · 639 Hz · Quarzo Rosa</span>
+        </div>
+        <div class="medit-card" style="--card-color:#4527a0">
+          <div class="medit-card-icon">👁</div>
+          <div class="medit-card-title">Meditazione del Terzo Occhio</div>
+          <div class="medit-card-tag">6° Chakra · Intuizione · T5 T6 T7</div>
+          <div class="medit-card-desc">Sviluppa l'intuizione e la chiarezza visiva interiore. Aiuta a distinguere la paura dalla percezione reale. Frequenza 852 Hz.</div>
+          <ul class="medit-card-steps">
+            <li>Porta l'attenzione al punto tra le sopracciglia — senti un lieve calore</li>
+            <li>Visualizza un punto di luce viola/indaco che pulsa</li>
+            <li>Fai una domanda interiore e osserva le immagini che emergono</li>
+            <li>Non analizzare — lascia che le intuizioni fluiscano</li>
+          </ul>
+          <span class="medit-timer">⏱ 10 min · 852 Hz · Ametista/Labradorite</span>
+        </div>
+        <div class="medit-card" style="--card-color:#1565c0">
+          <div class="medit-card-icon">🎵</div>
+          <div class="medit-card-title">Meditazione della Gola</div>
+          <div class="medit-card-tag">5° Chakra · Espressione · T1 T5 T8</div>
+          <div class="medit-card-desc">Libera l'espressione autentica, scioglie il nodo in gola. Particolarmente utile per chi fatica a chiedere o a dire no. Frequenza 741 Hz.</div>
+          <ul class="medit-card-steps">
+            <li>Porta l'attenzione alla gola — nota la sua tensione</li>
+            <li>Con ogni espirazione emetti un suono «HAAAM» prolungato</li>
+            <li>Lascia che la vibrazione si espanda nella gola e nel petto</li>
+            <li>Termina con 3 minuti di silenzio ascolto</li>
+          </ul>
+          <span class="medit-timer">⏱ 10 min · 741 Hz · Lapis Lazuli</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENNEATIPO -->
+    <div class="medit-content" id="medit-enneatipo">
+      <div class="medit-grid">
+        <div class="medit-card" style="--card-color:#c49a1a">
+          <div class="medit-card-icon">🍎</div>
+          <div class="medit-card-title">T1 — Meditazione dell'Imperfezione</div>
+          <div class="medit-card-tag">Rilasciare il controllo · Rock Water Bach</div>
+          <div class="medit-card-desc">Il T1 entra in meditazione attraverso la struttura, poi la scioglie. Obiettivo: il permesso di essere imperfetto.</div>
+          <ul class="medit-card-steps">
+            <li>Siediti con la schiena dritta (la struttura aiuta il T1)</li>
+            <li>Conta i respiri da 1 a 10, poi ricomincia — quando la mente vaga, ri-parti da 1 senza autocritica</li>
+            <li>Ripeti internamente: «Sono abbastanza. Questo momento è perfetto»</li>
+          </ul>
+          <span class="medit-timer">⏱ 10 min · 528 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#e07030">
+          <div class="medit-card-icon">🍐</div>
+          <div class="medit-card-title">T2 — Meditazione del Sé</div>
+          <div class="medit-card-tag">Nutrire se stessi · Centaury Bach</div>
+          <div class="medit-card-desc">Il T2 si prende cura di tutti tranne di sé. Questa meditazione inverte il flusso: ricevere prima di dare.</div>
+          <ul class="medit-card-steps">
+            <li>Poni una mano sul cuore e una sull'addome</li>
+            <li>Ripeti: «Ho il permesso di ricevere. Ho il permesso di avere bisogni»</li>
+            <li>Visualizza qualcuno che si prende cura di te con lo stesso amore con cui ti prendi cura degli altri</li>
+          </ul>
+          <span class="medit-timer">⏱ 15 min · 639 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#4527a0">
+          <div class="medit-card-icon">🍇</div>
+          <div class="medit-card-title">T5 — Meditazione del Corpo</div>
+          <div class="medit-card-tag">Incarnarsi · Water Violet Bach</div>
+          <div class="medit-card-desc">Il T5 vive nella testa. Questa pratica lo riporta nel corpo — spesso l'esperienza più potente per questo tipo.</div>
+          <ul class="medit-card-steps">
+            <li>Cammina lentamente, prestando attenzione a ogni passo — il piede che si alza, avanza, tocca terra</li>
+            <li>Nota 5 cose che vedi, 4 che senti, 3 che tocchi, 2 che annusi, 1 che gusti</li>
+            <li>Rimani nel corpo — ogni volta che la mente vuole analizzare, torna alla sensazione fisica</li>
+          </ul>
+          <span class="medit-timer">⏱ 15-20 min · 396 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#e03060">
+          <div class="medit-card-icon">🍓</div>
+          <div class="medit-card-title">T9 — Meditazione della Presenza</div>
+          <div class="medit-card-tag">Risveglio · Wild Rose Bach</div>
+          <div class="medit-card-desc">Il T9 tende ad addormentarsi (anche letteralmente) nella meditazione. Questa pratica usa l'attivazione per mantenerlo presente.</div>
+          <ul class="medit-card-steps">
+            <li>Tieni gli occhi aperti o semiaperti (non chiusi — il T9 si addormenta)</li>
+            <li>Conta i respiri ad alta voce o sussurrando — la voce mantiene presente</li>
+            <li>Dopo ogni respiro, nomina qualcosa che senti nel corpo: «sento caldo nel petto», «sento peso nelle gambe»</li>
+          </ul>
+          <span class="medit-timer">⏱ 10 min · 396 Hz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORPO -->
+    <div class="medit-content" id="medit-corpo">
+      <div class="medit-grid">
+        <div class="medit-card" style="--card-color:#8a6a7a">
+          <div class="medit-card-icon">🧘</div>
+          <div class="medit-card-title">Body Scan</div>
+          <div class="medit-card-tag">Rilassamento profondo · Tutti i tipi</div>
+          <div class="medit-card-desc">La pratica MBSR (Mindfulness-Based Stress Reduction) di Jon Kabat-Zinn. Scioglie le tensioni croniche accumulate nei chakra.</div>
+          <ul class="medit-card-steps">
+            <li>Sdraiati — porta l'attenzione ai piedi, senti ogni sensazione senza giudicarla</li>
+            <li>Sale lentamente: caviglie, polpacci, ginocchia, cosce, bacino</li>
+            <li>Addome, petto, spalle, braccia, mani, collo, viso</li>
+            <li>Ogni zona: 2 respiri di consapevolezza, poi lascia andare</li>
+          </ul>
+          <span class="medit-timer">⏱ 20-45 min · 432 Hz</span>
+        </div>
+        <div class="medit-card" style="--card-color:#2e7d4f">
+          <div class="medit-card-icon">🌿</div>
+          <div class="medit-card-title">Camminata Consapevole</div>
+          <div class="medit-card-tag">Radicamento · T2 T4 T7 T9</div>
+          <div class="medit-card-desc">Ideale per chi non riesce a stare fermo. Trasforma il camminare in meditazione — particolarmente efficace nei tipi cenestesici.</div>
+          <ul class="medit-card-steps">
+            <li>Cammina molto lentamente (1/4 del passo normale)</li>
+            <li>Coordinazione respiro-passo: inspira sinistro, espira destro</li>
+            <li>Senti il contatto piede-terra: il peso, la temperatura, la texture</li>
+            <li>Mantieni lo sguardo basso a 2 metri davanti a te</li>
+          </ul>
+          <span class="medit-timer">⏱ 15-30 min · Natura/silenzio</span>
+        </div>
+        <div class="medit-card" style="--card-color:#c49a1a">
+          <div class="medit-card-icon">✍️</div>
+          <div class="medit-card-title">Scrittura Meditativa</div>
+          <div class="medit-card-tag">Integrazione · T1 T4 T5 T6</div>
+          <div class="medit-card-desc">Morning Pages (Julia Cameron): 3 pagine di scrittura libera ogni mattina. Svuota la mente, accede all'inconscio, integra.</div>
+          <ul class="medit-card-steps">
+            <li>Al mattino, prima di qualsiasi schermo, scrivi 3 pagine a mano</li>
+            <li>Non rileggere, non correggere — lascia fluire qualsiasi cosa emerga</li>
+            <li>Non è un diario: è un drain della mente. Anche «non so cosa scrivere» va bene</li>
+            <li>Dopo 30 giorni: brucia o distruggi — non è per essere letto</li>
+          </ul>
+          <span class="medit-timer">⏱ 20-30 min ogni mattina</span>
+        </div>
+        <div class="medit-card" style="--card-color:#1565c0">
+          <div class="medit-card-icon">🔔</div>
+          <div class="medit-card-title">Meditazione con Ciotola Tibetana</div>
+          <div class="medit-card-tag">Frequenze · Tutti i tipi</div>
+          <div class="medit-card-desc">Le frequenze delle ciotole tibetane creano coerenza tra i due emisferi cerebrali (entrainment). Ogni nota corrisponde a un chakra.</div>
+          <ul class="medit-card-steps">
+            <li>Scegli la frequenza: 396 Hz (radice), 528 Hz (plesso), 639 Hz (cuore), 741 Hz (gola), 852 Hz (terzo occhio)</li>
+            <li>Ascolta con cuffie per massimizzare l'effetto binaural</li>
+            <li>Lascia che la mente segua il suono senza sforzo</li>
+            <li>Dopo: 5 minuti di silenzio per integrare</li>
+          </ul>
+          <span class="medit-timer">⏱ 15-20 min · Vedi sezione Frequenze</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

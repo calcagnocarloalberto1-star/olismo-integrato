@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test VAK — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="15 domande per identificare il tuo canale preferenziale: Visivo, Auditivo, Cinestetico.">
+<link rel="canonical" href="https://olismo-integrato.it/vak.html">
+<meta property="og:title" content="Test VAK — Olismo Integrato">
+<meta property="og:description" content="15 domande per identificare il tuo canale preferenziale: Visivo, Auditivo, Cinestetico.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Test VAK — Olismo Integrato">
+<meta name="twitter:description" content="15 domande per identificare il tuo canale preferenziale: Visivo, Auditivo, Cinestetico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="vak">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Programmazione Neuro Linguistica · Calcagno</div>
+      <h2 class="sec-title">I Canali <em>VAK</em> — come elabori la realtà</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ognuno di noi elabora la realtà attraverso un canale preferenziale: Visivo, Auditivo o Cenestesico. Scopri il tuo e le sue correlazioni con enneatipi, stati AT, chakra e stile comunicativo.</p>
+    </div>
+    <div class="vak-channels">
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">👁</div>
+        <div class="vak-channel-name" style="color:#c87820">Visivo</div>
+        <div class="vak-channel-desc">Pensa per immagini. Postura eretta, gesti ampi verso l'alto. Voce veloce e alta. Parole: "vedere", "chiarire", "immaginare".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🎵</div>
+        <div class="vak-channel-name" style="color:#1565c0">Auditivo</div>
+        <div class="vak-channel-desc">Pensa in parole e suoni. Posizione "telefono". Voce melodica e cadenzata. Parole: "sentire", "risuonare", "sintonia".</div>
+      </div>
+      <div class="vak-channel-card">
+        <div class="vak-channel-icon">🤲</div>
+        <div class="vak-channel-name" style="color:#2e7d4f">Cenestesico</div>
+        <div class="vak-channel-desc">Pensa per sensazioni ed emozioni. Postura verso il basso. Voce lenta e profonda. Parole: "sentire", "toccare", "peso".</div>
+      </div>
+    </div>
+    <div class="vak-test-wrap" id="vak-test-wrap">
+      <div class="vak-test-header">
+        <div class="vak-test-title">Test VAK — 24 domande</div>
+        <div id="vak-q-counter" style="font-size:.78rem;color:var(--ink4)">1 / 24</div>
+      </div>
+      <div style="padding:0"><div class="vak-prog-bar"><div class="vak-prog-fill" id="vak-prog" style="width: 4.16667%;"></div></div></div>
+      <div class="vak-q-area" id="vak-q-area"><div class="vak-q-num">Domanda 1 di 24</div><div class="vak-q-text">Quando apprendi qualcosa di nuovo preferisci...</div><div class="vak-options"><button class="vak-opt" onclick="vakSelect(0)"><span class="vak-opt-letter">👁</span><span>Vedere una dimostrazione visiva, schemi o illustrazioni</span></button><button class="vak-opt" onclick="vakSelect(1)"><span class="vak-opt-letter">🎵</span><span>Ascoltare qualcuno spiegarlo o discuterne</span></button><button class="vak-opt" onclick="vakSelect(2)"><span class="vak-opt-letter">🤲</span><span>Sperimentarlo praticamente, provare con le mani</span></button></div></div>
+      <div class="vak-nav-row">
+        <button class="vak-btn-prev" onclick="vakPrev()" id="vak-prev-btn" disabled="">← Indietro</button>
+        <button class="vak-btn-next" onclick="vakNext()" id="vak-next-btn" disabled="">Avanti →</button>
+      </div>
+    </div>
+    <div class="vak-result" id="vak-result"></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

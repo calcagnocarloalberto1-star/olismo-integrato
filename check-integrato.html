@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Integrato — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Profilo olistico in 32 domande: enneatipo, VAK, AT, chakra. Base per il Consulente AI.">
+<link rel="canonical" href="https://olismo-integrato.it/check-integrato.html">
+<meta property="og:title" content="Check Integrato — Olismo Integrato">
+<meta property="og:description" content="Profilo olistico in 32 domande: enneatipo, VAK, AT, chakra. Base per il Consulente AI.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Check Integrato — Olismo Integrato">
+<meta name="twitter:description" content="Profilo olistico in 32 domande: enneatipo, VAK, AT, chakra. Base per il Consulente AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="check-integrato">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Profilo Olistico Personale</div>
+      <h2 class="sec-title">Check <em>Integrato</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
+    </div>
+    <div class="check-test-wrap" id="check-wrap">
+      <div class="check-header">
+        <div class="check-header-title">Profilo Olistico Integrato</div>
+        <div class="check-header-meta" id="check-counter">1 / 27</div>
+      </div>
+      <div class="check-prog-bar"><div class="check-prog-fill" id="check-prog" style="width: 3.7037%;"></div></div>
+      <div class="check-q-area" id="check-q-area"><div class="check-section-label">Identità e valori</div><div class="check-q-text">Qual è il tuo driver più profondo nella vita?</div><div class="check-options"><button class="check-opt" onclick="checkSelect(0)"><span class="check-dot"></span><span>Fare le cose bene e con integrità, migliorare sempre</span></button><button class="check-opt" onclick="checkSelect(1)"><span class="check-dot"></span><span>Essere amato/a e sentirmi necessario/a agli altri</span></button><button class="check-opt" onclick="checkSelect(2)"><span class="check-dot"></span><span>Raggiungere successo e risultati visibili</span></button><button class="check-opt" onclick="checkSelect(3)"><span class="check-dot"></span><span>Essere autentico/a e profondo/a, esprimere la mia unicità</span></button></div></div>
+      <div class="check-nav-row">
+        <button class="check-btn-prev" onclick="checkPrev()" id="check-prev-btn" disabled="">← Indietro</button>
+        <button class="check-btn-next" onclick="checkNext()" id="check-next-btn" disabled="">Avanti →</button>
+      </div>
+    </div>
+    <div class="check-result" id="check-result"></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

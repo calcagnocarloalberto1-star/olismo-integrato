@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adattamenti AT — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="I 6 adattamenti di personalità dell'Analisi Transazionale.">
+<link rel="canonical" href="https://olismo-integrato.it/at-adattamenti.html">
+<meta property="og:title" content="Adattamenti AT — Olismo Integrato">
+<meta property="og:description" content="I 6 adattamenti di personalità dell'Analisi Transazionale.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adattamenti AT — Olismo Integrato">
+<meta name="twitter:description" content="I 6 adattamenti di personalità dell'Analisi Transazionale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="at-adattamenti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Transazionale · Ware &amp; Joines</div>
+      <h2 class="sec-title">I sei <em>adattamenti</em> di personalità</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ogni persona sviluppa adattamenti psicologici che dipendono dalla genetica e dalle relazioni nei primi sei anni di vita. Questi stili non implicano salute o malattia — sono la risposta migliore che il bambino ha trovato nella sua famiglia d'origine.</p>
+    </div>
+
+    <!-- TABELLA VISUALE -->
+    <div class="at-table-wrap">
+      <table class="at-table">
+        <thead>
+          <tr>
+            <th>Adattamento</th><th>Nome positivo</th><th>Tipo</th><th>Età sviluppo</th><th>Stile genitoriale</th><th>Enneagramma</th><th>Spinta</th><th>Copione</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Schizoide</td><td>Creativo-Sognatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Esitante</td><td>T5</td><td>Sii forte</td><td>Mai + Sempre</td></tr>
+          <tr><td>Antisociale</td><td>Affascinante-Manipolatore</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Anticipatorio</td><td>T8</td><td>Sii forte · Compiaci</td><td>Mai, Sempre, Quasi I</td></tr>
+          <tr><td>Paranoide</td><td>Brillante-Scettico</td><td><span class="at-tipo-badge at-sopravv">Sopravvivenza</span></td><td>0–18 mesi</td><td>Inconsistente</td><td>T6</td><td>Sii perfetto = Sii forte</td><td>Finché + Mai</td></tr>
+          <tr><td>Passivo-Aggressivo</td><td>Scherzoso-Oppositivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18–36 mesi</td><td>Ipercontrollante</td><td>T9</td><td>Sforzati</td><td>Sempre, Quasi II</td></tr>
+          <tr><td>Ossessivo-Compulsivo</td><td>Responsabile-Stakanovista</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Enfasi sul risultato</td><td>T1</td><td>Sii perfetto</td><td>Finché (Quasi II)</td></tr>
+          <tr><td>Istrionico</td><td>Entusiasta-Iperreattivo</td><td><span class="at-tipo-badge at-perf">Performance</span></td><td>18 mesi–6 anni</td><td>Rendere felici gli altri</td><td>T2/3/4</td><td>Compiaci</td><td>Dopo (Quasi I e II)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS DETTAGLIO -->
+    <div class="at-cards" id="at-cards-grid"><div class="at-card" style="--ac:#6366f1">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#6366f1;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-sopravv">Sopravvivenza</span>
+        <span style="color:var(--ink4);font-size:.7rem">0–18 mesi</span>
+      </div>
+      <div class="at-card-name">Schizoide — Creativo-Sognatore</div>
+      <div class="at-card-alt">Schizoide</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Sii forte</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Mai + Sempre</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Esitante</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Eremita</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">GN+, A</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Comportamento</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Pensiero</span>
+        <span class="at-porta trappola">⚠ Trappola: Emozioni</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Vediamo che mi fai» — aspetta che l'altro faccia il primo passo, poi lo valuta freddamente</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Guarda che mi hai fatto fare» — si ritira quando qualcosa va storto, imputando la colpa all'altro</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Tutta colpa tua» — raccoglie conferme che il mondo esterno è inaffidabile e pericoloso</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Prendimi a calci» — si isola attirando inconsapevolmente rifiuto, confermando l'ingiunzione «non appartenere»</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+      <div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">Mai (non avrò mai quello di cui ho bisogno dagli altri) · Sempre (sarò sempre solo/incompreso)</div>
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Si sviluppa quando il bambino non si fida dell'ambiente nei primi 18 mesi (genitore esitante). Impara a fare da solo. Da adulto è creativo, visionario, ricco di mondo interiore ma tende alla solitudine come difesa. La porta d'accesso è il comportamento concreto; lavorare sulle emozioni troppo presto provoca chiusura. Il copione Mai-Sempre lo porta a credere che i suoi desideri non si realizzeranno mai e che la situazione dolorosa durerà sempre.</div>
+    </div><div class="at-card" style="--ac:#ef4444">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#ef4444;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-sopravv">Sopravvivenza</span>
+        <span style="color:var(--ink4);font-size:.7rem">0–18 mesi</span>
+      </div>
+      <div class="at-card-name">Antisociale — Affascinante-Manipolatore</div>
+      <div class="at-card-alt">Antisociale</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Sii forte · Compiaci</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Mai, Sempre, Quasi tipo I</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Anticipatorio</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Capo</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">BL+, GA+, GN+</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Comportamento</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Emozioni</span>
+        <span class="at-porta trappola">⚠ Trappola: Pensiero</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Prendimi se ci riesci» — provoca sfide impossibili per dimostrare superiorità</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Guardie e ladri» — crea situazioni dove qualcuno deve «perdere»</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+      <div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">Mai (non mi fiderò mai di nessuno) · Sempre (dovrò sempre controllarli prima che controllino me) · Quasi I (arriva vicino al legame e lo sabota)</div>
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Il genitore anticipatorio agisce prima che il bambino abbia bisogno, poi quando è stanco lo lascia. Il bambino diventa affascinante e manipolatore per ottenere ciò che vuole. La porta d'accesso è il comportamento; il pensiero è la trappola perché razionalizza ogni manipolazione. Ha difficoltà a fidarsi genuinamente degli altri e tende a sfruttare le relazioni per i propri fini.</div>
+    </div><div class="at-card" style="--ac:#f59e0b">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-sopravv">Sopravvivenza</span>
+        <span style="color:var(--ink4);font-size:.7rem">0–18 mesi</span>
+      </div>
+      <div class="at-card-name">Paranoide — Brillante-Scettico</div>
+      <div class="at-card-alt">Paranoide</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Sii perfetto = Sii forte</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Finché + Mai</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Inconsistente</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Leale</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">A, GN+</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Pensiero</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Emozioni</span>
+        <span class="at-porta trappola">⚠ Trappola: Comportamento</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Ti ho beccato figlio di puttana» — cerca il momento in cui l'altro fa un errore per smascherarlo</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Difetto» — raccoglie «segnali» che confermano le sue sospetti sull'inaffidabilità altrui</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Prendimi a calci» — si mette in situazioni in cui si sente perseguitato o tradito</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+      <div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">Finché (non posso rilassarmi finché non ho verificato ogni pericolo) · Mai (non potrò mai fidarmi davvero)</div>
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Il genitore inconsistente alterna calore e freddezza senza logica. Il bambino impara a essere ipervigilante per anticipare le reazioni. Da adulto è brillante e analitico ma si aspetta sempre il peggio. Porta aperta: pensiero. È finché non sarò perfetto non sarò sicuro. La fiducia è il lavoro evolutivo centrale: imparare che non tutto è minaccia.</div>
+    </div><div class="at-card" style="--ac:#10b981">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#10b981;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-perf">Performance</span>
+        <span style="color:var(--ink4);font-size:.7rem">18–36 mesi</span>
+      </div>
+      <div class="at-card-name">Passivo-Aggressivo — Scherzoso-Oppositivo</div>
+      <div class="at-card-alt">Passivo-Aggressivo</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Sforzati</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Sempre, Quasi tipo II</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Ipercontrollante</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Diplomatico</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">BL+</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Comportamento</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Emozioni</span>
+        <span class="at-porta trappola">⚠ Trappola: Pensiero</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Perché non… — Sì, ma…» — presenta problemi e rifiuta sistematicamente ogni soluzione proposta</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Vediamo che mi fai» — aspetta passivamente che l'altro fallisca, poi resiste</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Stupido» — finge di non capire come strategia di resistenza passiva</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Prendimi a calci» — comportamenti autolesivi che attraggono punizione confermando l'ingiunzione «non riuscire»</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+      <div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">Sempre (ripeterò sempre gli stessi schemi senza mai arrivare) · Quasi II (si ferma quando è a un passo dal traguardo)</div>
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Il genitore ipercontrollante lotta con il bambino. Il bambino impara a resistere passivamente. Da adulto è scherzoso e creativo ma oppone resistenza indiretta. Il copione Sempre-Quasi lo porta a cambiare rotta proprio quando è vicino alla meta. Sforzarsi senza mai arrivare. La porta d'accesso è il comportamento concreto, che deve essere esplicitato e approvato. Lavoro evolutivo: esprimere il bisogno direttamente.</div>
+    </div><div class="at-card" style="--ac:#3b82f6">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#3b82f6;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-perf">Performance</span>
+        <span style="color:var(--ink4);font-size:.7rem">18 mesi–6 anni</span>
+      </div>
+      <div class="at-card-name">Ossessivo-Compulsivo — Responsabile-Stakanovista</div>
+      <div class="at-card-alt">Ossessivo-Compulsivo</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Sii perfetto</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Finché (Quasi tipo II)</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Enfasi sul risultato</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Perfezionista</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">A, GN+</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Pensiero</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Emozioni</span>
+        <span class="at-porta trappola">⚠ Trappola: Comportamento</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Non è la volontà che mi manca» — dimostra sforzo senza risultato, raccogliendo conferme di non valere abbastanza</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Tutta colpa tua» — quando qualcosa va storto trova un responsabile esterno invece di accettare l'imperfezione</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Occupatissimo» — usa il lavoro incessante come scudo contro il contatto emotivo</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+      <div class="at-section-title">📜 Copione di vita</div>
+      <div class="at-copione-vita">Finché (non posso rilassarmi finché non è perfetto) · Quasi II (quasi perfetto non è mai abbastanza)</div>
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Il genitore che valuta il bambino per i risultati. Impara che vale quanto produce. Da adulto è responsabile, preciso, affidabile ma non si ferma mai perché non è mai abbastanza perfetto. Copione Finché: non posso rilassarmi finché non ho finito. La porta aperta è il pensiero analitico. Porta trappola: non proporre azioni concrete troppo presto, prima bisogna esplorare i significati. Evoluzione: imparare a essere, non solo fare.</div>
+    </div><div class="at-card" style="--ac:#ec4899">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#ec4899;border-radius:var(--rxl) var(--rxl) 0 0"></div>
+      <div class="at-card-tipo">
+        <span class="at-tipo-badge at-perf">Performance</span>
+        <span style="color:var(--ink4);font-size:.7rem">18 mesi–6 anni</span>
+      </div>
+      <div class="at-card-name">Istrionico — Entusiasta-Iperreattivo</div>
+      <div class="at-card-alt">Istrionico</div>
+
+      <!-- Spinte e Porte -->
+      <div class="at-props">
+        <div class="at-prop"><div class="at-pl">Spinta/e</div><div class="at-pv">Compiaci</div></div>
+        <div class="at-prop"><div class="at-pl">Copione</div><div class="at-pv at-copione">Dopo (Quasi tipo I e II)</div></div>
+        <div class="at-prop"><div class="at-pl">Stile genitoriale</div><div class="at-pv">Rendere felici gli altri</div></div>
+        <div class="at-prop"><div class="at-pl">Enneagramma</div><div class="at-pv">Altruista, Manager, Romantico</div></div>
+        <div class="at-prop"><div class="at-pl">Vettori comunicaz.</div><div class="at-pv">GA+, BL+</div></div>
+      </div>
+
+      <!-- Porte -->
+      <div class="at-porte">
+        <span class="at-porta aperta">✓ Porta aperta: Emozioni</span>
+        <span class="at-porta bersaglio">◎ Bersaglio: Pensiero</span>
+        <span class="at-porta trappola">⚠ Trappola: Comportamento</span>
+      </div>
+
+      <!-- Giochi psicologici -->
+      <div class="at-section-title">♟ Giochi psicologici tipici</div>
+      <div class="at-giochi"><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Violenza carnale» — esagera o drammatizza una situazione fino a farla sembrare un sopruso</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Tutta colpa tua» — attribuisce all'altro la responsabilità delle proprie emozioni intense</span></div><div class="at-gioco"><span class="at-gioco-icon">♟</span><span>«Stupido» — si fa carico di tutto poi si "scopre" incapace, raccogliendo cure e attenzioni</span></div></div>
+
+      <!-- Copione di vita e Credenza core -->
+
+      <!-- Permesso terapeutico -->
+
+      <div class="at-desc">Il bambino impara che rendere felici gli altri è la sua funzione. Da adulto è entusiasta, espressivo, magnetico ma dipende dall'approvazione. Porta aperta: le emozioni (parlare di come si sente). Porta trappola: il comportamento proposto troppo presto sembra giudicante. Il copione Dopo crea una spada di Damocle: posso divertirmi oggi, ma lo pagherò domani. Evoluzione: riconoscere i propri bisogni come legittimi.</div>
+    </div></div>
+
+    <!-- LE 5 SPINTE -->
+    <div class="at-spinte">
+      <h3>Le cinque <em>spinte</em> del copione</h3>
+      <div class="spinte-grid">
+        <div class="spinta-card"><div class="spinta-hz">Sii</div><div class="spinta-name">Sii Perfetto</div><div class="spinta-copione">Copione: Finché…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">💪</div><div class="spinta-name">Sii Forte</div><div class="spinta-copione">Copione: Mai…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">∞</div><div class="spinta-name">Sforzati</div><div class="spinta-copione">Copione: Sempre…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">♡</div><div class="spinta-name">Cerca di Piacere</div><div class="spinta-copione">Copione: Dopo…</div></div>
+        <div class="spinta-card"><div class="spinta-hz">⚡</div><div class="spinta-name">Sbrigati</div><div class="spinta-copione">Rinforza le altre spinte</div></div>
+    <div style="text-align:center;margin-top:2.5rem;padding-bottom:.5rem">
+      <a href="https://olismo-integrato.it/il_mio_copione.html" style="display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid #6b52af;color:#9b72cf;padding:.85rem 2.2rem;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;font-family:&#39;Outfit&#39;,sans-serif">✦ Scopri il tuo copione di vita →</a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

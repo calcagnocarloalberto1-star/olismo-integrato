@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enneagramma Evolutivo — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
+<link rel="canonical" href="https://olismo-integrato.it/enneagram.html">
+<meta property="og:title" content="Enneagramma Evolutivo — Olismo Integrato">
+<meta property="og:description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enneagramma Evolutivo — Olismo Integrato">
+<meta name="twitter:description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="enneagram">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo</div>
+      <h2 class="sec-title">I nove <em>enneatipi</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Il ciclo breve (3-6-9) attraversa tre fasi in 0-30, 30-60 e 60+ anni. Il ciclo lungo (1-2-4-5-7-8) ne attraversa sei. Non categorie fisse, ma percorsi di trasformazione viventi.</p>
+    </div>
+    <div class="enn-grid" id="enn-grid">
+    <div class="enn-card" onclick="showEnnDetail(&#39;e1&#39;)">
+      <div class="enn-big-num">1</div>
+      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍎 Mela</div>
+      <div class="enn-name">Tipo 1 — Il Perfezionista</div>
+      <div class="enn-italic">Serenità · Ira repressa</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Volontà</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Serafini</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 7</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 4</span></div>
+      <div class="enn-path">0–30: rigidità moralistica · 30–60: saggezza disciplinata · 60+: integrazione gioiosa</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e2&#39;)">
+      <div class="enn-big-num">2</div>
+      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍐 Pera</div>
+      <div class="enn-name">Tipo 2 — L'Altruista</div>
+      <div class="enn-italic">Umiltà · Orgoglio</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Eternità</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Cherubini</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 4</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 8</span></div>
+      <div class="enn-path">0–30: aiuto compulsivo · 30–60: equilibrio dare/ricevere · 60+: amore incondizionato</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e3&#39;)">
+      <div class="enn-big-num">3</div>
+      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍒 Ciliegia</div>
+      <div class="enn-name">Tipo 3 — Il Manager</div>
+      <div class="enn-italic">Autenticità · Vanità</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Sapienza</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Troni</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 6</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 9</span></div>
+      <div class="enn-path">0–30: identità nell'immagine · 30–60: efficienza autentica · 60+: servizio umile</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e4&#39;)">
+      <div class="enn-big-num">4</div>
+      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🫐 Nespola</div>
+      <div class="enn-name">Tipo 4 — Il Romantico</div>
+      <div class="enn-italic">Equanimità · Invidia</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Sapienza</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Dominazioni</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 1</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 2</span></div>
+      <div class="enn-path">0–30: romanticismo drammatico · 30–60: creatività strutturata · 60+: bellezza nell'ordinario</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e5&#39;)">
+      <div class="enn-big-num">5</div>
+      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍇 Uva</div>
+      <div class="enn-name">Tipo 5 — L'Eremita</div>
+      <div class="enn-italic">Distacco sano · Avarizia di sé</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Verità</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Potestà</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 8</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 7</span></div>
+      <div class="enn-path">0–30: accumulo di conoscenza · 30–60: condivisione del sapere · 60+: saggezza incarnata</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e6&#39;)">
+      <div class="enn-big-num">6</div>
+      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🫐 Mirtillo</div>
+      <div class="enn-name">Tipo 6 — Il Leale</div>
+      <div class="enn-italic">Coraggio · Paura</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Grandezza</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Virtù</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 9</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 3</span></div>
+      <div class="enn-path">0–30: dipendenza dall'autorità · 30–60: lealtà consapevole · 60+: fede in sé</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e7&#39;)">
+      <div class="enn-big-num">7</div>
+      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍍 Ananas</div>
+      <div class="enn-name">Tipo 7 — L'Entusiasta</div>
+      <div class="enn-italic">Sobrietà · Gola</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Grandezza</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Principati</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 5</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 1</span></div>
+      <div class="enn-path">0–30: fuga nel piacere · 30–60: profondità gioiosa · 60+: gratitudine per il presente</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e8&#39;)">
+      <div class="enn-big-num">8</div>
+      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍑 Albicocca</div>
+      <div class="enn-name">Tipo 8 — Il Capo</div>
+      <div class="enn-italic">Innocenza · Lussuria di controllo</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Gloria</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Arcangeli</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 2</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 5</span></div>
+      <div class="enn-path">0–25: espressione istintiva · 25–30: shock vulnerabilità · 30–60: protezione consapevole · 60+: autorità servente</div>
+    </div>
+    <div class="enn-card" onclick="showEnnDetail(&#39;e9&#39;)">
+      <div class="enn-big-num">9</div>
+      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
+      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍓 Fragola</div>
+      <div class="enn-name">Tipo 9 — Il Diplomatico</div>
+      <div class="enn-italic">Azione · Pigrizia di sé</div>
+      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Perfezione</div>
+      <div style="font-size:.68rem;color:var(--ink4)">☩ Angeli</div>
+      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 3</span></div>
+      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 6</span></div>
+      <div class="enn-path">0–30: pace nella fusione · 30–60: azione consapevole · 60+: mediatore saggio</div>
+    </div><div id="enn-detail-panel" class="enn-detail-panel" style="grid-column: 1 / -1;"></div></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

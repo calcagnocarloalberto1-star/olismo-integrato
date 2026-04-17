@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Explorer — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
+<link rel="canonical" href="https://olismo-integrato.it/explorer.html">
+<meta property="og:title" content="Database Explorer — Olismo Integrato">
+<meta property="og:description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Database Explorer — Olismo Integrato">
+<meta name="twitter:description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="explorer">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Motore di Ricerca Relazionale</div>
+      <h2 class="sec-title">Il <em>database</em> interconnesso</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Seleziona un dominio, scegli un elemento e scopri tutte le sue connessioni trasversali con gli altri domini. Ogni elemento rimanda a tutti gli altri.</p>
+    </div>
+    <div class="exp-tabs" id="exp-tabs"><button class="exp-tab active" onclick="swCat(&#39;chakra&#39;)">◉ Chakra</button><button class="exp-tab" onclick="swCat(&#39;cristalli&#39;)">◆ Cristalli</button><button class="exp-tab" onclick="swCat(&#39;enneatipi&#39;)">⬟ Enneatipi</button><button class="exp-tab" onclick="swCat(&#39;frequenze&#39;)">♬ Musica Curativa</button><button class="exp-tab" onclick="swCat(&#39;adattamenti&#39;)">⚙ Adattamenti AT</button><button class="exp-tab" onclick="swCat(&#39;esercizi&#39;)">◎ Esercizi</button><button class="exp-tab" onclick="swCat(&#39;fes&#39;)">✿ Fiori Californiani</button><button class="exp-tab" onclick="swCat(&#39;bush&#39;)">❋ Fiori Australiani</button></div>
+    <div class="exp-body">
+      <div class="exp-list" id="exp-list"><div class="exp-card" onclick="selItem(&#39;c1&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#a83232"></span>Muladhara — Radice</div>
+      <div class="exp-card-sub">Do / 396 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c2&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#c45a22"></span>Svadhisthana — Dolcezza</div>
+      <div class="exp-card-sub">Re / 417 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c3&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#c49a1a"></span>Manipura — Città dei Gioielli</div>
+      <div class="exp-card-sub">Mi / 528 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c4&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#2e7d4f"></span>Anahata — Inattaccabile</div>
+      <div class="exp-card-sub">Fa / 639 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c5&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#1565c0"></span>Vishuddha — Purezza</div>
+      <div class="exp-card-sub">Sol / 741 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c6&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#4527a0"></span>Ajna — Terzo Occhio</div>
+      <div class="exp-card-sub">La / 852 Hz</div>
+    </div><div class="exp-card" onclick="selItem(&#39;c7&#39;)">
+      <div class="exp-card-name"><span class="cdot" style="background:#7b2fa0"></span>Sahasrara — Mille Petali</div>
+      <div class="exp-card-sub">Si / 963 Hz</div>
+    </div></div>
+      <div class="exp-panel" id="exp-panel"><div class="panel-empty"><div class="panel-empty-icon">◈</div><p>Seleziona un elemento per esplorare le sue connessioni</p></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

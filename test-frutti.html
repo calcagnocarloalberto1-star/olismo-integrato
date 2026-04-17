@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test dei 9 Frutti — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Scopri il tuo enneatipo con 180 domande sui 9 Frutti dell'Albero della Vita.">
+<link rel="canonical" href="https://olismo-integrato.it/test-frutti.html">
+<meta property="og:title" content="Test dei 9 Frutti — Olismo Integrato">
+<meta property="og:description" content="Scopri il tuo enneatipo con 180 domande sui 9 Frutti dell'Albero della Vita.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Test dei 9 Frutti — Olismo Integrato">
+<meta name="twitter:description" content="Scopri il tuo enneatipo con 180 domande sui 9 Frutti dell'Albero della Vita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="test-frutti">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Il Test dei <em>9 Frutti</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">180 domande, 20 per ciascuno dei 9 frutti dell'Albero della Vita. Rispondi <strong>Vero</strong> o <strong>Falso</strong> in modo spontaneo. Le prime risposte istintive sono le più accurate.</p>
+    </div>
+
+    <!-- WELCOME -->
+    <div id="test-welcome" style="max-width:640px;margin:0 auto;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1rem">🌳</div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem">
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍎 Mela · T1</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍐 Pera · T2</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍒 Ciliegia · T3</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Nespola · T4</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍇 Uva · T5</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🫐 Mirtillo · T6</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍍 Ananas · T7</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍑 Albicocca · T8</span>
+        <span style="padding:.3rem .8rem;background:var(--gold-pale);border:1px solid var(--border);border-radius:12px;font-size:.8rem;color:var(--gold)">🍓 Fragola · T9</span>
+      </div>
+      <button class="btn-gold" onclick="startTest()" style="font-size:.9rem;padding:.85rem 2.5rem">Inizia il test ✦</button>
+      <p style="font-size:.75rem;color:var(--ink4);margin-top:1rem">~15–20 minuti · Rispondi in modo spontaneo</p>
+    </div>
+
+    <!-- TEST IN PROGRESS -->
+    <div id="test-in-progress" style="display:none">
+      <div class="test-progress-wrap">
+        <div class="test-progress-label">
+          <span id="prog-label">Frutto 1 di 9</span>
+          <span id="prog-count">0 / 180 risposte</span>
+        </div>
+        <div class="test-progress-bar"><div class="test-progress-fill" id="prog-fill" style="width:0%"></div></div>
+      </div>
+      <div class="test-frutti-nav" id="frutti-nav"></div>
+      <div class="test-card" id="test-card"></div>
+    </div>
+
+    <!-- RISULTATO -->
+    <div class="test-result" id="test-result"></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

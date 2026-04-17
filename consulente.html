@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulente AI Olistica — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<link rel="canonical" href="https://olismo-integrato.it/consulente.html">
+<meta property="og:title" content="Consulente AI Olistica — Olismo Integrato">
+<meta property="og:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Consulente AI Olistica — Olismo Integrato">
+<meta name="twitter:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="consulente">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Consulente Olistica AI</div>
+      <h2 class="sec-title">Fai una <em>domanda</em> al database</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach, frequenze, alimentazione ed esercizi. Descriviti e ricevi indicazioni personalizzate.</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="chat-header-icon">◉</div>
+        <div class="chat-header-text">
+          <h3>Consulente Olistica</h3>
+          <p>Integrazione di chakra · cristalli · enneatipi · Bach · frequenze · alimentazione</p>
+        </div>
+        <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
+        <button class="chat-clear-btn" onclick="if(confirm(&#39;Cancellare tutta la conversazione?&#39;))clearChatHistory()" title="Nuova chat">🗑 Nuova</button>
+        <button class="chat-pdf-btn" onclick="exportChatPdf()" title="Scarica conversazione in PDF">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12h10M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            <rect x="1.5" y="11.5" width="13" height="3" rx="1" stroke="currentColor" stroke-width="1.2"></rect>
+          </svg>
+          Scarica PDF
+        </button>
+          <button id="report-pdf-btn" onclick="exportReportPdf()" style="font-size:.72rem;padding:.35rem .9rem;background:linear-gradient(135deg,var(--gold),#c4a05a);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600" title="Report completo">📄 Scarica Report</button>
+      </div>
+      
+    <div class="chat-suggestions">
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 5, ho problemi di relazione</span>
+        <span class="sugg" onclick="askSugg(this)">Ho dolori allo stomaco, cosa mi consigli?</span>
+        <span class="sugg" onclick="askSugg(this)">Sento ansia e paura, da dove inizio?</span>
+        <span class="sugg" onclick="askSugg(this)">Quali cristalli per dormire meglio?</span>
+        <span class="sugg" onclick="askSugg(this)">Ho difficoltà ad esprimermi, quale chakra lavoro?</span>
+        <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
+      </div>
+      <div class="chat-messages" id="chat-messages"><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
+    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
+    <div class="msg-time">15:17<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
+  </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
+    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
+    <div class="msg-time">14:31<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
+  </div></div><div class="msg user"><div class="msg-avatar user">T</div><div>
+    <div class="msg-bubble user">Ho completato il Test del Vettore Comunicativo: vettore primario GA+. Analizza il mio stile comunicativo e collega alla mia personalità AT.</div>
+    <div class="msg-time">14:38</div>
+  </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
+    <div class="msg-bubble ai"><p># <strong>ANALISI DEL VETTORE GA+ — IL TUO STILE COMUNICATIVO</strong></p><p>Ciao! Vedo dal tuo profilo che sei un <strong>T5 Schizoide</strong> con adattamento primario <strong>Creativo-Sognatore (72%)</strong>, e il tuo vettore primario è <strong>GA+</strong> (Genitore Affettivo Positivo).</p><p>Questa è una combinazione affascinante e — detto onestamente — *non frequentissima* nel T5. Scopriamo perché.</p><p>---</p><p>## <strong>Chi è GA+?</strong></p><p><strong>GA = Genitore Affettivo</strong>  <br>Il GA è lo stato dell'io che *nutre, permette, abbraccia incondizionatamente*. Quando è positivo (GA+), sei in grado di:<br>• Ascoltare senza giudicare<br>• Offrire calore autentico<br>• Creare spazi psicologici sicuri<br>• Comunicare con tenerezza e permessi ("va bene sentire quello che senti")<br>• Essere *presente* senza forzare</p><p><strong>Il paradosso T5</strong>: il Grande Saggio tende naturalmente a staccarsi, a osservare da distanza, a razionalizzare. Ma il tuo GA+ suggerisce che <strong>hai sviluppato una capacità straordinaria di empatia calda pur mantenendo la tua lucidità critica</strong>. Non è facile.</p><p>---</p><p>## <strong>Cosa significa per la TUA comunicazione?</strong><br></p><div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>Aspetto</th><th>Manifestazione</th></tr></thead><tbody><tr><td><strong>Ascolto</strong></td><td>Profondo e non-direttivo; senti il dolore dell'altro senza assorbirtelo</td></tr><tr><td><strong>Linguaggio</strong></td><td>Lento, ponderato, permissivo ("è normale sentirsi così")</td></tr><tr><td><strong>Chakra energetico</strong></td><td>4° Anahata (Cuore) + 5° Vishuddha (Gola) — testa nel cuore</td></tr><tr><td><strong>Rischio</strong></td><td>Eccesso di tolleranza che può essere confuso con passività o accettazione di violazioni</td></tr><tr><td><strong>Forza</strong></td><td>Crei spazi dove le persone si sentono *autorizzate a essere fragili*</td></tr></tbody></table></div><br>Con il tuo canale <strong>Visivo (68%)</strong>, comunichi *immagini di sicurezza e accoglienza* — non con parole melense, ma con silenzi significativi e sguardi che dicono "sto con te".<p></p><p>---</p><p>## <strong>Collegamento all'Adattamento Schizoide</strong></p><p>Il tuo <strong>Schizoide Creativo-Sognatore (72%)</strong> ha imparato presto a <strong>fare da solo</strong> perché non poteva fidarsi completamente dell'ambiente. Ma il GA+ mostra che <strong>hai scelto di creare un ambiente diverso per gli altri</strong>: quello che volevi per te da piccolo.</p><p><strong>Chakra di forza (c5 — Vishuddha)</strong> + <strong>GA+</strong> = sei capace di *esprimere la verità con tenerezza*. Dici cose difficili, ma in modo che l'altro non si senta demolito.</p><p>---</p><p>## <strong>Suggerimento pratico immediato</strong></p><p>Monitora questo pattern: il tuo GA+ potrebbe portarti a <strong>sopprimere bisogni propri</strong> per non "disturbare" l'altro (eredità schizoide). Pratica dicendo:<br>• *"Io ho bisogno di..."* (non "potremmo" ma "io")<br>• Accorda il Genitore Affettivo con l'Adulto (c6 Ajna): visione + critica costruttiva</p><p><strong>Fiore di Bach consigliato</strong>: <strong>Water Violet</strong> (isolamento T5) + <strong>Agrimony</strong> (maschera allegra) per mantenere il confine tra nutrimento e auto-negazione.</p><p>---</p><p><strong>Come senti questo? Riconosci questo equilibrio difficile tra il bisogno di spazio (T5) e il desiderio di creare sicurezza negli altri (GA+)?</strong></p></div>
+    <div class="msg-time">14:39<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
+  </div></div></div>
+      <div id="chat-profile-badge" style="display: block; font-size: 0.72rem; color: var(--gold); background: rgba(184, 147, 90, 0.1); border: 1px solid rgba(184, 147, 90, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; margin: 0.4rem 0.8rem; text-align: center; line-height: 1.5;">📊 Profilo rilevato: Check · 9 Frutti · Test AT · VAK · Egogramma · Dieta</div>
+<div class="chat-input-area">
+        <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)" style="height: auto;"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMsg()">
+          <span>Invia</span><span style="font-size:1rem">→</span>
+        </button>
+      </div>
+      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico o dello psicologo.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

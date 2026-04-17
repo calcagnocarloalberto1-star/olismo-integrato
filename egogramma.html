@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egogramma — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Test egogramma: misura i 5 stati dell'Io secondo l'Analisi Transazionale.">
+<link rel="canonical" href="https://olismo-integrato.it/egogramma.html">
+<meta property="og:title" content="Egogramma — Olismo Integrato">
+<meta property="og:description" content="Test egogramma: misura i 5 stati dell'Io secondo l'Analisi Transazionale.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Egogramma — Olismo Integrato">
+<meta name="twitter:description" content="Test egogramma: misura i 5 stati dell'Io secondo l'Analisi Transazionale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="egogramma">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Strutturale · Berne</div>
+      <h2 class="sec-title">L'<em>Egogramma</em> — i cinque stati dell'Io</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">L'egogramma mostra quanto è presente ciascuno stato dell'Io nella tua personalità. Sposta i cursori per esplorare il tuo profilo. La somma dei cinque stati tende a essere costante: quando uno aumenta, un altro diminuisce.</p>
+    </div>
+    <div class="ego-wrap">
+      <div class="ego-text">
+        <div class="ego-states" id="ego-states-desc">
+    <div class="ego-state-card">
+      <h4 style="color:#ef4444">GN — Genitore Normativo</h4>
+      <p>Critica, dà norme, comanda, vieta. È ok quando protegge; non ok quando svaluta l'altro con giudizi rigidi.</p>
+    </div>
+    <div class="ego-state-card">
+      <h4 style="color:#f59e0b">GA — Genitore Affettivo</h4>
+      <p>Accudisce, mostra affetto, protegge e dà i permessi. Non ok quando è iperprotettivo o svalutante.</p>
+    </div>
+    <div class="ego-state-card">
+      <h4 style="color:#3b82f6">A — Adulto</h4>
+      <p>Elabora informazioni in modo obiettivo, nel qui ed ora. È il centro decisionale consapevole. Va 'allenato' come un muscolo.</p>
+    </div>
+    <div class="ego-state-card">
+      <h4 style="color:#10b981">BL — Bambino Libero</h4>
+      <p>Spontaneità, creatività, gioia. È ok quando esprime energia vitale; non ok quando ignora le conseguenze sociali.</p>
+    </div>
+    <div class="ego-state-card">
+      <h4 style="color:#8b5cf6">BA — Bambino Adattato</h4>
+      <p>Rispetta le aspettative esterne. Ok quando l'adattamento è funzionale da adulto; non ok quando ripropone comportamenti infantili.</p>
+    </div></div>
+      </div>
+      <div class="ego-chart-wrap">
+        <div class="ego-bars" id="ego-bars">
+    <div class="ego-bar-col">
+      <span class="ego-bar-val" id="egov-GN">5</span>
+      <div class="ego-bar-outer" style="height:170px" title="GN">
+        <div class="ego-bar-inner" id="ebar-GN" style="background:#ef4444;height:85px"></div>
+      </div>
+      <span class="ego-bar-label">GN</span>
+    </div>
+    <div class="ego-bar-col">
+      <span class="ego-bar-val" id="egov-GA">6</span>
+      <div class="ego-bar-outer" style="height:170px" title="GA">
+        <div class="ego-bar-inner" id="ebar-GA" style="background:#f59e0b;height:102px"></div>
+      </div>
+      <span class="ego-bar-label">GA</span>
+    </div>
+    <div class="ego-bar-col">
+      <span class="ego-bar-val" id="egov-A">7</span>
+      <div class="ego-bar-outer" style="height:170px" title="A">
+        <div class="ego-bar-inner" id="ebar-A" style="background:#3b82f6;height:119px"></div>
+      </div>
+      <span class="ego-bar-label">A</span>
+    </div>
+    <div class="ego-bar-col">
+      <span class="ego-bar-val" id="egov-BL">6</span>
+      <div class="ego-bar-outer" style="height:170px" title="BL">
+        <div class="ego-bar-inner" id="ebar-BL" style="background:#10b981;height:102px"></div>
+      </div>
+      <span class="ego-bar-label">BL</span>
+    </div>
+    <div class="ego-bar-col">
+      <span class="ego-bar-val" id="egov-BA">4</span>
+      <div class="ego-bar-outer" style="height:170px" title="BA">
+        <div class="ego-bar-inner" id="ebar-BA" style="background:#8b5cf6;height:68px"></div>
+      </div>
+      <span class="ego-bar-label">BA</span>
+    </div></div>
+        <div id="ego-sliders">
+    <div class="ego-slider-row">
+      <label>GN — Genitore Normativo</label>
+      <input type="range" min="1" max="10" value="5" class="ego-slider" oninput="updateEgo(&#39;GN&#39;,+this.value)" style="accent-color:#ef4444">
+    </div>
+    <div class="ego-slider-row">
+      <label>GA — Genitore Affettivo</label>
+      <input type="range" min="1" max="10" value="6" class="ego-slider" oninput="updateEgo(&#39;GA&#39;,+this.value)" style="accent-color:#f59e0b">
+    </div>
+    <div class="ego-slider-row">
+      <label>A — Adulto</label>
+      <input type="range" min="1" max="10" value="7" class="ego-slider" oninput="updateEgo(&#39;A&#39;,+this.value)" style="accent-color:#3b82f6">
+    </div>
+    <div class="ego-slider-row">
+      <label>BL — Bambino Libero</label>
+      <input type="range" min="1" max="10" value="6" class="ego-slider" oninput="updateEgo(&#39;BL&#39;,+this.value)" style="accent-color:#10b981">
+    </div>
+    <div class="ego-slider-row">
+      <label>BA — Bambino Adattato</label>
+      <input type="range" min="1" max="10" value="4" class="ego-slider" oninput="updateEgo(&#39;BA&#39;,+this.value)" style="accent-color:#8b5cf6">
+    </div></div>
+        <div class="ego-desc-box" id="ego-desc-box"><strong style="color:var(--gold)">A predominante (7/10):</strong> Sei fortemente ancorato alla realtà e alle decisioni razionali. Ottimo.<br>
+     <strong style="color:var(--dusty)">BA da sviluppare (4/10):</strong> Potresti avere difficoltà ad adattarti alle aspettative sociali quando necessario.</div>
+      </div>
+    </div>
+  </div>
+
+    <!-- TEST EGOGRAMMA -->
+    <div id="ego-test-section">
+      <div class="container">
+        <div class="sec-hd" style="margin-bottom:1.5rem">
+          <div class="sec-eye">Autovalutazione</div>
+          <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:1.8rem;font-weight:300;color:var(--ink)">Test dell'Egogramma</h3>
+        </div>
+        <p class="ego-test-intro">Leggi ogni affermazione e spunta quelle che ti descrivono <strong>abitualmente</strong>. Non ci sono risposte giuste o sbagliate — rispondi istintivamente senza pensarci troppo.</p>
+        <div class="ego-test-grid" id="ego-test-items"><div class="ego-q-item"><input type="checkbox" id="gn1" name="ego-test"><label class="ego-q-label" for="gn1">Correggo gli altri quando fanno errori, anche se non me lo chiedono</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn2" name="ego-test"><label class="ego-q-label" for="gn2">Mi aspetto che le cose siano fatte correttamente e sono critico quando non lo sono</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn3" name="ego-test"><label class="ego-q-label" for="gn3">Uso spesso espressioni come dovresti, non si fa così, bisogna</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn4" name="ego-test"><label class="ego-q-label" for="gn4">Ho forti principi morali che tendo a far rispettare</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn5" name="ego-test"><label class="ego-q-label" for="gn5">Quando vedo comportamenti scorretti, sento il bisogno di intervenire</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn6" name="ego-test"><label class="ego-q-label" for="gn6">Pongo limiti chiari e li faccio rispettare con fermezza</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn7" name="ego-test"><label class="ego-q-label" for="gn7">Tendo a giudicare le persone in base ai loro comportamenti</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn8" name="ego-test"><label class="ego-q-label" for="gn8">Mi infastidisce quando qualcuno non rispetta le regole</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn9" name="ego-test"><label class="ego-q-label" for="gn9">Do consigli non richiesti perché penso di sapere cosa è meglio</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="gn10" name="ego-test"><label class="ego-q-label" for="gn10">Sono esigente con me stesso e con gli altri</label><span class="ego-q-state" style="background:#ef444422;color:#ef4444">GN</span></div><div class="ego-q-item"><input type="checkbox" id="ga1" name="ego-test"><label class="ego-q-label" for="ga1">Quando qualcuno sta male, sento immediatamente il bisogno di aiutarlo</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga2" name="ego-test"><label class="ego-q-label" for="ga2">Trovo facile rassicurare e incoraggiare chi mi sta intorno</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga3" name="ego-test"><label class="ego-q-label" for="ga3">Proteggo le persone a me care anche quando non me lo chiedono</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga4" name="ego-test"><label class="ego-q-label" for="ga4">Uso spesso espressioni affettuose come dai, ce la fai, ti capisco</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga5" name="ego-test"><label class="ego-q-label" for="ga5">Mi preoccupo per il benessere degli altri più che per il mio</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga6" name="ego-test"><label class="ego-q-label" for="ga6">Tendo a fare le cose al posto degli altri per aiutarli</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga7" name="ego-test"><label class="ego-q-label" for="ga7">Gli altri mi descrivono come una persona premurosa e disponibile</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga8" name="ego-test"><label class="ego-q-label" for="ga8">Mi piace prendermi cura degli altri e renderli felici</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga9" name="ego-test"><label class="ego-q-label" for="ga9">Sento che il mio valore dipende dall'aiuto che riesco a dare</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="ga10" name="ego-test"><label class="ego-q-label" for="ga10">Sono il riferimento emotivo per chi mi sta vicino</label><span class="ego-q-state" style="background:#f9731622;color:#f97316">GA</span></div><div class="ego-q-item"><input type="checkbox" id="a1" name="ego-test"><label class="ego-q-label" for="a1">Quando devo prendere una decisione, raccolgo dati prima di agire</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a2" name="ego-test"><label class="ego-q-label" for="a2">Affronto i problemi con approccio razionale e logico</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a3" name="ego-test"><label class="ego-q-label" for="a3">Verifico le informazioni prima di crederci o diffonderle</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a4" name="ego-test"><label class="ego-q-label" for="a4">Riesco a separare i fatti dalle emozioni nelle situazioni difficili</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a5" name="ego-test"><label class="ego-q-label" for="a5">Valuto i pro e i contro prima di esprimere un giudizio</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a6" name="ego-test"><label class="ego-q-label" for="a6">Gli altri mi cercano per avere consigli pratici e obiettivi</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a7" name="ego-test"><label class="ego-q-label" for="a7">Riesco a rimanere calmo e concentrato anche sotto pressione</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a8" name="ego-test"><label class="ego-q-label" for="a8">Parlo in modo preciso e cerco di essere chiaro nelle spiegazioni</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a9" name="ego-test"><label class="ego-q-label" for="a9">Affronto i conflitti cercando soluzioni concrete e condivise</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="a10" name="ego-test"><label class="ego-q-label" for="a10">Mi aggiorno continuamente per migliorare le mie competenze</label><span class="ego-q-state" style="background:#3b82f622;color:#3b82f6">A</span></div><div class="ego-q-item"><input type="checkbox" id="bl1" name="ego-test"><label class="ego-q-label" for="bl1">Rido facilmente e mi diverto con poco</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl2" name="ego-test"><label class="ego-q-label" for="bl2">Seguo spesso i miei impulsi e il momento presente</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl3" name="ego-test"><label class="ego-q-label" for="bl3">Amo le novità, le avventure e le esperienze insolite</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl4" name="ego-test"><label class="ego-q-label" for="bl4">Quando mi annoio, cerco subito qualcosa di più stimolante</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl5" name="ego-test"><label class="ego-q-label" for="bl5">Esprimo liberamente le mie emozioni, anche in pubblico</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl6" name="ego-test"><label class="ego-q-label" for="bl6">Le persone mi descrivono come spontaneo, vivace e creativo</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl7" name="ego-test"><label class="ego-q-label" for="bl7">Mi entusiasmo facilmente per nuove idee o progetti</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl8" name="ego-test"><label class="ego-q-label" for="bl8">Il gioco e la leggerezza fanno parte del mio modo di stare al mondo</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl9" name="ego-test"><label class="ego-q-label" for="bl9">Non mi preoccupo troppo delle conseguenze: vivere è la cosa più importante</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="bl10" name="ego-test"><label class="ego-q-label" for="bl10">Ho grande curiosità e voglia di sperimentare cose nuove</label><span class="ego-q-state" style="background:#22c55e22;color:#22c55e">BL</span></div><div class="ego-q-item"><input type="checkbox" id="ba1" name="ego-test"><label class="ego-q-label" for="ba1">Faccio quello che mi si aspetta anche quando non sono d'accordo</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba2" name="ego-test"><label class="ego-q-label" for="ba2">Ho difficoltà a dire no per paura di deludere gli altri</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba3" name="ego-test"><label class="ego-q-label" for="ba3">Mi sento in colpa quando non soddisfo le aspettative altrui</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba4" name="ego-test"><label class="ego-q-label" for="ba4">Tendo a rimandare le decisioni difficili per evitare conflitti</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba5" name="ego-test"><label class="ego-q-label" for="ba5">Cerco continuamente approvazione e conferma dagli altri</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba6" name="ego-test"><label class="ego-q-label" for="ba6">Mi adatto facilmente alle situazioni, anche a discapito di me stesso</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba7" name="ego-test"><label class="ego-q-label" for="ba7">A volte mi arrabbio o mi irridigisco senza riuscire a dire perché</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba8" name="ego-test"><label class="ego-q-label" for="ba8">Ho imparato a nascondere alcune emozioni per non disturbare</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba9" name="ego-test"><label class="ego-q-label" for="ba9">Mi preoccupo molto di come gli altri mi percepiscono</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div><div class="ego-q-item"><input type="checkbox" id="ba10" name="ego-test"><label class="ego-q-label" for="ba10">Sento ancora dentro la voce dei miei genitori che mi dice cosa fare</label><span class="ego-q-state" style="background:#a855f722;color:#a855f7">BA</span></div></div>
+        <button class="ego-test-btn" onclick="calcEgogrammaTest()">Calcola il mio Egogramma →</button>
+        <div class="ego-test-result" id="ego-test-result">
+          <h4>Il tuo profilo egografico</h4>
+          <div class="ego-result-bars" id="ego-test-bars"></div>
+          <p class="ego-res-desc" id="ego-test-desc"></p>
+          <div style="text-align:center;margin-top:1.2rem">
+            <button onclick="applyEgoTestResult()" style="padding:.5rem 1.4rem;background:var(--blue);color:#fff;border:none;border-radius:16px;font-size:.78rem;font-weight:600;cursor:pointer">Applica ai cursori sopra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

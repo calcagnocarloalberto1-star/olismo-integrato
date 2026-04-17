@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequenze solfeggio e musicoterapia — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<link rel="canonical" href="https://olismo-integrato.it/frequenze.html">
+<meta property="og:title" content="Frequenze solfeggio e musicoterapia — Olismo Integrato">
+<meta property="og:description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frequenze solfeggio e musicoterapia — Olismo Integrato">
+<meta name="twitter:description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="musica">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Musicoterapia Olistica</div>
+      <h2 class="sec-title">Le frequenze <em>curative</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Le frequenze solfeggio e l'accordatura a 432 Hz interagiscono direttamente con il sistema nervoso autonomo, producendo stati di coerenza cardiaca e riequilibrio energetico.</p>
+    </div>
+    <div class="music-grid" id="music-grid">
+    <div class="mc" onclick="goTo(&#39;f396&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">396 Hz</div>
+      <div class="mc-note">Nota Do / Ut</div>
+      <div class="mc-name">396 Hz — Liberazione dalla paura</div>
+      <div class="mc-effect">Libera sensi di colpa e paure radicali, stabilizza il sistema nervoso</div>
+      <div class="mc-str">Cimbali tibetani gravi, tamburo a cornice, didgeridoo</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f417&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">417 Hz</div>
+      <div class="mc-note">Nota Re</div>
+      <div class="mc-name">417 Hz — Cambiamento e fluidità</div>
+      <div class="mc-effect">Facilita il cambiamento, scioglie blocchi creativi, purifica dai traumi</div>
+      <div class="mc-str">Flauto, campane d'acqua, canto armonico</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f528&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">528 Hz</div>
+      <div class="mc-note">Nota Mi</div>
+      <div class="mc-name">528 Hz — Riparazione del DNA</div>
+      <div class="mc-effect">Rinforza l'autostima, stimola la guarigione cellulare, riattiva la gioia</div>
+      <div class="mc-str">Campana di cristallo in Do, piano accordato a 528</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f639&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">639 Hz</div>
+      <div class="mc-note">Nota Fa</div>
+      <div class="mc-name">639 Hz — Connessione e armonia</div>
+      <div class="mc-effect">Migliora le relazioni, apre il cuore, favorisce empatia e riconciliazione</div>
+      <div class="mc-str">Campana di cristallo in Fa, arpa, canto devozionale</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f741&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">741 Hz</div>
+      <div class="mc-note">Nota Sol</div>
+      <div class="mc-name">741 Hz — Espressione e intuizione</div>
+      <div class="mc-effect">Libera l'espressione autentica, rafforza l'intuizione, dissolve blocchi vocali</div>
+      <div class="mc-str">Canto armonico tibetano, flauto alto, campana tibetana acuta</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f852&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">852 Hz</div>
+      <div class="mc-note">Nota La</div>
+      <div class="mc-name">852 Hz — Risveglio interiore</div>
+      <div class="mc-effect">Amplifica l'intuizione, apre il terzo occhio, sostiene la visione interiore</div>
+      <div class="mc-str">Gong cristallino, campana tibetana acuta, mantra OM</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f963&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">963 Hz</div>
+      <div class="mc-note">Nota Si</div>
+      <div class="mc-name">963 Hz — Coscienza cosmica</div>
+      <div class="mc-effect">Connette alla coscienza universale, produce stati contemplativi profondi</div>
+      <div class="mc-str">Canto gregoriano, OM prolungato, gong planetari</div>
+    </div>
+    <div class="mc" onclick="goTo(&#39;f432&#39;,&#39;frequenze&#39;)">
+      <div class="mc-hz">432 Hz</div>
+      <div class="mc-note">Nota La naturale</div>
+      <div class="mc-name">432 Hz — Accordatura della natura</div>
+      <div class="mc-effect">Genera risonanza armonica naturale, riduce ansia e stress sistemico</div>
+      <div class="mc-str">Qualsiasi strumento riaccordato a 432 Hz</div>
+    </div></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transazioni AT — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Le transazioni in Analisi Transazionale: parallele, incrociate, ulteriori.">
+<link rel="canonical" href="https://olismo-integrato.it/transazioni.html">
+<meta property="og:title" content="Transazioni AT — Olismo Integrato">
+<meta property="og:description" content="Le transazioni in Analisi Transazionale: parallele, incrociate, ulteriori.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Transazioni AT — Olismo Integrato">
+<meta name="twitter:description" content="Le transazioni in Analisi Transazionale: parallele, incrociate, ulteriori.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="transazioni">
+  <div class="container">
+    
+    <!-- TEST VETTORE COMUNICATIVO -->
+    <div class="trans-test-container">
+      <div class="sec-hd" style="margin-bottom:1.5rem">
+        <div class="sec-eye">Analisi Transazionale · Test interattivo</div>
+        <h2 class="sec-title">Test del <em>Vettore Comunicativo</em></h2>
+        <div class="sec-div"></div>
+        <p class="sec-desc">20 scenari di vita reale per scoprire quale stato dell'Io usi prevalentemente nelle relazioni. Scoprirai il tuo vettore primario, il rischio di transazione incrociata e come correggerlo.</p>
+      </div>
+
+      <!-- WELCOME -->
+      <div id="trans-test-welcome" class="trans-welcome-box" style="display: none;">
+        <div class="trans-welcome-grid">
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">⏱</div>
+            <div class="trans-welcome-text"><strong>~8 minuti</strong><br>20 scenari</div>
+          </div>
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">🎯</div>
+            <div class="trans-welcome-text"><strong>Risposta istintiva</strong><br>Prima reazione = più vera</div>
+          </div>
+          <div class="trans-welcome-item">
+            <div class="trans-welcome-icon">🔀</div>
+            <div class="trans-welcome-text"><strong>9 vettori</strong><br>GN · GA · A · BL · BA</div>
+          </div>
+        </div>
+        <button class="trans-start-btn" onclick="startTransTest()">Scopri il tuo vettore →</button>
+      </div>
+
+      <!-- PROGRESS / RESULT -->
+      <div id="trans-test-progress" style="display: block;">
+    <div class="trans-res-header" style="border-top:4px solid #f59e0b">
+      <div class="trans-res-label">Il tuo vettore comunicativo primario</div>
+      <div class="trans-res-primary" style="color:#f59e0b">GA+</div>
+      <div class="trans-res-name">Genitore Affettivo positivo</div>
+      <div class="trans-res-desc">Nutre, supporta, accudisce. In eccesso: salvataggio.</div>
+    </div>
+
+    <div class="trans-res-bars">
+      <div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:#f59e0b">GA+</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:25%;background:#f59e0b"></div>
+          </div>
+          <span class="trans-res-bar-pct">25%</span>
+        </div><div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:#6d28d9">BA-</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:25%;background:#6d28d9"></div>
+          </div>
+          <span class="trans-res-bar-pct">25%</span>
+        </div><div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:#10b981">BL+</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:20%;background:#10b981"></div>
+          </div>
+          <span class="trans-res-bar-pct">20%</span>
+        </div><div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:#8b5cf6">BA+</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:15%;background:#8b5cf6"></div>
+          </div>
+          <span class="trans-res-bar-pct">15%</span>
+        </div><div class="trans-res-bar-row">
+          <span class="trans-res-bar-label" style="color:#3b82f6">A</span>
+          <div class="trans-res-bar-wrap">
+            <div class="trans-res-bar-fill" style="width:10%;background:#3b82f6"></div>
+          </div>
+          <span class="trans-res-bar-pct">10%</span>
+        </div>
+    </div>
+
+    <div class="trans-res-risk">
+      <div class="trans-res-risk-title">⚡ Rischio transazione incrociata</div>
+      <p>Offri supporto (G→B) quando l'altro non lo ha chiesto (A→A). L'altro si sente infantilizzato o in debito.</p>
+      <div class="trans-res-risk-meta">
+        <span>Enneatipi correlati: Tipico di T2 (dare/aiutare) e T9 (armonia a tutti i costi). Il salvataggio genera dipendenza.</span>
+      </div>
+    </div>
+    <div class="trans-res-fix">
+      <div class="trans-res-fix-title">✦ Strategia correttiva</div>
+      <p>Prima di aiutare, chiedi: «Vuoi che ti aiuti o vuoi che ascolti solo?»</p>
+    </div>
+
+    <div class="trans-res-actions">
+      <button onclick="startTransTest()" class="trans-restart-btn">↩ Rifai il test</button>
+      <button onclick="st(&#39;consulente&#39;);setTimeout(()=&gt;document.getElementById(&#39;chat-input&#39;).value=&#39;Ho completato il Test del Vettore Comunicativo: vettore primario GA+. Analizza il mio stile comunicativo e collega alla mia personalità AT.&#39;,150)" style="padding:.5rem 1.4rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer">✦ Chiedi all'AI una lettura</button>
+    </div>
+  </div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:3rem">
+      <div class="sec-eye">Analisi Transazionale · Berne · Ware &amp; Joines</div>
+      <h2 class="sec-title">Comunicazione <em>transazionale</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Ogni comunicazione è uno scambio di stimoli e risposte tra stati dell'Io. La qualità delle nostre transazioni dipende dall'adattamento di personalità, dall'enneatipo e dal vettore comunicativo che attiviamo. Capire dove le comunicazioni si «incrociano» è il primo passo per sbloccarle.</p>
+    </div>
+
+    <!-- LE 3 REGOLE -->
+    <div class="trans-regole">
+      <div class="trans-regola">
+        <div class="trans-num">I</div>
+        <div>
+          <div class="trans-r-title">Transazioni parallele (complementari)</div>
+          <p class="trans-r-desc">Quando lo stato dell'Io a cui mi rivolgo è quello che risponde, la comunicazione può continuare indefinitamente. <em>A→A / G→G / B→B ecc.</em></p>
+        </div>
+      </div>
+      <div class="trans-regola">
+        <div class="trans-num">II</div>
+        <div>
+          <div class="trans-r-title">Transazioni incrociate</div>
+          <p class="trans-r-desc">Quando i vettori non sono paralleli si ha un'interruzione. Una o entrambe le persone devono cambiare stato dell'Io. <em>A→A / risposta: G→B</em></p>
+        </div>
+      </div>
+      <div class="trans-regola">
+        <div class="trans-num">III</div>
+        <div>
+          <div class="trans-r-title">Transazioni ulteriori (duplici)</div>
+          <p class="trans-r-desc">Vengono inviati due messaggi contemporaneamente: uno sociale (manifesto) e uno psicologico (nascosto). L'esito è determinato dal livello psicologico, non da quello sociale.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VETTORI PER ADATTAMENTO + RIMEDI -->
+    <div class="trans-header-row">
+      <h3 class="trans-sub-title">Vettori comunicativi, transazioni incrociate tipiche e strumenti di correzione</h3>
+      <p style="font-size:.8rem;color:var(--ink4);margin-top:.3rem">Seleziona un adattamento per espanderne la scheda completa.</p>
+    </div>
+
+    <div class="trans-cards" id="trans-cards-grid"><div class="trans-card" id="tc-ad1">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad1&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#6366f1;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Schizoide — Creativo-Sognatore</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Eremita</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">GN+, A</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">A→A (richiesta neutra) / risposta: silenzio o GN→BA (chiusura fredda) — l'altro si sente rifiutato e interrompe il contatto</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T5: l'Investigatore si ritira nel silenzio invece di rispondere dall'Adulto</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Vediamo che mi fai» — aspetta che l'altro faccia il primo passo, poi lo valuta freddamente</div><div class="trans-gioco">«Guarda che mi hai fatto fare» — si ritira quando qualcosa va storto, imputando la colpa all'altro</div><div class="trans-gioco">«Tutta colpa tua» — raccoglie conferme che il mondo esterno è inaffidabile e pericoloso</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Blocco emotivo · Senso di vuoto · Ansia (a copertura della rabbia, del dolore, della gioia e del desiderio sessuale)</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Water Violet (isolamento orgoglioso) · Cerato (sfiducia in sé) · Mimulus (paura del contatto)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Shooting Star (senso di non appartenenza) · Pink Yarrow (barriere emotive)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 1° (radicamento) · 5° (espressione autentica)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 396 Hz (liberazione dalla paura)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Body Scan MBSR · ancoraggio sensoriale · respirazione 4-7-8</div></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="trans-card" id="tc-ad2">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad2&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Antisociale — Affascinante-Manipolatore</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Capo</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">BL+, GA+, GN+</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">A→A (proposta di collaborazione) / risposta: BL−→BA (manipolazione charm) — l'altro non capisce se la risposta è vera o tattica</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T8: il Capo usa il Bambino Libero negativo per ribaltare la dinamica di potere</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Prendimi se ci riesci» — provoca sfide impossibili per dimostrare superiorità</div><div class="trans-gioco">«Guardie e ladri» — crea situazioni dove qualcuno deve «perdere»</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Confusione · Rabbia (a copertura della paura e della tristezza)</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Vine (prepotenza, dominio) · Beech (intolleranza) · Holly (gelosia, odio)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Oregon Grape (sfiducia negli altri) · Blackberry (impulsività)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 1° (sicurezza reale) · 3° (potere dal sé, non sugli altri)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 528 Hz (trasformazione, riparazione)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Tonglen (compassione) · Loving-Kindness</div></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="trans-card" id="tc-ad3">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad3&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Paranoide — Brillante-Scettico</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Leale</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">A, GN+</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">A→A (informazione neutrale) / risposta: GN→BA (accusa o sospetto) — l'altro si trova a dover difendere una cosa mai messa in discussione</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T6: il Leale ipervigilante trasforma le transazioni A→A in scontri G→B</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Ti ho beccato figlio di puttana» — cerca il momento in cui l'altro fa un errore per smascherarlo</div><div class="trans-gioco">«Difetto» — raccoglie «segnali» che confermano le sue sospetti sull'inaffidabilità altrui</div><div class="trans-gioco">«Prendimi a calci» — si mette in situazioni in cui si sente perseguitato o tradito</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Rabbia nei confronti degli altri (a coprire la paura) · Indignazione morale · Gelosia · Invidia · Sospettosità</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Mimulus (paura concreta) · Aspen (paura vaga) · Holly (sospetto/odio) · Cherry Plum (perdita controllo)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Oregon Grape (paranoia latente) · Golden Ear Drops (trauma infantile)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 1° (sicurezza di base) · 6° (chiarezza intuitiva vs sospetto)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 741 Hz (espressione e dissoluzione dei blocchi)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Visualizzazione protettiva · Meditazione sul Chakra 6°</div></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="trans-card" id="tc-ad4">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad4&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#10b981;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Passivo-Aggressivo — Scherzoso-Oppositivo</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Diplomatico</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">BL+</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">G→G (decisione condivisa) / risposta: BL−→BL+ (sì ma..., opposizione) — l'altro si sente bloccato senza capire perché</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T9: il Pacificatore usa la resistenza passiva (BL−) invece di esprimere un Adulto assertivo</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Perché non… — Sì, ma…» — presenta problemi e rifiuta sistematicamente ogni soluzione proposta</div><div class="trans-gioco">«Vediamo che mi fai» — aspetta passivamente che l'altro fallisca, poi resiste</div><div class="trans-gioco">«Stupido» — finge di non capire come strategia di resistenza passiva</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Frustrazione (a copertura del dolore) · Confusione (a copertura della rabbia) · Indignazione morale</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Wild Rose (rassegnazione passiva) · Agrimony (conflitto interno mascherato) · Willow (risentimento)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Blackberry (azione diretta) · Tansy (procrastinazione)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 1° (forza personale) · 2° (fluidità emotiva) · 3° (volontà)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 417 Hz (facilitazione del cambiamento)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Respirazione del fuoco · Movimenti consapevoli · VAK kinestesico</div></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="trans-card" id="tc-ad5">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad5&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#3b82f6;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Ossessivo-Compulsivo — Responsabile-Stakanovista</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Perfezionista</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">A, GN+</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">B→G (richiesta di rassicurazione emotiva) / risposta: A→A o GN→BA (analisi fredda) — l'altro non riceve il supporto emotivo richiesto</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T1: il Perfezionista risponde all'emozione con logica, svalutando il bisogno affettivo</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Non è la volontà che mi manca» — dimostra sforzo senza risultato, raccogliendo conferme di non valere abbastanza</div><div class="trans-gioco">«Tutta colpa tua» — quando qualcosa va storto trova un responsabile esterno invece di accettare l'imperfezione</div><div class="trans-gioco">«Occupatissimo» — usa il lavoro incessante come scudo contro il contatto emotivo</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Ansia · Depressione · Senso di colpa (a copertura della rabbia, delle emozioni dolorose e del desiderio sessuale) · Rabbia (a coprire la tristezza)</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Rock Water (rigidità, autocontrollo estremo) · Vervain (fanatismo) · Pine (senso di colpa)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Filaree (perfezionismo ossessivo) · Dill (sovraccarico sensoriale)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 3° (allentare la volontà coercitiva) · 4° (apertura affettiva)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 528 Hz (trasformazione DNA, riparazione) · 639 Hz (relazioni)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Rilassamento progressivo di Jacobson · Scrittura meditativa · Yoga nidra</div></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="trans-card" id="tc-ad6">
+      <div class="trans-card-header" onclick="toggleTransCard(&#39;ad6&#39;)">
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ec4899;flex-shrink:0"></div>
+          <div>
+            <div class="trans-adatt-label">Istrionico — Entusiasta-Iperreattivo</div>
+            <div style="font-size:.7rem;color:var(--ink4)">Enneatipo: Altruista, Manager, Romantico</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <span class="trans-vettore-tag">GA+, BL+</span>
+          <span class="trans-chevron">▼</span>
+        </div>
+      </div>
+      <div class="trans-card-body">
+        <div class="trans-body-section">
+          <div class="trans-bs-title">⚡ Transazione incrociata tipica</div>
+          <div class="trans-incrociata">A→A (informazione pratica) / risposta: BL→GA (dramma, iperreazione) — l'altro si sente responsabile di un'emozione che non ha causato</div>
+          <div style="font-size:.73rem;color:var(--ink4);margin-top:.3rem;font-style:italic">Enneatipo correlato: T2/3/4: l'Istrionico amplifica il messaggio sociale attraverso il canale emotivo, provocando confusione</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">♟ Giochi psicologici attivati</div>
+          <div class="trans-gioco">«Violenza carnale» — esagera o drammatizza una situazione fino a farla sembrare un sopruso</div><div class="trans-gioco">«Tutta colpa tua» — attribuisce all'altro la responsabilità delle proprie emozioni intense</div><div class="trans-gioco">«Stupido» — si fa carico di tutto poi si "scopre" incapace, raccogliendo cure e attenzioni</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">😤 Emozione parassita (racket)</div>
+          <div class="trans-racket">Ansia · Tristezza · Confusione (a copertura della rabbia)</div>
+        </div>
+        <div class="trans-body-section">
+          <div class="trans-bs-title">🌿 Correzione con strumenti olistici</div>
+          <div class="trans-rimedi">
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🌸</span><div><strong>Bach:</strong> Chicory (possessività, manipolazione affettiva) · Heather (bisogno di attenzione) · Centaury (difficoltà a dire no)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">✿</span><div><strong>FES:</strong> Pretty Face (bisogno di validazione esterna) · Bleeding Heart (dipendenza affettiva)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">◉</span><div><strong>Chakra:</strong> 2° (emozioni fluide, non reattive) · 4° (amore sano vs dipendenza)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🎵</span><div><strong>Frequenza:</strong> 639 Hz (armonia nelle relazioni)</div></div>
+            <div class="trans-rimedio"><span class="trans-rimedio-icon">🧘</span><div><strong>Meditazione:</strong> Heartfulness · Mindfulness delle emozioni · Meditazione del testimone neutro</div></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+    <!-- 9 VETTORI -->
+    <div class="trans-vettori-wrap">
+      <h3 class="trans-sub-title">I 9 vettori di comunicazione (modello funzionale)</h3>
+      <div class="vettori-grid">
+        <div class="vettore-card v-gn"><div class="vc-label">GN+</div><div>Genitore Normativo positivo — stabilisce regole chiare, protegge</div></div>
+        <div class="vettore-card v-gn-neg"><div class="vc-label">GN−</div><div>Genitore Normativo negativo — critica, punisce, svaluta</div></div>
+        <div class="vettore-card v-ga"><div class="vc-label">GA+</div><div>Genitore Affettivo positivo — nutre, supporta, accudisce</div></div>
+        <div class="vettore-card v-ga-neg"><div class="vc-label">GA−</div><div>Genitore Affettivo negativo — iperprotegge, soffoca, salva</div></div>
+        <div class="vettore-card v-a"><div class="vc-label">A</div><div>Adulto — elabora il qui e ora, razionale, informativo, neutro</div></div>
+        <div class="vettore-card v-bl"><div class="vc-label">BL+</div><div>Bambino Libero positivo — spontaneo, creativo, curioso</div></div>
+        <div class="vettore-card v-bl-neg"><div class="vc-label">BL−</div><div>Bambino Libero negativo — egoistico, manipolativo, ribelle</div></div>
+        <div class="vettore-card v-ba"><div class="vc-label">BA+</div><div>Bambino Adattato positivo — coopera, rispetta, negozia</div></div>
+        <div class="vettore-card v-ba-neg"><div class="vc-label">BA−</div><div>Bambino Adattato negativo — compiacente, soppresso, ritirato</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

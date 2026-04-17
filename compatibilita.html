@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compatibilità tra enneatipi — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<link rel="canonical" href="https://olismo-integrato.it/compatibilita.html">
+<meta property="og:title" content="Compatibilità tra enneatipi — Olismo Integrato">
+<meta property="og:description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compatibilità tra enneatipi — Olismo Integrato">
+<meta name="twitter:description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="compatibilita">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Compatibilità <em>di coppia</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Scopri il livello di compatibilità tra due enneatipi, i punti di forza, le sfide e i consigli pratici per la relazione.</p>
+    </div>
+    <div class="compat-selectors">
+      <div class="compat-select-wrap">
+        <label>Tipo 1</label>
+        <select class="compat-select" id="compat-t1" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🫐 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div class="compat-vs">✦</div>
+      <div class="compat-select-wrap">
+        <label>Tipo 2</label>
+        <select class="compat-select" id="compat-t2" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🫐 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+    </div>
+    <div class="compat-result" id="compat-result"></div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

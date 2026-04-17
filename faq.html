@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Domande frequenti — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="65 domande frequenti su olismo, enneagramma, fiori di Bach, Analisi Transazionale.">
+<link rel="canonical" href="https://olismo-integrato.it/faq.html">
+<meta property="og:title" content="FAQ — Domande frequenti — Olismo Integrato">
+<meta property="og:description" content="65 domande frequenti su olismo, enneagramma, fiori di Bach, Analisi Transazionale.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FAQ — Domande frequenti — Olismo Integrato">
+<meta name="twitter:description" content="65 domande frequenti su olismo, enneagramma, fiori di Bach, Analisi Transazionale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="faq">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Domande Frequenti</div>
+      <h2 class="sec-title">FAQ — <em>tutto quello che vuoi sapere</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="faq-cats" id="faq-cats"><button class="faq-cat-btn active" onclick="filterFaq(&#39;Tutti&#39;)">Tutti</button><button class="faq-cat-btn" onclick="filterFaq(&#39;AT&#39;)">AT</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Enneagramma&#39;)">Enneagramma</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Chakra&#39;)">Chakra</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Cristalli&#39;)">Cristalli</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Bach&#39;)">Bach</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Pranoterapia&#39;)">Pranoterapia</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Test&#39;)">Test</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Sito&#39;)">Sito</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Neuroscienze&#39;)">Neuroscienze</button><button class="faq-cat-btn" onclick="filterFaq(&#39;FES&#39;)">FES</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Bush&#39;)">Bush</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Psicodinamica&#39;)">Psicodinamica</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Rogers&#39;)">Rogers</button><button class="faq-cat-btn" onclick="filterFaq(&#39;VAK&#39;)">VAK</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Frequenze&#39;)">Frequenze</button><button class="faq-cat-btn" onclick="filterFaq(&#39;Percorsi&#39;)">Percorsi</button></div>
+    <div class="faq-list" id="faq-list">
+    <div class="faq-item" id="faq-item-0">
+      <button class="faq-q" onclick="toggleFaq(0)">
+        <span>Cos'è l'Analisi Transazionale?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-0"><div class="faq-a-inner">L'AT è una teoria della personalità e della comunicazione sviluppata da Eric Berne negli anni '60. Studia come le persone interagiscono (transazioni), i copioni di vita e i tre stati dell'Io (Genitore, Adulto, Bambino). È uno strumento pratico per il counseling, la terapia e la crescita personale.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-1">
+      <button class="faq-q" onclick="toggleFaq(1)">
+        <span>Cosa sono i 6 adattamenti di personalità AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-1"><div class="faq-a-inner">Sono i 6 stili adattativi che sviluppiamo nei primi 6 anni di vita. Tre di sopravvivenza (Schizoide, Antisociale, Paranoide — 0-18 mesi) e tre di performance (Passivo-Aggressivo, Ossessivo-Compulsivo, Istrionico — 18 mesi-6 anni). Ogni adattamento ha una porta aperta, un bersaglio e una trappola comunicativa. Non indicano patologia, ma lo stile adattivo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-2">
+      <button class="faq-q" onclick="toggleFaq(2)">
+        <span>Come funzionano le porte di accesso nell'AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-2"><div class="faq-a-inner">Ogni adattamento ha tre porte: la porta aperta (dove investiamo più energia: emozioni, pensiero o comportamento), la porta bersaglio (su cui lavorare per il cambiamento) e la porta trappola (da evitare nelle prime fasi, perché blocca la relazione). Es: con un Istrionico si parte sempre dalle emozioni; proporre subito azioni concrete è la trappola.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-3">
+      <button class="faq-q" onclick="toggleFaq(3)">
+        <span>Cosa sono le spinte del copione?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-3"><div class="faq-a-inner">Le 5 spinte (Sii perfetto, Sii forte, Sforzati, Cerca di piacere, Sbrigati) sono messaggi genitoriali interiori. Ognuna corrisponde a un copione di vita: 'Finché non finisco non mi diverto' (Sii perfetto), 'Non otterrò mai ciò che voglio' (Sii forte), 'Mi succede sempre questo' (Sforzati), 'Lo pagherò domani' (Cerca di piacere). Sbrigati rinforza le altre.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-4">
+      <button class="faq-q" onclick="toggleFaq(4)">
+        <span>Cos'è l'Egogramma?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-4"><div class="faq-a-inner">L'Egogramma (Dusay, 1977) rappresenta graficamente i 5 stati dell'Io funzionali: GN (Genitore Normativo), GA (Genitore Affettivo), A (Adulto), BL (Bambino Libero), BA (Bambino Adattato). La somma tende a essere costante: alzare uno stato spesso ne abbassa un altro. Sposta i cursori nella sezione Egogramma del sito per esplorare il tuo profilo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-5">
+      <button class="faq-q" onclick="toggleFaq(5)">
+        <span>Cosa sono le carezze nell'AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-5"><div class="faq-a-inner">Le carezze sono unità di riconoscimento dell'altro. Possono essere positive o negative, condizionate (per ciò che fai) o incondizionate (per ciò che sei). Qualsiasi carezza è meglio che nessuna carezza: da bambini, se non ottenevamo carezze positive, imparavamo a ottenere quelle negative. Nella sezione Carezze puoi valutare quanto liberamente dai, ricevi, chiedi e rifiuti riconoscimento.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-6">
+      <button class="faq-q" onclick="toggleFaq(6)">
+        <span>Cosa misura il Test degli Adattamenti AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-6"><div class="faq-a-inner">Il test misura l'intensità e la polarità Estroversa/Introversa dei 6 adattamenti di personalità AT. 40 domande Sì/No (29 originali + 11 migliorative), circa 8-10 minuti. Il risultato mostra l'adattamento primario e secondario, le porte di accesso e le connessioni a chakra, cristalli e frequenze solfeggio.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-7">
+      <button class="faq-q" onclick="toggleFaq(7)">
+        <span>Cosa significa E e I nel test degli adattamenti?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-7"><div class="faq-a-inner">E (Estroverso) = l'adattamento si esprime verso l'esterno: azione visibile, relazione, comportamento osservabile. I (Introverso) = si esprime verso l'interno: ritiro, elaborazione silenziosa, difesa nascosta. Conoscere la propria polarità aiuta a capire come l'adattamento si manifesta nelle relazioni e nel lavoro.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-8">
+      <button class="faq-q" onclick="toggleFaq(8)">
+        <span>Come si usa la porta aperta nel counseling AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-8"><div class="faq-a-inner">Vai sempre alla porta aperta prima di tutto. Istrionico → parti dalle emozioni. Ossessivo-Compulsivo e Paranoide → parti dal pensiero. Schizoide, Antisociale, Passivo-Aggressivo → parti dal comportamento concreto. Dalla porta aperta spostati verso il bersaglio. Evita la trappola soprattutto nelle prime sessioni.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-9">
+      <button class="faq-q" onclick="toggleFaq(9)">
+        <span>Cosa sono le carezze false e di plastica?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-9"><div class="faq-a-inner">La carezza falsa inizia con qualcosa di positivo e finisce con una critica ('Vedo che capisci, più o meno'). La carezza di plastica è insincera, esagerata, svuotata di significato. Entrambe distorcono la comunicazione e alimentano copioni negativi. Riconoscerle è il primo passo per costruire relazioni più autentiche.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-10">
+      <button class="faq-q" onclick="toggleFaq(10)">
+        <span>Cos'è l'Enneagramma Evolutivo?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-10"><div class="faq-a-inner">L'Enneagramma Evolutivo di Carlo Alberto Calcagno non è solo un sistema di classificazione ma una mappa di percorsi di trasformazione. Integra le Dignità di Raimondo Lullo, le gerarchie angeliche, le muse greche, i chakra e i percorsi evolutivi per fascia d'età. I 9 tipi attraversano fasi diverse a seconda dell'età (0-3, 3-12, 12-19, 19-30, 30-60, 60+).</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-11">
+      <button class="faq-q" onclick="toggleFaq(11)">
+        <span>Cosa sono i 9 Frutti dell'Albero della Vita?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-11"><div class="faq-a-inner">I 9 Frutti sono il sistema simbolico originale di Carlo Alberto Calcagno: Mela (T1-Il Perfezionista), Pera (T2-L'Altruista), Ciliegia (T3-Il Manager), Nespola (T4-Il Romantico), Uva (T5-L'Eremita), Mirtillo (T6-Il Leale), Ananas (T7-L'Entusiasta), Albicocca (T8-Il Capo), Fragola (T9-Il Diplomatico). Ogni frutto porta attributi spirituali unici.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-12">
+      <button class="faq-q" onclick="toggleFaq(12)">
+        <span>Come funziona il Test dei 9 Frutti?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-12"><div class="faq-a-inner">180 domande Sì/No (20 per ciascun frutto), circa 15-20 minuti. Risposta istintiva, non ragionata. Il frutto con il punteggio più alto determina il tuo enneatipo principale. Il secondo più alto tra i due adiacenti determina l'ala. Il risultato si connette automaticamente a chakra, cristalli, frequenze, adattamenti AT e Fiori di Bach.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-13">
+      <button class="faq-q" onclick="toggleFaq(13)">
+        <span>Cosa sono le Dignità di Raimondo Lullo?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-13"><div class="faq-a-inner">Raimondo Lullo (XIII sec.) identificò 9 perfezioni divine: Grandezza, Eternità, Potenza, Sapienza, Volontà, Verità, Gloria, Bontà, Perfezione. Nell'Enneagramma Evolutivo ognuna corrisponde a un enneatipo come 'missione spirituale': T1-Volontà, T2-Eternità, T3-Sapienza, T4-Sapienza, T5-Verità, T6-Grandezza, T7-Grandezza, T8-Gloria, T9-Perfezione.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-14">
+      <button class="faq-q" onclick="toggleFaq(14)">
+        <span>Come funziona il percorso evolutivo per fascia d'età?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-14"><div class="faq-a-inner">I tipi 3-6-9 hanno un ciclo breve (3 fasi); i tipi 1-2-4-5-7-8 hanno un ciclo lungo (6 fasi). Es. il Tipo 1 passa da 1→7→5→8→2→4 nel percorso di integrazione. Ogni fase porta una diversa dignità, gerarchia angelica, musa e chakra. Clicca su un enneatipo nella sezione Enneatipi per vedere il percorso completo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-15">
+      <button class="faq-q" onclick="toggleFaq(15)">
+        <span>Come si individuano i 3 sottotipi di ogni enneatipo?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-15"><div class="faq-a-inner">Ogni enneatipo ha 3 sottotipi: conservativo (autoconservazione), sociale (appartenenza al gruppo) e sessuale (relazione duale intensa). Lo stesso Tipo 2 sarà molto diverso: il conservativo è dedizione assoluta, il sociale è ambizione attraverso l'altruismo, il sessuale è seduzione magnetica.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-16">
+      <button class="faq-q" onclick="toggleFaq(16)">
+        <span>Come si usa la matrice di compatibilità di coppia?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-16"><div class="faq-a-inner">Vai alla sezione 'Compatibilità di Coppia'. Seleziona i due enneatipi dai menu. Il sistema mostra percentuale di compatibilità, livello (eccellente/ottima/buona/media/difficile), punti di forza, sfide e consigli pratici basati sulla ricerca di Carlo Alberto Calcagno sui 81 possibili abbinamenti.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-17">
+      <button class="faq-q" onclick="toggleFaq(17)">
+        <span>Come si usa il sistema dei chakra in terapia?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-17"><div class="faq-a-inner">I 7 chakra mappano lo sviluppo psico-emotivo: ogni centro governa un diritto fondamentale, uno stadio evolutivo e una ghiandola endocrina. Un chakra 'bloccato' si manifesta come pattern emotivo negativo ricorrente. Si lavora con cristalli, frequenze sonore, esercizi corporei e alimentazione mirata. Il Database del sito mostra tutte le connessioni.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-18">
+      <button class="faq-q" onclick="toggleFaq(18)">
+        <span>Qual è la connessione tra chakra ed enneatipi?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-18"><div class="faq-a-inner">1° chakra (sopravvivenza) → T8-9-1; 2°-3° (emozioni/potere) → T2-3-4; 5°-6°-7° (pensiero/intuizione) → T5-6-7. Questa correlazione permette percorsi integrati: un T5 con blocco al 5° chakra beneficia delle stesse frequenze (741Hz) sia energeticamente che psicologicamente.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-19">
+      <button class="faq-q" onclick="toggleFaq(19)">
+        <span>Come si scelgono i cristalli per un lavoro terapeutico?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-19"><div class="faq-a-inner">Si parte dal chakra coinvolto, dal disturbo presentato e dall'enneatipo. Nel Database seleziona 'Cristalli' e cerca per nome, chakra o disturbo. Ogni cristallo ha funzione primaria, disturbi correlati e frequenza solfeggio abbinata. Es: Ametista per il 6°-7° chakra, ansia e insonnia; Granato per il 1° chakra, paura e mancanza di radicamento.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-20">
+      <button class="faq-q" onclick="toggleFaq(20)">
+        <span>Come si scelgono i Fiori di Bach?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-20"><div class="faq-a-inner">I Fiori di Bach si scelgono dallo stato emotivo negativo presente, non dal sintomo fisico. Ogni rimedio trasforma uno stato negativo nella sua qualità positiva (Larch: scarsa autostima → fiducia). Correlano ai chakra attraverso il piano emotivo. Il Rescue Remedy è la combinazione d'emergenza per shock e traumi acuti.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-21">
+      <button class="faq-q" onclick="toggleFaq(21)">
+        <span>I Fiori di Bach sono compatibili con altri trattamenti?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-21"><div class="faq-a-inner">Sì. Sono sicuri, non tossici e compatibili con qualsiasi trattamento medico, psicologico o olistico. Non sostituiscono il parere del medico ma agiscono sul terreno emotivo da cui i sintomi emergono. Utili come supporto complementare nei percorsi di counseling e terapia.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-22">
+      <button class="faq-q" onclick="toggleFaq(22)">
+        <span>Cos'è la pranoterapia?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-22"><div class="faq-a-inner">La pranoterapia è la trasmissione consapevole di energia pranale attraverso le mani. A differenza del Reiki che usa energia universale, la pranoterapia utilizza l'energia personale dell'operatore formato. Agisce su quattro livelli: fisico, emotivo, mentale e spirituale. Utile come complemento a cristalloterapia e frequenze solfeggio.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-23">
+      <button class="faq-q" onclick="toggleFaq(23)">
+        <span>Chi può praticare la pranoterapia?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-23"><div class="faq-a-inner">Potenzialmente chiunque: siamo tutti esseri energetici. L'impulso è innato — una madre che posa la mano sul bambino ferito fa pranoterapia. Un trattamento formale richiede formazione specifica per leggere il campo energetico, trasmettere consapevolmente e proteggersi dall'esaurimento.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-24">
+      <button class="faq-q" onclick="toggleFaq(24)">
+        <span>Come funziona il Test dei 9 Frutti?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-24"><div class="faq-a-inner">180 domande Sì/No in 9 sezioni da 20 domande ciascuna. Puoi navigare liberamente tra i frutti con i pulsanti emoji in cima. Quando completi un frutto si avanza automaticamente. Il risultato mostra il tuo profilo completo a barre e collega il tuo tipo a chakra, cristalli, frequenze, AT e Bach.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-25">
+      <button class="faq-q" onclick="toggleFaq(25)">
+        <span>Come funziona il Test degli Adattamenti AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-25"><div class="faq-a-inner">40 domande Sì/No in 6 sezioni (una per adattamento). Risposta istintiva, non ragionata. Il risultato mostra l'intensità di ogni adattamento e se si esprime in modo estroverso o introverso. Tre pulsanti finali: vedi la scheda AT completa, scopri la compatibilità relazionale con il tuo tipo, oppure chiedi alla Consulente AI un percorso personalizzato.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-26">
+      <button class="faq-q" onclick="toggleFaq(26)">
+        <span>Posso fare entrambi i test?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-26"><div class="faq-a-inner">Sì, anzi è consigliato. Il Test dei 9 Frutti identifica il tuo enneatipo principale; il Test degli Adattamenti AT rivela il tuo stile relazionale e comunicativo. I due risultati sono complementari: conoscere sia il tuo enneatipo che il tuo adattamento primario ti dà una mappa molto più precisa per il lavoro su di te.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-27">
+      <button class="faq-q" onclick="toggleFaq(27)">
+        <span>Come funziona la ricerca nel database?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-27"><div class="faq-a-inner">Premi 'Cerca' in alto o nell'hero. Digita qualsiasi parola: un cristallo, un disturbo, un enneatipo, una frequenza. Il sistema cerca in tutti i campi di tutti i domini e raggruppa i risultati per categoria. Clicca su un risultato per aprirlo nel Database Explorer con tutte le sue connessioni.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-28">
+      <button class="faq-q" onclick="toggleFaq(28)">
+        <span>Come usa il database la Consulente AI?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-28"><div class="faq-a-inner">La Consulente AI ha accesso all'intero database via system prompt: chakra, cristalli, enneatipi, frequenze, adattamenti AT, Fiori di Bach/FES/Bush, alimentazione e oltre 100 schede terapeutiche. L'AI è già configurata e pronta all'uso: basta digitare la tua domanda nella sezione ✨ Consulente AI. Al termine della conversazione puoi scaricare un PDF professionale con la trascrizione oppure un Report Olistico completo che integra i risultati dei tuoi test.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-29">
+      <button class="faq-q" onclick="toggleFaq(29)">
+        <span>Come funziona il Database Explorer?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-29"><div class="faq-a-inner">Seleziona un dominio nelle schede (Chakra, Cristalli, Enneatipi, Musica, Adattamenti, Esercizi). Clicca un elemento nella lista. Il pannello di destra mostra tutti i campi e le connessioni con gli altri domini — ogni chip è cliccabile e porta al dettaglio dell'elemento correlato.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-30">
+      <button class="faq-q" onclick="toggleFaq(30)">
+        <span>Come funziona la Consulente AI?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-30"><div class="faq-a-inner">La Consulente AI è integrata direttamente nel sito e non richiede nessuna configurazione o API key. Basta descrivere la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, una domanda su un fiore — e ricevi una risposta personalizzata che integra tutto il database. Due bottoni nella chat: <strong>⬇ Scarica PDF</strong> esporta la conversazione, <strong>📄 Scarica Report</strong> genera un report olistico completo se hai fatto almeno un test. Puoi anche arrivare al consulente dai bottoni «🤖 Approfondisci con l’AI» presenti in quasi tutte le sezioni.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-31">
+      <button class="faq-q" onclick="toggleFaq(31)">
+        <span>Cosa sono i percorsi consigliati nella Guida?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-31"><div class="faq-a-inner">Il sito ha <strong>due livelli di percorsi</strong>. (1) Gli <strong>8 Percorsi Visivi</strong> nella homepage sono card colorate che raggruppano gli strumenti per obiettivo: <em>Conosci te stesso, Riequilibra l'emozione, Cura il corpo sottile, Migliora le relazioni, Gestisci i conflitti, Nutri il corpo, Dialoga con l'AI, Crea il tuo cammino</em>. Quando clicchi su un percorso, il sistema ti accompagna step-by-step attraverso i test, ogni risultato confluisce nell'AI e al termine ottieni un'analisi integrata. (2) Nella sezione Guida trovi percorsi più specifici con sequenze di passaggi dettagliate.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-32">
+      <button class="faq-q" onclick="toggleFaq(32)">
+        <span>Cosa sono le aree cerebrali degli enneatipi?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-32"><div class="faq-a-inner">Secondo Tony Nader (ricercatore vedico) ogni enneatipo corrisponde a una specifica area del cervello: T1→Amigdala, T2→Talamo, T3→Testa del nucleo caudato, T4→Nucleo subtalamico, T5→Putamen, T6→Coda del nucleo caudato, T7→Globo pallido, T8→Pars Reticolare e Substantia Nigra, T9→Ipotalamo. Queste aree sono collegate anche ai Chakra e ai pianeti vedici.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-33">
+      <button class="faq-q" onclick="toggleFaq(33)">
+        <span>Cos'è il cervello tripartito e come si collega all'Enneagramma?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-33"><div class="faq-a-inner">Paul MacLean (neuroscienziato) ha descritto tre cervelli sovrapposti: il Rettiliano (sopravvivenza, territorio, gangli della base), il Paleomammaliano/Limbico (emozioni, memoria, attaccamento) e il Neomammaliano/Corticale (ragione, linguaggio). Gli enneatipi T3, T4, T5, T6, T7, T8 hanno la loro area nel cervello rettiliano; T1, T2, T9 nel sistema limbico. Nell'AT il Bambino corrisponde al limbico, l'Adulto alla corteccia prefrontale.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-34">
+      <button class="faq-q" onclick="toggleFaq(34)">
+        <span>Cosa sono le Muse di Kircher e come si collegano agli enneatipi?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-34"><div class="faq-a-inner">Athanasius Kircher (1665) correlò le 9 gerarchie angeliche, le facoltà umane e le 9 Muse greche agli enneatipi: T1→Urania (astronomia/geometria), T2→Polimnia (memoria/retorica), T3→Euterpe (musica), T4→Erato (poesia amorosa), T5→Melpomene (tragedia), T6→Tersicore (danza), T7→Calliope (poesia epica), T8→Clio (storia), T9→Talia (poesia bucolica). Ogni enneatipo porta nel mondo una specifica 'conoscenza' legata alla propria Musa.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-35">
+      <button class="faq-q" onclick="toggleFaq(35)">
+        <span>Come si collega il cervello rettiliano all'Analisi Transazionale?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-35"><div class="faq-a-inner">Il cervello rettiliano (gangli della base, tronco encefalico) corrisponde al Bambino Somatico nell'AT — gli istinti primari di sopravvivenza, territorialità e riproduzione. Il sistema limbico (amigdala, talamo, ipotalamo) corrisponde al Bambino Emotivo — emozioni, attaccamento, memoria affettiva. La corteccia prefrontale corrisponde all'Adulto AT — razionalità, pianificazione, coscienza. Il Genitore AT risiede nella neocorteccia dove sono immagazzinati i valori introiettati.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-36">
+      <button class="faq-q" onclick="toggleFaq(36)">
+        <span>La Consulente AI ha bisogno di una chiave API?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-36"><div class="faq-a-inner">No. La Consulente AI è ora integrata direttamente nel sito senza bisogno di inserire nessuna chiave. È disponibile automaticamente a tutti gli utenti su tutti i dispositivi.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-37">
+      <button class="faq-q" onclick="toggleFaq(37)">
+        <span>Cosa sono i Fiori Californiani FES?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-37"><div class="faq-a-inner">Le essenze floreali FES (Flower Essence Society) sono state sviluppate in California da Richard e Patricia Kaminski negli anni '70, ampliando il sistema di Bach con 100 nuove essenze. Si concentrano su temi contemporanei: creatività, sessualità integrata, relazioni, crescita spirituale incarnata. Agiscono sul campo bioenergetico trasformando pattern emotivi e mentali profondi.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-38">
+      <button class="faq-q" onclick="toggleFaq(38)">
+        <span>Qual è la differenza tra fiori di Bach e FES?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-38"><div class="faq-a-inner">I 38 fiori di Bach di Edward Bach (1930s) coprono i principali stati emotivi negativi con un sistema semplice e universale. I 100 fiori FES ampliano questo con essenze californiane per stati più complessi e sfumati, con maggiore attenzione alla sessualità, alla spiritualità incarnata e alla creatività. Le FES integrano i fiori di Bach senza sostituirli.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-39">
+      <button class="faq-q" onclick="toggleFaq(39)">
+        <span>Cosa sono le Australian Bush Flower Essences?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-39"><div class="faq-a-inner">Le Bush Essences (ABFE) sono state sviluppate da Ian White, naturopata australiano di quinta generazione, dagli anni '80. Le 65 essenze provengono dalle piante selvatiche australiane — le più antiche del pianeta — che hanno sviluppato straordinarie qualità vibrazionali in milioni di anni di evoluzione isolata. Si caratterizzano per azione diretta, rapida e profonda.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-40">
+      <button class="faq-q" onclick="toggleFaq(40)">
+        <span>Per cosa sono particolarmente indicate le Bush Essences?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-40"><div class="faq-a-inner">Le Bush Essences sono eccellenti per: chiarezza spirituale e apertura (Bush Iris), pattern familiari ereditati (Boab), crisi spirituali (Mint Bush), dolore profondo del cuore (Sturt Desert Pea), disperazione nera (Waratah), squilibri ormonali femminili (She Oak), pensieri ossessivi (Boronia), bassa autostima (Five Corners), traumi dell'aura (Fringed Violet) e senso di scopo (Silver Princess).</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-41">
+      <button class="faq-q" onclick="toggleFaq(41)">
+        <span>Cosa sono i meccanismi di difesa?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-41"><div class="faq-a-inner">Sono strategie inconsce che l'Io attiva per fronteggiare l'angoscia quando un impulso inaccettabile preme per emergere alla coscienza. I principali sono: Rimozione (dimenticare), Proiezione (attribuire ad altri le proprie emozioni), Razionalizzazione (giustificarsi), Formazione reattiva (trasformare odio in amore), Diniego (negare la realtà), Idealizzazione, Annullamento, Isolamento affettivo, Sublimazione, Intellettualizzazione. In mediazione le parti usano spesso proiezione ('la colpa è sua') e razionalizzazione.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-42">
+      <button class="faq-q" onclick="toggleFaq(42)">
+        <span>Cosa sono Es, Io e Super Io?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-42"><div class="faq-a-inner">La seconda topica freudiana descrive tre istanze. L'Es è il serbatoio delle pulsioni inconsce, opera secondo il principio di piacere e vuole la soddisfazione immediata. L'Io media tra Es e realtà esterna, opera secondo il principio di realtà. Il Super Io è il giudice interiore interiorizzato dai genitori: in forma sana è guida etica, in forma patologica perseguita l'Io fino alla depressione. In AT: Es→Bambino, Io→Adulto, Super Io→Genitore.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-43">
+      <button class="faq-q" onclick="toggleFaq(43)">
+        <span>Come si collegano le fasi di sviluppo di Freud agli enneatipi?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-43"><div class="faq-a-inner">Le fasi freudiane lasciano tracce nel carattere adulto correlabili agli enneatipi. La fase Orale (0-1.5a) produce dipendenza/fiducia correlata ai tipi 2 e 9. La fase Anale (1.5-3a) produce controllo/autonomia correlata ai tipi 1 e 8. La fase Fallica (3a-pubertà) con il complesso di Edipo e l'angoscia di castrazione è correlata ai tipi 6 e 3. La fissazione in una fase produce un adattamento di personalità specifico.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-44">
+      <button class="faq-q" onclick="toggleFaq(44)">
+        <span>Cos'è la tendenza attualizzante di Rogers?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-44"><div class="faq-a-inner">È la spinta innata in ogni organismo verso la crescita, l'autonomia, la maturità e la piena realizzazione. Per Rogers non è necessario 'riparare' le persone: la crescita avviene naturalmente quando si creano le condizioni giuste (congruenza, accettazione incondizionata, empatia). È analoga alla spinta evolutiva dell'Enneagramma Evolutivo di Calcagno.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-45">
+      <button class="faq-q" onclick="toggleFaq(45)">
+        <span>Cosa sono le tre condizioni di Rogers?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-45"><div class="faq-a-inner">Le condizioni necessarie e sufficienti per la crescita terapeutica (e per una buona mediazione): 1) Congruenza: il terapeuta/mediatore è autentico, non nasconde sé stesso dietro una maschera professionale. 2) Accettazione incondizionata: accettare la persona nella sua globalità, senza giudicarla. 3) Empatia: capire il frame interno dell'altro dall'interno, non dall'esterno. Queste condizioni creano un clima non minaccioso che permette esplorazione e cambiamento.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-46">
+      <button class="faq-q" onclick="toggleFaq(46)">
+        <span>Come si attivano i tre cervelli in mediazione?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-46"><div class="faq-a-inner">Quando una parte è arrabbiata o spaventata il cervello rettiliano/limbico è dominante: il linguaggio si blocca (regola del blocco), la neocorteccia va offline. Il mediatore deve prima riportare il sistema nervoso allo Stato 1 (sicurezza/connessione) prima di qualsiasi dialogo razionale. I 6 stimoli che attivano il cervello rettiliano: sorpresa, egocentrismo, contrasto, concretezza, inizio/fine, immagini visive. La legge di Fechner spiega perché alzare la voce viene percepito molto più intensamente di quanto si creda.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-47">
+      <button class="faq-q" onclick="toggleFaq(47)">
+        <span>Cosa sono i canali VAK?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-47"><div class="faq-a-inner">VAK è l'acronimo di Visivo, Auditivo, Cinestetico (Kinesthetic in inglese). Secondo la Programmazione Neuro-Linguistica (PNL), ogni persona elabora la realtà preferenzialmente attraverso uno di questi tre canali sensoriali. Il Visivo pensa per immagini, l'Auditivo per suoni e parole, il Cenestesico per sensazioni fisiche ed emozioni. Il canale dominante si rivela nel linguaggio usato, nella postura, nei movimenti degli occhi e nel tono di voce.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-48">
+      <button class="faq-q" onclick="toggleFaq(48)">
+        <span>Come si correlano VAK, Enneagramma e AT?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-48"><div class="faq-a-inner">Secondo Calcagno esiste una corrispondenza: Visivo → enneatipi 3,7,8 (tipi d'azione) → Asta/Accusatore di Satir → Genitore Normativo/Adulto AT; Auditivo → enneatipi 1,5,6 (tipi intellettuali) → Cerchio/Superlogico → Adulto AT; Cenestesico → enneatipi 2,4,9 (tipi emotivi) → Triangolo/Propiziatore → Bambino AT. Queste non sono correlazioni assolute ma tendenze frequenti che aiutano il mediatore/counselor a calibrare la comunicazione.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-49">
+      <button class="faq-q" onclick="toggleFaq(49)">
+        <span>Cos'è la Time Line nella PNL?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-49"><div class="faq-a-inner">La Time Line è uno strumento PNL in cui si traccia una linea immaginaria con passato, presente e futuro. Il soggetto si posiziona fisicamente su ciascun punto e risponde a domande usando il linguaggio del suo canale VAK (visivo: 'come visualizza il futuro?'; auditivo: 'cosa si dice?'; cenestesico: 'come si sente?'). In mediazione viene usata nella sessione privata per portare il mediant a ricordare un passato positivo e a costruire una visione di futuro che motivi l'accordo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-50">
+      <button class="faq-q" onclick="toggleFaq(50)">
+        <span>Cos'è la scala solfeggio e a cosa serve?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-50"><div class="faq-a-inner">Le frequenze solfeggio sono una scala di 9 toni (174Hz–963Hz) usata in musica terapeutica. Ogni frequenza è associata a uno stato emotivo e a un chakra specifico: 396Hz scioglie la paura (chakra radice), 528Hz è nota per la trasformazione (plesso solare), 639Hz favorisce le relazioni (chakra del cuore), 852Hz attiva l'intuizione (terzo occhio). Non sono frequenze magiche, ma strumenti di supporto meditativo e rilassamento profondo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-51">
+      <button class="faq-q" onclick="toggleFaq(51)">
+        <span>Come si usano le frequenze solfeggio in pratica?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-51"><div class="faq-a-inner">Si ascoltano preferibilmente con cuffie, durante meditazione, rilassamento o lavoro creativo. 20-40 minuti al giorno sono sufficienti. Puoi abbinarle ai cristalli corrispondenti (es. 528Hz + Citrino per il plesso solare) oppure usarle come sottofondo durante pratiche corporee. Su frequenze-evolutive.it puoi generare prompt musicali personalizzati basati sul tuo enneatipo e sulla frequenza scelta.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-52">
+      <button class="faq-q" onclick="toggleFaq(52)">
+        <span>Cosa lega le frequenze solfeggio ai chakra?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-52"><div class="faq-a-inner">Ogni frequenza risuona con un centro energetico: 174Hz (dolore fisico, radice), 285Hz (rigenerazione, radice-sacrale), 396Hz (paura/colpa, radice), 417Hz (cambiamento, sacrale), 528Hz (trasformazione/DNA, plesso solare), 639Hz (relazioni, cuore), 741Hz (espressione, gola), 852Hz (intuizione, terzo occhio), 963Hz (connessione spirituale, corona). Trovi le schede complete nella sezione Frequenze del database.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-53">
+      <button class="faq-q" onclick="toggleFaq(53)">
+        <span>Come si usa la Mappa del Viaggio?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-53"><div class="faq-a-inner">La Mappa del percorso è accessibile dal ☰ Menu → ✨ Inizia qui → 🗺 Mappa del percorso. Ti mostra il viaggio olistico completo in 5 fasi (Accoglienza, Conosci te stesso, Approfondisci, Guarigione, Consulta). È un orientamento più lineare rispetto agli <strong>8 Percorsi Visivi</strong> della homepage, che sono tematici e guidati. Consigliamo di usare prima gli 8 Percorsi per scegliere un tema e completare i test in sequenza, poi la Mappa se preferisci una panoramica strutturata.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-54">
+      <button class="faq-q" onclick="toggleFaq(54)">
+        <span>Qual è il percorso consigliato per chi inizia da zero?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-54"><div class="faq-a-inner">Per chi inizia, il sito propone <strong>3 punti di ingresso</strong>: (1) il <strong>tour di benvenuto</strong> che parte automaticamente alla prima visita (5 step guidati, circa 1 minuto); (2) la <strong>Quick Start Bar</strong> sotto l'header con 3 scorciatoie dirette (Check Integrato, 9 Frutti, Consulente AI); (3) il percorso <strong>✨ Conosci te stesso</strong> nella sezione Percorsi Visivi, che ti guida attraverso Check → 9 Frutti → AT → VAK → Egogramma e al termine ti propone un'analisi integrata AI. Da quel momento il <strong>Progress Widget</strong> in basso a sinistra mostra i tuoi progressi.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-55">
+      <button class="faq-q" onclick="toggleFaq(55)">
+        <span>Come funziona il Check Integrato?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-55"><div class="faq-a-inner">Il Check Integrato è raggiungibile da <strong>4 punti</strong>: (1) la Quick Start Bar sotto l'header; (2) il bottone ✨ nell'hero della homepage; (3) la prima card «Conosci te stesso» negli 8 Percorsi Visivi; (4) il ☰ Menu → ✨ Inizia qui. È un wizard in 5 passi che ti chiede cosa stai cercando — lavoro su te stesso, relazioni, benessere fisico, spiritualità o crescita professionale — e ti propone il percorso più adatto tra le discipline del sito. Al termine il risultato viene salvato e riutilizzato dal Consulente AI per personalizzare le risposte.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-56">
+      <button class="faq-q" onclick="toggleFaq(56)">
+        <span>Cosa fa la Consulente AI e come si attiva?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-56"><div class="faq-a-inner">La Consulente AI conosce l'intero database (chakra, cristalli, enneatipi, AT, Bach, FES, Bush, frequenze, esercizi) e risponde integrando più sistemi. È <strong>già attiva e pronta all'uso</strong> senza configurazioni: la trovi dal ☰ Menu → ✨ Consulente AI o dal pulsante «🤖 Fai una domanda all'AI» nell'hero. Puoi anche arrivare al consulente dai bottoni «🤖 Approfondisci con l'AI» presenti in ogni sezione — il testo viene pre-compilato con il contesto. Al termine puoi scaricare il PDF della chat o generare un Report Olistico completo.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-57">
+      <button class="faq-q" onclick="toggleFaq(57)">
+        <span>Il sito raccoglie dati personali?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-57"><div class="faq-a-inner">No. Olismo Integrato non usa cookie di tracciamento, non raccoglie dati personali, non richiede registrazione. I risultati dei test rimangono nel tuo browser (sessionStorage). La chiave API, se inserita, è salvata solo nel tuo localStorage locale. Nessun dato viene inviato a server propri del sito.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-58">
+      <button class="faq-q" onclick="toggleFaq(58)">
+        <span>Cosa sono i portali gemelli di Olismo Integrato?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-58"><div class="faq-a-inner">Carlo Alberto Calcagno gestisce 6 portali specializzati: frequenze-evolutive.it (prompt musicali con Suno AI), guarigionequantica.eu (pranoterapia e guarigione energetica), mediaresenzaconfini.org (mediazione familiare), percorsidicrescitalucca.it (corsi e percorsi pratici), ladanzadelconflitto.it (danza del conflitto), tieniinmanolaluce.me (percorso spirituale). Tutti sono linkati nel footer.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-59">
+      <button class="faq-q" onclick="toggleFaq(59)">
+        <span>Cosa sono integrazione e disintegrazione nell'Enneagramma?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-59"><div class="faq-a-inner">Ogni enneatipo ha DUE percorsi possibili. Il percorso di integrazione (crescita, salute) porta a sviluppare le qualità positive dei tipi incontrati lungo le frecce: es. il T1 in integrazione diventa progressivamente più spontaneo (→7), poi più profondo (→5), poi più assertivo (→8), poi più generoso (→2), poi più autentico (→4). Il percorso di disintegrazione (stress, regressione) percorre le stesse frecce in senso opposto, manifestando le qualità negative di ciascun tipo. Gli incroci chiave di integrazione: 8→2 (forza→tenerezza), 5→8 (mente→azione), 1→7 (rigidità→spontaneità), 9→3 (inerzia→azione). Il percorso automatico tende verso la disintegrazione; l'integrazione richiede lavoro consapevole.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-60">
+      <button class="faq-q" onclick="toggleFaq(60)">
+        <span>Cosa sono i punti di shock nell'Enneagramma evolutivo?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-60"><div class="faq-a-inner">I punti di shock (Gurdjieff) sono momenti critici della vita in cui le strategie abituali non funzionano più: lutti, nascite, separazioni, crisi ai 30-40-50-60 anni, incontri con un mentore. In questi momenti si può scegliere (consciamente o no) tra Percorso 1 (crescita graduale) o Percorso 2 (regressione). Sono momenti delicati ma potentissimi: la persona è più aperta al cambiamento del solito e piccoli interventi del mediatore/counselor hanno grande impatto. Riconoscerli permette di 'cavalcare' la crisi invece di subirla.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-61">
+      <button class="faq-q" onclick="toggleFaq(61)">
+        <span>Perché il percorso evolutivo del T8 è più complesso di quello del T9?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-61"><div class="faq-a-inner">Il T8 appartiene al ciclo lungo (1-7-5-8-2-4) e percorre 6 tipi con 6 fasi evolutive intensive: 8(0-3)→2(3-12)→4(12-19)→1(19-30)→7(30-60)→5(60+) in integrazione. Il T9 appartiene al ciclo breve (3-6-9) e percorre solo 3 tipi con 3 grandi fasi: 9(0-30)→3(30-60)→6(60+). Questo significa che Sempronia (T8) vive più crisi evolutive e cambiamenti di personalità nel corso della vita — non è instabilità, è una struttura più complessa. Ha già superato 5 transizioni mentre Tizio (T9) ne ha affrontata solo una a 30 anni. La differenza spiega perché in coppia il T8 'sente' il cambiamento molto più intensamente.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-62">
+      <button class="faq-q" onclick="toggleFaq(62)">
+        <span>Cosa sono i 3 stati del sistema nervoso nella Teoria Polivagale?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-62"><div class="faq-a-inner">La Teoria Polivagale di Stephen Porges descrive tre stati del sistema nervoso autonomo. Stato 1 CONNESSIONE (ventrovagale): viso rilassato, voce calma, occhi presenti, curiosità e apertura — l'unico stato in cui mediazione e crescita sono davvero possibili. Stato 2 MOBILITAZIONE (simpatico/combatti o fuggi): voce alta o gelida, muscoli tesi, pensieri accelerati — il T8 in conflitto è tipicamente in questo stato. Stato 3 IMMOBILIZZAZIONE (dorsovagale/congelamento): silenzio, sguardo vuoto, monosillabi 'va bene/come vuoi', pesantezza emotiva — il T9 in conflitto è tipicamente in questo stato. Se il sistema nervoso non è in Stato 1, nessun dialogo razionale funziona: prima regola il corpo, poi lavora con la mente.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-63">
+      <button class="faq-q" onclick="toggleFaq(63)">
+        <span>Cos'è la co-regolazione e perché è fondamentale in mediazione?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-63"><div class="faq-a-inner">La co-regolazione è il fenomeno per cui i sistemi nervosi si sincronizzano automaticamente: quando parli con qualcuno calmo ti calmi, quando parli con qualcuno agitato ti agiti. Non è psicologia — è neurobiologia. In mediazione questo significa che lo stato interno del mediatore è il primo strumento di lavoro: un mediatore in Stato 1 (connessione) porta sicurezza nella stanza; un mediatore ansioso amplifica il conflitto. La prima regola prima di ogni sessione è regolare sé stessi: 5 respiri profondi, sciogliere le tensioni corporee, ricordare 'non sono qui per giudicare, sono qui per creare sicurezza'.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-64">
+      <button class="faq-q" onclick="toggleFaq(64)">
+        <span>Come si svolge la danza del conflitto tra T8 e T9?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-64"><div class="faq-a-inner">La danza T8-T9 ha 5 passi sempre uguali: (1) TRIGGER — un evento piccolo attiva il copione (Tizio dimentica una richiesta, Sempronia fa un commento critico). (2) LEI SI ATTIVA — Sempronia (T8) sente 'non gli importo' e va in Stato 2: alza il tono, attacca. (3) LUI SI CONGELA — Tizio (T9) sente 'sono sotto attacco' e va in Stato 3: silenzio, monosillabi, distacco emotivo. (4) CIRCOLO VIZIOSO — lei spinge di più vedendo il silenzio, lui si ritira ancora. (5) ESPLOSIONE O MURO — dopo settimane Tizio esplode improvvisamente, oppure si crea un muro gelido per giorni. Il mediatore interviene al passo 2 e 3, prima che il circolo si chiuda. Script universale: 'Sotto questa intensità, cosa temi?'</div></div>
+    </div></div>
+  <!--
+    <div class="faq-item" id="faq-item-65" data-cat="FES"-->
+      <button class="faq-q" onclick="toggleFaq(65)">
+        <span>Come funziona il Motore AI per i Fiori FES Californiani?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-65"><div class="faq-a-inner">Il Motore AI FES si trova nella sezione "I Miei Fiori Californiani" (✿ AI FES nel menu). Offre due modalità: <strong>🎯 Come ti senti</strong> — descrivi il tuo stato emotivo e l'AI individua i fiori FES più adatti, collegandoli a enneatipo, adattamenti AT e cristalli; <strong>🔍 Cerca un fiore</strong> — cerca direttamente per nome con scheda completa e confronto rispetto a fiori di Bach e australiani.</div></div>
+    </div>
+    <div class="faq-item" id="faq-item-66" data-cat="Bush">
+      <button class="faq-q" onclick="toggleFaq(66)">
+        <span>Come funziona il Motore AI per i Fiori Australiani Bush?</span><span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a" id="faq-a-66"><div class="faq-a-inner">Il Motore AI Bush si trova nella sezione "I Miei Fiori Australiani" (❋ AI Bush nel menu). Funziona come il motore FES: <strong>🎯 Come ti senti</strong> — l'AI suggerisce le essenze Bush più coerenti con enneatipo, adattamenti AT e chakra; <strong>🔍 Cerca un fiore</strong> — scheda integrata con confronto incrociato Bach e FES. Particolarmente indicato per blocchi energetici profondi e transizioni di vita.</div></div>
+    </div>div&gt;
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

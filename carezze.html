@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carezze relazionali — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Le carezze in Analisi Transazionale: verbali, non verbali, positive, negative.">
+<link rel="canonical" href="https://olismo-integrato.it/carezze.html">
+<meta property="og:title" content="Carezze relazionali — Olismo Integrato">
+<meta property="og:description" content="Le carezze in Analisi Transazionale: verbali, non verbali, positive, negative.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carezze relazionali — Olismo Integrato">
+<meta name="twitter:description" content="Le carezze in Analisi Transazionale: verbali, non verbali, positive, negative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="carezze">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Analisi Transazionale · Berne</div>
+      <h2 class="sec-title">Le <em>carezze</em> — autovalutazione</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Le carezze sono unità di riconoscimento dell'altro. Ogni transazione è determinata da due carezze. Qualsiasi carezza è meglio che nessuna carezza — da piccoli, se non ottenevamo carezze piacevoli, studiavamo come ottenere quelle spiacevoli. Quanto spesso usi queste modalità?</p>
+    </div>
+    <div class="carezze-grid">
+      <div class="carezza-col">
+        <h3>🌿 Carezze Positive</h3>
+        <p class="carezza-sub">Valutate piacevoli da chi le riceve</p>
+        <div class="carezza-row"><label>Dare carezze positive</label>
+          <div class="carezza-scale"><span>Mai (1)</span><input type="range" min="1" max="10" value="7" class="carezza-slider" data-type="pos" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-pos-dare">7</span></div>
+        </div>
+        <div class="carezza-row"><label>Ricevere (prendere) carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="6" class="carezza-slider" data-type="pos" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-prendere">6</span></div>
+        </div>
+        <div class="carezza-row"><label>Chiedere carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="4" class="carezza-slider" data-type="pos" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-chiedere">4</span></div>
+        </div>
+        <div class="carezza-row"><label>Rifiutarsi di dare carezze positive</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="1" max="10" value="3" class="carezza-slider" data-type="pos" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-pos-rifiutare">3</span></div>
+        </div>
+        <div class="carezza-result" id="carezza-pos-result">Il tuo profilo positivo apparirà qui.</div>
+      </div>
+      <div class="carezza-col neg">
+        <h3>🌑 Carezze Negative</h3>
+        <p class="carezza-sub">Qualsiasi carezza è meglio che nessuna</p>
+        <div class="carezza-row"><label>Dare carezze negative</label>
+          <div class="carezza-scale"><span>Mai (0)</span><input type="range" min="0" max="10" value="3" class="carezza-slider" data-type="neg" data-mode="dare" oninput="updateCarezza(this)"><span>Sempre (10)</span><span class="carezza-val" id="cv-neg-dare">3</span></div>
+        </div>
+        <div class="carezza-row"><label>Ricevere carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="4" class="carezza-slider" data-type="neg" data-mode="prendere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-prendere">4</span></div>
+        </div>
+        <div class="carezza-row"><label>Chiedere carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="2" class="carezza-slider" data-type="neg" data-mode="chiedere" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-chiedere">2</span></div>
+        </div>
+        <div class="carezza-row"><label>Rifiutarsi di dare carezze negative</label>
+          <div class="carezza-scale"><span>Mai</span><input type="range" min="0" max="10" value="8" class="carezza-slider" data-type="neg" data-mode="rifiutare" oninput="updateCarezza(this)"><span>Sempre</span><span class="carezza-val" id="cv-neg-rifiutare">8</span></div>
+        </div>
+        <div class="carezza-result" id="carezza-neg-result">Il tuo profilo negativo apparirà qui.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+</body>
+</html>

@@ -5,10 +5,10 @@
 <!-- ══ OPEN GRAPH ══ -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://olismo-integrato.it/">
-<meta property="og:title" content="Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Fiori di Bach, Frequenze Solfeggio | Carlo Alberto Calcagno">
-<meta property="og:description" content="Portale gratuito delle discipline olistiche: chakra, cristalli, enneagramma evolutivo (9 Frutti), Analisi Transazionale, adattamenti di personalità, fiori di Bach, FES californiani, Bush australiani, frequenze solfeggio, meditazione. Database interconnesso con consulente AI e test gratuiti. Di Carlo Alberto Calcagno, Genova.">
-<meta property="og:image" content="https://olismo-integrato.it/og-image.jpg">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:title" content="Olismo Integrato — Motori AI FES/Bush, Chakra, Enneagramma, AT, Fiori di Bach | Carlo Alberto Calcagno">
+<meta property="og:description" content="Portale gratuito con consulente AI e motori AI per Fiori FES e Bush: chakra, cristalli, 9 enneatipi evolutivi, Analisi Transazionale, fiori di Bach, frequenze solfeggio, meditazione. Database interconnesso e report olistico personalizzato.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:image:type" content="image/svg+xml">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Olismo Integrato — Portale delle Discipline Olistiche di Carlo Alberto Calcagno">
@@ -16,9 +16,9 @@
 <meta property="og:locale" content="it_IT">
 <!-- ══ TWITTER CARD ══ -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Olismo Integrato — Chakra, Enneagramma, AT, Fiori di Bach">
-<meta name="twitter:description" content="Portale gratuito: chakra, cristalli, 9 enneatipi evolutivi, Analisi Transazionale, fiori di Bach, FES, Bush, frequenze solfeggio, meditazione e consulente AI. Di Carlo Alberto Calcagno.">
-<meta name="twitter:image" content="https://olismo-integrato.it/og-image.jpg">
+<meta name="twitter:title" content="Olismo Integrato — Motori AI, Chakra, Enneagramma, Fiori di Bach FES Bush">
+<meta name="twitter:description" content="Portale gratuito con consulente AI e motori AI fiori: chakra, cristalli, 9 enneatipi, AT, Bach, FES, Bush, frequenze. Di Carlo Alberto Calcagno.">
+<meta name="twitter:image" content="https://olismo-integrato.it/og-image.svg">
 <meta name="twitter:creator" content="@calcagnocarloalberto">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -26,9 +26,9 @@
 <meta name="google-site-verification" content="b2392e1f3564a1be">
 
 <!-- ══ SEO PRIMARIO ══ -->
-<title>Olismo Integrato — Chakra, Enneagramma Evolutivo, AT, Cristalli, Frequenze | Carlo Alberto Calcagno</title>
-<meta name="description" content="Portale olistico di Carlo Alberto Calcagno: database di chakra, cristalli, enneatipi, Fiori di Bach, FES californiani, Bush australiani, frequenze sonore, Analisi Transazionale e consulente AI per il benessere integrato, comunicazione transazionale e meditazione olistica.">
-<meta name="keywords" content="enneagramma evolutivo, chakra, fiori di bach, analisi transazionale, VAK, mediazione familiare, pranoterapia, cristalli, frequenze solfeggio, FES californiani, Bush australiani, Carlo Alberto Calcagno, olismo integrato, counseling olistico">
+<title>Olismo Integrato — Motori AI, Chakra, Enneagramma Evolutivo, AT, Fiori di Bach FES Bush | Carlo Alberto Calcagno</title>
+<meta name="description" content="Portale olistico di Carlo Alberto Calcagno con motori AI per Fiori FES e Bush: database di chakra, cristalli, enneatipi (9 Frutti), Fiori di Bach, analisi transazionale, frequenze solfeggio e meditazione. Test, consulente AI personalizzato e report olistico scaricabili in PDF.">
+<meta name="keywords" content="motore AI fiori, consulente AI olistico, fiori FES californiani AI, fiori Bush australiani AI, enneagramma evolutivo, chakra, fiori di bach, analisi transazionale, VAK, mediazione familiare, pranoterapia, cristalli, frequenze solfeggio, 9 frutti, adattamenti AT, egogramma, test olistico, Carlo Alberto Calcagno">
 <meta name="author" content="Carlo Alberto Calcagno">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://olismo-integrato.it/">
@@ -2906,6 +2906,167 @@ body.dark .dark-toggle{background:#3a3632}
 .adm-bar{height:6px;background:var(--gold);border-radius:3px;min-width:2px}
 .adm-reset-btn{font-size:.75rem;color:var(--ink4);background:transparent;border:1px solid var(--border);border-radius:var(--r);padding:.35rem .9rem;cursor:pointer;margin-top:1rem}
 .adm-reset-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ══ MOBILE MENU SECTIONS ══ */
+.mob-section-label{
+  font-size:.66rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);
+  padding:.8rem 1rem .3rem;margin-top:.3rem
+}
+.mob-sep{
+  height:1px;background:var(--border);
+  margin:.5rem 0
+}
+#mob-menu{max-height:calc(100vh - 68px);overflow-y:auto}
+
+/* ══ MEGA MENU ══ */
+.mega-menu-wrap{position:relative;display:inline-block}
+
+.mega-trigger{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.55rem 1.1rem;
+  background:var(--ink);color:var(--ivory);
+  border:none;border-radius:22px;
+  font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .2s,transform .2s;
+}
+.mega-trigger:hover{background:var(--ink2);transform:translateY(-1px)}
+.mega-hamburger{font-size:1.1rem;line-height:1}
+.mega-arrow{font-size:.7rem;transition:transform .25s}
+.mega-menu-wrap.open .mega-arrow{transform:rotate(180deg)}
+
+.mega-panel{
+  display:none;
+  position:fixed;
+  top:68px;left:50%;transform:translateX(-50%);
+  width:min(95vw,1280px);max-height:calc(100vh - 88px);overflow-y:auto;
+  background:var(--ivory);
+  border:1px solid var(--border2);
+  border-radius:16px;
+  box-shadow:0 24px 80px rgba(42,37,32,.22);
+  padding:1.8rem 1.5rem;
+  z-index:9998;
+  grid-template-columns:repeat(6, 1fr);
+  gap:1.4rem;
+  animation:megaFade .2s ease;
+}
+@keyframes megaFade{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
+.mega-menu-wrap.open .mega-panel{display:grid}
+
+.mega-col{display:flex;flex-direction:column;gap:.25rem}
+.mega-col-title{
+  font-size:.62rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold);
+  padding:0 .5rem .4rem;
+  border-bottom:1px solid var(--border);margin-bottom:.4rem;
+}
+
+.mega-item{
+  display:flex;align-items:flex-start;gap:.55rem;
+  padding:.5rem .55rem;
+  background:transparent;border:none;cursor:pointer;
+  border-radius:8px;text-align:left;
+  font-family:inherit;color:var(--ink2);
+  transition:background .15s,transform .15s;
+}
+.mega-item:hover{background:rgba(184,147,90,.08);transform:translateX(2px)}
+.mi-ic{
+  font-size:1.1rem;line-height:1.2;flex-shrink:0;
+  color:var(--gold);width:22px;text-align:center;
+}
+.mi-body{display:flex;flex-direction:column;gap:1px;line-height:1.2;min-width:0}
+.mi-body strong{
+  font-size:.78rem;font-weight:600;color:var(--ink);
+  letter-spacing:.02em;
+}
+.mi-body em{
+  font-size:.68rem;font-style:normal;color:var(--ink3);
+  letter-spacing:.01em;
+}
+.mega-item-star{
+  background:linear-gradient(135deg, rgba(184,147,90,.1), rgba(184,147,90,.02));
+  border:1px solid rgba(184,147,90,.2);
+  padding:.6rem .55rem;margin-bottom:.2rem
+}
+.mega-item-star:hover{background:linear-gradient(135deg, rgba(184,147,90,.18), rgba(184,147,90,.06))}
+.mega-item-star .mi-ic{color:var(--gold2)}
+.mega-item-star strong{color:var(--ink)}
+
+.mega-item-ai-fes .mi-ic{color:#8b78e6}
+.mega-item-ai-bush .mi-ic{color:#c8813a}
+
+.mega-item-small{
+  padding:.35rem .55rem;font-size:.72rem;color:var(--ink3);
+}
+.mega-item-small:hover{color:var(--ink);background:rgba(184,147,90,.06)}
+
+/* Backdrop click outside */
+.mega-backdrop{
+  display:none;position:fixed;inset:0;z-index:9997;
+  background:rgba(42,37,32,.35);backdrop-filter:blur(3px)
+}
+.mega-menu-wrap.open ~ .mega-backdrop,
+body.mega-open .mega-backdrop{display:block}
+
+/* Responsive mega menu */
+@media (max-width: 1100px){
+  .mega-panel{grid-template-columns:repeat(3, 1fr);width:min(96vw,920px)}
+}
+@media (max-width: 768px){
+  .mega-menu-wrap{display:none} /* on mobile use hamburger menu instead */
+}
+
+/* ══ QUICK START BAR ══ */
+#quick-start-bar{
+  background:linear-gradient(135deg, var(--gold-pale), #fff 80%);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 0;
+  position:relative;z-index:50;
+  display:none; /* shown via JS only if first visit */
+}
+#quick-start-bar.qs-show{display:block;animation:qsSlide .4s ease}
+@keyframes qsSlide{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.qs-inner{
+  max-width:1200px;margin:0 auto;padding:0 1.5rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap
+}
+.qs-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.95rem;color:var(--ink2);font-weight:500;
+  flex-shrink:0
+}
+.qs-buttons{display:flex;gap:.6rem;flex-wrap:wrap;flex:1}
+.qs-btn{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.5rem 1rem;
+  background:white;
+  border:1px solid var(--border2);border-radius:10px;
+  cursor:pointer;font-family:inherit;
+  transition:all .2s;text-align:left;
+  flex:1;min-width:180px
+}
+.qs-btn:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(184,147,90,.15);transform:translateY(-1px)}
+.qs-ic{font-size:1.3rem;color:var(--gold);flex-shrink:0}
+.qs-txt{display:flex;flex-direction:column;gap:2px;line-height:1.2;min-width:0}
+.qs-txt strong{font-size:.8rem;font-weight:600;color:var(--ink)}
+.qs-txt em{font-size:.68rem;font-style:normal;color:var(--ink3)}
+.qs-btn-2 .qs-ic{color:#6a8e3a}
+.qs-btn-3 .qs-ic{color:#8b78e6}
+
+.qs-dismiss{
+  background:transparent;border:none;cursor:pointer;
+  color:var(--ink4);font-size:.9rem;padding:.3rem .5rem;
+  border-radius:50%;flex-shrink:0;
+  transition:color .2s,background .2s;
+}
+.qs-dismiss:hover{color:var(--ink);background:rgba(42,37,32,.06)}
+
+@media (max-width:768px){
+  .qs-inner{flex-direction:column;align-items:stretch;padding:0 1rem}
+  .qs-label{text-align:center;font-size:.88rem}
+  .qs-btn{min-width:0}
+}
 </style></head>
 <body>
 
@@ -2916,83 +3077,167 @@ body.dark .dark-toggle{background:#3a3632}
     Olismo<span> Integrato</span>
   </a>
   <nav>
-    <!-- FASE 1: CONOSCI TE STESSO -->
-    <button class="nav-link" onclick="st(&#39;percorso-viaggio&#39;)" title="Mappa del viaggio">🗺 Mappa</button>
-    <button class="nav-link nav-phase" onclick="st(&#39;check-integrato&#39;)" title="Profilo olistico completo">✦ Check</button>
-    <button class="nav-link" onclick="st(&#39;test-frutti&#39;)" style="color:var(--ink3)">🌳 Test</button>
-    <button class="nav-link" onclick="st(&#39;test-adattamenti&#39;)" style="color:var(--ink3)">🧠 AT</button>
-    <button class="nav-link" onclick="window.location.href=&#39;il_mio_copione.html&#39;" style="color:var(--gold3)">✦ Copione</button>
-    <button class="nav-link" onclick="window.location.href=&#39;i_miei_fiori.html&#39;" style="color:#7ab648">🌸 Fiori</button>
-    <button class="nav-link" onclick="st(&#39;vak&#39;)">👁 VAK</button>
-    <span class="nav-sep">·</span>
-    <!-- FASE 2: APPROFONDISCI -->
-    <button class="nav-link" onclick="st(&#39;enneagram&#39;)">Enneatipi</button>
-    <button class="nav-link" onclick="st(&#39;at-adattamenti&#39;)">ADATT.</button>
-  <button class="nav-link" onclick="st(&#39;transazioni&#39;)">TRANSAZ.</button>
-    <button class="nav-link" onclick="st(&#39;egogramma&#39;)">Ego</button>
-    <button class="nav-link" onclick="st(&#39;compatibilita&#39;)">Coppia</button>
-    <span class="nav-sep">·</span>
-    <!-- FASE 3: GUARIGIONE -->
-    <button class="nav-link" onclick="st(&#39;chakra-sec&#39;)">Chakra</button>
-    <button class="nav-link" onclick="st(&#39;cristalli&#39;)">💎 Cristalli</button>
-    <button class="nav-link" onclick="st(&#39;bach&#39;)">Bach</button>
-    <button class="nav-link" onclick="st(&#39;fes-sec&#39;)">✿ FES</button>
-    <button class="nav-link" onclick="st(&#39;ai-fes-sec&#39;)" style="color:#8b78e6" title="Motore AI FES Californiani">✿ AI FES</button>
-    <button class="nav-link" onclick="st(&#39;bush-sec&#39;)">❋ Bush</button>
-    <button class="nav-link" onclick="st(&#39;ai-bush-sec&#39;)" style="color:#c8813a" title="Motore AI Bush Australiani">❋ AI Bush</button>
-    <button class="nav-link" onclick="st(&#39;meditazione&#39;)">🧘 Medit.</button>
-  <button class="nav-link" onclick="window.open(&#39;https://frequenze-evolutive.it&#39;,&#39;_blank&#39;)" style="color:var(--ink3)">🎵 Suno ↗</button>
-    <span class="nav-sep">·</span>
-    <!-- FASE 4: ESPLORA + AI -->
-    <button class="nav-link" onclick="st(&#39;explorer&#39;)">Database</button>
-    <button class="nav-link nav-phase" style="background:var(--gold);color:white;border-radius:20px;padding:.4rem 1rem;font-weight:600" onclick="st(&#39;guida&#39;)">🗺 Guida</button>
-    <button class="nav-link nav-phase" style="color:var(--gold);border:1px solid var(--border2);border-radius:20px;padding:.4rem 1rem" onclick="st(&#39;consulente&#39;)">✦ AI</button>
-    <span class="nav-sep">·</span>
-    <!-- INFO -->
-    <div class="nav-dropdown" id="nav-info-dd">
-      <button class="nav-link nav-dd-trigger" onclick="window.toggleNavDd('nav-info-dd')" aria-haspopup="true">
-        ℹ Info <span class="nav-dd-arrow">▾</span>
+    <!-- MEGA MENU principale -->
+    <div class="mega-menu-wrap" id="mega-menu-wrap">
+      <button class="mega-trigger" onclick="window.toggleMega()" aria-haspopup="true" aria-expanded="false">
+        <span class="mega-hamburger">☰</span>
+        <span>Menu</span>
+        <span class="mega-arrow">▾</span>
       </button>
-      <div class="nav-dd-menu" role="menu">
-        <button class="nav-dd-item" onclick="st(&#39;chi-sono&#39;);window.closeNavDd()">🧑 Chi sono</button>
-        <button class="nav-dd-item" onclick="st(&#39;metodo&#39;);window.closeNavDd()">◈ Il metodo</button>
-        <button class="nav-dd-item" onclick="st(&#39;faq&#39;);window.closeNavDd()">❓ FAQ</button>
-        <button class="nav-dd-item" onclick="openPrivacy();window.closeNavDd()" style="color:var(--ink4)">🔒 Privacy</button>
-        <hr class="nav-dd-sep">
-        <button class="nav-dd-item" onclick="window.openAdmin();window.closeNavDd()" style="color:var(--gold2)">⚙ Admin</button>
+      <div class="mega-panel" id="mega-panel" role="menu">
+
+        <!-- Colonna 1: INIZIA -->
+        <div class="mega-col">
+          <div class="mega-col-title">✦ Inizia qui</div>
+          <button class="mega-item mega-item-star" onclick="st('check-integrato');window.closeMega()">
+            <span class="mi-ic">✦</span>
+            <span class="mi-body"><strong>Check Integrato</strong><em>Profilo olistico completo</em></span>
+          </button>
+          <button class="mega-item mega-item-star" onclick="st('consulente');window.closeMega()">
+            <span class="mi-ic">🤖</span>
+            <span class="mi-body"><strong>Consulente AI</strong><em>Fai una domanda al database</em></span>
+          </button>
+          <button class="mega-item" onclick="st('percorso-viaggio');window.closeMega()">
+            <span class="mi-ic">🗺</span>
+            <span class="mi-body"><strong>Mappa del percorso</strong><em>Orientati nelle sezioni</em></span>
+          </button>
+        </div>
+
+        <!-- Colonna 2: TEST -->
+        <div class="mega-col">
+          <div class="mega-col-title">🧪 Test & profilo</div>
+          <button class="mega-item" onclick="st('test-frutti');window.closeMega()"><span class="mi-ic">🌳</span><span class="mi-body"><strong>Test 9 Frutti</strong><em>Il tuo enneatipo</em></span></button>
+          <button class="mega-item" onclick="st('test-adattamenti');window.closeMega()"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Test Adattamenti AT</strong><em>Porta aperta e bersaglio</em></span></button>
+          <button class="mega-item" onclick="st('vak');window.closeMega()"><span class="mi-ic">👁</span><span class="mi-body"><strong>Test VAK</strong><em>Stile comunicativo</em></span></button>
+          <button class="mega-item" onclick="st('egogramma');window.closeMega()"><span class="mi-ic">⚙</span><span class="mi-body"><strong>Egogramma</strong><em>Stati dell'Io</em></span></button>
+          <button class="mega-item" onclick="st('compatibilita');window.closeMega()"><span class="mi-ic">♡</span><span class="mi-body"><strong>Compatibilità coppia</strong><em>Dinamiche relazionali</em></span></button>
+        </div>
+
+        <!-- Colonna 3: FIORI + AI -->
+        <div class="mega-col">
+          <div class="mega-col-title">🌸 Fiori</div>
+          <button class="mega-item" onclick="st('bach');window.closeMega()"><span class="mi-ic">🌸</span><span class="mi-body"><strong>Fiori di Bach</strong><em>38 rimedi floreali</em></span></button>
+          <button class="mega-item" onclick="st('fes-sec');window.closeMega()"><span class="mi-ic">✿</span><span class="mi-body"><strong>FES Californiani</strong><em>100+ essenze</em></span></button>
+          <button class="mega-item mega-item-ai-fes" onclick="st('ai-fes-sec');window.closeMega()"><span class="mi-ic">✿</span><span class="mi-body"><strong>Motore AI FES</strong><em>Quale fiore ti serve?</em></span></button>
+          <button class="mega-item" onclick="st('bush-sec');window.closeMega()"><span class="mi-ic">❋</span><span class="mi-body"><strong>Bush Australiani</strong><em>69 essenze</em></span></button>
+          <button class="mega-item mega-item-ai-bush" onclick="st('ai-bush-sec');window.closeMega()"><span class="mi-ic">❋</span><span class="mi-body"><strong>Motore AI Bush</strong><em>Trova la tua essenza</em></span></button>
+          <button class="mega-item" onclick="window.location.href='i_miei_fiori.html'"><span class="mi-ic">🌼</span><span class="mi-body"><strong>I miei Fiori</strong><em>Personalizzati</em></span></button>
+        </div>
+
+        <!-- Colonna 4: ENERGIA -->
+        <div class="mega-col">
+          <div class="mega-col-title">◉ Energia & Corpo</div>
+          <button class="mega-item" onclick="st('chakra-sec');window.closeMega()"><span class="mi-ic">◉</span><span class="mi-body"><strong>Chakra</strong><em>7 centri energetici</em></span></button>
+          <button class="mega-item" onclick="st('cristalli');window.closeMega()"><span class="mi-ic">💎</span><span class="mi-body"><strong>Cristalli</strong><em>Cristalloterapia</em></span></button>
+          <button class="mega-item" onclick="st('enneagram');window.closeMega()"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Enneatipi</strong><em>Evolutivo integrato</em></span></button>
+          <button class="mega-item" onclick="st('meditazione');window.closeMega()"><span class="mi-ic">🧘</span><span class="mi-body"><strong>Meditazione</strong><em>Pratiche guidate</em></span></button>
+          <button class="mega-item" onclick="st('musica');window.closeMega()"><span class="mi-ic">♬</span><span class="mi-body"><strong>Musicoterapia</strong><em>Frequenze curative</em></span></button>
+        </div>
+
+        <!-- Colonna 5: ANALISI TRANS + PSICOLOGIA -->
+        <div class="mega-col">
+          <div class="mega-col-title">⬟ AT & Psicologia</div>
+          <button class="mega-item" onclick="st('at-adattamenti');window.closeMega()"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Adattamenti AT</strong><em>6 stili di personalità</em></span></button>
+          <button class="mega-item" onclick="st('transazioni');window.closeMega()"><span class="mi-ic">🔀</span><span class="mi-body"><strong>Transazioni</strong><em>Comunicazione AT</em></span></button>
+          <button class="mega-item" onclick="st('carezze');window.closeMega()"><span class="mi-ic">◎</span><span class="mi-body"><strong>Carezze AT</strong><em>Riconoscimenti</em></span></button>
+          <button class="mega-item" onclick="window.location.href='il_mio_copione.html'"><span class="mi-ic">✦</span><span class="mi-body"><strong>Il mio Copione</strong><em>Analisi personale</em></span></button>
+          <button class="mega-item" onclick="st('danza');window.closeMega()"><span class="mi-ic">⚡</span><span class="mi-body"><strong>Danza del Conflitto</strong><em>Mediazione</em></span></button>
+          <button class="mega-item" onclick="st('discipline');window.closeMega()"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Psicologia</strong><em>Dinamica, Rogers</em></span></button>
+        </div>
+
+        <!-- Colonna 6: ALTRO + INFO -->
+        <div class="mega-col">
+          <div class="mega-col-title">🌿 Altro</div>
+          <button class="mega-item" onclick="st('alimentazione');window.closeMega()"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Alimentazione</strong><em>Olistica</em></span></button>
+          <button class="mega-item" onclick="st('prano');window.closeMega()"><span class="mi-ic">🤲</span><span class="mi-body"><strong>Pranoterapia</strong><em>Imposizione mani</em></span></button>
+          <button class="mega-item" onclick="st('explorer');window.closeMega()"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Database Explorer</strong><em>Ricerca integrata</em></span></button>
+          <button class="mega-item" onclick="window.open('https://frequenze-evolutive.it','_blank');window.closeMega()"><span class="mi-ic">🎵</span><span class="mi-body"><strong>Frequenze ↗</strong><em>Portale gemello</em></span></button>
+
+          <div class="mega-col-title" style="margin-top:1.2rem">ℹ Info</div>
+          <button class="mega-item mega-item-small" onclick="st('chi-sono');window.closeMega()">🧑 Chi sono</button>
+          <button class="mega-item mega-item-small" onclick="st('metodo');window.closeMega()">◈ Il metodo</button>
+          <button class="mega-item mega-item-small" onclick="st('faq');window.closeMega()">❓ FAQ</button>
+          <button class="mega-item mega-item-small" onclick="st('link-utili');window.closeMega()">🔗 Link utili</button>
+          <button class="mega-item mega-item-small" onclick="openPrivacy();window.closeMega()" style="color:var(--ink4)">🔒 Privacy</button>
+          <button class="mega-item mega-item-small" onclick="window.openAdmin();window.closeMega()" style="color:var(--gold2)">⚙ Admin</button>
+        </div>
+
       </div>
     </div>
+
+    <!-- Pulsanti sempre visibili -->
+    <button class="nav-link nav-phase" style="background:var(--gold);color:white;border-radius:20px;padding:.4rem 1rem;font-weight:600" onclick="st('guida')">🗺 Guida</button>
     <button class="search-btn" onclick="openSearch()">⌕ Cerca</button>
   </nav>
+<div class="mega-backdrop" onclick="window.closeMega()"></div>
   <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </header>
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
-  <button class="mob-link" style="color:var(--gold);font-weight:600" onclick="st(&#39;check-integrato&#39;);toggleMob()">✦ Check Integrato — Inizia qui</button>
-  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-frutti&#39;);toggleMob()">🌳 Test dei 9 Frutti</button>
-  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;test-adattamenti&#39;);toggleMob()">🧠 Test Adattamenti AT</button>
-  <button class="mob-link" style="color:var(--gold)" onclick="st(&#39;consulente&#39;);toggleMob()">✦ Consulente AI</button>
-  <div style="height:1px;background:var(--border);margin:.4rem 0"></div>
-  <button class="mob-link" onclick="st(&#39;consulente&#39;);toggleMob()">✦ Consulente AI</button>
-  <button class="mob-link" onclick="st(&#39;at-adattamenti&#39;);toggleMob()">Adattamenti AT</button>
-    <button class="nav-link" onclick="st(&#39;transazioni&#39;);toggleMob()">🔀 Transazioni AT</button>
-  <button class="mob-link" onclick="st(&#39;egogramma&#39;);toggleMob()">Egogramma</button>
-  <button class="mob-link" onclick="st(&#39;carezze&#39;);toggleMob()">Carezze</button>
-  <button class="mob-link" onclick="st(&#39;explorer&#39;);toggleMob()">Database interconnesso</button>
-  <button class="mob-link" onclick="st(&#39;chakra-sec&#39;);toggleMob()">Chakra</button>
-  <button class="mob-link" onclick="st(&#39;enneagram&#39;);toggleMob()">Enneatipi</button>
-  <button class="mob-link" onclick="st(&#39;musica&#39;);toggleMob()">Musica Curativa</button>
-  <button class="mob-link" onclick="st(&#39;bach&#39;);toggleMob()">Fiori di Bach</button>
-  <button class="mob-link" onclick="st(&#39;alimentazione&#39;);toggleMob()">Alimentazione</button>
-  <button class="mob-link" onclick="st(&#39;danza&#39;);toggleMob()">Danza del Conflitto</button>
-  <button class="mob-link" onclick="st(&#39;prano&#39;);toggleMob()">Pranoterapia</button>
-    <button class="nav-link" onclick="st(&#39;meditazione&#39;);toggleMob()">🧘 Meditazione</button>
-  <button class="mob-link" onclick="st(&#39;faq&#39;);toggleMob()">FAQ</button>
-  <button class="mob-link" onclick="st(&#39;metodo&#39;);toggleMob()">◈ Il metodo</button>
-  <button class="mob-link" onclick="st(&#39;guida&#39;);toggleMob()" style="color:var(--gold);font-weight:600">🗺 Guida all'utilizzo</button>
-  <button class="mob-link" onclick="st(&#39;link-utili&#39;);toggleMob()">🔗 Link utili</button>
-  <button class="mob-link" onclick="window.open(&#39;https://frequenze-evolutive.it&#39;,&#39;_blank&#39;);toggleMob()">🎵 Laboratorio Frequenze ↗</button>
+  <!-- INIZIA QUI -->
+  <div class="mob-section-label">✦ Inizia qui</div>
+  <button class="mob-link" style="color:var(--gold);font-weight:600" onclick="st('check-integrato');toggleMob()">✦ Check Integrato</button>
+  <button class="mob-link" style="color:var(--gold);font-weight:600" onclick="st('consulente');toggleMob()">🤖 Consulente AI</button>
+  <button class="mob-link" style="color:var(--gold);font-weight:600" onclick="st('guida');toggleMob()">🗺 Guida all'uso</button>
+  <div class="mob-sep"></div>
+
+  <!-- TEST -->
+  <div class="mob-section-label">🧪 Test & profilo</div>
+  <button class="mob-link" onclick="st('test-frutti');toggleMob()">🌳 Test dei 9 Frutti</button>
+  <button class="mob-link" onclick="st('test-adattamenti');toggleMob()">🧠 Test Adattamenti AT</button>
+  <button class="mob-link" onclick="st('vak');toggleMob()">👁 Test VAK</button>
+  <button class="mob-link" onclick="st('egogramma');toggleMob()">⚙ Egogramma</button>
+  <button class="mob-link" onclick="st('compatibilita');toggleMob()">♡ Compatibilità di coppia</button>
+  <div class="mob-sep"></div>
+
+  <!-- ANALISI TRANSAZIONALE -->
+  <div class="mob-section-label">⬟ Analisi Transazionale</div>
+  <button class="mob-link" onclick="st('at-adattamenti');toggleMob()">Adattamenti AT</button>
+  <button class="mob-link" onclick="st('transazioni');toggleMob()">🔀 Transazioni</button>
+  <button class="mob-link" onclick="st('carezze');toggleMob()">◎ Carezze</button>
+  <div class="mob-sep"></div>
+
+  <!-- FIORI -->
+  <div class="mob-section-label">🌸 Fiori</div>
+  <button class="mob-link" onclick="st('bach');toggleMob()">🌸 Fiori di Bach</button>
+  <button class="mob-link" onclick="st('fes-sec');toggleMob()">✿ FES Californiani</button>
+  <button class="mob-link" style="color:#8b78e6;font-weight:600" onclick="st('ai-fes-sec');toggleMob()">✿ Motore AI FES</button>
+  <button class="mob-link" onclick="st('bush-sec');toggleMob()">❋ Bush Australiani</button>
+  <button class="mob-link" style="color:#c8813a;font-weight:600" onclick="st('ai-bush-sec');toggleMob()">❋ Motore AI Bush</button>
+  <div class="mob-sep"></div>
+
+  <!-- CHAKRA E CRISTALLI -->
+  <div class="mob-section-label">◉ Chakra & Cristalli</div>
+  <button class="mob-link" onclick="st('chakra-sec');toggleMob()">◉ Chakra</button>
+  <button class="mob-link" onclick="st('cristalli');toggleMob()">💎 Cristalli</button>
+  <button class="mob-link" onclick="st('enneagram');toggleMob()">⬟ Enneatipi</button>
+  <div class="mob-sep"></div>
+
+  <!-- DISCIPLINE -->
+  <div class="mob-section-label">🌿 Altre discipline</div>
+  <button class="mob-link" onclick="st('meditazione');toggleMob()">🧘 Meditazione</button>
+  <button class="mob-link" onclick="st('musica');toggleMob()">♬ Musicoterapia</button>
+  <button class="mob-link" onclick="st('alimentazione');toggleMob()">🌿 Alimentazione</button>
+  <button class="mob-link" onclick="st('prano');toggleMob()">🤲 Pranoterapia</button>
+  <button class="mob-link" onclick="st('danza');toggleMob()">⚡ Danza del Conflitto</button>
+  <button class="mob-link" onclick="st('discipline');toggleMob()">🧠 Psicologia</button>
+  <div class="mob-sep"></div>
+
+  <!-- DATABASE -->
+  <div class="mob-section-label">📚 Database</div>
+  <button class="mob-link" onclick="st('explorer');toggleMob()">🔍 Database Explorer</button>
+  <button class="mob-link" onclick="window.open('https://frequenze-evolutive.it','_blank');toggleMob()">🎵 Laboratorio Frequenze ↗</button>
+  <div class="mob-sep"></div>
+
+  <!-- INFO -->
+  <div class="mob-section-label">ℹ Info</div>
+  <button class="mob-link" onclick="st('chi-sono');toggleMob()">🧑 Chi sono</button>
+  <button class="mob-link" onclick="st('metodo');toggleMob()">◈ Il metodo</button>
+  <button class="mob-link" onclick="st('faq');toggleMob()">❓ FAQ</button>
+  <button class="mob-link" onclick="st('link-utili');toggleMob()">🔗 Link utili</button>
+  <button class="mob-link" onclick="openPrivacy();toggleMob()" style="color:var(--ink4);font-size:.78rem">🔒 Privacy</button>
+  <button class="mob-link" onclick="window.openAdmin();toggleMob()" style="color:var(--gold2);font-size:.78rem">⚙ Admin</button>
 </div>
 
 <!-- SEARCH OVERLAY -->
@@ -3005,6 +3250,29 @@ body.dark .dark-toggle{background:#3a3632}
       <input type="text" id="s-input" placeholder="Ametista, Tipo 9, Anahata, 528 Hz, Bach, grounding…" autocomplete="off">
     </div>
     <div id="s-list"></div>
+  </div>
+</div>
+
+
+<!-- ══ QUICK START BAR ══ -->
+<div id="quick-start-bar">
+  <div class="qs-inner">
+    <div class="qs-label">Non sai da dove iniziare?</div>
+    <div class="qs-buttons">
+      <button class="qs-btn qs-btn-1" onclick="st('check-integrato')">
+        <span class="qs-ic">✦</span>
+        <span class="qs-txt"><strong>Scopri il tuo profilo</strong><em>Check Integrato · 5 min</em></span>
+      </button>
+      <button class="qs-btn qs-btn-2" onclick="st('test-frutti')">
+        <span class="qs-ic">🌳</span>
+        <span class="qs-txt"><strong>Conosci il tuo enneatipo</strong><em>Test 9 Frutti · 3 min</em></span>
+      </button>
+      <button class="qs-btn qs-btn-3" onclick="st('consulente')">
+        <span class="qs-ic">🤖</span>
+        <span class="qs-txt"><strong>Chiedi all'AI olistica</strong><em>Risposta personalizzata</em></span>
+      </button>
+    </div>
+    <button class="qs-dismiss" onclick="document.getElementById('quick-start-bar').style.display='none';localStorage.setItem('qs_dismissed','1')" aria-label="Nascondi">✕</button>
   </div>
 </div>
 
@@ -3041,8 +3309,8 @@ body.dark .dark-toggle{background:#3a3632}
     <span class="pill pill-cta" onclick="st(&#39;consulente&#39;)"><span class="pill-dot" style="background:var(--gold)"></span>✦ Chiedi all'AI</span>
   </div>
   <div class="cta-row fu d4" style="position:relative;z-index:1">
-    <button class="btn-gold" onclick="openSearch()">⌕ Cerca nel database</button>
-    <button class="btn-ghost" onclick="st(&#39;explorer&#39;)">Esplora tutti i domini</button>
+    <button class="btn-gold" onclick="st(&#39;check-integrato&#39;)" style="padding:1rem 2.5rem;font-size:.92rem">✦ Inizia il Check gratuito</button>
+    <button class="btn-ghost" onclick="st(&#39;consulente&#39;)">🤖 Fai una domanda all'AI</button>
   </div>
   <p style="position:relative;z-index:1;font-size:.84rem;font-weight:500;color:rgba(255,255,255,.88);max-width:580px;margin:1.5rem auto 0;line-height:1.7;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.4);background:rgba(0,0,0,.18);padding:.6rem 1.2rem;border-radius:8px">
     ⚠️ I contenuti di questo sito hanno finalità esclusivamente divulgativa e non sostituiscono la consulenza di operatori olistici qualificati, né il parere del medico o dello psicologo.
@@ -12377,6 +12645,32 @@ if (!document.getElementById('ai-flower-style')) {
   function logQ(f,t){ var d=load(); if(!d[f])d[f]=[]; d[f].unshift({t:new Date().toLocaleTimeString('it-IT'),q:(t||'').slice(0,80)}); if(d[f].length>20)d[f].pop(); save(d); }
   function secClick(id){ var d=load(); if(!d.sec)d.sec={}; d.sec[id]=(d.sec[id]||0)+1; save(d); }
 
+  /* ── MEGA MENU ── */
+  window.toggleMega = function(){
+    var wrap = document.getElementById('mega-menu-wrap');
+    if(!wrap) return;
+    var isOpen = wrap.classList.contains('open');
+    if(isOpen){
+      wrap.classList.remove('open');
+      document.body.classList.remove('mega-open');
+      wrap.querySelector('.mega-trigger')?.setAttribute('aria-expanded','false');
+    } else {
+      wrap.classList.add('open');
+      document.body.classList.add('mega-open');
+      wrap.querySelector('.mega-trigger')?.setAttribute('aria-expanded','true');
+      // close other dropdowns
+      document.querySelectorAll('.nav-dropdown.open').forEach(function(x){x.classList.remove('open');});
+    }
+  };
+  window.closeMega = function(){
+    var wrap = document.getElementById('mega-menu-wrap');
+    if(wrap){
+      wrap.classList.remove('open');
+      document.body.classList.remove('mega-open');
+      wrap.querySelector('.mega-trigger')?.setAttribute('aria-expanded','false');
+    }
+  };
+
   /* ── dropdown ── */
   window.toggleNavDd = function(id){
     var el=document.getElementById(id);
@@ -12471,7 +12765,18 @@ if (!document.getElementById('ai-flower-style')) {
     /* chiudi dropdown clic fuori */
     document.addEventListener('click', function(e){
       if(!e.target.closest('.nav-dropdown')) window.closeNavDd();
+      if(!e.target.closest('.mega-menu-wrap')) window.closeMega();
     });
+    /* ESC chiude mega menu */
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){ window.closeMega(); window.closeNavDd(); }
+    });
+
+    /* Quick Start bar — mostra solo se non nascosta */
+    var qsBar = document.getElementById('quick-start-bar');
+    if(qsBar && !localStorage.getItem('qs_dismissed')){
+      qsBar.classList.add('qs-show');
+    }
 
     /* hook overlay click esterno */
     var ov=document.getElementById('admin-overlay');

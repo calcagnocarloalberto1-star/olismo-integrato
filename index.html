@@ -3067,6 +3067,248 @@ body.mega-open .mega-backdrop{display:block}
   .qs-label{text-align:center;font-size:.88rem}
   .qs-btn{min-width:0}
 }
+
+/* ══ PERCORSI HOME ══ */
+.perc-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.1rem;
+}
+@media(max-width:1100px){.perc-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.perc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.perc-grid{grid-template-columns:1fr}}
+
+.perc-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.5rem 1.3rem 1.3rem;
+  cursor:pointer;
+  transition:transform .25s, box-shadow .25s, border-color .25s;
+  display:flex;flex-direction:column;gap:.6rem;
+  position:relative;overflow:hidden;
+}
+.perc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gold);opacity:.5;transition:opacity .25s
+}
+.perc-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 34px rgba(184,147,90,.18);
+  border-color:var(--gold);
+}
+.perc-card:hover::before{opacity:1}
+
+.perc-icon{
+  font-size:2rem;line-height:1;
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--gold-pale), #fff);
+  border:1px solid var(--border);
+  flex-shrink:0;
+}
+.perc-label{
+  font-size:.65rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);
+}
+.perc-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:600;
+  color:var(--ink);line-height:1.15;
+  margin:0;
+}
+.perc-card p{
+  font-size:.82rem;color:var(--ink3);line-height:1.55;
+  margin:0;flex:1;
+}
+.perc-chips{
+  display:flex;flex-wrap:wrap;gap:.3rem;
+  margin-top:.3rem;
+}
+.perc-chip{
+  font-size:.66rem;font-weight:500;
+  padding:.22rem .55rem;
+  background:var(--ivory2);color:var(--ink2);
+  border-radius:10px;letter-spacing:.02em;
+}
+.perc-cta{
+  margin-top:.5rem;padding-top:.7rem;
+  border-top:1px solid var(--border);
+  font-size:.75rem;font-weight:600;
+  color:var(--gold);letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:color .2s;
+}
+.perc-card:hover .perc-cta{color:var(--gold2)}
+
+/* Colori distintivi per percorso */
+.perc-1 .perc-icon{background:linear-gradient(135deg,#fdf1e6,#fff);color:#b87333}
+.perc-2 .perc-icon{background:linear-gradient(135deg,#f5ecd8,#fff);color:#d4a96a}
+.perc-3 .perc-icon{background:linear-gradient(135deg,#e8d8e0,#fff);color:#8a6a7a}
+.perc-4 .perc-icon{background:linear-gradient(135deg,#f6e1dc,#fff);color:#c06070}
+.perc-5 .perc-icon{background:linear-gradient(135deg,#fff0db,#fff);color:#e8a040}
+.perc-6 .perc-icon{background:linear-gradient(135deg,#dff0e0,#fff);color:#5a8a50}
+.perc-7 .perc-icon{background:linear-gradient(135deg,#ede1f5,#fff);color:#7b2fa0}
+.perc-8 .perc-icon{background:linear-gradient(135deg,#fff5e0,#fff);color:#b8935a}
+
+/* ══ PROGRESS WIDGET ══ */
+#progress-widget{
+  position:fixed;bottom:18px;left:18px;
+  z-index:200;
+  width:min(360px, calc(100vw - 40px));
+  background:white;
+  border:1px solid var(--border2);
+  border-radius:14px;
+  box-shadow:0 12px 40px rgba(42,37,32,.18);
+  padding:.9rem 1rem .85rem;
+  animation:pwFadeUp .4s ease;
+}
+@keyframes pwFadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#progress-widget.pw-min{
+  padding:.55rem .9rem;width:auto;min-width:180px;cursor:pointer
+}
+#progress-widget.pw-min .pw-bar,#progress-widget.pw-min .pw-chips{display:none}
+#progress-widget.pw-min .pw-toggle::before{content:'+';font-size:.95rem}
+.pw-inner{position:relative}
+.pw-label{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.78rem;font-weight:600;color:var(--ink2);
+  margin-bottom:.45rem
+}
+.pw-percent{
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:1.05rem;color:var(--gold)
+}
+.pw-bar{
+  height:5px;background:var(--ivory2);
+  border-radius:3px;overflow:hidden;margin-bottom:.6rem
+}
+.pw-bar-fill{
+  height:100%;background:linear-gradient(90deg, var(--gold2), var(--gold));
+  border-radius:3px;transition:width .6s ease
+}
+.pw-chips{
+  display:flex;flex-wrap:wrap;gap:.3rem;
+}
+.pw-chip{
+  font-size:.68rem;padding:.22rem .55rem;
+  border-radius:9px;border:1px solid var(--border);
+  background:var(--ivory);color:var(--ink3);
+  cursor:pointer;transition:all .15s;font-weight:500
+}
+.pw-chip:hover{background:var(--gold-pale);color:var(--ink)}
+.pw-chip.pw-done{
+  background:rgba(90,122,106,.12);color:#3d5a48;border-color:rgba(90,122,106,.3)
+}
+.pw-chip.pw-done::before{content:'✓ ';color:#3d5a48}
+.pw-toggle{
+  position:absolute;top:-.45rem;right:-.5rem;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--ivory);border:1px solid var(--border);
+  cursor:pointer;color:var(--ink3);font-size:.7rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.pw-toggle:hover{color:var(--ink);border-color:var(--gold)}
+@media(max-width:500px){
+  #progress-widget{bottom:12px;left:12px;right:12px;width:auto;max-width:none}
+  #progress-widget.pw-min{right:auto;max-width:180px}
+}
+
+/* ══ LEGGI DI PIÙ ══ */
+.intro-collapsible{
+  position:relative;
+  max-height:200px;
+  overflow:hidden;
+  transition:max-height .4s ease;
+}
+.intro-collapsible::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:linear-gradient(180deg, transparent, white 80%);
+  pointer-events:none;transition:opacity .3s
+}
+.intro-collapsible.expanded{max-height:none}
+.intro-collapsible.expanded::after{opacity:0}
+.intro-toggle{
+  display:inline-block;margin-top:.6rem;
+  background:transparent;border:none;
+  color:var(--gold);font-family:inherit;font-size:.78rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;padding:.3rem 0;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s
+}
+.intro-toggle:hover{border-bottom-color:var(--gold)}
+
+/* ══ ONBOARDING TOUR ══ */
+#onboarding-overlay{position:fixed;inset:0;z-index:99990;pointer-events:none}
+#onboarding-overlay.ob-show{display:block!important;pointer-events:auto}
+#onboarding-backdrop{
+  position:absolute;inset:0;background:rgba(42,37,32,.55);
+  backdrop-filter:blur(3px);animation:obFade .3s ease
+}
+@keyframes obFade{from{opacity:0}to{opacity:1}}
+#onboarding-popup{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(520px, 92vw);
+  background:var(--ivory);
+  border:1px solid var(--border2);border-radius:16px;
+  box-shadow:0 24px 80px rgba(42,37,32,.35);
+  padding:1.8rem 1.8rem 1.5rem;
+  z-index:99991;animation:obFade .3s ease;
+}
+.ob-step-num{
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:.7rem
+}
+.ob-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:600;color:var(--ink);
+  margin:0 0 .7rem;line-height:1.2
+}
+.ob-text{
+  font-size:.92rem;color:var(--ink2);
+  line-height:1.6;margin:0 0 1.2rem
+}
+.ob-buttons{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:.6rem;padding-top:1rem;border-top:1px solid var(--border)
+}
+.ob-btn-skip{
+  background:transparent;border:none;cursor:pointer;
+  color:var(--ink4);font-family:inherit;font-size:.78rem;
+  padding:.3rem .5rem;text-decoration:underline;text-underline-offset:3px
+}
+.ob-btn-skip:hover{color:var(--ink3)}
+.ob-nav{display:flex;gap:.5rem}
+.ob-btn-prev,.ob-btn-next{
+  padding:.6rem 1.2rem;
+  font-family:inherit;font-size:.82rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;border-radius:8px;
+  transition:all .2s
+}
+.ob-btn-prev{
+  background:transparent;border:1px solid var(--border2);color:var(--ink3);
+}
+.ob-btn-prev:hover{border-color:var(--ink);color:var(--ink)}
+.ob-btn-next{
+  background:var(--gold);border:none;color:white
+}
+.ob-btn-next:hover{background:var(--gold2)}
+
+.ob-highlight{
+  position:relative!important;
+  z-index:99992!important;
+  box-shadow:0 0 0 4px var(--gold), 0 0 0 8px rgba(184,147,90,.3), 0 8px 40px rgba(184,147,90,.4)!important;
+  border-radius:12px;
+  animation:obPulse 1.8s infinite
+}
+@keyframes obPulse{
+  0%,100%{box-shadow:0 0 0 4px var(--gold), 0 0 0 8px rgba(184,147,90,.3), 0 8px 40px rgba(184,147,90,.4)}
+  50%{box-shadow:0 0 0 4px var(--gold), 0 0 0 14px rgba(184,147,90,.15), 0 8px 40px rgba(184,147,90,.4)}
+}
 </style></head>
 <body>
 
@@ -3159,6 +3401,7 @@ body.mega-open .mega-backdrop{display:block}
           <button class="mega-item mega-item-small" onclick="st('faq');window.closeMega()">❓ FAQ</button>
           <button class="mega-item mega-item-small" onclick="st('link-utili');window.closeMega()">🔗 Link utili</button>
           <button class="mega-item mega-item-small" onclick="openPrivacy();window.closeMega()" style="color:var(--ink4)">🔒 Privacy</button>
+          <button class="mega-item mega-item-small" onclick="window.restartTour();window.closeMega()" style="color:var(--gold)">🎓 Riavvia tour</button>
           <button class="mega-item mega-item-small" onclick="window.openAdmin();window.closeMega()" style="color:var(--gold2)">⚙ Admin</button>
         </div>
 
@@ -3317,6 +3560,139 @@ body.mega-open .mega-backdrop{display:block}
   </p>
   <div class="scroll-hint" style="z-index:1">scopri</div>
 </section>
+
+<!-- ══ PERCORSI VISIVI ══ -->
+<section id="percorsi-home" style="padding:4rem 0 2rem;background:linear-gradient(180deg, var(--ivory) 0%, #fff 100%)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem">
+    <div class="sec-hd" style="text-align:center;margin-bottom:2.8rem">
+      <div class="sec-eye">Da dove vuoi iniziare?</div>
+      <h2 class="sec-title">Scegli il tuo <em>percorso</em></h2>
+      <div class="sec-div"></div>
+      <p style="font-size:.92rem;color:var(--ink3);max-width:640px;margin:.8rem auto 0;line-height:1.65">
+        Ogni percorso raggruppa più strumenti che si completano a vicenda. Inizia da ciò che ti risuona di più.
+      </p>
+    </div>
+
+    <div class="perc-grid">
+      <!-- 1. Conosci te stesso -->
+      <div class="perc-card perc-1" onclick="st('check-integrato')">
+        <div class="perc-icon">🌱</div>
+        <div class="perc-label">Fase 1 · Profilo</div>
+        <h3>Conosci te stesso</h3>
+        <p>Parti dal Check Integrato e dai test per scoprire il tuo enneatipo, adattamento AT e stile comunicativo.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">Check Integrato</span>
+          <span class="perc-chip">9 Frutti</span>
+          <span class="perc-chip">Test AT</span>
+          <span class="perc-chip">VAK</span>
+          <span class="perc-chip">Egogramma</span>
+        </div>
+        <div class="perc-cta">Inizia il percorso →</div>
+      </div>
+
+      <!-- 2. Riequilibra l'emozione -->
+      <div class="perc-card perc-2" onclick="st('bach')">
+        <div class="perc-icon">🌸</div>
+        <div class="perc-label">Fiori & AI</div>
+        <h3>Riequilibra l'emozione</h3>
+        <p>Fiori di Bach, FES Californiani e Bush Australiani. Con i motori AI che ti suggeriscono l'essenza giusta.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">Fiori di Bach</span>
+          <span class="perc-chip" style="background:rgba(139,120,230,.12);color:#8b78e6">✿ AI FES</span>
+          <span class="perc-chip" style="background:rgba(200,129,58,.12);color:#c8813a">❋ AI Bush</span>
+        </div>
+        <div class="perc-cta">Scopri i fiori →</div>
+      </div>
+
+      <!-- 3. Cura il corpo sottile -->
+      <div class="perc-card perc-3" onclick="st('chakra-sec')">
+        <div class="perc-icon">◉</div>
+        <div class="perc-label">Energia</div>
+        <h3>Cura il corpo sottile</h3>
+        <p>Riequilibra i 7 chakra, sperimenta la cristalloterapia, medita con le frequenze solfeggio.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">Chakra</span>
+          <span class="perc-chip">💎 Cristalli</span>
+          <span class="perc-chip">🧘 Meditazione</span>
+          <span class="perc-chip">♬ Frequenze</span>
+        </div>
+        <div class="perc-cta">Entra nei chakra →</div>
+      </div>
+
+      <!-- 4. Migliora le relazioni -->
+      <div class="perc-card perc-4" onclick="st('compatibilita')">
+        <div class="perc-icon">♡</div>
+        <div class="perc-label">Relazioni</div>
+        <h3>Migliora le relazioni</h3>
+        <p>Analisi Transazionale, compatibilità di coppia per enneatipo, comunicazione efficace.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">Compatibilità</span>
+          <span class="perc-chip">Adattamenti AT</span>
+          <span class="perc-chip">🔀 Transazioni</span>
+          <span class="perc-chip">◎ Carezze</span>
+        </div>
+        <div class="perc-cta">Scopri le dinamiche →</div>
+      </div>
+
+      <!-- 5. Gestisci i conflitti -->
+      <div class="perc-card perc-5" onclick="st('danza')">
+        <div class="perc-icon">⚡</div>
+        <div class="perc-label">Mediazione</div>
+        <h3>Gestisci i conflitti</h3>
+        <p>Danza del Conflitto, neurobiologia della coppia, strumenti di mediazione familiare.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">Danza del Conflitto</span>
+          <span class="perc-chip">Neuroscienze</span>
+          <span class="perc-chip">Polivagale</span>
+        </div>
+        <div class="perc-cta">Apri la danza →</div>
+      </div>
+
+      <!-- 6. Nutri il corpo -->
+      <div class="perc-card perc-6" onclick="st('alimentazione')">
+        <div class="perc-icon">🌿</div>
+        <div class="perc-label">Corpo</div>
+        <h3>Nutri il corpo</h3>
+        <p>Alimentazione olistica basata sul tuo enneatipo. Pranoterapia come integrazione energetica.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">🌿 Alimentazione</span>
+          <span class="perc-chip">🤲 Pranoterapia</span>
+        </div>
+        <div class="perc-cta">Piano alimentare →</div>
+      </div>
+
+      <!-- 7. Dialoga con l'AI -->
+      <div class="perc-card perc-7" onclick="st('consulente')">
+        <div class="perc-icon">🤖</div>
+        <div class="perc-label">AI & Database</div>
+        <h3>Dialoga con l'AI</h3>
+        <p>Il Consulente AI olistico integra tutto il database. Chiedi, ottieni un report PDF personalizzato.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">✦ Consulente AI</span>
+          <span class="perc-chip">📄 Report PDF</span>
+          <span class="perc-chip">🔍 Database</span>
+        </div>
+        <div class="perc-cta">Parla con l'AI →</div>
+      </div>
+
+      <!-- 8. Crea il tuo cammino -->
+      <div class="perc-card perc-8" onclick="window.location.href='i_miei_fiori.html'">
+        <div class="perc-icon">✦</div>
+        <div class="perc-label">Personale</div>
+        <h3>Crea il tuo cammino</h3>
+        <p>I fiori personali, il tuo copione di vita, percorsi su misura per il tuo profilo.</p>
+        <div class="perc-chips">
+          <span class="perc-chip">🌼 I miei Fiori</span>
+          <span class="perc-chip">✦ Copione AT</span>
+          <span class="perc-chip">🗺 Mappa</span>
+        </div>
+        <div class="perc-cta">Il tuo cammino →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <section id="chi-sono">
   <div class="container">
@@ -12645,6 +13021,134 @@ if (!document.getElementById('ai-flower-style')) {
   function logQ(f,t){ var d=load(); if(!d[f])d[f]=[]; d[f].unshift({t:new Date().toLocaleTimeString('it-IT'),q:(t||'').slice(0,80)}); if(d[f].length>20)d[f].pop(); save(d); }
   function secClick(id){ var d=load(); if(!d.sec)d.sec={}; d.sec[id]=(d.sec[id]||0)+1; save(d); }
 
+  
+
+  window.toggleIntro = function(btn){
+    var box = btn.previousElementSibling;
+    if(!box || !box.classList.contains('intro-collapsible')) return;
+    var expanded = box.classList.toggle('expanded');
+    btn.textContent = expanded ? '↑ Mostra meno' : '↓ Leggi di più';
+  };
+
+
+  /* ── ONBOARDING TOUR ── */
+  var TOUR_STEPS = [
+    {
+      title: 'Benvenuto su Olismo Integrato',
+      text: 'Un portale che integra chakra, enneagramma, fiori di Bach/FES/Bush, AT, VAK e molto altro. Ti faccio fare un giro di 5 minuti.',
+      target: null
+    },
+    {
+      title: 'Menu completo qui',
+      text: 'Il pulsante <strong>☰ Menu</strong> apre il mega-menu con tutte le sezioni raggruppate per tema: Test, Fiori, Chakra, AT, ecc.',
+      target: '.mega-trigger'
+    },
+    {
+      title: 'Scegli il tuo percorso',
+      text: 'Più sotto trovi <strong>8 percorsi visivi</strong>: conoscere te stesso, riequilibrare l\'emozione, curare il corpo, migliorare le relazioni… Ogni percorso raggruppa più strumenti.',
+      target: '#percorsi-home'
+    },
+    {
+      title: 'Inizia dal Check Integrato',
+      text: 'Il <strong>Check Integrato</strong> è il punto di partenza consigliato: in 5 minuti ottieni un profilo olistico completo da usare poi con tutti gli altri strumenti.',
+      target: '.qs-btn-1'
+    },
+    {
+      title: 'I motori AI ti guidano',
+      text: 'I <strong>motori AI FES e Bush</strong> ti suggeriscono i fiori in base a come ti senti. Il <strong>Consulente AI</strong> risponde a qualsiasi domanda olistica e genera un report PDF.',
+      target: '.qs-btn-3'
+    }
+  ];
+  var tourIdx = 0;
+
+  window.startTour = function(){
+    tourIdx = 0;
+    document.getElementById('onboarding-overlay').classList.add('ob-show');
+    document.getElementById('onboarding-overlay').style.display = 'block';
+    tourRender();
+  };
+  window.skipTour = function(){
+    document.getElementById('onboarding-overlay').classList.remove('ob-show');
+    document.getElementById('onboarding-overlay').style.display = 'none';
+    localStorage.setItem('olismo_tour_done', '1');
+    document.querySelectorAll('.ob-highlight').forEach(function(el){el.classList.remove('ob-highlight');});
+  };
+  window.tourNext = function(){
+    if(tourIdx >= TOUR_STEPS.length - 1){
+      window.skipTour();
+      return;
+    }
+    tourIdx++;
+    tourRender();
+  };
+  window.tourPrev = function(){
+    if(tourIdx > 0){ tourIdx--; tourRender(); }
+  };
+  function tourRender(){
+    var step = TOUR_STEPS[tourIdx];
+    document.getElementById('ob-step-num').textContent = (tourIdx+1) + ' / ' + TOUR_STEPS.length;
+    document.getElementById('ob-title').textContent = step.title;
+    document.getElementById('ob-text').innerHTML = step.text;
+    document.getElementById('ob-btn-prev').style.display = tourIdx>0 ? 'inline-block' : 'none';
+    document.getElementById('ob-btn-next').textContent = tourIdx===TOUR_STEPS.length-1 ? 'Inizia ora! ✦' : 'Avanti →';
+    
+    // Remove previous highlight
+    document.querySelectorAll('.ob-highlight').forEach(function(el){el.classList.remove('ob-highlight');});
+    
+    // Add new highlight
+    if(step.target){
+      var el = document.querySelector(step.target);
+      if(el){
+        el.classList.add('ob-highlight');
+        // Scroll into view if needed
+        try{ el.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){}
+      }
+    }
+  }
+
+  window.restartTour = function(){
+    localStorage.removeItem('olismo_tour_done');
+    window.startTour();
+  };
+
+  /* ── PROGRESS WIDGET ── */
+  window.renderProgress = function(){
+    var w = document.getElementById('progress-widget');
+    if(!w) return;
+    var tests = [
+      {k:'check',  l:'Check',    sec:'check-integrato'},
+      {k:'frutti', l:'9 Frutti', sec:'test-frutti'},
+      {k:'at',     l:'AT',       sec:'test-adattamenti'},
+      {k:'vak',    l:'VAK',      sec:'vak'},
+      {k:'ego',    l:'Egogramma',sec:'egogramma'},
+    ];
+    var done = 0;
+    var chips = tests.map(function(t){
+      var has = false;
+      try{ has = !!localStorage.getItem('olismo_profile_'+t.k); }catch(e){}
+      if(has) done++;
+      return '<span class="pw-chip '+(has?'pw-done':'')+'" onclick="st(\''+t.sec+'\')">'+t.l+'</span>';
+    }).join('');
+    var pct = Math.round(done/tests.length*100);
+    document.getElementById('pw-chips').innerHTML = chips;
+    document.getElementById('pw-bar-fill').style.width = pct+'%';
+    document.getElementById('pw-percent').textContent = pct+'%';
+    // Show only if at least 1 test done, OR hide after dismiss
+    if(done > 0 && !localStorage.getItem('pw_hidden')){
+      w.style.display = 'block';
+    }
+  };
+  window.toggleProgress = function(e){
+    if(e) e.stopPropagation();
+    var w = document.getElementById('progress-widget');
+    if(!w) return;
+    if(w.classList.contains('pw-min')){
+      w.classList.remove('pw-min');
+    } else {
+      w.classList.add('pw-min');
+    }
+  };
+
   /* ── MEGA MENU ── */
   window.toggleMega = function(){
     var wrap = document.getElementById('mega-menu-wrap');
@@ -12772,6 +13276,41 @@ if (!document.getElementById('ai-flower-style')) {
       if(e.key==='Escape'){ window.closeMega(); window.closeNavDd(); }
     });
 
+    /* Progress widget — mostra se almeno 1 test completato */
+
+    /* Auto-collapse long intro paragraphs */
+    try{
+      var introSelectors = ['.bach-intro', '.bach-text', '.alim-intro',
+        '.at-desc', '.ego-text', '.danza-text', '.disc-text',
+        '.chakra-intro', '.ennea-intro', '.musica-intro', '.prano-intro', 
+        '.meditazione-intro', '.vak-intro', '.frutti-intro', '.cristalli-intro',
+        '.diet-intro', '.compat-intro', '.transazioni-intro', '.carezze-intro'];
+      introSelectors.forEach(function(sel){
+        document.querySelectorAll(sel).forEach(function(el){
+          // Skip if already wrapped
+          if(el.querySelector('.intro-collapsible')) return;
+          var text = el.textContent.trim();
+          if(text.length > 400){
+            // Wrap children in collapsible div
+            var wrap = document.createElement('div');
+            wrap.className = 'intro-collapsible';
+            while(el.firstChild){ wrap.appendChild(el.firstChild); }
+            el.appendChild(wrap);
+            var btn = document.createElement('button');
+            btn.className = 'intro-toggle';
+            btn.textContent = '↓ Leggi di più';
+            btn.onclick = function(){ window.toggleIntro(this); };
+            el.appendChild(btn);
+          }
+        });
+      });
+    }catch(e){ console.warn('intro collapse failed:', e); }
+
+    /* Onboarding tour al primo accesso */
+    if(!localStorage.getItem('olismo_tour_done')){
+      setTimeout(function(){ window.startTour(); }, 1200);
+    }
+    window.renderProgress();
     /* Quick Start bar — mostra solo se non nascosta */
     var qsBar = document.getElementById('quick-start-bar');
     if(qsBar && !localStorage.getItem('qs_dismissed')){
@@ -12795,10 +13334,15 @@ if (!document.getElementById('ai-flower-style')) {
     var resetBtn=document.getElementById('adm-reset-btn');
     if(resetBtn) resetBtn.addEventListener('click', adminReset);
 
-    /* hook st() per tracciare sezioni */
+    /* hook st() per tracciare sezioni e aggiornare progress */
     if(typeof window.st==='function'){
       var origSt=window.st;
-      window.st=function(id){ secClick(id); return origSt(id); };
+      window.st=function(id){ 
+        secClick(id); 
+        var r = origSt(id); 
+        setTimeout(function(){ window.renderProgress(); }, 600);
+        return r;
+      };
     }
 
     /* AI consulente */
@@ -12840,5 +13384,37 @@ if (!document.getElementById('ai-flower-style')) {
   });
 })();
 </script>
+
+
+<!-- ══ PROGRESS INDICATOR ══ -->
+<div id="progress-widget" style="display:none">
+  <div class="pw-inner">
+    <div class="pw-label">
+      <span class="pw-label-text">🎯 Il tuo percorso</span>
+      <span class="pw-percent" id="pw-percent">0%</span>
+    </div>
+    <div class="pw-bar"><div class="pw-bar-fill" id="pw-bar-fill" style="width:0%"></div></div>
+    <div class="pw-chips" id="pw-chips"></div>
+    <button class="pw-toggle" onclick="window.toggleProgress()" aria-label="Minimizza">—</button>
+  </div>
+</div>
+
+
+<!-- ══ ONBOARDING TOUR ══ -->
+<div id="onboarding-overlay" style="display:none">
+  <div id="onboarding-backdrop"></div>
+  <div id="onboarding-popup">
+    <div class="ob-step-num" id="ob-step-num">1 / 5</div>
+    <h3 class="ob-title" id="ob-title">Benvenuto su Olismo Integrato</h3>
+    <p class="ob-text" id="ob-text">Un portale che integra chakra, enneagramma, fiori di Bach, AT e molto altro. Ti faccio fare un piccolo giro.</p>
+    <div class="ob-buttons">
+      <button class="ob-btn-skip" onclick="window.skipTour()">Salta il tour</button>
+      <div class="ob-nav">
+        <button class="ob-btn-prev" id="ob-btn-prev" onclick="window.tourPrev()" style="display:none">← Indietro</button>
+        <button class="ob-btn-next" id="ob-btn-next" onclick="window.tourNext()">Inizia →</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body></html>

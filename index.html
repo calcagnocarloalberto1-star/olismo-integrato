@@ -2846,60 +2846,26 @@ body.dark .dark-toggle{background:#3a3632}
 .nav-dd-trigger{display:flex;align-items:center;gap:.3rem}
 .nav-dd-arrow{font-size:.65rem;transition:transform .2s;display:inline-block}
 .nav-dropdown.open .nav-dd-arrow{transform:rotate(180deg)}
-.nav-dd-menu{
-  display:none;position:absolute;top:calc(100% + 6px);right:0;
-  min-width:180px;background:var(--ivory);
-  border:1px solid var(--border2);border-radius:var(--r);
-  box-shadow:var(--shadow2);z-index:9999;padding:.4rem 0;
-  animation:ddFadeIn .15s ease
-}
+.nav-dd-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;min-width:180px;background:var(--ivory);border:1px solid var(--border2);border-radius:var(--r);box-shadow:var(--shadow2);z-index:9999;padding:.4rem 0;animation:ddFadeIn .15s ease}
 @keyframes ddFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .nav-dropdown.open .nav-dd-menu{display:block}
-.nav-dd-item{
-  display:block;width:100%;padding:.55rem 1rem;
-  background:transparent;border:none;cursor:pointer;
-  font-family:inherit;font-size:.8rem;font-weight:400;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink2);text-align:left;
-  transition:background .15s,color .15s
-}
+.nav-dd-item{display:block;width:100%;padding:.55rem 1rem;background:transparent;border:none;cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);text-align:left;transition:background .15s,color .15s}
 .nav-dd-item:hover{background:rgba(184,147,90,.08);color:var(--gold)}
 .nav-dd-sep{border:none;border-top:1px solid var(--border);margin:.3rem .7rem}
-
-/* ══ ADMIN MODAL ══ */
-#admin-overlay{
-  display:none;position:fixed;inset:0;background:rgba(42,37,32,.72);
-  z-index:99999;backdrop-filter:blur(4px);align-items:center;justify-content:center
-}
+/* ══ ADMIN ══ */
+#admin-overlay{display:none;position:fixed;inset:0;background:rgba(42,37,32,.72);z-index:99999;backdrop-filter:blur(4px);align-items:center;justify-content:center}
 #admin-overlay.open{display:flex}
-#admin-panel{
-  background:var(--ivory);border-radius:var(--rl);
-  width:min(92vw,820px);max-height:88vh;overflow-y:auto;
-  box-shadow:0 24px 80px rgba(42,37,32,.28);
-  animation:ddFadeIn .2s ease
-}
-.adm-hd{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.4rem 1.8rem;border-bottom:1px solid var(--border);
-  position:sticky;top:0;background:var(--ivory);z-index:1
-}
+#admin-panel{background:var(--ivory);border-radius:var(--rl);width:min(92vw,820px);max-height:88vh;overflow-y:auto;box-shadow:0 24px 80px rgba(42,37,32,.28);animation:ddFadeIn .2s ease}
+.adm-hd{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 1.8rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--ivory);z-index:1}
 .adm-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink)}
 .adm-close{background:transparent;border:none;cursor:pointer;font-size:1.3rem;color:var(--ink3);padding:.2rem .5rem;border-radius:4px;transition:color .2s}
 .adm-close:hover{color:var(--ink)}
 .adm-login{padding:2rem 1.8rem;text-align:center}
 .adm-login h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:1.2rem;color:var(--ink)}
 .adm-pwd-wrap{display:flex;gap:.6rem;max-width:320px;margin:0 auto}
-.adm-pwd{
-  flex:1;padding:.65rem 1rem;border:1px solid var(--border2);
-  border-radius:var(--r);font-family:inherit;font-size:.9rem;
-  background:#fff;color:var(--ink);outline:none
-}
+.adm-pwd{flex:1;padding:.65rem 1rem;border:1px solid var(--border2);border-radius:var(--r);font-family:inherit;font-size:.9rem;background:#fff;color:var(--ink);outline:none}
 .adm-pwd:focus{border-color:var(--gold)}
-.adm-btn{
-  padding:.65rem 1.2rem;background:var(--gold);color:#fff;
-  border:none;border-radius:var(--r);cursor:pointer;font-family:inherit;
-  font-size:.85rem;font-weight:600;transition:background .2s
-}
+.adm-btn{padding:.65rem 1.2rem;background:var(--gold);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:600;transition:background .2s}
 .adm-btn:hover{background:var(--gold2)}
 .adm-body{padding:1.5rem 1.8rem;display:none}
 .adm-body.visible{display:block}
@@ -2913,7 +2879,7 @@ body.dark .dark-toggle{background:#3a3632}
 .adm-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);color:var(--ink2)}
 .adm-table tr:last-child td{border-bottom:none}
 .adm-bar-wrap{display:flex;align-items:center;gap:.6rem}
-.adm-bar{height:6px;background:var(--gold);border-radius:3px;min-width:2px;transition:width .4s}
+.adm-bar{height:6px;background:var(--gold);border-radius:3px;min-width:2px}
 .adm-reset{font-size:.75rem;color:var(--ink4);background:transparent;border:1px solid var(--border);border-radius:var(--r);padding:.35rem .8rem;cursor:pointer;margin-top:1rem;transition:color .2s,border-color .2s}
 .adm-reset:hover{color:var(--gold);border-color:var(--gold)}
 </style></head>
@@ -6158,20 +6124,20 @@ body.dark .dark-toggle{background:#3a3632}
         <span>Come si svolge la danza del conflitto tra T8 e T9?</span><span class="faq-arrow">▼</span>
       </button>
       <div class="faq-a" id="faq-a-64"><div class="faq-a-inner">La danza T8-T9 ha 5 passi sempre uguali: (1) TRIGGER — un evento piccolo attiva il copione (Tizio dimentica una richiesta, Sempronia fa un commento critico). (2) LEI SI ATTIVA — Sempronia (T8) sente 'non gli importo' e va in Stato 2: alza il tono, attacca. (3) LUI SI CONGELA — Tizio (T9) sente 'sono sotto attacco' e va in Stato 3: silenzio, monosillabi, distacco emotivo. (4) CIRCOLO VIZIOSO — lei spinge di più vedendo il silenzio, lui si ritira ancora. (5) ESPLOSIONE O MURO — dopo settimane Tizio esplode improvvisamente, oppure si crea un muro gelido per giorni. Il mediatore interviene al passo 2 e 3, prima che il circolo si chiuda. Script universale: 'Sotto questa intensità, cosa temi?'</div></div>
-    </div>
+    </div></div>
+  </
     <div class="faq-item" id="faq-item-65" data-cat="FES">
       <button class="faq-q" onclick="toggleFaq(65)">
         <span>Come funziona il Motore AI per i Fiori FES Californiani?</span><span class="faq-arrow">▼</span>
       </button>
-      <div class="faq-a" id="faq-a-65"><div class="faq-a-inner">Il Motore AI FES si trova nella sezione "I Miei Fiori Californiani" (✿ AI FES nel menu). Offre due modalità: <strong>🎯 Come ti senti</strong> — descrivi il tuo stato emotivo e l'AI individua i fiori FES più adatti, collegandoli a enneatipo, adattamenti AT e cristalli; <strong>🔍 Cerca un fiore</strong> — cerca direttamente per nome e ottieni scheda completa con confronto rispetto ai fiori di Bach e agli australiani. Le risposte integrano l'intero database olistico del portale.</div></div>
+      <div class="faq-a" id="faq-a-65"><div class="faq-a-inner">Il Motore AI FES si trova nella sezione "I Miei Fiori Californiani" (✿ AI FES nel menu). Offre due modalità: <strong>🎯 Come ti senti</strong> — descrivi il tuo stato emotivo e l'AI individua i fiori FES più adatti, collegandoli a enneatipo, adattamenti AT e cristalli; <strong>🔍 Cerca un fiore</strong> — cerca direttamente per nome con scheda completa e confronto rispetto a fiori di Bach e australiani.</div></div>
     </div>
     <div class="faq-item" id="faq-item-66" data-cat="Bush">
       <button class="faq-q" onclick="toggleFaq(66)">
         <span>Come funziona il Motore AI per i Fiori Australiani Bush?</span><span class="faq-arrow">▼</span>
       </button>
-      <div class="faq-a" id="faq-a-66"><div class="faq-a-inner">Il Motore AI Bush si trova nella sezione "I Miei Fiori Australiani" (❋ AI Bush nel menu). Funziona come il motore FES: <strong>🎯 Come ti senti</strong> — descrivi l'emozione o il vissuto, l'AI suggerisce le essenze Bush più coerenti con il tuo profilo (enneatipo, adattamenti AT, chakra); <strong>🔍 Cerca un fiore</strong> — ricerca per nome con scheda integrata e confronto incrociato con Bach e FES. È particolarmente indicato per blocchi energetici profondi, transizioni di vita e dinamiche spirituali.</div></div>
-    </div></div>
-  </div>
+      <div class="faq-a" id="faq-a-66"><div class="faq-a-inner">Il Motore AI Bush si trova nella sezione "I Miei Fiori Australiani" (❋ AI Bush nel menu). Funziona come il motore FES: <strong>🎯 Come ti senti</strong> — l'AI suggerisce le essenze Bush più coerenti con enneatipo, adattamenti AT e chakra; <strong>🔍 Cerca un fiore</strong> — scheda integrata con confronto incrociato Bach e FES. Particolarmente indicato per blocchi energetici profondi e transizioni di vita.</div></div>
+    </div>div>
 </section>
 
 <section id="guida">
@@ -12142,14 +12108,12 @@ if (!document.getElementById('ai-flower-style')) {
 
 
 
-<!-- ══ ADMIN PANEL ══ -->
-<div id="admin-overlay" role="dialog" aria-modal="true" aria-label="Admin" onclick="if(event.target===this)closeAdmin()">
+<div id="admin-overlay" onclick="if(event.target===this)closeAdmin()">
   <div id="admin-panel">
     <div class="adm-hd">
       <span class="adm-title">⚙ Admin — Olismo Integrato</span>
-      <button class="adm-close" onclick="closeAdmin()" aria-label="Chiudi">✕</button>
+      <button class="adm-close" onclick="closeAdmin()">✕</button>
     </div>
-    <!-- LOGIN -->
     <div class="adm-login" id="adm-login">
       <h3>Accesso riservato</h3>
       <div class="adm-pwd-wrap">
@@ -12158,9 +12122,7 @@ if (!document.getElementById('ai-flower-style')) {
       </div>
       <div id="adm-pwd-err" style="color:#c0392b;font-size:.8rem;margin-top:.7rem;display:none">Password errata.</div>
     </div>
-    <!-- BODY (visible after login) -->
     <div class="adm-body" id="adm-body">
-      <!-- KPI -->
       <div class="adm-section-title">📊 Statistiche sessione</div>
       <div class="adm-grid">
         <div class="adm-card"><div class="adm-val" id="adm-visits">0</div><div class="adm-lbl">Visite oggi</div></div>
@@ -12170,230 +12132,68 @@ if (!document.getElementById('ai-flower-style')) {
         <div class="adm-card"><div class="adm-val" id="adm-fes-calls">0</div><div class="adm-lbl">AI FES</div></div>
         <div class="adm-card"><div class="adm-val" id="adm-bush-calls">0</div><div class="adm-lbl">AI Bush</div></div>
       </div>
-      <!-- TOP SEZIONI -->
       <div class="adm-section-title">📍 Sezioni più visitate</div>
-      <table class="adm-table" id="adm-sections-table">
-        <thead><tr><th>Sezione</th><th>Clic</th><th>Barra</th></tr></thead>
-        <tbody id="adm-sections-body"></tbody>
-      </table>
-      <!-- ULTIME QUERY AI -->
+      <table class="adm-table"><thead><tr><th>Sezione</th><th>Clic</th><th>Barra</th></tr></thead><tbody id="adm-sections-body"></tbody></table>
       <div class="adm-section-title">🤖 Ultime query Consulente AI</div>
-      <table class="adm-table">
-        <thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead>
-        <tbody id="adm-ai-log"></tbody>
-      </table>
-      <!-- ULTIME QUERY FES -->
+      <table class="adm-table"><thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead><tbody id="adm-ai-log"></tbody></table>
       <div class="adm-section-title">✿ Ultime query FES</div>
-      <table class="adm-table">
-        <thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead>
-        <tbody id="adm-fes-log"></tbody>
-      </table>
-      <!-- ULTIME QUERY BUSH -->
+      <table class="adm-table"><thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead><tbody id="adm-fes-log"></tbody></table>
       <div class="adm-section-title">❋ Ultime query Bush</div>
-      <table class="adm-table">
-        <thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead>
-        <tbody id="adm-bush-log"></tbody>
-      </table>
+      <table class="adm-table"><thead><tr><th>#</th><th>Query</th><th>Ora</th></tr></thead><tbody id="adm-bush-log"></tbody></table>
       <button class="adm-reset" onclick="adminReset()">🗑 Azzera statistiche</button>
     </div>
   </div>
 </div>
-
 <script>
-/* ══════════════════════════════════════
-   ADMIN PANEL
-══════════════════════════════════════ */
-const ADM_PWD = 'olismo2025'; // <-- cambia qui la password
-const ADM_KEY = 'olismo_admin_stats';
-
-function _admLoad(){
-  try{ return JSON.parse(localStorage.getItem(ADM_KEY))||{}; }
-  catch(e){ return {}; }
-}
-function _admSave(d){ localStorage.setItem(ADM_KEY, JSON.stringify(d)); }
-
-function _admInc(field){
-  const d = _admLoad();
-  d[field] = (d[field]||0)+1;
-  _admSave(d);
-}
-function _admLog(field, text){
-  const d = _admLoad();
-  if(!d[field]) d[field]=[];
-  d[field].unshift({t: new Date().toLocaleTimeString('it-IT'), q: text.substring(0,80)});
-  if(d[field].length>20) d[field].pop();
-  _admSave(d);
-}
-function _admSectionClick(id){
-  const d = _admLoad();
-  if(!d.sections) d.sections={};
-  d.sections[id] = (d.sections[id]||0)+1;
-  _admSave(d);
-}
-
-/* — Track st() calls — */
-const _origSt = typeof st !== 'undefined' ? st : null;
-// We'll hook after page load
-window.addEventListener('load', function(){
-  if(typeof st === 'function'){
-    const _origStFn = st;
-    window.st = function(id){
-      _admSectionClick(id);
-      return _origStFn(id);
-    };
-  }
-  // count visit
-  const d = _admLoad();
-  const today = new Date().toDateString();
-  if(d.lastVisit !== today){
-    d.visitsToday = (d.visitsToday||0)+1;
-    d.lastVisit = today;
-  }
-  d.visitsTotal = (d.visitsTotal||0)+1;
-  _admSave(d);
-});
-
-/* — Intercept AI calls — */
-document.addEventListener('adm:ai-call', function(e){
-  _admInc('aiCalls');
-  _admLog('aiLog', e.detail||'');
-});
-document.addEventListener('adm:fes-call', function(e){
-  _admInc('fesCalls');
-  _admLog('fesLog', e.detail||'');
-});
-document.addEventListener('adm:bush-call', function(e){
-  _admInc('bushCalls');
-  _admLog('bushLog', e.detail||'');
-});
-document.addEventListener('adm:search', function(){
-  _admInc('searches');
-});
-
-/* — Dropdown nav — */
-function toggleNavDd(id){
-  const el = document.getElementById(id);
-  const wasOpen = el.classList.contains('open');
-  document.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
-  if(!wasOpen) el.classList.add('open');
-}
-function closeNavDd(){
-  document.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
-}
-document.addEventListener('click', function(e){
-  if(!e.target.closest('.nav-dropdown')) closeNavDd();
-});
-
-/* — Admin open/close — */
-function openAdmin(){
-  document.getElementById('admin-overlay').classList.add('open');
-  document.getElementById('adm-pwd-input').value='';
-  document.getElementById('adm-pwd-err').style.display='none';
-  document.getElementById('adm-login').style.display='block';
-  document.getElementById('adm-body').classList.remove('visible');
-  setTimeout(()=>document.getElementById('adm-pwd-input').focus(),100);
-}
-function closeAdmin(){
-  document.getElementById('admin-overlay').classList.remove('open');
-}
-
-function adminLogin(){
-  const val = document.getElementById('adm-pwd-input').value;
-  if(val === ADM_PWD){
-    document.getElementById('adm-login').style.display='none';
-    document.getElementById('adm-body').classList.add('visible');
-    adminRender();
-  } else {
-    document.getElementById('adm-pwd-err').style.display='block';
-  }
-}
-
+const ADM_PWD='olismo2025';
+const ADM_KEY='olismo_admin_stats';
+function _aL(){try{return JSON.parse(localStorage.getItem(ADM_KEY))||{};}catch(e){return {};}}
+function _aS(d){localStorage.setItem(ADM_KEY,JSON.stringify(d));}
+function _aI(f){const d=_aL();d[f]=(d[f]||0)+1;_aS(d);}
+function _aLog(f,t){const d=_aL();if(!d[f])d[f]=[];d[f].unshift({t:new Date().toLocaleTimeString('it-IT'),q:(t||'').substring(0,80)});if(d[f].length>20)d[f].pop();_aS(d);}
+function _aSec(id){const d=_aL();if(!d.sec)d.sec={};d.sec[id]=(d.sec[id]||0)+1;_aS(d);}
+/* dropdown */
+function toggleNavDd(id){const el=document.getElementById(id);const was=el.classList.contains('open');document.querySelectorAll('.nav-dropdown.open').forEach(x=>x.classList.remove('open'));if(!was)el.classList.add('open');}
+function closeNavDd(){document.querySelectorAll('.nav-dropdown.open').forEach(x=>x.classList.remove('open'));}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))closeNavDd();});
+/* admin */
+function openAdmin(){const o=document.getElementById('admin-overlay');o.classList.add('open');document.getElementById('adm-login').style.display='block';document.getElementById('adm-body').classList.remove('visible');document.getElementById('adm-pwd-err').style.display='none';document.getElementById('adm-pwd-input').value='';setTimeout(()=>document.getElementById('adm-pwd-input').focus(),100);}
+function closeAdmin(){document.getElementById('admin-overlay').classList.remove('open');}
+function adminLogin(){if(document.getElementById('adm-pwd-input').value===ADM_PWD){document.getElementById('adm-login').style.display='none';document.getElementById('adm-body').classList.add('visible');adminRender();}else{document.getElementById('adm-pwd-err').style.display='block';}}
 function adminRender(){
-  const d = _admLoad();
-  // KPI
-  document.getElementById('adm-visits').textContent   = d.visitsToday||0;
-  document.getElementById('adm-total').textContent    = d.visitsTotal||0;
-  document.getElementById('adm-ai-calls').textContent = d.aiCalls||0;
-  document.getElementById('adm-searches').textContent = d.searches||0;
-  document.getElementById('adm-fes-calls').textContent= d.fesCalls||0;
+  const d=_aL();
+  document.getElementById('adm-visits').textContent=d.visitsToday||0;
+  document.getElementById('adm-total').textContent=d.visitsTotal||0;
+  document.getElementById('adm-ai-calls').textContent=d.aiCalls||0;
+  document.getElementById('adm-searches').textContent=d.searches||0;
+  document.getElementById('adm-fes-calls').textContent=d.fesCalls||0;
   document.getElementById('adm-bush-calls').textContent=d.bushCalls||0;
-
-  // Top sections
-  const sections = d.sections||{};
-  const sorted = Object.entries(sections).sort((a,b)=>b[1]-a[1]).slice(0,12);
-  const maxVal = sorted[0]?.[1]||1;
-  const tbody = document.getElementById('adm-sections-body');
-  tbody.innerHTML = sorted.map(([id,cnt])=>
-    `<tr><td>${id}</td><td>${cnt}</td><td>
-      <div class="adm-bar-wrap">
-        <div class="adm-bar" style="width:${Math.round(cnt/maxVal*120)}px"></div>
-        <span style="font-size:.75rem;color:var(--ink3)">${Math.round(cnt/maxVal*100)}%</span>
-      </div></td></tr>`
-  ).join('') || '<tr><td colspan="3" style="color:var(--ink4);padding:1rem">Nessun dato ancora.</td></tr>';
-
-  // AI logs
-  function renderLog(logKey, tbodyId){
-    const log = d[logKey]||[];
-    document.getElementById(tbodyId).innerHTML = log.map((e,i)=>
-      `<tr><td style="color:var(--ink4)">${i+1}</td><td>${e.q}</td><td style="color:var(--ink4);white-space:nowrap">${e.t}</td></tr>`
-    ).join('') || '<tr><td colspan="3" style="color:var(--ink4);padding:1rem">Nessuna query registrata.</td></tr>';
-  }
-  renderLog('aiLog','adm-ai-log');
-  renderLog('fesLog','adm-fes-log');
-  renderLog('bushLog','adm-bush-log');
+  const sec=d.sec||{};
+  const sorted=Object.entries(sec).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  const mx=sorted[0]?.[1]||1;
+  document.getElementById('adm-sections-body').innerHTML=sorted.map(([id,cnt])=>`<tr><td>${id}</td><td>${cnt}</td><td><div class="adm-bar-wrap"><div class="adm-bar" style="width:${Math.round(cnt/mx*120)}px"></div><span style="font-size:.75rem;color:var(--ink3)">${Math.round(cnt/mx*100)}%</span></div></td></tr>`).join('')||'<tr><td colspan="3" style="color:var(--ink4);padding:1rem .8rem">Nessun dato ancora.</td></tr>';
+  function rl(lk,tid){const lg=d[lk]||[];document.getElementById(tid).innerHTML=lg.map((e,i)=>`<tr><td style="color:var(--ink4)">${i+1}</td><td>${e.q}</td><td style="color:var(--ink4);white-space:nowrap">${e.t}</td></tr>`).join('')||'<tr><td colspan="3" style="color:var(--ink4);padding:1rem .8rem">Nessuna query.</td></tr>';}
+  rl('aiLog','adm-ai-log');rl('fesLog','adm-fes-log');rl('bushLog','adm-bush-log');
 }
-
-function adminReset(){
-  if(confirm('Azzerare tutte le statistiche?')){
-    localStorage.removeItem(ADM_KEY);
-    adminRender();
-  }
-}
-
-/* — Hook AI send functions to fire admin events — */
-window.addEventListener('load', function(){
-  // Consulente AI
-  const origSend = typeof aiSend === 'function' ? aiSend : null;
-  // We patch by watching the form submit instead
-  const aiForm = document.getElementById('ai-input');
-  if(aiForm){
-    aiForm.addEventListener('keydown', function(e){
-      if(e.key==='Enter' && !e.shiftKey && this.value.trim()){
-        document.dispatchEvent(new CustomEvent('adm:ai-call',{detail:this.value.trim()}));
-      }
-    });
-  }
-  // FES
-  ['fes-input','fes-name-input'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('keydown',function(e){
-      if(e.key==='Enter' && this.value.trim())
-        document.dispatchEvent(new CustomEvent('adm:fes-call',{detail:this.value.trim()}));
-    });
-  });
-  const fesSendBtn = document.getElementById('fes-send');
-  if(fesSendBtn) fesSendBtn.addEventListener('click',function(){
-    const inp = document.getElementById('fes-input')||document.getElementById('fes-name-input');
-    if(inp) document.dispatchEvent(new CustomEvent('adm:fes-call',{detail:inp.value.trim()}));
-  });
-  // Bush
-  ['bush-input','bush-name-input'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('keydown',function(e){
-      if(e.key==='Enter' && this.value.trim())
-        document.dispatchEvent(new CustomEvent('adm:bush-call',{detail:this.value.trim()}));
-    });
-  });
-  const bushSendBtn = document.getElementById('bush-send');
-  if(bushSendBtn) bushSendBtn.addEventListener('click',function(){
-    const inp = document.getElementById('bush-input')||document.getElementById('bush-name-input');
-    if(inp) document.dispatchEvent(new CustomEvent('adm:bush-call',{detail:inp.value.trim()}));
-  });
-  // Search
-  const searchInput = document.getElementById('search-input');
-  if(searchInput) searchInput.addEventListener('keydown',function(e){
-    if(e.key==='Enter') document.dispatchEvent(new CustomEvent('adm:search'));
-  });
+function adminReset(){if(confirm('Azzerare tutte le statistiche?')){localStorage.removeItem(ADM_KEY);adminRender();}}
+window.addEventListener('load',function(){
+  /* visite */
+  const d=_aL();const today=new Date().toDateString();
+  if(d.lastVisit!==today){d.visitsToday=(d.visitsToday||0)+1;d.lastVisit=today;}
+  d.visitsTotal=(d.visitsTotal||0)+1;_aS(d);
+  /* hook st() */
+  if(typeof st==='function'){const _o=st;window.st=function(id){_aSec(id);return _o(id);};}
+  /* AI */
+  const aiIn=document.getElementById('ai-input');
+  if(aiIn)aiIn.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey&&this.value.trim()){_aI('aiCalls');_aLog('aiLog',this.value.trim());}});
+  /* FES */
+  ['fes-input','fes-name-input'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('keydown',function(e){if(e.key==='Enter'&&this.value.trim()){_aI('fesCalls');_aLog('fesLog',this.value.trim());}});});
+  const fsb=document.getElementById('fes-send');if(fsb)fsb.addEventListener('click',()=>{const i=document.getElementById('fes-input');if(i&&i.value.trim()){_aI('fesCalls');_aLog('fesLog',i.value.trim());}});
+  /* Bush */
+  ['bush-input','bush-name-input'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('keydown',function(e){if(e.key==='Enter'&&this.value.trim()){_aI('bushCalls');_aLog('bushLog',this.value.trim());}});});
+  const bsb=document.getElementById('bush-send');if(bsb)bsb.addEventListener('click',()=>{const i=document.getElementById('bush-input');if(i&&i.value.trim()){_aI('bushCalls');_aLog('bushLog',i.value.trim());}});
+  /* search */
+  const si=document.getElementById('search-input');if(si)si.addEventListener('keydown',function(e){if(e.key==='Enter')_aI('searches');});
 });
 </script>
 </body></html>

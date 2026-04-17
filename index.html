@@ -2983,6 +2983,86 @@ body.mega-open .mega-backdrop{display:block}
 .mob-section-label{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:.8rem 1rem .3rem;margin-top:.3rem}
 .mob-sep{height:1px;background:var(--border);margin:.5rem 0}
 #mob-menu{max-height:calc(100vh - 68px);overflow-y:auto}
+
+/* ══ PERCORSO TRACKER ══ */
+#percorso-banner{
+  position:fixed;bottom:18px;right:18px;z-index:201;
+  width:min(380px, calc(100vw - 40px));
+  background:white;
+  border:1px solid var(--border2);
+  border-left:4px solid var(--gold);
+  border-radius:14px;
+  box-shadow:0 14px 40px rgba(42,37,32,.22);
+  padding:1.1rem 1.2rem;
+  animation:pbSlide .4s ease;
+}
+@keyframes pbSlide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.pb-inner{display:flex;flex-direction:column;gap:.7rem}
+.pb-header{display:flex;align-items:center;gap:.7rem;position:relative}
+.pb-icon{font-size:1.5rem;flex-shrink:0}
+.pb-title-wrap{flex:1;min-width:0}
+.pb-eyebrow{
+  font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);
+}
+.pb-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  font-weight:600;color:var(--ink);line-height:1.2;
+  margin-top:2px
+}
+.pb-close{
+  position:absolute;top:-.4rem;right:-.6rem;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--ivory);border:1px solid var(--border);
+  cursor:pointer;color:var(--ink3);font-size:.7rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center
+}
+.pb-close:hover{color:var(--ink);border-color:var(--gold)}
+
+.pb-progress{display:flex;flex-direction:column;gap:.5rem}
+.pb-progress-bar{
+  height:4px;background:var(--ivory2);
+  border-radius:2px;overflow:hidden
+}
+.pb-progress-fill{
+  height:100%;background:linear-gradient(90deg, var(--gold2), var(--gold));
+  border-radius:2px;transition:width .6s ease
+}
+.pb-steps{
+  display:flex;flex-direction:column;gap:.25rem;
+  font-size:.75rem;color:var(--ink3)
+}
+.pb-step{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.25rem 0;transition:color .2s
+}
+.pb-step.pb-done{color:#3d5a48}
+.pb-step.pb-done::before{content:'✓';color:#3d5a48;font-weight:700;width:16px}
+.pb-step.pb-active{color:var(--gold);font-weight:600}
+.pb-step.pb-active::before{content:'▸';color:var(--gold);width:16px}
+.pb-step.pb-todo::before{content:'○';color:var(--ink4);width:16px}
+
+.pb-cta{display:flex;gap:.4rem;flex-wrap:wrap}
+.pb-cta-btn{
+  flex:1;padding:.55rem .9rem;
+  background:var(--gold);color:white;border:none;
+  border-radius:8px;cursor:pointer;
+  font-family:inherit;font-size:.78rem;font-weight:600;
+  letter-spacing:.04em;transition:all .2s
+}
+.pb-cta-btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.pb-cta-secondary{
+  background:transparent;color:var(--ink3);
+  border:1px solid var(--border2)
+}
+.pb-cta-secondary:hover{color:var(--ink);border-color:var(--gold)}
+
+@media (max-width:500px){
+  #percorso-banner{right:12px;bottom:12px;left:12px;width:auto}
+}
+
+/* Sposta progress widget se percorso attivo */
+body.has-percorso #progress-widget{bottom:auto;top:90px}
 </style></head>
 <body>
 
@@ -3195,13 +3275,13 @@ body.mega-open .mega-backdrop{display:block}
       <p style="font-size:.92rem;color:var(--ink3);max-width:640px;margin:.8rem auto 0;line-height:1.65">Ogni percorso raggruppa più strumenti che si completano a vicenda.</p>
     </div>
     <div class="perc-grid">
-      <div class="perc-card perc-1" onclick="st('check-integrato')"><div class="perc-icon">🌱</div><div class="perc-label">Fase 1 · Profilo</div><h3>Conosci te stesso</h3><p>Parti dal Check e dai test per scoprire enneatipo, adattamento AT, stile comunicativo.</p><div class="perc-chips"><span class="perc-chip">Check</span><span class="perc-chip">9 Frutti</span><span class="perc-chip">Test AT</span><span class="perc-chip">VAK</span><span class="perc-chip">Egogramma</span></div><div class="perc-cta">Inizia →</div></div>
-      <div class="perc-card perc-2" onclick="st('bach')"><div class="perc-icon">🌸</div><div class="perc-label">Fiori & AI</div><h3>Riequilibra l'emozione</h3><p>Bach, FES e Bush con motori AI che ti suggeriscono l'essenza giusta.</p><div class="perc-chips"><span class="perc-chip">Bach</span><span class="perc-chip" style="background:rgba(139,120,230,.12);color:#8b78e6">✿ AI FES</span><span class="perc-chip" style="background:rgba(200,129,58,.12);color:#c8813a">❋ AI Bush</span></div><div class="perc-cta">Scopri →</div></div>
-      <div class="perc-card perc-3" onclick="st('chakra-sec')"><div class="perc-icon">◉</div><div class="perc-label">Energia</div><h3>Cura il corpo sottile</h3><p>Riequilibra i 7 chakra, cristalloterapia, frequenze solfeggio.</p><div class="perc-chips"><span class="perc-chip">Chakra</span><span class="perc-chip">💎 Cristalli</span><span class="perc-chip">🧘 Meditazione</span><span class="perc-chip">♬ Frequenze</span></div><div class="perc-cta">Entra →</div></div>
-      <div class="perc-card perc-4" onclick="st('compatibilita')"><div class="perc-icon">♡</div><div class="perc-label">Relazioni</div><h3>Migliora le relazioni</h3><p>AT, compatibilità di coppia per enneatipo, comunicazione efficace.</p><div class="perc-chips"><span class="perc-chip">Compatibilità</span><span class="perc-chip">Adattamenti AT</span><span class="perc-chip">🔀 Transazioni</span><span class="perc-chip">◎ Carezze</span></div><div class="perc-cta">Scopri →</div></div>
-      <div class="perc-card perc-5" onclick="st('danza')"><div class="perc-icon">⚡</div><div class="perc-label">Mediazione</div><h3>Gestisci i conflitti</h3><p>Danza del Conflitto, neurobiologia della coppia, mediazione familiare.</p><div class="perc-chips"><span class="perc-chip">Danza</span><span class="perc-chip">Neuroscienze</span><span class="perc-chip">Polivagale</span></div><div class="perc-cta">Apri →</div></div>
-      <div class="perc-card perc-6" onclick="st('alimentazione')"><div class="perc-icon">🌿</div><div class="perc-label">Corpo</div><h3>Nutri il corpo</h3><p>Alimentazione olistica basata sull'enneatipo. Pranoterapia.</p><div class="perc-chips"><span class="perc-chip">🌿 Alimentazione</span><span class="perc-chip">🤲 Pranoterapia</span></div><div class="perc-cta">Piano →</div></div>
-      <div class="perc-card perc-7" onclick="st('consulente')"><div class="perc-icon">🤖</div><div class="perc-label">AI & Database</div><h3>Dialoga con l'AI</h3><p>Il Consulente AI integra tutto. Chiedi, ottieni un report PDF.</p><div class="perc-chips"><span class="perc-chip">✦ Consulente AI</span><span class="perc-chip">📄 Report</span><span class="perc-chip">🔍 Database</span></div><div class="perc-cta">Parla →</div></div>
+      <div class="perc-card perc-1" onclick="window.startPercorso(&#39;conosci&#39;)"><div class="perc-icon">🌱</div><div class="perc-label">Fase 1 · Profilo</div><h3>Conosci te stesso</h3><p>Parti dal Check e dai test per scoprire enneatipo, adattamento AT, stile comunicativo.</p><div class="perc-chips"><span class="perc-chip">Check</span><span class="perc-chip">9 Frutti</span><span class="perc-chip">Test AT</span><span class="perc-chip">VAK</span><span class="perc-chip">Egogramma</span></div><div class="perc-cta">Inizia →</div></div>
+      <div class="perc-card perc-2" onclick="window.startPercorso(&#39;emozione&#39;)"><div class="perc-icon">🌸</div><div class="perc-label">Fiori & AI</div><h3>Riequilibra l'emozione</h3><p>Bach, FES e Bush con motori AI che ti suggeriscono l'essenza giusta.</p><div class="perc-chips"><span class="perc-chip">Bach</span><span class="perc-chip" style="background:rgba(139,120,230,.12);color:#8b78e6">✿ AI FES</span><span class="perc-chip" style="background:rgba(200,129,58,.12);color:#c8813a">❋ AI Bush</span></div><div class="perc-cta">Scopri →</div></div>
+      <div class="perc-card perc-3" onclick="window.startPercorso(&#39;corpo&#39;)"><div class="perc-icon">◉</div><div class="perc-label">Energia</div><h3>Cura il corpo sottile</h3><p>Riequilibra i 7 chakra, cristalloterapia, frequenze solfeggio.</p><div class="perc-chips"><span class="perc-chip">Chakra</span><span class="perc-chip">💎 Cristalli</span><span class="perc-chip">🧘 Meditazione</span><span class="perc-chip">♬ Frequenze</span></div><div class="perc-cta">Entra →</div></div>
+      <div class="perc-card perc-4" onclick="window.startPercorso(&#39;relazioni&#39;)"><div class="perc-icon">♡</div><div class="perc-label">Relazioni</div><h3>Migliora le relazioni</h3><p>AT, compatibilità di coppia per enneatipo, comunicazione efficace.</p><div class="perc-chips"><span class="perc-chip">Compatibilità</span><span class="perc-chip">Adattamenti AT</span><span class="perc-chip">🔀 Transazioni</span><span class="perc-chip">◎ Carezze</span></div><div class="perc-cta">Scopri →</div></div>
+      <div class="perc-card perc-5" onclick="window.startPercorso(&#39;conflitti&#39;)"><div class="perc-icon">⚡</div><div class="perc-label">Mediazione</div><h3>Gestisci i conflitti</h3><p>Danza del Conflitto, neurobiologia della coppia, mediazione familiare.</p><div class="perc-chips"><span class="perc-chip">Danza</span><span class="perc-chip">Neuroscienze</span><span class="perc-chip">Polivagale</span></div><div class="perc-cta">Apri →</div></div>
+      <div class="perc-card perc-6" onclick="window.startPercorso(&#39;nutrire&#39;)"><div class="perc-icon">🌿</div><div class="perc-label">Corpo</div><h3>Nutri il corpo</h3><p>Alimentazione olistica basata sull'enneatipo. Pranoterapia.</p><div class="perc-chips"><span class="perc-chip">🌿 Alimentazione</span><span class="perc-chip">🤲 Pranoterapia</span></div><div class="perc-cta">Piano →</div></div>
+      <div class="perc-card perc-7" onclick="window.startPercorso(&#39;ai&#39;)"><div class="perc-icon">🤖</div><div class="perc-label">AI & Database</div><h3>Dialoga con l'AI</h3><p>Il Consulente AI integra tutto. Chiedi, ottieni un report PDF.</p><div class="perc-chips"><span class="perc-chip">✦ Consulente AI</span><span class="perc-chip">📄 Report</span><span class="perc-chip">🔍 Database</span></div><div class="perc-cta">Parla →</div></div>
       <div class="perc-card perc-8" onclick="window.location.href='i_miei_fiori.html'"><div class="perc-icon">✦</div><div class="perc-label">Personale</div><h3>Crea il tuo cammino</h3><p>Fiori personali, copione di vita, percorsi su misura.</p><div class="perc-chips"><span class="perc-chip">🌼 Fiori</span><span class="perc-chip">✦ Copione</span><span class="perc-chip">🗺 Mappa</span></div><div class="perc-cta">Cammino →</div></div>
     </div>
   </div>
@@ -5216,6 +5296,7 @@ body.mega-open .mega-backdrop{display:block}
     <div style="display:flex;gap:.4rem;background:rgba(255,255,255,0.05);border-radius:10px;padding:.35rem;margin-bottom:1.2rem">
       <button id="fes-btn-sintomo" onclick="fesSwitchMode(&#39;sintomo&#39;)" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:#6a5acd;color:#fff">🎯 Come ti senti</button>
       <button id="fes-btn-fiore" onclick="fesSwitchMode(&#39;fiore&#39;)" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:transparent;color:rgba(255,255,255,0.5)">🌸 Cerca un fiore FES</button>
+      <button onclick="exportFesPdf()" title="Scarica conversazione FES in PDF" style="padding:.55rem .9rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:rgba(139,120,230,0.15);color:#8b78e6">⬇ PDF</button>
     </div>
     <div style="position:relative;margin-bottom:.7rem">
       <textarea id="fes-input" placeholder="Es: mi sento disconnessa, non trovo il mio scopo di vita…" rows="2" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();fesSend()}" style="width:100%;padding:1rem 4.5rem 1rem 1.2rem;font-family:inherit;font-size:.92rem;border:2px solid rgba(139,120,230,0.2);border-radius:12px;background:rgba(255,255,255,0.05);color:#fff;outline:none;resize:none;min-height:54px"></textarea>
@@ -5274,6 +5355,7 @@ body.mega-open .mega-backdrop{display:block}
     <div style="display:flex;gap:.4rem;background:rgba(255,255,255,0.04);border-radius:10px;padding:.35rem;margin-bottom:1.2rem">
       <button id="bush-btn-sintomo" onclick="bushSwitchMode(&#39;sintomo&#39;)" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:#c8813a;color:#fff">🎯 Come ti senti</button>
       <button id="bush-btn-fiore" onclick="bushSwitchMode(&#39;fiore&#39;)" style="flex:1;padding:.55rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:transparent;color:rgba(255,255,255,0.5)">🌿 Cerca un fiore Bush</button>
+      <button onclick="exportBushPdf()" title="Scarica conversazione Bush in PDF" style="padding:.55rem .9rem;border:none;cursor:pointer;border-radius:7px;font-family:inherit;font-size:.82rem;font-weight:600;background:rgba(200,129,58,0.15);color:#c8813a">⬇ PDF</button>
     </div>
     <div style="position:relative;margin-bottom:.7rem">
       <textarea id="bush-input" placeholder="Es: mi sento bloccata, non riesco a prendere decisioni…" rows="2" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();bushSend()}" style="width:100%;padding:1rem 4.5rem 1rem 1.2rem;font-family:inherit;font-size:.92rem;border:2px solid rgba(200,129,58,0.2);border-radius:12px;background:rgba(255,255,255,0.04);color:#fff;outline:none;resize:none;min-height:54px"></textarea>
@@ -11264,17 +11346,26 @@ async function exportChatPdf(){
     function se(s){
       if(!s) return '';
       s = String(s);
+      // Common emoji map (symbolic replacements for readability)
+      const EMOJI_MAP = {
+        '\u{1F338}':'[fiore]','\u{1F33F}':'[erba]','\u273F':'[*]',
+        '\u274B':'[*]','\u{1F917}':'[AI]','\u{1F916}':'[AI]',
+        '\u2726':'[*]','\u25C9':'o','\u{1F48E}':'[cristallo]',
+        '\u{1F9D8}':'[meditazione]','\u{1F9E0}':'[mente]','\u{1F333}':'[albero]',
+        '\u{1F30A}':'[onda]','\u{1F98B}':'[farfalla]','\u2728':'*',
+        '\u{1F31F}':'*','\u{1F33C}':'[fiore]','\u{1F339}':'[rosa]',
+        '\u{1F337}':'[tulip]','\u{1F335}':'[cactus]'
+      };
+      for(const [k,v] of Object.entries(EMOJI_MAP)){ s=s.split(k).join(v); }
+      // Symbols map
       const MAP={'\u2714':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
-        '\u25c9':'-','\u2605':'*','\u2022':'-','\u25cf':'-'};
+        '\u25c9':'-','\u2605':'*','\u2022':'- ','\u25cf':'-'};
       for(const [k,v] of Object.entries(MAP)){ s=s.split(k).join(v); }
-      return s.replace(/[^\x00-\xFF]/g, function(c){
-        const cp=c.codePointAt(0);
-        if(cp===0x25C9||cp===0x25CF) return '-';
-        if(cp===0x2714||cp===0x2713) return 'v ';
-        if(cp===0x26A0) return '! ';
-        if(cp===0x2022) return '- ';
-        return '';
-      });
+      // Replace all misc symbols (2600-27BF) and emoji ranges (1F300-1F9FF) with safe chars
+      s = s.replace(/[\u{1F300}-\u{1F9FF}]/gu, '*')
+           .replace(/[\u{1FA00}-\u{1FAFF}]/gu, '*');
+      // Strip remaining non-Latin-1 but keep italian accents (in 0-255 range)
+      return s.replace(/[^\x00-\xFF]/g, '');
     }
 
 
@@ -11607,6 +11698,272 @@ async function exportChatPdf(){
   }
 }
 
+
+
+
+// ── GENERIC MOTOR PDF EXPORTER (FES / Bush) ──
+async function exportMotorPdf(cfg){
+  // cfg = { chatSelector, brandColor, brandRgb, motorName, motorEmoji, fileName }
+  if(cfg.btn){ cfg.btn.classList.add('loading'); cfg.btn.textContent = '...'; }
+
+  try {
+    // Wait for jsPDF
+    var _w = 0;
+    while(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined' && _w < 30){
+      await new Promise(r => setTimeout(r, 100));
+      _w++;
+    }
+    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+      throw new Error('jsPDF non e\' stato caricato. Controlla la connessione.');
+    }
+    const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+
+    // Collect messages from chat
+    const messages = [];
+    const msgEls = document.querySelectorAll(cfg.chatSelector);
+    msgEls.forEach(el => {
+      // Skip the initial placeholder box
+      if(el.classList && el.classList.contains('motor-intro')) return;
+      // Extract text
+      const txt = (el.textContent || el.innerText || '').trim();
+      if(!txt || txt.length < 5) return;
+      // Detect role: FES/Bush messages alternate user/ai
+      // Look for specific markup
+      const isAi = el.textContent.includes(cfg.motorName) ||
+                    el.querySelector && el.querySelector('[style*="color:'+cfg.brandColor+'"]');
+      messages.push({
+        role: isAi ? 'ai' : 'user',
+        text: txt,
+        time: ''
+      });
+    });
+
+    // Use motor chat history if available (more reliable)
+    const historyVar = cfg.historyName ? window[cfg.historyName] : null;
+    let msgs = messages;
+    if(historyVar && Array.isArray(historyVar) && historyVar.length){
+      msgs = historyVar.map(function(m){
+        return { role: m.role === 'user' ? 'user' : 'ai', text: m.content || '', time: '' };
+      });
+    }
+
+    if(msgs.length === 0){
+      throw new Error('Nessun messaggio nella conversazione. Invia una domanda prima di scaricare il PDF.');
+    }
+
+    // ── PALETTE ──
+    const GOLD = cfg.brandRgb;
+    const GOLD_LIGHT = cfg.brandLightRgb;
+    const IVORY = [249, 245, 239];
+    const IVORY2 = [243, 237, 227];
+    const INK = [42, 37, 32];
+    const INK2 = [74, 69, 64];
+    const INK3 = [122, 114, 104];
+    const WHITE = [255, 255, 255];
+
+    // ── TEXT SANITIZER (keeps italian accents, maps emoji) ──
+    const EMOJI_MAP = {
+      '\u{1F338}': '[fiore]', '\u{1F33F}': '[*]', '\u273F': '[*]',
+      '\u274B': '[*]', '\u{1F917}': '[AI]', '\u{1F916}': '[AI]',
+      '\u2726': '[*]', '\u25C9': 'o', '\u{1F48E}': '[gem]',
+      '\u{1F9D8}': '[med]', '\u{1F9E0}': '[mind]', '\u{1F333}': '[tree]',
+      '\u{1F30A}': '[onda]', '\u{1F98B}': '[farfalla]', '\u{1F469}': '',
+      '\u2728': '*', '\u{1F31F}': '*', '\u{1F33C}': '[fiore]',
+      '\u{1F339}': '[rosa]', '\u{1F337}': '[tulip]', '\u{1F3F5}': '[*]',
+      '\u{1F3F5}': '[*]', '\u{1F335}': '[*]'
+    };
+    function se(s){
+      if(!s) return '';
+      s = String(s);
+      for(const [k,v] of Object.entries(EMOJI_MAP)){ s=s.split(k).join(v); }
+      // Common symbols
+      s = s.replace(/[\u{1F300}-\u{1F9FF}]/gu, '*')  // any misc emoji → *
+           .replace(/[\u2600-\u27BF]/g, function(c){
+             const cp = c.codePointAt(0);
+             // Keep common glyphs
+             if([0x2714,0x2713,0x2022,0x26A0].indexOf(cp) >= 0) return c;
+             if(cp === 0x2022) return '-';
+             if(cp === 0x2714 || cp === 0x2713) return 'v';
+             if(cp === 0x26A0) return '!';
+             return '';
+           });
+      // Strip any remaining non-Latin-1 (keep accents, common punctuation)
+      return s.replace(/[^\x00-\xFF]/g, '');
+    }
+
+    // ── PDF init ──
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const PW = doc.internal.pageSize.getWidth();
+    const PH = doc.internal.pageSize.getHeight();
+    const ML = 16, MR = 16, MT = 30, MB = 22;
+    const CW = PW - ML - MR;
+    let page = 1;
+    let y = 0;
+
+    function stripHtml(h){
+      const d = document.createElement('div');
+      d.innerHTML = h;
+      return (d.textContent || d.innerText || '').trim();
+    }
+    function wrapText(text, maxW, fontSize){
+      doc.setFontSize(fontSize);
+      return doc.splitTextToSize(se(text || ''), maxW);
+    }
+
+    function drawHeader(){
+      doc.setFillColor(...GOLD);
+      doc.rect(0, 0, PW, 7, 'F');
+      doc.setFillColor(...IVORY);
+      doc.rect(0, 7, PW, 18, 'F');
+      doc.setTextColor(...INK);
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'bold');
+      doc.text('OLISMO INTEGRATO', ML, 14);
+      doc.setFontSize(7.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...INK3);
+      doc.text(cfg.motorDisplay + '  -  Carlo Alberto Calcagno', ML, 19);
+      doc.setFontSize(7);
+      doc.setTextColor(...GOLD);
+      doc.text('olismo-integrato.it', PW - MR - 2, 19, {align: 'right'});
+      doc.setDrawColor(...GOLD);
+      doc.setLineWidth(0.3);
+      doc.line(0, 25, PW, 25);
+    }
+
+    function drawFooter(){
+      doc.setDrawColor(...GOLD);
+      doc.setLineWidth(0.2);
+      doc.line(ML, PH - 13, PW - MR, PH - 13);
+      doc.setTextColor(...INK3);
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      doc.text('(C) Carlo Alberto Calcagno - olismo-integrato.it', ML, PH - 8);
+      doc.setTextColor(...GOLD);
+      doc.text('Pagina ' + page, PW - MR, PH - 8, {align: 'right'});
+      doc.setTextColor(...INK3);
+      doc.setFontSize(6);
+      doc.setFont('helvetica', 'italic');
+      doc.text('Documento formativo. Non sostituisce il parere di professionisti qualificati.', PW/2, PH - 4, {align: 'center'});
+    }
+
+    function newPage(){
+      drawFooter();
+      doc.addPage();
+      page++;
+      drawHeader();
+      y = MT + 5;
+    }
+
+    function drawMessage(role, text, time){
+      const isUser = role === 'user';
+      const bubbleLines = wrapText(text, CW - 12, 9);
+      const lineH = 4.5;
+      const pad = 4;
+      const bubbleH = bubbleLines.length * lineH + pad * 2;
+
+      if(y + bubbleH > PH - MB) newPage();
+
+      // Role label
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...(isUser ? INK2 : GOLD));
+      doc.text((isUser ? 'TU' : cfg.motorDisplay.toUpperCase()), ML, y);
+      y += 4;
+
+      // Bubble
+      doc.setFillColor(...(isUser ? IVORY2 : GOLD_LIGHT));
+      doc.setDrawColor(...(isUser ? [200,200,200] : GOLD));
+      doc.setLineWidth(0.2);
+      doc.roundedRect(ML, y, CW, bubbleH, 2, 2, 'FD');
+      // Text
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(...INK);
+      bubbleLines.forEach(function(line, i){
+        doc.text(line, ML + pad, y + pad + 3 + (i * lineH));
+      });
+      y += bubbleH + 6;
+    }
+
+    // ── Cover page ──
+    drawHeader();
+    y = MT + 5;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(...GOLD);
+    doc.text('Consulenza ' + cfg.motorDisplay, ML, y + 8);
+    y += 20;
+    doc.setDrawColor(...GOLD);
+    doc.setLineWidth(0.5);
+    doc.line(ML, y, ML + 40, y);
+    y += 10;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(...INK2);
+    doc.text('Trascrizione della conversazione', ML, y);
+    y += 6;
+    doc.setFontSize(9);
+    doc.setTextColor(...INK3);
+    const today = new Date().toLocaleDateString('it-IT', {day:'numeric',month:'long',year:'numeric'});
+    doc.text('Generato il ' + today, ML, y);
+    y += 12;
+
+    // ── Draw all messages ──
+    msgs.forEach(function(m){
+      drawMessage(m.role, m.text, m.time);
+    });
+
+    drawFooter();
+
+    // ── Save ──
+    const dateFile = new Date().toISOString().slice(0,10);
+    doc.save(cfg.fileName + '-' + dateFile + '.pdf');
+
+  } catch(err) {
+    console.error('PDF export error:', err);
+    alert('Errore nella generazione del PDF: ' + err.message);
+  }
+
+  if(cfg.btn){
+    cfg.btn.classList.remove('loading');
+    cfg.btn.innerHTML = cfg.btnOriginal;
+  }
+}
+
+async function exportFesPdf(){
+  const btn = event && event.currentTarget ? event.currentTarget : null;
+  await exportMotorPdf({
+    btn: btn,
+    btnOriginal: btn ? btn.innerHTML : null,
+    chatSelector: '#fes-chat > div',
+    brandColor: '#8b78e6',
+    brandRgb: [139, 120, 230],
+    brandLightRgb: [235, 230, 250],
+    motorName: 'Assistente FES',
+    motorDisplay: 'Motore AI FES',
+    motorEmoji: '',
+    historyName: 'fesHistory',
+    fileName: 'Olismo-Integrato-AI-FES'
+  });
+}
+
+async function exportBushPdf(){
+  const btn = event && event.currentTarget ? event.currentTarget : null;
+  await exportMotorPdf({
+    btn: btn,
+    btnOriginal: btn ? btn.innerHTML : null,
+    chatSelector: '#bush-chat > div',
+    brandColor: '#c8813a',
+    brandRgb: [200, 129, 58],
+    brandLightRgb: [250, 235, 218],
+    motorName: 'Assistente Bush',
+    motorDisplay: 'Motore AI Bush',
+    motorEmoji: '',
+    historyName: 'bushHistory',
+    fileName: 'Olismo-Integrato-AI-Bush'
+  });
+}
 
 // ══════════════════════════════════════════════
 // MOTORE DIETETICO
@@ -12471,6 +12828,189 @@ if (!document.getElementById('ai-flower-style')) {
     btn.textContent=expanded?"Mostra meno":"Leggi di piu";
   };
 
+  
+  /* ══ PERCORSO TRACKER ══ */
+  var PERCORSI = {
+    'conosci': {
+      name: 'Conosci te stesso', icon: '🌱',
+      steps: [
+        {id:'check-integrato', label:'Check Integrato',    key:'check'},
+        {id:'test-frutti',      label:'Test 9 Frutti',      key:'frutti'},
+        {id:'test-adattamenti', label:'Test Adattamenti AT',key:'at'},
+        {id:'vak',              label:'Test VAK',           key:'vak'},
+        {id:'egogramma',        label:'Egogramma',          key:'ego'}
+      ],
+      finalPrompt: 'Ho completato il percorso "Conosci te stesso" e tutti i miei test sono stati caricati. Fammi una sintesi integrata del mio profilo olistico con enneatipo, adattamento AT, stile VAK e dinamiche interne (egogramma). Suggeriscimi poi i prossimi passi consigliati.'
+    },
+    'emozione': {
+      name: "Riequilibra l'emozione", icon: '🌸',
+      steps: [
+        {id:'bach',        label:'Fiori di Bach'},
+        {id:'ai-fes-sec',  label:'Motore AI FES'},
+        {id:'ai-bush-sec', label:'Motore AI Bush'}
+      ],
+      finalPrompt: 'Ho esplorato i Fiori di Bach, FES e Bush. Se il mio profilo è disponibile, suggerisci una miscela floreale integrata con 3-5 essenze (mix Bach/FES/Bush) per il mio stato attuale, con posologia.'
+    },
+    'corpo': {
+      name: 'Cura il corpo sottile', icon: '◉',
+      steps: [
+        {id:'chakra-sec', label:'Chakra'},
+        {id:'cristalli',  label:'Cristalli'},
+        {id:'meditazione',label:'Meditazione'},
+        {id:'musica',     label:'Frequenze'}
+      ],
+      finalPrompt: 'Ho esplorato chakra, cristalli, meditazione e frequenze. Suggeriscimi una routine quotidiana di 15-20 minuti per riequilibrare i miei chakra più sbilanciati, con cristalli, meditazione e frequenze specifiche.'
+    },
+    'relazioni': {
+      name: 'Migliora le relazioni', icon: '♡',
+      steps: [
+        {id:'compatibilita',  label:'Compatibilità'},
+        {id:'at-adattamenti', label:'Adattamenti AT'},
+        {id:'transazioni',    label:'Transazioni AT'},
+        {id:'carezze',        label:'Carezze'}
+      ],
+      finalPrompt: 'Ho esplorato compatibilità di coppia, adattamenti AT, transazioni e carezze. Aiutami a individuare i pattern relazionali che dovrei migliorare, in base al mio profilo se disponibile.'
+    },
+    'conflitti': {
+      name: 'Gestisci i conflitti', icon: '⚡',
+      steps: [
+        {id:'danza',      label:'Danza del Conflitto'},
+        {id:'discipline', label:'Neuroscienze & Psicologia'}
+      ],
+      finalPrompt: 'Ho studiato la Danza del Conflitto e le neuroscienze relazionali. Suggeriscimi una strategia di mediazione basata sul mio profilo per gestire un conflitto ricorrente.'
+    },
+    'nutrire': {
+      name: 'Nutri il corpo', icon: '🌿',
+      steps: [
+        {id:'alimentazione', label:'Alimentazione'},
+        {id:'prano',         label:'Pranoterapia'}
+      ],
+      finalPrompt: 'Sulla base del mio profilo (enneatipo e adattamento AT), proponimi un piano alimentare settimanale integrato con indicazioni sulla pranoterapia.'
+    },
+    'ai': {
+      name: "Dialoga con l'AI", icon: '🤖',
+      steps: [{id:'consulente', label:'Consulente AI'}],
+      finalPrompt: null  // just goes to AI directly
+    }
+  };
+
+  var ACTIVE_PERCORSO_KEY = 'olismo_percorso_active';
+
+  window.startPercorso = function(percId){
+    if(!PERCORSI[percId]) return;
+    try{ localStorage.setItem(ACTIVE_PERCORSO_KEY, percId); }catch(e){}
+    var p = PERCORSI[percId];
+    // Navigate to first step
+    if(p.steps && p.steps.length > 0){
+      var firstStep = p.steps[0];
+      setTimeout(function(){
+        if(typeof st === 'function') st(firstStep.id);
+        renderPercorso();
+      }, 50);
+    }
+  };
+
+  window.exitPercorso = function(){
+    try{ localStorage.removeItem(ACTIVE_PERCORSO_KEY); }catch(e){}
+    document.body.classList.remove('has-percorso');
+    var banner = document.getElementById('percorso-banner');
+    if(banner) banner.style.display = 'none';
+  };
+
+  window.renderPercorso = function(){
+    var banner = document.getElementById('percorso-banner');
+    if(!banner) return;
+    var percId; try{ percId = localStorage.getItem(ACTIVE_PERCORSO_KEY); }catch(e){}
+    if(!percId || !PERCORSI[percId]){
+      banner.style.display = 'none';
+      document.body.classList.remove('has-percorso');
+      return;
+    }
+    var p = PERCORSI[percId];
+    // Check which steps are done
+    var doneCount = 0, currentIdx = -1;
+    var stepsHtml = p.steps.map(function(step, i){
+      var isDone = false;
+      if(step.key){
+        try{ isDone = !!localStorage.getItem('olismo_profile_'+step.key); }catch(e){}
+      } else {
+        // Section without test: mark done if visited
+        try{
+          var visited = JSON.parse(localStorage.getItem('olismo_percorso_visits')||'{}');
+          isDone = !!visited[percId+'_'+step.id];
+        }catch(e){}
+      }
+      if(isDone){ doneCount++; }
+      else if(currentIdx < 0){ currentIdx = i; }
+      var cls = isDone ? 'pb-done' : (i === currentIdx ? 'pb-active' : 'pb-todo');
+      return '<div class="pb-step '+cls+'" onclick="st(\''+step.id+'\')">'+step.label+'</div>';
+    }).join('');
+    var pct = Math.round(doneCount/p.steps.length*100);
+
+    document.getElementById('pb-icon').textContent = p.icon;
+    document.getElementById('pb-title').textContent = p.name;
+    document.getElementById('pb-progress-fill').style.width = pct+'%';
+    document.getElementById('pb-steps').innerHTML = stepsHtml;
+
+    // CTA
+    var ctaHtml = '';
+    if(doneCount === p.steps.length){
+      // All done!
+      if(p.finalPrompt){
+        ctaHtml = '<button class="pb-cta-btn" onclick="window.completePercorso()">✦ Analisi integrata AI →</button>';
+      } else {
+        ctaHtml = '<button class="pb-cta-btn" onclick="window.exitPercorso()">✓ Chiudi percorso</button>';
+      }
+    } else if(currentIdx >= 0) {
+      var next = p.steps[currentIdx];
+      ctaHtml = '<button class="pb-cta-btn" onclick="st(\''+next.id+'\')">▸ Vai a: '+next.label+'</button>';
+    }
+    document.getElementById('pb-cta').innerHTML = ctaHtml;
+
+    banner.style.display = 'block';
+    document.body.classList.add('has-percorso');
+  };
+
+  window.markPercorsoStepVisited = function(sectionId){
+    var percId; try{ percId = localStorage.getItem(ACTIVE_PERCORSO_KEY); }catch(e){return;}
+    if(!percId || !PERCORSI[percId]) return;
+    var p = PERCORSI[percId];
+    var step = p.steps.find(function(s){ return s.id === sectionId; });
+    if(!step || step.key) return; // step with test is marked by saveProfileResult
+    try{
+      var v = JSON.parse(localStorage.getItem('olismo_percorso_visits')||'{}');
+      v[percId+'_'+sectionId] = new Date().toISOString();
+      localStorage.setItem('olismo_percorso_visits', JSON.stringify(v));
+    }catch(e){}
+    setTimeout(function(){ window.renderPercorso(); }, 300);
+  };
+
+  window.completePercorso = function(){
+    var percId; try{ percId = localStorage.getItem(ACTIVE_PERCORSO_KEY); }catch(e){return;}
+    if(!percId || !PERCORSI[percId]) return;
+    var p = PERCORSI[percId];
+    // Navigate to AI consultant
+    st('consulente');
+    // Pre-fill the input with the final prompt
+    setTimeout(function(){
+      var input = document.getElementById('chat-input');
+      if(input && p.finalPrompt){
+        input.value = p.finalPrompt;
+        input.focus();
+      }
+    }, 700);
+  };
+
+  // Hook saveProfileResult to refresh percorso
+  if(typeof window.saveProfileResult === 'function'){
+    var origSave = window.saveProfileResult;
+    window.saveProfileResult = function(key, data){
+      var r = origSave.apply(this, arguments);
+      setTimeout(function(){ window.renderPercorso(); }, 200);
+      return r;
+    };
+  }
+
   document.addEventListener("DOMContentLoaded",function(){
     var d=load();
     var today=new Date().toDateString();
@@ -12493,7 +13033,15 @@ if (!document.getElementById('ai-flower-style')) {
     if(resetBtn)resetBtn.addEventListener("click",adminReset);
     if(typeof window.st==="function"){
       var origSt=window.st;
-      window.st=function(id){secClick(id);var r=origSt(id);setTimeout(function(){window.renderProgress();},600);return r;};
+      window.st=function(id){
+        secClick(id);
+        var r=origSt(id);
+        setTimeout(function(){
+          window.renderProgress();
+          if(window.markPercorsoStepVisited) window.markPercorsoStepVisited(id);
+        },600);
+        return r;
+      };
     }
     var aiIn=document.getElementById("chat-input");
     if(aiIn)aiIn.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey&&this.value.trim()){inc("aiCalls");logQ("aiLog",this.value.trim());}});
@@ -12527,10 +13075,31 @@ if (!document.getElementById('ai-flower-style')) {
     }catch(e){}
     if(!localStorage.getItem("olismo_tour_done")){setTimeout(function(){window.startTour();},1200);}
     window.renderProgress();
+    if(window.renderPercorso) window.renderPercorso();
     var qsBar=document.getElementById("quick-start-bar");
     if(qsBar&&!localStorage.getItem("qs_dismissed")){qsBar.classList.add("qs-show");}
   });
 })();
 </script>
+
+
+<!-- PERCORSO TRACKER BANNER -->
+<div id="percorso-banner" style="display:none">
+  <div class="pb-inner">
+    <div class="pb-header">
+      <span class="pb-icon" id="pb-icon">🌱</span>
+      <div class="pb-title-wrap">
+        <div class="pb-eyebrow">PERCORSO ATTIVO</div>
+        <div class="pb-title" id="pb-title">—</div>
+      </div>
+      <button class="pb-close" onclick="window.exitPercorso()" title="Esci dal percorso">✕</button>
+    </div>
+    <div class="pb-progress">
+      <div class="pb-progress-bar"><div class="pb-progress-fill" id="pb-progress-fill" style="width:0%"></div></div>
+      <div class="pb-steps" id="pb-steps"></div>
+    </div>
+    <div class="pb-cta" id="pb-cta"></div>
+  </div>
+</div>
 
 </body></html>

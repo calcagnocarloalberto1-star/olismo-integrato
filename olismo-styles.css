@@ -2945,3 +2945,113 @@ body.has-percorso #progress-widget{bottom:auto;top:90px}
   .vc-fase{max-width:none}
   .vc-arrow{display:none}
 }
+
+
+/* ══ HOME DASHBOARD RESPONSIVE FIX (aggiunto) ══ */
+
+/* Links styled as buttons should NOT have underline */
+a.btn-gold, a.btn-ghost, a.qs-btn, a.dash-card, a.mega-item, a.mob-link, a.f-link, a.vc-fase, a.nav-link, a.hdr-brand {
+  text-decoration: none !important;
+}
+
+/* Ensure button-styled links display block-level properly */
+a.btn-gold, a.btn-ghost {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none !important;
+}
+
+/* Desktop: default state */
+.hamburger { display: none; }
+.mega-menu-wrap { display: inline-block; }
+
+/* Mobile (< 768px): hamburger shown, mega menu hidden, other nav items hidden */
+@media (max-width: 768px) {
+  .hamburger { display: flex !important; }
+  .mega-menu-wrap { display: none !important; }
+  .nav-phase { display: none !important; }
+  .search-btn { display: none !important; }
+  
+  /* Header: ensure inner layout is clean on mobile */
+  .hdr-inner {
+    padding: 0 1rem !important;
+  }
+  .hdr-title {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Hero CTAs: stack vertically on mobile */
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    align-items: stretch !important;
+  }
+  .hero-ctas a.btn-gold,
+  .hero-ctas a.btn-ghost {
+    width: 100% !important;
+    padding: 0.95rem 1.5rem !important;
+    font-size: 0.82rem !important;
+    display: block !important;
+  }
+}
+
+/* Mobile menu should only be shown when toggled open, not always */
+#mob-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ivory);
+  z-index: 9999;
+  padding: 1rem 1.5rem 2rem;
+  overflow-y: auto;
+}
+#mob-menu.open {
+  display: block;
+}
+body.mob-open {
+  overflow: hidden;
+}
+
+/* Mobile menu links */
+#mob-menu .mob-link {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--ink2);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+#mob-menu .mob-link:hover {
+  background: rgba(184,147,90,0.08);
+  color: var(--gold);
+}
+
+/* Hamburger icon styling */
+.hamburger {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  line-height: 1;
+}
+
+/* CTA buttons full visibility */
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}

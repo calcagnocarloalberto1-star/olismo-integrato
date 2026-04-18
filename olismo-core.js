@@ -2635,21 +2635,21 @@ function autoResize(el){el.style.height="auto";el.style.height=Math.min(el.scrol
 
 // Messaggio di benvenuto
 window.addEventListener("DOMContentLoaded",()=>{
-  renderFaq();
-  renderEgogramma();
-  renderEgoTest();
-  renderAtCards();
-  renderTransCards();
-  renderFlowerGrid("fes","fes-grid");
-  renderFlowerGrid("bush","bush-grid");
-  initVakTest();
-  initCheckTest();
-  initCookieBanner();
-  initDark();
-  initCristalliSection();
-  if(!loadChatHistory()){
+  try{renderFaq();}catch(e){}
+  try{renderEgogramma();}catch(e){}
+  try{renderEgoTest();}catch(e){}
+  try{renderAtCards();}catch(e){}
+  try{renderTransCards();}catch(e){}
+  try{renderFlowerGrid("fes","fes-grid");}catch(e){}
+  try{renderFlowerGrid("bush","bush-grid");}catch(e){}
+  try{initVakTest();}catch(e){}
+  try{initCheckTest();}catch(e){}
+  try{initCookieBanner();}catch(e){}
+  try{initDark();}catch(e){}
+  try{initCristalliSection();}catch(e){}
+  try{if(!loadChatHistory()){
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
-  }
+  }}catch(e){}
 
 });
 
@@ -2664,7 +2664,9 @@ const PHOTO_PRESETS = [
 ];
 
 function renderPresets(){
-  document.getElementById("photo-presets").innerHTML = PHOTO_PRESETS.map(p=>`
+  const _pp = document.getElementById("photo-presets");
+  if(!_pp) return;
+  _pp.innerHTML = PHOTO_PRESETS.map(p=>`
     <button onclick="applyPhoto('${p.url}');document.getElementById('photo-url-input').value='${p.url}'"
       style="padding:.32rem .8rem;border:1.5px solid var(--border);border-radius:12px;font-size:.72rem;
       background:var(--ivory);color:var(--ink3);cursor:pointer;transition:all .15s"
@@ -2753,8 +2755,13 @@ document.addEventListener("click",e=>{
 });
 
 // ── INIT ──
-renderTabs();renderList();renderPanel(null);
-renderChakra();renderEnn();renderMusic();renderBach();renderAlim();renderTools();renderPrano();
+// Safe render: each call is wrapped so one failure doesn't break the whole script
+function _safeCall(fn, ...args){
+  try { return fn(...args); } catch(e) { /* silent on home where some elements don't exist */ }
+}
+_safeCall(renderTabs); _safeCall(renderList); _safeCall(renderPanel, null);
+_safeCall(renderChakra); _safeCall(renderEnn); _safeCall(renderMusic); _safeCall(renderBach);
+_safeCall(renderAlim); _safeCall(renderTools); _safeCall(renderPrano);
 
 // ── FES + BUSH GRIDS ──
 function renderFlowerGrid(cat, gridId){

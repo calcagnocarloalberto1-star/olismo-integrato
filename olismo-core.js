@@ -2803,7 +2803,7 @@ async function sendMsg(){
       headers,
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 8000,
+        max_tokens: 16000,
         system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
@@ -5512,7 +5512,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 8000,system,messages})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
@@ -5688,7 +5688,7 @@ async function fesSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 8000, system: FES_PROMPT, messages: fesHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -5739,7 +5739,7 @@ async function bushSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 8000, system: BUSH_PROMPT, messages: bushHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';

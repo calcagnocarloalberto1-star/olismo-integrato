@@ -753,7 +753,7 @@ async function analyzeCivile() {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 4000,
+        max_tokens: 16000,
         system: SYS_PROMPT,
         messages: [{role:'user', content: `Caso/domanda di mediazione civile:\n\n${q}\n\nElabora il piano operativo integrato seguendo ESATTAMENTE il formato richiesto.`}]
       })

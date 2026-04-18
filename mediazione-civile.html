@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
+<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
+<meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
+<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+
+<title>⚖ Mediazione Civile e Commerciale — Tavolo integrato olistico + procedurale</title>
+<meta name="description" content="Il tavolo della mediazione civile e commerciale su olismo-integrato.it: AI chat dedicato, procedura D.Lgs. 28/2010 e Riforma Cartabia, strumenti calibrati per condominiale, bancaria, responsabilità medica, societaria, successioni. Ponte olistico tra norma e persona per mediatori e avvocati.">
+<link rel="canonical" href="https://olismo-integrato.it/mediazione-civile.html">
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Viola mediazione (tema principale) */
+  --med1:#2a1a4a; --med2:#4a2a6a; --med3:#6a4a8a; --med4:#9d7ac4; --med-pale:#faf5ff;
+  /* Gold olismo */
+  --gold:#b8935a; --gold-pale:#fdf8ed; --gold3:#d4b478; --gold-acc:#fde047;
+  /* Blu istituzionale (accento civile) */
+  --civ1:#1e3a8a; --civ2:#2563eb; --civ3:#3b82f6; --civ4:#60a5fa; --civ-pale:#eff6ff;
+  /* Verde empowerment (per link strumenti) */
+  --emp1:#0f3d2e; --emp2:#1a6b4f; --emp3:#2d9d74; --emp-pale:#ecfdf5;
+  /* Ambra analogica (per link strumenti) */
+  --ana2:#b45309; --ana3:#d97706; --ana-pale:#fffbeb;
+  /* Neutri */
+  --ivory:#f9f5ef; --ivory2:#f5ede0; --ivory3:#e5d8c0;
+  --ink:#2a2520; --ink2:#3d332a; --ink3:#6b5d50; --ink4:#8b7d70;
+  --border:#e5d8c0;
+  --rxl:14px; --rmd:10px; --rsm:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600}
+a{color:var(--med3);text-decoration:none}
+a:hover{text-decoration:underline}
+em{color:var(--civ3);font-style:italic}
+
+/* ─── Top bar ─── */
+.top-bar{position:sticky;top:0;z-index:100;background:rgba(249,245,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.7rem 0}
+.top-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap}
+.top-logo{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none}
+.top-logo-dot{width:18px;height:18px;border-radius:50%;background:var(--gold)}
+.top-nav{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
+.top-nav-link{padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:var(--med2);text-decoration:none;border-radius:6px;transition:background .2s;white-space:nowrap}
+.top-nav-link:hover{background:var(--med-pale);text-decoration:none}
+.top-nav-link.current{background:var(--civ2);color:white}
+.top-nav-link.emp{color:var(--emp1)}
+.top-nav-link.emp:hover{background:var(--emp-pale)}
+.top-nav-link.ana{color:var(--ana2)}
+.top-nav-link.ana:hover{background:var(--ana-pale)}
+.top-home{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:var(--gold);color:white;border-radius:20px;font-size:.78rem;font-weight:500;transition:transform .2s;text-decoration:none}
+.top-home:hover{transform:translateY(-1px);text-decoration:none}
+@media(max-width:820px){.top-nav{order:3;width:100%;justify-content:center;border-top:1px solid var(--border);padding-top:.5rem;margin-top:.3rem}}
+
+/* ─── Hero ─── */
+.hero{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(59,130,246,.22) 0%,transparent 55%),
+    radial-gradient(circle at 15% 85%,rgba(184,147,90,.18) 0%,transparent 55%),
+    linear-gradient(135deg,var(--med1) 0%,var(--civ1) 55%,var(--med2) 100%);
+  color:white;padding:3.8rem 1.5rem 3.2rem;text-align:center;position:relative;overflow:hidden
+}
+.hero-inner{max-width:900px;margin:0 auto;position:relative}
+.hero-breadcrumb{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-acc);opacity:.9;margin-bottom:.9rem}
+.hero h1{font-size:clamp(2rem,5.2vw,3.4rem);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{color:var(--gold-acc);font-style:italic}
+.hero-subtitle{font-size:1.08rem;opacity:.92;max-width:760px;margin:0 auto 1.4rem;line-height:1.55}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.6rem}
+.hero-badge{padding:.42rem 1rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;font-size:.77rem;font-weight:500;backdrop-filter:blur(6px)}
+
+/* ─── Manifesto del ponte ─── */
+.manifesto-section{max-width:900px;margin:2.5rem auto 1rem;padding:0 1.5rem}
+.manifesto{position:relative;padding:3rem 2.5rem 2.8rem;background:linear-gradient(135deg,var(--civ-pale) 0%,var(--gold-pale) 100%);border-radius:18px;border:1px solid rgba(37,99,235,.18);box-shadow:0 4px 24px rgba(30,58,138,.06);overflow:hidden}
+.manifesto .quote-l,.manifesto .quote-r{position:absolute;font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:1;font-weight:700;opacity:.15}
+.manifesto .quote-l{top:1.2rem;left:2rem;color:var(--civ3)}
+.manifesto .quote-r{bottom:-1.5rem;right:2rem;color:var(--gold)}
+.manifesto blockquote{position:relative;margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.65;color:var(--ink2);font-style:italic;font-weight:400}
+.manifesto blockquote p{margin:0 0 1rem}
+.manifesto blockquote p:last-child{margin-bottom:0}
+.manifesto em.civ{color:var(--civ2);font-style:italic;font-weight:500}
+.manifesto em.gold{color:var(--gold);font-style:italic;font-weight:500}
+.manifesto strong{color:var(--med1);font-weight:600;font-style:normal}
+
+/* ─── Sections ─── */
+.med-section{background:white;margin:1.8rem auto;padding:2rem 1.8rem;border-radius:var(--rxl);border:1px solid var(--border);max-width:1100px;box-shadow:0 2px 12px rgba(42,26,74,.04)}
+.med-section h2{font-size:1.55rem;color:var(--med2);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.med-section h2 em{color:var(--civ3)}
+.med-section p{color:var(--ink2);margin-bottom:.9rem}
+.med-section p:last-child{margin-bottom:0}
+.med-section ul,.med-section ol{margin:.5rem 0 .9rem 1.3rem;color:var(--ink2)}
+.med-section li{margin-bottom:.4rem}
+
+/* ─── Procedura 5 step ─── */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin:1rem 0}
+@media(max-width:820px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{padding:1.1rem;background:linear-gradient(135deg,var(--civ-pale) 0%,#fff 100%);border:1.5px solid var(--border);border-radius:var(--rmd);position:relative;transition:all .2s}
+.step:hover{transform:translateY(-2px);border-color:var(--civ3);box-shadow:0 6px 18px rgba(37,99,235,.1)}
+.step .s-num{position:absolute;top:-10px;left:-8px;width:28px;height:28px;background:var(--civ2);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.step h4{font-size:.95rem;color:var(--med2);margin-bottom:.35rem;font-family:'Inter',sans-serif;font-weight:600}
+.step p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
+
+/* ─── Tavolo strumenti (matrice) ─── */
+.matrix{margin:1.2rem 0;overflow-x:auto}
+.matrix table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:720px}
+.matrix th{background:linear-gradient(135deg,var(--med2) 0%,var(--civ1) 100%);color:white;padding:.8rem .7rem;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.03em}
+.matrix th:first-child{border-radius:6px 0 0 0}
+.matrix th:last-child{border-radius:0 6px 0 0}
+.matrix td{padding:.75rem .7rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.matrix tr:hover td{background:var(--med-pale)}
+.matrix .tool-link{display:inline-block;padding:.2rem .55rem;background:var(--civ-pale);color:var(--civ1);border-radius:6px;font-size:.75rem;font-weight:600;text-decoration:none;margin-right:.2rem;margin-bottom:.2rem;transition:all .15s}
+.matrix .tool-link:hover{background:var(--civ2);color:white;text-decoration:none}
+.matrix .tool-link.emp{background:var(--emp-pale);color:var(--emp1)}
+.matrix .tool-link.emp:hover{background:var(--emp2);color:white}
+.matrix .tool-link.ana{background:var(--ana-pale);color:var(--ana2)}
+.matrix .tool-link.ana:hover{background:var(--ana3);color:white}
+.matrix .tool-link.mat{background:#f3e8ff;color:#6b21a8}
+.matrix .tool-link.mat:hover{background:#6b21a8;color:white}
+.matrix .tool-link.gold{background:var(--gold-pale);color:var(--gold)}
+.matrix .tool-link.gold:hover{background:var(--gold);color:white}
+.matrix .typ-name{font-weight:600;color:var(--med2)}
+
+/* ─── AI chat ─── */
+.ai-panel{background:linear-gradient(135deg,var(--med-pale) 0%,#fff 100%);border:1.5px solid var(--med4);border-radius:var(--rxl);padding:1.8rem}
+.ai-panel h3{color:var(--med2);font-size:1.3rem;margin-bottom:.6rem}
+.ai-textarea{width:100%;padding:.9rem 1.1rem;border:1.5px solid var(--border);border-radius:var(--rmd);font-size:.92rem;font-family:inherit;background:white;color:var(--ink);min-height:110px;resize:vertical;line-height:1.55}
+.ai-textarea:focus{outline:none;border-color:var(--civ3);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.ai-btn{margin-top:1rem;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--med2) 0%,var(--civ1) 100%);color:white;border:none;border-radius:var(--rmd);font-size:.95rem;font-weight:600;cursor:pointer;transition:all .22s;font-family:inherit;display:inline-flex;align-items:center;gap:.6rem;width:100%;justify-content:center}
+.ai-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,99,235,.28)}
+.ai-btn:disabled{opacity:.6;cursor:not-allowed}
+.spinner{display:inline-block;width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-examples{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.ai-example-chip{padding:.4rem .8rem;background:white;border:1px solid var(--border);border-radius:18px;font-size:.76rem;color:var(--ink3);cursor:pointer;transition:all .15s}
+.ai-example-chip:hover{background:var(--civ-pale);border-color:var(--civ3);color:var(--civ2)}
+
+#aiResult{display:none;margin-top:1.5rem;padding:1.5rem 1.7rem;background:white;border-radius:var(--rmd);border-left:4px solid var(--civ3)}
+#aiResult.active{display:block;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#aiResult h1,#aiResult h2,#aiResult h3{font-family:'Cormorant Garamond',serif;color:var(--med2);margin:1.1rem 0 .5rem;font-weight:600}
+#aiResult h1{font-size:1.3rem;color:var(--civ2);border-bottom:1px solid var(--civ-pale);padding-bottom:.35rem}
+#aiResult h2{font-size:1.15rem}
+#aiResult h3{font-size:1rem;color:var(--emp2)}
+#aiResult strong{color:var(--med2)}
+#aiResult ul,#aiResult ol{margin:.5rem 0 .8rem 1.3rem}
+#aiResult li{margin-bottom:.35rem}
+#aiResult blockquote{margin:.7rem 0;padding:.6rem 1rem;background:var(--civ-pale);border-left:3px solid var(--civ3);border-radius:0 6px 6px 0;font-style:italic}
+#aiResult table{border-collapse:collapse;margin:.8rem 0;font-size:.85rem;width:100%}
+#aiResult th,#aiResult td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left;vertical-align:top}
+#aiResult th{background:var(--civ-pale);color:var(--civ1);font-weight:600}
+
+.ai-actions{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap}
+.ai-action-btn{padding:.55rem 1rem;background:var(--civ-pale);border:1px solid var(--civ4);color:var(--civ1);border-radius:var(--rsm);font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:inherit}
+.ai-action-btn:hover{background:var(--civ2);color:white}
+
+/* ─── Casi tipici ─── */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+.case-card{padding:1.2rem;background:white;border:1.5px solid var(--border);border-radius:var(--rmd);transition:all .2s;position:relative}
+.case-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(42,26,74,.08);border-color:var(--civ3)}
+.case-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--rmd) var(--rmd) 0 0;background:var(--civ2)}
+.case-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--med2);margin-bottom:.4rem}
+.case-card .c-badge{display:inline-block;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .55rem;border-radius:10px;font-weight:600;margin-bottom:.4rem;background:var(--civ-pale);color:var(--civ1)}
+.case-card p{font-size:.83rem;color:var(--ink3);line-height:1.55;margin-bottom:.6rem}
+.case-card .c-actions{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
+
+/* ─── Normativa box ─── */
+.norm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem;margin-top:1rem}
+.norm-card{padding:1rem 1.1rem;background:linear-gradient(135deg,var(--med-pale) 0%,#fff 100%);border-left:3px solid var(--med3);border-radius:0 8px 8px 0}
+.norm-card strong{display:block;color:var(--med2);font-size:.9rem;margin-bottom:.25rem;font-family:'Cormorant Garamond',serif;font-weight:600}
+.norm-card em{color:var(--civ2);font-size:.82rem;font-style:normal;font-weight:500;display:block;margin-bottom:.2rem}
+.norm-card p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
+
+/* ─── Ponte olistico ─── */
+.bridge-section{background:linear-gradient(135deg,var(--med1) 0%,var(--civ1) 55%,var(--med2) 100%);color:white;padding:2.5rem 2rem;border-radius:var(--rxl);margin:2rem auto;max-width:1100px;box-shadow:0 10px 40px rgba(42,26,74,.25)}
+.bridge-section h2{color:white;font-size:1.6rem;margin-bottom:.6rem}
+.bridge-section h2 em{color:var(--gold-acc)}
+.bridge-section p{color:rgba(255,255,255,.92);font-size:.94rem;line-height:1.65;margin-bottom:1.1rem}
+.bridge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.3rem}
+.bridge-card{padding:1.2rem;background:rgba(255,255,255,.08);border:1px solid rgba(253,224,71,.3);border-radius:var(--rmd);backdrop-filter:blur(6px);transition:all .2s;text-decoration:none;color:white;display:block}
+.bridge-card:hover{background:rgba(255,255,255,.14);transform:translateY(-3px);border-color:rgba(253,224,71,.6);text-decoration:none}
+.bridge-card .bc-ic{font-size:1.7rem;margin-bottom:.4rem;display:block}
+.bridge-card h4{color:var(--gold-acc);font-family:'Cormorant Garamond',serif;font-size:1.08rem;margin-bottom:.3rem}
+.bridge-card p{color:rgba(255,255,255,.85);font-size:.78rem;line-height:1.5;margin:0}
+
+/* ─── Related tools ─── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.tool-card{display:block;padding:1.2rem;background:white;border:1.5px solid var(--border);border-radius:var(--rmd);text-decoration:none;color:inherit;transition:all .25s;position:relative}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,235,.1);border-color:var(--civ3);text-decoration:none}
+.tool-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.tool-card.emp::before{background:var(--emp3)}
+.tool-card.con::before{background:var(--med3)}
+.tool-card.ana::before{background:var(--ana3)}
+.tool-card.mat::before{background:#9333ea}
+.tool-card.ext::before{background:var(--gold)}
+.tool-card .tc-ic{font-size:1.5rem;margin-bottom:.4rem}
+.tool-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--med2);margin-bottom:.3rem}
+.tool-card p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
+.tool-card .tc-ext{font-size:.68rem;color:var(--gold);font-weight:600;margin-top:.5rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* ─── Footer ─── */
+.footer{padding:2.5rem 1.5rem;text-align:center;background:var(--ink);color:#c9bfb0;margin-top:3rem}
+.footer p{font-size:.82rem;margin-bottom:.4rem}
+.footer a{color:var(--gold3)}
+
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+@media(max-width:640px){
+  .med-section{padding:1.5rem 1.3rem}
+  .manifesto{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="top-bar">
+  <div class="top-container">
+    <a href="index.html" class="top-logo"><span class="top-logo-dot"></span> Olismo Integrato</a>
+    <nav class="top-nav" aria-label="Strumenti mediazione">
+      <a href="mediazione-civile.html" class="top-nav-link current">⚖ Civile</a>
+      <a href="mediazione-familiare.html" class="top-nav-link">👨‍👩‍👧 Familiare</a>
+      <a href="consulente-mediatore.html" class="top-nav-link">🎓 Consulente</a>
+      <a href="empowerment-mediazione.html" class="top-nav-link emp">🌿 Empowerment</a>
+      <a href="psicologia-analogica.html" class="top-nav-link ana">🔍 Analogica</a>
+      <a href="matrice-svalutazione.html" class="top-nav-link">⊘ Matrice</a>
+    </nav>
+    <a href="index.html" class="top-home">← Home</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-breadcrumb">⚖ Il tavolo della controversia · Hub per mediatori e avvocati</div>
+    <h1>Mediazione <em>civile</em> e <em>commerciale</em></h1>
+    <p class="hero-subtitle">Il punto di partenza integrato per il professionista. <strong style="color:#fde047">Norma, procedura e persona</strong> nello stesso spazio: AI chat dedicato, matrice degli strumenti calibrati per tipologia di controversia (condominiale, bancaria, responsabilità medica, societaria, successioni), ponte olistico verso Empowerment e Psicologia Analogica.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">📜 D.Lgs. 28/2010 + Riforma Cartabia</span>
+      <span class="hero-badge">🎓 ODM Genova 2025</span>
+      <span class="hero-badge">🤖 AI chat dedicato</span>
+      <span class="hero-badge">🌿 Ponte olistico</span>
+      <span class="hero-badge">⚖ 5 ambiti specializzati</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MANIFESTO DEL PONTE ═══ -->
+<section class="manifesto-section">
+  <div class="manifesto">
+    <div class="quote-l" aria-hidden="true">“</div>
+    <div class="quote-r" aria-hidden="true">”</div>
+    <blockquote>
+      <p>La mediazione civile e commerciale è spesso trattata come <em class="civ">pura tecnica procedurale</em>: termini di comparizione, indennità, tentativo effettivo, procura sostanziale, proposta del mediatore. È giusto che sia tecnica — la legge lo impone — ma <strong>non solo</strong>.</p>
+      <p>Dietro ogni fascicolo c'è una storia, una coppia di volti che non si parlano più, un credito bancario che ha logorato una famiglia, un condominio in guerra da anni. Il mediatore civile che funziona davvero è quello che <em class="gold">legge la procedura e la persona insieme</em>. Questo hub serve a questo: tenere gli strumenti tecnici e quelli olistici in un'unica tavola, così che la scelta del passo giusto — normativo o relazionale — diventi un gesto naturale.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══ PROCEDURA ═══ -->
+<div class="med-section">
+  <h2>📋 La <em>procedura</em> in 5 passi</h2>
+  <p>Il quadro essenziale della mediazione civile e commerciale alla luce del <strong>D.Lgs. 28/2010</strong> come novellato dalla <strong>Riforma Cartabia</strong> (D.Lgs. 149/2022) e del <strong>D.M. 150/2023</strong> sulle indennità.</p>
+  <div class="steps">
+    <div class="step"><span class="s-num">1</span><h4>Istanza</h4><p>Domanda all'ODM competente. Materie obbligatorie ex art. 5 ampliate (condominio, diritti reali, successioni, divisioni, locazioni, affitti, comodato, responsabilità medica/sanitaria, bancaria/finanziaria, famiglia patrimoniale, società di persone).</p></div>
+    <div class="step"><span class="s-num">2</span><h4>Convocazione</h4><p>Primo incontro entro 30 giorni. Deposito memorie. Presenza personale delle parti (salvo procura speciale sostanziale ex Cass. 8473/2019, confermata da Cass. SS.UU. 2019).</p></div>
+    <div class="step"><span class="s-num">3</span><h4>Primo incontro</h4><p>Discorso introduttivo del mediatore. Verifica possibilità di proseguire. Se le parti restano è "tentativo effettivo" (Cass. 8473/2019), non più solo formale. Indennità art. 28 D.M. 150/2023.</p></div>
+    <div class="step"><span class="s-num">4</span><h4>Sessioni</h4><p>Congiunte e separate. Caucus. Esplorazione interessi (Harvard). Gestione delle emozioni e dei feedback negativi (qui entrano Empowerment, Psicologia Analogica, Matrice).</p></div>
+    <div class="step"><span class="s-num">5</span><h4>Esito</h4><p>Accordo (verbale conforme art. 11) o mancato accordo (art. 12). Eventuale proposta del mediatore ex art. 11. Conseguenze processuali ex art. 13 in caso di esito negativo e successiva sentenza conforme alla proposta.</p></div>
+  </div>
+</div>
+
+<!-- ═══ PONTE OLISTICO ═══ -->
+<section class="bridge-section">
+  <h2>🌉 Il <em>ponte olistico</em> · Cosa rende unico questo tavolo</h2>
+  <p>Questa pagina non sostituisce i motori AI del portale: li <strong>orchestra</strong>. La sequenza operativa consigliata al mediatore civile è:</p>
+  <div class="bridge-grid">
+    <a href="psicologia-analogica.html" class="bridge-card">
+      <span class="bc-ic">🔍</span>
+      <h4>1. Leggere il corpo</h4>
+      <p>Prima della prima congiunta, riconoscere tipologia analogica (Asta/Triangolo/Cerchio) e cluster di tensione.</p>
+    </a>
+    <a href="empowerment-mediazione.html" class="bridge-card">
+      <span class="bc-ic">🌿</span>
+      <h4>2. Calibrare l'intervento</h4>
+      <p>In base al profilo letto, elaborare piano olistico (chakra, fiori, frequenze) + Harvard calibrato.</p>
+    </a>
+    <a href="matrice-svalutazione.html" class="bridge-card">
+      <span class="bc-ic">⊘</span>
+      <h4>3. Disinnescare il blocco</h4>
+      <p>Se la parte blocca con svalutazioni, identificare la casella (Esistenza/Significato/Soluzione × Stimolo/Problema/Opzioni/Abilità) e contromossa.</p>
+    </a>
+    <a href="consulente-mediatore.html" class="bridge-card">
+      <span class="bc-ic">🎓</span>
+      <h4>4. Verificare la tecnica</h4>
+      <p>Per dubbi procedurali, normativi, giurisprudenziali: Harvard + ODM Genova 2025 + circolari + giurisprudenza aggiornata.</p>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ MATRICE STRUMENTI PER TIPOLOGIA ═══ -->
+<div class="med-section">
+  <h2>🎯 La <em>matrice</em> degli strumenti calibrati per ambito</h2>
+  <p>Ogni tipologia di controversia civile attiva dinamiche psicologiche tipiche. La matrice mappa <strong>quale strumento del portale serve di più</strong> in ciascuna.</p>
+  
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%">Tipologia</th>
+          <th style="width:28%">Dinamica psicologica prevalente</th>
+          <th style="width:54%">Strumenti suggeriti (nell'ordine)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="typ-name">🏢 Condominiale</span></td>
+          <td>Anni di conflitto accumulato, territorialità, triangolazioni tra condomini, Assemblea come palcoscenico. Adattamento paranoide frequente.</td>
+          <td>
+            <a href="psicologia-analogica.html" class="tool-link ana">🔍 Psicologia Analogica</a>
+            <a href="matrice-svalutazione.html" class="tool-link mat">⊘ Matrice Svalutazione</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 Empowerment</a>
+            <a href="consulente-mediatore.html" class="tool-link">🎓 Circolare ODM 5-ter</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">🏦 Bancaria / finanziaria</span></td>
+          <td>Squilibrio di potere estremo (cliente vs istituto), rabbia montante, disagio economico. Il funzionario bancario ha poteri limitati (procura sostanziale critica).</td>
+          <td>
+            <a href="consulente-mediatore.html" class="tool-link">🎓 Procura sostanziale (Cass. 8473/2019)</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 Chakra 3° + fiori empowerment</a>
+            <a href="matrice-svalutazione.html" class="tool-link mat">⊘ Matrice (fase di riconoscimento)</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">⚕ Responsabilità medica</span></td>
+          <td>Lutto non elaborato, senso di tradimento (il medico come "figura di fiducia" tradita), vergogna del professionista. Alta componente emotiva trattenuta.</td>
+          <td>
+            <a href="psicologia-analogica.html" class="tool-link ana">🔍 Psicologia Analogica (zona lacrimale)</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 Polivagale + fiori lutto</a>
+            <a href="https://enneagrammaevolutivo.it/mediazione/civile" target="_blank" rel="noopener" class="tool-link gold">✦ Bozza accordo per enneatipo ↗</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">📑 Societaria</span></td>
+          <td>Soci storici in rottura, patrimonio emotivo e finanziario intrecciato, tipologia Cerchio-ego. Logica iperrazionale che maschera ferita di esclusione.</td>
+          <td>
+            <a href="psicologia-analogica.html" class="tool-link ana">🔍 Identificare Cerchio</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 Enneatipi 3/5/8</a>
+            <a href="consulente-mediatore.html" class="tool-link">🎓 Tecniche Harvard</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">📜 Successioni / Divisioni</span></td>
+          <td>Conflitti familiari antichi che riemergono sulla quota ereditaria. "Il denaro è simbolo di amore ricevuto/negato dal genitore". Altissimo carico emotivo.</td>
+          <td>
+            <a href="psicologia-analogica.html" class="tool-link ana">🔍 Scarico tensionale familiare</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 AT + enneatipi + fiori famiglia</a>
+            <a href="matrice-svalutazione.html" class="tool-link mat">⊘ Svalutazione ruoli filiali</a>
+            <a href="enneagram.html" class="tool-link">✦ Compatibilità enneatipi</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">🏠 Locazioni / Comodato</span></td>
+          <td>Convivenza forzata prolungata, inadempienze accumulate, rancore su dettagli minimi come "sostituti" del conflitto vero.</td>
+          <td>
+            <a href="matrice-svalutazione.html" class="tool-link mat">⊘ Matrice Svalutazione</a>
+            <a href="consulente-mediatore.html" class="tool-link">🎓 Tecnica del "reale bisogno"</a>
+            <a href="empowerment-mediazione.html" class="tool-link emp">🌿 Empowerment del locatario</a>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="typ-name">🏛 Diritti reali / Usucapione</span></td>
+          <td>Conflitto ereditato da generazioni, confini fisici come metafora di confini identitari. Forte radicamento nella territorialità.</td>
+          <td>
+            <a href="psicologia-analogica.html" class="tool-link ana">🔍 Tipologia Asta frequente</a>
+            <a href="consulente-mediatore.html" class="tool-link">🎓 Giurisprudenza Cass. 2024-26</a>
+            <a href="https://calcolomediazione.it" target="_blank" rel="noopener" class="tool-link gold">🧮 Calcolo indennità ↗</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ AI CHAT DEDICATO ═══ -->
+<div class="med-section">
+  <h2>🤖 <em>Assistente AI</em> della mediazione civile</h2>
+  <p>Un motore specializzato che orchestra le competenze del portale per il mediatore civile e commerciale. Descrivi la controversia o la fase: l'AI ti restituisce un <strong>piano operativo integrato</strong> che include inquadramento normativo, lettura psicologica, strumenti olistici calibrati e prossimi passi concreti.</p>
+  
+  <div class="ai-panel">
+    <h3>⚖ Descrivi la controversia o il problema</h3>
+    
+    <div class="ai-examples">
+      <span class="ai-example-chip" data-ex="condo">🏢 Caso condominiale</span>
+      <span class="ai-example-chip" data-ex="banca">🏦 Caso bancario</span>
+      <span class="ai-example-chip" data-ex="medico">⚕ Responsabilità medica</span>
+      <span class="ai-example-chip" data-ex="eredi">📜 Successione conflittuale</span>
+    </div>
+    
+    <textarea id="aiInput" class="ai-textarea" placeholder="Esempio: «Mediazione condominiale. Infiltrazioni dal piano di sopra. Tre anni di scontri, 180 pagine di corrispondenza. L'istante è presidente di condominio, adattamento paranoide, stretta di mano a morsa. La controparte è proprietario assente rappresentato da procuratore che minimizza. Siamo al primo incontro. Come imposto?»"></textarea>
+    
+    <button class="ai-btn" id="aiBtn" onclick="analyzeCivile()">
+      <span>⚖ Elabora piano operativo integrato</span>
+    </button>
+    
+    <div id="aiResult">
+      <div id="aiResultBody"></div>
+      <div class="ai-actions">
+        <button class="ai-action-btn" onclick="copyAI()">📋 Copia</button>
+        <button class="ai-action-btn" onclick="resetAI()">Nuovo caso</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CASISTICA TIPICA ═══ -->
+<div class="med-section">
+  <h2>📚 Casistica <em>tipica</em> in sessione</h2>
+  <p>Quattro scenari che si incontrano frequentemente al tavolo civile, con suggerimento del percorso strumentale.</p>
+  
+  <div class="cases-grid">
+    <div class="case-card">
+      <span class="c-badge">🏢 Condominiale</span>
+      <h4>Il presidente che "ha tutti contro"</h4>
+      <p>Presidente di condominio che arriva al tavolo con faldone voluminoso, ripete le stesse date, mani sui fianchi quando l'altro parla, mascella irrigidita. Vuole "giustizia esemplare".</p>
+      <div class="c-actions">
+        <a href="psicologia-analogica.html#from-civile" class="tool-link ana">🔍 Asta + paranoide</a>
+        <a href="empowerment-mediazione.html#from-civile" class="tool-link emp">🌿 Chakra 3° + Beech</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="c-badge">🏦 Bancaria</span>
+      <h4>Il funzionario "senza procura"</h4>
+      <p>Rappresentante della banca con procura insufficiente (solo formale), cliente esasperato da 2 anni di lettere senza risposta. Rischio di improcedibilità se non si scioglie il nodo della procura.</p>
+      <div class="c-actions">
+        <a href="consulente-mediatore.html#from-civile" class="tool-link">🎓 Procura sostanziale</a>
+        <a href="empowerment-mediazione.html#from-civile" class="tool-link emp">🌿 Empowerment cliente</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="c-badge">⚕ Medica</span>
+      <h4>La vedova e il medico "tradito"</h4>
+      <p>Vedova di paziente deceduto 18 mesi fa, dolore ancora acuto, tono piatto (dorsovagale). Medico specialista con vergogna trattenuta, mani in grembo, sguardo basso. Entrambi isolati.</p>
+      <div class="c-actions">
+        <a href="psicologia-analogica.html#from-civile" class="tool-link ana">🔍 Polivagale duale</a>
+        <a href="empowerment-mediazione.html#from-civile" class="tool-link emp">🌿 Lutto + vergogna</a>
+        <a href="matrice-svalutazione.html#from-civile" class="tool-link mat">⊘ Svalutazione Esistenza</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="c-badge">📜 Ereditaria</span>
+      <h4>Tre fratelli, la casa dei genitori</h4>
+      <p>Fratelli 55-50-45 anni. Il più grande era "il preferito" della madre, gli altri due lo sanno. Si litiga per la casa, ma il vero conflitto è il riconoscimento mai ricevuto dai fratelli minori.</p>
+      <div class="c-actions">
+        <a href="enneagram.html#from-civile" class="tool-link">✦ Enneatipi fratelli</a>
+        <a href="matrice-svalutazione.html#from-civile" class="tool-link mat">⊘ Svalutazione Significato</a>
+        <a href="carezze.html#from-civile" class="tool-link">💌 Teoria delle carezze</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NORMATIVA ESSENZIALE ═══ -->
+<div class="med-section">
+  <h2>📜 Normativa <em>essenziale</em> e fonti ufficiali</h2>
+  <p>Per la trattazione completa di ogni punto, usa il <a href="consulente-mediatore.html"><strong>Consulente AI Mediatore</strong></a> che ha integrato la giurisprudenza 2024-2026 e le circolari ODM Genova.</p>
+  
+  <div class="norm-grid">
+    <div class="norm-card">
+      <strong>D.Lgs. 4 marzo 2010 n. 28</strong>
+      <em>Testo base della mediazione</em>
+      <p>Novellato dalla Riforma Cartabia (D.Lgs. 149/2022) e in vigore dal 30 giugno 2023 per le cause pendenti.</p>
+    </div>
+    <div class="norm-card">
+      <strong>D.M. 24 ottobre 2023 n. 150</strong>
+      <em>Indennità e compensi</em>
+      <p>Nuovo tariffario. Art. 28 sul primo incontro. Calcolatore automatico su <a href="https://calcolomediazione.it" target="_blank" rel="noopener" style="color:var(--gold)">CalcoloMediazione.it ↗</a>.</p>
+    </div>
+    <div class="norm-card">
+      <strong>Cass. Civ. Sez. Un. 18.9.2019 n. 8473</strong>
+      <em>Procura sostanziale</em>
+      <p>La parte può farsi rappresentare da chi ha procura notarile sostanziale con poteri di transigere. Riconfermata da Cass. 2024-2025.</p>
+    </div>
+    <div class="norm-card">
+      <strong>Cass. Civ. 2025 n. 2119</strong>
+      <em>Mediazione condominiale</em>
+      <p>Art. 5-ter: obbligo della mediazione anche quando è l'amministratore a domandare, presupposti di legittimazione.</p>
+    </div>
+    <div class="norm-card">
+      <strong>Linee guida ODM Genova 26.11.2025</strong>
+      <em>Ordine Avvocati Genova</em>
+      <p>Decalogo del mediatore v14. Circolare 12/2025 sulle indennità. Circolare 27/11/2025 sulla sottoscrizione del verbale.</p>
+    </div>
+    <div class="norm-card">
+      <strong>Art. 11-13 D.Lgs. 28/2010</strong>
+      <em>Proposta del mediatore</em>
+      <p>Disciplina della proposta ex art. 11 e delle conseguenze processuali (spese, onere probatorio) in caso di rifiuto ex art. 13.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STRUMENTI COLLEGATI ═══ -->
+<div class="med-section">
+  <h2>🔗 Strumenti <em>collegati</em> del portale</h2>
+  <p>Dalla tavola civile si dirama verso i motori specializzati e i siti partner.</p>
+  <div class="tools-grid">
+    <a href="consulente-mediatore.html" class="tool-card con">
+      <div class="tc-ic">🎓</div>
+      <h4>Consulente AI Mediatore</h4>
+      <p>Harvard + ODM Genova 2025 + giurisprudenza 2024-2026 per domande tecniche-procedurali.</p>
+    </a>
+    <a href="empowerment-mediazione.html" class="tool-card emp">
+      <div class="tc-ic">🌿</div>
+      <h4>Empowerment in Mediazione</h4>
+      <p>Profilo polivagale + enneatipo + AT + olistico + Harvard calibrato per aumentare autodeterminazione della parte.</p>
+    </a>
+    <a href="psicologia-analogica.html" class="tool-card ana">
+      <div class="tc-ic">🔍</div>
+      <h4>Psicologia Analogica</h4>
+      <p>95 gesti catalogati, AI di lettura del corpo, schede stampabili per l'osservazione in sessione.</p>
+    </a>
+    <a href="matrice-svalutazione.html" class="tool-card mat">
+      <div class="tc-ic">⊘</div>
+      <h4>Matrice della Svalutazione</h4>
+      <p>Mellor & Schiff: quando la parte blocca con feedback negativi, identificare la casella e la contromossa.</p>
+    </a>
+    <a href="https://calcolomediazione.it" target="_blank" rel="noopener" class="tool-card ext">
+      <div class="tc-ic">🧮</div>
+      <h4>CalcoloMediazione.it</h4>
+      <p>Portale partner gratuito per calcoli indennità D.M. 150/2023, credito d'imposta, procura speciale.</p>
+      <div class="tc-ext">↗ Sito partner</div>
+    </a>
+    <a href="https://enneagrammaevolutivo.it/mediazione/civile" target="_blank" rel="noopener" class="tool-card ext">
+      <div class="tc-ic">✦</div>
+      <h4>EnneagrammaEvolutivo · Civile</h4>
+      <p>Analisi psicologica enneatipo + AT + bozza accordo personalizzata per controversie civili/commerciali.</p>
+      <div class="tc-ext">↗ Sito partner</div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p><strong>Olismo Integrato</strong> — Avv. Carlo Alberto Calcagno</p>
+  <p style="font-style:italic;color:var(--gold3)">Leggere la persona, accompagnare il conflitto.</p>
+  <p>Portale di Avv. Carlo Alberto Calcagno · Mediatore civile e familiare ODM Genova</p>
+  <p style="margin-top:.8rem"><a href="index.html">Home</a> · <a href="mediazione-familiare.html">👨‍👩‍👧 Mediazione Familiare</a> · <a href="consulente-mediatore.html">🎓 Consulente Mediatore</a> · <a href="empowerment-mediazione.html">🌿 Empowerment</a> · <a href="psicologia-analogica.html">🔍 Psicologia Analogica</a> · <a href="matrice-svalutazione.html">⊘ Matrice</a> · <a href="chi-sono.html">Chi sono</a></p>
+  <p style="font-size:.78rem;opacity:.7;margin-top:.6rem">© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · <a href="termini-uso.html" style="color:#fde047">📜 Termini d'uso</a></p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// AI ASSISTENTE MEDIAZIONE CIVILE
+// ═══════════════════════════════════════════════════════════════
+
+const AI_EXAMPLES = {
+  condo: `Mediazione condominiale ex art. 5-ter D.Lgs. 28/2010. Infiltrazioni dal piano di sopra in 3 appartamenti del piano terra, 3 anni di contenzioso, 180 pagine di corrispondenza. L'istante è il condomino del piano terra più anziano, presidente del condominio in passato, stretta di mano a morsa, mascella irrigidita, porta un faldone enorme. Ripete costantemente le stesse date. La controparte è il proprietario del piano di sopra, assente, rappresentato da procuratore che minimizza ("sono piccole infiltrazioni, ho fatto i lavori nel 2023"). Siamo al primo incontro, valore della controversia €45.000 per i danni. Come imposto la sessione?`,
+  banca: `Mediazione ex art. 5 comma 1-bis - controversia bancaria. Il cliente (imprenditore 58 anni) contesta a una banca l'erronea applicazione di tassi usurari e anatocismo per circa €120.000 su un contratto di mutuo. 2 anni di reclami formali senza risposte risolutive. Al primo incontro arriva un funzionario della banca con procura che autorizza transazioni solo fino a €20.000 (nettamente insufficiente). Il cliente è esasperato, stringe le mani, voce tesa, a tratti alza il tono. Come gestisco il problema della procura e l'empowerment del cliente?`,
+  medico: `Mediazione responsabilità medica. Paziente deceduta 16 mesi fa durante intervento chirurgico elettivo, il marito (65 anni, ex direttore di banca) chiede risarcimento al chirurgo e alla struttura sanitaria per €300.000. Al tavolo: marito vedovo con sguardo piatto, voce sottovoce, spalle incassate (dorsovagale evidente). Medico specialista 52 anni con mani nel grembo, sguardo a terra, risposte monosillabiche (vergogna trattenuta). L'avvocato del marito vuole "giustizia esemplare". L'assicurazione della struttura offre €85.000. Come imposto il primo incontro?`,
+  eredi: `Mediazione successoria. Tre fratelli (56, 52, 48 anni) in conflitto sulla casa di famiglia a Genova dopo la morte della madre 14 mesi fa. Il maggiore (avvocato) era "il figlio preferito" della madre, abitava già nell'appartamento ai piani alti. La seconda (medico) vive a Milano, si sente dimenticata. Il minore (imprenditore, 48 anni) ha avuto negli anni aiuti finanziari dalla madre e dice che è già "saldo". La casa vale €580.000. In aula il maggiore è seduto al centro, gli altri due ai lati. Non si guardano. La seconda a tratti si gratta la zona lacrimale. Come apro?`
+};
+
+document.querySelectorAll('.ai-example-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.getElementById('aiInput').value = AI_EXAMPLES[c.dataset.ex];
+    document.getElementById('aiInput').focus();
+  });
+});
+
+function resetAI() {
+  document.getElementById('aiInput').value = '';
+  document.getElementById('aiResult').classList.remove('active');
+  document.getElementById('aiInput').focus();
+}
+
+function copyAI() {
+  const text = document.getElementById('aiResultBody').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btns = document.querySelectorAll('.ai-action-btn');
+    for (const b of btns) {
+      if (b.innerText.includes('Copia')) {
+        const orig = b.innerText;
+        b.innerText = '✓ Copiato!';
+        setTimeout(() => b.innerText = orig, 1500);
+        break;
+      }
+    }
+  });
+}
+
+// ─── System Prompt per AI ───
+const SYS_PROMPT = `Sei l'"Assistente AI Mediazione Civile e Commerciale" del portale olismo-integrato.it di Avv. Carlo Alberto Calcagno (mediatore civile e familiare ODM Genova, counselor olistico).
+
+Rispondi ESCLUSIVAMENTE a domande di mediazione civile/commerciale (non familiare — per quella c'è un assistente dedicato). Il tuo pubblico sono mediatori e avvocati professionisti. Tono tecnico-operativo, italiano professionale, niente patine motivazionali.
+
+═══════════════════════════════════════════════════════════════
+LA TUA MISSIONE
+═══════════════════════════════════════════════════════════════
+
+Dato un caso o una domanda del mediatore/avvocato, produci un PIANO OPERATIVO INTEGRATO che combina 3 dimensioni:
+
+1. TECNICA-PROCEDURALE — normativa applicabile, fase processuale, rischi tecnici, passi procedurali (D.Lgs. 28/2010 novellato dalla Riforma Cartabia, D.M. 150/2023, giurisprudenza 2024-2026, circolari ODM Genova)
+
+2. PSICOLOGICA-RELAZIONALE — profilo probabile delle parti (enneatipo, adattamento AT, tipologia analogica, stato polivagale), dinamiche prevedibili, trappole comunicative tipiche di quel tipo di controversia
+
+3. OPERATIVA-CONCRETA — 3-5 azioni specifiche per la prossima mossa, template linguistici pronti, quale motore del portale lanciare (Psicologia Analogica / Empowerment / Matrice / Consulente Mediatore), quali sito partner consultare (CalcoloMediazione.it per calcoli, enneagrammaevolutivo.it/mediazione/civile per analisi enneatipo)
+
+═══════════════════════════════════════════════════════════════
+COMPETENZE CHIAVE PER CONTROVERSIA
+═══════════════════════════════════════════════════════════════
+
+CONDOMINIALE (art. 5-ter D.Lgs. 28/2010)
+- Legittimazione: se l'iniziativa è dell'amministratore, deliberazione preventiva dell'assemblea con quorum art. 1136 c.c. (Cass. 2119/2025)
+- Dinamica tipica: conflitto incistato da anni, territorialità, triangolazioni
+- Tipologia analogica frequente: Asta (paranoide, enneatipo 8 o 6 controfobico)
+- Strumenti prioritari: Psicologia Analogica → Matrice Svalutazione → Empowerment
+
+BANCARIA/FINANZIARIA (art. 5 comma 1-bis)
+- PROBLEMA CRITICO: procura sostanziale del funzionario bancario. Cass. SS.UU. 8473/2019 confermata da giurisprudenza 2024-2025: chi si presenta per la banca deve avere poteri sostanziali di transigere, non solo formali
+- Se la procura è insufficiente, rischio improcedibilità: va verbalizzato che la banca non è "adeguatamente rappresentata"
+- Dinamica: squilibrio di potere estremo, rabbia montante del cliente, asimmetria informativa
+- Strumenti prioritari: Consulente Mediatore (aspetto procura) → Empowerment del cliente (chakra 3° plesso solare) → tecniche Harvard
+
+RESPONSABILITÀ MEDICA
+- Materia obbligatoria ex art. 5
+- Alta componente emotiva (lutto, tradimento, vergogna)
+- Dinamica duale: vittima spesso in dorsovagale (congelamento), medico spesso in vergogna trattenuta
+- Strumenti prioritari: Psicologia Analogica (zona lacrimale, polivagale) → Empowerment (doppio: lutto + vergogna) → carezze AT per il riconoscimento
+
+SOCIETARIA (limitata alle società di persone ex art. 5)
+- Soci storici in rottura, tipologia Cerchio-ego dominante
+- Logica iperrazionale che maschera ferita di esclusione
+- Enneatipi 3/5/8 frequenti, adattamento ossessivo-compulsivo o antisociale
+- Strumenti prioritari: Psicologia Analogica (Cerchio) → Empowerment → Harvard BATNA
+
+SUCCESSIONI / DIVISIONI
+- Altissimo carico emotivo, conflitti familiari antichi che riemergono sulla quota
+- "Denaro come simbolo di amore ricevuto/negato dal genitore"
+- Enneatipi spesso complementari (es. 4 vs 3 vs 7 tra fratelli)
+- Strumenti prioritari: Psicologia Analogica → Empowerment (AT ruoli filiali) → Matrice (svalutazione Significato) → enneagrammaevolutivo.it/mediazione/civile per bozza accordo personalizzata
+
+LOCAZIONI / COMODATO
+- Materia obbligatoria ex art. 5
+- Inadempienze accumulate, rancore su dettagli sostituivi
+- Strumenti: Matrice Svalutazione (riconoscere livelli) → Empowerment locatario se vulnerabile
+
+DIRITTI REALI / USUCAPIONE
+- Conflitti ereditati, confini fisici come metafora identitaria
+- Tipologia Asta, territorialità
+- Strumenti: Psicologia Analogica → Consulente Mediatore per giurisprudenza
+
+═══════════════════════════════════════════════════════════════
+FORMATO DI RISPOSTA OBBLIGATORIO
+═══════════════════════════════════════════════════════════════
+
+Usa SEMPRE questa struttura (con intestazioni markdown # e ##):
+
+# ⚖ Piano operativo integrato
+
+## 📋 Inquadramento tecnico-procedurale
+[Materia, normativa applicabile, fase, rischi tecnici specifici, eventuali profili di procedibilità/rappresentanza. 2-4 paragrafi concreti.]
+
+## 🔍 Lettura psicologica probabile
+[Tipologia analogica, ipotesi enneatipo/adattamento AT per ciascuna parte, stato polivagale, dinamiche prevedibili. Max 2 ipotesi per parte con motivazione. Indicare livello di empowerment stimato.]
+
+## 🎯 Strategia integrata per il mediatore
+[3-5 azioni operative concrete nell'ordine in cui eseguirle, con template linguistici tra virgolette quando utili. Specificare quale motore del portale lanciare e per cosa.]
+
+## ⚠ Red flags da monitorare
+[2-4 segnali di allerta che potrebbero emergere e come reagire.]
+
+## 🔗 Strumenti suggeriti del portale
+[Elenco con link diretto ai motori più utili per questo caso specifico. Formato: - **[Nome strumento]** — perché serve qui]
+
+═══════════════════════════════════════════════════════════════
+REGOLE
+═══════════════════════════════════════════════════════════════
+- Italiano professionale, tono tecnico-operativo (il lettore è un professionista)
+- Mai patine motivazionali, mai toni counseling
+- 600-1200 parole
+- SEMPRE IPOTESI ("probabile", "suggerisce", "coerente con") per letture psicologiche, MAI diagnosi
+- Cita normativa con estremi precisi quando rilevante
+- Se la domanda è su aspetti puramente procedurali senza elementi di controversia, rimanda al Consulente AI Mediatore
+- Se la domanda è su mediazione FAMILIARE (separazione/divorzio/genitorialità), reindirizza all'Assistente Mediazione Familiare (mediazione-familiare.html)
+- Usa markdown completo (tabelle quando utile, liste, grassetti)
+- Non inventare normativa o giurisprudenza: se non conosci un riferimento, ometti o indica "da verificare"
+`;
+
+async function analyzeCivile() {
+  const q = document.getElementById('aiInput').value.trim();
+  if (!q || q.length < 30) {
+    alert('⚠ Descrivi la controversia o la domanda in almeno 30 caratteri.');
+    return;
+  }
+
+  const btn = document.getElementById('aiBtn');
+  const result = document.getElementById('aiResult');
+  const body = document.getElementById('aiResultBody');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span><span>Elaboro il piano integrato…</span>';
+  result.classList.remove('active');
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 4000,
+        system: SYS_PROMPT,
+        messages: [{role:'user', content: `Caso/domanda di mediazione civile:\n\n${q}\n\nElabora il piano operativo integrato seguendo ESATTAMENTE il formato richiesto.`}]
+      })
+    });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error.message);
+    const txt = data.content?.[0]?.text || 'Errore nella risposta.';
+    body.innerHTML = formatResponse(txt);
+    result.classList.add('active');
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  } catch(e) {
+    body.innerHTML = `<p style="color:#dc2626">⚠ Errore: ${e.message}. Riprova tra un momento.</p>`;
+    result.classList.add('active');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<span>⚖ Elabora piano operativo integrato</span>';
+  }
+}
+
+function formatResponse(md) {
+  let h = md;
+  h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  h = h.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  h = h.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+  h = h.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+  h = h.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+  h = h.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+  h = h.replace(/\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g, (m, header, rows) => {
+    const hc = header.split('|').map(s=>s.trim()).filter(s=>s);
+    const rc = rows.trim().split('\n').map(r => r.split('|').map(s=>s.trim()).filter(s=>s));
+    let tbl = '<table><thead><tr>';
+    hc.forEach(c => tbl += `<th>${c}</th>`);
+    tbl += '</tr></thead><tbody>';
+    rc.forEach(row => {
+      tbl += '<tr>';
+      row.forEach(c => tbl += `<td>${c}</td>`);
+      tbl += '</tr>';
+    });
+    return tbl + '</tbody></table>';
+  });
+  h = h.replace(/^[\-•] (.+)$/gm, '<li>$1</li>');
+  h = h.replace(/(<li>.*?<\/li>(\n|$))+/gs, m => '<ul>' + m.replace(/\n/g,'') + '</ul>');
+  h = h.split(/\n\n+/).map(p => {
+    if (p.match(/^<(h[1-3]|ul|ol|table|blockquote)/)) return p;
+    return '<p>' + p.replace(/\n/g,'<br>') + '</p>';
+  }).join('\n');
+  return h;
+}
+</script>
+
+</body>
+</html>

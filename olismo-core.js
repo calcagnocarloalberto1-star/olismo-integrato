@@ -2228,6 +2228,8 @@ CONTROMOSSE (esempi): contro O1 «Le propongo: per cinque minuti elenchiamo TUTT
 
 Il punto di arrivo della svalutazione NON deve derivare dalla domanda del mediatore, ma EMERGERE dalle parole dell\'interlocutore. Il sito ha una pagina dedicata: matrice-svalutazione.html con motore guidato + analisi AI di frasi libere.
 
+CONSULENTE AI MEDIATORE: per domande TECNICHE-PROCEDURALI di mediazione civile/commerciale/familiare — come impostare il discorso introduttivo secondo Harvard, cosa verbalizzare, come gestire indennità/prosecuzione/ritrattazione, procura sostanziale (Cass 8473/2019), mediazione condominiale (art. 5-ter, Cass 2119/2025), protocollo rinuncia istante, mediazione telematica/remoto (art. 8-bis/ter), CTM, responsabilità mediatore, proposta art. 11 e conseguenze art. 13 — il portale ha un motore dedicato: consulente-mediatore.html. Se la domanda del mediatore è su questi temi, suggerisci di usare quel motore perché contiene il pieno database: linee guida ODM Genova 26/11/2025, Circolare 12/2025, Circolare indennità 27/11/2025, Circolare sottoscrizione verbale, decalogo mediatore v14, template verbale annotato con giurisprudenza 2024-2026. Rispondi comunque brevemente e poi linka.
+
 
 EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.

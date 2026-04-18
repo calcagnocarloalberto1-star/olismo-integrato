@@ -6039,7 +6039,7 @@ window.addEventListener('load',function(){
       name:'Crea il tuo cammino', icon:'✦',
       steps:[
         {id:'percorso-viaggio',       label:'Mappa del percorso'},
-        {id:'i-miei-fiori-ext',       label:'I miei Fiori ↗',     external:'i_miei_fiori.html'},
+        {id:'i-miei-fiori-ext',       label:'Fiori adatti a te (AI FES) ↗',     external:'ai-fes.html'},
         {id:'il-mio-copione-ext',     label:'Il mio Copione ↗',   external:'il_mio_copione.html'},
         {id:'consulente',             label:'Piano personalizzato AI'}
       ],

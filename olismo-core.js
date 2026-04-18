@@ -862,7 +862,7 @@ function renderAtCards(){
       `<div class="at-gioco"><span class="at-gioco-icon">♟</span><span>${g}</span></div>`
     ).join('');
 
-    return `<div class="at-card" style="--ac:${col}">
+    return `<div class="at-card" id="${a.id}" style="--ac:${col};scroll-margin-top:80px">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:var(--rxl) var(--rxl) 0 0"></div>
       <div class="at-card-tipo">
         <span class="at-tipo-badge ${a.tipo==='Sopravvivenza'?'at-sopravv':'at-perf'}">${a.tipo||''}</span>
@@ -1642,7 +1642,7 @@ function showAtResult(results, primary, secondary, totalE, totalI){
       </div>`:''}
       
       <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--ivory3)">
-        <button class="btn-gold" onclick="goTo('${AT_AD_MAP[primary]}','adattamenti');st('at-adattamenti')">Vedi scheda completa →</button>
+        <button class="btn-gold" onclick="window.location.href='at-adattamenti.html#${AT_AD_MAP[primary]}'">Vedi scheda completa →</button>
         <button class="btn-ghost" onclick="askAiAboutAtResult('${primary}','${secondary}')">Chiedi alla AI →</button>
         <button class="btn-ghost" onclick="st('egogramma')">Egogramma →</button>
         <button onclick="resetAtTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
@@ -2759,7 +2759,7 @@ async function sendMsg(){
       headers,
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 6000,
+        max_tokens: 8000,
         system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
@@ -2813,6 +2813,19 @@ window.addEventListener("DOMContentLoaded",()=>{
   try{initCheckTest();}catch(e){}
   try{initCookieBanner();}catch(e){}
   try{initDark();}catch(e){}
+  
+  // Post-render: scroll to hash anchor if URL contains one (for pages with dynamic content like at-adattamenti.html#ad6)
+  try{
+    if(window.location.hash){
+      const targetId = window.location.hash.substring(1);
+      const target = document.getElementById(targetId);
+      if(target){
+        setTimeout(() => {
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 150);
+      }
+    }
+  }catch(e){}
   try{initCristalliSection();}catch(e){}
   try{if(!loadChatHistory()){
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
@@ -5455,7 +5468,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 8000,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
@@ -5631,7 +5644,7 @@ async function fesSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: FES_PROMPT, messages: fesHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 8000, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -5682,7 +5695,7 @@ async function bushSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: BUSH_PROMPT, messages: bushHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 8000, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';

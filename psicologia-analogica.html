@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🔍 Psicologia Analogica — Il linguaggio del corpo in mediazione</title>
+<meta name="description" content="Motore per mediatori: catalogo di 95 gesti del linguaggio del corpo (psicologia analogica), AI di lettura, schede di osservazione stampabili. Correlazioni con enneatipi, adattamenti AT, teoria polivagale.">
+<link rel="canonical" href="https://olismo-integrato.it/psicologia-analogica.html">
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ PSICOLOGIA ANALOGICA — STYLES ═══════════════ */
+:root{
+  /* Viola mediazione */
+  --med1:#2a1a4a; --med2:#4a2a6a; --med3:#6a4a8a; --med4:#9d7ac4; --med-pale:#faf5ff;
+  /* Gold olismo */
+  --gold:#b8935a; --gold-pale:#fdf8ed; --gold3:#d4b478; --gold-acc:#fde047;
+  /* Verde empowerment */
+  --emp1:#0f3d2e; --emp2:#1a6b4f; --emp3:#2d9d74; --emp4:#4fd4a0; --emp-pale:#ecfdf5;
+  /* Ambra analogica (nuovo per questo motore) */
+  --ana1:#7c3a00; --ana2:#b45309; --ana3:#d97706; --ana4:#f59e0b; --ana-pale:#fffbeb;
+  /* Neutri */
+  --ivory:#f9f5ef; --ivory2:#f5ede0; --ivory3:#e5d8c0;
+  --ink:#2a2520; --ink2:#3d332a; --ink3:#6b5d50; --ink4:#8b7d70;
+  --border:#e5d8c0;
+  --rxl:14px; --rmd:10px; --rsm:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600}
+a{color:var(--med3);text-decoration:none}
+a:hover{text-decoration:underline}
+em{color:var(--ana3);font-style:italic}
+
+/* ─── Header ─── */
+.top-bar{position:sticky;top:0;z-index:100;background:rgba(249,245,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.7rem 0}
+.top-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap}
+.top-logo{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none}
+.top-logo-dot{width:18px;height:18px;border-radius:50%;background:var(--gold)}
+.top-nav{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
+.top-nav-link{padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:var(--med2);text-decoration:none;border-radius:6px;transition:background .2s;white-space:nowrap}
+.top-nav-link:hover{background:var(--med-pale);text-decoration:none}
+.top-nav-link.current{background:var(--ana2);color:white}
+.top-nav-link.emp{color:var(--emp1)}
+.top-nav-link.emp:hover{background:var(--emp-pale)}
+.top-home{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:var(--gold);color:white;border-radius:20px;font-size:.78rem;font-weight:500;transition:transform .2s;text-decoration:none}
+.top-home:hover{transform:translateY(-1px);text-decoration:none}
+@media(max-width:820px){.top-nav{order:3;width:100%;justify-content:center;border-top:1px solid var(--border);padding-top:.5rem;margin-top:.3rem}}
+
+/* ─── Hero ─── */
+.hero{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(217,119,6,.25) 0%,transparent 55%),
+    radial-gradient(circle at 15% 85%,rgba(184,147,90,.18) 0%,transparent 55%),
+    linear-gradient(135deg,var(--med1) 0%,var(--ana2) 60%,var(--med2) 100%);
+  color:white;padding:3.8rem 1.5rem 3.2rem;text-align:center;position:relative;overflow:hidden
+}
+.hero-inner{max-width:900px;margin:0 auto;position:relative}
+.hero-breadcrumb{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-acc);opacity:.9;margin-bottom:.9rem}
+.hero h1{font-size:clamp(2rem,5.2vw,3.4rem);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{color:var(--gold-acc);font-style:italic}
+.hero-subtitle{font-size:1.08rem;opacity:.92;max-width:760px;margin:0 auto 1.4rem;line-height:1.55}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.6rem}
+.hero-badge{padding:.42rem 1rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;font-size:.77rem;font-weight:500;backdrop-filter:blur(6px)}
+
+/* ─── Manifesto ─── */
+.manifesto-section{max-width:900px;margin:2.5rem auto 1rem;padding:0 1.5rem}
+.manifesto{position:relative;padding:3rem 2.5rem 2.8rem;background:linear-gradient(135deg,var(--ana-pale) 0%,var(--gold-pale) 100%);border-radius:18px;border:1px solid rgba(184,147,90,.2);box-shadow:0 4px 24px rgba(124,58,0,.06);overflow:hidden}
+.manifesto .quote-l,.manifesto .quote-r{position:absolute;font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:1;font-weight:700;opacity:.15}
+.manifesto .quote-l{top:1.2rem;left:2rem;color:var(--ana3)}
+.manifesto .quote-r{bottom:-1.5rem;right:2rem;color:var(--gold)}
+.manifesto blockquote{position:relative;margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.65;color:var(--ink2);font-style:italic;font-weight:400}
+.manifesto blockquote p{margin:0 0 1rem}
+.manifesto blockquote p:last-child{margin-bottom:0}
+.manifesto em.ana{color:var(--ana2);font-style:italic;font-weight:500}
+.manifesto em.gold{color:var(--gold);font-style:italic;font-weight:500}
+.manifesto strong{color:var(--med1);font-weight:600;font-style:normal}
+
+/* ─── Sections ─── */
+.ana-section{background:white;margin:1.8rem auto;padding:2rem 1.8rem;border-radius:var(--rxl);border:1px solid var(--border);max-width:1100px;box-shadow:0 2px 12px rgba(42,26,74,.04)}
+.ana-section h2{font-size:1.55rem;color:var(--med2);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.ana-section h2 em{color:var(--ana3)}
+.ana-section p{color:var(--ink2);margin-bottom:.9rem}
+.ana-section p:last-child{margin-bottom:0}
+
+/* ─── Category tabs ─── */
+.cat-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.2rem 0 1.5rem;border-bottom:2px solid var(--ivory3);padding-bottom:.6rem}
+.cat-tab{padding:.55rem .95rem;border-radius:8px 8px 0 0;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;background:transparent;border:none;font-family:inherit;color:var(--ink3)}
+.cat-tab:hover{background:var(--ana-pale);color:var(--ana2)}
+.cat-tab.active{background:var(--ana2);color:white;font-weight:600}
+
+/* ─── Gesture grid ─── */
+.ges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.ges-card{padding:1.1rem 1.2rem;background:white;border:1.5px solid var(--border);border-radius:var(--rmd);transition:all .2s;position:relative;cursor:pointer}
+.ges-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(180,83,9,.12);border-color:var(--ana3)}
+.ges-card .g-name{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:600;color:var(--med2);margin-bottom:.4rem;line-height:1.25}
+.ges-card .g-zone{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:10px;margin-right:.3rem;margin-bottom:.4rem}
+.ges-card .g-macro{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:10px;margin-bottom:.4rem}
+.ges-card .g-desc{font-size:.82rem;color:var(--ink3);line-height:1.5;margin-bottom:.5rem}
+.ges-card .g-pct{position:absolute;top:.8rem;right:1rem;padding:.22rem .6rem;background:linear-gradient(135deg,#dc2626,#991b1b);color:white;border-radius:20px;font-size:.72rem;font-weight:700}
+.ges-card .g-pct.low{background:linear-gradient(135deg,#10b981,#047857)}
+.ges-card .g-pct.mid{background:linear-gradient(135deg,#f59e0b,#b45309)}
+
+/* Zone colors */
+.zone-viso{background:#fef3c7;color:#92400e}
+.zone-mani-braccia{background:#dbeafe;color:#1e3a8a}
+.zone-tronco-postura{background:#ede9fe;color:#5b21b6}
+.zone-gambe-piedi{background:#d1fae5;color:#065f46}
+.zone-voce-suono{background:#fce7f3;color:#9d174d}
+.zone-occhi-sguardo{background:#e0e7ff;color:#3730a3}
+
+/* Macro colors */
+.macro-tensione{background:#fee2e2;color:#991b1b}
+.macro-gradimento{background:#dcfce7;color:#14532d}
+.macro-apertura{background:#cffafe;color:#155e75}
+.macro-rifiuto{background:#fef3c7;color:#854d0e}
+.macro-chiusura{background:#f3e8ff;color:#6b21a8}
+.macro-ansia{background:#ffe4e6;color:#9f1239}
+
+/* ─── Expanded card detail ─── */
+.ges-detail{grid-column:1/-1;padding:1.5rem 1.8rem;background:linear-gradient(135deg,var(--gold-pale) 0%,#fff 70%);border:2px solid var(--ana3);border-radius:12px;margin-top:.3rem}
+.ges-detail h4{font-size:1.15rem;color:var(--med2);margin-bottom:.7rem}
+.ges-detail .gd-row{display:flex;gap:1rem;margin-bottom:.8rem;flex-wrap:wrap}
+.ges-detail .gd-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ana2);min-width:130px}
+.ges-detail .gd-value{flex:1;color:var(--ink2);font-size:.9rem;line-height:1.55}
+
+/* ─── AI panel ─── */
+.ai-panel{background:linear-gradient(135deg,var(--med-pale) 0%,#fff 100%);border:1.5px solid var(--med4);border-radius:var(--rxl);padding:1.8rem}
+.ai-panel h3{color:var(--med2);font-size:1.3rem;margin-bottom:.6rem}
+.ai-textarea{width:100%;padding:.9rem 1.1rem;border:1.5px solid var(--border);border-radius:var(--rmd);font-size:.92rem;font-family:inherit;background:white;color:var(--ink);min-height:120px;resize:vertical;line-height:1.55}
+.ai-textarea:focus{outline:none;border-color:var(--ana3);box-shadow:0 0 0 3px rgba(217,119,6,.12)}
+.ai-btn{margin-top:1rem;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--med2) 0%,var(--ana2) 100%);color:white;border:none;border-radius:var(--rmd);font-size:.95rem;font-weight:600;cursor:pointer;transition:all .22s;font-family:inherit;display:inline-flex;align-items:center;gap:.6rem;width:100%;justify-content:center}
+.ai-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(180,83,9,.28)}
+.ai-btn:disabled{opacity:.6;cursor:not-allowed}
+.spinner{display:inline-block;width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-examples{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.ai-example-chip{padding:.4rem .8rem;background:white;border:1px solid var(--border);border-radius:18px;font-size:.76rem;color:var(--ink3);cursor:pointer;transition:all .15s}
+.ai-example-chip:hover{background:var(--ana-pale);border-color:var(--ana3);color:var(--ana2)}
+
+/* ─── AI Result ─── */
+#aiResult{display:none;margin-top:1.5rem;padding:1.5rem 1.7rem;background:white;border-radius:var(--rmd);border-left:4px solid var(--ana3)}
+#aiResult.active{display:block;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#aiResult h1,#aiResult h2,#aiResult h3{font-family:'Cormorant Garamond',serif;color:var(--med2);margin:1.1rem 0 .5rem;font-weight:600}
+#aiResult h1{font-size:1.3rem;color:var(--ana2);border-bottom:1px solid var(--gold-pale);padding-bottom:.35rem}
+#aiResult h2{font-size:1.15rem}
+#aiResult h3{font-size:1rem;color:var(--emp2)}
+#aiResult strong{color:var(--med2)}
+#aiResult ul,#aiResult ol{margin:.5rem 0 .8rem 1.3rem}
+#aiResult li{margin-bottom:.35rem}
+#aiResult blockquote{margin:.7rem 0;padding:.6rem 1rem;background:var(--ana-pale);border-left:3px solid var(--ana3);border-radius:0 6px 6px 0;font-style:italic}
+#aiResult table{border-collapse:collapse;margin:.8rem 0;font-size:.85rem;width:100%}
+#aiResult th,#aiResult td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left;vertical-align:top}
+#aiResult th{background:var(--ana-pale);color:var(--ana2);font-weight:600}
+
+.ai-actions{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap}
+.ai-action-btn{padding:.55rem 1rem;background:var(--ana-pale);border:1px solid var(--ana4);color:var(--ana2);border-radius:var(--rsm);font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:inherit}
+.ai-action-btn:hover{background:var(--ana3);color:white}
+.ai-action-btn.primary{background:var(--emp3);color:white;border-color:var(--emp3)}
+.ai-action-btn.primary:hover{background:var(--emp2)}
+
+/* ─── Analogic types cards ─── */
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+.type-card{padding:1.4rem 1.3rem;background:white;border:2px solid var(--border);border-radius:var(--rmd);transition:all .25s;position:relative;overflow:hidden}
+.type-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(42,26,74,.12)}
+.type-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.type-card.asta::before{background:linear-gradient(90deg,#dc2626,#b91c1c)}
+.type-card.triangolo::before{background:linear-gradient(90deg,#10b981,#047857)}
+.type-card.cerchio::before{background:linear-gradient(90deg,#3b82f6,#1e40af)}
+.type-card .t-symbol{font-size:2.5rem;font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1;margin-bottom:.3rem}
+.type-card.asta .t-symbol{color:#dc2626}
+.type-card.triangolo .t-symbol{color:#10b981}
+.type-card.cerchio .t-symbol{color:#3b82f6}
+.type-card h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--med2);margin-bottom:.4rem}
+.type-card .t-referent{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ana2);margin-bottom:.6rem;font-weight:600}
+.type-card .t-desc{font-size:.85rem;color:var(--ink2);line-height:1.55;margin-bottom:.6rem}
+.type-card .t-gesti{font-size:.78rem;color:var(--ink3);padding-top:.6rem;border-top:1px dashed var(--border)}
+.type-card .t-gesti strong{color:var(--med3)}
+
+/* ─── Schede stampabili CTA ─── */
+.print-section{background:linear-gradient(135deg,var(--ana2) 0%,var(--med2) 100%);color:white;padding:2.2rem 2rem;border-radius:var(--rxl);margin:2rem auto;max-width:1100px;box-shadow:0 10px 40px rgba(124,58,0,.2)}
+.print-section h2{color:white;font-size:1.6rem;margin-bottom:.6rem}
+.print-section p{color:rgba(255,255,255,.92);font-size:.95rem;line-height:1.6;margin-bottom:1.2rem}
+.print-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.2rem}
+.print-card{padding:1.3rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:var(--rmd);backdrop-filter:blur(6px);transition:all .2s;cursor:pointer;text-align:left}
+.print-card:hover{background:rgba(255,255,255,.18);transform:translateY(-3px);border-color:rgba(253,224,71,.6)}
+.print-card .pc-ic{font-size:2rem;margin-bottom:.4rem}
+.print-card h4{color:var(--gold-acc);font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:.35rem}
+.print-card p{color:rgba(255,255,255,.88);font-size:.78rem;line-height:1.5;margin-bottom:.6rem}
+.print-card .pc-btn{display:inline-block;padding:.45rem .85rem;background:var(--gold-acc);color:var(--med1);border-radius:6px;font-weight:600;font-size:.78rem;text-decoration:none}
+
+/* ─── Related tools ─── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.tool-card{display:block;padding:1.2rem;background:white;border:1.5px solid var(--border);border-radius:var(--rmd);text-decoration:none;color:inherit;transition:all .25s;position:relative}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(180,83,9,.12);border-color:var(--ana3);text-decoration:none}
+.tool-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--ana3)}
+.tool-card .tc-ic{font-size:1.5rem;margin-bottom:.4rem;color:var(--ana3)}
+.tool-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--med2);margin-bottom:.3rem}
+.tool-card p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
+
+/* ─── Warning box ─── */
+.warning-box{background:#fef3c7;border-left:4px solid #f59e0b;padding:1.3rem 1.5rem;border-radius:var(--rmd);margin:1.5rem auto;max-width:1100px}
+.warning-box h3{color:#92400e;font-size:1.1rem;margin-bottom:.5rem;font-family:'Inter',sans-serif;font-weight:600}
+.warning-box p{color:#78350f;font-size:.88rem;line-height:1.6;margin:0}
+
+/* ─── Footer ─── */
+.footer{padding:2.5rem 1.5rem;text-align:center;background:var(--ink);color:#c9bfb0;margin-top:3rem}
+.footer p{font-size:.82rem;margin-bottom:.4rem}
+.footer a{color:var(--gold3)}
+
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+@media(max-width:640px){
+  .ana-section{padding:1.5rem 1.3rem}
+  .manifesto{padding:2rem 1.5rem}
+  .ges-grid{grid-template-columns:1fr}
+}
+
+/* ═══════════════ PRINT STYLES (per schede stampabili) ═══════════════ */
+@media print{
+  body{background:white;color:black;font-size:10pt}
+  .top-bar,.hero,.manifesto-section,.ana-section:not(#printable),.print-section,.warning-box,.footer,.ai-panel,.types-grid,.tools-grid{display:none !important}
+  #printable{display:block !important;max-width:none;margin:0;padding:0;border:none;box-shadow:none;background:white;page-break-inside:avoid}
+  #printable h2{font-size:16pt;color:black;border-bottom:2pt solid black;padding-bottom:6pt;margin-bottom:12pt}
+  #printable table{width:100%;border-collapse:collapse;page-break-inside:avoid}
+  #printable th,#printable td{border:0.5pt solid #444;padding:4pt 6pt;font-size:9pt;text-align:left;vertical-align:top}
+  #printable th{background:#eee;font-weight:700}
+  #printable .print-header{text-align:center;border-bottom:2pt solid black;padding-bottom:8pt;margin-bottom:12pt}
+  #printable .print-header h1{font-size:20pt;margin:0}
+  #printable .print-header p{font-size:10pt;color:#555;margin-top:4pt}
+  #printable .print-section-block{page-break-inside:avoid;margin-bottom:14pt}
+  #printable .checkbox{display:inline-block;width:12pt;height:12pt;border:1pt solid black;margin-right:6pt;vertical-align:middle}
+  #printable .print-footer{margin-top:20pt;padding-top:8pt;border-top:1pt solid #888;font-size:8pt;color:#666;text-align:center}
+  #printable .notes{border:0.5pt solid #888;min-height:40pt;padding:4pt;margin-top:4pt}
+}
+
+/* Printable is hidden in normal view, shown only in print */
+#printable{display:none}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="top-bar">
+  <div class="top-container">
+    <a href="index.html" class="top-logo"><span class="top-logo-dot"></span> Olismo Integrato</a>
+    <nav class="top-nav" aria-label="Strumenti mediazione">
+      <a href="consulente-mediatore.html" class="top-nav-link">⚖ Consulente</a>
+      <a href="empowerment-mediazione.html" class="top-nav-link emp">🌿 Empowerment</a>
+      <a href="psicologia-analogica.html" class="top-nav-link current">🔍 Psicologia Analogica</a>
+      <a href="matrice-svalutazione.html" class="top-nav-link">⊘ Matrice</a>
+    </nav>
+    <a href="index.html" class="top-home">← Home</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-breadcrumb">🔍 Comunicazione Analogica · Motore per mediatori</div>
+    <h1>Psicologia <em>Analogica</em></h1>
+    <p class="hero-subtitle">Il linguaggio del corpo in mediazione. <strong style="color:#fde047">95 gesti catalogati</strong> dal corso del dr. Calcagno (Come comunicare, 366 slide), correlazioni con <strong style="color:#fde047">enneatipi e adattamenti AT</strong>, AI di lettura del comportamento osservato, <strong style="color:#fde047">schede stampabili</strong> per l'osservazione in sessione.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">👃 Scarico tensionale</span>
+      <span class="hero-badge">👄 Gradimento/Rifiuto</span>
+      <span class="hero-badge">🤝 Stretta di mano</span>
+      <span class="hero-badge">⬛ Asta/Triangolo/Cerchio</span>
+      <span class="hero-badge">🖨 Schede stampabili</span>
+      <span class="hero-badge">🤖 AI di lettura</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="manifesto-section">
+  <div class="manifesto">
+    <div class="quote-l" aria-hidden="true">“</div>
+    <div class="quote-r" aria-hidden="true">”</div>
+    <blockquote>
+      <p>Il corpo <em class="ana">non mente</em>. Mentre la bocca elabora parole e le parole si aggiustano al contesto, il corpo scrive a lato — con un grattamento, un piede che devia, un respiro trattenuto — ciò che l'inconscio sta davvero vivendo.</p>
+      <p>Imparare a leggere quel linguaggio significa <em class="gold">dare voce a ciò che si muove sotto la conversazione</em>: riconoscere quando un argomento tocca un nervo, quando la parte si sta chiudendo o aprendo, quando la soglia di tensione è prossima al collasso. È il complemento naturale della mediazione: <strong>la negoziazione si fa con le parole, ma si salva con i gesti</strong>.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<div class="ana-section">
+  <h2>Il <em>fondamento</em> — Mehrabian, Birdwhistell, Meneghetti</h2>
+  <p><strong>Mehrabian (1960)</strong>: solo il 7% delle informazioni in un'interazione passa dalle parole. Il restante 93% è affidato al non verbale (55% segnali corporei, 38% tono di voce). <strong>Birdwhistell (1970)</strong>: il 65% delle interazioni attiene al paraverbale/non verbale — la più minuscola azione è misurabile (kineme). <strong>La scuola di psicologia analogica italiana</strong> (Meneghetti e seguenti) ha sistematizzato lo studio dei gesti come <em>scarico tensionale</em> e <em>servizio analogico</em>, collegando la posizione del gesto al grado di pericolosità emotiva dell'argomento.</p>
+  <p>Questo motore fa tre cose: (1) cataloga 95 gesti osservabili in sessione, (2) aiuta l'AI a leggere pattern di gesti riportati dal mediatore, (3) genera schede stampabili da portare in sessione per prendere nota di ciò che si osserva.</p>
+</div>
+
+<!-- ═══ CATALOGO GESTI ═══ -->
+<div class="ana-section">
+  <h2>📚 Catalogo <em>navigabile</em> dei gesti</h2>
+  <p>Seleziona una categoria per esplorare i gesti. Clicca su una scheda per vedere i dettagli: correlazioni con enneatipi, adattamenti AT, percentuale di tensione rilevabile, azione consigliata al mediatore.</p>
+  
+  <div class="cat-tabs" id="catTabs">
+    <button class="cat-tab active" data-cat="atti_scarico_tensionale">👃 Scarico tensionale</button>
+    <button class="cat-tab" data-cat="segnali_gradimento">👄 Gradimento</button>
+    <button class="cat-tab" data-cat="segnali_apertura">🌅 Apertura</button>
+    <button class="cat-tab" data-cat="segnali_rifiuto">🚫 Rifiuto</button>
+    <button class="cat-tab" data-cat="postura_generale">🧍 Postura</button>
+    <button class="cat-tab" data-cat="stretta_di_mano">🤝 Stretta di mano</button>
+  </div>
+  
+  <div class="ges-grid" id="gesGrid"></div>
+</div>
+
+<!-- ═══ ASTA-TRIANGOLO-CERCHIO ═══ -->
+<div class="ana-section">
+  <h2>⬛ Le <em>tre tipologie</em> della psicologia analogica</h2>
+  <p>Meneghetti e la scuola analogica italiana classificano ogni individuo secondo una delle tre figure geometriche fondamentali — <strong>Asta, Triangolo, Cerchio</strong> — osservabili dai tre segni diagnostici: stretta di mano, modo di toccarsi il viso, atteggiamento del discorso. Ogni tipo ha correlazioni con enneatipi e adattamenti AT specifici.</p>
+  <div class="types-grid" id="typesGrid"></div>
+</div>
+
+<!-- ═══ AI DI LETTURA ═══ -->
+<div class="ana-section">
+  <h2>🤖 <em>AI di lettura</em> del comportamento osservato</h2>
+  <p>Descrivi in testo libero ciò che hai osservato nella parte (gesti, posture, paraverbale, sequenze). L'AI restituisce: interpretazione analogica, ipotesi tipologica (Asta/Triangolo/Cerchio), correlazioni con enneatipo e adattamento AT più probabili, indicazione di livello di tensione stimato, suggerimento operativo per il mediatore. Se emergono pattern di basso empowerment, rimanda al motore Empowerment con i dati precompilati.</p>
+  
+  <div class="ai-panel">
+    <h3>🔍 Cosa hai osservato?</h3>
+    
+    <div class="ai-examples">
+      <span class="ai-example-chip" data-ex="ex1">📋 Esempio 1: padre in separazione</span>
+      <span class="ai-example-chip" data-ex="ex2">📋 Esempio 2: condomina in congiunta</span>
+      <span class="ai-example-chip" data-ex="ex3">📋 Esempio 3: imprenditore in lite</span>
+    </div>
+    
+    <textarea id="aiInput" class="ai-textarea" placeholder="Esempio: «Il padre (42 anni, separazione) all'inizio della sessione congiunta ha stretto la mia mano in modo molto breve e distogliendo lo sguardo. Appena sua moglie ha nominato il figlio, si è grattato la zona maxillo-facciale (2 volte), poi ha sospirato, ha incrociato le braccia e scostato il busto lateralmente. Dopo 10 minuti tiene ancora le braccia conserte e i piedi orientati verso la porta. Quando parlo io guarda in basso.»"></textarea>
+    
+    <button class="ai-btn" id="aiBtn" onclick="analyzeObservation()">
+      <span>🔍 Leggi ciò che il corpo sta dicendo</span>
+    </button>
+    
+    <div id="aiResult">
+      <div id="aiResultBody"></div>
+      <div class="ai-actions">
+        <button class="ai-action-btn primary" onclick="exportToEmpowerment()">🌿 Usa questa lettura nel motore Empowerment →</button>
+        <button class="ai-action-btn" onclick="copyAI()">📋 Copia</button>
+        <button class="ai-action-btn" onclick="resetAI()">Nuova osservazione</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCHEDE STAMPABILI ═══ -->
+<section class="print-section">
+  <div style="text-align:center;margin-bottom:1.2rem">
+    <div style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.5rem;font-weight:700">🖨 Schede operative · PDF stampabili</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600">Scarica le <em style="color:#fde047">schede di osservazione</em></h2>
+    <p>Schede A4 professionali da stampare e portare in sessione. Il mediatore segna i gesti osservati con le checkbox: alla fine della sessione ha un quadro oggettivo del profilo analogico della parte.</p>
+  </div>
+  <div class="print-grid">
+    <div class="print-card" onclick="printSheet('completa')">
+      <div class="pc-ic">📋</div>
+      <h4>Scheda completa</h4>
+      <p>Tutti i 95 gesti catalogati in un'unica scheda: scarico tensionale, gradimento, apertura, rifiuto, postura, stretta di mano.</p>
+      <span class="pc-btn">🖨 Stampa PDF</span>
+    </div>
+    <div class="print-card" onclick="printSheet('civile')">
+      <div class="pc-ic">⚖</div>
+      <h4>Scheda mediazione civile</h4>
+      <p>Focus su gesti di tensione, rifiuto, stretta di mano, postura: i segnali più rilevanti nella controversia commerciale o condominiale.</p>
+      <span class="pc-btn">🖨 Stampa PDF</span>
+    </div>
+    <div class="print-card" onclick="printSheet('familiare')">
+      <div class="pc-ic">👨‍👩‍👧</div>
+      <h4>Scheda mediazione familiare</h4>
+      <p>Focus su gesti emotivi: gradimento, rifiuto, scarico tensionale viso, zona lacrimale. Per separazione, divorzio, genitorialità.</p>
+      <span class="pc-btn">🖨 Stampa PDF</span>
+    </div>
+    <div class="print-card" onclick="printSheet('analogico')">
+      <div class="pc-ic">⬛</div>
+      <h4>Scheda Asta/Triangolo/Cerchio</h4>
+      <p>Scheda sintetica per identificare la tipologia analogica dominante della parte: i 3 segni diagnostici con checkbox e griglia di correlazione.</p>
+      <span class="pc-btn">🖨 Stampa PDF</span>
+    </div>
+  </div>
+  <p style="margin-top:1.3rem;font-size:.8rem;color:rgba(255,255,255,.7);text-align:center">💡 Tip: clicca "Stampa PDF" e nella finestra di stampa seleziona "Salva come PDF" per ottenere un file scaricabile.</p>
+</section>
+
+<!-- ═══ SEZIONE PRINTABLE (nascosta in view, visibile in print) ═══ -->
+<div id="printable" class="ana-section"><!-- Popolato dinamicamente --></div>
+
+<!-- ═══ STRUMENTI COLLEGATI ═══ -->
+<div class="ana-section">
+  <h2>🔗 Strumenti <em>collegati</em> del portale</h2>
+  <div class="tools-grid">
+    <a href="empowerment-mediazione.html" class="tool-card">
+      <div class="tc-ic">🌿</div>
+      <h4>Empowerment in Mediazione</h4>
+      <p>Il naturale passo successivo: profilo psicologico completo, fiori, chakra, frequenze, Harvard calibrato.</p>
+    </a>
+    <a href="consulente-mediatore.html" class="tool-card">
+      <div class="tc-ic">⚖</div>
+      <h4>Consulente AI Mediatore</h4>
+      <p>Harvard + ODM Genova + giurisprudenza 2024-2026 per domande tecnico-procedurali.</p>
+    </a>
+    <a href="matrice-svalutazione.html" class="tool-card">
+      <div class="tc-ic">⊘</div>
+      <h4>Matrice della Svalutazione</h4>
+      <p>Quando la parte blocca il dialogo con feedback negativi, Mellor & Schiff identifica la casella.</p>
+    </a>
+    <a href="enneagram.html" class="tool-card">
+      <div class="tc-ic">✦</div>
+      <h4>Enneatipi</h4>
+      <p>Database dei 9 enneatipi — per approfondire ciò che l'AI identifica nei gesti.</p>
+    </a>
+    <a href="at-adattamenti.html" class="tool-card">
+      <div class="tc-ic">⬟</div>
+      <h4>Adattamenti AT</h4>
+      <p>6 adattamenti di personalità, 60 copioni — la struttura psicologica dietro i gesti.</p>
+    </a>
+    <a href="danza.html" class="tool-card">
+      <div class="tc-ic">⚡</div>
+      <h4>Danza del Conflitto</h4>
+      <p>Neurobiologia relazionale: 4 poli (simpatico, ventrale, dorsovagale, collasso).</p>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ AVVERTENZA ═══ -->
+<div class="warning-box">
+  <h3>⚠ Nota importante — come usare questo motore</h3>
+  <p>La psicologia analogica è <strong>uno strumento di lettura, non un sistema diagnostico</strong>. Un singolo gesto non rivela niente: servono <em>cluster coerenti</em> di gesti nello stesso arco temporale. Il corpo racconta una storia, ma il mediatore deve sempre verificare l'ipotesi interpretativa attraverso domande aperte. Mai etichettare la parte con un tipo analogico davanti a lei. Mai usare questa lettura per manipolare: serve per accompagnare, non per dominare. Rispettare sempre gli artt. 9-10 D.Lgs. 28/2010 (riservatezza).</p>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p><strong>Olismo Integrato</strong> — Avv. Carlo Alberto Calcagno</p>
+  <p>Portale gratuito di discipline olistiche e strumenti di mediazione.</p>
+  <p style="margin-top:.8rem"><a href="index.html">Home</a> · <a href="consulente-mediatore.html">⚖ Consulente Mediatore</a> · <a href="empowerment-mediazione.html">🌿 Empowerment</a> · <a href="matrice-svalutazione.html">⊘ Matrice</a> · <a href="danza.html">⚡ Danza</a> · <a href="at-adattamenti.html">⬟ Adattamenti AT</a> · <a href="enneagram.html">✦ Enneatipi</a> · <a href="chi-sono.html">Chi sono</a></p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// PSICOLOGIA ANALOGICA — Engine
+// ═══════════════════════════════════════════════════════════════
+
+// Database inline (no fetch → funziona su file:// e server statico senza dipendenze)
+const GESTURE_DB = {"_meta":{"title":"Tassonomia dei gesti — Psicologia Analogica","source":"Carlo Alberto Calcagno, Come comunicare — Corso base mediatori (366 slides, 2016)","version":"1.0","schema":{"zone":"area corporea: viso | mani-braccia | tronco-postura | gambe-piedi | voce-suono | occhi-sguardo","macro":"categoria significato: gradimento | rifiuto | apertura | chiusura | tensione | ansia | seduzione | dominanza | sottomissione | analogica-tipo","tensione_pct":"percentuale tensione emotiva quando presente (dalla slide 110-117)","sottotipo_analogico":"A=Asta | T=Triangolo | C=Cerchio","enneatipo_probabile":"enneatipi 1-9 più correlati al pattern","adattamento_probabile":"adattamento AT più correlato","polivagale":"ventrale | simpatico | dorsovagale","interpretazione_mediazione":"significato operativo per il mediatore","azione_mediatore":"cosa fare quando si osserva questo segnale"}},"atti_scarico_tensionale":{"descrizione":"Prurito e grattamento: il soggetto scarica tensione in una zona del corpo a seguito di uno stimolo che evoca emotività. Più il grattamento è vicino a naso/bocca, maggiore è la tensione sull'argomento appena trattato.","principio":"Il grado di pericolosità dell'argomento evocato dipende dalla zona dove si effettua il grattamento. Più ci si allontana dalla bocca e dal naso, più la tensione diminuisce.","gesti":[{"id":"st01","nome":"Prurito al naso","zona":"viso","macro":"tensione","tensione_pct":100,"descrizione":"Il prurito al naso manifesta il massimo carico di tensione perché il naso è collegato nervosamente con la sede cerebrale delle emozioni.","interpretazione_mediazione":"Massimo carico di tensione che non supera la soglia di difesa. Non è indice di accettazione o rifiuto in sé, ma segnala che l'argomento appena trattato è centrale nella vita emotiva della parte. Se il grattamento si manifesta con una parola (es. 'padre', 'coniuge'), l'operatore sa che il rapporto con quella figura è fonte di sofferenza.","azione_mediatore":"Trattare con cautela l'argomento evitando insistenza. Riformulare in modo più morbido. Fare una pausa o cambiare temporaneamente topic per permettere scarico emotivo."},{"id":"st02","nome":"Grattamento zona maxillo-facciale","zona":"viso","macro":"tensione","tensione_pct":90,"descrizione":"Prurito o grattamento alla guancia, mandibola, zona intorno alla bocca.","interpretazione_mediazione":"L'argomento espresso è fortemente toccante per la parte. La tensione è molto alta ma ancora sotto la soglia di fuga.","azione_mediatore":"Validare implicitamente che l'argomento è importante. Rallentare il ritmo, abbassare il volume, usare parole morbide."},{"id":"st03","nome":"Sfregamento radice del naso vicino agli occhi","zona":"viso","macro":"tensione","tensione_pct":70,"descrizione":"Il soggetto si sfrega la zona tra il naso e gli occhi con indice e pollice.","interpretazione_mediazione":"Tensione significativa. L'argomento tocca una questione rilevante ma non cruciale. Può anche indicare stanchezza cognitiva quando l'operatore insiste troppo.","azione_mediatore":"Sintetizzare e verificare la comprensione. 'Mi faccia capire se ho colto bene...'"},{"id":"st04","nome":"Sfregamento della tempia","zona":"viso","macro":"tensione","tensione_pct":55,"descrizione":"Sfregamento laterale della tempia.","interpretazione_mediazione":"Tensione media (50-60%). L'argomento attiva elaborazione cognitiva con carico emotivo moderato.","azione_mediatore":"Dare spazio di elaborazione. Fare una domanda aperta invece che chiusa."},{"id":"st05","nome":"Grattamento zona sopracciliare","zona":"viso","macro":"tensione","tensione_pct":40,"descrizione":"Il soggetto si gratta il sopracciglio o sopra l'arcata sopracciliare.","interpretazione_mediazione":"Tensione bassa-media, spesso associata a perplessità o dubbio.","azione_mediatore":"Chiedere: 'Vedo che ha un dubbio, me lo può esprimere?'"},{"id":"st06","nome":"Grattamento zona lacrimale","zona":"viso","macro":"tensione","tensione_pct":35,"descrizione":"Sfregamento o toccarsi vicino al canto dell'occhio.","interpretazione_mediazione":"Tensione leggera. Spesso associata a tristezza o commozione trattenuta.","azione_mediatore":"Rispettare la commozione. Non insistere con dettagli cognitivi."},{"id":"st07","nome":"Grattamento frontale","zona":"viso","macro":"tensione","tensione_pct":30,"descrizione":"Il soggetto si gratta la fronte.","interpretazione_mediazione":"Tensione leggera. Può indicare anche confusione mentale o riflessione.","azione_mediatore":"Riformulare in modo più semplice e strutturato."},{"id":"st08","nome":"Grattamento occipitale","zona":"viso","macro":"tensione","tensione_pct":25,"descrizione":"Dietro la nuca, in alto.","interpretazione_mediazione":"Tensione leggera, spesso connessa a disagio sociale o vergogna."},{"id":"st09","nome":"Grattamento retroauricolare","zona":"viso","macro":"tensione","tensione_pct":30,"descrizione":"Dietro l'orecchio.","interpretazione_mediazione":"Tensione leggera con sfumatura di dubbio o imbarazzo."},{"id":"st10","nome":"Grattamento al collo","zona":"tronco-postura","macro":"tensione","tensione_pct":30,"descrizione":"Il soggetto si gratta il collo, spesso lateralmente.","interpretazione_mediazione":"Tensione leggera. Segnale di disagio sociale o di situazione percepita come pressante."},{"id":"st11","nome":"Grattamento zona auricolare/orecchio","zona":"viso","macro":"tensione","tensione_pct":20,"descrizione":"Sull'orecchio stesso.","interpretazione_mediazione":"Tensione molto leggera. Spesso associata a quello che si sta ascoltando."},{"id":"st12","nome":"Grattamento zona parietale","zona":"viso","macro":"tensione","tensione_pct":20,"descrizione":"Sopra l'orecchio, lato della testa.","interpretazione_mediazione":"Tensione molto leggera."},{"id":"st13","nome":"Grattamento petto o braccia","zona":"tronco-postura","macro":"tensione","tensione_pct":27,"descrizione":"Sul petto o sulle braccia (25-30%).","interpretazione_mediazione":"Tensione leggera. Può indicare anche bisogno di auto-protezione."},{"id":"st14","nome":"Grattamento gambe","zona":"gambe-piedi","macro":"tensione","tensione_pct":15,"descrizione":"Il soggetto si gratta le gambe. Difficile quantificare con precisione per la variazione di postura che comporta.","interpretazione_mediazione":"Tensione bassa. Possibile segnale di stanchezza, noia o irrequietezza motoria."},{"id":"st15","nome":"Deglutizione salivare / raschiamento gola","zona":"voce-suono","macro":"tensione","tensione_pct":100,"descrizione":"Il soggetto deglutisce o raschia la gola.","interpretazione_mediazione":"Tensione massima, equivalente al prurito al naso. Rivela che è stata toccata una corda profonda. Anche nel rapporto di coppia: se si chiede 'Scusa, mi sei stato fedele?' e la risposta è A) deglutire B) raschiare la gola + passo indietro, la reazione è rivelatrice.","azione_mediatore":"Aspettare. Dare tempo. La parte ha bisogno di metabolizzare prima di parlare."},{"id":"st16","nome":"Irrigidimento mascellare","zona":"viso","macro":"tensione","tensione_pct":85,"descrizione":"Mascella serrata, tesa (80-90%).","interpretazione_mediazione":"Tensione molto alta con tendenza al trattenimento/rabbia sopressa. Tipico nel tipo 8 istintivo, adattamento paranoide.","azione_mediatore":"Validare la forza. 'Vedo che questo argomento è importante per lei.' Evitare toni paternalisti."},{"id":"st17","nome":"Fuga dello sguardo","zona":"occhi-sguardo","macro":"tensione","tensione_pct":25,"descrizione":"Il soggetto distoglie lo sguardo mentre si parla dell'argomento (10-40%).","interpretazione_mediazione":"Tensione variabile. Se associata a silenzio prolungato e spalle incassate, può indicare dorsovagale. Se associata a gestualità rapida, simpatico."},{"id":"st18","nome":"Riduzione del volume vocale fino all'afonia","zona":"voce-suono","macro":"tensione","tensione_pct":60,"descrizione":"Il soggetto abbassa il volume fino a non farsi sentire (20-100%).","interpretazione_mediazione":"Tensione da media a massima. Scarica trattenuta nelle corde vocali."},{"id":"st19","nome":"Veloce inspirazione/espirazione nasale","zona":"voce-suono","macro":"tensione","tensione_pct":30,"descrizione":"Respiro breve e ritmato dal naso.","interpretazione_mediazione":"Tensione media. Attivazione simpatica (attacco/fuga)."}]},"segnali_gradimento":{"descrizione":"Atti di gradimento: attivano il nucleo accumbens (regione della ricompensa) e il rilascio di dopamina. Il soggetto dà una valenza positiva al servizio analogico ricevuto.","principio":"Chi è in grado di sollecitare positivamente il nucleo accumbens dell'altro è percepito come gratificante. In mediazione: se la parte compie atti di gradimento durante una mia sintesi/riformulazione, ho fatto bene. Se compie atti di rifiuto, devo correggere il tiro.","gesti":[{"id":"gr01","nome":"Leccarsi le labbra","zona":"viso","macro":"gradimento","descrizione":"La lingua scorre sulle labbra. 'Vai avanti così che vai bene'. Si ha sensazione di acquolina, come preparandosi a digerire; la lingua va in cerca di particelle come se si gustassero sulle labbra.","interpretazione_mediazione":"L'argomento è gradito. La parte accoglie. Buon momento per proseguire sulla stessa linea argomentativa."},{"id":"gr02","nome":"Portare le labbra all'interno (rossetto)","zona":"viso","macro":"gradimento","descrizione":"Il soggetto chiude le labbra comprimendole leggermente, gesto tipico femminile riflesso del rossetto.","interpretazione_mediazione":"Apprezzamento con una sfumatura di calibrazione: 'mi interessa ma sto valutando'."},{"id":"gr03","nome":"Mordicchiarsi le labbra o la lingua","zona":"viso","macro":"gradimento","descrizione":"'La cosa mi intriga'. Invito ad approfondire.","interpretazione_mediazione":"La parte vuole che si approfondisca. Segnale positivo per dedicare tempo al tema."},{"id":"gr04","nome":"Bacio analogico","zona":"viso","macro":"gradimento","descrizione":"Le labbra si avvicinano leggermente come in un bacio silenzioso. Massimo grado di gradimento dell'argomento.","interpretazione_mediazione":"Massima approvazione. Il tema proposto è perfettamente sintono con i bisogni della parte."},{"id":"gr05","nome":"Pressione della lingua sulla zona maxillofacciale","zona":"viso","macro":"gradimento","descrizione":"La lingua preme l'interno della guancia creando un rigonfiamento.","interpretazione_mediazione":"Servizio analogico non completo (c'è un vincolo preesistente) ma migliorabile. Il successo non è scontato, serve ancora lavoro."},{"id":"gr06","nome":"Accarezzamento delle labbra con dita, dorso mano o palmo","zona":"viso","macro":"gradimento","descrizione":"Il soggetto si sfiora le labbra con le dita o con il dorso della mano.","interpretazione_mediazione":"L'argomento è gradito. Se accompagna uno sguardo sul mediatore, è la persona del mediatore a essere gradita. Controllare la congruenza."},{"id":"gr07","nome":"Linguino","zona":"viso","macro":"gradimento","descrizione":"Rotazione della punta della lingua sulle labbra o semplice esposizione della lingua. Segno più comune di gradimento. Se sul labbro superiore ha valenza erotica; se sul labbro inferiore indica interesse all'argomento.","interpretazione_mediazione":"Indice di maggior gradimento all'argomento proposto."},{"id":"gr08","nome":"Variazione della postura in avanti del tronco","zona":"tronco-postura","macro":"gradimento","descrizione":"Il soggetto inclina il busto verso il mediatore o l'argomento.","interpretazione_mediazione":"Apertura attiva. La parte si sta proponendo nell'interazione."},{"id":"gr09","nome":"Variazione della postura in avanti con tutto il corpo","zona":"tronco-postura","macro":"gradimento","descrizione":"Il soggetto si sporge con tutto il corpo.","interpretazione_mediazione":"Massimo segnale di disponibilità dell'Es. La parte è pienamente ingaggiata."},{"id":"gr10","nome":"Tocco amichevole con la mano dell'operatore","zona":"mani-braccia","macro":"gradimento","descrizione":"Il soggetto tocca il braccio o la mano del mediatore.","interpretazione_mediazione":"Alleanza di lavoro consolidata. Attenzione a mantenere il ruolo professionale senza colludere."},{"id":"gr11","nome":"Dito nell'orecchio o massaggio del padiglione auricolare","zona":"viso","macro":"gradimento","descrizione":"Inserimento di un dito nell'orecchio o lieve massaggio del padiglione. Emozione di tipo sessuale se il gesto è più intimo; massaggio semplice = emozione affettiva.","interpretazione_mediazione":"Attrazione o gradimento affettivo. In mediazione interpretare sempre come affettivo-professionale."},{"id":"gr12","nome":"Sollevamento lieve della gonna stando seduta (femminile)","zona":"gambe-piedi","macro":"gradimento","descrizione":"La donna solleva leggermente l'orlo della gonna.","interpretazione_mediazione":"Il soggetto non ha timore di scoprirsi: i temi possono essere ampliati. Segnale di apertura su argomenti delicati."},{"id":"gr13","nome":"Succhiare un dito / accarezzarsi i capelli","zona":"viso","macro":"gradimento","descrizione":"Gesti autoconsolatori. Espressione di bisogno affettivo, Es gratificato.","interpretazione_mediazione":"Bisogno affettivo attivo. La parte sta ricevendo conforto simbolico da ciò che sta accadendo in sessione."},{"id":"gr14","nome":"Toccare la collana / succhiare penna o stanghetta occhiali","zona":"mani-braccia","macro":"gradimento","descrizione":"Oggetti vicini al viso toccati o succhiati.","interpretazione_mediazione":"Autostimolazione orale = gradimento dell'Es. La parte è rilassata e ricettiva."},{"id":"gr15","nome":"Appoggiare l'indice sulle labbra / mordicchiare dita o unghie","zona":"viso","macro":"gradimento","descrizione":"Il dito indice vicino o sulle labbra.","interpretazione_mediazione":"Attenzione concentrata con carica affettiva. La parte sta elaborando un tema che la coinvolge positivamente."},{"id":"gr16","nome":"Accavallare le gambe verso l'interlocutore","zona":"gambe-piedi","macro":"gradimento","descrizione":"Le gambe si accavallano nella direzione di chi parla.","interpretazione_mediazione":"Orientamento del bacino verso il mediatore = gradimento del ruolo del mediatore stesso."},{"id":"gr17","nome":"Avvicinare a sé un oggetto mentre l'altro parla","zona":"mani-braccia","macro":"gradimento","descrizione":"Oggetto toccato o avvicinato mentre parla la persona che si gradisce.","interpretazione_mediazione":"Simbolicamente: 'voglio tenermi vicino quello che dice'. Buon segno di sintonia."},{"id":"gr18","nome":"Sbottonare o abbottonare un bottone","zona":"mani-braccia","macro":"gradimento","descrizione":"Gioca con un bottone della camicia/camicetta.","interpretazione_mediazione":"Autostimolazione con sfumatura affettiva. Stato di rilassatezza."},{"id":"gr19","nome":"Girarsi i capelli intorno al dito (femminile)","zona":"viso","macro":"gradimento","descrizione":"La donna arrotola una ciocca di capelli attorno al dito.","interpretazione_mediazione":"Segnala gradimento ma ANCHE tendenza a infantilizzare la ricerca di affetto. Valutare se è regressione momentanea o tratto strutturale."},{"id":"gr20","nome":"Infilare le dita nella scollatura / giocherellare con penna o sigarette","zona":"mani-braccia","macro":"gradimento","descrizione":"Manipolazione continua di oggetti vicini al corpo.","interpretazione_mediazione":"Gradimento con tensione residua. La parte è interessata ma non completamente distesa."},{"id":"gr21","nome":"Manipolare manico della borsa / toccare bordo del bicchiere","zona":"mani-braccia","macro":"gradimento","descrizione":"Il dito scorre sul bordo di un oggetto.","interpretazione_mediazione":"Gradimento con elaborazione in corso. La parte sta valutando se 'prendersi' quello che le viene offerto."}]},"segnali_apertura":{"descrizione":"Atti che dimostrano che la parte sta aprendo il proprio sistema di difesa.","gesti":[{"id":"ap01","nome":"Disincrociare gambe e braccia","zona":"tronco-postura","macro":"apertura","descrizione":"Dopo un periodo iniziale di chiusura, la parte apre la postura.","interpretazione_mediazione":"Passaggio dal sistema difensivo a quello dialogico. Momento chiave: approfondire ciò che si stava trattando nel momento del disgelo."},{"id":"ap02","nome":"Levarsi il cappotto/giacca dopo un po' che si interagisce","zona":"tronco-postura","macro":"apertura","descrizione":"Riduzione delle barriere fisiche.","interpretazione_mediazione":"Fiducia ambientale aumentata. La parte si sente al sicuro."},{"id":"ap03","nome":"Levarsi gli occhiali dopo un poco di interazione","zona":"occhi-sguardo","macro":"apertura","descrizione":"Rimozione di una barriera visiva.","interpretazione_mediazione":"Apertura allo sguardo diretto. Buon momento per aumentare il contatto visivo caldo."},{"id":"ap04","nome":"Levare un oggetto da davanti a sé","zona":"mani-braccia","macro":"apertura","descrizione":"Sposta borsa, documenti, bottiglietta dal centro del tavolo.","interpretazione_mediazione":"Riduzione della barriera simbolica. La parte sta invitando alla relazione."},{"id":"ap05","nome":"Sospendere un'azione lasciando il braccio in catalessi","zona":"mani-braccia","macro":"apertura","descrizione":"Il soggetto ferma un gesto a metà perché qualcosa nel discorso ha catturato la sua attenzione.","interpretazione_mediazione":"Interesse cognitivo attivo. Quello che si è appena detto è importante per la parte."},{"id":"ap06","nome":"Girare capo e/o busto verso lo stimolo","zona":"tronco-postura","macro":"apertura","descrizione":"Orientamento corporeo verso chi parla o verso l'argomento.","interpretazione_mediazione":"Segnale di attenzione piena."},{"id":"ap07","nome":"Sollevare e tenere il piede sollevato","zona":"gambe-piedi","macro":"apertura","descrizione":"Indicatore di attenzione sospesa.","interpretazione_mediazione":"Alta attenzione. La parte sta elaborando attivamente."}]},"segnali_rifiuto":{"descrizione":"Atti che esprimono diniego, chiusura, opposizione rispetto a argomento/gesto/persona.","nota_importante":"La negazione deve essere correttamente interpretata come verifica subliminale negativa (v.s.n.) e non come reale diniego. Il soggetto cerca di calibrare il servizio analogico ricevuto.","gesti":[{"id":"ri01","nome":"Sfregamento del naso con il dito orizzontale","zona":"viso","macro":"rifiuto","descrizione":"Dito che scorre sotto il naso con movimento orizzontale.","interpretazione_mediazione":"Rifiuto dell'argomento, del segno, del gesto o del comportamento espresso. Se in risposta a una domanda sul tema di interesse (es. appuntamento, proposta), è un no. Particolarmente attendibile nella crisi di coppia.","azione_mediatore":"Riformulare completamente. Chiedere cosa non va. Non insistere."},{"id":"ri02","nome":"Sfregamento del naso con dito indice verticale","zona":"viso","macro":"rifiuto","descrizione":"Movimento dal basso verso l'alto, come a 'stappare' le narici.","interpretazione_mediazione":"L'operatore è stato ingannato. La parte sta dicendo qualcosa che non corrisponde alla realtà (bluff)."},{"id":"ri03","nome":"Spostamento di oggetti","zona":"mani-braccia","macro":"rifiuto","descrizione":"Il soggetto allontana oggetti da sé (considerandoli negativi) o li spinge verso l'interlocutore.","interpretazione_mediazione":"Diniego simbolico attraverso oggetti. Attenzione: spingere verso l'interlocutore è forma di rifiuto attivo ('lo do a te')."},{"id":"ri04","nome":"Atto dello spolverare/spazzare via","zona":"mani-braccia","macro":"rifiuto","descrizione":"Gesto come di pulire via briciole o polvere inesistenti.","interpretazione_mediazione":"Rifiuto/opposizione al discorso o al gesto."},{"id":"ri05","nome":"Atto del ripulirsi/spolverarsi","zona":"mani-braccia","macro":"rifiuto","descrizione":"'Grazie, non mi interessa.' Se accompagnato da stizza: rifiuto netto e la ritirata è opportuna."},{"id":"ri06","nome":"Raschiamento della gola","zona":"voce-suono","macro":"rifiuto","tensione_pct":100,"descrizione":"Si cerca di espellere simbolicamente argomento, persona, gesto.","interpretazione_mediazione":"Forte tensione emotiva con rifiuto. Segnale di massima attenzione."},{"id":"ri07","nome":"Braccia conserte e gambe accavallate (ginocchia NON verso operatore)","zona":"tronco-postura","macro":"chiusura","descrizione":"Atto che può essere innescato da sensazioni generiche (freddo, stanchezza) ma di solito segnala: non apertura, forte timidezza, introversione, supponenza, autoprotezione.","interpretazione_mediazione":"Il sistema difensivo è attivato. Attenzione: se persiste dopo tentativi di apertura, è barriera strutturale (adattamento schizoide/paranoide)."},{"id":"ri08","nome":"Sollevare gli occhiali","zona":"occhi-sguardo","macro":"rifiuto","descrizione":"Indica incredulità.","interpretazione_mediazione":"La parte non crede a quello che sta sentendo. Fornire prove/dettagli concreti."},{"id":"ri09","nome":"Ascoltare tenendo la mano davanti all'orecchio","zona":"mani-braccia","macro":"rifiuto","descrizione":"Chiusura simbolica dell'ascolto.","interpretazione_mediazione":"La parte si sta proteggendo da ciò che sente. Rallentare, ridurre stimolazione."},{"id":"ri10","nome":"Levarsi qualcosa dalla zona lacrimale","zona":"viso","macro":"rifiuto","descrizione":"Come a togliere un granello immaginario dall'angolo dell'occhio.","interpretazione_mediazione":"Perplessità. Riformulare, portare esempi concreti."},{"id":"ri11","nome":"Sollevarsi/grattarsi il sopracciglio","zona":"viso","macro":"rifiuto","tensione_pct":40,"descrizione":"Mano che va al sopracciglio.","interpretazione_mediazione":"Perplessità. La parte ha bisogno di chiarimento."},{"id":"ri12","nome":"Tenere sollevato durante l'ascolto il labbro inferiore","zona":"viso","macro":"rifiuto","descrizione":"Labbro inferiore spinto in fuori mentre si ascolta.","interpretazione_mediazione":"Dubbio, disappunto trattenuto. Esplorare esplicitamente: 'Vedo che qualcosa non convince.'"},{"id":"ri13","nome":"Grattarsi la fronte guardando l'interlocutore","zona":"viso","macro":"rifiuto","tensione_pct":30,"descrizione":"Grattamento della fronte mantenendo il contatto visivo.","interpretazione_mediazione":"Rifiuto con sfumatura di dubbio/perplessità. Diverso dal grattamento fronte generico: qui c'è sfida."},{"id":"ri14","nome":"Grattarsi intorno all'orecchio con sguardo inespressivo","zona":"viso","macro":"rifiuto","descrizione":"Grattamento retroauricolare senza espressione.","interpretazione_mediazione":"Non riconoscimento dell'autorità di chi parla."},{"id":"ri15","nome":"Grattarsi lo zigomo o a lato dello zigomo","zona":"viso","macro":"rifiuto","descrizione":"Grattamento dello zigomo.","interpretazione_mediazione":"Disaccordo trattenuto."},{"id":"ri16","nome":"Scostarsi lateralmente","zona":"tronco-postura","macro":"rifiuto","descrizione":"Il busto si sposta lateralmente rispetto all'operatore.","interpretazione_mediazione":"Disallineamento intenzionale: la parte si sta disimpegnando."},{"id":"ri17","nome":"Evitare lo sguardo","zona":"occhi-sguardo","macro":"rifiuto","descrizione":"Il soggetto non guarda più l'interlocutore.","interpretazione_mediazione":"Da distinguere: fuga simpatica (con altri segnali di attivazione) vs fuga dorsovagale (con congelamento). In entrambi i casi: pausa."},{"id":"ri18","nome":"Porre le mani sui fianchi quando si ascolta","zona":"mani-braccia","macro":"rifiuto","descrizione":"Postura a manico di brocca mentre l'altro parla.","interpretazione_mediazione":"Sfida, autoaffermazione difensiva. Attenzione: tipico adattamento paranoide e tipo 8."},{"id":"ri19","nome":"Fare dei passi indietro / portare indietro la sedia","zona":"gambe-piedi","macro":"rifiuto","descrizione":"Allontanamento fisico.","interpretazione_mediazione":"Bisogno concreto di distanza. Rispettare."},{"id":"ri20","nome":"Portare i piedi all'indietro sotto la sedia","zona":"gambe-piedi","macro":"rifiuto","descrizione":"I piedi vanno sotto la sedia.","interpretazione_mediazione":"Preparazione fisiologica alla fuga. La parte sta pensando di andarsene."},{"id":"ri21","nome":"Portare il busto in avanti e alzare i piedi come per andarsene","zona":"tronco-postura","macro":"rifiuto","descrizione":"Preparazione dell'uscita.","interpretazione_mediazione":"Ultimissimo momento per salvare la sessione. Direttamente: 'Vedo che sta pensando di andarsene. Possiamo fermarci cinque minuti?'"}]},"ansia_manifestazioni":{"descrizione":"Dalla slide 101: manifestazioni dirette dell'ansia. Attenzione: alcuni gesti rientrano anche in altre categorie ma se compaiono multipli in sequenza rapida = ansia conclamata.","checklist":["Raschiare la gola","Colpo di tosse","Deglutizione","Sbadigliare","Prendere un respiro a bocca aperta","Inspirare rumorosamente","Sospirare","Pronunciare una parola in modo stridulo o con afonia","Sorridere nervosamente","Infilare un dito nel colletto","Pizzicare il volto","Massaggiare il collo","Sfarfallare le palpebre","Mordersi le labbra e le unghie","Arrossire","Sudare (anche le mani)","Stropicciare le mani","Tremito di mani","Comprimere le labbra","Stirare le labbra","Grattarsi la nuca","Coprirsi di macchie rosse sullo sterno"]},"psicologia_analogica_tipi":{"descrizione":"La psicologia analogica classifica l'individuo secondo tre tipologie che corrispondono alle figure geometriche fondamentali. Si riconoscono osservando: la stretta di mano, il modo di toccarsi il viso con i polpastrelli, l'atteggiamento usato nel discorso.","tre_segni_diagnostici":["Stretta di mano: penetrativa (A), avvolgente (C), a tenaglia (T)","Modo di toccarsi il viso: stringere guancia/mento (C e T), puntare dito indice verso mento (A)","Atteggiamento nel discorso: dito puntato e braccio teso (A), mani a ok (C) o a triangolo (T)"],"tipologie":[{"id":"asta","simbolo":"A","nome":"Asta","referente_analogico":"conflitto col padre / autorità","funzione":"penetrare, imporre, dirigere","gesti_tipici":"dito indice puntato, braccio teso, tocca col dito a punta, stretta di mano penetrativa","caratteristiche":"Facilmente colpevolizza gli altri, non offre soluzioni al problema. Penetrante, incisivo, offensivo, autoritario.","uomo":"Schietto e verace. Ottimo padre di famiglia. Molto geloso. Sessualmente aggressivo. Teme gli uomini intorno alla sua donna. Insicuro e timido tutta la vita nonostante le apparenze.","donna":"L'uomo è un ostacolo. Si mette in competizione. Ama il ruolo attivo. Impositiva e autoritaria. Prende iniziativa. Non aspetta il principe azzurro. Ama uomini istituzionali o trasgressivi. Aggressiva ma anche dolce.","enneatipo_probabile":[8,1,6],"adattamento_probabile":["paranoide","ossessivo-compulsivo"],"come_gestire_in_mediazione":"NON scappare. Sfida leale: l'Asta rispetta chi non lo teme. Riconoscere la determinazione senza colludere con l'aggressività. Riportare sempre al problema, mai alla persona. Parole chiave: 'giustizia', 'lealtà', 'determinazione'."},{"id":"triangolo","simbolo":"T","nome":"Triangolo","referente_analogico":"la tecnologia / la soluzione tecnica","funzione":"proporre, mediare, soluzionare","gesti_tipici":"stretta di mano a tenaglia, tocca con la mano, accarezza, si tocca i polpastrelli ponendo le mani a triangolo","caratteristiche":"Buon alleato dell'operatore perché è logico e suggerisce soluzioni al problema.","uomo":"Manifesta antagonismo per la donna. Materno ed affettivo anche nella sessualità. Romantico. Non fa caso al tipo di donna basta che non lo prevarichi. Non accetta ruoli secondari.","donna":"È l'emblema della dolcezza. Affettuosa e disponibile. Rappresenta la donna di altri tempi. Soffre per gelosia in amore. Può arrivare ad aggredire fisicamente la rivale e il compagno traditore.","enneatipo_probabile":[2,9,4],"adattamento_probabile":["istrionico","passivo-aggressivo"],"come_gestire_in_mediazione":"Alleato naturale del mediatore. Usare domande aperte, brainstorming, proposta condivisa. Parole chiave: 'soluzioni', 'possibilità', 'insieme'."},{"id":"cerchio","simbolo":"C","nome":"Cerchio","referente_analogico":"ego / sé moderno","funzione":"racchiudere, possedere, controllare la propria immagine","gesti_tipici":"stretta di mano avvolgente, gesti circolari (segno dell'OK), tocca a forma di cerchio (prende il mento tra pollice e indice)","caratteristiche":"È il prodotto della società moderna. Manifesta il conflitto con se stessi. Forma di adattamento alle sollecitazioni ricevute. Tipologia contemporanea, anche nei paesi sottosviluppati. Può essere ego-maschio o ego-femmina (Otello).","ego_femmina_uomo":"Diffida delle donne e ne soffre la competizione. Giudica severamente la donna e cerca donna istituzionale. Ha il culto della moglie ma si fa l'amante. Tendenze omosex possibili. Portato alla lite e allo stress. La gelosia può portarlo alla follia. Iperlogico, eccelle nelle professioni intellettuali.","ego_femmina_donna":"Sensuale e femminile. Molto attraente. Cerca di dimostrare come deve comportarsi una vera donna. Teme il giudizio e la competizione. Prende sbandate per uomini trasgressivi. Sposa un uomo rassicurante ma frequenta un trasgressivo. Teme la solitudine più di tutto.","ego_maschio_uomo":"Soffre la presenza di altri uomini. Porta la donna in mezzo per litigare. La donna deve fargli credere di avere competitori. Sessualmente esuberante. Ama donne inaffidabili. Gravemente insicuro, terrore di essere omosex.","ego_maschio_donna":"Diffidente dei maschi. Ama carrieristi e uomini di successo. Giudica rimproverando chi non lo è. Si trova meglio in ambienti maschili. Poco romantica. Se respinta da un vincente, si lega a un debole per rimproverarlo. È la donna imprenditrice.","enneatipo_probabile":[3,5,7],"adattamento_probabile":["ossessivo-compulsivo","schizoide","antisociale"],"come_gestire_in_mediazione":"Attenzione: il Cerchio si protegge dietro l'immagine. Non attaccare mai l'immagine pubblica. Validare la competenza tecnica e professionale. Parole chiave: 'efficienza', 'immagine', 'risultato'."}]},"stretta_di_mano":{"descrizione":"Alcuni studiosi americani hanno dimostrato che una stretta di mano determina nel nostro interlocutore un'impressione più favorevole. La stretta di mano rimane stabile nel tempo (dipende da personalità). La stretta di mano è forma di contatto tipicamente maschile; le donne avvolgono più che stringere.","tipi":[{"id":"sm01","nome":"Stretta ferma (mani calde e asciutte)","valenza":"positiva","significato":"Durature, vigorose, complete, con contatto oculare. Denota curiosità ed apertura mentale."},{"id":"sm02","nome":"Stretta troppo breve","valenza":"negativa","significato":"Di solito associata a debolezza. Indica disagio per il contatto."},{"id":"sm03","nome":"Stretta troppo lunga","valenza":"ambigua","significato":"Denota invadenza ed insicurezza."},{"id":"sm04","nome":"Stretta salda","valenza":"positiva","significato":"Tipica della persona dominante, sicura e razionale."},{"id":"sm05","nome":"Stretta a schiacciasassi","valenza":"negativa","significato":"Aggressività ed esibizionismo."},{"id":"sm06","nome":"Mano sulla spalla dell'altro mentre si stringe la mano","valenza":"dominanza","significato":"Segnale di dominanza."},{"id":"sm07","nome":"Dare la mano con palmo verso il basso","valenza":"dominanza","significato":"Torsione del polso per esporre il palmo dell'altro = dominanza."},{"id":"sm08","nome":"Dare la mano col braccio rigido","valenza":"dominanza-distanza","significato":"Dominanza + mantenimento delle distanze."},{"id":"sm09","nome":"Piegare schiena e chinare testa","valenza":"ambivalente","significato":"Può significare vicinanza ma anche dominanza per chi tira verso di sé."},{"id":"sm10","nome":"Braccio accostato al tronco","valenza":"dominanza","significato":"Obbliga l'altro a farsi avanti."},{"id":"sm11","nome":"Mano libera sulla spalla del seduto","valenza":"dominanza","significato":"Impedisce l'alzata dell'altro."},{"id":"sm12","nome":"Tirare l'altro verso il basso durante la stretta","valenza":"sottomissione-dominanza","significato":"Indice di accettazione oppure di dominanza a seconda di chi tira."},{"id":"sm13","nome":"Distogliere lo sguardo durante la stretta","valenza":"negativa","significato":"Indifferenza, snobismo."},{"id":"sm14","nome":"Restare seduti mentre si stringe la mano","valenza":"negativa","significato":"Snobismo."},{"id":"sm15","nome":"Mano destra lungo un fianco (dell'uomo)","valenza":"rifiuto","significato":"Segnala rifiuto del contatto."},{"id":"sm16","nome":"Stringere dando solo la punta delle dita","valenza":"rifiuto-diffidenza","significato":"Rifiuto, diffidenza o richiesta di deferenza."},{"id":"sm17","nome":"Stretta a morsa","valenza":"sfida","significato":"Segnale di sfida."},{"id":"sm18","nome":"Afferrare le sole dita e strizzarle forte","valenza":"sfida","significato":"Sfida."},{"id":"sm19","nome":"Fissare negli occhi molto a lungo durante la stretta","valenza":"sfida","significato":"Sfida."},{"id":"sm20","nome":"Mano sudata","valenza":"stress","significato":"Implica stress: la variazione della temperatura produce sudore."},{"id":"sm21","nome":"Mano fredda","valenza":"stress","significato":"Negli uomini indica stress. Nella donna e-oltre può essere indice di altre condizioni."}]},"postura_generale":{"descrizione":"Dalla slide 92: la postura da seduto/a è riccamente informativa. Segnali dai piedi (slide 87-88): molte informazioni arrivano dai piedi ma non possiamo guardarli di continuo.","gesti":[{"id":"po01","nome":"Talloni sollevati sotto la sedia con corpo proteso in avanti","zona":"gambe-piedi","macro":"tensione","descrizione":"I talloni non poggiano a terra.","interpretazione_mediazione":"Disagio attivo. La parte è in attivazione simpatica."},{"id":"po02","nome":"Portare i piedi sotto la sedia","zona":"gambe-piedi","macro":"chiusura","descrizione":"Piedi nascosti sotto la sedia.","interpretazione_mediazione":"Impulso a nascondersi. Adattamento schizoide."},{"id":"po03","nome":"Piedi/gambe/bacino in direzione diversa dal tronco","zona":"gambe-piedi","macro":"rifiuto","descrizione":"Il corpo è fisicamente 'scissione': il tronco dice una cosa, il bacino un'altra.","interpretazione_mediazione":"Desiderio di fuga. La parte è presente fisicamente ma sta cercando una via d'uscita."},{"id":"po04","nome":"Piedi/gambe/bacino verso persona che parla (diverso dal tronco)","zona":"gambe-piedi","macro":"apertura","descrizione":"Il bacino è orientato verso chi parla pur mantenendo il tronco fermo.","interpretazione_mediazione":"Interesse per chi parla o per l'argomento."},{"id":"po05","nome":"Corpo (o un piede) orientato verso l'uscita","zona":"gambe-piedi","macro":"rifiuto","descrizione":"La persona ha anticipato corporalmente l'uscita.","interpretazione_mediazione":"Desiderio di allontanarsi. Gli eventi emotivi precedenti hanno attivato evitamento."},{"id":"po06","nome":"Tronco e gambe con allineamento diverso rispetto al gruppo","zona":"tronco-postura","macro":"chiusura","descrizione":"Nel setting congiunta: la parte non è allineata con gli altri.","interpretazione_mediazione":"Esclusione (sentita) o senso di non appartenenza. Inviterei esplicitamente: 'Sig. X, lei cosa pensa di quello che è stato detto?'"}]},"paraverbale_voce":{"descrizione":"Schiarirsi la voce, cambiarne volume o tono, silenzio, colpire il tavolo, tamburellare o schioccare dita, ridere, singhiozzare, succhiare, sbuffare. La voce esprime emozioni, atteggiamenti, sensazioni.","tabella":[{"dimensione":"Tono acuto","significato":"sudditanza"},{"dimensione":"Tono basso","significato":"dominanza"},{"dimensione":"Volume alto","significato":"collera"},{"dimensione":"Volume basso","significato":"timidezza"},{"dimensione":"Cadenza molto veloce","significato":"ansia"},{"dimensione":"Cadenza moderatamente veloce","significato":"energia, ambizione, estroversione"},{"dimensione":"Cadenza lenta e monocorde","significato":"depressione, avvilimento"}]},"prossemica":{"descrizione":"Lo studio di come l'uomo usa i microspazi (E. Hall). Ogni uomo è avvolto da una bolla; violare la distanza da parte di uno sconosciuto provoca tensione, frustrazione e stress.","distanze":[{"nome":"Intima","range":"0-45 cm","caratteristica":"si sente calore e odore, no sguardo diretto"},{"nome":"Personale","range":"45-70 cm/1m","caratteristica":"amici o persone che si attraggono"},{"nome":"Sociale","range":"1-3 m","caratteristica":"relazioni professionali"},{"nome":"Pubblica","range":">3 m","caratteristica":"tra il proprio gruppo e gli estranei"}],"fattori_influenza":["Status sociale: più alto → maggiore distanza","Etnia","Carattere: estroverso → viola più facilmente","Canale rappresentazionale VAK: cenestesico → viola senza accorgersene","Stato emotivo: nervoso/arrabbiato → minor tolleranza","Cultura: policronia (arabi, indiani, latinoamericani) vs monocronia (italiani, nordici)","Sesso: donna preferisce avvicinamento frontale, uomo laterale","Storia personale: vittima di violenza → maggior sensibilità"]},"mappa_correlazioni":{"descrizione":"Matrice di correlazione tra cluster di gesti e profili psicologici del portale olismo-integrato.it. Queste sono ipotesi interpretative da validare in sessione, non etichette diagnostiche.","pattern_enneatipi":[{"enneatipo":1,"gesti_frequenti":["Irrigidimento mascellare (85%)","Postura rigida e raddrizzata","Labbro inferiore sollevato","Sorriso controllato"],"indicatori":"Controllo corporeo costante, gesti precisi e contenuti, tensione etica trattenuta"},{"enneatipo":2,"gesti_frequenti":["Accarezzarsi i capelli","Bacio analogico","Sollevamento della gonna/camicia (apertura)","Girarsi i capelli attorno al dito"],"indicatori":"Gestualità calda e avvolgente, ricerca frequente di contatto, segnali seduttivi non consapevoli"},{"enneatipo":3,"gesti_frequenti":["Stretta di mano salda e rapida","Gesti a triangolo con le mani (Cerchio-ego)","Minimizzazione facciale","Postura eretta"],"indicatori":"Controllo dell'immagine, gesti efficienti senza sprechi, tendenza a mascherare emozioni"},{"enneatipo":4,"gesti_frequenti":["Postura chiusa con tronco inclinato","Grattamento zona lacrimale","Bacio analogico","Sguardo malinconico prolungato"],"indicatori":"Espressività emotiva amplificata, gesti eleganti e simbolici"},{"enneatipo":5,"gesti_frequenti":["Braccia conserte","Riduzione del volume fino all'afonia","Postura raccolta e minima","Evitamento dello sguardo"],"indicatori":"Economia estrema dei gesti, schermo fisico, tendenza al ritiro"},{"enneatipo":6,"gesti_frequenti":["Sfarfallare le palpebre","Grattamento sopracciliare (40%)","Sollevare gli occhiali (incredulità)","Controllo ripetuto dei documenti"],"indicatori":"Gesti di vigilanza costante, micro-tensioni frequenti"},{"enneatipo":7,"gesti_frequenti":["Iperattività motoria","Gesti ampi e veloci","Sorriso nervoso frequente","Cambi rapidi di postura"],"indicatori":"Gesticolazione espansiva, instabilità posturale, sorriso frequente"},{"enneatipo":8,"gesti_frequenti":["Irrigidimento mascellare (85%)","Mani sui fianchi","Stretta di mano a morsa/dominanza","Dito puntato (Asta)"],"indicatori":"Gesti espansivi, territoriali, incisivi. Assertività corporea alta"},{"enneatipo":9,"gesti_frequenti":["Postura rilassata quasi molle","Gesti lenti e armoniosi","Evitamento del conflitto gestuale","Sguardo tollerante"],"indicatori":"Economia energetica dei gesti, accondiscendenza posturale"}],"pattern_adattamenti_AT":[{"adattamento":"schizoide","gesti_frequenti":["Braccia conserte","Postura raccolta","Monosillabi","Congelamento"],"polivagale":"dorsovagale"},{"adattamento":"antisociale","gesti_frequenti":["Iperattività motoria","Stretta di mano dominante","Minimizzazione","Gesti provocatori"],"polivagale":"simpatico"},{"adattamento":"paranoide","gesti_frequenti":["Controllo documenti","Sospetto visivo","Mani sui fianchi","Rigidità mascellare"],"polivagale":"simpatico"},{"adattamento":"passivo-aggressivo","gesti_frequenti":["Accondiscendenza verbale contraddetta da piedi/gambe divergenti","Sospirare","Lamento somatico"],"polivagale":"misto"},{"adattamento":"ossessivo-compulsivo","gesti_frequenti":["Ripetizioni ossessive","Controllo ripetuto","Gesti precisi e ripetuti","Postura rigida"],"polivagale":"simpatico attenuato"},{"adattamento":"istrionico","gesti_frequenti":["Pianto","Teatralità gestuale","Accarezzarsi","Gesti ampi"],"polivagale":"simpatico amplificato"}]}};
+
+// Render immediato al load
+document.addEventListener('DOMContentLoaded', () => {
+  renderCatalog('atti_scarico_tensionale');
+  renderTypes();
+});
+
+// ─── Render catalogo per categoria ───
+document.querySelectorAll('.cat-tab').forEach(btn => {
+  btn.addEventListener('click', e => {
+    document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCatalog(btn.dataset.cat);
+  });
+});
+
+function renderCatalog(cat) {
+  if (!GESTURE_DB) return;
+  const grid = document.getElementById('gesGrid');
+  const data = GESTURE_DB[cat];
+  if (!data) return;
+  
+  let gesti = data.gesti || data.tipi || [];
+  
+  grid.innerHTML = gesti.map(g => {
+    const pctClass = g.tensione_pct >= 70 ? '' : (g.tensione_pct >= 40 ? 'mid' : 'low');
+    const pctHtml = g.tensione_pct ? `<div class="g-pct ${pctClass}">${g.tensione_pct}%</div>` : '';
+    const zoneClass = g.zona ? `zone-${g.zona.replace(/[^a-z-]/g,'')}` : '';
+    const macroClass = g.macro ? `macro-${g.macro}` : '';
+    const zoneLabel = g.zona ? `<span class="g-zone ${zoneClass}">${g.zona.replace('-',' ')}</span>` : '';
+    const macroLabel = g.macro ? `<span class="g-macro ${macroClass}">${g.macro}</span>` : (g.valenza ? `<span class="g-macro macro-${g.valenza==='positiva'?'gradimento':(g.valenza==='negativa'?'rifiuto':'tensione')}">${g.valenza}</span>` : '');
+    
+    return `
+      <div class="ges-card" onclick="toggleDetail(this, '${g.id}', '${cat}')">
+        ${pctHtml}
+        ${zoneLabel}${macroLabel}
+        <div class="g-name">${g.nome}</div>
+        <div class="g-desc">${(g.descrizione || g.significato || '').substring(0,180)}${(g.descrizione||g.significato||'').length>180?'…':''}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleDetail(card, id, cat) {
+  // Close any open detail
+  const openDetail = document.querySelector('.ges-detail');
+  if (openDetail) {
+    const wasThis = openDetail.dataset.id === id;
+    openDetail.remove();
+    if (wasThis) return;
+  }
+  
+  const data = GESTURE_DB[cat];
+  const gesti = data.gesti || data.tipi || [];
+  const g = gesti.find(x => x.id === id);
+  if (!g) return;
+  
+  const detail = document.createElement('div');
+  detail.className = 'ges-detail';
+  detail.dataset.id = id;
+  
+  let html = `<h4>${g.nome}</h4>`;
+  if (g.descrizione) html += `<div class="gd-row"><div class="gd-label">Descrizione</div><div class="gd-value">${g.descrizione}</div></div>`;
+  if (g.significato) html += `<div class="gd-row"><div class="gd-label">Significato</div><div class="gd-value">${g.significato}</div></div>`;
+  if (g.tensione_pct) html += `<div class="gd-row"><div class="gd-label">% Tensione</div><div class="gd-value"><strong style="color:#dc2626">${g.tensione_pct}%</strong> — calibratura sulla scala analogica</div></div>`;
+  if (g.interpretazione_mediazione) html += `<div class="gd-row"><div class="gd-label">In mediazione</div><div class="gd-value">${g.interpretazione_mediazione}</div></div>`;
+  if (g.azione_mediatore) html += `<div class="gd-row"><div class="gd-label">Azione mediatore</div><div class="gd-value">💡 ${g.azione_mediatore}</div></div>`;
+  
+  detail.innerHTML = html;
+  card.parentNode.insertBefore(detail, card.nextSibling);
+  detail.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ─── Render tipologie Asta/Triangolo/Cerchio ───
+function renderTypes() {
+  if (!GESTURE_DB) return;
+  const types = GESTURE_DB.psicologia_analogica_tipi.tipologie;
+  const grid = document.getElementById('typesGrid');
+  
+  grid.innerHTML = types.map(t => {
+    const enneList = t.enneatipo_probabile.join(', ');
+    const adattList = t.adattamento_probabile.join(', ');
+    return `
+      <div class="type-card ${t.id}">
+        <div class="t-symbol">${t.simbolo === 'A' ? '▲' : (t.simbolo === 'T' ? '◬' : '○')}</div>
+        <h4>${t.nome}</h4>
+        <div class="t-referent">Referente: ${t.referente_analogico}</div>
+        <div class="t-desc">${t.caratteristiche}</div>
+        <div class="t-gesti"><strong>Gesti tipici:</strong> ${t.gesti_tipici}<br><br><strong>Enneatipi:</strong> ${enneList} · <strong>Adattamenti AT:</strong> ${adattList}<br><br><strong>In mediazione:</strong> ${t.come_gestire_in_mediazione}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── AI Analysis ───
+const AI_EXAMPLES = {
+  ex1: `Il padre (42 anni, separazione dopo 15 anni) all'inizio della sessione congiunta ha stretto la mia mano in modo molto breve e distogliendo lo sguardo. Appena sua moglie ha nominato il figlio minore, si è grattato la zona maxillo-facciale due volte, ha sospirato a bocca aperta, ha incrociato le braccia e scostato il busto lateralmente. Dopo 10 minuti tiene ancora le braccia conserte e i piedi orientati verso la porta. Quando parlo io guarda in basso. Quando la moglie parla, mi accorgo che si gratta la zona lacrimale.`,
+  ex2: `Condomina 58 anni, mediazione infiltrazioni con il vicino di sopra. In congiunta, stretta di mano a morsa, sguardo fisso. Porta un faldone con 180 pagine. Ripete le stesse date più volte. Quando io riformulo, si gratta il sopracciglio e solleva gli occhiali. Mani sui fianchi mentre l'altro parla. Mascella irrigidita costantemente. Sposta il bicchiere dell'acqua verso il vicino con gesto netto.`,
+  ex3: `Imprenditore 55 anni, lite commerciale €180.000. Entra con stretta di mano salda quasi schiacciasassi, mi fissa negli occhi a lungo. Tono di voce alto, interrompe spesso. Dito indice puntato più volte verso la controparte. Quando parlo io, punta il dito verso il mento (non verso me). Gambe accavallate con ginocchio verso di me. Dopo 20 minuti si sgrana il bottone del colletto e sospira. Alla pausa caffè mi tocca il braccio dicendo "lei mi capisce".`
+};
+
+document.querySelectorAll('.ai-example-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.getElementById('aiInput').value = AI_EXAMPLES[c.dataset.ex];
+    document.getElementById('aiInput').focus();
+  });
+});
+
+function resetAI() {
+  document.getElementById('aiInput').value = '';
+  document.getElementById('aiResult').classList.remove('active');
+  document.getElementById('aiInput').focus();
+}
+
+function copyAI() {
+  const text = document.getElementById('aiResultBody').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btns = document.querySelectorAll('.ai-action-btn');
+    for (const b of btns) {
+      if (b.innerText.includes('Copia')) {
+        const orig = b.innerText;
+        b.innerText = '✓ Copiato!';
+        setTimeout(() => b.innerText = orig, 1500);
+        break;
+      }
+    }
+  });
+}
+
+function exportToEmpowerment() {
+  // Save observation + AI result to sessionStorage for Empowerment engine to pick up
+  const obs = document.getElementById('aiInput').value;
+  const analysis = document.getElementById('aiResultBody').innerText;
+  try {
+    sessionStorage.setItem('psicoanalog_to_empowerment', JSON.stringify({
+      observation: obs,
+      analysis: analysis,
+      timestamp: Date.now()
+    }));
+  } catch(e) { console.warn('sessionStorage non disponibile'); }
+  window.location.href = 'empowerment-mediazione.html#from-psicoanalogica';
+}
+
+// ─── AI System Prompt ───
+const SYS_PROMPT = `Sei il "Lettore di Psicologia Analogica" del portale olismo-integrato.it di Avv. Carlo Alberto Calcagno (mediatore civile e familiare, Genova).
+
+La tua missione: interpretare cluster di gesti osservati dal mediatore in sessione per:
+1. Identificare il TIPO ANALOGICO prevalente (Asta / Triangolo / Cerchio)
+2. Stimare il LIVELLO DI TENSIONE emotiva (%) basato sulla posizione dei grattamenti e dei segnali di scarico
+3. Proporre ipotesi di ENNEATIPO e ADATTAMENTO AT più probabili
+4. Valutare stato POLIVAGALE (ventrale / simpatico / dorsovagale)
+5. Dare al mediatore una SINTESI OPERATIVA su cosa fare
+
+═══════════════════════════════════════════════════════════════
+CONOSCENZA DI BASE — SCALA DI TENSIONE PER POSIZIONE
+═══════════════════════════════════════════════════════════════
+
+GRATTAMENTI (dalla scuola analogica italiana, Meneghetti):
+- Prurito al naso: 100% tensione (massimo carico che non supera la soglia)
+- Deglutizione salivare / raschiamento gola: 100%
+- Zona maxillo-facciale: 90%
+- Irrigidimento mascellare: 85%
+- Radice del naso vicino occhi: 70%
+- Sfregamento tempia: 55%
+- Zona sopracciliare: 40%
+- Zona lacrimale: 35%
+- Frontale: 30%
+- Occipitale / retroauricolare / collo: 25-30%
+- Petto/braccia: 27% (25-30%)
+- Parietale / auricolare: 20%
+- Gambe: 15% (difficile calibrare per variazioni posturali)
+- Fuga dello sguardo: 10-40%
+
+PRINCIPIO: più ci si allontana dalla bocca/naso, più bassa è la tensione.
+
+═══════════════════════════════════════════════════════════════
+MAPPA SIGNIFICATI DEI GESTI
+═══════════════════════════════════════════════════════════════
+
+SCARICO TENSIONALE (prurito/grattamento): si manifesta quando l'argomento evocato tocca un nervo emotivo. NON è né rifiuto né accettazione, solo segnale che quell'area è "calda". L'operatore sa che deve trattare con cautela quell'argomento.
+
+GRADIMENTO (attiva nucleo accumbens → dopamina): 
+- Leccarsi/mordicchiarsi le labbra ("vai avanti così")
+- Bacio analogico (massimo gradimento)
+- Linguino (interesse all'argomento)
+- Accarezzamento labbra
+- Variazione postura in avanti (massimo segnale disponibilità dell'Es)
+- Succhiare dito / accarezzarsi capelli (bisogno affettivo, Es gratificato)
+- Avvicinare a sé oggetto mentre l'altro parla
+- Accavallare gambe verso operatore
+
+RIFIUTO:
+- Sfregamento naso orizzontale = rifiuto argomento
+- Sfregamento naso verticale = bluff/inganno
+- Spolverare/spazzare via = rifiuto opposizione
+- Raschiamento gola = rifiuto ad alta tensione
+- Mani sui fianchi = sfida difensiva
+- Braccia conserte con gambe NON verso operatore = chiusura
+- Sollevare occhiali = incredulità
+- Grattarsi sopracciglio = perplessità
+- Piedi indietro / busto in avanti per alzarsi = preparazione fuga
+- Spostare oggetti lontano da sé = diniego simbolico
+
+APERTURA:
+- Disincrociare gambe/braccia (passaggio da difensivo a dialogico)
+- Levarsi giacca/occhiali
+- Sospendere azione a braccio in catalessi (interesse cognitivo)
+- Girare busto verso lo stimolo
+- Variazione postura in avanti (del tronco o di tutto il corpo)
+
+ANSIA CONCLAMATA (cluster di):
+Raschiare gola, tosse, deglutizione, sbadigliare, sospiri, sfarfallare palpebre, mordersi labbra/unghie, arrossire, sudare mani, stropicciare mani, tremito, comprimere labbra, macchie rosse sullo sterno.
+
+═══════════════════════════════════════════════════════════════
+TIPOLOGIE ANALOGICHE (Asta / Triangolo / Cerchio)
+═══════════════════════════════════════════════════════════════
+
+ASTA (referente: conflitto col padre/autorità)
+- Gesti diagnostici: dito indice puntato, braccio teso, tocca col dito a punta, stretta penetrativa
+- Funzione: penetrare, imporre, dirigere
+- Caratteristiche: Penetrante, incisivo, offensivo, autoritario. Colpevolizza gli altri. Non offre soluzioni.
+- Enneatipi correlati: 8 (Capo), 1 (Perfezionista), 6 (Scettico controfobico)
+- Adattamenti AT: paranoide, ossessivo-compulsivo
+- Come gestire: non scappare (rispetta chi non lo teme), sfida leale, riconoscere la determinazione, riportare al problema non alla persona
+
+TRIANGOLO (referente: tecnologia/soluzione tecnica)
+- Gesti diagnostici: stretta a tenaglia, tocca con la mano, accarezza, mani a triangolo
+- Funzione: proporre, mediare, soluzionare
+- Caratteristiche: Alleato naturale dell'operatore. Logico. Suggerisce soluzioni.
+- Enneatipi correlati: 2 (Altruista), 9 (Diplomatico), 4 (Romantico)
+- Adattamenti AT: istrionico, passivo-aggressivo
+- Come gestire: alleato naturale. Brainstorming, proposta condivisa, parole chiave "soluzioni/possibilità/insieme"
+
+CERCHIO (referente: ego/sé moderno)
+- Gesti diagnostici: stretta avvolgente, gesti circolari (OK), tocca a forma di cerchio
+- Funzione: racchiudere, possedere, controllare immagine
+- Può essere "ego-maschio" (Otello maschile) o "ego-femmina"
+- Enneatipi correlati: 3 (Manager), 5 (Eremita), 7 (Artista)
+- Adattamenti AT: ossessivo-compulsivo, schizoide, antisociale
+- Come gestire: NON attaccare l'immagine pubblica. Validare competenza tecnica. Parole chiave "efficienza/risultato/immagine"
+
+═══════════════════════════════════════════════════════════════
+FORMATO DI RISPOSTA RICHIESTO
+═══════════════════════════════════════════════════════════════
+
+Struttura ESATTAMENTE così (usa intestazioni con # e ##):
+
+# 🔍 Lettura analogica del comportamento osservato
+
+## 📊 Cluster di gesti identificati
+[Elenca i gesti riconosciuti nell'osservazione, raggruppati per categoria, con la % di tensione rilevabile. Usa una tabella: Gesto | Zona | Macro | % Tensione]
+
+## ⬛ Tipologia analogica prevalente
+[Asta / Triangolo / Cerchio con motivazione: quali gesti conducono all'ipotesi. Fornisci la confidenza: "forte / media / debole"]
+
+## 🧠 Profilo psicologico probabile
+[Ipotesi di enneatipo e adattamento AT più coerenti con i gesti osservati. Massimo 2 enneatipi candidati. Spiega brevemente perché.]
+
+## 🌡 Stato polivagale ed empowerment
+[Ventrale / simpatico / dorsovagale. Livello di stress stimato su scala 1-10. Capacità attuale di autodeterminarsi della parte.]
+
+## 💡 Sintesi operativa per il mediatore
+[3-5 azioni concrete da prendere nella prossima fase della sessione, basate sul cluster osservato. Includi template linguistici tra virgolette se utile.]
+
+## 🚨 Red flags
+[Se ci sono segnali di collasso imminente, aggressività o fuga, indicarli chiaramente.]
+
+═══════════════════════════════════════════════════════════════
+STILE DI RISPOSTA
+═══════════════════════════════════════════════════════════════
+- Italiano professionale, operativo
+- 500-1000 parole
+- Markdown completo (tabelle, elenchi, grassetti)
+- Sempre IPOTESI ("probabile", "suggerisce", "coerente con"), MAI diagnosi certe
+- Rimanda al motore empowerment-mediazione.html se lo stress supera 7/10 o se ci sono segnali di basso empowerment
+- Non inventare: se i gesti osservati sono insufficienti per tipizzare, dillo chiaramente
+`;
+
+async function analyzeObservation() {
+  const obs = document.getElementById('aiInput').value.trim();
+  if (!obs || obs.length < 30) {
+    alert('⚠ Descrivi almeno 30 caratteri di gesti osservati.');
+    return;
+  }
+
+  const btn = document.getElementById('aiBtn');
+  const result = document.getElementById('aiResult');
+  const body = document.getElementById('aiResultBody');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span><span>Sto leggendo il cluster di gesti osservato…</span>';
+  result.classList.remove('active');
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 4000,
+        system: SYS_PROMPT,
+        messages: [{role:'user', content: `Ecco ciò che ho osservato nella parte:\n\n${obs}\n\nApplica la metodologia di psicologia analogica. Segui ESATTAMENTE il formato richiesto.`}]
+      })
+    });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error.message);
+    const txt = data.content?.[0]?.text || 'Errore nella risposta.';
+    body.innerHTML = formatResponse(txt);
+    result.classList.add('active');
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  } catch(e) {
+    body.innerHTML = `<p style="color:#dc2626">⚠ Errore: ${e.message}. Riprova tra un momento.</p>`;
+    result.classList.add('active');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<span>🔍 Leggi ciò che il corpo sta dicendo</span>';
+  }
+}
+
+function formatResponse(md) {
+  let h = md;
+  h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  h = h.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  h = h.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+  h = h.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+  h = h.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+  h = h.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+  h = h.replace(/<\/blockquote>\n<blockquote>/g, '<br>');
+  h = h.replace(/\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g, (m, header, rows) => {
+    const hc = header.split('|').map(s=>s.trim()).filter(s=>s);
+    const rc = rows.trim().split('\n').map(r => r.split('|').map(s=>s.trim()).filter(s=>s));
+    let tbl = '<table><thead><tr>';
+    hc.forEach(c => tbl += `<th>${c}</th>`);
+    tbl += '</tr></thead><tbody>';
+    rc.forEach(row => {
+      tbl += '<tr>';
+      row.forEach(c => tbl += `<td>${c}</td>`);
+      tbl += '</tr>';
+    });
+    return tbl + '</tbody></table>';
+  });
+  h = h.replace(/^[\-•] (.+)$/gm, '<li>$1</li>');
+  h = h.replace(/(<li>.*?<\/li>(\n|$))+/gs, m => '<ul>' + m.replace(/\n/g,'') + '</ul>');
+  h = h.split(/\n\n+/).map(p => {
+    if (p.match(/^<(h[1-3]|ul|ol|table|blockquote)/)) return p;
+    return '<p>' + p.replace(/\n/g,'<br>') + '</p>';
+  }).join('\n');
+  return h;
+}
+
+// ═══════════════ STAMPA SCHEDE PDF ═══════════════
+
+function printSheet(type) {
+  if (!GESTURE_DB) {
+    alert('⚠ Database non ancora caricato, riprova tra un secondo.');
+    return;
+  }
+  
+  const printable = document.getElementById('printable');
+  const today = new Date().toLocaleDateString('it-IT');
+  
+  let title = '';
+  let categories = [];
+  
+  switch(type) {
+    case 'completa':
+      title = 'Scheda di osservazione completa — Psicologia Analogica';
+      categories = ['atti_scarico_tensionale','segnali_gradimento','segnali_apertura','segnali_rifiuto','postura_generale','stretta_di_mano'];
+      break;
+    case 'civile':
+      title = 'Scheda mediazione civile/commerciale';
+      categories = ['atti_scarico_tensionale','segnali_rifiuto','stretta_di_mano','postura_generale'];
+      break;
+    case 'familiare':
+      title = 'Scheda mediazione familiare';
+      categories = ['atti_scarico_tensionale','segnali_gradimento','segnali_apertura','segnali_rifiuto'];
+      break;
+    case 'analogico':
+      title = 'Scheda Asta / Triangolo / Cerchio';
+      categories = [];
+      break;
+  }
+  
+  let html = `
+    <div class="print-header">
+      <h1>${title}</h1>
+      <p>Osservatore: ___________________________ · Data: ${today} · Fase: ____________________</p>
+      <p>Parte osservata (ruolo): ____________________________________________</p>
+    </div>
+  `;
+  
+  if (type === 'analogico') {
+    html += renderAnalogicSheet();
+  } else {
+    for (const cat of categories) {
+      html += renderCategoryTable(cat);
+    }
+  }
+  
+  html += `
+    <div class="print-section-block" style="margin-top:14pt">
+      <h2>📝 Note libere e ipotesi interpretativa</h2>
+      <div class="notes" style="min-height:80pt"></div>
+    </div>
+    <div class="print-footer">
+      Fonte: Calcagno, "Come comunicare" (366 slide, 2016) · Psicologia analogica applicata alla mediazione · olismo-integrato.it
+    </div>
+  `;
+  
+  printable.innerHTML = html;
+  window.print();
+}
+
+function renderCategoryTable(cat) {
+  const data = GESTURE_DB[cat];
+  if (!data) return '';
+  const gesti = data.gesti || data.tipi || [];
+  
+  const catTitles = {
+    'atti_scarico_tensionale': '👃 Scarico tensionale (grattamenti e pruriti)',
+    'segnali_gradimento': '👄 Segnali di gradimento',
+    'segnali_apertura': '🌅 Segnali di apertura',
+    'segnali_rifiuto': '🚫 Segnali di rifiuto',
+    'postura_generale': '🧍 Postura',
+    'stretta_di_mano': '🤝 Stretta di mano'
+  };
+  
+  let html = `<div class="print-section-block"><h2>${catTitles[cat] || cat}</h2>`;
+  html += '<table><thead><tr><th style="width:25pt">✓</th><th style="width:35%">Gesto</th>';
+  if (cat === 'atti_scarico_tensionale') html += '<th style="width:40pt">%</th>';
+  if (cat !== 'stretta_di_mano') html += '<th style="width:20%">Zona</th>';
+  html += '<th>Interpretazione</th></tr></thead><tbody>';
+  
+  gesti.forEach(g => {
+    html += `<tr><td><span class="checkbox"></span></td><td><strong>${g.nome}</strong></td>`;
+    if (cat === 'atti_scarico_tensionale') html += `<td>${g.tensione_pct || '-'}</td>`;
+    if (cat !== 'stretta_di_mano' && g.zona) html += `<td>${g.zona.replace('-',' ')}</td>`;
+    else if (cat !== 'stretta_di_mano') html += '<td>-</td>';
+    html += `<td>${g.interpretazione_mediazione || g.significato || g.descrizione || ''}</td></tr>`;
+  });
+  
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function renderAnalogicSheet() {
+  const tipi = GESTURE_DB.psicologia_analogica_tipi.tipologie;
+  let html = `
+    <div class="print-section-block">
+      <h2>⬛ Identificazione della tipologia analogica</h2>
+      <p style="font-size:9pt;margin-bottom:8pt"><strong>I 3 segni diagnostici da osservare</strong>:</p>
+      <ol style="font-size:9pt;margin-left:18pt;margin-bottom:8pt">
+        <li>Stretta di mano: penetrativa (A) / a tenaglia (T) / avvolgente (C)</li>
+        <li>Modo di toccarsi il viso: dito a punta verso mento (A) / stringere guancia-mento (C, T) / dita a OK (C) / triangolo con le mani (T)</li>
+        <li>Atteggiamento nel discorso: dito puntato + braccio teso (A) / mani a OK (C) / mani a triangolo (T)</li>
+      </ol>
+    </div>
+    <div class="print-section-block">
+      <h2>Tabella diagnostica</h2>
+      <table>
+        <thead><tr><th style="width:25pt">✓</th><th style="width:15%">Tipo</th><th style="width:25%">Gesti diagnostici</th><th style="width:15%">Enneatipi</th><th style="width:15%">Adattamenti AT</th><th>Come gestire in mediazione</th></tr></thead>
+        <tbody>
+  `;
+  tipi.forEach(t => {
+    html += `<tr><td><span class="checkbox"></span></td><td><strong>▲ ${t.nome}</strong></td><td>${t.gesti_tipici}</td><td>${t.enneatipo_probabile.join(', ')}</td><td>${t.adattamento_probabile.join(', ')}</td><td>${t.come_gestire_in_mediazione}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  
+  html += `
+    <div class="print-section-block">
+      <h2>Osservazione sulla stretta di mano</h2>
+      <table>
+        <thead><tr><th style="width:25pt">✓</th><th style="width:30%">Caratteristica</th><th>Significato</th></tr></thead>
+        <tbody>
+  `;
+  GESTURE_DB.stretta_di_mano.tipi.forEach(sm => {
+    html += `<tr><td><span class="checkbox"></span></td><td><strong>${sm.nome}</strong></td><td>${sm.significato}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  
+  return html;
+}
+</script>
+
+</body>
+</html>

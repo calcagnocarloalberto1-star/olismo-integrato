@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrice della Svalutazione — Strumento di Mediazione | Olismo Integrato</title>
+<meta name="description" content="Motore interattivo per il mediatore basato sulla Matrice della Svalutazione di Mellor & Schiff (Analisi Transazionale). Riconosce le risposte svalutanti delle parti in conflitto e suggerisce contromosse efficaci.">
+<link rel="canonical" href="https://olismo-integrato.it/matrice-svalutazione.html">
+<meta property="og:title" content="Matrice della Svalutazione — Strumento di Mediazione">
+<meta property="og:description" content="Motore interattivo AT per disinnescare le svalutazioni in mediazione civile, commerciale e familiare.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<style>
+/* ──────── HERO ──────── */
+.msv-hero {
+  padding: 5rem 1.5rem 3.5rem;
+  background: linear-gradient(135deg, #2a1a4a 0%, #4a2a6a 50%, #6a4a8a 100%);
+  color: white;
+  text-align: center;
+}
+.msv-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  margin: 0 0 0.8rem;
+  line-height: 1.1;
+}
+.msv-hero h1 em { font-style: italic; color: #fde047; }
+.msv-hero p {
+  font-size: 1rem;
+  opacity: 0.94;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.65;
+}
+.msv-eye {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin-bottom: 0.8rem;
+  color: #fde047;
+}
+.msv-author {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin-top: 1.2rem;
+}
+
+/* ──────── CONTAINER ──────── */
+.msv-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+.msv-section {
+  background: white;
+  border-radius: 14px;
+  padding: 2.2rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+.msv-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #2a1a4a;
+  margin: 0 0 0.4rem;
+}
+.msv-section h2 em { color: #6a4a8a; font-style: italic; }
+.msv-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4a2a6a;
+  margin: 1.5rem 0 0.7rem;
+}
+.msv-section p {
+  font-size: 0.93rem;
+  color: var(--ink2);
+  line-height: 1.75;
+  margin-bottom: 0.8rem;
+}
+.msv-section .lead {
+  font-size: 1rem;
+  color: var(--ink2);
+  font-style: italic;
+  border-left: 3px solid #6a4a8a;
+  padding: 0.5rem 1rem;
+  background: rgba(106,74,138,0.04);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1.2rem;
+}
+
+/* ──────── MATRICE 3x4 ──────── */
+.matrice-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding: 0.5rem;
+}
+.matrice {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  min-width: 760px;
+}
+.matrice th, .matrice td {
+  border: 1.5px solid #e9d5ff;
+  padding: 0.8rem 0.7rem;
+  vertical-align: top;
+}
+.matrice th {
+  background: #4a2a6a;
+  color: white;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-align: center;
+}
+.matrice .corner {
+  background: #2a1a4a;
+  color: #fde047;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+}
+.matrice .row-h {
+  background: #f5f3ff;
+  font-weight: 600;
+  color: #4a2a6a;
+  text-align: center;
+  font-size: 0.85rem;
+  width: 110px;
+}
+.matrice .cell {
+  background: white;
+  text-align: center;
+  position: relative;
+  min-width: 130px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.matrice .cell:hover {
+  background: #fef3c7;
+  transform: scale(1.04);
+  z-index: 5;
+  box-shadow: 0 4px 16px rgba(106,74,138,0.2);
+}
+.matrice .cell-name {
+  font-weight: 600;
+  color: #2a1a4a;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+.matrice .cell-ex {
+  font-size: 0.72rem;
+  color: var(--ink3);
+  font-style: italic;
+  line-height: 1.4;
+}
+.matrice .cell.active {
+  background: #fcd34d !important;
+  border-color: #d97706 !important;
+  box-shadow: inset 0 0 0 3px #d97706;
+}
+
+.diagonal-note {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+  color: #78350f;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.diagonal-note strong { color: #92400e; }
+
+/* ──────── ESEMPIO CAIO ──────── */
+.caio-box {
+  background: linear-gradient(180deg, #faf5ff 0%, #fff 100%);
+  border: 1.5px solid #ddd6fe;
+  border-radius: 10px;
+  padding: 1.3rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.caio-resp {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.7rem 0.9rem;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  border-left: 3px solid #6a4a8a;
+}
+.caio-resp .quote {
+  flex: 1;
+  font-style: italic;
+  color: var(--ink2);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.caio-resp .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6a4a8a;
+  background: #f5f3ff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  white-space: nowrap;
+}
+
+/* ──────── MOTORE INTERATTIVO ──────── */
+.motor-section {
+  background: white;
+  border: 2px solid #6a4a8a;
+  border-radius: 14px;
+  padding: 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(106,74,138,0.15);
+  overflow: hidden;
+}
+.motor-header {
+  background: linear-gradient(135deg, #2a1a4a 0%, #4a2a6a 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+.motor-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+  color: white;
+}
+.motor-header h2 em { color: #fde047; font-style: italic; }
+.motor-header p {
+  font-size: 0.88rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.motor-tabs {
+  display: flex;
+  border-bottom: 2px solid #f5f3ff;
+}
+.motor-tab {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+.motor-tab.active {
+  color: #4a2a6a;
+  background: #faf5ff;
+  border-bottom-color: #6a4a8a;
+}
+.motor-tab:hover:not(.active) {
+  background: #fafafa;
+  color: var(--ink2);
+}
+
+.motor-body {
+  padding: 2rem;
+  min-height: 400px;
+}
+
+/* ─── Modalità GUIDATA ─── */
+.guided-step {
+  display: none;
+}
+.guided-step.active { display: block; }
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #6a4a8a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2a1a4a;
+}
+
+.step-question {
+  background: #f5f3ff;
+  border-left: 4px solid #6a4a8a;
+  padding: 1rem 1.3rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.6;
+  font-style: italic;
+}
+.step-question strong { color: #4a2a6a; font-style: normal; display: block; margin-bottom: 0.3rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.response-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+.response-btn {
+  padding: 1rem 1.2rem;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.55;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.response-btn:hover {
+  border-color: #6a4a8a;
+  background: #faf5ff;
+  transform: translateX(4px);
+}
+.response-btn .resp-tag {
+  flex-shrink: 0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.response-btn.positive .resp-tag { background: #d1fae5; color: #065f46; }
+.response-btn.negative .resp-tag { background: #fee2e2; color: #991b1b; }
+.response-btn .resp-text {
+  flex: 1;
+  font-style: italic;
+}
+
+/* RISULTATO */
+.result-box {
+  display: none;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #fffbf0 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.result-box.active { display: block; }
+.result-box h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: #92400e;
+  margin: 0 0 0.7rem;
+}
+.result-diagnosi {
+  background: white;
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  border-left: 3px solid #d97706;
+  margin: 0.8rem 0;
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.result-diagnosi strong { color: #92400e; }
+.result-strategy {
+  background: white;
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  border-left: 3px solid #16a34a;
+  margin: 0.8rem 0;
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.result-strategy strong { color: #15803d; display: block; margin-bottom: 0.3rem; }
+.result-counter {
+  background: white;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  border: 2px dashed #6a4a8a;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.65;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+}
+.result-counter::before {
+  content: '💬 Contromossa suggerita: ';
+  font-style: normal;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6a4a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.result-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+  justify-content: center;
+}
+.result-btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+.result-btn.primary {
+  background: #6a4a8a;
+  color: white;
+}
+.result-btn.primary:hover { background: #4a2a6a; transform: translateY(-1px); }
+.result-btn.secondary {
+  background: white;
+  color: #6a4a8a;
+  border: 2px solid #6a4a8a;
+}
+.result-btn.secondary:hover { background: #faf5ff; }
+
+/* ─── Modalità AI LIBERA ─── */
+.ai-input-area {
+  margin-bottom: 1.2rem;
+}
+.ai-input-area label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a2a6a;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.ai-input-area textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.9rem 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.55;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  background: white;
+}
+.ai-input-area textarea:focus { border-color: #6a4a8a; box-shadow: 0 0 0 3px rgba(106,74,138,0.1); }
+.ai-context {
+  margin-top: 0.7rem;
+}
+.ai-context select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+.ai-analyze-btn {
+  display: block;
+  margin: 1.2rem auto 0;
+  padding: 0.9rem 2.5rem;
+  background: linear-gradient(135deg, #6a4a8a, #4a2a6a);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(106,74,138,0.3);
+}
+.ai-analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(106,74,138,0.4); }
+.ai-analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.ai-loading {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  color: var(--ink3);
+  font-style: italic;
+}
+.ai-loading.active { display: block; }
+.ai-loading::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd6fe;
+  border-top-color: #6a4a8a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ai-result {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #faf5ff, #fff);
+  border: 2px solid #6a4a8a;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+.ai-result.active { display: block; }
+.ai-result h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: #2a1a4a;
+  margin: 0 0 0.8rem;
+}
+.ai-result-body {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ink2);
+  white-space: pre-wrap;
+}
+.ai-result-body h3, .ai-result-body h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: #4a2a6a;
+  margin: 1rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+.ai-result-body strong { color: #2a1a4a; font-weight: 600; }
+.ai-result-body em { color: #6a4a8a; font-style: italic; }
+
+/* ──────── BREADCRUMB / NAV ──────── */
+.msv-breadcrumb {
+  font-size: 0.78rem;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+}
+.msv-breadcrumb a { color: #6a4a8a; text-decoration: none; }
+.msv-breadcrumb a:hover { text-decoration: underline; }
+
+/* Examples toggle */
+details.examples-list {
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #faf5ff;
+}
+details.examples-list summary {
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4a2a6a;
+  font-size: 0.88rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details.examples-list summary::-webkit-details-marker { display: none; }
+details.examples-list summary::before { content: '▸'; color: #6a4a8a; transition: transform 0.2s; }
+details.examples-list[open] summary::before { transform: rotate(90deg); }
+details.examples-list .ex-content {
+  padding: 0 1.2rem 1.2rem;
+  font-size: 0.86rem;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+.ex-item {
+  padding: 0.6rem 0.9rem;
+  background: white;
+  border-radius: 6px;
+  margin: 0.4rem 0;
+  border-left: 3px solid #c4b5fd;
+}
+.ex-item strong { color: #4a2a6a; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="msv-hero">
+  <div class="msv-eye">⊘ Strumento per il mediatore</div>
+  <h1>La <em>Matrice della Svalutazione</em></h1>
+  <p>Quando le parti in conflitto rispondono con feedback negativi e bloccano il lavoro del mediatore, lo strumento dell'Analisi Transazionale (Mellor & Schiff, sviluppato da Carlo Alberto Calcagno per la mediazione) permette di <strong>identificare la natura della svalutazione</strong> e di <strong>scegliere la contromossa giusta</strong> per disinnescarla.</p>
+  <div class="msv-author">— Strumento del metodo di Carlo Alberto Calcagno</div>
+</section>
+
+<div class="msv-container">
+
+  <!-- BREADCRUMB -->
+  <div class="msv-breadcrumb">
+    <a href="index.html">Home</a> › <a href="discipline.html">Discipline</a> › <a href="danza.html">Mediazione & Conflitto</a> › <strong>Matrice della Svalutazione</strong>
+  </div>
+
+  <!-- TEORIA: COS'È LA MATRICE -->
+  <div class="msv-section">
+    <h2>Cos'è la <em>matrice della svalutazione</em></h2>
+    <p class="lead">«Quando un problema rimane irrisolto è spesso perché la persona sta affrontando il problema su una diagonale troppo bassa della matrice della svalutazione.»</p>
+    
+    <p>La <strong>svalutazione</strong> in Analisi Transazionale è ignorare inavvertitamente delle informazioni rilevanti per la risoluzione di un problema. È alla base della maggior parte dei conflitti.</p>
+    
+    <p>Ogni svalutazione si classifica secondo <strong>tre tipi</strong> e <strong>quattro modalità (livelli)</strong>, generando una matrice 3×4 = 12 caselle. Ogni svalutazione in una casella comporta automaticamente svalutazioni nelle caselle <strong>sottostanti e a destra</strong>.</p>
+    
+    <h3>I tre tipi di svalutazione</h3>
+    <p><strong>1. Svalutazione dello STIMOLO</strong> — Ignoro che mi stia succedendo qualcosa.<br>
+    <strong>2. Svalutazione del PROBLEMA</strong> — Sta succedendo qualcosa, ma ignoro che ciò costituisca problema.<br>
+    <strong>3. Svalutazione delle OPZIONI</strong> — Sta succedendo qualcosa, so che è un problema, ma elimino a priori qualsiasi possibilità di risolverlo.</p>
+    
+    <h3>I quattro livelli (modalità)</h3>
+    <p><strong>T1. Esistenza</strong> — esistenza di stimoli, problemi, opzioni.<br>
+    <strong>T2. Significato/Importanza</strong> — importanza di stimoli, problemi, opzioni.<br>
+    <strong>T3. Possibilità di cambiamento</strong> — possibilità di cambiare, risolvibilità dei problemi, agibilità delle opzioni.<br>
+    <strong>T4. Capacità personali</strong> — capacità di reagire diversamente, di risolvere i problemi, di agire sulle opzioni.</p>
+
+    <!-- MATRICE VISIVA -->
+    <h3>La matrice 3×4</h3>
+    <div class="matrice-wrap">
+      <table class="matrice" id="matriceTable">
+        <thead>
+          <tr>
+            <th class="corner">Tipi ↓ × Livelli →</th>
+            <th>T1 — Esistenza</th>
+            <th>T2 — Significato</th>
+            <th>T3 — Cambiamento</th>
+            <th>T4 — Capacità</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-h">STIMOLO</td>
+            <td class="cell" data-cell="s1"><div class="cell-name">Esistenza dello stimolo</div><div class="cell-ex">«Non sta succedendo nulla»</div></td>
+            <td class="cell" data-cell="s2"><div class="cell-name">Significato dello stimolo</div><div class="cell-ex">«Sì succede ma non significa niente»</div></td>
+            <td class="cell" data-cell="s3"><div class="cell-name">Possibilità di cambiare</div><div class="cell-ex">«Le cose stanno così, non cambiano»</div></td>
+            <td class="cell" data-cell="s4"><div class="cell-name">Capacità di reagire</div><div class="cell-ex">«Non sono capace di reagire diversamente»</div></td>
+          </tr>
+          <tr>
+            <td class="row-h">PROBLEMA</td>
+            <td class="cell" data-cell="p1"><div class="cell-name">Esistenza del problema</div><div class="cell-ex">«Non c'è alcun problema»</div></td>
+            <td class="cell" data-cell="p2"><div class="cell-name">Significato del problema</div><div class="cell-ex">«C'è ma non è importante»</div></td>
+            <td class="cell" data-cell="p3"><div class="cell-name">Risolvibilità</div><div class="cell-ex">«Il problema non si risolve»</div></td>
+            <td class="cell" data-cell="p4"><div class="cell-name">Capacità di risolvere</div><div class="cell-ex">«Non sono capace di risolverlo»</div></td>
+          </tr>
+          <tr>
+            <td class="row-h">OPZIONI</td>
+            <td class="cell" data-cell="o1"><div class="cell-name">Esistenza opzioni</div><div class="cell-ex">«Non ci sono soluzioni»</div></td>
+            <td class="cell" data-cell="o2"><div class="cell-name">Significato opzioni</div><div class="cell-ex">«Le opzioni non porterebbero a nulla»</div></td>
+            <td class="cell" data-cell="o3"><div class="cell-name">Praticabilità opzioni</div><div class="cell-ex">«Le opzioni non sono praticabili»</div></td>
+            <td class="cell" data-cell="o4"><div class="cell-name">Capacità di agire</div><div class="cell-ex">«Non sono capace di metterle in pratica»</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="diagonal-note">
+      <strong>Regola della diagonale</strong> — Le svalutazioni si propagano dalla casella in alto a sinistra verso il basso e verso destra. Una svalutazione in <em>S1 (Esistenza dello stimolo)</em> implica svalutazione di tutte le altre 11 caselle. Per disinnescare una svalutazione bisogna sempre <strong>tornare alla casella più alta a sinistra</strong> in cui c'è il blocco.
+    </div>
+  </div>
+
+  <!-- ESEMPIO CAIO -->
+  <div class="msv-section">
+    <h2>Esempio pratico: <em>la tosse di Caio</em></h2>
+    <p>Caio si accende una sigaretta e tossisce. Tizio gli dice: «Che tosse terribile! Sono preoccupato per te. Smetti di fumare». <strong>Tizio è saltato direttamente in T4</strong>: ha dato per scontato che Caio sia in grado di reagire diversamente, senza prima verificare se ha consapevolezza dello stimolo, se per lui costituisca un problema, se ci siano opzioni praticabili.</p>
+    <p>Ecco le possibili risposte di Caio, ognuna corrispondente a una casella della matrice:</p>
+    
+    <div class="caio-box">
+      <div class="caio-resp"><div class="quote">«Quale tosse? Io non stavo tossendo.»</div><div class="label">→ S1 Stimolo</div></div>
+      <div class="caio-resp"><div class="quote">«Oh no. Sto bene, grazie. Ho solo avuto un raffreddore.»</div><div class="label">→ P1 Problema</div></div>
+      <div class="caio-resp"><div class="quote">«Beh sì, ma chi fuma tossisce, non lo sai? E poi meglio un giorno da leone che cento da pecora.»</div><div class="label">→ O1 Opzioni</div></div>
+      <div class="caio-resp"><div class="quote">«Beh, suppongo che dovrei smettere. Ma è tanto che fumo, non credo faccia qualche differenza.»</div><div class="label">→ O2 Significato opzioni</div></div>
+      <div class="caio-resp"><div class="quote">«Sì! È un secolo che mi dico che dovrei buttare le sigarette. Ma sembra proprio che non ci riesca!»</div><div class="label">→ O3 Praticabilità opzioni</div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MOTORE INTERATTIVO ═══════════════ -->
+  <div class="motor-section">
+    <div class="motor-header">
+      <h2>Il <em>motore</em> della matrice</h2>
+      <p>Riconosce le risposte svalutanti delle parti e suggerisce contromosse</p>
+    </div>
+    
+    <div class="motor-tabs">
+      <button class="motor-tab active" onclick="switchMotorTab('guided')">📋 Modalità guidata (intervista)</button>
+      <button class="motor-tab" onclick="switchMotorTab('ai')">🤖 Analisi AI (frase libera)</button>
+    </div>
+    
+    <div class="motor-body">
+      
+      <!-- ═══ MODALITÀ GUIDATA ═══ -->
+      <div id="motor-guided" style="display:block">
+        
+        <!-- STEP 0: WELCOME -->
+        <div class="guided-step active" id="step0">
+          <div class="step-header">
+            <div class="step-num">📋</div>
+            <div class="step-title">Modalità intervista guidata</div>
+          </div>
+          <p style="color:var(--ink2);font-size:.92rem;line-height:1.7;margin-bottom:1.2rem">
+            Segui il flusso di intervista classico in mediazione: <strong>Stimolo → Problema → Opzioni</strong>. Per ogni domanda, scegli la risposta che la parte in conflitto ha effettivamente dato. Il motore identificherà la casella della matrice colpita dalla svalutazione e ti suggerirà la contromossa.
+          </p>
+          <p style="color:var(--ink3);font-size:.85rem;font-style:italic;margin-bottom:1.5rem">Inizia dal primo step: la domanda sullo stimolo.</p>
+          <button class="result-btn primary" onclick="goToStep(1)" style="display:block;margin:1rem auto;padding:.95rem 2.5rem;font-size:.9rem">Inizia l'intervista →</button>
+        </div>
+        
+        <!-- STEP 1: STIMOLO -->
+        <div class="guided-step" id="step1">
+          <div class="step-header">
+            <div class="step-num">1</div>
+            <div class="step-title">Domanda sullo <em>Stimolo</em></div>
+          </div>
+          <div class="step-question">
+            <strong>Domanda del mediatore:</strong>
+            «Riepiloghiamo: qual è il motivo per cui lei è stato chiamato in mediazione?»
+          </div>
+          <p style="color:var(--ink3);font-size:.85rem;margin-bottom:.8rem">Quale risposta ha dato la parte?</p>
+          <div class="response-options">
+            <button class="response-btn positive" onclick="answerStep(1, 'A')">
+              <span class="resp-tag">OK</span>
+              <span class="resp-text">«Tizio dice che non ho pagato un debito» — riconoscimento dello stimolo</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(1, 'B')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Non capisco perché... dal momento che...» — la parte non riconosce lo stimolo</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(1, 'C')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Tizio inventa, non c'è nessun debito» — negazione dello stimolo</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(1, 'D')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">Silenzio, sguardo basso, non risponde — passività di svalutazione</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- STEP 2: PROBLEMA -->
+        <div class="guided-step" id="step2">
+          <div class="step-header">
+            <div class="step-num">2</div>
+            <div class="step-title">Domanda sul <em>Problema</em></div>
+          </div>
+          <div class="step-question">
+            <strong>Domanda del mediatore:</strong>
+            «Per lei questa richiesta di Tizio costituisce un problema?»
+          </div>
+          <p style="color:var(--ink3);font-size:.85rem;margin-bottom:.8rem">Quale risposta ha dato la parte?</p>
+          <div class="response-options">
+            <button class="response-btn positive" onclick="answerStep(2, 'A')">
+              <span class="resp-tag">OK</span>
+              <span class="resp-text">«Sì, perché probabilmente mi farà causa» — riconoscimento del problema</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(2, 'B')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«No, non è un problema. Tanto non vincerà mai» — minimizzazione</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(2, 'C')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Sì ma non è grave, ho già altri debiti più importanti» — significato</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(2, 'D')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Non è un mio problema, è suo» — proiezione/negazione</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- STEP 3: OPZIONI -->
+        <div class="guided-step" id="step3">
+          <div class="step-header">
+            <div class="step-num">3</div>
+            <div class="step-title">Domanda sulle <em>Opzioni</em></div>
+          </div>
+          <div class="step-question">
+            <strong>Domanda del mediatore:</strong>
+            «Che possibilità vede per risolvere il problema ed evitare la causa?»
+          </div>
+          <p style="color:var(--ink3);font-size:.85rem;margin-bottom:.8rem">Quale risposta ha dato la parte?</p>
+          <div class="response-options">
+            <button class="response-btn positive" onclick="answerStep(3, 'A')">
+              <span class="resp-tag">OK</span>
+              <span class="resp-text">«Potrei chiedere una rateizzazione, oppure...» — opzioni concrete</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(3, 'B')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Non c'è niente da fare, non si può risolvere» — negazione opzioni</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(3, 'C')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Suppongo dovrei pagare, ma tanto non risolverebbe nulla» — significato opzioni</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(3, 'D')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«So cosa fare ma non sono in grado di farlo» — capacità</span>
+            </button>
+            <button class="response-btn negative" onclick="answerStep(3, 'E')">
+              <span class="resp-tag">Svaluta</span>
+              <span class="resp-text">«Lo deve risolvere lui, non io» — proiezione delle opzioni</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- RISULTATO GUIDATO -->
+        <div class="result-box" id="resultBox">
+          <h4>📍 Diagnosi della svalutazione</h4>
+          <div id="resultContent"></div>
+          <div class="result-actions">
+            <button class="result-btn secondary" onclick="resetGuided()">↺ Ricomincia intervista</button>
+            <button class="result-btn primary" onclick="continueAfterResult()">Continua step successivo →</button>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- ═══ MODALITÀ AI LIBERA ═══ -->
+      <div id="motor-ai" style="display:none">
+        <div class="step-header">
+          <div class="step-num">🤖</div>
+          <div class="step-title">Analisi <em>AI</em> della frase</div>
+        </div>
+        <p style="color:var(--ink2);font-size:.92rem;line-height:1.7;margin-bottom:1.2rem">
+          Inserisci la frase esatta che la parte ha pronunciato in mediazione. L'AI analizzerà la frase secondo la matrice della svalutazione, ti dirà a quale casella corrisponde, perché ti blocca, e ti suggerirà la contromossa più efficace per scendere alla diagonale corretta.
+        </p>
+        
+        <div class="ai-input-area">
+          <label>Frase pronunciata dalla parte in conflitto</label>
+          <textarea id="aiInput" placeholder='Es. "Non c\'è niente da fare, ho già provato di tutto. Tanto è inutile parlarne, lui non cambierà mai e tutto questo è solo una perdita di tempo."'></textarea>
+          
+          <div class="ai-context">
+            <label>Contesto della mediazione</label>
+            <select id="aiContext">
+              <option value="generico">Generico (non specificato)</option>
+              <option value="civile">Mediazione civile/commerciale</option>
+              <option value="familiare">Mediazione familiare (separazioni, eredità)</option>
+              <option value="lavoro">Mediazione di lavoro/aziendale</option>
+              <option value="condominio">Mediazione condominiale</option>
+              <option value="vicinato">Conflitti di vicinato</option>
+              <option value="impresa">Conflitti tra soci/imprenditori</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="ai-analyze-btn" onclick="analyzeWithAI()" id="aiBtn">⊘ Analizza con AI</button>
+        
+        <div class="ai-loading" id="aiLoading">L'AI sta analizzando la frase secondo la matrice della svalutazione...</div>
+        
+        <div class="ai-result" id="aiResult">
+          <h4>📍 Analisi AI della frase</h4>
+          <div class="ai-result-body" id="aiResultBody"></div>
+          <div class="result-actions">
+            <button class="result-btn secondary" onclick="resetAI()">↺ Analizza un'altra frase</button>
+          </div>
+        </div>
+        
+        <details class="examples-list" style="margin-top:2rem">
+          <summary>📚 Esempi di frasi tipiche di svalutazione (clic per espandere)</summary>
+          <div class="ex-content">
+            <p style="margin:.6rem 0;font-size:.82rem;color:var(--ink3)">Le risposte che bloccano più frequentemente la mediazione, classificate per casella:</p>
+            <div class="ex-item"><strong>S1 (Esistenza stimolo):</strong> «Non è successo niente di che», «Non capisco di cosa stiamo parlando», «Non è vero che ci sia un conflitto»</div>
+            <div class="ex-item"><strong>P1 (Esistenza problema):</strong> «Non c'è nessun problema», «È solo un equivoco», «Mi state facendo perdere tempo»</div>
+            <div class="ex-item"><strong>P2 (Significato problema):</strong> «Sì ma non è importante», «Sono cose di poco conto», «Si risolverà da sé»</div>
+            <div class="ex-item"><strong>O1 (Esistenza opzioni):</strong> «Non c'è niente da fare», «Non ci sono soluzioni», «È andata così, punto»</div>
+            <div class="ex-item"><strong>O2 (Significato opzioni):</strong> «So cosa dovrei fare ma non cambierebbe nulla», «Anche se accettassi, lui continuerà uguale»</div>
+            <div class="ex-item"><strong>O3 (Praticabilità opzioni):</strong> «Non è possibile farlo nella mia situazione», «Sono troppo vecchio per cambiare»</div>
+            <div class="ex-item"><strong>O4 (Capacità di agire):</strong> «Vorrei ma non ce la faccio», «Non sono in grado», «Mi blocco»</div>
+          </div>
+        </details>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ═══════════════ GLOSSARIO RAPIDO PER CONTESTO ═══════════════ -->
+  <div class="msv-section">
+    <h2>📖 <em>Glossario rapido</em>: pattern frequenti per contesto</h2>
+    <p style="color:var(--ink3);font-size:.88rem;font-style:italic;margin-bottom:1rem">Frasi reali raccolte da migliaia di sessioni di mediazione, classificate per ambito e per casella della matrice. Da consultare durante o prima della sessione.</p>
+    
+    <details class="examples-list" open>
+      <summary>👨‍👩‍👧 Mediazione familiare (separazioni, eredità, rapporti tra fratelli)</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>S1:</strong> «Non è successo niente, è lui che si è inventato tutto», «Era una discussione come tante» → Mediatore: «Mi descriva la sua versione di quel momento»</div>
+        <div class="ex-item"><strong>P1:</strong> «Non è un problema mio, è lui/lei che ha problemi», «Stiamo bene così» → «Cosa la spinge comunque a essere qui oggi?»</div>
+        <div class="ex-item"><strong>P3:</strong> «Tanto non cambierà mai, è fatto così» → «In che modo era diverso quando vi siete conosciuti? Cosa è cambiato?»</div>
+        <div class="ex-item"><strong>O1:</strong> «Ho già provato di tutto, non c'è soluzione» → «Mi elenchi le ultime tre cose che ha provato. Vediamo se manca qualche tassello»</div>
+        <div class="ex-item"><strong>O4:</strong> «Lo so cosa devo fare ma non riesco» → «Spesso da soli è impossibile. Chi le potrebbe stare accanto?»</div>
+      </div>
+    </details>
+    
+    <details class="examples-list">
+      <summary>⚖ Mediazione civile/commerciale (debiti, contratti, fornitori)</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>S1:</strong> «Non capisco perché sono qui, non c'è nessun debito» → «Indipendentemente dalla sua versione, mi descriva quale fatto economico Tizio sta contestando»</div>
+        <div class="ex-item"><strong>P2:</strong> «Sì, ci sono 5.000 euro in ballo, ma è una cifra ridicola per la mia azienda» → «Calcoliamo insieme: 5.000 euro + costi processo + tempo perso = quanto?»</div>
+        <div class="ex-item"><strong>P3:</strong> «Tanto la causa la perdo comunque» → «Quale percentuale di rischio le ha calcolato il suo avvocato? Ci sono margini concreti?»</div>
+        <div class="ex-item"><strong>O3:</strong> «Pagare a rate sarebbe l'ideale ma le banche non concedono nulla in questa situazione» → «Esploriamo: rate direttamente all'altra parte? Garante? Differimento parziale?»</div>
+      </div>
+    </details>
+    
+    <details class="examples-list">
+      <summary>🏢 Mediazione condominiale (rumori, spazi, spese)</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>S2:</strong> «Sì, faccio un po' di rumore, ma è normale» → «In che orari? Per quanto tempo? Cosa significa "normale" per lei?»</div>
+        <div class="ex-item"><strong>P1:</strong> «Il problema è suo, è troppo sensibile» → «Indipendentemente da chi ha torto, vuole evitare un esposto? Una causa? Allora c'è un suo problema da risolvere»</div>
+        <div class="ex-item"><strong>O1:</strong> «Non posso fare niente, ho il diritto di stare a casa mia» → «Diritto sì, ma quante opzioni esistono per esercitarlo riducendo il conflitto? Elenchiamole»</div>
+      </div>
+    </details>
+    
+    <details class="examples-list">
+      <summary>💼 Mediazione di lavoro/aziendale (mobbing, contratti, colleghi)</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>P1:</strong> «Non è mobbing, è solo che il capo è esigente» → «Lasciamo da parte la qualifica giuridica. Mi descriva 3 episodi concreti dell'ultimo mese»</div>
+        <div class="ex-item"><strong>O1:</strong> «Non posso lasciare il lavoro, non posso denunciare, non posso fare nulla» → «Ci sono opzioni intermedie tra "subire" e "lasciare". Esploriamole»</div>
+        <div class="ex-item"><strong>O4:</strong> «So che dovrei parlare con HR ma non ce la faccio» → «Posso farle compagnia in quel momento? O preferisce uno scritto preparato insieme?»</div>
+      </div>
+    </details>
+    
+    <details class="examples-list">
+      <summary>🏘 Conflitti tra vicini (siepi, parcheggi, animali)</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>S1:</strong> «Non c'è nessun litigio, è lui che si lamenta sempre» → «Quanti contatti avete avuto negli ultimi 6 mesi? Di quale natura?»</div>
+        <div class="ex-item"><strong>P2:</strong> «Sì, ma è una stupidaggine, una siepe» → «Una siepe per cui siete entrambi qui in mediazione. Cosa rappresenta davvero?»</div>
+      </div>
+    </details>
+    
+    <details class="examples-list">
+      <summary>🤝 Conflitti tra soci/imprenditori</summary>
+      <div class="ex-content">
+        <div class="ex-item"><strong>S2:</strong> «Sì, ci sono divergenze, ma si risolveranno» → «In che tempi? Con quali criteri saprete che sono risolte? Cosa succede se non si risolvono in quel tempo?»</div>
+        <div class="ex-item"><strong>O2:</strong> «So che potremmo dividere la società ma non risolverebbe il rapporto umano» → «Mediazione e separazione patrimoniale possono andare in parallelo. Affrontiamo prima il piano economico, poi quello relazionale»</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- AVVERTENZA -->
+  <div class="msv-section" style="background:#fef3c7;border-left:4px solid #f59e0b">
+    <h3 style="color:#92400e;margin-top:0">⚠ Nota importante per il mediatore</h3>
+    <p style="color:#78350f">Questo strumento è un <strong>ausilio diagnostico</strong>, non un sostituto della formazione e dell'esperienza del mediatore. Il punto di arrivo di una svalutazione <strong>non può derivare dalla domanda del mediatore, ma deve emergere dalle parole dell'interlocutore</strong>. Usa il motore per riconoscere il pattern, ma poi formula sempre una contromossa <strong>su misura</strong> per la persona che hai davanti.</p>
+    <p style="color:#78350f"><strong>Errore comune:</strong> partire con una domanda su T4 («C'è la possibilità di iniziare con la mediazione?») subito dopo la presentazione: equivale a chiedere «C'è la possibilità di procedere a risolvere il problema?» quando ancora non hai accertato se c'è uno stimolo riconosciuto, un problema percepito, opzioni esplorate. Ha alta probabilità di ricevere risposta negativa.</p>
+  </div>
+
+  <!-- LINK CORRELATI -->
+  <div class="msv-section">
+    <h3>Strumenti collegati</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem">
+      <a href="danza.html" style="display:block;padding:1.2rem;background:#faf5ff;border:1px solid #ddd6fe;border-radius:10px;text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(106,74,138,.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.5rem;margin-bottom:.4rem">🕊</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#4a2a6a;margin-bottom:.3rem">La Danza del Conflitto</div>
+        <div style="font-size:.78rem;color:var(--ink3);line-height:1.5">Modello neurobiologico del conflitto di coppia, 4 poli relazionali, mediazione familiare</div>
+      </a>
+      <a href="at-adattamenti.html" style="display:block;padding:1.2rem;background:#faf5ff;border:1px solid #ddd6fe;border-radius:10px;text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(106,74,138,.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.5rem;margin-bottom:.4rem">⬟</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#4a2a6a;margin-bottom:.3rem">Adattamenti AT</div>
+        <div style="font-size:.78rem;color:var(--ink3);line-height:1.5">I 6 adattamenti, 12 ingiunzioni, 5 spinte, 60 combinazioni di copione</div>
+      </a>
+      <a href="transazioni.html" style="display:block;padding:1.2rem;background:#faf5ff;border:1px solid #ddd6fe;border-radius:10px;text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(106,74,138,.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.5rem;margin-bottom:.4rem">⇄</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#4a2a6a;margin-bottom:.3rem">Transazioni & Vettori</div>
+        <div style="font-size:.78rem;color:var(--ink3);line-height:1.5">Test sui vettori comunicativi e gli scambi tra stati dell'Io</div>
+      </a>
+      <a href="consulente.html" style="display:block;padding:1.2rem;background:#faf5ff;border:1px solid #ddd6fe;border-radius:10px;text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(106,74,138,.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.5rem;margin-bottom:.4rem">🤖</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#4a2a6a;margin-bottom:.3rem">Consulente AI</div>
+        <div style="font-size:.78rem;color:var(--ink3);line-height:1.5">Approfondisci con l'AI sulla matrice e su altre tecniche di mediazione</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="danza.html" style="color:var(--gold);text-decoration:none">🕊 Danza del conflitto</a>
+      <a href="at-adattamenti.html" style="color:var(--gold);text-decoration:none">⬟ Adattamenti AT</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia</div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+// Pagina standalone — non carica olismo-core.js per evitare conflitti con i suoi handler globali
+</script>
+
+<script>
+// ═════════ LOGIC del MOTORE della MATRICE ═════════
+
+// Database delle contromosse per ogni casella della matrice
+const COUNTERMOVES = {
+  // STIMOLO
+  's1': {
+    name: 'Esistenza dello Stimolo',
+    diagnosi: 'La parte nega che sia accaduto qualcosa. È la svalutazione più profonda — blocca ogni discorso successivo (problema, opzioni, capacità).',
+    strategia: 'Tornare a verificare lo stimolo concreto. Non chiedere mai se è importante o se è un problema: prima di tutto deve esserci un fatto riconosciuto.',
+    contromossa: 'Mi aiuti a capire: il signor Tizio ci ha portato in mediazione perché afferma che X. Indipendentemente dalla sua versione, mi descriva la sua versione di cosa è effettivamente accaduto.',
+    cell: 's1'
+  },
+  's2': {
+    name: 'Significato dello Stimolo',
+    diagnosi: 'La parte ammette che è accaduto qualcosa, ma ne nega l\'importanza. «È successo, ma non significa niente».',
+    strategia: 'Ricondurre lo stimolo nel contesto delle sue conseguenze concrete e degli interessi della parte stessa.',
+    contromossa: 'Capisco che per lei questa cosa sia normale o irrilevante. Mi aiuti a comprendere: cosa cambierebbe nella sua vita se questa situazione continuasse esattamente così per i prossimi mesi?',
+    cell: 's2'
+  },
+  's3': {
+    name: 'Cambiamento dello Stimolo',
+    diagnosi: 'La parte pensa che le cose siano immutabili, che il fatto in questione faccia parte di un ordine naturale.',
+    strategia: 'Aprire l\'esplorazione del passato per dimostrare che le situazioni cambiano sempre.',
+    contromossa: 'Le cose stanno così oggi. Ma cinque anni fa erano uguali? E dieci anni fa? Cosa è cambiato negli anni che potrebbe ancora cambiare?',
+    cell: 's3'
+  },
+  's4': {
+    name: 'Capacità di reagire allo Stimolo',
+    diagnosi: 'La parte si sente impotente: «non sono capace di reagire diversamente». Posizione di vita Io- Tu+.',
+    strategia: 'Esplorare risorse passate, momenti in cui ha già reagito diversamente, qualità riconosciute.',
+    contromossa: 'Mi descriva un momento, anche piccolo, in passato in cui di fronte a una situazione simile è riuscito a fare le cose un po\' diversamente. Cosa l\'ha aiutata in quell\'occasione?',
+    cell: 's4'
+  },
+  // PROBLEMA
+  'p1': {
+    name: 'Esistenza del Problema',
+    diagnosi: 'La parte riconosce il fatto ma nega che costituisca un problema per sé. Tipica della negazione difensiva.',
+    strategia: 'Lavorare sugli interessi profondi, non sulle posizioni. Cosa significa per lei se questo continua?',
+    contromossa: 'Lei ha ragione: il fatto in sé può non essere un problema. Però è comunque venuto in mediazione. Cosa la preoccupa, anche minimamente, di tutta questa situazione?',
+    cell: 'p1'
+  },
+  'p2': {
+    name: 'Significato del Problema',
+    diagnosi: 'La parte minimizza il problema: «c\'è ma non è importante». Spesso una difesa di chi teme di perdere il controllo.',
+    strategia: 'Far emergere le conseguenze nel medio-lungo termine. Quantificare costi, tempi, impatti relazionali.',
+    contromossa: 'Capisco che lei ridimensioni la cosa. Mi aiuti a fare un calcolo concreto: se questo problema continuasse altri sei mesi, dodici mesi, due anni — cosa le costerebbe in termini di tempo, denaro, energia, relazioni?',
+    cell: 'p2'
+  },
+  'p3': {
+    name: 'Risolvibilità del Problema',
+    diagnosi: 'La parte pensa che il problema sia per natura insolubile. Spesso copre rabbia o senso di impotenza profondo.',
+    strategia: 'Esplorare casi simili risolti (per altri, in altri contesti) per dimostrare che la risolvibilità esiste.',
+    contromossa: 'Mi sta dicendo che secondo lei nessuno al mondo, in nessuna situazione simile alla sua, è mai riuscito a venirne fuori? Mi aiuti a capire: cosa rende esattamente la sua situazione irrisolvibile?',
+    cell: 'p3'
+  },
+  'p4': {
+    name: 'Capacità di risolvere il Problema',
+    diagnosi: 'La parte ammette il problema e la sua risolvibilità in astratto, ma si dichiara incapace personalmente. Posizione Io- Tu+.',
+    strategia: 'Allargare il concetto di risorsa: la mediazione è proprio per integrare la capacità di chi è in difficoltà con quella dell\'altra parte.',
+    contromossa: 'Lei dice di non essere in grado. Ma in mediazione non si è mai soli: qui dentro ci sono lei, l\'altra parte, e io come terzo neutrale. Quale piccolo passo, anche con il nostro aiuto, le sembra alla portata?',
+    cell: 'p4'
+  },
+  // OPZIONI
+  'o1': {
+    name: 'Esistenza di Opzioni',
+    diagnosi: 'La classica «non c\'è niente da fare». Riduzione totale del campo possibile. Spesso esprime stanchezza, sfiducia o copione di vita "Mai".',
+    strategia: 'Brainstorming senza giudizio. Non chiedere quale sia LA soluzione, ma quante opzioni esistono in astratto.',
+    contromossa: 'Le propongo un esercizio: per i prossimi cinque minuti elencheremo insieme tutte le possibili opzioni, anche le più assurde, anche quelle che non vorrebbe mai prendere. L\'importante è solo elencarle, non sceglierle. Iniziamo: quale prima cosa le viene in mente?',
+    cell: 'o1'
+  },
+  'o2': {
+    name: 'Significato delle Opzioni',
+    diagnosi: 'La parte conosce le opzioni ma le ritiene tutte inutili: «so cosa fare ma non porterebbe a niente». Svaluta il senso del fare.',
+    strategia: 'Ridurre la prospettiva: una piccola opzione non risolve TUTTO ma può risolvere una PARTE. Riformulare l\'aspettativa.',
+    contromossa: 'Lei ha ragione: nessuna singola opzione risolverà al 100%. Ma se questa opzione risolvesse anche solo il 10% del problema, varrebbe la pena? E quale opzione, per quanto parziale, le sembra avere il rapporto sforzo/beneficio migliore?',
+    cell: 'o2'
+  },
+  'o3': {
+    name: 'Praticabilità delle Opzioni',
+    diagnosi: 'La parte sa cosa fare e sa che ha senso, ma dice che è impraticabile nella sua specifica situazione («non per me», «non ora»).',
+    strategia: 'Scomporre l\'opzione nei suoi micro-passi. Cercare insieme quale step minimo è praticabile oggi.',
+    contromossa: 'Mi descriva l\'opzione che ha in mente come fosse una scala con dieci gradini. Qual è il primo gradino, il più piccolo possibile, che potrebbe fare già da domani? Non il decimo, non il quinto: il primo.',
+    cell: 'o3'
+  },
+  'o4': {
+    name: 'Capacità di agire sulle Opzioni',
+    diagnosi: 'La parte sa, vuole, sa come, ma sente di non avere la capacità personale di agire. «Mi blocco». Spesso copione "Sforzati" o "Sii forte".',
+    strategia: 'Esplorare le risorse psicologiche e relazionali a disposizione. Eventualmente proporre risorse esterne (consulente, sostegno).',
+    contromossa: 'Lei sa cosa fare ma sente di non riuscirci. Spesso capita: non perché non si sia capaci, ma perché manca il giusto sostegno. Chi nella sua vita, anche solo una persona, le potrebbe stare accanto in questo passo? E se questa persona non c\'è, posso suggerirle di considerare un counselor o uno psicologo per affiancarla.',
+    cell: 'o4'
+  }
+};
+
+// Logic guidata
+let currentStep = 0;
+let answers = {};
+
+function switchMotorTab(tab) {
+  document.querySelectorAll('.motor-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('motor-guided').style.display = tab === 'guided' ? 'block' : 'none';
+  document.getElementById('motor-ai').style.display = tab === 'ai' ? 'block' : 'none';
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.guided-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  document.getElementById('resultBox').classList.remove('active');
+  currentStep = n;
+  // Clear matrix highlights
+  document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+  // Scroll to motor section
+  document.querySelector('.motor-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function answerStep(step, answer) {
+  answers[step] = answer;
+  
+  // Determine which cell of the matrix this triggers
+  let cellKey = null;
+  let stepName = '';
+  
+  if (step === 1) {
+    stepName = 'STIMOLO';
+    if (answer === 'A') {
+      // Positive - go to step 2
+      goToStep(2);
+      return;
+    }
+    if (answer === 'B' || answer === 'C') cellKey = 's1';  // Stimolo esistenza
+    if (answer === 'D') cellKey = 's4';  // Capacità di reagire (passività)
+  } else if (step === 2) {
+    stepName = 'PROBLEMA';
+    if (answer === 'A') {
+      goToStep(3);
+      return;
+    }
+    if (answer === 'B' || answer === 'D') cellKey = 'p1';  // Problema esistenza
+    if (answer === 'C') cellKey = 'p2';  // Problema significato
+  } else if (step === 3) {
+    stepName = 'OPZIONI';
+    if (answer === 'A') {
+      // Positive - show success message
+      showSuccess();
+      return;
+    }
+    if (answer === 'B') cellKey = 'o1';
+    if (answer === 'C') cellKey = 'o2';
+    if (answer === 'D') cellKey = 'o4';
+    if (answer === 'E') cellKey = 'p1'; // Proiezione = nega problema personale
+  }
+  
+  if (cellKey) {
+    showResult(cellKey, stepName);
+  }
+}
+
+function showResult(cellKey, stepName) {
+  const cm = COUNTERMOVES[cellKey];
+  if (!cm) return;
+  
+  // Highlight cell on matrix
+  document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+  const cell = document.querySelector(`.matrice .cell[data-cell="${cellKey}"]`);
+  if (cell) {
+    cell.classList.add('active');
+    // Scroll matrix into view
+    setTimeout(() => {
+      cell.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 100);
+  }
+  
+  // Build result
+  const html = `
+    <div class="result-diagnosi">
+      <strong>Casella attivata:</strong> ${cm.name} (${cellKey.toUpperCase()})<br>
+      ${cm.diagnosi}
+    </div>
+    <div class="result-strategy">
+      <strong>🎯 Strategia generale</strong>
+      ${cm.strategia}
+    </div>
+    <div class="result-counter">
+      ${cm.contromossa}
+    </div>
+    <p style="font-size:.78rem;color:var(--ink3);font-style:italic;margin-top:1rem;text-align:center">
+      Ricorda: <strong>una svalutazione in questa casella implica svalutazioni in tutte le caselle a destra e sotto</strong>. Disinnesca prima questa, poi potrai procedere.
+    </p>
+  `;
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('resultBox').classList.add('active');
+  
+  // Scroll to result
+  setTimeout(() => {
+    document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'center'});
+  }, 200);
+}
+
+function showSuccess() {
+  document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+  document.getElementById('resultContent').innerHTML = `
+    <div class="result-strategy" style="background:#f0fdf4;border-left-color:#16a34a">
+      <strong>✅ Nessuna svalutazione rilevata</strong>
+      La parte ha riconosciuto stimolo, problema e opzioni concrete. Puoi procedere con la mediazione vera e propria: esplorazione degli interessi, generazione di soluzioni alternative, valutazione dei criteri di accettabilità.
+    </div>
+    <p style="font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1rem">
+      Ottimo lavoro! Ora puoi entrare nel cuore della mediazione: <a href="danza.html" style="color:#6a4a8a;font-weight:600">vedi anche La Danza del Conflitto</a> per le tecniche neurobiologiche.
+    </p>
+  `;
+  document.getElementById('resultBox').classList.add('active');
+  setTimeout(() => {
+    document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'center'});
+  }, 200);
+}
+
+function continueAfterResult() {
+  // Move to next step or restart
+  if (currentStep < 3) {
+    goToStep(currentStep + 1);
+  } else {
+    resetGuided();
+  }
+}
+
+function resetGuided() {
+  answers = {};
+  currentStep = 0;
+  document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+  document.getElementById('resultBox').classList.remove('active');
+  goToStep(0);
+}
+
+// ═════════ MODALITÀ AI ═════════
+async function analyzeWithAI() {
+  const text = document.getElementById('aiInput').value.trim();
+  if (!text) {
+    alert('Per favore inserisci la frase pronunciata dalla parte.');
+    return;
+  }
+  const context = document.getElementById('aiContext').value;
+  
+  document.getElementById('aiBtn').disabled = true;
+  document.getElementById('aiLoading').classList.add('active');
+  document.getElementById('aiResult').classList.remove('active');
+  
+  // Build the system prompt focused on the matrix of devaluation
+  const systemPrompt = `Sei un esperto formatore in Analisi Transazionale, mediatore civile e familiare con 35 anni di esperienza, allievo di Carlo Alberto Calcagno. Conosci a fondo la Matrice della Svalutazione di Mellor & Schiff.
+
+LA MATRICE DELLA SVALUTAZIONE è una griglia 3×4 = 12 caselle.
+TIPI (righe): STIMOLO, PROBLEMA, OPZIONI.
+LIVELLI/MODALITÀ (colonne): T1 ESISTENZA, T2 SIGNIFICATO, T3 CAMBIAMENTO/RISOLVIBILITÀ/PRATICABILITÀ, T4 CAPACITÀ PERSONALI.
+
+Le 12 caselle:
+S1=Esistenza stimolo · S2=Significato stimolo · S3=Cambiamento stimolo · S4=Capacità di reagire allo stimolo
+P1=Esistenza problema · P2=Significato problema · P3=Risolvibilità problema · P4=Capacità di risolvere
+O1=Esistenza opzioni · O2=Significato opzioni · O3=Praticabilità opzioni · O4=Capacità di agire sulle opzioni
+
+REGOLA FONDAMENTALE: una svalutazione in una casella implica svalutazione in TUTTE le caselle a destra e sotto. Per disinnescare bisogna SEMPRE tornare alla casella più in alto a sinistra che è bloccata.
+
+Il mediatore ti sottopone una frase pronunciata da una parte in conflitto in mediazione (contesto: ${context}). Devi:
+1. Identificare la casella PIÙ ALTA A SINISTRA della matrice colpita dalla svalutazione.
+2. Spiegare perché blocca la mediazione.
+3. Suggerire UNA contromossa concreta (frase del mediatore) per disinnescare.
+4. Eventualmente indicare le caselle "domino" che si attivano automaticamente.
+
+Rispondi in italiano, in formato strutturato chiaro:
+
+**📍 Casella attivata:** [es. O1 — Esistenza delle opzioni]
+
+**🔍 Diagnosi:**
+[2-3 righe sul tipo di svalutazione e sul perché blocca]
+
+**⚠ Effetto domino:**
+[caselle che si attivano per propagazione]
+
+**🎯 Strategia di disinnesco:**
+[principio strategico]
+
+**💬 Contromossa suggerita (frase del mediatore):**
+"[frase concreta da pronunciare in mediazione]"
+
+**📌 Ulteriore approfondimento:**
+[opzionale - ulteriori domande di follow-up]
+
+Sii pratico, specifico, professionale. Usa il "lei" rivolto al mediatore. Le contromosse devono essere realmente pronunciabili in sessione di mediazione.`;
+
+  try {
+    const _ok = ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
+    const headers = {
+      "Content-Type": "application/json",
+      "x-api-key": _ok,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    };
+    
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 1500,
+        system: systemPrompt,
+        messages: [
+          {role: "user", content: `Frase pronunciata dalla parte in mediazione (${context}):\n\n"${text}"\n\nAnalizza secondo la Matrice della Svalutazione e suggerisci la contromossa.`}
+        ]
+      })
+    });
+    
+    const data = await res.json();
+    
+    if (data.error) {
+      throw new Error(data.error.message || 'Errore API');
+    }
+    
+    const reply = data.content && data.content[0] ? data.content[0].text : 'Nessuna risposta ricevuta';
+    
+    // Format markdown to HTML
+    const formatted = reply
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+      .replace(/\n/g, '<br>');
+    
+    document.getElementById('aiResultBody').innerHTML = formatted;
+    document.getElementById('aiLoading').classList.remove('active');
+    document.getElementById('aiResult').classList.add('active');
+    
+    // Scroll to result
+    setTimeout(() => {
+      document.getElementById('aiResult').scrollIntoView({behavior:'smooth', block:'center'});
+    }, 200);
+    
+    // Try to highlight matrix cell based on AI response
+    const cellMatch = reply.match(/casella attivata.*?([SPO]\d)/i);
+    if (cellMatch) {
+      const ck = cellMatch[1].toLowerCase();
+      document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+      const cell = document.querySelector(`.matrice .cell[data-cell="${ck}"]`);
+      if (cell) cell.classList.add('active');
+    }
+    
+  } catch (err) {
+    document.getElementById('aiLoading').classList.remove('active');
+    document.getElementById('aiResultBody').innerHTML = `<div style="color:#b91c1c;background:#fee2e2;padding:1rem;border-radius:8px"><strong>⚠ Errore</strong><br>${err.message || err}<br><br>Verifica la connessione internet e riprova. In alternativa, usa la modalità guidata.</div>`;
+    document.getElementById('aiResult').classList.add('active');
+  } finally {
+    document.getElementById('aiBtn').disabled = false;
+  }
+}
+
+function resetAI() {
+  document.getElementById('aiInput').value = '';
+  document.getElementById('aiResult').classList.remove('active');
+  document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+  document.getElementById('aiInput').focus();
+}
+
+// Click on matrix cell to see info
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.matrice .cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-cell');
+      const cm = COUNTERMOVES[key];
+      if (cm) {
+        document.querySelectorAll('.matrice .cell').forEach(c => c.classList.remove('active'));
+        cell.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

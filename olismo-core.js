@@ -2205,6 +2205,30 @@ POSIZIONI ESISTENZIALI (Berne):
 
 SVALUTAZIONE: ignorare informazioni rilevanti per risolvere il problema. Ogni svalutazione comporta grandiosità (di una pietruzza fa una montagna). Quando svaluti contamini Adulto con Genitore o Bambino. La spinta porta a svalutazione: in presenza di svalutazione l\'interazione diviene conflittuale.
 
+LA MATRICE DELLA SVALUTAZIONE (Mellor & Schiff, sviluppata da Calcagno per la mediazione) — strumento operativo per il mediatore. Griglia 3×4 = 12 caselle:
+- TIPI (righe): STIMOLO (ignoro che mi stia succedendo qualcosa), PROBLEMA (succede ma non è problema), OPZIONI (è problema ma non c\'è soluzione)
+- LIVELLI/MODALITÀ (colonne): T1 ESISTENZA, T2 SIGNIFICATO/IMPORTANZA, T3 CAMBIAMENTO/RISOLVIBILITÀ/PRATICABILITÀ, T4 CAPACITÀ PERSONALI
+
+Le 12 caselle: S1=Esistenza stimolo · S2=Significato stimolo · S3=Cambiamento stimolo · S4=Capacità di reagire · P1=Esistenza problema · P2=Significato problema · P3=Risolvibilità · P4=Capacità di risolvere · O1=Esistenza opzioni · O2=Significato opzioni · O3=Praticabilità · O4=Capacità di agire
+
+REGOLA DELLA DIAGONALE: ogni svalutazione in una casella implica svalutazione in tutte le caselle a destra e sotto. Per disinnescare bisogna SEMPRE tornare alla casella più alta a sinistra. Errore tipico in mediazione: partire da T4 («c\'è la possibilità di iniziare?») prima di aver verificato S1-P1-O1.
+
+PATTERN TIPICI DI SVALUTAZIONE (frasi → casella):
+- «Non c\'è nessun problema», «Non capisco perché» → S1/P1
+- «Sì, ma non è importante», «Sono cose di poco conto» → P2/S2
+- «Le cose stanno così, non cambiano» → S3/P3
+- «Non c\'è niente da fare», «Non ci sono soluzioni» → O1
+- «So cosa fare ma non porterebbe a nulla» → O2
+- «Non è praticabile nella mia situazione» → O3
+- «Vorrei ma non ce la faccio», «Mi blocco» → O4
+
+INTERVISTA DEL MEDIATORE (caucus): 1) STIMOLO «Riepiloghiamo: qual è il motivo per cui è stato chiamato in mediazione?» 2) PROBLEMA «Per lei questa richiesta costituisce un problema?» 3) OPZIONI «Che possibilità vede per risolvere ed evitare la causa?». A ogni livello, se la risposta svaluta, scendere di un livello prima di proseguire.
+
+CONTROMOSSE (esempi): contro O1 «Le propongo: per cinque minuti elenchiamo TUTTE le opzioni, anche le più assurde, senza giudicarle». Contro P3 «Mi sta dicendo che nessuno al mondo, in nessuna situazione simile, è mai riuscito a venirne fuori?». Contro O4 «Lei sa cosa fare ma sente di non riuscirci. Chi nella sua vita potrebbe affiancarla in questo passo?».
+
+Il punto di arrivo della svalutazione NON deve derivare dalla domanda del mediatore, ma EMERGERE dalle parole dell\'interlocutore. Il sito ha una pagina dedicata: matrice-svalutazione.html con motore guidato + analisi AI di frasi libere.
+
+
 EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.
 - GA (Genitore Affettivo): cura, calore, permessi. Ok: nutre. Non ok: iperprotegge.

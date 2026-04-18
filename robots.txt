@@ -1,24 +1,175 @@
-# olismo-integrato.it
-# Aggiornato: 2026-04-13
+# ═══════════════════════════════════════════════════════════════════
+# robots.txt — olismo-integrato.it
+# © 2016-2026 Avv. Carlo Alberto Calcagno · Tutti i diritti riservati
+# 
+# DICHIARAZIONE TDMRep ex art. 4 Direttiva (UE) 2019/790 (DSM)
+# recepita in Italia con D.Lgs. 177/2021 (art. 70-quater L. 633/1941)
+# 
+# I contenuti di questo sito SONO PROTETTI da copyright e da tutela 
+# sui generis sulla banca dati ex art. 102-bis L. 633/1941.
+# 
+# L'AUTORE ESERCITA ESPRESSAMENTE LA RISERVA sulle estrazioni 
+# di testo e dati per fini di addestramento AI.
+# 
+# Vedi: https://olismo-integrato.it/termini-uso.html
+# ═══════════════════════════════════════════════════════════════════
 
-User-agent: *
+# ─── Motori di ricerca tradizionali: ammessi ───
+User-agent: Googlebot
 Allow: /
 
-# Principali crawler AI (opt-out dalla raccolta per training)
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+
+# ═══════════════════════════════════════════════════════════════════
+# ─── BOT AI BLOCCATI: divieto esplicito di addestramento ───
+# ═══════════════════════════════════════════════════════════════════
+
+# OpenAI / ChatGPT
 User-agent: GPTBot
 Disallow: /
 
 User-agent: ChatGPT-User
 Disallow: /
 
-User-agent: Google-Extended
+User-agent: OAI-SearchBot
 Disallow: /
 
-User-agent: CCBot
+# Anthropic / Claude
+User-agent: ClaudeBot
 Disallow: /
 
 User-agent: anthropic-ai
 Disallow: /
 
-# Sitemap
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+# Google AI training (separato da Googlebot)
+User-agent: Google-Extended
+Disallow: /
+
+# Apple AI training
+User-agent: Applebot-Extended
+Disallow: /
+
+# Meta / Facebook AI
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Disallow: /
+
+# Common Crawl (alimenta molti dataset di training)
+User-agent: CCBot
+Disallow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+# You.com
+User-agent: YouBot
+Disallow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+# Diffbot (data extraction)
+User-agent: Diffbot
+Disallow: /
+
+# Mistral AI
+User-agent: MistralAI-User
+Disallow: /
+
+# AI2 (Allen Institute)
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dolma
+Disallow: /
+
+# Image AI training
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+# Other known scrapers
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Generic catch-all per ogni bot non identificato
+# (i bot legittimi dei motori di ricerca sono già ammessi sopra)
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+
+# ─── Sitemap ───
 Sitemap: https://olismo-integrato.it/sitemap.xml

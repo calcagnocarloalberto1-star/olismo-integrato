@@ -1,3 +1,21 @@
+/*!
+ * ═══════════════════════════════════════════════════════════════════════
+ * olismo-styles.css
+ * © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+ * Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+ * 
+ * AVVISO LEGALE — Identità visiva, palette cromatica, layout, gradient
+ * e ogni elemento di design originale è opera dell'ingegno dell'autore
+ * e protetta dal diritto d'autore. È VIETATO riprodurre, copiare o
+ * adattare questo foglio di stile senza autorizzazione scritta.
+ * 
+ * Riserva TDM ex art. 70-quater L. 633/1941: l'uso di questo CSS per
+ * addestramento di modelli AI generativi visivi è VIETATO.
+ * 
+ * Termini d'uso: https://olismo-integrato.it/termini-uso.html
+ * Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-styles
+ * ═══════════════════════════════════════════════════════════════════════
+ */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}

@@ -1,3 +1,36 @@
+/*!
+ * ═══════════════════════════════════════════════════════════════════════
+ * olismo-core.js
+ * © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+ * Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+ * 
+ * AVVISO LEGALE — Questo software è opera dell'ingegno protetta dal
+ * diritto d'autore. È VIETATO copiare, riprodurre, modificare,
+ * distribuire, decompilare o utilizzare questo software e i suoi
+ * contenuti senza preventiva autorizzazione scritta dell'autore.
+ * 
+ * RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE)
+ * 2019/790: l'uso di questo materiale per l'addestramento di modelli
+ * di intelligenza artificiale, fine-tuning, RAG, embedding o qualsiasi
+ * forma di alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
+ * 
+ * I system prompts dei motori AI integrati in questo file (Consulente
+ * AI, Consulente AI Mediatore, Empowerment in Mediazione, Psicologia
+ * Analogica, Matrice della Svalutazione, Motori AI FES e Bush) sono
+ * opera originale dell'autore e non possono essere estratti, riusati
+ * o adattati senza licenza.
+ * 
+ * L'integrazione metodologica originale tra mediazione trasformativa,
+ * enneagramma evolutivo, analisi transazionale, neuroscienze polivagali,
+ * psicologia analogica, fiori di Bach/FES/Bush, chakra e frequenze
+ * Solfeggio applicata al contesto della mediazione civile e familiare
+ * costituisce paternità intellettuale dell'autore.
+ * 
+ * Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
+ * 
+ * Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-core-engine
+ * ═══════════════════════════════════════════════════════════════════════
+ */
 // v202604131323
 // ════════════════════════════════════════
 // DATABASE COMPLETO

@@ -13,104 +13,614 @@
       "polivagale": "ventrale | simpatico | dorsovagale",
       "interpretazione_mediazione": "significato operativo per il mediatore",
       "azione_mediatore": "cosa fare quando si osserva questo segnale"
-    }
+    },
+    "copyright": "© 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it · Tutti i diritti riservati",
+    "license": "Opera dell'ingegno protetta da L. 633/1941. Vietata la riproduzione, distribuzione e l'utilizzo per addestramento di modelli AI senza autorizzazione scritta dell'autore. Riserva TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790. Termini completi: https://olismo-integrato.it/termini-uso.html",
+    "_signature": "OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-tassonomia-95-gesti-originale",
+    "legal_basis": [
+      "L. 22 aprile 1941 n. 633 (diritto d'autore)",
+      "D.Lgs. 8 novembre 2021 n. 177 (Direttiva DSM)",
+      "L. 633/1941 artt. 102-bis e 102-ter (banca dati sui generis)"
+    ]
   },
-
   "atti_scarico_tensionale": {
     "descrizione": "Prurito e grattamento: il soggetto scarica tensione in una zona del corpo a seguito di uno stimolo che evoca emotività. Più il grattamento è vicino a naso/bocca, maggiore è la tensione sull'argomento appena trattato.",
     "principio": "Il grado di pericolosità dell'argomento evocato dipende dalla zona dove si effettua il grattamento. Più ci si allontana dalla bocca e dal naso, più la tensione diminuisce.",
     "gesti": [
-      {"id":"st01","nome":"Prurito al naso","zona":"viso","macro":"tensione","tensione_pct":100,"descrizione":"Il prurito al naso manifesta il massimo carico di tensione perché il naso è collegato nervosamente con la sede cerebrale delle emozioni.","interpretazione_mediazione":"Massimo carico di tensione che non supera la soglia di difesa. Non è indice di accettazione o rifiuto in sé, ma segnala che l'argomento appena trattato è centrale nella vita emotiva della parte. Se il grattamento si manifesta con una parola (es. 'padre', 'coniuge'), l'operatore sa che il rapporto con quella figura è fonte di sofferenza.","azione_mediatore":"Trattare con cautela l'argomento evitando insistenza. Riformulare in modo più morbido. Fare una pausa o cambiare temporaneamente topic per permettere scarico emotivo."},
-      {"id":"st02","nome":"Grattamento zona maxillo-facciale","zona":"viso","macro":"tensione","tensione_pct":90,"descrizione":"Prurito o grattamento alla guancia, mandibola, zona intorno alla bocca.","interpretazione_mediazione":"L'argomento espresso è fortemente toccante per la parte. La tensione è molto alta ma ancora sotto la soglia di fuga.","azione_mediatore":"Validare implicitamente che l'argomento è importante. Rallentare il ritmo, abbassare il volume, usare parole morbide."},
-      {"id":"st03","nome":"Sfregamento radice del naso vicino agli occhi","zona":"viso","macro":"tensione","tensione_pct":70,"descrizione":"Il soggetto si sfrega la zona tra il naso e gli occhi con indice e pollice.","interpretazione_mediazione":"Tensione significativa. L'argomento tocca una questione rilevante ma non cruciale. Può anche indicare stanchezza cognitiva quando l'operatore insiste troppo.","azione_mediatore":"Sintetizzare e verificare la comprensione. 'Mi faccia capire se ho colto bene...'"},
-      {"id":"st04","nome":"Sfregamento della tempia","zona":"viso","macro":"tensione","tensione_pct":55,"descrizione":"Sfregamento laterale della tempia.","interpretazione_mediazione":"Tensione media (50-60%). L'argomento attiva elaborazione cognitiva con carico emotivo moderato.","azione_mediatore":"Dare spazio di elaborazione. Fare una domanda aperta invece che chiusa."},
-      {"id":"st05","nome":"Grattamento zona sopracciliare","zona":"viso","macro":"tensione","tensione_pct":40,"descrizione":"Il soggetto si gratta il sopracciglio o sopra l'arcata sopracciliare.","interpretazione_mediazione":"Tensione bassa-media, spesso associata a perplessità o dubbio.","azione_mediatore":"Chiedere: 'Vedo che ha un dubbio, me lo può esprimere?'"},
-      {"id":"st06","nome":"Grattamento zona lacrimale","zona":"viso","macro":"tensione","tensione_pct":35,"descrizione":"Sfregamento o toccarsi vicino al canto dell'occhio.","interpretazione_mediazione":"Tensione leggera. Spesso associata a tristezza o commozione trattenuta.","azione_mediatore":"Rispettare la commozione. Non insistere con dettagli cognitivi."},
-      {"id":"st07","nome":"Grattamento frontale","zona":"viso","macro":"tensione","tensione_pct":30,"descrizione":"Il soggetto si gratta la fronte.","interpretazione_mediazione":"Tensione leggera. Può indicare anche confusione mentale o riflessione.","azione_mediatore":"Riformulare in modo più semplice e strutturato."},
-      {"id":"st08","nome":"Grattamento occipitale","zona":"viso","macro":"tensione","tensione_pct":25,"descrizione":"Dietro la nuca, in alto.","interpretazione_mediazione":"Tensione leggera, spesso connessa a disagio sociale o vergogna."},
-      {"id":"st09","nome":"Grattamento retroauricolare","zona":"viso","macro":"tensione","tensione_pct":30,"descrizione":"Dietro l'orecchio.","interpretazione_mediazione":"Tensione leggera con sfumatura di dubbio o imbarazzo."},
-      {"id":"st10","nome":"Grattamento al collo","zona":"tronco-postura","macro":"tensione","tensione_pct":30,"descrizione":"Il soggetto si gratta il collo, spesso lateralmente.","interpretazione_mediazione":"Tensione leggera. Segnale di disagio sociale o di situazione percepita come pressante."},
-      {"id":"st11","nome":"Grattamento zona auricolare/orecchio","zona":"viso","macro":"tensione","tensione_pct":20,"descrizione":"Sull'orecchio stesso.","interpretazione_mediazione":"Tensione molto leggera. Spesso associata a quello che si sta ascoltando."},
-      {"id":"st12","nome":"Grattamento zona parietale","zona":"viso","macro":"tensione","tensione_pct":20,"descrizione":"Sopra l'orecchio, lato della testa.","interpretazione_mediazione":"Tensione molto leggera."},
-      {"id":"st13","nome":"Grattamento petto o braccia","zona":"tronco-postura","macro":"tensione","tensione_pct":27,"descrizione":"Sul petto o sulle braccia (25-30%).","interpretazione_mediazione":"Tensione leggera. Può indicare anche bisogno di auto-protezione."},
-      {"id":"st14","nome":"Grattamento gambe","zona":"gambe-piedi","macro":"tensione","tensione_pct":15,"descrizione":"Il soggetto si gratta le gambe. Difficile quantificare con precisione per la variazione di postura che comporta.","interpretazione_mediazione":"Tensione bassa. Possibile segnale di stanchezza, noia o irrequietezza motoria."},
-      {"id":"st15","nome":"Deglutizione salivare / raschiamento gola","zona":"voce-suono","macro":"tensione","tensione_pct":100,"descrizione":"Il soggetto deglutisce o raschia la gola.","interpretazione_mediazione":"Tensione massima, equivalente al prurito al naso. Rivela che è stata toccata una corda profonda. Anche nel rapporto di coppia: se si chiede 'Scusa, mi sei stato fedele?' e la risposta è A) deglutire B) raschiare la gola + passo indietro, la reazione è rivelatrice.","azione_mediatore":"Aspettare. Dare tempo. La parte ha bisogno di metabolizzare prima di parlare."},
-      {"id":"st16","nome":"Irrigidimento mascellare","zona":"viso","macro":"tensione","tensione_pct":85,"descrizione":"Mascella serrata, tesa (80-90%).","interpretazione_mediazione":"Tensione molto alta con tendenza al trattenimento/rabbia sopressa. Tipico nel tipo 8 istintivo, adattamento paranoide.","azione_mediatore":"Validare la forza. 'Vedo che questo argomento è importante per lei.' Evitare toni paternalisti."},
-      {"id":"st17","nome":"Fuga dello sguardo","zona":"occhi-sguardo","macro":"tensione","tensione_pct":25,"descrizione":"Il soggetto distoglie lo sguardo mentre si parla dell'argomento (10-40%).","interpretazione_mediazione":"Tensione variabile. Se associata a silenzio prolungato e spalle incassate, può indicare dorsovagale. Se associata a gestualità rapida, simpatico."},
-      {"id":"st18","nome":"Riduzione del volume vocale fino all'afonia","zona":"voce-suono","macro":"tensione","tensione_pct":60,"descrizione":"Il soggetto abbassa il volume fino a non farsi sentire (20-100%).","interpretazione_mediazione":"Tensione da media a massima. Scarica trattenuta nelle corde vocali."},
-      {"id":"st19","nome":"Veloce inspirazione/espirazione nasale","zona":"voce-suono","macro":"tensione","tensione_pct":30,"descrizione":"Respiro breve e ritmato dal naso.","interpretazione_mediazione":"Tensione media. Attivazione simpatica (attacco/fuga)."}
+      {
+        "id": "st01",
+        "nome": "Prurito al naso",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 100,
+        "descrizione": "Il prurito al naso manifesta il massimo carico di tensione perché il naso è collegato nervosamente con la sede cerebrale delle emozioni.",
+        "interpretazione_mediazione": "Massimo carico di tensione che non supera la soglia di difesa. Non è indice di accettazione o rifiuto in sé, ma segnala che l'argomento appena trattato è centrale nella vita emotiva della parte. Se il grattamento si manifesta con una parola (es. 'padre', 'coniuge'), l'operatore sa che il rapporto con quella figura è fonte di sofferenza.",
+        "azione_mediatore": "Trattare con cautela l'argomento evitando insistenza. Riformulare in modo più morbido. Fare una pausa o cambiare temporaneamente topic per permettere scarico emotivo."
+      },
+      {
+        "id": "st02",
+        "nome": "Grattamento zona maxillo-facciale",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 90,
+        "descrizione": "Prurito o grattamento alla guancia, mandibola, zona intorno alla bocca.",
+        "interpretazione_mediazione": "L'argomento espresso è fortemente toccante per la parte. La tensione è molto alta ma ancora sotto la soglia di fuga.",
+        "azione_mediatore": "Validare implicitamente che l'argomento è importante. Rallentare il ritmo, abbassare il volume, usare parole morbide."
+      },
+      {
+        "id": "st03",
+        "nome": "Sfregamento radice del naso vicino agli occhi",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 70,
+        "descrizione": "Il soggetto si sfrega la zona tra il naso e gli occhi con indice e pollice.",
+        "interpretazione_mediazione": "Tensione significativa. L'argomento tocca una questione rilevante ma non cruciale. Può anche indicare stanchezza cognitiva quando l'operatore insiste troppo.",
+        "azione_mediatore": "Sintetizzare e verificare la comprensione. 'Mi faccia capire se ho colto bene...'"
+      },
+      {
+        "id": "st04",
+        "nome": "Sfregamento della tempia",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 55,
+        "descrizione": "Sfregamento laterale della tempia.",
+        "interpretazione_mediazione": "Tensione media (50-60%). L'argomento attiva elaborazione cognitiva con carico emotivo moderato.",
+        "azione_mediatore": "Dare spazio di elaborazione. Fare una domanda aperta invece che chiusa."
+      },
+      {
+        "id": "st05",
+        "nome": "Grattamento zona sopracciliare",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 40,
+        "descrizione": "Il soggetto si gratta il sopracciglio o sopra l'arcata sopracciliare.",
+        "interpretazione_mediazione": "Tensione bassa-media, spesso associata a perplessità o dubbio.",
+        "azione_mediatore": "Chiedere: 'Vedo che ha un dubbio, me lo può esprimere?'"
+      },
+      {
+        "id": "st06",
+        "nome": "Grattamento zona lacrimale",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 35,
+        "descrizione": "Sfregamento o toccarsi vicino al canto dell'occhio.",
+        "interpretazione_mediazione": "Tensione leggera. Spesso associata a tristezza o commozione trattenuta.",
+        "azione_mediatore": "Rispettare la commozione. Non insistere con dettagli cognitivi."
+      },
+      {
+        "id": "st07",
+        "nome": "Grattamento frontale",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 30,
+        "descrizione": "Il soggetto si gratta la fronte.",
+        "interpretazione_mediazione": "Tensione leggera. Può indicare anche confusione mentale o riflessione.",
+        "azione_mediatore": "Riformulare in modo più semplice e strutturato."
+      },
+      {
+        "id": "st08",
+        "nome": "Grattamento occipitale",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 25,
+        "descrizione": "Dietro la nuca, in alto.",
+        "interpretazione_mediazione": "Tensione leggera, spesso connessa a disagio sociale o vergogna."
+      },
+      {
+        "id": "st09",
+        "nome": "Grattamento retroauricolare",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 30,
+        "descrizione": "Dietro l'orecchio.",
+        "interpretazione_mediazione": "Tensione leggera con sfumatura di dubbio o imbarazzo."
+      },
+      {
+        "id": "st10",
+        "nome": "Grattamento al collo",
+        "zona": "tronco-postura",
+        "macro": "tensione",
+        "tensione_pct": 30,
+        "descrizione": "Il soggetto si gratta il collo, spesso lateralmente.",
+        "interpretazione_mediazione": "Tensione leggera. Segnale di disagio sociale o di situazione percepita come pressante."
+      },
+      {
+        "id": "st11",
+        "nome": "Grattamento zona auricolare/orecchio",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 20,
+        "descrizione": "Sull'orecchio stesso.",
+        "interpretazione_mediazione": "Tensione molto leggera. Spesso associata a quello che si sta ascoltando."
+      },
+      {
+        "id": "st12",
+        "nome": "Grattamento zona parietale",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 20,
+        "descrizione": "Sopra l'orecchio, lato della testa.",
+        "interpretazione_mediazione": "Tensione molto leggera."
+      },
+      {
+        "id": "st13",
+        "nome": "Grattamento petto o braccia",
+        "zona": "tronco-postura",
+        "macro": "tensione",
+        "tensione_pct": 27,
+        "descrizione": "Sul petto o sulle braccia (25-30%).",
+        "interpretazione_mediazione": "Tensione leggera. Può indicare anche bisogno di auto-protezione."
+      },
+      {
+        "id": "st14",
+        "nome": "Grattamento gambe",
+        "zona": "gambe-piedi",
+        "macro": "tensione",
+        "tensione_pct": 15,
+        "descrizione": "Il soggetto si gratta le gambe. Difficile quantificare con precisione per la variazione di postura che comporta.",
+        "interpretazione_mediazione": "Tensione bassa. Possibile segnale di stanchezza, noia o irrequietezza motoria."
+      },
+      {
+        "id": "st15",
+        "nome": "Deglutizione salivare / raschiamento gola",
+        "zona": "voce-suono",
+        "macro": "tensione",
+        "tensione_pct": 100,
+        "descrizione": "Il soggetto deglutisce o raschia la gola.",
+        "interpretazione_mediazione": "Tensione massima, equivalente al prurito al naso. Rivela che è stata toccata una corda profonda. Anche nel rapporto di coppia: se si chiede 'Scusa, mi sei stato fedele?' e la risposta è A) deglutire B) raschiare la gola + passo indietro, la reazione è rivelatrice.",
+        "azione_mediatore": "Aspettare. Dare tempo. La parte ha bisogno di metabolizzare prima di parlare."
+      },
+      {
+        "id": "st16",
+        "nome": "Irrigidimento mascellare",
+        "zona": "viso",
+        "macro": "tensione",
+        "tensione_pct": 85,
+        "descrizione": "Mascella serrata, tesa (80-90%).",
+        "interpretazione_mediazione": "Tensione molto alta con tendenza al trattenimento/rabbia sopressa. Tipico nel tipo 8 istintivo, adattamento paranoide.",
+        "azione_mediatore": "Validare la forza. 'Vedo che questo argomento è importante per lei.' Evitare toni paternalisti."
+      },
+      {
+        "id": "st17",
+        "nome": "Fuga dello sguardo",
+        "zona": "occhi-sguardo",
+        "macro": "tensione",
+        "tensione_pct": 25,
+        "descrizione": "Il soggetto distoglie lo sguardo mentre si parla dell'argomento (10-40%).",
+        "interpretazione_mediazione": "Tensione variabile. Se associata a silenzio prolungato e spalle incassate, può indicare dorsovagale. Se associata a gestualità rapida, simpatico."
+      },
+      {
+        "id": "st18",
+        "nome": "Riduzione del volume vocale fino all'afonia",
+        "zona": "voce-suono",
+        "macro": "tensione",
+        "tensione_pct": 60,
+        "descrizione": "Il soggetto abbassa il volume fino a non farsi sentire (20-100%).",
+        "interpretazione_mediazione": "Tensione da media a massima. Scarica trattenuta nelle corde vocali."
+      },
+      {
+        "id": "st19",
+        "nome": "Veloce inspirazione/espirazione nasale",
+        "zona": "voce-suono",
+        "macro": "tensione",
+        "tensione_pct": 30,
+        "descrizione": "Respiro breve e ritmato dal naso.",
+        "interpretazione_mediazione": "Tensione media. Attivazione simpatica (attacco/fuga)."
+      }
     ]
   },
-
   "segnali_gradimento": {
     "descrizione": "Atti di gradimento: attivano il nucleo accumbens (regione della ricompensa) e il rilascio di dopamina. Il soggetto dà una valenza positiva al servizio analogico ricevuto.",
     "principio": "Chi è in grado di sollecitare positivamente il nucleo accumbens dell'altro è percepito come gratificante. In mediazione: se la parte compie atti di gradimento durante una mia sintesi/riformulazione, ho fatto bene. Se compie atti di rifiuto, devo correggere il tiro.",
     "gesti": [
-      {"id":"gr01","nome":"Leccarsi le labbra","zona":"viso","macro":"gradimento","descrizione":"La lingua scorre sulle labbra. 'Vai avanti così che vai bene'. Si ha sensazione di acquolina, come preparandosi a digerire; la lingua va in cerca di particelle come se si gustassero sulle labbra.","interpretazione_mediazione":"L'argomento è gradito. La parte accoglie. Buon momento per proseguire sulla stessa linea argomentativa."},
-      {"id":"gr02","nome":"Portare le labbra all'interno (rossetto)","zona":"viso","macro":"gradimento","descrizione":"Il soggetto chiude le labbra comprimendole leggermente, gesto tipico femminile riflesso del rossetto.","interpretazione_mediazione":"Apprezzamento con una sfumatura di calibrazione: 'mi interessa ma sto valutando'."},
-      {"id":"gr03","nome":"Mordicchiarsi le labbra o la lingua","zona":"viso","macro":"gradimento","descrizione":"'La cosa mi intriga'. Invito ad approfondire.","interpretazione_mediazione":"La parte vuole che si approfondisca. Segnale positivo per dedicare tempo al tema."},
-      {"id":"gr04","nome":"Bacio analogico","zona":"viso","macro":"gradimento","descrizione":"Le labbra si avvicinano leggermente come in un bacio silenzioso. Massimo grado di gradimento dell'argomento.","interpretazione_mediazione":"Massima approvazione. Il tema proposto è perfettamente sintono con i bisogni della parte."},
-      {"id":"gr05","nome":"Pressione della lingua sulla zona maxillofacciale","zona":"viso","macro":"gradimento","descrizione":"La lingua preme l'interno della guancia creando un rigonfiamento.","interpretazione_mediazione":"Servizio analogico non completo (c'è un vincolo preesistente) ma migliorabile. Il successo non è scontato, serve ancora lavoro."},
-      {"id":"gr06","nome":"Accarezzamento delle labbra con dita, dorso mano o palmo","zona":"viso","macro":"gradimento","descrizione":"Il soggetto si sfiora le labbra con le dita o con il dorso della mano.","interpretazione_mediazione":"L'argomento è gradito. Se accompagna uno sguardo sul mediatore, è la persona del mediatore a essere gradita. Controllare la congruenza."},
-      {"id":"gr07","nome":"Linguino","zona":"viso","macro":"gradimento","descrizione":"Rotazione della punta della lingua sulle labbra o semplice esposizione della lingua. Segno più comune di gradimento. Se sul labbro superiore ha valenza erotica; se sul labbro inferiore indica interesse all'argomento.","interpretazione_mediazione":"Indice di maggior gradimento all'argomento proposto."},
-      {"id":"gr08","nome":"Variazione della postura in avanti del tronco","zona":"tronco-postura","macro":"gradimento","descrizione":"Il soggetto inclina il busto verso il mediatore o l'argomento.","interpretazione_mediazione":"Apertura attiva. La parte si sta proponendo nell'interazione."},
-      {"id":"gr09","nome":"Variazione della postura in avanti con tutto il corpo","zona":"tronco-postura","macro":"gradimento","descrizione":"Il soggetto si sporge con tutto il corpo.","interpretazione_mediazione":"Massimo segnale di disponibilità dell'Es. La parte è pienamente ingaggiata."},
-      {"id":"gr10","nome":"Tocco amichevole con la mano dell'operatore","zona":"mani-braccia","macro":"gradimento","descrizione":"Il soggetto tocca il braccio o la mano del mediatore.","interpretazione_mediazione":"Alleanza di lavoro consolidata. Attenzione a mantenere il ruolo professionale senza colludere."},
-      {"id":"gr11","nome":"Dito nell'orecchio o massaggio del padiglione auricolare","zona":"viso","macro":"gradimento","descrizione":"Inserimento di un dito nell'orecchio o lieve massaggio del padiglione. Emozione di tipo sessuale se il gesto è più intimo; massaggio semplice = emozione affettiva.","interpretazione_mediazione":"Attrazione o gradimento affettivo. In mediazione interpretare sempre come affettivo-professionale."},
-      {"id":"gr12","nome":"Sollevamento lieve della gonna stando seduta (femminile)","zona":"gambe-piedi","macro":"gradimento","descrizione":"La donna solleva leggermente l'orlo della gonna.","interpretazione_mediazione":"Il soggetto non ha timore di scoprirsi: i temi possono essere ampliati. Segnale di apertura su argomenti delicati."},
-      {"id":"gr13","nome":"Succhiare un dito / accarezzarsi i capelli","zona":"viso","macro":"gradimento","descrizione":"Gesti autoconsolatori. Espressione di bisogno affettivo, Es gratificato.","interpretazione_mediazione":"Bisogno affettivo attivo. La parte sta ricevendo conforto simbolico da ciò che sta accadendo in sessione."},
-      {"id":"gr14","nome":"Toccare la collana / succhiare penna o stanghetta occhiali","zona":"mani-braccia","macro":"gradimento","descrizione":"Oggetti vicini al viso toccati o succhiati.","interpretazione_mediazione":"Autostimolazione orale = gradimento dell'Es. La parte è rilassata e ricettiva."},
-      {"id":"gr15","nome":"Appoggiare l'indice sulle labbra / mordicchiare dita o unghie","zona":"viso","macro":"gradimento","descrizione":"Il dito indice vicino o sulle labbra.","interpretazione_mediazione":"Attenzione concentrata con carica affettiva. La parte sta elaborando un tema che la coinvolge positivamente."},
-      {"id":"gr16","nome":"Accavallare le gambe verso l'interlocutore","zona":"gambe-piedi","macro":"gradimento","descrizione":"Le gambe si accavallano nella direzione di chi parla.","interpretazione_mediazione":"Orientamento del bacino verso il mediatore = gradimento del ruolo del mediatore stesso."},
-      {"id":"gr17","nome":"Avvicinare a sé un oggetto mentre l'altro parla","zona":"mani-braccia","macro":"gradimento","descrizione":"Oggetto toccato o avvicinato mentre parla la persona che si gradisce.","interpretazione_mediazione":"Simbolicamente: 'voglio tenermi vicino quello che dice'. Buon segno di sintonia."},
-      {"id":"gr18","nome":"Sbottonare o abbottonare un bottone","zona":"mani-braccia","macro":"gradimento","descrizione":"Gioca con un bottone della camicia/camicetta.","interpretazione_mediazione":"Autostimolazione con sfumatura affettiva. Stato di rilassatezza."},
-      {"id":"gr19","nome":"Girarsi i capelli intorno al dito (femminile)","zona":"viso","macro":"gradimento","descrizione":"La donna arrotola una ciocca di capelli attorno al dito.","interpretazione_mediazione":"Segnala gradimento ma ANCHE tendenza a infantilizzare la ricerca di affetto. Valutare se è regressione momentanea o tratto strutturale."},
-      {"id":"gr20","nome":"Infilare le dita nella scollatura / giocherellare con penna o sigarette","zona":"mani-braccia","macro":"gradimento","descrizione":"Manipolazione continua di oggetti vicini al corpo.","interpretazione_mediazione":"Gradimento con tensione residua. La parte è interessata ma non completamente distesa."},
-      {"id":"gr21","nome":"Manipolare manico della borsa / toccare bordo del bicchiere","zona":"mani-braccia","macro":"gradimento","descrizione":"Il dito scorre sul bordo di un oggetto.","interpretazione_mediazione":"Gradimento con elaborazione in corso. La parte sta valutando se 'prendersi' quello che le viene offerto."}
+      {
+        "id": "gr01",
+        "nome": "Leccarsi le labbra",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "La lingua scorre sulle labbra. 'Vai avanti così che vai bene'. Si ha sensazione di acquolina, come preparandosi a digerire; la lingua va in cerca di particelle come se si gustassero sulle labbra.",
+        "interpretazione_mediazione": "L'argomento è gradito. La parte accoglie. Buon momento per proseguire sulla stessa linea argomentativa."
+      },
+      {
+        "id": "gr02",
+        "nome": "Portare le labbra all'interno (rossetto)",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Il soggetto chiude le labbra comprimendole leggermente, gesto tipico femminile riflesso del rossetto.",
+        "interpretazione_mediazione": "Apprezzamento con una sfumatura di calibrazione: 'mi interessa ma sto valutando'."
+      },
+      {
+        "id": "gr03",
+        "nome": "Mordicchiarsi le labbra o la lingua",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "'La cosa mi intriga'. Invito ad approfondire.",
+        "interpretazione_mediazione": "La parte vuole che si approfondisca. Segnale positivo per dedicare tempo al tema."
+      },
+      {
+        "id": "gr04",
+        "nome": "Bacio analogico",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Le labbra si avvicinano leggermente come in un bacio silenzioso. Massimo grado di gradimento dell'argomento.",
+        "interpretazione_mediazione": "Massima approvazione. Il tema proposto è perfettamente sintono con i bisogni della parte."
+      },
+      {
+        "id": "gr05",
+        "nome": "Pressione della lingua sulla zona maxillofacciale",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "La lingua preme l'interno della guancia creando un rigonfiamento.",
+        "interpretazione_mediazione": "Servizio analogico non completo (c'è un vincolo preesistente) ma migliorabile. Il successo non è scontato, serve ancora lavoro."
+      },
+      {
+        "id": "gr06",
+        "nome": "Accarezzamento delle labbra con dita, dorso mano o palmo",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Il soggetto si sfiora le labbra con le dita o con il dorso della mano.",
+        "interpretazione_mediazione": "L'argomento è gradito. Se accompagna uno sguardo sul mediatore, è la persona del mediatore a essere gradita. Controllare la congruenza."
+      },
+      {
+        "id": "gr07",
+        "nome": "Linguino",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Rotazione della punta della lingua sulle labbra o semplice esposizione della lingua. Segno più comune di gradimento. Se sul labbro superiore ha valenza erotica; se sul labbro inferiore indica interesse all'argomento.",
+        "interpretazione_mediazione": "Indice di maggior gradimento all'argomento proposto."
+      },
+      {
+        "id": "gr08",
+        "nome": "Variazione della postura in avanti del tronco",
+        "zona": "tronco-postura",
+        "macro": "gradimento",
+        "descrizione": "Il soggetto inclina il busto verso il mediatore o l'argomento.",
+        "interpretazione_mediazione": "Apertura attiva. La parte si sta proponendo nell'interazione."
+      },
+      {
+        "id": "gr09",
+        "nome": "Variazione della postura in avanti con tutto il corpo",
+        "zona": "tronco-postura",
+        "macro": "gradimento",
+        "descrizione": "Il soggetto si sporge con tutto il corpo.",
+        "interpretazione_mediazione": "Massimo segnale di disponibilità dell'Es. La parte è pienamente ingaggiata."
+      },
+      {
+        "id": "gr10",
+        "nome": "Tocco amichevole con la mano dell'operatore",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Il soggetto tocca il braccio o la mano del mediatore.",
+        "interpretazione_mediazione": "Alleanza di lavoro consolidata. Attenzione a mantenere il ruolo professionale senza colludere."
+      },
+      {
+        "id": "gr11",
+        "nome": "Dito nell'orecchio o massaggio del padiglione auricolare",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Inserimento di un dito nell'orecchio o lieve massaggio del padiglione. Emozione di tipo sessuale se il gesto è più intimo; massaggio semplice = emozione affettiva.",
+        "interpretazione_mediazione": "Attrazione o gradimento affettivo. In mediazione interpretare sempre come affettivo-professionale."
+      },
+      {
+        "id": "gr12",
+        "nome": "Sollevamento lieve della gonna stando seduta (femminile)",
+        "zona": "gambe-piedi",
+        "macro": "gradimento",
+        "descrizione": "La donna solleva leggermente l'orlo della gonna.",
+        "interpretazione_mediazione": "Il soggetto non ha timore di scoprirsi: i temi possono essere ampliati. Segnale di apertura su argomenti delicati."
+      },
+      {
+        "id": "gr13",
+        "nome": "Succhiare un dito / accarezzarsi i capelli",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Gesti autoconsolatori. Espressione di bisogno affettivo, Es gratificato.",
+        "interpretazione_mediazione": "Bisogno affettivo attivo. La parte sta ricevendo conforto simbolico da ciò che sta accadendo in sessione."
+      },
+      {
+        "id": "gr14",
+        "nome": "Toccare la collana / succhiare penna o stanghetta occhiali",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Oggetti vicini al viso toccati o succhiati.",
+        "interpretazione_mediazione": "Autostimolazione orale = gradimento dell'Es. La parte è rilassata e ricettiva."
+      },
+      {
+        "id": "gr15",
+        "nome": "Appoggiare l'indice sulle labbra / mordicchiare dita o unghie",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "Il dito indice vicino o sulle labbra.",
+        "interpretazione_mediazione": "Attenzione concentrata con carica affettiva. La parte sta elaborando un tema che la coinvolge positivamente."
+      },
+      {
+        "id": "gr16",
+        "nome": "Accavallare le gambe verso l'interlocutore",
+        "zona": "gambe-piedi",
+        "macro": "gradimento",
+        "descrizione": "Le gambe si accavallano nella direzione di chi parla.",
+        "interpretazione_mediazione": "Orientamento del bacino verso il mediatore = gradimento del ruolo del mediatore stesso."
+      },
+      {
+        "id": "gr17",
+        "nome": "Avvicinare a sé un oggetto mentre l'altro parla",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Oggetto toccato o avvicinato mentre parla la persona che si gradisce.",
+        "interpretazione_mediazione": "Simbolicamente: 'voglio tenermi vicino quello che dice'. Buon segno di sintonia."
+      },
+      {
+        "id": "gr18",
+        "nome": "Sbottonare o abbottonare un bottone",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Gioca con un bottone della camicia/camicetta.",
+        "interpretazione_mediazione": "Autostimolazione con sfumatura affettiva. Stato di rilassatezza."
+      },
+      {
+        "id": "gr19",
+        "nome": "Girarsi i capelli intorno al dito (femminile)",
+        "zona": "viso",
+        "macro": "gradimento",
+        "descrizione": "La donna arrotola una ciocca di capelli attorno al dito.",
+        "interpretazione_mediazione": "Segnala gradimento ma ANCHE tendenza a infantilizzare la ricerca di affetto. Valutare se è regressione momentanea o tratto strutturale."
+      },
+      {
+        "id": "gr20",
+        "nome": "Infilare le dita nella scollatura / giocherellare con penna o sigarette",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Manipolazione continua di oggetti vicini al corpo.",
+        "interpretazione_mediazione": "Gradimento con tensione residua. La parte è interessata ma non completamente distesa."
+      },
+      {
+        "id": "gr21",
+        "nome": "Manipolare manico della borsa / toccare bordo del bicchiere",
+        "zona": "mani-braccia",
+        "macro": "gradimento",
+        "descrizione": "Il dito scorre sul bordo di un oggetto.",
+        "interpretazione_mediazione": "Gradimento con elaborazione in corso. La parte sta valutando se 'prendersi' quello che le viene offerto."
+      }
     ]
   },
-
   "segnali_apertura": {
     "descrizione": "Atti che dimostrano che la parte sta aprendo il proprio sistema di difesa.",
     "gesti": [
-      {"id":"ap01","nome":"Disincrociare gambe e braccia","zona":"tronco-postura","macro":"apertura","descrizione":"Dopo un periodo iniziale di chiusura, la parte apre la postura.","interpretazione_mediazione":"Passaggio dal sistema difensivo a quello dialogico. Momento chiave: approfondire ciò che si stava trattando nel momento del disgelo."},
-      {"id":"ap02","nome":"Levarsi il cappotto/giacca dopo un po' che si interagisce","zona":"tronco-postura","macro":"apertura","descrizione":"Riduzione delle barriere fisiche.","interpretazione_mediazione":"Fiducia ambientale aumentata. La parte si sente al sicuro."},
-      {"id":"ap03","nome":"Levarsi gli occhiali dopo un poco di interazione","zona":"occhi-sguardo","macro":"apertura","descrizione":"Rimozione di una barriera visiva.","interpretazione_mediazione":"Apertura allo sguardo diretto. Buon momento per aumentare il contatto visivo caldo."},
-      {"id":"ap04","nome":"Levare un oggetto da davanti a sé","zona":"mani-braccia","macro":"apertura","descrizione":"Sposta borsa, documenti, bottiglietta dal centro del tavolo.","interpretazione_mediazione":"Riduzione della barriera simbolica. La parte sta invitando alla relazione."},
-      {"id":"ap05","nome":"Sospendere un'azione lasciando il braccio in catalessi","zona":"mani-braccia","macro":"apertura","descrizione":"Il soggetto ferma un gesto a metà perché qualcosa nel discorso ha catturato la sua attenzione.","interpretazione_mediazione":"Interesse cognitivo attivo. Quello che si è appena detto è importante per la parte."},
-      {"id":"ap06","nome":"Girare capo e/o busto verso lo stimolo","zona":"tronco-postura","macro":"apertura","descrizione":"Orientamento corporeo verso chi parla o verso l'argomento.","interpretazione_mediazione":"Segnale di attenzione piena."},
-      {"id":"ap07","nome":"Sollevare e tenere il piede sollevato","zona":"gambe-piedi","macro":"apertura","descrizione":"Indicatore di attenzione sospesa.","interpretazione_mediazione":"Alta attenzione. La parte sta elaborando attivamente."}
+      {
+        "id": "ap01",
+        "nome": "Disincrociare gambe e braccia",
+        "zona": "tronco-postura",
+        "macro": "apertura",
+        "descrizione": "Dopo un periodo iniziale di chiusura, la parte apre la postura.",
+        "interpretazione_mediazione": "Passaggio dal sistema difensivo a quello dialogico. Momento chiave: approfondire ciò che si stava trattando nel momento del disgelo."
+      },
+      {
+        "id": "ap02",
+        "nome": "Levarsi il cappotto/giacca dopo un po' che si interagisce",
+        "zona": "tronco-postura",
+        "macro": "apertura",
+        "descrizione": "Riduzione delle barriere fisiche.",
+        "interpretazione_mediazione": "Fiducia ambientale aumentata. La parte si sente al sicuro."
+      },
+      {
+        "id": "ap03",
+        "nome": "Levarsi gli occhiali dopo un poco di interazione",
+        "zona": "occhi-sguardo",
+        "macro": "apertura",
+        "descrizione": "Rimozione di una barriera visiva.",
+        "interpretazione_mediazione": "Apertura allo sguardo diretto. Buon momento per aumentare il contatto visivo caldo."
+      },
+      {
+        "id": "ap04",
+        "nome": "Levare un oggetto da davanti a sé",
+        "zona": "mani-braccia",
+        "macro": "apertura",
+        "descrizione": "Sposta borsa, documenti, bottiglietta dal centro del tavolo.",
+        "interpretazione_mediazione": "Riduzione della barriera simbolica. La parte sta invitando alla relazione."
+      },
+      {
+        "id": "ap05",
+        "nome": "Sospendere un'azione lasciando il braccio in catalessi",
+        "zona": "mani-braccia",
+        "macro": "apertura",
+        "descrizione": "Il soggetto ferma un gesto a metà perché qualcosa nel discorso ha catturato la sua attenzione.",
+        "interpretazione_mediazione": "Interesse cognitivo attivo. Quello che si è appena detto è importante per la parte."
+      },
+      {
+        "id": "ap06",
+        "nome": "Girare capo e/o busto verso lo stimolo",
+        "zona": "tronco-postura",
+        "macro": "apertura",
+        "descrizione": "Orientamento corporeo verso chi parla o verso l'argomento.",
+        "interpretazione_mediazione": "Segnale di attenzione piena."
+      },
+      {
+        "id": "ap07",
+        "nome": "Sollevare e tenere il piede sollevato",
+        "zona": "gambe-piedi",
+        "macro": "apertura",
+        "descrizione": "Indicatore di attenzione sospesa.",
+        "interpretazione_mediazione": "Alta attenzione. La parte sta elaborando attivamente."
+      }
     ]
   },
-
   "segnali_rifiuto": {
     "descrizione": "Atti che esprimono diniego, chiusura, opposizione rispetto a argomento/gesto/persona.",
     "nota_importante": "La negazione deve essere correttamente interpretata come verifica subliminale negativa (v.s.n.) e non come reale diniego. Il soggetto cerca di calibrare il servizio analogico ricevuto.",
     "gesti": [
-      {"id":"ri01","nome":"Sfregamento del naso con il dito orizzontale","zona":"viso","macro":"rifiuto","descrizione":"Dito che scorre sotto il naso con movimento orizzontale.","interpretazione_mediazione":"Rifiuto dell'argomento, del segno, del gesto o del comportamento espresso. Se in risposta a una domanda sul tema di interesse (es. appuntamento, proposta), è un no. Particolarmente attendibile nella crisi di coppia.","azione_mediatore":"Riformulare completamente. Chiedere cosa non va. Non insistere."},
-      {"id":"ri02","nome":"Sfregamento del naso con dito indice verticale","zona":"viso","macro":"rifiuto","descrizione":"Movimento dal basso verso l'alto, come a 'stappare' le narici.","interpretazione_mediazione":"L'operatore è stato ingannato. La parte sta dicendo qualcosa che non corrisponde alla realtà (bluff)."},
-      {"id":"ri03","nome":"Spostamento di oggetti","zona":"mani-braccia","macro":"rifiuto","descrizione":"Il soggetto allontana oggetti da sé (considerandoli negativi) o li spinge verso l'interlocutore.","interpretazione_mediazione":"Diniego simbolico attraverso oggetti. Attenzione: spingere verso l'interlocutore è forma di rifiuto attivo ('lo do a te')."},
-      {"id":"ri04","nome":"Atto dello spolverare/spazzare via","zona":"mani-braccia","macro":"rifiuto","descrizione":"Gesto come di pulire via briciole o polvere inesistenti.","interpretazione_mediazione":"Rifiuto/opposizione al discorso o al gesto."},
-      {"id":"ri05","nome":"Atto del ripulirsi/spolverarsi","zona":"mani-braccia","macro":"rifiuto","descrizione":"'Grazie, non mi interessa.' Se accompagnato da stizza: rifiuto netto e la ritirata è opportuna."},
-      {"id":"ri06","nome":"Raschiamento della gola","zona":"voce-suono","macro":"rifiuto","tensione_pct":100,"descrizione":"Si cerca di espellere simbolicamente argomento, persona, gesto.","interpretazione_mediazione":"Forte tensione emotiva con rifiuto. Segnale di massima attenzione."},
-      {"id":"ri07","nome":"Braccia conserte e gambe accavallate (ginocchia NON verso operatore)","zona":"tronco-postura","macro":"chiusura","descrizione":"Atto che può essere innescato da sensazioni generiche (freddo, stanchezza) ma di solito segnala: non apertura, forte timidezza, introversione, supponenza, autoprotezione.","interpretazione_mediazione":"Il sistema difensivo è attivato. Attenzione: se persiste dopo tentativi di apertura, è barriera strutturale (adattamento schizoide/paranoide)."},
-      {"id":"ri08","nome":"Sollevare gli occhiali","zona":"occhi-sguardo","macro":"rifiuto","descrizione":"Indica incredulità.","interpretazione_mediazione":"La parte non crede a quello che sta sentendo. Fornire prove/dettagli concreti."},
-      {"id":"ri09","nome":"Ascoltare tenendo la mano davanti all'orecchio","zona":"mani-braccia","macro":"rifiuto","descrizione":"Chiusura simbolica dell'ascolto.","interpretazione_mediazione":"La parte si sta proteggendo da ciò che sente. Rallentare, ridurre stimolazione."},
-      {"id":"ri10","nome":"Levarsi qualcosa dalla zona lacrimale","zona":"viso","macro":"rifiuto","descrizione":"Come a togliere un granello immaginario dall'angolo dell'occhio.","interpretazione_mediazione":"Perplessità. Riformulare, portare esempi concreti."},
-      {"id":"ri11","nome":"Sollevarsi/grattarsi il sopracciglio","zona":"viso","macro":"rifiuto","tensione_pct":40,"descrizione":"Mano che va al sopracciglio.","interpretazione_mediazione":"Perplessità. La parte ha bisogno di chiarimento."},
-      {"id":"ri12","nome":"Tenere sollevato durante l'ascolto il labbro inferiore","zona":"viso","macro":"rifiuto","descrizione":"Labbro inferiore spinto in fuori mentre si ascolta.","interpretazione_mediazione":"Dubbio, disappunto trattenuto. Esplorare esplicitamente: 'Vedo che qualcosa non convince.'"},
-      {"id":"ri13","nome":"Grattarsi la fronte guardando l'interlocutore","zona":"viso","macro":"rifiuto","tensione_pct":30,"descrizione":"Grattamento della fronte mantenendo il contatto visivo.","interpretazione_mediazione":"Rifiuto con sfumatura di dubbio/perplessità. Diverso dal grattamento fronte generico: qui c'è sfida."},
-      {"id":"ri14","nome":"Grattarsi intorno all'orecchio con sguardo inespressivo","zona":"viso","macro":"rifiuto","descrizione":"Grattamento retroauricolare senza espressione.","interpretazione_mediazione":"Non riconoscimento dell'autorità di chi parla."},
-      {"id":"ri15","nome":"Grattarsi lo zigomo o a lato dello zigomo","zona":"viso","macro":"rifiuto","descrizione":"Grattamento dello zigomo.","interpretazione_mediazione":"Disaccordo trattenuto."},
-      {"id":"ri16","nome":"Scostarsi lateralmente","zona":"tronco-postura","macro":"rifiuto","descrizione":"Il busto si sposta lateralmente rispetto all'operatore.","interpretazione_mediazione":"Disallineamento intenzionale: la parte si sta disimpegnando."},
-      {"id":"ri17","nome":"Evitare lo sguardo","zona":"occhi-sguardo","macro":"rifiuto","descrizione":"Il soggetto non guarda più l'interlocutore.","interpretazione_mediazione":"Da distinguere: fuga simpatica (con altri segnali di attivazione) vs fuga dorsovagale (con congelamento). In entrambi i casi: pausa."},
-      {"id":"ri18","nome":"Porre le mani sui fianchi quando si ascolta","zona":"mani-braccia","macro":"rifiuto","descrizione":"Postura a manico di brocca mentre l'altro parla.","interpretazione_mediazione":"Sfida, autoaffermazione difensiva. Attenzione: tipico adattamento paranoide e tipo 8."},
-      {"id":"ri19","nome":"Fare dei passi indietro / portare indietro la sedia","zona":"gambe-piedi","macro":"rifiuto","descrizione":"Allontanamento fisico.","interpretazione_mediazione":"Bisogno concreto di distanza. Rispettare."},
-      {"id":"ri20","nome":"Portare i piedi all'indietro sotto la sedia","zona":"gambe-piedi","macro":"rifiuto","descrizione":"I piedi vanno sotto la sedia.","interpretazione_mediazione":"Preparazione fisiologica alla fuga. La parte sta pensando di andarsene."},
-      {"id":"ri21","nome":"Portare il busto in avanti e alzare i piedi come per andarsene","zona":"tronco-postura","macro":"rifiuto","descrizione":"Preparazione dell'uscita.","interpretazione_mediazione":"Ultimissimo momento per salvare la sessione. Direttamente: 'Vedo che sta pensando di andarsene. Possiamo fermarci cinque minuti?'"}
+      {
+        "id": "ri01",
+        "nome": "Sfregamento del naso con il dito orizzontale",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Dito che scorre sotto il naso con movimento orizzontale.",
+        "interpretazione_mediazione": "Rifiuto dell'argomento, del segno, del gesto o del comportamento espresso. Se in risposta a una domanda sul tema di interesse (es. appuntamento, proposta), è un no. Particolarmente attendibile nella crisi di coppia.",
+        "azione_mediatore": "Riformulare completamente. Chiedere cosa non va. Non insistere."
+      },
+      {
+        "id": "ri02",
+        "nome": "Sfregamento del naso con dito indice verticale",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Movimento dal basso verso l'alto, come a 'stappare' le narici.",
+        "interpretazione_mediazione": "L'operatore è stato ingannato. La parte sta dicendo qualcosa che non corrisponde alla realtà (bluff)."
+      },
+      {
+        "id": "ri03",
+        "nome": "Spostamento di oggetti",
+        "zona": "mani-braccia",
+        "macro": "rifiuto",
+        "descrizione": "Il soggetto allontana oggetti da sé (considerandoli negativi) o li spinge verso l'interlocutore.",
+        "interpretazione_mediazione": "Diniego simbolico attraverso oggetti. Attenzione: spingere verso l'interlocutore è forma di rifiuto attivo ('lo do a te')."
+      },
+      {
+        "id": "ri04",
+        "nome": "Atto dello spolverare/spazzare via",
+        "zona": "mani-braccia",
+        "macro": "rifiuto",
+        "descrizione": "Gesto come di pulire via briciole o polvere inesistenti.",
+        "interpretazione_mediazione": "Rifiuto/opposizione al discorso o al gesto."
+      },
+      {
+        "id": "ri05",
+        "nome": "Atto del ripulirsi/spolverarsi",
+        "zona": "mani-braccia",
+        "macro": "rifiuto",
+        "descrizione": "'Grazie, non mi interessa.' Se accompagnato da stizza: rifiuto netto e la ritirata è opportuna."
+      },
+      {
+        "id": "ri06",
+        "nome": "Raschiamento della gola",
+        "zona": "voce-suono",
+        "macro": "rifiuto",
+        "tensione_pct": 100,
+        "descrizione": "Si cerca di espellere simbolicamente argomento, persona, gesto.",
+        "interpretazione_mediazione": "Forte tensione emotiva con rifiuto. Segnale di massima attenzione."
+      },
+      {
+        "id": "ri07",
+        "nome": "Braccia conserte e gambe accavallate (ginocchia NON verso operatore)",
+        "zona": "tronco-postura",
+        "macro": "chiusura",
+        "descrizione": "Atto che può essere innescato da sensazioni generiche (freddo, stanchezza) ma di solito segnala: non apertura, forte timidezza, introversione, supponenza, autoprotezione.",
+        "interpretazione_mediazione": "Il sistema difensivo è attivato. Attenzione: se persiste dopo tentativi di apertura, è barriera strutturale (adattamento schizoide/paranoide)."
+      },
+      {
+        "id": "ri08",
+        "nome": "Sollevare gli occhiali",
+        "zona": "occhi-sguardo",
+        "macro": "rifiuto",
+        "descrizione": "Indica incredulità.",
+        "interpretazione_mediazione": "La parte non crede a quello che sta sentendo. Fornire prove/dettagli concreti."
+      },
+      {
+        "id": "ri09",
+        "nome": "Ascoltare tenendo la mano davanti all'orecchio",
+        "zona": "mani-braccia",
+        "macro": "rifiuto",
+        "descrizione": "Chiusura simbolica dell'ascolto.",
+        "interpretazione_mediazione": "La parte si sta proteggendo da ciò che sente. Rallentare, ridurre stimolazione."
+      },
+      {
+        "id": "ri10",
+        "nome": "Levarsi qualcosa dalla zona lacrimale",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Come a togliere un granello immaginario dall'angolo dell'occhio.",
+        "interpretazione_mediazione": "Perplessità. Riformulare, portare esempi concreti."
+      },
+      {
+        "id": "ri11",
+        "nome": "Sollevarsi/grattarsi il sopracciglio",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "tensione_pct": 40,
+        "descrizione": "Mano che va al sopracciglio.",
+        "interpretazione_mediazione": "Perplessità. La parte ha bisogno di chiarimento."
+      },
+      {
+        "id": "ri12",
+        "nome": "Tenere sollevato durante l'ascolto il labbro inferiore",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Labbro inferiore spinto in fuori mentre si ascolta.",
+        "interpretazione_mediazione": "Dubbio, disappunto trattenuto. Esplorare esplicitamente: 'Vedo che qualcosa non convince.'"
+      },
+      {
+        "id": "ri13",
+        "nome": "Grattarsi la fronte guardando l'interlocutore",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "tensione_pct": 30,
+        "descrizione": "Grattamento della fronte mantenendo il contatto visivo.",
+        "interpretazione_mediazione": "Rifiuto con sfumatura di dubbio/perplessità. Diverso dal grattamento fronte generico: qui c'è sfida."
+      },
+      {
+        "id": "ri14",
+        "nome": "Grattarsi intorno all'orecchio con sguardo inespressivo",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Grattamento retroauricolare senza espressione.",
+        "interpretazione_mediazione": "Non riconoscimento dell'autorità di chi parla."
+      },
+      {
+        "id": "ri15",
+        "nome": "Grattarsi lo zigomo o a lato dello zigomo",
+        "zona": "viso",
+        "macro": "rifiuto",
+        "descrizione": "Grattamento dello zigomo.",
+        "interpretazione_mediazione": "Disaccordo trattenuto."
+      },
+      {
+        "id": "ri16",
+        "nome": "Scostarsi lateralmente",
+        "zona": "tronco-postura",
+        "macro": "rifiuto",
+        "descrizione": "Il busto si sposta lateralmente rispetto all'operatore.",
+        "interpretazione_mediazione": "Disallineamento intenzionale: la parte si sta disimpegnando."
+      },
+      {
+        "id": "ri17",
+        "nome": "Evitare lo sguardo",
+        "zona": "occhi-sguardo",
+        "macro": "rifiuto",
+        "descrizione": "Il soggetto non guarda più l'interlocutore.",
+        "interpretazione_mediazione": "Da distinguere: fuga simpatica (con altri segnali di attivazione) vs fuga dorsovagale (con congelamento). In entrambi i casi: pausa."
+      },
+      {
+        "id": "ri18",
+        "nome": "Porre le mani sui fianchi quando si ascolta",
+        "zona": "mani-braccia",
+        "macro": "rifiuto",
+        "descrizione": "Postura a manico di brocca mentre l'altro parla.",
+        "interpretazione_mediazione": "Sfida, autoaffermazione difensiva. Attenzione: tipico adattamento paranoide e tipo 8."
+      },
+      {
+        "id": "ri19",
+        "nome": "Fare dei passi indietro / portare indietro la sedia",
+        "zona": "gambe-piedi",
+        "macro": "rifiuto",
+        "descrizione": "Allontanamento fisico.",
+        "interpretazione_mediazione": "Bisogno concreto di distanza. Rispettare."
+      },
+      {
+        "id": "ri20",
+        "nome": "Portare i piedi all'indietro sotto la sedia",
+        "zona": "gambe-piedi",
+        "macro": "rifiuto",
+        "descrizione": "I piedi vanno sotto la sedia.",
+        "interpretazione_mediazione": "Preparazione fisiologica alla fuga. La parte sta pensando di andarsene."
+      },
+      {
+        "id": "ri21",
+        "nome": "Portare il busto in avanti e alzare i piedi come per andarsene",
+        "zona": "tronco-postura",
+        "macro": "rifiuto",
+        "descrizione": "Preparazione dell'uscita.",
+        "interpretazione_mediazione": "Ultimissimo momento per salvare la sessione. Direttamente: 'Vedo che sta pensando di andarsene. Possiamo fermarci cinque minuti?'"
+      }
     ]
   },
-
   "ansia_manifestazioni": {
     "descrizione": "Dalla slide 101: manifestazioni dirette dell'ansia. Attenzione: alcuni gesti rientrano anche in altre categorie ma se compaiono multipli in sequenza rapida = ansia conclamata.",
     "checklist": [
@@ -138,7 +648,6 @@
       "Coprirsi di macchie rosse sullo sterno"
     ]
   },
-
   "psicologia_analogica_tipi": {
     "descrizione": "La psicologia analogica classifica l'individuo secondo tre tipologie che corrispondono alle figure geometriche fondamentali. Si riconoscono osservando: la stretta di mano, il modo di toccarsi il viso con i polpastrelli, l'atteggiamento usato nel discorso.",
     "tre_segni_diagnostici": [
@@ -157,8 +666,15 @@
         "caratteristiche": "Facilmente colpevolizza gli altri, non offre soluzioni al problema. Penetrante, incisivo, offensivo, autoritario.",
         "uomo": "Schietto e verace. Ottimo padre di famiglia. Molto geloso. Sessualmente aggressivo. Teme gli uomini intorno alla sua donna. Insicuro e timido tutta la vita nonostante le apparenze.",
         "donna": "L'uomo è un ostacolo. Si mette in competizione. Ama il ruolo attivo. Impositiva e autoritaria. Prende iniziativa. Non aspetta il principe azzurro. Ama uomini istituzionali o trasgressivi. Aggressiva ma anche dolce.",
-        "enneatipo_probabile": [8, 1, 6],
-        "adattamento_probabile": ["paranoide", "ossessivo-compulsivo"],
+        "enneatipo_probabile": [
+          8,
+          1,
+          6
+        ],
+        "adattamento_probabile": [
+          "paranoide",
+          "ossessivo-compulsivo"
+        ],
         "come_gestire_in_mediazione": "NON scappare. Sfida leale: l'Asta rispetta chi non lo teme. Riconoscere la determinazione senza colludere con l'aggressività. Riportare sempre al problema, mai alla persona. Parole chiave: 'giustizia', 'lealtà', 'determinazione'."
       },
       {
@@ -171,8 +687,15 @@
         "caratteristiche": "Buon alleato dell'operatore perché è logico e suggerisce soluzioni al problema.",
         "uomo": "Manifesta antagonismo per la donna. Materno ed affettivo anche nella sessualità. Romantico. Non fa caso al tipo di donna basta che non lo prevarichi. Non accetta ruoli secondari.",
         "donna": "È l'emblema della dolcezza. Affettuosa e disponibile. Rappresenta la donna di altri tempi. Soffre per gelosia in amore. Può arrivare ad aggredire fisicamente la rivale e il compagno traditore.",
-        "enneatipo_probabile": [2, 9, 4],
-        "adattamento_probabile": ["istrionico", "passivo-aggressivo"],
+        "enneatipo_probabile": [
+          2,
+          9,
+          4
+        ],
+        "adattamento_probabile": [
+          "istrionico",
+          "passivo-aggressivo"
+        ],
         "come_gestire_in_mediazione": "Alleato naturale del mediatore. Usare domande aperte, brainstorming, proposta condivisa. Parole chiave: 'soluzioni', 'possibilità', 'insieme'."
       },
       {
@@ -187,72 +710,260 @@
         "ego_femmina_donna": "Sensuale e femminile. Molto attraente. Cerca di dimostrare come deve comportarsi una vera donna. Teme il giudizio e la competizione. Prende sbandate per uomini trasgressivi. Sposa un uomo rassicurante ma frequenta un trasgressivo. Teme la solitudine più di tutto.",
         "ego_maschio_uomo": "Soffre la presenza di altri uomini. Porta la donna in mezzo per litigare. La donna deve fargli credere di avere competitori. Sessualmente esuberante. Ama donne inaffidabili. Gravemente insicuro, terrore di essere omosex.",
         "ego_maschio_donna": "Diffidente dei maschi. Ama carrieristi e uomini di successo. Giudica rimproverando chi non lo è. Si trova meglio in ambienti maschili. Poco romantica. Se respinta da un vincente, si lega a un debole per rimproverarlo. È la donna imprenditrice.",
-        "enneatipo_probabile": [3, 5, 7],
-        "adattamento_probabile": ["ossessivo-compulsivo", "schizoide", "antisociale"],
+        "enneatipo_probabile": [
+          3,
+          5,
+          7
+        ],
+        "adattamento_probabile": [
+          "ossessivo-compulsivo",
+          "schizoide",
+          "antisociale"
+        ],
         "come_gestire_in_mediazione": "Attenzione: il Cerchio si protegge dietro l'immagine. Non attaccare mai l'immagine pubblica. Validare la competenza tecnica e professionale. Parole chiave: 'efficienza', 'immagine', 'risultato'."
       }
     ]
   },
-
   "stretta_di_mano": {
     "descrizione": "Alcuni studiosi americani hanno dimostrato che una stretta di mano determina nel nostro interlocutore un'impressione più favorevole. La stretta di mano rimane stabile nel tempo (dipende da personalità). La stretta di mano è forma di contatto tipicamente maschile; le donne avvolgono più che stringere.",
     "tipi": [
-      {"id":"sm01","nome":"Stretta ferma (mani calde e asciutte)","valenza":"positiva","significato":"Durature, vigorose, complete, con contatto oculare. Denota curiosità ed apertura mentale."},
-      {"id":"sm02","nome":"Stretta troppo breve","valenza":"negativa","significato":"Di solito associata a debolezza. Indica disagio per il contatto."},
-      {"id":"sm03","nome":"Stretta troppo lunga","valenza":"ambigua","significato":"Denota invadenza ed insicurezza."},
-      {"id":"sm04","nome":"Stretta salda","valenza":"positiva","significato":"Tipica della persona dominante, sicura e razionale."},
-      {"id":"sm05","nome":"Stretta a schiacciasassi","valenza":"negativa","significato":"Aggressività ed esibizionismo."},
-      {"id":"sm06","nome":"Mano sulla spalla dell'altro mentre si stringe la mano","valenza":"dominanza","significato":"Segnale di dominanza."},
-      {"id":"sm07","nome":"Dare la mano con palmo verso il basso","valenza":"dominanza","significato":"Torsione del polso per esporre il palmo dell'altro = dominanza."},
-      {"id":"sm08","nome":"Dare la mano col braccio rigido","valenza":"dominanza-distanza","significato":"Dominanza + mantenimento delle distanze."},
-      {"id":"sm09","nome":"Piegare schiena e chinare testa","valenza":"ambivalente","significato":"Può significare vicinanza ma anche dominanza per chi tira verso di sé."},
-      {"id":"sm10","nome":"Braccio accostato al tronco","valenza":"dominanza","significato":"Obbliga l'altro a farsi avanti."},
-      {"id":"sm11","nome":"Mano libera sulla spalla del seduto","valenza":"dominanza","significato":"Impedisce l'alzata dell'altro."},
-      {"id":"sm12","nome":"Tirare l'altro verso il basso durante la stretta","valenza":"sottomissione-dominanza","significato":"Indice di accettazione oppure di dominanza a seconda di chi tira."},
-      {"id":"sm13","nome":"Distogliere lo sguardo durante la stretta","valenza":"negativa","significato":"Indifferenza, snobismo."},
-      {"id":"sm14","nome":"Restare seduti mentre si stringe la mano","valenza":"negativa","significato":"Snobismo."},
-      {"id":"sm15","nome":"Mano destra lungo un fianco (dell'uomo)","valenza":"rifiuto","significato":"Segnala rifiuto del contatto."},
-      {"id":"sm16","nome":"Stringere dando solo la punta delle dita","valenza":"rifiuto-diffidenza","significato":"Rifiuto, diffidenza o richiesta di deferenza."},
-      {"id":"sm17","nome":"Stretta a morsa","valenza":"sfida","significato":"Segnale di sfida."},
-      {"id":"sm18","nome":"Afferrare le sole dita e strizzarle forte","valenza":"sfida","significato":"Sfida."},
-      {"id":"sm19","nome":"Fissare negli occhi molto a lungo durante la stretta","valenza":"sfida","significato":"Sfida."},
-      {"id":"sm20","nome":"Mano sudata","valenza":"stress","significato":"Implica stress: la variazione della temperatura produce sudore."},
-      {"id":"sm21","nome":"Mano fredda","valenza":"stress","significato":"Negli uomini indica stress. Nella donna e-oltre può essere indice di altre condizioni."}
+      {
+        "id": "sm01",
+        "nome": "Stretta ferma (mani calde e asciutte)",
+        "valenza": "positiva",
+        "significato": "Durature, vigorose, complete, con contatto oculare. Denota curiosità ed apertura mentale."
+      },
+      {
+        "id": "sm02",
+        "nome": "Stretta troppo breve",
+        "valenza": "negativa",
+        "significato": "Di solito associata a debolezza. Indica disagio per il contatto."
+      },
+      {
+        "id": "sm03",
+        "nome": "Stretta troppo lunga",
+        "valenza": "ambigua",
+        "significato": "Denota invadenza ed insicurezza."
+      },
+      {
+        "id": "sm04",
+        "nome": "Stretta salda",
+        "valenza": "positiva",
+        "significato": "Tipica della persona dominante, sicura e razionale."
+      },
+      {
+        "id": "sm05",
+        "nome": "Stretta a schiacciasassi",
+        "valenza": "negativa",
+        "significato": "Aggressività ed esibizionismo."
+      },
+      {
+        "id": "sm06",
+        "nome": "Mano sulla spalla dell'altro mentre si stringe la mano",
+        "valenza": "dominanza",
+        "significato": "Segnale di dominanza."
+      },
+      {
+        "id": "sm07",
+        "nome": "Dare la mano con palmo verso il basso",
+        "valenza": "dominanza",
+        "significato": "Torsione del polso per esporre il palmo dell'altro = dominanza."
+      },
+      {
+        "id": "sm08",
+        "nome": "Dare la mano col braccio rigido",
+        "valenza": "dominanza-distanza",
+        "significato": "Dominanza + mantenimento delle distanze."
+      },
+      {
+        "id": "sm09",
+        "nome": "Piegare schiena e chinare testa",
+        "valenza": "ambivalente",
+        "significato": "Può significare vicinanza ma anche dominanza per chi tira verso di sé."
+      },
+      {
+        "id": "sm10",
+        "nome": "Braccio accostato al tronco",
+        "valenza": "dominanza",
+        "significato": "Obbliga l'altro a farsi avanti."
+      },
+      {
+        "id": "sm11",
+        "nome": "Mano libera sulla spalla del seduto",
+        "valenza": "dominanza",
+        "significato": "Impedisce l'alzata dell'altro."
+      },
+      {
+        "id": "sm12",
+        "nome": "Tirare l'altro verso il basso durante la stretta",
+        "valenza": "sottomissione-dominanza",
+        "significato": "Indice di accettazione oppure di dominanza a seconda di chi tira."
+      },
+      {
+        "id": "sm13",
+        "nome": "Distogliere lo sguardo durante la stretta",
+        "valenza": "negativa",
+        "significato": "Indifferenza, snobismo."
+      },
+      {
+        "id": "sm14",
+        "nome": "Restare seduti mentre si stringe la mano",
+        "valenza": "negativa",
+        "significato": "Snobismo."
+      },
+      {
+        "id": "sm15",
+        "nome": "Mano destra lungo un fianco (dell'uomo)",
+        "valenza": "rifiuto",
+        "significato": "Segnala rifiuto del contatto."
+      },
+      {
+        "id": "sm16",
+        "nome": "Stringere dando solo la punta delle dita",
+        "valenza": "rifiuto-diffidenza",
+        "significato": "Rifiuto, diffidenza o richiesta di deferenza."
+      },
+      {
+        "id": "sm17",
+        "nome": "Stretta a morsa",
+        "valenza": "sfida",
+        "significato": "Segnale di sfida."
+      },
+      {
+        "id": "sm18",
+        "nome": "Afferrare le sole dita e strizzarle forte",
+        "valenza": "sfida",
+        "significato": "Sfida."
+      },
+      {
+        "id": "sm19",
+        "nome": "Fissare negli occhi molto a lungo durante la stretta",
+        "valenza": "sfida",
+        "significato": "Sfida."
+      },
+      {
+        "id": "sm20",
+        "nome": "Mano sudata",
+        "valenza": "stress",
+        "significato": "Implica stress: la variazione della temperatura produce sudore."
+      },
+      {
+        "id": "sm21",
+        "nome": "Mano fredda",
+        "valenza": "stress",
+        "significato": "Negli uomini indica stress. Nella donna e-oltre può essere indice di altre condizioni."
+      }
     ]
   },
-
   "postura_generale": {
     "descrizione": "Dalla slide 92: la postura da seduto/a è riccamente informativa. Segnali dai piedi (slide 87-88): molte informazioni arrivano dai piedi ma non possiamo guardarli di continuo.",
     "gesti": [
-      {"id":"po01","nome":"Talloni sollevati sotto la sedia con corpo proteso in avanti","zona":"gambe-piedi","macro":"tensione","descrizione":"I talloni non poggiano a terra.","interpretazione_mediazione":"Disagio attivo. La parte è in attivazione simpatica."},
-      {"id":"po02","nome":"Portare i piedi sotto la sedia","zona":"gambe-piedi","macro":"chiusura","descrizione":"Piedi nascosti sotto la sedia.","interpretazione_mediazione":"Impulso a nascondersi. Adattamento schizoide."},
-      {"id":"po03","nome":"Piedi/gambe/bacino in direzione diversa dal tronco","zona":"gambe-piedi","macro":"rifiuto","descrizione":"Il corpo è fisicamente 'scissione': il tronco dice una cosa, il bacino un'altra.","interpretazione_mediazione":"Desiderio di fuga. La parte è presente fisicamente ma sta cercando una via d'uscita."},
-      {"id":"po04","nome":"Piedi/gambe/bacino verso persona che parla (diverso dal tronco)","zona":"gambe-piedi","macro":"apertura","descrizione":"Il bacino è orientato verso chi parla pur mantenendo il tronco fermo.","interpretazione_mediazione":"Interesse per chi parla o per l'argomento."},
-      {"id":"po05","nome":"Corpo (o un piede) orientato verso l'uscita","zona":"gambe-piedi","macro":"rifiuto","descrizione":"La persona ha anticipato corporalmente l'uscita.","interpretazione_mediazione":"Desiderio di allontanarsi. Gli eventi emotivi precedenti hanno attivato evitamento."},
-      {"id":"po06","nome":"Tronco e gambe con allineamento diverso rispetto al gruppo","zona":"tronco-postura","macro":"chiusura","descrizione":"Nel setting congiunta: la parte non è allineata con gli altri.","interpretazione_mediazione":"Esclusione (sentita) o senso di non appartenenza. Inviterei esplicitamente: 'Sig. X, lei cosa pensa di quello che è stato detto?'"}
+      {
+        "id": "po01",
+        "nome": "Talloni sollevati sotto la sedia con corpo proteso in avanti",
+        "zona": "gambe-piedi",
+        "macro": "tensione",
+        "descrizione": "I talloni non poggiano a terra.",
+        "interpretazione_mediazione": "Disagio attivo. La parte è in attivazione simpatica."
+      },
+      {
+        "id": "po02",
+        "nome": "Portare i piedi sotto la sedia",
+        "zona": "gambe-piedi",
+        "macro": "chiusura",
+        "descrizione": "Piedi nascosti sotto la sedia.",
+        "interpretazione_mediazione": "Impulso a nascondersi. Adattamento schizoide."
+      },
+      {
+        "id": "po03",
+        "nome": "Piedi/gambe/bacino in direzione diversa dal tronco",
+        "zona": "gambe-piedi",
+        "macro": "rifiuto",
+        "descrizione": "Il corpo è fisicamente 'scissione': il tronco dice una cosa, il bacino un'altra.",
+        "interpretazione_mediazione": "Desiderio di fuga. La parte è presente fisicamente ma sta cercando una via d'uscita."
+      },
+      {
+        "id": "po04",
+        "nome": "Piedi/gambe/bacino verso persona che parla (diverso dal tronco)",
+        "zona": "gambe-piedi",
+        "macro": "apertura",
+        "descrizione": "Il bacino è orientato verso chi parla pur mantenendo il tronco fermo.",
+        "interpretazione_mediazione": "Interesse per chi parla o per l'argomento."
+      },
+      {
+        "id": "po05",
+        "nome": "Corpo (o un piede) orientato verso l'uscita",
+        "zona": "gambe-piedi",
+        "macro": "rifiuto",
+        "descrizione": "La persona ha anticipato corporalmente l'uscita.",
+        "interpretazione_mediazione": "Desiderio di allontanarsi. Gli eventi emotivi precedenti hanno attivato evitamento."
+      },
+      {
+        "id": "po06",
+        "nome": "Tronco e gambe con allineamento diverso rispetto al gruppo",
+        "zona": "tronco-postura",
+        "macro": "chiusura",
+        "descrizione": "Nel setting congiunta: la parte non è allineata con gli altri.",
+        "interpretazione_mediazione": "Esclusione (sentita) o senso di non appartenenza. Inviterei esplicitamente: 'Sig. X, lei cosa pensa di quello che è stato detto?'"
+      }
     ]
   },
-
   "paraverbale_voce": {
     "descrizione": "Schiarirsi la voce, cambiarne volume o tono, silenzio, colpire il tavolo, tamburellare o schioccare dita, ridere, singhiozzare, succhiare, sbuffare. La voce esprime emozioni, atteggiamenti, sensazioni.",
     "tabella": [
-      {"dimensione":"Tono acuto","significato":"sudditanza"},
-      {"dimensione":"Tono basso","significato":"dominanza"},
-      {"dimensione":"Volume alto","significato":"collera"},
-      {"dimensione":"Volume basso","significato":"timidezza"},
-      {"dimensione":"Cadenza molto veloce","significato":"ansia"},
-      {"dimensione":"Cadenza moderatamente veloce","significato":"energia, ambizione, estroversione"},
-      {"dimensione":"Cadenza lenta e monocorde","significato":"depressione, avvilimento"}
+      {
+        "dimensione": "Tono acuto",
+        "significato": "sudditanza"
+      },
+      {
+        "dimensione": "Tono basso",
+        "significato": "dominanza"
+      },
+      {
+        "dimensione": "Volume alto",
+        "significato": "collera"
+      },
+      {
+        "dimensione": "Volume basso",
+        "significato": "timidezza"
+      },
+      {
+        "dimensione": "Cadenza molto veloce",
+        "significato": "ansia"
+      },
+      {
+        "dimensione": "Cadenza moderatamente veloce",
+        "significato": "energia, ambizione, estroversione"
+      },
+      {
+        "dimensione": "Cadenza lenta e monocorde",
+        "significato": "depressione, avvilimento"
+      }
     ]
   },
-
   "prossemica": {
     "descrizione": "Lo studio di come l'uomo usa i microspazi (E. Hall). Ogni uomo è avvolto da una bolla; violare la distanza da parte di uno sconosciuto provoca tensione, frustrazione e stress.",
     "distanze": [
-      {"nome":"Intima","range":"0-45 cm","caratteristica":"si sente calore e odore, no sguardo diretto"},
-      {"nome":"Personale","range":"45-70 cm/1m","caratteristica":"amici o persone che si attraggono"},
-      {"nome":"Sociale","range":"1-3 m","caratteristica":"relazioni professionali"},
-      {"nome":"Pubblica","range":">3 m","caratteristica":"tra il proprio gruppo e gli estranei"}
+      {
+        "nome": "Intima",
+        "range": "0-45 cm",
+        "caratteristica": "si sente calore e odore, no sguardo diretto"
+      },
+      {
+        "nome": "Personale",
+        "range": "45-70 cm/1m",
+        "caratteristica": "amici o persone che si attraggono"
+      },
+      {
+        "nome": "Sociale",
+        "range": "1-3 m",
+        "caratteristica": "relazioni professionali"
+      },
+      {
+        "nome": "Pubblica",
+        "range": ">3 m",
+        "caratteristica": "tra il proprio gruppo e gli estranei"
+      }
     ],
     "fattori_influenza": [
       "Status sociale: più alto → maggiore distanza",
@@ -265,27 +976,160 @@
       "Storia personale: vittima di violenza → maggior sensibilità"
     ]
   },
-
   "mappa_correlazioni": {
     "descrizione": "Matrice di correlazione tra cluster di gesti e profili psicologici del portale olismo-integrato.it. Queste sono ipotesi interpretative da validare in sessione, non etichette diagnostiche.",
     "pattern_enneatipi": [
-      {"enneatipo":1,"gesti_frequenti":["Irrigidimento mascellare (85%)","Postura rigida e raddrizzata","Labbro inferiore sollevato","Sorriso controllato"],"indicatori":"Controllo corporeo costante, gesti precisi e contenuti, tensione etica trattenuta"},
-      {"enneatipo":2,"gesti_frequenti":["Accarezzarsi i capelli","Bacio analogico","Sollevamento della gonna/camicia (apertura)","Girarsi i capelli attorno al dito"],"indicatori":"Gestualità calda e avvolgente, ricerca frequente di contatto, segnali seduttivi non consapevoli"},
-      {"enneatipo":3,"gesti_frequenti":["Stretta di mano salda e rapida","Gesti a triangolo con le mani (Cerchio-ego)","Minimizzazione facciale","Postura eretta"],"indicatori":"Controllo dell'immagine, gesti efficienti senza sprechi, tendenza a mascherare emozioni"},
-      {"enneatipo":4,"gesti_frequenti":["Postura chiusa con tronco inclinato","Grattamento zona lacrimale","Bacio analogico","Sguardo malinconico prolungato"],"indicatori":"Espressività emotiva amplificata, gesti eleganti e simbolici"},
-      {"enneatipo":5,"gesti_frequenti":["Braccia conserte","Riduzione del volume fino all'afonia","Postura raccolta e minima","Evitamento dello sguardo"],"indicatori":"Economia estrema dei gesti, schermo fisico, tendenza al ritiro"},
-      {"enneatipo":6,"gesti_frequenti":["Sfarfallare le palpebre","Grattamento sopracciliare (40%)","Sollevare gli occhiali (incredulità)","Controllo ripetuto dei documenti"],"indicatori":"Gesti di vigilanza costante, micro-tensioni frequenti"},
-      {"enneatipo":7,"gesti_frequenti":["Iperattività motoria","Gesti ampi e veloci","Sorriso nervoso frequente","Cambi rapidi di postura"],"indicatori":"Gesticolazione espansiva, instabilità posturale, sorriso frequente"},
-      {"enneatipo":8,"gesti_frequenti":["Irrigidimento mascellare (85%)","Mani sui fianchi","Stretta di mano a morsa/dominanza","Dito puntato (Asta)"],"indicatori":"Gesti espansivi, territoriali, incisivi. Assertività corporea alta"},
-      {"enneatipo":9,"gesti_frequenti":["Postura rilassata quasi molle","Gesti lenti e armoniosi","Evitamento del conflitto gestuale","Sguardo tollerante"],"indicatori":"Economia energetica dei gesti, accondiscendenza posturale"}
+      {
+        "enneatipo": 1,
+        "gesti_frequenti": [
+          "Irrigidimento mascellare (85%)",
+          "Postura rigida e raddrizzata",
+          "Labbro inferiore sollevato",
+          "Sorriso controllato"
+        ],
+        "indicatori": "Controllo corporeo costante, gesti precisi e contenuti, tensione etica trattenuta"
+      },
+      {
+        "enneatipo": 2,
+        "gesti_frequenti": [
+          "Accarezzarsi i capelli",
+          "Bacio analogico",
+          "Sollevamento della gonna/camicia (apertura)",
+          "Girarsi i capelli attorno al dito"
+        ],
+        "indicatori": "Gestualità calda e avvolgente, ricerca frequente di contatto, segnali seduttivi non consapevoli"
+      },
+      {
+        "enneatipo": 3,
+        "gesti_frequenti": [
+          "Stretta di mano salda e rapida",
+          "Gesti a triangolo con le mani (Cerchio-ego)",
+          "Minimizzazione facciale",
+          "Postura eretta"
+        ],
+        "indicatori": "Controllo dell'immagine, gesti efficienti senza sprechi, tendenza a mascherare emozioni"
+      },
+      {
+        "enneatipo": 4,
+        "gesti_frequenti": [
+          "Postura chiusa con tronco inclinato",
+          "Grattamento zona lacrimale",
+          "Bacio analogico",
+          "Sguardo malinconico prolungato"
+        ],
+        "indicatori": "Espressività emotiva amplificata, gesti eleganti e simbolici"
+      },
+      {
+        "enneatipo": 5,
+        "gesti_frequenti": [
+          "Braccia conserte",
+          "Riduzione del volume fino all'afonia",
+          "Postura raccolta e minima",
+          "Evitamento dello sguardo"
+        ],
+        "indicatori": "Economia estrema dei gesti, schermo fisico, tendenza al ritiro"
+      },
+      {
+        "enneatipo": 6,
+        "gesti_frequenti": [
+          "Sfarfallare le palpebre",
+          "Grattamento sopracciliare (40%)",
+          "Sollevare gli occhiali (incredulità)",
+          "Controllo ripetuto dei documenti"
+        ],
+        "indicatori": "Gesti di vigilanza costante, micro-tensioni frequenti"
+      },
+      {
+        "enneatipo": 7,
+        "gesti_frequenti": [
+          "Iperattività motoria",
+          "Gesti ampi e veloci",
+          "Sorriso nervoso frequente",
+          "Cambi rapidi di postura"
+        ],
+        "indicatori": "Gesticolazione espansiva, instabilità posturale, sorriso frequente"
+      },
+      {
+        "enneatipo": 8,
+        "gesti_frequenti": [
+          "Irrigidimento mascellare (85%)",
+          "Mani sui fianchi",
+          "Stretta di mano a morsa/dominanza",
+          "Dito puntato (Asta)"
+        ],
+        "indicatori": "Gesti espansivi, territoriali, incisivi. Assertività corporea alta"
+      },
+      {
+        "enneatipo": 9,
+        "gesti_frequenti": [
+          "Postura rilassata quasi molle",
+          "Gesti lenti e armoniosi",
+          "Evitamento del conflitto gestuale",
+          "Sguardo tollerante"
+        ],
+        "indicatori": "Economia energetica dei gesti, accondiscendenza posturale"
+      }
     ],
     "pattern_adattamenti_AT": [
-      {"adattamento":"schizoide","gesti_frequenti":["Braccia conserte","Postura raccolta","Monosillabi","Congelamento"],"polivagale":"dorsovagale"},
-      {"adattamento":"antisociale","gesti_frequenti":["Iperattività motoria","Stretta di mano dominante","Minimizzazione","Gesti provocatori"],"polivagale":"simpatico"},
-      {"adattamento":"paranoide","gesti_frequenti":["Controllo documenti","Sospetto visivo","Mani sui fianchi","Rigidità mascellare"],"polivagale":"simpatico"},
-      {"adattamento":"passivo-aggressivo","gesti_frequenti":["Accondiscendenza verbale contraddetta da piedi/gambe divergenti","Sospirare","Lamento somatico"],"polivagale":"misto"},
-      {"adattamento":"ossessivo-compulsivo","gesti_frequenti":["Ripetizioni ossessive","Controllo ripetuto","Gesti precisi e ripetuti","Postura rigida"],"polivagale":"simpatico attenuato"},
-      {"adattamento":"istrionico","gesti_frequenti":["Pianto","Teatralità gestuale","Accarezzarsi","Gesti ampi"],"polivagale":"simpatico amplificato"}
+      {
+        "adattamento": "schizoide",
+        "gesti_frequenti": [
+          "Braccia conserte",
+          "Postura raccolta",
+          "Monosillabi",
+          "Congelamento"
+        ],
+        "polivagale": "dorsovagale"
+      },
+      {
+        "adattamento": "antisociale",
+        "gesti_frequenti": [
+          "Iperattività motoria",
+          "Stretta di mano dominante",
+          "Minimizzazione",
+          "Gesti provocatori"
+        ],
+        "polivagale": "simpatico"
+      },
+      {
+        "adattamento": "paranoide",
+        "gesti_frequenti": [
+          "Controllo documenti",
+          "Sospetto visivo",
+          "Mani sui fianchi",
+          "Rigidità mascellare"
+        ],
+        "polivagale": "simpatico"
+      },
+      {
+        "adattamento": "passivo-aggressivo",
+        "gesti_frequenti": [
+          "Accondiscendenza verbale contraddetta da piedi/gambe divergenti",
+          "Sospirare",
+          "Lamento somatico"
+        ],
+        "polivagale": "misto"
+      },
+      {
+        "adattamento": "ossessivo-compulsivo",
+        "gesti_frequenti": [
+          "Ripetizioni ossessive",
+          "Controllo ripetuto",
+          "Gesti precisi e ripetuti",
+          "Postura rigida"
+        ],
+        "polivagale": "simpatico attenuato"
+      },
+      {
+        "adattamento": "istrionico",
+        "gesti_frequenti": [
+          "Pianto",
+          "Teatralità gestuale",
+          "Accarezzarsi",
+          "Gesti ampi"
+        ],
+        "polivagale": "simpatico amplificato"
+      }
     ]
   }
 }

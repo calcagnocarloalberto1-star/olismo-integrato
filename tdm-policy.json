@@ -1,0 +1,150 @@
+{
+  "@context": "https://www.w3.org/ns/odrl.jsonld",
+  "@type": "Set",
+  "uid": "https://olismo-integrato.it/tdm-policy.json",
+  "profile": "https://www.w3.org/community/reports/tdmrep/CG-FINAL-tdmrep-20240202/",
+  "_metadata": {
+    "title": "Text and Data Mining Reservation Policy — Olismo Integrato",
+    "owner": "Avv. Carlo Alberto Calcagno",
+    "owner_country": "IT",
+    "site": "https://olismo-integrato.it",
+    "legal_basis": [
+      "L. 633/1941 art. 70-quater (Italia)",
+      "Direttiva (UE) 2019/790 art. 4 (Direttiva DSM)",
+      "D.Lgs. 8 novembre 2021 n. 177 (recepimento italiano)",
+      "Regolamento (UE) 2024/1689 (AI Act)",
+      "L. 633/1941 artt. 102-bis e 102-ter (banca dati)"
+    ],
+    "issued": "2026-04-18",
+    "version": "1.0",
+    "lang": "it"
+  },
+  "permission": [
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "read",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "personalUse"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "read",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "search-engine-indexing"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "read",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "academic-citation"
+        }
+      ],
+      "duty": [
+        {
+          "action": "attribute",
+          "constraint": [
+            {
+              "leftOperand": "creator",
+              "operator": "eq",
+              "rightOperand": "Avv. Carlo Alberto Calcagno"
+            },
+            {
+              "leftOperand": "source",
+              "operator": "eq",
+              "rightOperand": "https://olismo-integrato.it"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "prohibition": [
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "extract",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "ai-training"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "extract",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "machine-learning"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "extract",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "fine-tuning"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "extract",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "rag-retrieval-augmented-generation"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "extract",
+      "constraint": [
+        {
+          "leftOperand": "purpose",
+          "operator": "eq",
+          "rightOperand": "embedding-generation"
+        }
+      ]
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "reproduce"
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "derive"
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "distribute"
+    },
+    {
+      "target": "https://olismo-integrato.it/*",
+      "action": "commercialize"
+    }
+  ],
+  "tdm-reservation": 1,
+  "tdm-policy": "https://olismo-integrato.it/termini-uso.html",
+  "_human_readable_notice": "Tutti i contenuti del portale olismo-integrato.it sono protetti da copyright (L. 633/1941). L'autore esercita espressamente la riserva ex art. 70-quater L. 633/1941 e art. 4 Direttiva 2019/790: VIETATO l'uso dei contenuti per addestramento di modelli di intelligenza artificiale, fine-tuning, RAG, embedding o qualsiasi forma di alimentazione di sistemi AI. Per richieste di licenza: vedi pagina chi-sono.html."
+}

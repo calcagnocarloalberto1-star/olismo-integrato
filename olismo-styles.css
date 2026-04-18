@@ -2764,7 +2764,7 @@ body.dark .dark-toggle{background:#3a3632}
 .mega-item-ai-fes .mi-ic{color:#8b78e6}
 .mega-item-ai-bush .mi-ic{color:#c8813a}
 .mega-item-small{padding:.35rem .55rem;font-size:.72rem;color:var(--ink3)}
-.mega-backdrop{display:none;position:fixed;inset:0;z-index:9997;background:rgba(42,37,32,.35);backdrop-filter:blur(3px)}
+.mega-backdrop{display:none;position:fixed;inset:0;z-index:49;background:rgba(42,37,32,.35);backdrop-filter:blur(3px)}
 body.mega-open .mega-backdrop{display:block}
 @media (max-width:1100px){.mega-panel{grid-template-columns:repeat(3,1fr);width:min(96vw,920px)}}
 @media (max-width:768px){.mega-menu-wrap{display:none}}

@@ -34,16 +34,20 @@ a:hover{text-decoration:underline}
 em{color:var(--med3);font-style:italic}
 
 /* ─── Header ─── */
-.top-bar{
-  position:sticky;top:0;z-index:100;
-  background:rgba(249,245,239,.96);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);padding:.8rem 0
-}
-.top-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;justify-content:center}
-.top-logo{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink)}
+.top-bar{position:sticky;top:0;z-index:100;background:rgba(249,245,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.7rem 0}
+.top-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;justify-content:space-between;flex-wrap:wrap}
+.top-logo{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none}
 .top-logo-dot{width:18px;height:18px;border-radius:50%;background:var(--gold)}
-.top-home{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:var(--gold);color:white;border-radius:20px;font-size:.78rem;font-weight:500;transition:transform .2s}
+.top-nav{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
+.top-nav-link{padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:var(--med2);text-decoration:none;border-radius:6px;transition:background .2s;white-space:nowrap}
+.top-nav-link:hover{background:#faf5ff;text-decoration:none}
+.top-nav-link.current{background:var(--med2);color:white}
+.top-nav-link.emp{color:#0f3d2e}
+.top-nav-link.emp:hover{background:#ecfdf5}
+.top-nav-link.emp.current{background:#1a6b4f;color:white}
+.top-home{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:var(--gold);color:white;border-radius:20px;font-size:.78rem;font-weight:500;transition:transform .2s;text-decoration:none}
 .top-home:hover{transform:translateY(-1px);text-decoration:none}
+@media(max-width:780px){.top-nav{order:3;width:100%;justify-content:center;border-top:1px solid var(--border);padding-top:.5rem;margin-top:.3rem}}
 
 /* ─── Hero ─── */
 .hero{
@@ -184,6 +188,12 @@ details.ex-list .ex-content{padding:0 1.2rem 1rem;font-size:.86rem;line-height:1
 <div class="top-bar">
   <div class="top-container">
     <a href="index.html" class="top-logo"><span class="top-logo-dot"></span> Olismo Integrato</a>
+    <nav class="top-nav" aria-label="Strumenti mediazione">
+      <a href="consulente-mediatore.html" class="top-nav-link current">⚖ Consulente</a>
+      <a href="empowerment-mediazione.html" class="top-nav-link emp">🌿 Empowerment</a>
+      <a href="matrice-svalutazione.html" class="top-nav-link">⊘ Matrice</a>
+      <a href="danza.html" class="top-nav-link">⚡ Danza</a>
+    </nav>
     <a href="index.html" class="top-home">← Home</a>
   </div>
 </div>
@@ -509,7 +519,7 @@ details.ex-list .ex-content{padding:0 1.2rem 1rem;font-size:.86rem;line-height:1
 <footer class="footer">
   <p><strong>Olismo Integrato</strong> — Avv. Carlo Alberto Calcagno</p>
   <p>Portale gratuito di discipline olistiche e strumenti di mediazione.</p>
-  <p style="margin-top:.8rem"><a href="index.html">Home</a> · <a href="matrice-svalutazione.html">Matrice Svalutazione</a> · <a href="danza.html">Danza del Conflitto</a> · <a href="chi-sono.html">Chi sono</a></p>
+  <p style="margin-top:.8rem"><a href="index.html">Home</a> · <a href="empowerment-mediazione.html">🌿 Empowerment Mediazione</a> · <a href="matrice-svalutazione.html">⊘ Matrice Svalutazione</a> · <a href="danza.html">⚡ Danza del Conflitto</a> · <a href="at-adattamenti.html">⬟ Adattamenti AT</a> · <a href="enneagram.html">✦ Enneatipi</a> · <a href="chi-sono.html">Chi sono</a></p>
 </footer>
 
 <script>

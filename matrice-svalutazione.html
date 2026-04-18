@@ -632,15 +632,19 @@ details.examples-list .ex-content {
 <body>
 
 <!-- HEADER -->
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.7rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
     <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
       <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
       <span>Olismo Integrato</span>
     </a>
-    <nav>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    <nav style="display:flex;align-items:center;gap:.3rem;flex-wrap:wrap" aria-label="Strumenti mediazione">
+      <a href="consulente-mediatore.html" style="padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:#4a2a6a;text-decoration:none;border-radius:6px;white-space:nowrap;transition:background .2s" onmouseover="this.style.background='#faf5ff'" onmouseout="this.style.background=''">⚖ Consulente</a>
+      <a href="empowerment-mediazione.html" style="padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:#0f3d2e;text-decoration:none;border-radius:6px;white-space:nowrap;transition:background .2s" onmouseover="this.style.background='#ecfdf5'" onmouseout="this.style.background=''">🌿 Empowerment</a>
+      <a href="matrice-svalutazione.html" style="padding:.4rem .8rem;font-size:.78rem;font-weight:600;color:white;background:#6a4a8a;text-decoration:none;border-radius:6px;white-space:nowrap">⊘ Matrice</a>
+      <a href="danza.html" style="padding:.4rem .8rem;font-size:.78rem;font-weight:500;color:#4a2a6a;text-decoration:none;border-radius:6px;white-space:nowrap;transition:background .2s" onmouseover="this.style.background='#faf5ff'" onmouseout="this.style.background=''">⚡ Danza</a>
     </nav>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
   </div>
 </header>
 
@@ -1048,7 +1052,9 @@ details.examples-list .ex-content {
     <div style="font-size:.82rem;color:var(--gold);margin-bottom:1.5rem">Portale olistico di Carlo Alberto Calcagno</div>
     <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
       <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
-      <a href="danza.html" style="color:var(--gold);text-decoration:none">🕊 Danza del conflitto</a>
+      <a href="consulente-mediatore.html" style="color:var(--gold);text-decoration:none">⚖ Consulente Mediatore</a>
+      <a href="empowerment-mediazione.html" style="color:var(--gold);text-decoration:none">🌿 Empowerment</a>
+      <a href="danza.html" style="color:var(--gold);text-decoration:none">⚡ Danza del Conflitto</a>
       <a href="at-adattamenti.html" style="color:var(--gold);text-decoration:none">⬟ Adattamenti AT</a>
       <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
     </div>

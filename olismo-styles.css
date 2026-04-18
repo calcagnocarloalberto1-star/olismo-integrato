@@ -3388,8 +3388,36 @@ nav {
 .mega-item-ai-fes .mi-ic { color: #8b78e6 !important; }
 .mega-item-ai-bush .mi-ic { color: #c8813a !important; }
 
-/* BACKDROP: scurisci di più per separare il menu dal contenuto */
+/* BACKDROP: rimuovi BLUR (rovinava la leggibilità), scurisci tantissimo */
 .mega-backdrop {
-  background: rgba(42,37,32,.55) !important;
-  backdrop-filter: blur(4px) !important;
+  background: rgba(20,15,10,.78) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* PANEL: rinforza ulteriormente lo stacco visivo */
+.mega-panel {
+  background: #ffffff !important;
+  border: 2px solid #b8935a !important;
+  box-shadow: 0 30px 100px rgba(0,0,0,.35), 0 0 0 1px rgba(184,147,90,.2) !important;
+}
+
+/* Forza opacità 100% del menu (combatte qualsiasi animation) */
+.mega-panel,
+.mega-panel * {
+  opacity: 1 !important;
+}
+
+/* Annulla qualsiasi filter o backdrop-filter sul menu */
+.mega-panel,
+.mega-panel *,
+.mega-col,
+.mega-item,
+.mi-body,
+.mi-body strong,
+.mi-body em,
+.mi-ic {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }

@@ -3055,3 +3055,155 @@ body.mob-open {
   justify-content: center;
   margin-top: 1.5rem;
 }
+
+
+/* ═════════ FIX CRITICI v2 — HERO Z-INDEX + HEADER UX ═════════ */
+
+/* HERO: assicura che il contenuto sia SOPRA l'overlay e i circles */
+#hero {
+  position: relative !important;
+}
+.hero-overlay {
+  z-index: 1 !important;
+  pointer-events: none !important;  /* CRITICO: l'overlay non blocca i click */
+}
+.hero-bg-circle {
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+.hero-container {
+  position: relative !important;
+  z-index: 10 !important;  /* SOPRA tutto */
+}
+.hero-ctas {
+  position: relative !important;
+  z-index: 10 !important;
+}
+.hero-ctas a.btn-gold,
+.hero-ctas a.btn-ghost {
+  position: relative !important;
+  z-index: 11 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* CTAs migliorate: contrasto e leggibilità */
+.hero-ctas a.btn-gold {
+  background: var(--gold) !important;
+  color: white !important;
+  border: 2px solid var(--gold) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 0.95rem 2rem !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 20px rgba(184,147,90,0.35) !important;
+  transition: all 0.2s ease !important;
+}
+.hero-ctas a.btn-gold:hover {
+  background: #a07840 !important;
+  border-color: #a07840 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 28px rgba(184,147,90,0.5) !important;
+}
+
+.hero-ctas a.btn-ghost {
+  background: rgba(255,255,255,0.95) !important;
+  color: var(--ink) !important;
+  border: 2px solid white !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 0.95rem 2rem !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px !important;
+  text-shadow: none !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
+  transition: all 0.2s ease !important;
+}
+.hero-ctas a.btn-ghost:hover {
+  background: white !important;
+  color: var(--gold) !important;
+  border-color: var(--gold) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25) !important;
+}
+
+/* HEADER più pulito */
+#hdr {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(249,245,239,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+}
+.hdr-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.hdr-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.hdr-logo {
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.search-btn {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--ink2);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.search-btn:hover {
+  background: var(--gold);
+  color: white;
+  border-color: var(--gold);
+}
+@media (max-width: 768px) {
+  .search-btn { display: none !important; }
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+  .hdr-inner { padding: 0 1rem; }
+  .hdr-title { font-size: 1.05rem; }
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+    align-items: stretch !important;
+  }
+  .hero-ctas a.btn-gold,
+  .hero-ctas a.btn-ghost {
+    width: 100% !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 0.78rem !important;
+  }
+}

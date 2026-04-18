@@ -3207,3 +3207,46 @@ nav {
     font-size: 0.78rem !important;
   }
 }
+
+
+/* ═══ FIX HERO EYEBROW — perfetta centratura ═══ */
+.hero-eyebrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '' !important;
+  display: block !important;
+  width: 50px !important;
+  height: 1px !important;
+  background: var(--gold3) !important;
+  flex-shrink: 0 !important;
+}
+@media (max-width: 600px) {
+  .hero-eyebrow {
+    white-space: normal !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.25em !important;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    width: 25px !important;
+  }
+}
+
+/* Hero container deve essere centrato */
+.hero-container {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}

@@ -253,7 +253,91 @@ bush:[
   {id:"bush63",name:"Freshwater Mangrove",short:"Mangrovia d'Acqua Dolce",color:"#60a080",cat:"bush",funzione:"Apertura a nuove esperienze senza pregiudizi",disturbo:"Pregiudizi ereditati, rifiuto del nuovo",chakra:["c6","c4"],enneatipi:["e6","e1"],desc:"Per liberarsi dai pregiudizi ereditati che impediscono di sperimentare la vita liberamente e con mente aperta."},
   {id:"bush64",name:"Lichen",short:"Lichene",color:"#a8b880",cat:"bush",funzione:"Transizione tra vita e morte, accettazione",disturbo:"Attaccamento al corpo durante la transizione finale",chakra:["c7","c1"],enneatipi:["e5","e9"],desc:"Per chi sta attraversando la transizione verso la morte, o per i caregiver. Porta pace e accettazione nella transizione."},
   {id:"bush65",name:"Green Kangaroo Paw",short:"Zampa di Canguro Verde",color:"#80c040",cat:"bush",funzione:"Generosità autentica, dare senza bisogno di ritorno",disturbo:"Dare per ricevere, ingratitudine quando non si è ricambiati",chakra:["c4","c3"],enneatipi:["e2","e3"],desc:"Per trasformare il dare condizionato in vera generosità. Libera dalla necessità di ricevere in cambio di ciò che si dà."}
+],
+ingiunzioni: [
+  {id:'ing1',nome:'Non esistere',origine:'Caso del marito geloso del figlio perché cattura tutte le attenzioni della moglie. Genitori che esprimono pentimento per la nascita o trasmettono che la presenza del bambino è un peso.',permesso:'Esisti, sei benvenuto al mondo, hai il diritto di occupare il tuo spazio.',decisione_bambino:'Non sono benvenuto. Sarebbe meglio se non ci fossi. Devo guadagnarmi il diritto di esistere.',manifestazione_adulta:'Pensieri suicidari ricorrenti, comportamenti autodistruttivi, incidenti ripetuti, dipendenze gravi, depressione cronica.',adattamenti:'Tutti, ma soprattutto Schizoide e Antisociale'},
+  {id:'ing2',nome:'Non essere te stesso',origine:'Il papà voleva una femminuccia piuttosto che un maschio; oppure il paragone «sei tutto tuo zio Carlo». Genitori che proiettano sul figlio un ideale diverso da chi è.',permesso:'Sei perfetto così come sei. La tua identità autentica è benvenuta.',decisione_bambino:'Per essere amato devo essere qualcun altro. La mia vera identità è inaccettabile.',manifestazione_adulta:'Crisi di identità, falso sé, difficoltà a riconoscere desideri propri, conformismo cronico, sensazione di indossare una maschera.',adattamenti:'Istrionico'},
+  {id:'ing3',nome:'Non essere bambino',origine:'«Io ti sopporterò sino a quando ti comporterai da adulto». Genitori che pretendono maturità precoce, responsabilizzazione eccessiva, divieto di gioco e leggerezza.',permesso:'Puoi essere bambino. Hai diritto al gioco, alla spontaneità, alla protezione.',decisione_bambino:'Devo essere subito grande. La mia infanzia è un disturbo. Non posso permettermi di giocare.',manifestazione_adulta:'Iperresponsabilità, incapacità di rilassarsi, difficoltà a giocare e divertirsi, senso di colpa per il piacere, parentificazione.',adattamenti:'Ossessivo-compulsivo · Paranoide'},
+  {id:'ing4',nome:'Non crescere',origine:'I genitori che non si sentono più degni di valore se il bambino cresce perché li abbandona. Genitori che mantengono il figlio in posizione infantile per bisogno proprio.',permesso:'Puoi crescere. Sei capace di essere autonomo. Il tuo sviluppo è benvenuto.',decisione_bambino:'Se cresco perdo il loro amore. Devo restare piccolo per essere accettato.',manifestazione_adulta:'Difficoltà ad assumere responsabilità adulte, dipendenza prolungata dai genitori, ritardo nelle tappe vitali (carriera, autonomia, relazioni stabili), comportamenti regressivi.',adattamenti:'Istrionico · Passivo-aggressivo · Schizoide'},
+  {id:'ing5',nome:'Non riuscire',origine:'Genitore geloso dei risultati del figlio perché non ebbe le stesse opportunità (auto-sabotazione del figlio). O genitori che svalutano sistematicamente i successi del bambino.',permesso:'Puoi riuscire. I tuoi successi sono un dono per tutti, non una minaccia.',decisione_bambino:'Non devo superarli o li ferirò. È pericoloso avere successo.',manifestazione_adulta:'Auto-sabotaggio sistematico, fallimenti ripetuti vicino al traguardo, paralisi sul punto di concludere progetti importanti, incapacità di ricevere riconoscimenti.',adattamenti:'Passivo-aggressivo'},
+  {id:'ing6',nome:'Non farlo',origine:'«Qualunque cosa tu faccia può essere pericolosa» (un adulto che non sa scegliere). Genitori iperprotettivi che paralizzano l\'iniziativa del bambino.',permesso:'Puoi agire. Le tue iniziative sono valide. Sei competente nel mondo.',decisione_bambino:'Ogni azione è pericolosa. Meglio non muoversi. Non sono capace.',manifestazione_adulta:'Procrastinazione cronica, paralisi decisionale, paura di sbagliare, evitamento di rischi anche minimi, incapacità di iniziare cose nuove.',adattamenti:'Schizoide · Passivo-aggressivo · Antisociale'},
+  {id:'ing7',nome:'Non essere importante',origine:'«Puoi stare qui fino a che non sei importante». Da grande non riuscirà a parlare in pubblico, non chiederà mai di essere promosso. Genitori che reprimono ogni manifestazione di centralità o protagonismo del bambino.',permesso:'Sei importante. Hai diritto di essere visto, ascoltato, riconosciuto.',decisione_bambino:'Non devo emergere. Devo restare in secondo piano. La visibilità è pericolosa.',manifestazione_adulta:'Timidezza patologica, paura di parlare in pubblico, incapacità di chiedere promozioni o riconoscimenti, sabotaggio della propria visibilità, falsa modestia rigida.',adattamenti:'Istrionico · Ossessivo-compulsivo'},
+  {id:'ing8',nome:'Non appartenere',origine:'Genitori che fanno capire al figlio che è diverso dagli altri, difficile, timido. Famiglie isolate o che disprezzano il contesto sociale.',permesso:'Appartieni. Hai un posto in questo mondo. Sei parte di noi.',decisione_bambino:'Sono diverso dagli altri. Non c\'è un gruppo per me.',manifestazione_adulta:'Senso cronico di estraneità, isolamento sociale, difficoltà a entrare in gruppi, ricerca compulsiva di gruppi che però non sentirà mai propri.',adattamenti:'Schizoide · Paranoide'},
+  {id:'ing9',nome:'Non essere intimo',origine:'Genitori che non toccano il bambino o lo toccano di rado; ne verrà fuori una persona sempre in guardia. Famiglie con tabù del contatto fisico ed emotivo.',permesso:'Puoi essere intimo. Il contatto è sicuro. Puoi fidarti dell\'altro.',decisione_bambino:'L\'intimità è pericolosa o non esiste. Devo mantenere le distanze.',manifestazione_adulta:'Difficoltà nelle relazioni intime, paura del contatto fisico ed emotivo, rapporti superficiali ripetuti, sabotaggio delle relazioni profonde appena diventano vicine.',adattamenti:'Paranoide · Ossessivo-compulsivo · Antisociale · Passivo-aggressivo'},
+  {id:'ing10',nome:'Non stare bene (Non essere sano)',origine:'Caso del genitore che accorre dal bambino solo quando sta male; si ammala quando le cose vanno male sul lavoro. Attenzione condizionata alla malattia.',permesso:'Puoi stare bene. La salute è benvenuta. Hai diritto al benessere.',decisione_bambino:'Per essere amato devo essere malato o stare male. Il benessere è solitudine.',manifestazione_adulta:'Malattie ricorrenti, somatizzazioni, ipocondria, ricerca inconsapevole di sintomi, sabotaggio dei momenti di benessere, ansia quando le cose vanno bene.',adattamenti:'Schizoide'},
+  {id:'ing11',nome:'Non pensare',origine:'Genitore che sminuisce sempre il pensiero del figlio. «Non capisci nulla», «sei stupido», o pensiero del bambino sistematicamente ignorato.',permesso:'Puoi pensare. La tua mente è valida. Le tue idee meritano ascolto.',decisione_bambino:'Il mio pensiero non vale. Devo affidarmi agli altri o alle emozioni per decidere.',manifestazione_adulta:'Difficoltà di concentrazione, scelte impulsive o emotive, dipendenza dal pensiero altrui, evitamento di compiti analitici, autosvalutazione cognitiva.',adattamenti:'Istrionico · Schizoide · Antisociale'},
+  {id:'ing12',nome:'Non sentire',origine:'Genitori che soffocano le proprie emozioni («i bambini grandi non piangono»); non sentire la fame (problemi di alimentazione). Famiglie alessitimiche.',permesso:'Puoi sentire. Le tue emozioni e sensazioni sono valide e benvenute.',decisione_bambino:'Le emozioni sono pericolose. Devo congelarle. Non devo sentire i bisogni del corpo.',manifestazione_adulta:'Alessitimia, somatizzazioni, difficoltà a riconoscere fame/sazietà/stanchezza, distanza emotiva, depressione mascherata, dipendenze come automedicazione.',adattamenti:'Ossessivo-compulsivo · Paranoide · Schizoide · Passivo-aggressivo · Antisociale'}
+],
+spinte: [
+  {id:'sp1',nome:'Sii perfetto',messaggio:'Sono ok se sono perfetto',copione_associato:'Finché',copione_descrizione:'Non posso divertirmi finché non ho finito il mio lavoro. Devo capirmi a fondo prima di cambiare. Dopo la pensione potrò viaggiare.',autorizzazione:'Sei abbastanza bravo così come sei',parole:'Usa le parentesi (sono qui, come ho detto, per parlarvi delle spinte); probabilmente, come se, possibilmente, certamente, completamente, si potrebbe dire, come abbiamo visto; enunciazione dei numeri o lettere dell\'alfabeto.',tono:'Né alto né basso (da adulto)',gesti:'Conta sulle dita della mano per accompagnare ciò che dice con lettere o numeri; massaggia il mento con la mano a V',postura:'Eretto, bilanciato intorno a una linea mediana',espressioni:'Occhi guardano in alto e di lato quando fa una pausa nel discorso; bocca tesa con angoli spinti in fuori',adattamenti:'Ossessivo-compulsivo · Paranoide'},
+  {id:'sp2',nome:'Compiaci (Cerca di piacere)',messaggio:'Sono ok se rendo felici gli altri',copione_associato:'Dopo',copione_descrizione:'Posso divertirmi oggi, ma lo pagherò domani. Al mattino sono arzillo, ma alla sera sono stanco.',autorizzazione:'Piaci a te stesso',parole:'Nota alta-ma-nota bassa («Mi è piaciuto quel che hai detto, ma non so se lo ricorderò»); introduce domande interrogative («Va bene per te? Che tipo?»)',tono:'Voce alta, tono stridente',gesti:'Porta le mani in avanti, di solito con le palme in alto; annuisce col capo',postura:'Spalle tirate in su e in avanti',espressioni:'Guarda col volto inclinato leggermente in avanti; alza le sopracciglia, aggrotta la fronte; mentre sorride si vedono denti superiori e inferiori',adattamenti:'Istrionico · Antisociale'},
+  {id:'sp3',nome:'Sforzati',messaggio:'Sono ok se mi sforzo (ma non devo riuscire — sto già facendo il massimo)',copione_associato:'Sempre',copione_descrizione:'Perché mi succede sempre questo? Ripercorre sempre la stessa vicenda di cui è insoddisfatta. Quando parla può saltare di palo in frasca.',autorizzazione:'Fallo',parole:'Usa spesso «cerca» («Quello che cerco di dirti», «cercherò di farlo»); difficile, non posso, cosa?, di nuovo, non ti capisco, è difficile, huh huh.',tono:'I suoni sono come strozzati',gesti:'Mani vicine agli occhi o agli orecchi come per vedere/sentire qualcosa, pugni chiusi',postura:'Si china in avanti, mani sulle ginocchia, posizione curva',espressioni:'Aggrotta le sopracciglia, sopra il naso appaiono delle linee verticali, gli occhi possono essere solcati da rughe',adattamenti:'Passivo-aggressivo'},
+  {id:'sp4',nome:'Sii forte',messaggio:'Sono ok se sono forte e non sento (le emozioni non sono di mia responsabilità)',copione_associato:'Mai',copione_descrizione:'Io non posso mai avere quello che desidero (non tengo però mai il comportamento per procurarmi ciò che desidero). Ogni giorno raccontano i loro guai come un disco rotto, come se fosse la prima volta.',autorizzazione:'Sii aperto ed esprimi i tuoi desideri',parole:'«Le mie azioni ed emozioni non sono di mia responsabilità, ma sono causate da fattori esterni» («tu mi fai arrabbiare», «il suo atteggiamento mi ha portato a reagire»). Quando parla di sé stesso si distanzia con parole: tu, uno, la gente, questo.',tono:'Piatto, monotono, basso',gesti:'Assenza di gesti',postura:'Chiuso, braccia e gambe incrociate, immobilità',espressioni:'Privo di espressioni',adattamenti:'Schizoide · Paranoide · Antisociale'},
+  {id:'sp5',nome:'Sbrigati',messaggio:'Sono ok se faccio in fretta (il tempo non basta mai)',copione_associato:'Quasi',copione_descrizione:'Quasi finito, manca poco. Comincia mille cose ma non le porta a termine; o le finisce di corsa senza rendersene conto e ne inizia un\'altra.',autorizzazione:'Prenditi il tempo necessario',parole:'Sbriga il discorso, salta parole o intere frasi; «veloce», «subito», «al volo», «ho fretta», «non c\'è tempo»; interrompe gli altri prima che finiscano',tono:'Veloce, accelerato, talvolta soffocato dalla fretta',gesti:'Movimenti rapidi, batte le dita, guarda spesso l\'orologio, tamburella',postura:'Tesa, in avanti, instabile (sembra sempre sul punto di alzarsi)',espressioni:'Sguardo che si muove rapido, fronte tesa, espressione di urgenza',adattamenti:'Trasversale (può accompagnare qualsiasi adattamento)'}
+],
+combinazioni_copione: [
+  {id:'comb_ing1_sp1',ingiunzione_id:'ing1',ingiunzione_nome:'Non esistere',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso esistere',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing1_sp2',ingiunzione_id:'ing1',ingiunzione_nome:'Non esistere',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso esistere',adattamenti_tipici:'Antisociale'},
+  {id:'comb_ing1_sp3',ingiunzione_id:'ing1',ingiunzione_nome:'Non esistere',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso esistere',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing1_sp4',ingiunzione_id:'ing1',ingiunzione_nome:'Non esistere',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso esistere',adattamenti_tipici:'Schizoide, Antisociale'},
+  {id:'comb_ing1_sp5',ingiunzione_id:'ing1',ingiunzione_nome:'Non esistere',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso esistere',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing2_sp1',ingiunzione_id:'ing2',ingiunzione_nome:'Non essere te stesso',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso essere me stesso',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing2_sp2',ingiunzione_id:'ing2',ingiunzione_nome:'Non essere te stesso',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso essere me stesso',adattamenti_tipici:'Istrionico'},
+  {id:'comb_ing2_sp3',ingiunzione_id:'ing2',ingiunzione_nome:'Non essere te stesso',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso essere me stesso',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing2_sp4',ingiunzione_id:'ing2',ingiunzione_nome:'Non essere te stesso',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso essere me stesso',adattamenti_tipici:'Schizoide, Paranoide, Antisociale'},
+  {id:'comb_ing2_sp5',ingiunzione_id:'ing2',ingiunzione_nome:'Non essere te stesso',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso essere me stesso',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing3_sp1',ingiunzione_id:'ing3',ingiunzione_nome:'Non essere bambino',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso essere bambino (giocare, divertirmi)',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing3_sp2',ingiunzione_id:'ing3',ingiunzione_nome:'Non essere bambino',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso essere bambino (giocare, divertirmi)',adattamenti_tipici:'Antisociale, Istrionico'},
+  {id:'comb_ing3_sp3',ingiunzione_id:'ing3',ingiunzione_nome:'Non essere bambino',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso essere bambino (giocare, divertirmi)',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing3_sp4',ingiunzione_id:'ing3',ingiunzione_nome:'Non essere bambino',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso essere bambino (giocare, divertirmi)',adattamenti_tipici:'Paranoide'},
+  {id:'comb_ing3_sp5',ingiunzione_id:'ing3',ingiunzione_nome:'Non essere bambino',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso essere bambino (giocare, divertirmi)',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing4_sp1',ingiunzione_id:'ing4',ingiunzione_nome:'Non crescere',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso crescere',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing4_sp2',ingiunzione_id:'ing4',ingiunzione_nome:'Non crescere',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso crescere',adattamenti_tipici:'Istrionico'},
+  {id:'comb_ing4_sp3',ingiunzione_id:'ing4',ingiunzione_nome:'Non crescere',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso crescere',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing4_sp4',ingiunzione_id:'ing4',ingiunzione_nome:'Non crescere',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso crescere',adattamenti_tipici:'Schizoide'},
+  {id:'comb_ing4_sp5',ingiunzione_id:'ing4',ingiunzione_nome:'Non crescere',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso crescere',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing5_sp1',ingiunzione_id:'ing5',ingiunzione_nome:'Non riuscire',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso riuscire',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing5_sp2',ingiunzione_id:'ing5',ingiunzione_nome:'Non riuscire',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso riuscire',adattamenti_tipici:'Antisociale, Istrionico'},
+  {id:'comb_ing5_sp3',ingiunzione_id:'ing5',ingiunzione_nome:'Non riuscire',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso riuscire',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing5_sp4',ingiunzione_id:'ing5',ingiunzione_nome:'Non riuscire',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso riuscire',adattamenti_tipici:'Schizoide, Paranoide, Antisociale'},
+  {id:'comb_ing5_sp5',ingiunzione_id:'ing5',ingiunzione_nome:'Non riuscire',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso riuscire',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing6_sp1',ingiunzione_id:'ing6',ingiunzione_nome:'Non farlo',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso agire',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing6_sp2',ingiunzione_id:'ing6',ingiunzione_nome:'Non farlo',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso agire',adattamenti_tipici:'Antisociale'},
+  {id:'comb_ing6_sp3',ingiunzione_id:'ing6',ingiunzione_nome:'Non farlo',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso agire',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing6_sp4',ingiunzione_id:'ing6',ingiunzione_nome:'Non farlo',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso agire',adattamenti_tipici:'Schizoide, Antisociale'},
+  {id:'comb_ing6_sp5',ingiunzione_id:'ing6',ingiunzione_nome:'Non farlo',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso agire',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing7_sp1',ingiunzione_id:'ing7',ingiunzione_nome:'Non essere importante',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso essere importante',adattamenti_tipici:'Ossessivo-compulsivo'},
+  {id:'comb_ing7_sp2',ingiunzione_id:'ing7',ingiunzione_nome:'Non essere importante',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso essere importante',adattamenti_tipici:'Istrionico'},
+  {id:'comb_ing7_sp3',ingiunzione_id:'ing7',ingiunzione_nome:'Non essere importante',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso essere importante',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing7_sp4',ingiunzione_id:'ing7',ingiunzione_nome:'Non essere importante',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso essere importante',adattamenti_tipici:'Schizoide, Paranoide, Antisociale'},
+  {id:'comb_ing7_sp5',ingiunzione_id:'ing7',ingiunzione_nome:'Non essere importante',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso essere importante',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing8_sp1',ingiunzione_id:'ing8',ingiunzione_nome:'Non appartenere',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso appartenere',adattamenti_tipici:'Paranoide'},
+  {id:'comb_ing8_sp2',ingiunzione_id:'ing8',ingiunzione_nome:'Non appartenere',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso appartenere',adattamenti_tipici:'Antisociale, Istrionico'},
+  {id:'comb_ing8_sp3',ingiunzione_id:'ing8',ingiunzione_nome:'Non appartenere',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso appartenere',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing8_sp4',ingiunzione_id:'ing8',ingiunzione_nome:'Non appartenere',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso appartenere',adattamenti_tipici:'Schizoide, Paranoide'},
+  {id:'comb_ing8_sp5',ingiunzione_id:'ing8',ingiunzione_nome:'Non appartenere',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso appartenere',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing9_sp1',ingiunzione_id:'ing9',ingiunzione_nome:'Non essere intimo',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso essere intimo',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing9_sp2',ingiunzione_id:'ing9',ingiunzione_nome:'Non essere intimo',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso essere intimo',adattamenti_tipici:'Antisociale'},
+  {id:'comb_ing9_sp3',ingiunzione_id:'ing9',ingiunzione_nome:'Non essere intimo',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso essere intimo',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing9_sp4',ingiunzione_id:'ing9',ingiunzione_nome:'Non essere intimo',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso essere intimo',adattamenti_tipici:'Paranoide, Antisociale'},
+  {id:'comb_ing9_sp5',ingiunzione_id:'ing9',ingiunzione_nome:'Non essere intimo',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso essere intimo',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing10_sp1',ingiunzione_id:'ing10',ingiunzione_nome:'Non stare bene (Non essere sano)',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso stare bene',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing10_sp2',ingiunzione_id:'ing10',ingiunzione_nome:'Non stare bene (Non essere sano)',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso stare bene',adattamenti_tipici:'Antisociale, Istrionico'},
+  {id:'comb_ing10_sp3',ingiunzione_id:'ing10',ingiunzione_nome:'Non stare bene (Non essere sano)',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso stare bene',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing10_sp4',ingiunzione_id:'ing10',ingiunzione_nome:'Non stare bene (Non essere sano)',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso stare bene',adattamenti_tipici:'Schizoide'},
+  {id:'comb_ing10_sp5',ingiunzione_id:'ing10',ingiunzione_nome:'Non stare bene (Non essere sano)',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso stare bene',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing11_sp1',ingiunzione_id:'ing11',ingiunzione_nome:'Non pensare',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso pensare',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing11_sp2',ingiunzione_id:'ing11',ingiunzione_nome:'Non pensare',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso pensare',adattamenti_tipici:'Antisociale, Istrionico'},
+  {id:'comb_ing11_sp3',ingiunzione_id:'ing11',ingiunzione_nome:'Non pensare',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso pensare',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing11_sp4',ingiunzione_id:'ing11',ingiunzione_nome:'Non pensare',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso pensare',adattamenti_tipici:'Schizoide, Antisociale'},
+  {id:'comb_ing11_sp5',ingiunzione_id:'ing11',ingiunzione_nome:'Non pensare',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso pensare',adattamenti_tipici:'Trasversale'},
+  {id:'comb_ing12_sp1',ingiunzione_id:'ing12',ingiunzione_nome:'Non sentire',spinta_id:'sp1',spinta_nome:'Sii perfetto',copione:'Sino a che sono perfetto, posso sentire',adattamenti_tipici:'Paranoide, Ossessivo-compulsivo'},
+  {id:'comb_ing12_sp2',ingiunzione_id:'ing12',ingiunzione_nome:'Non sentire',spinta_id:'sp2',spinta_nome:'Compiaci (Cerca di piacere)',copione:'Sino a che compiaccio gli altri, posso sentire',adattamenti_tipici:'Antisociale'},
+  {id:'comb_ing12_sp3',ingiunzione_id:'ing12',ingiunzione_nome:'Non sentire',spinta_id:'sp3',spinta_nome:'Sforzati',copione:'Sino a che mi sforzo, posso sentire',adattamenti_tipici:'Passivo-aggressivo'},
+  {id:'comb_ing12_sp4',ingiunzione_id:'ing12',ingiunzione_nome:'Non sentire',spinta_id:'sp4',spinta_nome:'Sii forte',copione:'Sino a che sono forte (e non sento), posso sentire',adattamenti_tipici:'Schizoide, Paranoide, Antisociale'},
+  {id:'comb_ing12_sp5',ingiunzione_id:'ing12',ingiunzione_nome:'Non sentire',spinta_id:'sp5',spinta_nome:'Sbrigati',copione:'Sino a che mi sbrigo (faccio tutto in fretta), posso sentire',adattamenti_tipici:'Trasversale'}
 ]
+
 };
 
 const CMETA={
@@ -264,7 +348,10 @@ const CMETA={
   adattamenti:{label:"Adattamenti AT",color:"#6366f1",icon:"⚙"},
   esercizi:{label:"Esercizi",color:"#00695c",icon:"◎"},
   fes:{label:"Fiori Californiani",color:"#c87820",icon:"✿"},
-  bush:{label:"Fiori Australiani",color:"#4a8040",icon:"❋"}
+  bush:{label:"Fiori Australiani",color:"#4a8040",icon:"❋"},
+  ingiunzioni:{label:"Ingiunzioni AT",color:"#7c3aed",icon:"⊘"},
+  spinte:{label:"Spinte (Driver) AT",color:"#0891b2",icon:"➤"},
+  combinazioni_copione:{label:"Combinazioni di Copione",color:"#9333ea",icon:"✦"}
 };
 
 function getAll(){return Object.entries(DB).flatMap(([cat,items])=>items.map(i=>({...i,cat})))}
@@ -2052,15 +2139,71 @@ REGOLE DI RISPOSTA:
 - Le tabelle Markdown vengono renderizzate automaticamente nel chat e sono incollabili in Word
 - Non troncare mai le risposte a metà: completa sempre il pensiero prima di chiudere
 
-I SEI ADATTAMENTI AT (AT — Ware & Joines):
-1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Porta APERTA: comportamento, bersaglio: pensiero, trappola: emozioni. Vettori: GN+, A. Il bambino ha imparato a fare da solo quando non si poteva fidare dell\'ambiente. Da adulto: creativo, visionario, ma isolato come difesa.
-2. ANTISOCIALE (Affascinante-Manipolatore): Sopravvivenza, 0-18m, genitore anticipatorio, T8. Spinta: Sii forte+Compiaci. Copione: Mai, Sempre, Quasi I. Porta APERTA: comportamento, bersaglio: emozioni, trappola: pensiero. Vettori: BL+, GA+, GN+. Ottiene ciò che vuole attraverso il fascino e la manipolazione.
-3. PARANOIDE (Brillante-Scettico): Sopravvivenza, 0-18m, genitore inconsistente, T6. Spinta: Sii perfetto=Sii forte. Copione: Finché+Mai. Porta APERTA: pensiero, bersaglio: emozioni, trappola: comportamento. Vettori: A, GN+. Ipervigilante, anticipa le minacce, brillante ma diffidente.
-4. PASSIVO-AGGRESSIVO (Scherzoso-Oppositivo): Performance, 18-36m, genitore ipercontrollante, T9. Spinta: Sforzati. Copione: Sempre, Quasi II. Porta APERTA: comportamento, bersaglio: emozioni, trappola: pensiero. Vettori: BL+. Cambia rotta proprio quando è vicino alla meta.
-5. OSSESSIVO-COMPULSIVO (Responsabile-Stakanovista): Performance, 18m-6a, enfasi risultato, T1. Spinta: Sii perfetto. Copione: Finché (Quasi II). Porta APERTA: pensiero, bersaglio: emozioni, trappola: comportamento. Vettori: A, GN+. Non si ferma mai perché non è mai abbastanza perfetto.
-6. ISTRIONICO (Entusiasta-Iperreattivo): Performance, 18m-6a, rendere felici gli altri, T2/3/4. Spinta: Compiaci. Copione: Dopo (Quasi I e II). Porta APERTA: emozioni, bersaglio: pensiero, trappola: comportamento. Vettori: GA+, BL+. Dipende dall\'approvazione. Spada di Damocle: "posso divertirmi oggi, ma lo pagherò domani."
+═══ MODELLO COMPLETO ANALISI TRANSAZIONALE (Berne, Kahler, Ware & Joines) ═══
 
-LE 5 SPINTE DEL COPIONE: Sii perfetto→Finché; Sii forte→Mai; Sforzati→Sempre; Cerca di piacere→Dopo; Sbrigati→rinforza le altre.
+LE 12 INGIUNZIONI (messaggi paraverbali dal Bambino dei genitori al Bambino del bambino, prima infanzia):
+1. NON ESISTERE — origine: marito geloso del figlio, pentimento per la nascita. Manifestazione adulta: pensieri suicidari, autodistruttività, dipendenze gravi. Permesso: "Esisti, sei benvenuto."
+2. NON ESSERE TE STESSO — origine: voleva una femminuccia, "sei tutto tuo zio". Manifestazione: falso sé, conformismo, crisi d\'identità. Permesso: "Sei perfetto così come sei."
+3. NON ESSERE BAMBINO — origine: "comportati da adulto", parentificazione. Manifestazione: iperresponsabilità, incapacità di giocare, senso di colpa per il piacere. Permesso: "Puoi essere bambino."
+4. NON CRESCERE — origine: genitore che teme l\'abbandono. Manifestazione: dipendenza prolungata, ritardo nelle tappe vitali, comportamenti regressivi. Permesso: "Puoi crescere."
+5. NON RIUSCIRE — origine: genitore geloso dei successi del figlio. Manifestazione: auto-sabotaggio sistematico, fallimenti vicino al traguardo. Permesso: "Puoi riuscire."
+6. NON FARLO — origine: "ogni cosa è pericolosa", iperprotezione paralizzante. Manifestazione: procrastinazione, paralisi decisionale, paura di sbagliare. Permesso: "Puoi agire."
+7. NON ESSERE IMPORTANTE — origine: "puoi stare qui finché non emergi". Manifestazione: timidezza patologica, paura del pubblico, sabotaggio della visibilità. Permesso: "Sei importante."
+8. NON APPARTENERE — origine: "sei diverso, difficile". Manifestazione: estraneità cronica, isolamento sociale. Permesso: "Appartieni."
+9. NON ESSERE INTIMO — origine: contatto fisico/emotivo assente. Manifestazione: rapporti superficiali, sabotaggio dell\'intimità. Permesso: "Puoi essere intimo."
+10. NON STAR BENE / NON ESSERE SANO — origine: attenzione genitoriale solo nella malattia. Manifestazione: somatizzazioni, ipocondria, ansia nel benessere. Permesso: "Puoi stare bene."
+11. NON PENSARE — origine: pensiero del bambino svalutato. Manifestazione: scelte impulsive, dipendenza dal pensiero altrui, autosvalutazione cognitiva. Permesso: "Puoi pensare."
+12. NON SENTIRE — origine: "i bambini grandi non piangono". Manifestazione: alessitimia, somatizzazioni, distanza emotiva, dipendenze come automedicazione. Permesso: "Puoi sentire."
+
+LE 5 SPINTE / DRIVER (contro-ingiunzioni verbali, "messe sul vasino", presenti in tutte le culture):
+- SII PERFETTO → copione FINCHÉ. "Non posso divertirmi finché non ho finito." Parole: parentesi, "probabilmente, completamente". Postura: eretto. Bocca tesa. Autorizzazione: "Sei abbastanza bravo così come sei." Adattamenti: Ossessivo-compulsivo, Paranoide.
+- COMPIACI (Cerca di piacere) → copione DOPO. "Posso divertirmi oggi, lo pagherò domani." Parole: nota alta-ma-bassa. Voce alta stridente. Spalle in avanti. Autorizzazione: "Piaci a te stesso." Adattamenti: Istrionico, Antisociale.
+- SFORZATI → copione SEMPRE. "Perché mi succede sempre questo?" Parole: "cerca di", "difficile". Suoni strozzati. Curvo, pugni chiusi. Autorizzazione: "Fallo." Adattamenti: Passivo-aggressivo.
+- SII FORTE → copione MAI. "Non posso mai avere quello che desidero." Si distanzia con "tu, uno, la gente". Tono piatto monotono. Braccia incrociate, immobile. Autorizzazione: "Sii aperto ed esprimi i tuoi desideri." Adattamenti: Schizoide, Paranoide, Antisociale.
+- SBRIGATI → copione QUASI. Comincia mille cose senza finirle. Parole: "veloce, subito, al volo". Movimenti rapidi. Tesa, in avanti. Autorizzazione: "Prenditi il tempo necessario." Trasversale a tutti gli adattamenti.
+
+MECCANISMO DEL COPIONE (chiave Berne/Kahler):
+Le contro-ingiunzioni (spinte) coprono le ingiunzioni e proteggono il bambino sino a che le segue. Esempio dal documento: ingiunzione "non esistere" + spinta "lavora sodo (Sii perfetto)" → strategia del piccolo professore: "SINO A CHE LAVORO SODO POSSO ESISTERE".
+
+Le 60 combinazioni 12 ingiunzioni × 5 spinte generano altrettante strutture di copione, formula:
+"Sino a che [verbo della spinta], posso [permesso dell\'ingiunzione]"
+
+Esempi di combinazioni significative:
+- Sii perfetto + Non esistere = "Sino a che sono perfetto, posso esistere" (tipico Ossessivo-compulsivo)
+- Sii forte + Non sentire = "Sino a che sono forte (e non sento), posso sentire (paradosso)" (Schizoide)
+- Compiaci + Non essere te stesso = "Sino a che compiaccio gli altri, posso essere me stesso" (Istrionico)
+- Sforzati + Non riuscire = "Sino a che mi sforzo (senza arrivare), posso riuscire" (Passivo-aggressivo)
+- Sii forte + Non essere intimo = "Sino a che sono forte, posso essere intimo (ma non lo sono)" (Antisociale)
+
+Quando la persona non ha più "energia" per la spinta, perde la protezione e ascolta l\'ingiunzione: ripropone le emozioni negative dell\'infanzia (emozioni parassite/racket) — rinforzando il copione.
+
+I SEI ADATTAMENTI AT (Ware & Joines) — caratteristiche complete:
+1. SCHIZOIDE (Creativo-Sognatore): Sopravvivenza, 0-18m, genitore esitante, T5. Spinta: Sii forte. Copione: Mai+Sempre. Ingiunzioni: non farlo, non appartenere, non essere sano, non sentire, non divertirti, non crescere, non pensare. Porta APERTA: comportamento, BERSAGLIO: pensiero, TRAPPOLA: emozioni. Vettori: GN+, A. Adulto contaminato doppiamente da Bambino e Genitore. Stile comunicativo: direttivo. Domanda di conferma: "Si tira indietro e aspetta che le cose tornino alla normalità?"
+2. ANTISOCIALE (Affascinante-Manipolatore): Sopravvivenza, 0-18m, genitore anticipatorio, T8. Spinta: Sii forte+Compiaci ("sono ok se sono più furbo degli altri"). Copione: Mai/Sempre/Quasi I. Ingiunzioni: non essere intimo, non sentire (tristezza/paura), non farlo, non pensare a lungo termine. Porta APERTA: comportamento, BERSAGLIO: emozioni, TRAPPOLA: pensiero. Vettori: BL+, GA+, GN+. Genitore escluso, Adulto contaminato dal Bambino. Domanda: "Prima valuta la situazione e poi prova a sfruttarla in modo da trarne un vantaggio personale?"
+3. PARANOIDE (Brillante-Scettico): Sopravvivenza, 0-18m, genitore inconsistente, T6. Spinta: Sii perfetto = Sii forte. Copione: Finché+Mai. Ingiunzioni: non essere bambino, non essere intimo, non fidarti, non sentire, non divertirti, non appartenere. Porta APERTA: pensiero, BERSAGLIO: emozioni, TRAPPOLA: comportamento. Vettori: A, GN+. Adulto contaminato dal Genitore, Bambino escluso. Stile comunicativo: esplorativo+direttivo. Domanda: "Prima valuta accuratamente e poi si attiva con decisione per risolvere i problemi?"
+4. PASSIVO-AGGRESSIVO (Scherzoso-Oppositivo): Performance, 18-36m, genitore ipercontrollante, T9. Spinta: Sforzati ("ti sforzi ma non devi riuscire"). Copione: Sempre/Quasi II. Ingiunzioni: non crescere, non sentire, non farlo, non essere intimo, non divertirti. Porta APERTA: comportamento, BERSAGLIO: emozioni, TRAPPOLA: pensiero. Vettori: BL+. Doppia contaminazione Adulto. Stile comunicativo: emotivo. Domanda: "Contrasta costantemente le aspettative degli altri per fare le cose alla sua maniera?"
+5. OSSESSIVO-COMPULSIVO (Responsabile-Stakanovista): Performance, 18m-6a, enfasi sul risultato ("vali quanto produci"), T1. Spinta: Sii perfetto. Copione: Finché/Quasi II/Finale aperto. Ingiunzioni: non essere bambino, non sentire, non essere intimo, non essere importante, non divertirti. Porta APERTA: pensiero, BERSAGLIO: emozioni, TRAPPOLA: comportamento. Vettori: A, GN+. Adulto contaminato dal Genitore. Stile comunicativo: esplorativo+direttivo. Domanda: "Fa del suo meglio per essere bravo a fare ogni cosa nel modo giusto?"
+6. ISTRIONICO (Entusiasta-Iperreattivo): Performance, 18m-6a, genitore enfatizza felicità altrui, T2/3/4. Spinta: Compiaci. Copione: Dopo/Quasi I/Quasi II. Ingiunzioni: non crescere, non pensare, non essere importante, non essere te stesso. Porta APERTA: emozioni, BERSAGLIO: pensiero, TRAPPOLA: comportamento. Vettori: GA+, BL+. Adulto contaminato dal Bambino. Stile comunicativo: affettivo+emotivo. Domanda: "Si impegna a fare in modo che le persone che la circondano siano felici e serene?"
+
+ADATTAMENTI ANOMALI (Borderline e Narcisistico): hanno perso molto del loro vero sé. Non hanno porte/copioni preferenziali. Mostrano sempre la patologia (gli altri 6 si ammalano solo in stress estremo). Introiettano un genitore buono+cattivo E un bambino buono+cattivo.
+
+INTERAZIONE TRA ADATTAMENTI: Ognuno ritiene che solo il proprio adattamento sia giusto. Si va d\'accordo con chi condivide la sequenza di porte (es. Ossessivo-Compulsivo/Paranoide p.e.c., Passivo-Aggressivo/Antisociale c.e.p.). I partner stanno meglio insieme quando hanno almeno un adattamento in comune. Per andare d\'accordo nei rapporti sentimentali bisogna valorizzare la PORTA BERSAGLIO (es. ossessivo-compulsivo+passivo-aggressivo finiscono di litigare quando si mettono in contatto con le emozioni).
+
+MINI-COPIONE (Kahler): la spinta è automatica e scevra da emozioni, determina l\'entrata nel copione. Si manifesta in mezzo-un secondo. Tutta l\'attività comportamentale (parole, toni, gesti, posture, espressioni facciali) della spinta riproduce in breve le decisioni di copione. La diagnosi richiede: almeno 3 indicatori in 2 minuti, individuare spinta primaria e secondaria. La spinta può essere contrastata da un messaggio acquisito (autorizzazione: "Mi piaccio").
+
+EMOZIONI AUTENTICHE vs PARASSITE/RACKET:
+- Autentiche (4): Rabbia, Tristezza, Paura, Felicità (+ rilassatezza, pienezza, stanchezza, voglia di sfogarsi, disgusto, sonno).
+- Parassite negative: Imbarazzo, Gelosia, Depressione, Senso di colpa/smarrimento/blocco/impotenza, Confusione, Disperazione, Vuoto, Perplessità.
+- Parassite vissute come buone: Trionfo, Aggressività, Perdono ostentato, Euforia.
+Ogni volta che provo l\'emozione "permessa in famiglia" sono nel copione.
+
+POSIZIONI ESISTENZIALI (Berne):
+- Io+ Tu+ → copione vincitore (collaborazione, autonomia)
+- Io- Tu+ → copione perdente o banale (vittimismo)
+- Io+ Tu- → copione apparentemente vincitore (paranoide difensivo, faticoso)
+- Io- Tu- → copione perdente disperato (futilità)
+
+SVALUTAZIONE: ignorare informazioni rilevanti per risolvere il problema. Ogni svalutazione comporta grandiosità (di una pietruzza fa una montagna). Quando svaluti contamini Adulto con Genitore o Bambino. La spinta porta a svalutazione: in presenza di svalutazione l\'interazione diviene conflittuale.
 
 EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.
@@ -4328,6 +4471,67 @@ async function exportReportPdf(){
             '',
             adData.permesso,
           ], GREEN_L, GREEN_D);
+        }
+
+        // ── COMBINAZIONI COPIONE PERSONALI (12 INGIUNZIONI × 5 SPINTE) ──
+        if(typeof DB !== 'undefined' && DB.combinazioni_copione && adData.ingiunzioni && adData.spinta){
+          // Identify which ingiunzioni and spinte apply to this adattamento
+          const ingNames = (adData.ingiunzioni||'').split('·').map(s=>s.trim()).filter(Boolean);
+          const spintaNames = (adData.spinta||'').split('·').map(s=>s.trim()).filter(Boolean);
+          
+          // Match against DB
+          const myIngs = (DB.ingiunzioni||[]).filter(ing => 
+            ingNames.some(n => n.toLowerCase().includes(ing.nome.toLowerCase().replace('non ','').slice(0,12)))
+          );
+          const mySpinte = (DB.spinte||[]).filter(sp => 
+            spintaNames.some(n => n.toLowerCase().includes(sp.nome.split(' ')[0].toLowerCase()) ||
+                                  n.toLowerCase().includes(sp.nome.split('(')[0].trim().toLowerCase()))
+          );
+          
+          // Build personal combinations
+          const myCombs = [];
+          myIngs.forEach(ing => {
+            mySpinte.forEach(sp => {
+              const found = DB.combinazioni_copione.find(c => 
+                c.ingiunzione_id === ing.id && c.spinta_id === sp.id
+              );
+              if(found) myCombs.push(found);
+            });
+          });
+          
+          if(myCombs.length > 0){
+            checkNewPage(20);
+            sectionTitle('LE TUE COMBINAZIONI DI COPIONE', '✦');
+            
+            setFont('normal', 9, INK2);
+            const intro = 'Il tuo adattamento '+(adData.short||adData.name||'')+' attiva queste strategie del piccolo professore (A1): "Sino a che [spinta], posso [permesso ingiunzione]". Sono i meccanismi più probabilmente attivi nel tuo copione personale. Quando l\'energia per la spinta finisce, perdi la protezione e ascolti l\'ingiunzione (entrata nel copione + emozioni parassite).';
+            y = wrapText(se(intro), ML, y, CW, 5.5);
+            y += 5;
+            
+            myCombs.slice(0, 12).forEach((c, idx) => {  // Max 12 to avoid overflow
+              checkNewPage(20);
+              // Box for each combination
+              drawRect(ML, CW, y, 16, PURPLE_L, PURPLE_D, 2);
+              setFont('bold', 9, PURPLE_D);
+              const cText = se(c.copione);
+              const lines = doc.splitTextToSize(cText, CW-6);
+              text(lines[0], ML+3, y+6);
+              if(lines.length > 1){
+                setFont('bold', 9, PURPLE_D);
+                text(lines[1], ML+3, y+11);
+              }
+              setFont('normal', 7.5, INK3);
+              text('Spinta: '+se(c.spinta_nome)+' | Ingiunzione: '+se(c.ingiunzione_nome), ML+3, y+lines.length*5+8);
+              y += Math.max(16, lines.length*5+12);
+            });
+            
+            if(myCombs.length > 12){
+              setFont('italic', 8, INK4);
+              text('... e altre '+(myCombs.length-12)+' combinazioni. Vai su il_mio_copione.html per la lista completa.', ML, y+3);
+              y += 8;
+            }
+            y += 3;
+          }
         }
 
         // Rimedi olistici AT

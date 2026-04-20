@@ -4838,15 +4838,15 @@ async function exportChatPdf(){
       s = s.replace(/```[a-z]*\n?([\s\S]*?)```/gi, '\n$1\n');
       // Inline code `X` → X
       s = s.replace(/`([^`]+)`/g, '$1');
-      // Headers # ## ### → testo con spaziatura (simbolo + per evidenza)
+      // Headers # ## ### → testo evidenziato in ASCII (robusto per Helvetica)
       s = s.replace(/^######\s+(.+)$/gm, '\n$1\n');
       s = s.replace(/^#####\s+(.+)$/gm, '\n$1\n');
-      s = s.replace(/^####\s+(.+)$/gm, '\n$1\n');
-      s = s.replace(/^###\s+(.+)$/gm, '\n» $1\n');
-      s = s.replace(/^##\s+(.+)$/gm, '\n■ $1\n');
-      s = s.replace(/^#\s+(.+)$/gm, '\n▌ $1\n');
+      s = s.replace(/^####\s+(.+)$/gm, '\n>>> $1\n');
+      s = s.replace(/^###\s+(.+)$/gm, '\n>> $1\n');
+      s = s.replace(/^##\s+(.+)$/gm, '\n\n=== $1 ===\n');
+      s = s.replace(/^#\s+(.+)$/gm, '\n\n### $1 ###\n');
       // Separatori orizzontali ---
-      s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n- - - - - - - - - - - - - - -\n');
+      s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n. . . . . . . . . . . . . . . . .\n');
       // Bold **X** e __X__ → X (rimuovi marker, no inline bold in jsPDF semplice)
       s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1');
       s = s.replace(/__([^_\n]+)__/g, '$1');
@@ -4883,11 +4883,68 @@ async function exportChatPdf(){
     let page = 1;
     let y = 0;
 
-    // ── Helper: strip HTML ──
+    // ── Helper: strip HTML preservando struttura markdown ──
     function stripHtml(h){
+      if(!h) return '';
       const d = document.createElement('div');
       d.innerHTML = h;
-      return (d.textContent || d.innerText || '').trim();
+
+      function walk(node){
+        if(node.nodeType === 3) return node.textContent || ''; // text
+        if(node.nodeType !== 1) return '';                      // non-element
+        const tag = (node.tagName || '').toLowerCase();
+        // Tabelle: gestisci <tr> estraendo celle ordinate
+        if(tag === 'tr'){
+          const cells = [];
+          for(const c of node.children){
+            const t = (c.tagName || '').toLowerCase();
+            if(t === 'td' || t === 'th'){
+              cells.push(Array.from(c.childNodes).map(walk).join('').trim().replace(/\s+/g,' '));
+            }
+          }
+          return '| ' + cells.join(' | ') + ' |\n';
+        }
+        const kids = Array.from(node.childNodes).map(walk).join('');
+        switch(tag){
+          case 'br':      return '\n';
+          case 'hr':      return '\n---\n';
+          case 'p': case 'div': case 'section': case 'article':
+          case 'figure': case 'figcaption': case 'blockquote':
+                          return kids.trim() ? kids + '\n\n' : kids;
+          case 'h1':      return '\n# '     + kids.trim() + '\n\n';
+          case 'h2':      return '\n## '    + kids.trim() + '\n\n';
+          case 'h3':      return '\n### '   + kids.trim() + '\n\n';
+          case 'h4':      return '\n#### '  + kids.trim() + '\n\n';
+          case 'h5': case 'h6':
+                          return '\n##### ' + kids.trim() + '\n\n';
+          case 'ul': case 'ol':
+                          return '\n' + kids + '\n';
+          case 'li':      return '- ' + kids.trim() + '\n';
+          case 'strong': case 'b':
+                          return '**' + kids + '**';
+          case 'em': case 'i':
+                          return '*' + kids + '*';
+          case 'code':    return '`' + kids + '`';
+          case 'pre':     return '\n```\n' + kids + '\n```\n';
+          case 'a': {
+            const href = node.getAttribute && node.getAttribute('href');
+            return href ? '[' + kids + '](' + href + ')' : kids;
+          }
+          case 'table':   return '\n' + kids + '\n';
+          case 'thead': case 'tbody': case 'tfoot':
+                          return kids;
+          case 'script': case 'style': case 'noscript':
+                          return '';
+          default:        return kids;
+        }
+      }
+
+      let out = walk(d);
+      // Normalizza spaziatura
+      out = out.replace(/[ \t]+\n/g, '\n')
+               .replace(/\n{3,}/g, '\n\n')
+               .replace(/^\s+|\s+$/g, '');
+      return out;
     }
 
     // ── Helper: wrap text ──

@@ -2498,6 +2498,18 @@ function saveChatHistory(){
   } catch(e){}
 }
 
+// Testo di benvenuto unificato (usato sia al primo load che dopo "Nuova")
+const OLISMO_WELCOME_TEXT = "Benvenuto nel Portale Olistico Integrato. \ud83c\udf3f\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione \u2014 un disturbo fisico, una difficolt\u00e0 emotiva, il tuo enneatipo, o semplicemente come ti senti oggi \u2014 e costruiremo insieme un percorso personalizzato che integra pi\u00f9 discipline.";
+
+function addWelcomeIfEmpty(){
+  const msgs = document.getElementById('chat-messages');
+  if(!msgs) return;
+  // Aggiungi welcome solo se il DOM è davvero vuoto
+  if(msgs.children.length === 0){
+    addMsg("ai", formatAiReply(OLISMO_WELCOME_TEXT), "");
+  }
+}
+
 function loadChatHistory(){
   // Show profile badges if data accumulated
   const badges = getProfileBadges();
@@ -2530,7 +2542,11 @@ function clearChatHistory(){
   localStorage.removeItem('olismo_chat');
   localStorage.removeItem('olismo_chat_html');
   const msgs = document.getElementById('chat-messages');
-  if(msgs) msgs.innerHTML = '';
+  if(msgs){
+    msgs.innerHTML = '';
+    // Ripristina welcome invece di lasciare chat vuota
+    addMsg("ai", formatAiReply(OLISMO_WELCOME_TEXT), "");
+  }
 }
 
 function timeNow(){const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')}
@@ -2815,7 +2831,8 @@ window.addEventListener("DOMContentLoaded",()=>{
   try{initDark();}catch(e){}
   try{initCristalliSection();}catch(e){}
   try{if(!loadChatHistory()){
-  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
+    // Aggiungi welcome SOLO se il DOM è vuoto (evita duplicati con welcome hardcoded in HTML)
+    addWelcomeIfEmpty();
   }}catch(e){}
 
 });
@@ -6706,3 +6723,449 @@ async function exportBushPdf(){
     fileName: 'Olismo-Integrato-AI-Bush'
   });
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   SISTEMA CONDIVISIONE UNIVERSALE — OLISMO INTEGRATO
+   Auto-injection su tutte le pagine che contengono #chat-messages
+   Pulsante globale nell'header chat + icone Copia/Condividi su ogni AI
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  // Evita doppia inizializzazione (se presente script inline in una pagina)
+  if(window.olismoShareGlobal) return;
+
+  // ─── Inject CSS ─────────────────────────────────────────────────
+  function injectCSS(){
+    if(document.getElementById('olismo-share-core-css')) return;
+    const css = `
+      .chat-share-btn{
+        font-size:.72rem;padding:.35rem .9rem;
+        background:transparent;color:var(--gold,#b8935a);
+        border:1.5px solid var(--gold,#b8935a);border-radius:6px;
+        cursor:pointer;font-weight:600;font-family:'Outfit',sans-serif;
+        display:inline-flex;align-items:center;gap:.35rem;
+        transition:all .15s ease
+      }
+      .chat-share-btn:hover{background:var(--gold,#b8935a);color:white}
+      .chat-share-btn .arr{font-size:.9rem;line-height:1}
+      .msg-rating .msg-share{
+        background:none;border:none;cursor:pointer;
+        padding:.15rem .3rem;font-size:.9rem;
+        opacity:.55;transition:opacity .15s ease;
+        line-height:1;vertical-align:middle
+      }
+      .msg-rating .msg-share:hover{opacity:1}
+      .olismo-share-menu{
+        position:absolute;z-index:9999;
+        background:white;border:1px solid rgba(184,147,90,.3);
+        border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.15);
+        padding:.35rem;min-width:190px;
+        font-family:'Outfit',sans-serif;font-size:.84rem;
+        animation:olismoMenuIn .12s ease-out
+      }
+      @keyframes olismoMenuIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+      .olismo-share-menu button{
+        display:flex;align-items:center;gap:.7rem;
+        width:100%;padding:.55rem .8rem;
+        background:transparent;border:none;border-radius:6px;
+        cursor:pointer;font:inherit;color:#2a2520;
+        text-align:left;transition:background .12s
+      }
+      .olismo-share-menu button:hover{background:rgba(184,147,90,.10)}
+      .olismo-share-menu .olismo-share-ico{width:22px;font-size:1.05rem;text-align:center;flex-shrink:0}
+      .olismo-share-menu .olismo-share-divider{height:1px;background:rgba(184,147,90,.2);margin:.25rem .4rem}
+      #olismo-toast{
+        position:fixed;bottom:30px;left:50%;
+        transform:translateX(-50%) translateY(10px);
+        background:var(--gold,#b8935a);color:white;
+        padding:.7rem 1.4rem;border-radius:24px;
+        font-family:'Outfit',sans-serif;font-size:.88rem;
+        box-shadow:0 8px 24px rgba(0,0,0,.20);
+        z-index:10000;opacity:0;pointer-events:none;
+        transition:opacity .25s ease, transform .25s ease
+      }
+      #olismo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+      @media(max-width:640px){
+        .chat-share-btn{padding:.3rem .6rem;font-size:.68rem}
+        .chat-share-btn .lbl{display:none}
+      }
+    `;
+    const s = document.createElement('style');
+    s.id = 'olismo-share-core-css';
+    s.textContent = css;
+    document.head.appendChild(s);
+  }
+
+  // ─── Conversione HTML → testo pulito per condivisione ───────────
+  function toShareText(html, platform){
+    if(!html) return '';
+    let s;
+    if(html.indexOf('<') >= 0){
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      tmp.querySelectorAll('.msg-rating, .msg-time, .msg-share').forEach(el => el.remove());
+      function walk(n){
+        if(n.nodeType === 3) return n.textContent || '';
+        if(n.nodeType !== 1) return '';
+        const tag = (n.tagName||'').toLowerCase();
+        if(tag === 'tr'){
+          const cells = [];
+          for(const c of n.children){
+            const t = (c.tagName||'').toLowerCase();
+            if(t==='td'||t==='th') cells.push(Array.from(c.childNodes).map(walk).join('').trim().replace(/\s+/g,' '));
+          }
+          return cells.join(' \u2014 ') + '\n';
+        }
+        const kids = Array.from(n.childNodes).map(walk).join('');
+        switch(tag){
+          case 'br': return '\n';
+          case 'hr': return '\n\u2014\u2014\u2014\n';
+          case 'p': case 'div': case 'section': return kids.trim()? kids+'\n\n' : kids;
+          case 'h1': case 'h2': return '\n*'+kids.trim().toUpperCase()+'*\n';
+          case 'h3': case 'h4': case 'h5': case 'h6': return '\n*'+kids.trim()+'*\n';
+          case 'ul': case 'ol': return '\n'+kids+'\n';
+          case 'li': return '\u2022 '+kids.trim()+'\n';
+          case 'strong': case 'b': return '*'+kids+'*';
+          case 'em': case 'i': return platform==='whatsapp' ? '_'+kids+'_' : kids;
+          case 'a': { const h=n.getAttribute&&n.getAttribute('href'); return h?kids+' ('+h+')':kids; }
+          case 'table': return '\n'+kids+'\n';
+          case 'thead': case 'tbody': case 'tfoot': return kids;
+          case 'script': case 'style': return '';
+          default: return kids;
+        }
+      }
+      s = walk(tmp);
+    } else { s = html; }
+    s = s.replace(/\*\*([^*\n]+)\*\*/g, '*$1*');
+    s = s.replace(/^#{1,6}\s+(.+)$/gm, function(m,h){ return '\n*'+h.toUpperCase()+'*\n'; });
+    s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\u2014\u2014\u2014\u2014\u2014\u2014\u2014');
+    s = s.replace(/^[ \t]*[-*][ \t]+/gm, '\u2022 ');
+    s = s.replace(/\n{3,}/g, '\n\n');
+    if(platform === 'plain' || platform === 'email' || platform === 'sms'){
+      s = s.replace(/\*([^*\n]+)\*/g, '$1');
+      s = s.replace(/_([^_\n]+)_/g, '$1');
+    }
+    return s.trim();
+  }
+
+  async function copyText(text){
+    try {
+      if(navigator.clipboard && window.isSecureContext){
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch(e){}
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      ta.setAttribute('readonly','');
+      document.body.appendChild(ta);
+      if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+        const range = document.createRange();
+        range.selectNodeContents(ta);
+        const sel = window.getSelection();
+        sel.removeAllRanges(); sel.addRange(range);
+        ta.setSelectionRange(0, 999999);
+      } else { ta.select(); }
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(e){ return false; }
+  }
+
+  function toast(msg){
+    let t = document.getElementById('olismo-toast');
+    if(!t){ t = document.createElement('div'); t.id = 'olismo-toast'; document.body.appendChild(t); }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._tm);
+    t._tm = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  const SIGN = '\n\n\u2014 Dalla Consulenza Olistica AI \u00b7 olismo-integrato.it';
+
+  function doWhatsApp(h, t){
+    const b = toShareText(h, 'whatsapp');
+    window.open('https://wa.me/?text=' + encodeURIComponent((t?'*'+t+'*\n\n':'') + b + SIGN), '_blank');
+  }
+  function doTelegram(h, t){
+    const b = toShareText(h, 'plain');
+    window.open('https://t.me/share/url?url=' + encodeURIComponent('https://olismo-integrato.it') +
+                '&text=' + encodeURIComponent((t?t+'\n\n':'') + b + SIGN), '_blank');
+  }
+  function doEmail(h, t){
+    const b = toShareText(h, 'email');
+    const s = t || 'Consulenza Olistica \u2014 olismo-integrato.it';
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(b + SIGN);
+  }
+  function doSMS(h, t){
+    let b = toShareText(h, 'sms');
+    if(b.length > 1200) b = b.substring(0, 1200) + '\u2026';
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const sep = isIOS ? '&' : '?';
+    window.location.href = 'sms:' + sep + 'body=' + encodeURIComponent((t?t+'\n\n':'') + b + SIGN);
+  }
+  async function doCopy(h, t){
+    const b = toShareText(h, 'plain');
+    const ok = await copyText((t?t+'\n\n':'') + b + SIGN);
+    toast(ok ? '\u2713 Copiato negli appunti' : '\u26a0 Copia non riuscita');
+  }
+  async function doNative(h, t){
+    if(!navigator.share) return doCopy(h, t);
+    try {
+      await navigator.share({
+        title: t || 'Consulenza Olistica',
+        text: toShareText(h, 'plain') + SIGN,
+        url: 'https://olismo-integrato.it'
+      });
+    } catch(e){}
+  }
+
+  function buildMenu(anchor, html, titolo){
+    document.querySelectorAll('.olismo-share-menu').forEach(m => m.remove());
+    const menu = document.createElement('div');
+    menu.className = 'olismo-share-menu';
+    const opts = [];
+    if(navigator.share){
+      opts.push({ico:'\u22ef', lab:'Sistema (tutte le app\u2026)', fn:() => doNative(html, titolo)});
+      opts.push({divider:true});
+    }
+    opts.push({ico:'\ud83d\udcac', lab:'WhatsApp',  fn:() => doWhatsApp(html, titolo)});
+    opts.push({ico:'\ud83d\udccb', lab:'Copia testo', fn:() => doCopy(html, titolo)});
+    opts.push({ico:'\u2709',       lab:'Email',     fn:() => doEmail(html, titolo)});
+    opts.push({ico:'\u2708',       lab:'Telegram',  fn:() => doTelegram(html, titolo)});
+    opts.push({ico:'\ud83d\udcf1', lab:'SMS',       fn:() => doSMS(html, titolo)});
+    opts.forEach(o => {
+      if(o.divider){
+        const d = document.createElement('div'); d.className = 'olismo-share-divider';
+        menu.appendChild(d); return;
+      }
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = '<span class="olismo-share-ico">' + o.ico + '</span><span>' + o.lab + '</span>';
+      b.onclick = (ev) => { ev.stopPropagation(); menu.remove(); o.fn(); };
+      menu.appendChild(b);
+    });
+    document.body.appendChild(menu);
+    const r = anchor.getBoundingClientRect();
+    const mw = menu.offsetWidth;
+    const vw = window.innerWidth;
+    let left = r.right + window.scrollX - mw;
+    if(left < 8) left = 8;
+    if(left + mw > vw - 8) left = vw - mw - 8;
+    menu.style.top  = (r.bottom + window.scrollY + 6) + 'px';
+    menu.style.left = left + 'px';
+    setTimeout(() => {
+      document.addEventListener('click', function closer(ev){
+        if(!menu.contains(ev.target)){ menu.remove(); document.removeEventListener('click', closer); }
+      });
+    }, 10);
+  }
+
+  function findChatContainer(){
+    // Trova qualsiasi contenitore chat delle varie pagine (consulente, fes, bush, mediatore, ecc.)
+    return document.querySelector('#chat-messages, #fes-messages, #bush-messages, #chat-messages-mediatore, #empowerment-messages, #matrice-messages, #psicologia-messages, [data-olismo-chat]');
+  }
+
+  function collectAllHtml(container){
+    if(!container) return '';
+    return '<div>' + Array.from(container.querySelectorAll('.msg'))
+      .map(m => {
+        const isUser = m.classList.contains('user');
+        const b = m.querySelector('.msg-bubble');
+        const t = m.querySelector('.msg-time');
+        const who = isUser ? '\ud83d\udc64 Tu' : '\ud83c\udf3f Consulente';
+        const time = t && t.childNodes[0] ? t.childNodes[0].textContent.trim() : '';
+        return '<p><strong>' + who + (time ? ' \u00b7 ' + time : '') + '</strong></p>' +
+               (b ? b.innerHTML : '') + '<hr>';
+      }).join('') + '</div>';
+  }
+
+  // ─── API PUBBLICHE ─────────────────────────────────────────────
+  window.olismoShareGlobal = function(ev){
+    ev && ev.stopPropagation();
+    const anchor = (ev && ev.currentTarget) ||
+                   document.getElementById('olismo-share-btn') ||
+                   document.querySelector('.chat-share-btn');
+    const container = findChatContainer();
+    buildMenu(anchor, collectAllHtml(container), 'Consulenza Olistica completa');
+  };
+  window.olismoShareMsg = function(ev, btn){
+    ev && ev.stopPropagation();
+    const msg = btn.closest('.msg');
+    const bubble = msg && msg.querySelector('.msg-bubble');
+    if(!bubble) return;
+    buildMenu(btn, bubble.innerHTML, 'Dalla Consulenza Olistica');
+  };
+  window.olismoCopyMsg = function(ev, btn){
+    ev && ev.stopPropagation();
+    const msg = btn.closest('.msg');
+    const bubble = msg && msg.querySelector('.msg-bubble');
+    if(!bubble) return;
+    doCopy(bubble.innerHTML, 'Dalla Consulenza Olistica');
+  };
+
+  // ─── Auto-injection ─────────────────────────────────────────────
+  function injectGlobalButton(){
+    // Se già presente (es. in consulente.html hardcoded), non duplica
+    if(document.getElementById('olismo-share-btn')) return;
+    const header = document.querySelector('.chat-header');
+    if(!header) return;
+    // Non inietta se non c'è una chat nella stessa pagina
+    if(!findChatContainer()) return;
+    const btn = document.createElement('button');
+    btn.id = 'olismo-share-btn';
+    btn.className = 'chat-share-btn';
+    btn.title = 'Condividi la conversazione';
+    btn.innerHTML = '<span class="arr">\u2197</span><span class="lbl">Condividi</span>';
+    btn.onclick = window.olismoShareGlobal;
+    header.appendChild(btn);
+  }
+
+  function injectOnRating(ratingEl){
+    if(!ratingEl || ratingEl.dataset.olismoInj) return;
+    const msg = ratingEl.closest('.msg');
+    if(!msg) return;
+    if(msg.classList.contains('user')) return;
+    ratingEl.dataset.olismoInj = '1';
+    const bCopy = document.createElement('button');
+    bCopy.type = 'button'; bCopy.className = 'msg-share';
+    bCopy.title = 'Copia questa risposta';
+    bCopy.innerHTML = '\ud83d\udccb';
+    bCopy.onclick = function(ev){ window.olismoCopyMsg(ev, this); };
+    ratingEl.appendChild(bCopy);
+    const bShare = document.createElement('button');
+    bShare.type = 'button'; bShare.className = 'msg-share';
+    bShare.title = 'Condividi questa risposta';
+    bShare.innerHTML = '\u2197';
+    bShare.onclick = function(ev){ window.olismoShareMsg(ev, this); };
+    ratingEl.appendChild(bShare);
+  }
+
+  function injectAll(){
+    injectCSS();
+    injectGlobalButton();
+    document.querySelectorAll('.msg-rating').forEach(injectOnRating);
+  }
+
+  function init(){
+    injectAll();
+    const obs = new MutationObserver(muts => {
+      for(const m of muts){
+        for(const node of m.addedNodes){
+          if(node.nodeType !== 1) continue;
+          if(node.matches && node.matches('.msg-rating')){
+            injectOnRating(node);
+          } else if(node.querySelectorAll){
+            node.querySelectorAll('.msg-rating').forEach(injectOnRating);
+            // Re-inietta bottone globale se viene creata una chat dinamicamente
+            if(node.matches && node.matches('.chat-header')) injectGlobalButton();
+            else if(node.querySelector && node.querySelector('.chat-header')) injectGlobalButton();
+          }
+        }
+      }
+    });
+    obs.observe(document.body, {childList: true, subtree: true});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   ANALYTICS GDPR-FRIENDLY — OLISMO INTEGRATO
+   Carica Plausible (no cookie, no IP, no fingerprint) solo se:
+   - Il visitatore ha dato consenso per gli analytics nel banner
+   - Oppure il sistema di consenso non è presente (fallback)
+   
+   Per attivare: crea un account su plausible.io, aggiungi il dominio
+   "olismo-integrato.it", e il tracking partirà automaticamente.
+   Per cambiare provider, modifica ANALYTICS_CONFIG qui sotto.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  const ANALYTICS_CONFIG = {
+    // Provider: 'plausible' | 'goatcounter' | 'umami' | 'off'
+    provider: 'plausible',
+    // Il tuo dominio registrato sul provider
+    domain: 'olismo-integrato.it',
+    // URL dello script del provider (cambiare solo se usi self-hosting)
+    plausibleScript: 'https://plausible.io/js/script.outbound-links.js',
+    goatcounterScript: 'https://olismo-integrato.goatcounter.com/count.js',
+    umamiScript: '' // es: 'https://analytics.example.com/script.js'
+  };
+
+  let loaded = false;
+
+  function hasAnalyticsConsent(){
+    // Se il sistema consenso è presente, rispetta la scelta
+    if(window.olismoConsent && typeof window.olismoConsent.has === 'function'){
+      return window.olismoConsent.has('analytics');
+    }
+    // Fallback: se non c'è sistema consenso, carica comunque
+    // (Plausible è cookie-free e anonimo, ma puoi cambiare qui il comportamento)
+    return true;
+  }
+
+  function loadAnalytics(){
+    if(loaded) return;
+    if(ANALYTICS_CONFIG.provider === 'off') return;
+    if(!hasAnalyticsConsent()) return;
+
+    const script = document.createElement('script');
+    script.defer = true;
+
+    if(ANALYTICS_CONFIG.provider === 'plausible'){
+      script.setAttribute('data-domain', ANALYTICS_CONFIG.domain);
+      script.src = ANALYTICS_CONFIG.plausibleScript;
+      // API per eventi custom — window.plausible('Nome evento', {props:{...}})
+      window.plausible = window.plausible || function(){
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+    } else if(ANALYTICS_CONFIG.provider === 'goatcounter'){
+      script.src = ANALYTICS_CONFIG.goatcounterScript;
+      script.setAttribute('data-goatcounter', 'https://' + ANALYTICS_CONFIG.domain.replace(/\./g,'-') + '.goatcounter.com/count');
+    } else if(ANALYTICS_CONFIG.provider === 'umami' && ANALYTICS_CONFIG.umamiScript){
+      script.src = ANALYTICS_CONFIG.umamiScript;
+      script.setAttribute('data-domains', ANALYTICS_CONFIG.domain);
+    } else {
+      return;
+    }
+
+    document.head.appendChild(script);
+    loaded = true;
+  }
+
+  // API unificata per tracciare eventi custom (es. completamento test, download PDF)
+  window.olismoTrack = function(eventName, props){
+    try {
+      if(ANALYTICS_CONFIG.provider === 'plausible' && typeof window.plausible === 'function'){
+        window.plausible(eventName, props ? {props: props} : undefined);
+      } else if(ANALYTICS_CONFIG.provider === 'goatcounter' && window.goatcounter && window.goatcounter.count){
+        window.goatcounter.count({event: true, path: eventName, title: eventName});
+      } else if(ANALYTICS_CONFIG.provider === 'umami' && window.umami && window.umami.track){
+        window.umami.track(eventName, props);
+      }
+    } catch(e){ /* silent */ }
+  };
+
+  // Carica subito al load
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', loadAnalytics);
+  } else {
+    loadAnalytics();
+  }
+
+  // Se il consenso cambia (es. utente riapre banner e attiva analytics) → ricarica
+  window.addEventListener('olismo-consent-change', function(){
+    if(!loaded) loadAnalytics();
+  });
+})();

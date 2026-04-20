@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Form di contatto · Prenotazione consulenza
+  
+  COSA FARE DOPO IL DEPLOY:
+  1. Carica questa pagina su GitHub Pages
+  2. Alla prima email inviata dal form, Formsubmit.co ti manderà
+     un link di conferma (una sola volta, poi funziona sempre)
+  3. Se preferisci un altro servizio (Formspree, Netlify Forms),
+     modifica solo l'attributo action del <form>
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati">
+
+<title>Prenota una consulenza — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Prenota una prima consulenza conoscitiva con l'Avv. Carlo Alberto Calcagno. Mediazione civile e familiare, counseling olistico, percorsi di crescita personale.">
+<link rel="canonical" href="https://olismo-integrato.it/prenota-consulenza.html">
+<meta property="og:title" content="Prenota una consulenza — Olismo Integrato">
+<meta property="og:description" content="Mediazione civile e familiare, counseling olistico, percorsi di crescita.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+
+<style>
+/* Stili specifici del form — complementari a olismo-styles.css */
+.prenota-wrap{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem}
+.prenota-hero{
+  text-align:center;margin-bottom:2.5rem
+}
+.prenota-hero .sec-eye{
+  font-family:'Outfit',sans-serif;font-size:.78rem;
+  letter-spacing:.22em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:.7rem
+}
+.prenota-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,3rem);font-weight:500;
+  margin:0 0 .5rem;color:var(--ink);line-height:1.1
+}
+.prenota-hero h1 em{color:var(--gold);font-style:italic;font-weight:600}
+.prenota-hero .sec-div{
+  width:60px;height:2px;background:var(--gold);
+  margin:1rem auto;border-radius:1px
+}
+.prenota-hero p{
+  font-size:1.05rem;color:var(--ink2,#4a4540);
+  line-height:1.6;max-width:640px;margin:0 auto
+}
+
+.prenota-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+  align-items:start
+}
+@media(max-width:780px){
+  .prenota-grid{grid-template-columns:1fr;gap:1.5rem}
+}
+
+/* Card info autore */
+.prenota-author{
+  background:linear-gradient(135deg,rgba(184,147,90,.05),rgba(184,147,90,.12));
+  border:1px solid rgba(184,147,90,.25);
+  border-radius:14px;padding:1.8rem;
+  position:sticky;top:1rem
+}
+@media(max-width:780px){.prenota-author{position:static}}
+.prenota-author .avatar{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#c4a05a);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:2.2rem;
+  font-weight:600;color:white;margin:0 auto 1rem
+}
+.prenota-author h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;margin:0 0 .3rem;text-align:center;color:var(--ink)
+}
+.prenota-author .subtitle{
+  text-align:center;color:var(--ink2);font-size:.88rem;
+  margin-bottom:1.2rem;font-style:italic
+}
+.prenota-author .cred-list{
+  list-style:none;padding:0;margin:0 0 1.2rem;
+  display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center
+}
+.prenota-author .cred-list li{
+  background:white;padding:.25rem .7rem;border-radius:12px;
+  font-size:.74rem;color:var(--ink2);
+  border:1px solid rgba(184,147,90,.2)
+}
+.prenota-author .pitch{
+  font-size:.88rem;line-height:1.55;color:var(--ink2);
+  padding:1rem 0;border-top:1px solid rgba(184,147,90,.2);
+  border-bottom:1px solid rgba(184,147,90,.2);margin-bottom:1rem
+}
+.prenota-author .whatsapp-fast{
+  display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;
+  background:#25D366;color:white;border-radius:10px;
+  text-decoration:none;font-weight:600;font-size:.88rem;
+  justify-content:center;transition:filter .15s
+}
+.prenota-author .whatsapp-fast:hover{filter:brightness(1.08)}
+
+/* Form */
+.prenota-form{
+  background:white;border:1px solid rgba(184,147,90,.25);
+  border-radius:14px;padding:1.8rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.04)
+}
+.prenota-form h2{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+  margin:0 0 1.2rem;color:var(--ink)
+}
+.prenota-form .field{margin-bottom:1rem}
+.prenota-form label{
+  display:block;font-family:'Outfit',sans-serif;
+  font-size:.78rem;font-weight:600;color:var(--ink2);
+  margin-bottom:.35rem;letter-spacing:.03em
+}
+.prenota-form label .req{color:var(--gold);margin-left:2px}
+.prenota-form input[type="text"],
+.prenota-form input[type="email"],
+.prenota-form input[type="tel"],
+.prenota-form select,
+.prenota-form textarea{
+  width:100%;padding:.7rem .9rem;
+  border:1.5px solid rgba(184,147,90,.3);
+  border-radius:8px;font-family:'Outfit',sans-serif;font-size:.92rem;
+  background:#fafaf7;color:var(--ink);
+  transition:border-color .15s, background .15s;
+  box-sizing:border-box
+}
+.prenota-form input:focus,
+.prenota-form select:focus,
+.prenota-form textarea:focus{
+  outline:none;border-color:var(--gold);background:white;
+  box-shadow:0 0 0 3px rgba(184,147,90,.12)
+}
+.prenota-form textarea{min-height:110px;resize:vertical;font-family:inherit}
+
+.prenota-form .check-row{
+  display:flex;align-items:flex-start;gap:.6rem;
+  padding:.8rem;background:rgba(184,147,90,.06);
+  border-radius:8px;margin:1rem 0;
+  font-size:.82rem;line-height:1.45;color:var(--ink2)
+}
+.prenota-form .check-row input[type="checkbox"]{
+  margin-top:.15rem;flex-shrink:0;accent-color:var(--gold);
+  width:16px;height:16px;cursor:pointer
+}
+.prenota-form .check-row label{display:inline;margin:0;font-size:.82rem;font-weight:400}
+.prenota-form .check-row a{color:var(--gold);text-decoration:underline}
+
+.prenota-submit{
+  width:100%;padding:.9rem 1.5rem;
+  background:linear-gradient(135deg,var(--gold),#c4a05a);color:white;
+  border:none;border-radius:8px;cursor:pointer;
+  font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;
+  letter-spacing:.03em;transition:filter .15s, transform .15s;
+  display:flex;align-items:center;justify-content:center;gap:.5rem
+}
+.prenota-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.prenota-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.prenota-notice{
+  margin-top:1rem;padding:.75rem 1rem;
+  background:rgba(184,147,90,.08);border-left:3px solid var(--gold);
+  border-radius:4px;font-size:.78rem;line-height:1.55;color:var(--ink2)
+}
+
+/* Messaggi post-invio */
+.prenota-success{
+  display:none;text-align:center;padding:2rem 1.5rem;
+  background:linear-gradient(135deg,rgba(120,180,140,.08),rgba(120,180,140,.18));
+  border:1px solid rgba(120,180,140,.4);border-radius:14px
+}
+.prenota-success.show{display:block;animation:prenotaFadeIn .4s}
+@keyframes prenotaFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.prenota-success .ico{font-size:2.8rem;margin-bottom:.5rem}
+.prenota-success h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.6rem;
+  color:var(--ink);margin:0 0 .5rem
+}
+.prenota-success p{color:var(--ink2);line-height:1.55;margin:0 0 1rem}
+.prenota-success .back-link{
+  display:inline-block;padding:.6rem 1.2rem;
+  background:transparent;color:var(--gold);
+  border:1.5px solid var(--gold);border-radius:8px;
+  text-decoration:none;font-weight:600;font-size:.85rem
+}
+.prenota-success .back-link:hover{background:var(--gold);color:white}
+
+.prenota-error{
+  display:none;padding:1rem;margin-top:1rem;
+  background:rgba(200,70,70,.08);border-left:3px solid #c44;
+  border-radius:4px;font-size:.85rem;color:#933
+}
+.prenota-error.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- Header sobrio -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="prenota-wrap">
+
+  <!-- Hero -->
+  <div class="prenota-hero">
+    <div class="sec-eye">Primo incontro conoscitivo</div>
+    <h1>Prenota una <em>consulenza</em></h1>
+    <div class="sec-div"></div>
+    <p>Un primo colloquio per capire se posso esserti utile. Mediazione civile o familiare, counseling olistico, lettura del tuo profilo enneatipico o supporto in un momento di conflitto. Rispondo sempre entro 24 ore lavorative.</p>
+  </div>
+
+  <!-- Messaggio di successo (nascosto di default) -->
+  <div class="prenota-success" id="prenota-success">
+    <div class="ico">✦</div>
+    <h3>Richiesta ricevuta</h3>
+    <p>Grazie per avermi scritto. Ti rispondo personalmente all'indirizzo email che mi hai indicato entro 24 ore lavorative. Se hai urgenza, puoi contattarmi direttamente su WhatsApp.</p>
+    <a href="https://wa.me/393473666508" class="back-link" target="_blank" rel="noopener" style="margin-right:.5rem">💬 WhatsApp</a>
+    <a href="index.html" class="back-link">← Torna alla home</a>
+  </div>
+
+  <div class="prenota-grid" id="prenota-grid">
+
+    <!-- Card autore -->
+    <aside class="prenota-author">
+      <div class="avatar">CC</div>
+      <h3>Avv. Carlo Alberto Calcagno</h3>
+      <div class="subtitle">Mediatore · Formatore · Ricercatore</div>
+      <ul class="cred-list">
+        <li>⚖ Mediatore civile</li>
+        <li>👨‍👩‍👧 Mediatore familiare</li>
+        <li>⬟ Enneagramma Evolutivo</li>
+        <li>🤲 Pranoterapia</li>
+        <li>📚 35+ anni di esperienza</li>
+      </ul>
+      <p class="pitch">Lavoro con persone, coppie e famiglie in situazioni di conflitto, transizione, smarrimento. Integro la pratica giuridica della mediazione con la lettura psicologica dell'Enneagramma e dell'Analisi Transazionale, e con le discipline energetiche per accompagnare il riequilibrio.</p>
+      <a href="https://wa.me/393473666508?text=Salve%20Avv.%20Calcagno%2C%20vorrei%20prenotare%20una%20consulenza." class="whatsapp-fast" target="_blank" rel="noopener">
+        <span style="font-size:1.15rem">💬</span> Preferisco scrivere su WhatsApp
+      </a>
+    </aside>
+
+    <!-- Form -->
+    <form class="prenota-form" id="prenota-form"
+          action="https://formsubmit.co/calcagnocarloalberto1@gmail.com"
+          method="POST">
+
+      <!-- Configurazione Formsubmit (campi nascosti) -->
+      <input type="hidden" name="_subject" value="Nuova prenotazione consulenza · olismo-integrato.it">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://olismo-integrato.it/prenota-consulenza.html?inviato=1">
+      <!-- Honeypot anti-spam -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <h2>Parlami di te</h2>
+
+      <div class="field">
+        <label for="pf-nome">Nome e cognome<span class="req">*</span></label>
+        <input type="text" id="pf-nome" name="nome" required autocomplete="name" maxlength="100">
+      </div>
+
+      <div class="field">
+        <label for="pf-email">Email<span class="req">*</span></label>
+        <input type="email" id="pf-email" name="email" required autocomplete="email" maxlength="120">
+      </div>
+
+      <div class="field">
+        <label for="pf-tel">Telefono <span style="color:#999;font-weight:400">(facoltativo)</span></label>
+        <input type="tel" id="pf-tel" name="telefono" autocomplete="tel" maxlength="30" placeholder="+39 ...">
+      </div>
+
+      <div class="field">
+        <label for="pf-tipo">Di cosa vorresti parlare?<span class="req">*</span></label>
+        <select id="pf-tipo" name="tipo_richiesta" required>
+          <option value="">— Scegli —</option>
+          <option>Mediazione civile o commerciale</option>
+          <option>Mediazione familiare / separazione</option>
+          <option>Counseling olistico personale</option>
+          <option>Lettura enneatipo e profilo AT</option>
+          <option>Percorso di crescita</option>
+          <option>Formazione per mediatori / professionisti</option>
+          <option>Pranoterapia</option>
+          <option>Altro / non sono sicuro</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="pf-msg">Descrivi brevemente la tua situazione<span class="req">*</span></label>
+        <textarea id="pf-msg" name="messaggio" required maxlength="2000" placeholder="Qualche riga sul contesto e su cosa ti ha portato qui. Le informazioni che mi dai sono coperte dal segreto professionale."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="pf-disp">Tua disponibilità preferita</label>
+        <select id="pf-disp" name="disponibilita">
+          <option value="">— Nessuna preferenza —</option>
+          <option>Mattina (9-13)</option>
+          <option>Pomeriggio (14-18)</option>
+          <option>Sera (18-20)</option>
+          <option>Weekend</option>
+          <option>Indifferente</option>
+        </select>
+      </div>
+
+      <div class="check-row">
+        <input type="checkbox" id="pf-privacy" name="privacy_accettata" value="sì" required>
+        <label for="pf-privacy">
+          Ho letto l'<a href="termini-uso.html" target="_blank" rel="noopener">informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali per essere ricontattato in merito a questa richiesta. I dati non saranno usati per marketing e saranno conservati solo per il tempo necessario a gestire la conversazione.<span class="req">*</span>
+        </label>
+      </div>
+
+      <button type="submit" class="prenota-submit" id="prenota-submit">
+        <span>Invia richiesta</span>
+        <span style="font-size:1.1rem">→</span>
+      </button>
+
+      <div class="prenota-error" id="prenota-error">
+        L'invio non è andato a buon fine. Puoi riprovare tra un momento o scrivermi direttamente a
+        <a href="mailto:calcagnocarloalberto1@gmail.com">calcagnocarloalberto1@gmail.com</a>
+        o su <a href="https://wa.me/393473666508" target="_blank" rel="noopener">WhatsApp</a>.
+      </div>
+
+      <div class="prenota-notice">
+        <strong>Cosa succede dopo:</strong> ricevo la tua richiesta via email e ti rispondo personalmente entro 24 ore lavorative con una proposta di orario per il primo colloquio. Il primo incontro conoscitivo (15-20 minuti) è gratuito e serve a capire se posso esserti utile.
+      </div>
+
+    </form>
+  </div>
+</div>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno · Genova</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="termini-uso.html" style="color:var(--gold);text-decoration:none">📜 Termini d'uso</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Se la pagina è stata caricata con ?inviato=1 (redirect dopo submit), mostra success
+  const urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('inviato') === '1'){
+    document.getElementById('prenota-grid').style.display = 'none';
+    document.getElementById('prenota-success').classList.add('show');
+    // Scroll in cima
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  // Validazione lato client minima (per UX fluida — la server-side è su Formsubmit)
+  const form = document.getElementById('prenota-form');
+  const submitBtn = document.getElementById('prenota-submit');
+  const errorEl = document.getElementById('prenota-error');
+
+  form.addEventListener('submit', function(ev){
+    errorEl.classList.remove('show');
+    // Disabilita il pulsante per evitare doppi invii
+    submitBtn.disabled = true;
+    const origHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>Invio in corso…</span>';
+    // Fallback: se il form fallisce per qualsiasi motivo, riattiva dopo 12s
+    setTimeout(() => {
+      if(submitBtn.disabled){
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origHTML;
+      }
+    }, 12000);
+  });
+})();
+</script>
+
+</body>
+</html>

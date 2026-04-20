@@ -4774,14 +4774,29 @@ async function exportChatPdf(){
     function md(s){
       if(!s) return '';
       s = String(s).replace(/\r\n?/g, '\n');
-      // Tabelle pipe → formato tabulato
+      // Tabelle pipe → formato VERTICALE chiave:valore (più leggibile in colonna stretta)
       s = s.replace(/(?:^\|.*\|[ \t]*\n?)+/gm, function(block){
         const rows = block.trim().split('\n').map(r =>
           r.replace(/^\||\|$/g, '').split('|').map(c => c.trim())
         );
         const clean = rows.filter(r => !r.every(c => /^[-:\s]*$/.test(c)));
         if(clean.length === 0) return '\n';
-        return '\n' + clean.map(r => r.join('   |   ')).join('\n') + '\n\n';
+        // Se è tabella vera con header (più di 1 riga e più di 2 colonne): formato verticale
+        if(clean.length >= 2 && clean[0].length >= 2){
+          const headers = clean[0];
+          const dataRows = clean.slice(1);
+          let out = '\n';
+          dataRows.forEach((row, idx) => {
+            if(idx > 0) out += '\n';
+            row.forEach((cell, i) => {
+              const label = headers[i] || '';
+              if(cell) out += '- ' + (label ? label + ': ' : '') + cell + '\n';
+            });
+          });
+          return out + '\n';
+        }
+        // Tabella semplice (2 colonne o singola riga): formato orizzontale
+        return '\n' + clean.map(r => r.join('  -  ')).join('\n') + '\n\n';
       });
       // Code fences ```
       s = s.replace(/```[a-z]*\n?([\s\S]*?)```/gi, '\n$1\n');
@@ -4794,8 +4809,11 @@ async function exportChatPdf(){
       s = s.replace(/^###\s+(.+)$/gm, '\n>> $1\n');
       s = s.replace(/^##\s+(.+)$/gm, '\n\n=== $1 ===\n');
       s = s.replace(/^#\s+(.+)$/gm, '\n\n### $1 ###\n');
-      // Separatori orizzontali
+      // Separatori orizzontali --- (riga isolata)
       s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n. . . . . . . . . . . . . . . . .\n');
+      // Separatori --- inline attaccati a testo (es. "corpo.---" → "corpo.\n\n...\n")
+      s = s.replace(/([^\n])-{3,}(\s|$)/g, '$1\n\n. . . . . . . . . . . . . . . . .\n$2');
+      s = s.replace(/(^|\s)-{3,}([^\n-])/g, '$1\n. . . . . . . . . . . . . . . . .\n$2');
       // Bold **X** e __X__
       s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1');
       s = s.replace(/__([^_\n]+)__/g, '$1');
@@ -4908,13 +4926,13 @@ async function exportChatPdf(){
       doc.setFillColor(...IVORY);
       doc.rect(0, 7, PW, 18, 'F');
 
-      // Logo mark ◉
+      // Logo mark: cerchio gold con monogramma OI
       doc.setFillColor(...GOLD);
       doc.circle(ML + 5, 16, 4, 'F');
       doc.setTextColor(...WHITE);
-      doc.setFontSize(8);
+      doc.setFontSize(6);
       doc.setFont('helvetica', 'bold');
-      doc.text('*', ML + 3.5, 17.5);
+      doc.text('OI', ML + 5, 17.2, {align: 'center'});
 
       // Site name
       doc.setTextColor(...INK);

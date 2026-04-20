@@ -4991,80 +4991,32 @@ async function exportChatPdf(){
       }
     }
 
-    // ── Draw a message bubble ──
+    // ── Draw a message bubble (con split automatico su più pagine) ──
     function drawMessage(role, text, time){
       const isUser = role === 'user';
       const maxBubbleW = CW * 0.82;
       const bubblePad = 3.5;
       const lineH = 4.5;
       const fs = 9;
-
-      // Set font for measurement
-      doc.setFontSize(fs);
-      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
-
-      // Header label
+      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
+      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
       const label = isUser ? 'Tu' : 'Consulente Olistica';
       const labelColor = isUser ? GOLD : INK3;
 
       // Wrap text (md() solo per AI: l'utente scrive testo piano)
-      const processed = isUser ? se(text) : se(md(text));
-      const lines = wrapText(processed, maxBubbleW - bubblePad * 2, fs);
-      const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
-
-      // Space between messages
-      const spaceBefore = 4;
-      checkBreak(spaceBefore + 5 + bubbleH + 2);
-      y += spaceBefore;
-
-      // Label row
-      doc.setFontSize(7.5);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(...labelColor);
-      const labelX = isUser ? PW - MR - maxBubbleW : ML;
-      doc.text(se(label), labelX, y);
-
-      // Time
-      if(time){
-        doc.setFontSize(6.5);
-        doc.setFont('helvetica', 'normal');
-        doc.setTextColor(...INK3);
-        const timeX = isUser ? PW - MR : ML + maxBubbleW;
-        doc.text(se(time), timeX, y, {align: isUser ? 'right' : 'left'});
-      }
-      y += 3.5;
-
-      // Bubble background
-      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
-      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
-
-      doc.setFillColor(...bubbleBgColor);
-      doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
-      doc.setLineWidth(0.3);
-      doc.roundedRect(bubbleX, y, maxBubbleW, bubbleH, 2.5, 2.5, 'FD');
-
-      // User: accent bar on left
-      if(!isUser){
-        doc.setFillColor(...GOLD);
-        doc.rect(bubbleX, y, 1.5, bubbleH, 'F');
-      }
-
-      // Bubble text con rendering differenziato per tipo di riga
       doc.setFontSize(fs);
       doc.setFont('helvetica', isUser ? 'bold' : 'normal');
-      doc.setTextColor(...INK);
-      let ty = y + bubblePad + lineH - 0.5;
+      const processed = isUser ? se(text) : se(md(text));
+      const allLines = wrapText(processed, maxBubbleW - bubblePad * 2, fs);
 
-      lines.forEach(line => {
-        // Detect line type
+      // Funzione che renderizza una singola riga al punto (ty) dato
+      function renderLine(line, ty){
         const isH1 = /^### .+ ###$/.test(line);
         const isH2 = /^=== .+ ===$/.test(line);
         const isH3 = /^>> /.test(line);
         const isH4 = /^>>> /.test(line);
         const isBullet = /^- /.test(line);
         const isSeparator = /^\. (\. )+\.?$/.test(line);
-        const isTable = line.includes('   |   ');
-
         if(!isUser && isH1){
           doc.setFont('helvetica', 'bold');
           doc.setFontSize(fs + 2);
@@ -5094,19 +5046,103 @@ async function exportChatPdf(){
           doc.text('-', bubbleX + bubblePad + 1.8, ty);
           doc.setTextColor(...INK);
           doc.text(line.substring(2), bubbleX + bubblePad + 5.5, ty);
-        } else if(!isUser && isTable){
-          doc.setFont('courier', 'normal');
-          doc.setFontSize(fs - 0.5);
-          doc.text(line, bubbleX + bubblePad + 1.8, ty);
-          doc.setFont('helvetica', 'normal');
-          doc.setFontSize(fs);
         } else {
           doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
         }
-        ty += lineH;
-      });
+      }
 
-      y += bubbleH;
+      // Funzione che disegna un segmento di bolla con N linee
+      function drawBubbleSegment(segLines, isFirst, isLast){
+        const segH = segLines.length * lineH + bubblePad * 2;
+        doc.setFillColor(...bubbleBgColor);
+        doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
+        doc.setLineWidth(0.3);
+        // Se è segmento intero: roundedRect; se intermedio: rect normale
+        if(isFirst && isLast){
+          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
+        } else if(isFirst){
+          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
+        } else if(isLast){
+          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
+        } else {
+          doc.rect(bubbleX, y, maxBubbleW, segH, 'FD');
+        }
+        // Accent bar per AI
+        if(!isUser){
+          doc.setFillColor(...GOLD);
+          doc.rect(bubbleX, y, 1.5, segH, 'F');
+        }
+        // Indicatore "continua" se non è l'ultimo segmento
+        if(!isLast){
+          doc.setTextColor(...INK3);
+          doc.setFontSize(6);
+          doc.setFont('helvetica', 'italic');
+          doc.text('(continua sulla pagina seguente...)', bubbleX + maxBubbleW - bubblePad - 2, y + segH - 1.5, {align: 'right'});
+        }
+        // Render lines
+        doc.setFontSize(fs);
+        doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+        doc.setTextColor(...INK);
+        let ty = y + bubblePad + lineH - 0.5;
+        segLines.forEach(line => {
+          renderLine(line, ty);
+          ty += lineH;
+        });
+        y += segH;
+      }
+
+      // ── Paginazione: prima spazio per label + stima primo segmento ──
+      const spaceBefore = 4;
+      const availH = PH - MB - y - spaceBefore - 5 - 3.5; // spazio utile per bolla
+      const firstNeedsHeader = true;
+
+      // Se non c'è spazio per almeno 4 righe + header, nuova pagina
+      const minSpaceNeeded = 4 * lineH + bubblePad * 2 + 8;
+      if(availH < minSpaceNeeded){
+        drawFooter();
+        doc.addPage();
+        page++;
+        drawHeader();
+      }
+
+      y += spaceBefore;
+
+      // Label row
+      doc.setFontSize(7.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...labelColor);
+      const labelX = isUser ? PW - MR - maxBubbleW : ML;
+      doc.text(se(label), labelX, y);
+
+      // Time
+      if(time){
+        doc.setFontSize(6.5);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(...INK3);
+        const timeX = isUser ? PW - MR : ML + maxBubbleW;
+        doc.text(se(time), timeX, y, {align: isUser ? 'right' : 'left'});
+      }
+      y += 3.5;
+
+      // Split delle linee in segmenti per pagina
+      let remaining = allLines.slice();
+      let isFirst = true;
+      while(remaining.length > 0){
+        const spaceOnPage = PH - MB - y - 4; // margine bottom
+        const maxLinesThisSeg = Math.max(3, Math.floor((spaceOnPage - bubblePad * 2) / lineH));
+        const takeN = Math.min(remaining.length, maxLinesThisSeg);
+        const segLines = remaining.slice(0, takeN);
+        remaining = remaining.slice(takeN);
+        const isLast = remaining.length === 0;
+        drawBubbleSegment(segLines, isFirst, isLast);
+        if(!isLast){
+          drawFooter();
+          doc.addPage();
+          page++;
+          drawHeader();
+        }
+        isFirst = false;
+      }
     }
 
     // ── Build the chat list from chatHistory ──

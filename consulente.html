@@ -51,6 +51,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="olismo-styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- ═══════ SISTEMA CONDIVISIONE — CSS ═══════ -->
+<style id="olismo-share-css">
+  /* Pulsante Condividi nell'header chat */
+  .chat-share-btn{
+    font-size:.72rem;padding:.35rem .9rem;
+    background:transparent;color:var(--gold);
+    border:1.5px solid var(--gold);border-radius:6px;
+    cursor:pointer;font-weight:600;font-family:'Outfit',sans-serif;
+    display:inline-flex;align-items:center;gap:.35rem;
+    transition:all .15s ease;
+  }
+  .chat-share-btn:hover{background:var(--gold);color:white}
+  .chat-share-btn .arr{font-size:.9rem;line-height:1}
+
+  /* Micro-toolbar su singolo messaggio */
+  .msg-rating .msg-share{
+    background:none;border:none;cursor:pointer;
+    padding:.15rem .3rem;font-size:.9rem;
+    opacity:.55;transition:opacity .15s ease;
+    line-height:1;vertical-align:middle;
+  }
+  .msg-rating .msg-share:hover{opacity:1}
+
+  /* Menu dropdown condivisione */
+  .olismo-share-menu{
+    position:absolute;z-index:9999;
+    background:white;border:1px solid rgba(184,147,90,.3);
+    border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.15);
+    padding:.35rem;min-width:190px;
+    font-family:'Outfit',sans-serif;font-size:.84rem;
+    animation:olismoMenuIn .12s ease-out;
+  }
+  @keyframes olismoMenuIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  .olismo-share-menu button{
+    display:flex;align-items:center;gap:.7rem;
+    width:100%;padding:.55rem .8rem;
+    background:transparent;border:none;border-radius:6px;
+    cursor:pointer;font:inherit;color:#2a2520;
+    text-align:left;transition:background .12s;
+  }
+  .olismo-share-menu button:hover{background:rgba(184,147,90,.10)}
+  .olismo-share-menu .olismo-share-ico{
+    width:22px;font-size:1.05rem;text-align:center;flex-shrink:0;
+  }
+  .olismo-share-menu .olismo-share-divider{
+    height:1px;background:rgba(184,147,90,.2);margin:.25rem .4rem;
+  }
+
+  /* Toast notification */
+  #olismo-toast{
+    position:fixed;bottom:30px;left:50%;
+    transform:translateX(-50%) translateY(10px);
+    background:var(--gold);color:white;
+    padding:.7rem 1.4rem;border-radius:24px;
+    font-family:'Outfit',sans-serif;font-size:.88rem;
+    box-shadow:0 8px 24px rgba(0,0,0,.20);
+    z-index:10000;opacity:0;pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  #olismo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* Mobile: pulsante più compatto */
+  @media(max-width:640px){
+    .chat-share-btn{padding:.3rem .6rem;font-size:.68rem}
+    .chat-share-btn .lbl{display:none}
+  }
+</style>
 </head>
 <body>
 
@@ -93,6 +161,7 @@
           Scarica PDF
         </button>
           <button id="report-pdf-btn" onclick="exportReportPdf()" style="font-size:.72rem;padding:.35rem .9rem;background:linear-gradient(135deg,var(--gold),#c4a05a);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600" title="Report completo">📄 Scarica Report</button>
+          <button id="olismo-share-btn" class="chat-share-btn" onclick="olismoShareGlobal(event)" title="Condividi la conversazione"><span class="arr">↗</span><span class="lbl">Condividi</span></button>
       </div>
       
     <div class="chat-suggestions">
@@ -106,15 +175,6 @@
       <div class="chat-messages" id="chat-messages"><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
     <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
     <div class="msg-time">15:17<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
-  </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
-    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
-    <div class="msg-time">14:31<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
-  </div></div><div class="msg user"><div class="msg-avatar user">T</div><div>
-    <div class="msg-bubble user">Ho completato il Test del Vettore Comunicativo: vettore primario GA+. Analizza il mio stile comunicativo e collega alla mia personalità AT.</div>
-    <div class="msg-time">14:38</div>
-  </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
-    <div class="msg-bubble ai"><p># <strong>ANALISI DEL VETTORE GA+ — IL TUO STILE COMUNICATIVO</strong></p><p>Ciao! Vedo dal tuo profilo che sei un <strong>T5 Schizoide</strong> con adattamento primario <strong>Creativo-Sognatore (72%)</strong>, e il tuo vettore primario è <strong>GA+</strong> (Genitore Affettivo Positivo).</p><p>Questa è una combinazione affascinante e — detto onestamente — *non frequentissima* nel T5. Scopriamo perché.</p><p>---</p><p>## <strong>Chi è GA+?</strong></p><p><strong>GA = Genitore Affettivo</strong>  <br>Il GA è lo stato dell'io che *nutre, permette, abbraccia incondizionatamente*. Quando è positivo (GA+), sei in grado di:<br>• Ascoltare senza giudicare<br>• Offrire calore autentico<br>• Creare spazi psicologici sicuri<br>• Comunicare con tenerezza e permessi ("va bene sentire quello che senti")<br>• Essere *presente* senza forzare</p><p><strong>Il paradosso T5</strong>: il Grande Saggio tende naturalmente a staccarsi, a osservare da distanza, a razionalizzare. Ma il tuo GA+ suggerisce che <strong>hai sviluppato una capacità straordinaria di empatia calda pur mantenendo la tua lucidità critica</strong>. Non è facile.</p><p>---</p><p>## <strong>Cosa significa per la TUA comunicazione?</strong><br></p><div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>Aspetto</th><th>Manifestazione</th></tr></thead><tbody><tr><td><strong>Ascolto</strong></td><td>Profondo e non-direttivo; senti il dolore dell'altro senza assorbirtelo</td></tr><tr><td><strong>Linguaggio</strong></td><td>Lento, ponderato, permissivo ("è normale sentirsi così")</td></tr><tr><td><strong>Chakra energetico</strong></td><td>4° Anahata (Cuore) + 5° Vishuddha (Gola) — testa nel cuore</td></tr><tr><td><strong>Rischio</strong></td><td>Eccesso di tolleranza che può essere confuso con passività o accettazione di violazioni</td></tr><tr><td><strong>Forza</strong></td><td>Crei spazi dove le persone si sentono *autorizzate a essere fragili*</td></tr></tbody></table></div><br>Con il tuo canale <strong>Visivo (68%)</strong>, comunichi *immagini di sicurezza e accoglienza* — non con parole melense, ma con silenzi significativi e sguardi che dicono "sto con te".<p></p><p>---</p><p>## <strong>Collegamento all'Adattamento Schizoide</strong></p><p>Il tuo <strong>Schizoide Creativo-Sognatore (72%)</strong> ha imparato presto a <strong>fare da solo</strong> perché non poteva fidarsi completamente dell'ambiente. Ma il GA+ mostra che <strong>hai scelto di creare un ambiente diverso per gli altri</strong>: quello che volevi per te da piccolo.</p><p><strong>Chakra di forza (c5 — Vishuddha)</strong> + <strong>GA+</strong> = sei capace di *esprimere la verità con tenerezza*. Dici cose difficili, ma in modo che l'altro non si senta demolito.</p><p>---</p><p>## <strong>Suggerimento pratico immediato</strong></p><p>Monitora questo pattern: il tuo GA+ potrebbe portarti a <strong>sopprimere bisogni propri</strong> per non "disturbare" l'altro (eredità schizoide). Pratica dicendo:<br>• *"Io ho bisogno di..."* (non "potremmo" ma "io")<br>• Accorda il Genitore Affettivo con l'Adulto (c6 Ajna): visione + critica costruttiva</p><p><strong>Fiore di Bach consigliato</strong>: <strong>Water Violet</strong> (isolamento T5) + <strong>Agrimony</strong> (maschera allegra) per mantenere il confine tra nutrimento e auto-negazione.</p><p>---</p><p><strong>Come senti questo? Riconosci questo equilibrio difficile tra il bisogno di spazio (T5) e il desiderio di creare sicurezza negli altri (GA+)?</strong></p></div>
-    <div class="msg-time">14:39<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
   </div></div></div>
       <div id="chat-profile-badge" style="display: block; font-size: 0.72rem; color: var(--gold); background: rgba(184, 147, 90, 0.1); border: 1px solid rgba(184, 147, 90, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; margin: 0.4rem 0.8rem; text-align: center; line-height: 1.5;">📊 Profilo rilevato: Check · 9 Frutti · Test AT · VAK · Egogramma · Dieta</div>
 <div class="chat-input-area">
@@ -152,6 +212,334 @@
     <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
   </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  SISTEMA DI CONDIVISIONE UNIVERSALE — OLISMO INTEGRATO              -->
+<!--  WhatsApp, Copia, Email, Telegram, SMS + Web Share API nativa       -->
+<!--  Conversione markdown → formato messaggistica                        -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  // ─── Conversione markdown → testo pulito per condivisione ───────────
+  function toShareText(html, platform){
+    if(!html) return '';
+    // Se è HTML, estrai testo preservando struttura
+    let s;
+    if(html.indexOf('<') >= 0){
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      // Rimuovi elementi non-contenuto
+      tmp.querySelectorAll('.msg-rating, .msg-time').forEach(el => el.remove());
+      // Walker ricorsivo per preservare struttura
+      function walk(n){
+        if(n.nodeType === 3) return n.textContent || '';
+        if(n.nodeType !== 1) return '';
+        const tag = (n.tagName||'').toLowerCase();
+        if(tag === 'tr'){
+          const cells = [];
+          for(const c of n.children){
+            const t = (c.tagName||'').toLowerCase();
+            if(t==='td'||t==='th') cells.push(Array.from(c.childNodes).map(walk).join('').trim().replace(/\s+/g,' '));
+          }
+          return cells.join(' — ') + '\n';
+        }
+        const kids = Array.from(n.childNodes).map(walk).join('');
+        switch(tag){
+          case 'br': return '\n';
+          case 'hr': return '\n———\n';
+          case 'p': case 'div': case 'section': return kids.trim()? kids+'\n\n' : kids;
+          case 'h1': case 'h2': return '\n*'+kids.trim().toUpperCase()+'*\n';
+          case 'h3': case 'h4': case 'h5': case 'h6': return '\n*'+kids.trim()+'*\n';
+          case 'ul': case 'ol': return '\n'+kids+'\n';
+          case 'li': return '• '+kids.trim()+'\n';
+          case 'strong': case 'b': return '*'+kids+'*';
+          case 'em': case 'i': return (platform==='whatsapp' ? '_'+kids+'_' : kids);
+          case 'a': { const h=n.getAttribute&&n.getAttribute('href'); return h?kids+' ('+h+')':kids; }
+          case 'table': return '\n'+kids+'\n';
+          case 'thead': case 'tbody': case 'tfoot': return kids;
+          case 'script': case 'style': return '';
+          default: return kids;
+        }
+      }
+      s = walk(tmp);
+    } else {
+      s = html;
+    }
+    // Pulizia markdown residuo
+    s = s.replace(/\*\*([^*\n]+)\*\*/g, '*$1*');  // **bold** → *bold* (WA-like)
+    s = s.replace(/^#{1,6}\s+(.+)$/gm, function(m,h){ return '\n*'+h.toUpperCase()+'*\n'; });
+    s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '———————');
+    s = s.replace(/^[ \t]*[-*][ \t]+/gm, '• ');
+    s = s.replace(/\n{3,}/g, '\n\n');
+    // Se destinato a canale che non supporta *bold* → rimuovi marker
+    if(platform === 'plain' || platform === 'email' || platform === 'sms'){
+      s = s.replace(/\*([^*\n]+)\*/g, '$1');
+      s = s.replace(/_([^_\n]+)_/g, '$1');
+    }
+    return s.trim();
+  }
+
+  // ─── Estrai testo di un singolo messaggio ──────────────────────────
+  function extractMsg(bubble){
+    return bubble ? bubble.innerHTML : '';
+  }
+
+  // ─── Estrai tutta la conversazione ────────────────────────────────
+  function extractAllChat(platform){
+    const msgs = document.querySelectorAll('#chat-messages .msg');
+    const out = [];
+    msgs.forEach(m => {
+      const isUser = m.classList.contains('user');
+      const bubble = m.querySelector('.msg-bubble');
+      const timeEl = m.querySelector('.msg-time');
+      if(!bubble) return;
+      const txt = toShareText(bubble.innerHTML, platform);
+      if(!txt) return;
+      const time = timeEl && timeEl.childNodes[0] ? timeEl.childNodes[0].textContent.trim() : '';
+      const who = isUser ? '👤 Tu' : '🌿 Consulente Olistica';
+      out.push(who + (time ? ' · ' + time : '') + '\n' + txt);
+    });
+    return out.join('\n\n———————\n\n');
+  }
+
+  // ─── Copia robusta (clipboard + fallback execCommand per iOS) ──────
+  async function copyText(text){
+    try {
+      if(navigator.clipboard && window.isSecureContext){
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch(e){}
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      ta.setAttribute('readonly','');
+      document.body.appendChild(ta);
+      if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+        const range = document.createRange();
+        range.selectNodeContents(ta);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, 999999);
+      } else {
+        ta.select();
+      }
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(e){ return false; }
+  }
+
+  // ─── Toast feedback ────────────────────────────────────────────────
+  function toast(msg){
+    let t = document.getElementById('olismo-toast');
+    if(!t){
+      t = document.createElement('div');
+      t.id = 'olismo-toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._tm);
+    t._tm = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  // ─── Firma che viene allegata a tutti i contenuti condivisi ────────
+  const SIGN = '\n\n— Dalla Consulenza Olistica AI · olismo-integrato.it';
+
+  // ─── Azioni per ogni canale ────────────────────────────────────────
+  function doWhatsApp(htmlOrText, titolo){
+    const body = toShareText(htmlOrText, 'whatsapp');
+    const head = titolo ? '*' + titolo + '*\n\n' : '';
+    const full = head + body + SIGN;
+    window.open('https://wa.me/?text=' + encodeURIComponent(full), '_blank');
+  }
+  function doTelegram(htmlOrText, titolo){
+    const body = toShareText(htmlOrText, 'plain');
+    const head = titolo ? titolo + '\n\n' : '';
+    const full = head + body + SIGN;
+    window.open('https://t.me/share/url?url=' + encodeURIComponent('https://olismo-integrato.it') +
+                '&text=' + encodeURIComponent(full), '_blank');
+  }
+  function doEmail(htmlOrText, titolo){
+    const body = toShareText(htmlOrText, 'email');
+    const subj = titolo || 'Consulenza Olistica — olismo-integrato.it';
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(subj) +
+                           '&body=' + encodeURIComponent(body + SIGN);
+  }
+  function doSMS(htmlOrText, titolo){
+    let body = toShareText(htmlOrText, 'sms');
+    if(body.length > 1200) body = body.substring(0, 1200) + '…';
+    const head = titolo ? titolo + '\n\n' : '';
+    const full = head + body + SIGN;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const sep = isIOS ? '&' : '?';
+    window.location.href = 'sms:' + sep + 'body=' + encodeURIComponent(full);
+  }
+  async function doCopy(htmlOrText, titolo){
+    const body = toShareText(htmlOrText, 'plain');
+    const head = titolo ? titolo + '\n\n' : '';
+    const ok = await copyText(head + body + SIGN);
+    toast(ok ? '✓ Copiato negli appunti' : '⚠ Copia non riuscita');
+  }
+  async function doNative(htmlOrText, titolo){
+    if(!navigator.share) return doCopy(htmlOrText, titolo);
+    const body = toShareText(htmlOrText, 'plain');
+    try {
+      await navigator.share({
+        title: titolo || 'Consulenza Olistica',
+        text: body + SIGN,
+        url: 'https://olismo-integrato.it'
+      });
+    } catch(e){ /* cancelled */ }
+  }
+
+  // ─── Costruisce e mostra il menu dropdown ──────────────────────────
+  function buildMenu(anchor, htmlOrText, titolo){
+    // Chiudi menu precedente se c'è
+    const existing = document.querySelector('.olismo-share-menu');
+    if(existing) existing.remove();
+
+    const menu = document.createElement('div');
+    menu.className = 'olismo-share-menu';
+
+    const opts = [];
+    if(navigator.share){
+      opts.push({ico:'⋯', lab:'Sistema (tutte le app…)', fn:() => doNative(htmlOrText, titolo)});
+      opts.push({divider:true});
+    }
+    opts.push({ico:'💬', lab:'WhatsApp',  fn:() => doWhatsApp(htmlOrText, titolo)});
+    opts.push({ico:'📋', lab:'Copia testo', fn:() => doCopy(htmlOrText, titolo)});
+    opts.push({ico:'✉', lab:'Email',     fn:() => doEmail(htmlOrText, titolo)});
+    opts.push({ico:'✈', lab:'Telegram',  fn:() => doTelegram(htmlOrText, titolo)});
+    opts.push({ico:'📱', lab:'SMS',       fn:() => doSMS(htmlOrText, titolo)});
+
+    opts.forEach(o => {
+      if(o.divider){
+        const d = document.createElement('div');
+        d.className = 'olismo-share-divider';
+        menu.appendChild(d);
+        return;
+      }
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = '<span class="olismo-share-ico">' + o.ico + '</span><span>' + o.lab + '</span>';
+      b.onclick = (ev) => { ev.stopPropagation(); menu.remove(); o.fn(); };
+      menu.appendChild(b);
+    });
+
+    // Posiziona sotto l'anchor
+    document.body.appendChild(menu);
+    const r = anchor.getBoundingClientRect();
+    const mw = menu.offsetWidth;
+    const vw = window.innerWidth;
+    let left = r.right + window.scrollX - mw;
+    if(left < 8) left = 8;
+    if(left + mw > vw - 8) left = vw - mw - 8;
+    menu.style.top  = (r.bottom + window.scrollY + 6) + 'px';
+    menu.style.left = left + 'px';
+
+    // Chiudi al click fuori
+    setTimeout(() => {
+      document.addEventListener('click', function closer(ev){
+        if(!menu.contains(ev.target)){
+          menu.remove();
+          document.removeEventListener('click', closer);
+        }
+      });
+    }, 10);
+  }
+
+  // ─── API PUBBLICHE ─────────────────────────────────────────────────
+  window.olismoShareGlobal = function(ev){
+    ev && ev.stopPropagation();
+    const anchor = ev && ev.currentTarget ? ev.currentTarget : document.getElementById('olismo-share-btn');
+    const allHtml = '<div>' + Array.from(document.querySelectorAll('#chat-messages .msg'))
+      .map(m => {
+        const isUser = m.classList.contains('user');
+        const b = m.querySelector('.msg-bubble');
+        const t = m.querySelector('.msg-time');
+        const who = isUser ? '👤 Tu' : '🌿 Consulente Olistica';
+        const time = t && t.childNodes[0] ? t.childNodes[0].textContent.trim() : '';
+        return '<p><strong>' + who + (time ? ' · ' + time : '') + '</strong></p>' +
+               (b ? b.innerHTML : '') + '<hr>';
+      }).join('') + '</div>';
+    buildMenu(anchor, allHtml, 'Consulenza Olistica completa');
+  };
+
+  window.olismoShareMsg = function(ev, btn){
+    ev && ev.stopPropagation();
+    const msg = btn.closest('.msg');
+    const bubble = msg && msg.querySelector('.msg-bubble');
+    if(!bubble) return;
+    buildMenu(btn, bubble.innerHTML, 'Dalla Consulenza Olistica');
+  };
+
+  window.olismoCopyMsg = function(ev, btn){
+    ev && ev.stopPropagation();
+    const msg = btn.closest('.msg');
+    const bubble = msg && msg.querySelector('.msg-bubble');
+    if(!bubble) return;
+    doCopy(bubble.innerHTML, 'Dalla Consulenza Olistica');
+  };
+
+  // ─── Auto-injection dei pulsanti sulle risposte AI ────────────────
+  function injectOnRating(ratingEl){
+    if(!ratingEl || ratingEl.dataset.olismoInj) return;
+    const msg = ratingEl.closest('.msg');
+    if(!msg) return;
+    // Solo per messaggi AI (non utente)
+    if(msg.classList.contains('user')) return;
+    ratingEl.dataset.olismoInj = '1';
+
+    const bCopy = document.createElement('button');
+    bCopy.type = 'button';
+    bCopy.className = 'msg-share';
+    bCopy.title = 'Copia questa risposta';
+    bCopy.innerHTML = '📋';
+    bCopy.onclick = function(ev){ olismoCopyMsg(ev, this); };
+    ratingEl.appendChild(bCopy);
+
+    const bShare = document.createElement('button');
+    bShare.type = 'button';
+    bShare.className = 'msg-share';
+    bShare.title = 'Condividi questa risposta';
+    bShare.innerHTML = '↗';
+    bShare.onclick = function(ev){ olismoShareMsg(ev, this); };
+    ratingEl.appendChild(bShare);
+  }
+
+  function injectAll(){
+    document.querySelectorAll('.msg-rating').forEach(injectOnRating);
+  }
+
+  // Run iniziale
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', injectAll);
+  } else {
+    injectAll();
+  }
+
+  // MutationObserver: intercetta i nuovi messaggi AI
+  const obs = new MutationObserver(muts => {
+    for(const m of muts){
+      for(const node of m.addedNodes){
+        if(node.nodeType !== 1) continue;
+        if(node.matches && node.matches('.msg-rating')){
+          injectOnRating(node);
+        } else if(node.querySelectorAll){
+          node.querySelectorAll('.msg-rating').forEach(injectOnRating);
+        }
+      }
+    }
+  });
+  obs.observe(document.body, {childList: true, subtree: true});
+})();
+</script>
 
 <script src="olismo-core.js" defer></script>
 </body>

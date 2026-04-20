@@ -1,36 +1,3 @@
-/*!
- * ═══════════════════════════════════════════════════════════════════════
- * olismo-core.js
- * © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
- * Tutti i diritti riservati · L. 22 aprile 1941 n. 633
- * 
- * AVVISO LEGALE — Questo software è opera dell'ingegno protetta dal
- * diritto d'autore. È VIETATO copiare, riprodurre, modificare,
- * distribuire, decompilare o utilizzare questo software e i suoi
- * contenuti senza preventiva autorizzazione scritta dell'autore.
- * 
- * RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE)
- * 2019/790: l'uso di questo materiale per l'addestramento di modelli
- * di intelligenza artificiale, fine-tuning, RAG, embedding o qualsiasi
- * forma di alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
- * 
- * I system prompts dei motori AI integrati in questo file (Consulente
- * AI, Consulente AI Mediatore, Empowerment in Mediazione, Psicologia
- * Analogica, Matrice della Svalutazione, Motori AI FES e Bush) sono
- * opera originale dell'autore e non possono essere estratti, riusati
- * o adattati senza licenza.
- * 
- * L'integrazione metodologica originale tra mediazione trasformativa,
- * enneagramma evolutivo, analisi transazionale, neuroscienze polivagali,
- * psicologia analogica, fiori di Bach/FES/Bush, chakra e frequenze
- * Solfeggio applicata al contesto della mediazione civile e familiare
- * costituisce paternità intellettuale dell'autore.
- * 
- * Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
- * 
- * Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-core-engine
- * ═══════════════════════════════════════════════════════════════════════
- */
 // v202604131323
 // ════════════════════════════════════════
 // DATABASE COMPLETO
@@ -895,7 +862,7 @@ function renderAtCards(){
       `<div class="at-gioco"><span class="at-gioco-icon">♟</span><span>${g}</span></div>`
     ).join('');
 
-    return `<div class="at-card" id="${a.id}" style="--ac:${col};scroll-margin-top:80px">
+    return `<div class="at-card" style="--ac:${col}">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:var(--rxl) var(--rxl) 0 0"></div>
       <div class="at-card-tipo">
         <span class="at-tipo-badge ${a.tipo==='Sopravvivenza'?'at-sopravv':'at-perf'}">${a.tipo||''}</span>
@@ -1675,7 +1642,7 @@ function showAtResult(results, primary, secondary, totalE, totalI){
       </div>`:''}
       
       <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--ivory3)">
-        <button class="btn-gold" onclick="window.location.href='at-adattamenti.html#${AT_AD_MAP[primary]}'">Vedi scheda completa →</button>
+        <button class="btn-gold" onclick="goTo('${AT_AD_MAP[primary]}','adattamenti');st('at-adattamenti')">Vedi scheda completa →</button>
         <button class="btn-ghost" onclick="askAiAboutAtResult('${primary}','${secondary}')">Chiedi alla AI →</button>
         <button class="btn-ghost" onclick="st('egogramma')">Egogramma →</button>
         <button onclick="resetAtTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
@@ -2261,17 +2228,6 @@ CONTROMOSSE (esempi): contro O1 «Le propongo: per cinque minuti elenchiamo TUTT
 
 Il punto di arrivo della svalutazione NON deve derivare dalla domanda del mediatore, ma EMERGERE dalle parole dell\'interlocutore. Il sito ha una pagina dedicata: matrice-svalutazione.html con motore guidato + analisi AI di frasi libere.
 
-CONSULENTE AI MEDIATORE: per domande TECNICHE-PROCEDURALI di mediazione civile/commerciale/familiare — come impostare il discorso introduttivo secondo Harvard, cosa verbalizzare, come gestire indennità/prosecuzione/ritrattazione, procura sostanziale (Cass. Civ. III 8473/2019 — NON Sezioni Unite), primo incontro 20-40 giorni dal deposito (art. 8 c.1 novellato dalla Riforma Cartabia, NON più 30 giorni come pre-2023), mediazione condominiale (art. 5-ter, Cass 2119/2025), protocollo rinuncia istante, mediazione telematica/remoto (art. 8-bis), CTM, responsabilità mediatore, proposta art. 11 e conseguenze art. 13 — il portale ha un motore dedicato: consulente-mediatore.html. Se la domanda del mediatore è su questi temi, suggerisci di usare quel motore perché contiene il pieno database: linee guida ODM Genova 26/11/2025, Circolare 12/2025, Circolare indennità 27/11/2025, Circolare sottoscrizione verbale, decalogo mediatore v14, template verbale annotato con giurisprudenza 2024-2026. Rispondi comunque brevemente e poi linka.
-
-EMPOWERMENT IN MEDIAZIONE: per domande che uniscono MEDIAZIONE + OLISTICO + PROFILO PSICOLOGICO — come aiutare una parte in stress in sessione, quale chakra riattivare in un tipo X, che fiori di Bach suggerire in una mediazione condominiale, come calibrare Harvard su un enneatipo 4 + adattamento istrionico, come ripristinare empowerment di una parte in congelamento dorsovagale o iperattivazione simpatica — il portale ha un motore dedicato: empowerment-mediazione.html. Integra teoria polivagale (Porges), 9 enneatipi, 6 adattamenti AT, 7 chakra, 38 fiori Bach + FES + Bush, cristalli, frequenze Solfeggio, tecniche Harvard calibrate. Produce un piano operativo strutturato con template linguistici per il mediatore. È il motore più completo per il ponte fra olismo e mediazione.
-
-PSICOLOGIA ANALOGICA — LINGUAGGIO DEL CORPO: per domande sul LINGUAGGIO DEL CORPO e i GESTI in mediazione — "cosa significa quando il cliente si gratta il naso/il sopracciglio", "il cliente mi evita lo sguardo cosa vuol dire", "come riconosco se la parte è in chiusura", "che tipo è una persona che gesticola così", "Asta/Triangolo/Cerchio", "psicologia analogica", "stretta di mano debole/dominante", "% tensione di un grattamento", "lettura del comportamento osservato in sessione" — il portale ha un motore dedicato: psicologia-analogica.html. Contiene 95 gesti catalogati dal corso del dr. Calcagno "Come comunicare" (366 slide), AI di lettura del comportamento osservato che restituisce ipotesi tipologica + enneatipo + adattamento AT + stato polivagale + sintesi operativa, schede stampabili A4 da portare in sessione (completa, civile, familiare, Asta/Triangolo/Cerchio). Le 3 tipologie analogiche: ASTA (dito puntato, stretta penetrativa, conflitto col padre, enneatipi 8/1/6, adattamento paranoide/ossessivo) — TRIANGOLO (mani a triangolo, stretta a tenaglia, alleato del mediatore, enneatipi 2/9/4, adattamento istrionico/passivo-aggressivo) — CERCHIO (gesti circolari OK, stretta avvolgente, ego moderno, enneatipi 3/5/7, adattamento ossessivo/schizoide/antisociale). Scala tensione per posizione del grattamento: prurito naso 100%, maxillo-facciale 90%, radice naso 70%, tempia 55%, sopracciglio 40%, lacrimale 35%, frontale 30%, occipitale/collo 25-30%, parietale/auricolare 20%, gambe 15%. Più ci si allontana dalla bocca/naso, più bassa è la tensione sull'argomento appena trattato. È il motore complementare a Empowerment: prima leggo il corpo (Psicologia Analogica), poi calibro l'intervento (Empowerment).
-
-MEDIAZIONE CIVILE E COMMERCIALE — HUB: quando l'utente chiede un QUADRO D'INSIEME di una controversia CIVILE/COMMERCIALE (condominiale, bancaria, responsabilità medica, societaria, successioni/divisioni, locazioni/comodato, diritti reali/usucapione), oppure chiede "come imposto questa mediazione civile", "da dove comincio con questo caso", "quale strumento del portale usare per un caso X", "tavolo della mediazione civile" — il portale ha un hub strategico dedicato: mediazione-civile.html. È il punto di partenza che orchestra i 4 motori AI del portale (Consulente, Empowerment, Psicologia Analogica, Matrice) calibrati per tipologia di controversia civile. Contiene: procedura in 5 step (D.Lgs. 28/2010 novellato da Riforma Cartabia D.Lgs. 149/2022 in vigore 30/6/2023, primo incontro 20-40 gg ex art. 8 c.1), manifesto del ponte olistico, matrice di 7 tipologie di controversia ciascuna con dinamica psicologica tipica e strumenti consigliati, 4 casi tipici, AI chat dedicato (mediazione civile), normativa essenziale (D.M. 150/2023 indennità, Cass. III 8473/2019 sulla procura sostanziale — NON SS.UU., Cass. 2119/2025 condominiale, linee guida ODM Genova 2025). Rimanda suggerendo l'hub quando la domanda è strategica (pianificazione) più che tecnica (procedurale specifica).
-
-MEDIAZIONE FAMILIARE — HUB: quando l'utente chiede un QUADRO D'INSIEME di una mediazione FAMILIARE (separazione, divorzio, affido, assegno mantenimento, assegno divorzile, casa familiare, co-genitorialità post-rottura, conflitto genitori-adolescenti, famiglie ricomposte, lutto familiare), oppure "come imposto questa mediazione familiare", "come leggo questa coppia", "tavolo della mediazione familiare" — il portale ha un hub sistemico dedicato: mediazione-familiare.html. È il punto di partenza che integra lettura sistemica della coppia + danza del conflitto (Porges) + enneatipi + AT genitoriale + fiori della separazione + chakra del cuore + frequenze del rilascio (639 Hz). Contiene: 5 step del processo (extragiudiziale, L. 162/2014 negoziazione assistita), manifesto del "sistema vivente che si riorganizza", i 4 poli della danza del conflitto di coppia (simpatico, dorsovagale, ventrale, collasso), matrice di 7 fasi familiari ciascuna con dinamica e strumenti, casistica (genitore perfetto, adolescente che rifiuta un genitore, chi è stato lasciato, guerra dei dossier), AI sistemica dedicata, normativa (artt. 337-bis ss. c.c., Cass. SS.UU. 18287/2018 assegno divorzile, Convenzione Istanbul L. 77/2013). ATTENZIONE DEONTOLOGICA: se emerge violenza/abuso/squilibrio grave di potere, NO mediazione — segnalare servizi sociali (1522), evidenziarlo sempre in risposta.
-
-
 
 EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.
@@ -2803,7 +2759,7 @@ async function sendMsg(){
       headers,
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 16000,
+        max_tokens: 6000,
         system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
@@ -2857,19 +2813,6 @@ window.addEventListener("DOMContentLoaded",()=>{
   try{initCheckTest();}catch(e){}
   try{initCookieBanner();}catch(e){}
   try{initDark();}catch(e){}
-  
-  // Post-render: scroll to hash anchor if URL contains one (for pages with dynamic content like at-adattamenti.html#ad6)
-  try{
-    if(window.location.hash){
-      const targetId = window.location.hash.substring(1);
-      const target = document.getElementById(targetId);
-      if(target){
-        setTimeout(() => {
-          target.scrollIntoView({behavior:'smooth', block:'start'});
-        }, 150);
-      }
-    }
-  }catch(e){}
   try{initCristalliSection();}catch(e){}
   try{if(!loadChatHistory()){
   addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
@@ -4071,14 +4014,6 @@ async function exportReportPdf(){
 
     const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
-    // ── DIMENSIONI PAGINA E MARGINI (fix: queste erano usate ma non dichiarate) ──
-    const W = doc.internal.pageSize.getWidth();
-    const H = doc.internal.pageSize.getHeight();
-    const ML = 16, MR = 16, MT = 30, MB = 22;
-    const CW = W - ML - MR;
-    let pageNum = 1;
-    let y = MT + 10;
-
     // ── TEXT SANITIZER: replace emoji/symbols with Latin-1 safe equivalents ──
     const EMOJI_MAP = {
       '\u2714':' [OK]','\u25ce':' [o]','\u2622':' [!]','\u26a0':' [!]',
@@ -4806,20 +4741,33 @@ async function exportChatPdf(){
         '\u2714':' v ','\u2713':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
         '\u25c9':'-','\u2605':'*','\u2022':'- ','\u25cf':'-',
         // Punteggiatura tipografica
-        '\u2018':"'",'\u2019':"'",'\u201C':'"','\u201D':'"',
-        '\u2013':'-','\u2014':'--','\u2026':'...','\u00A0':' ',
-        // Emoji bot/icone chat
+        '\u2018':"'",'\u2019':"'",'\u201A':"'",'\u201B':"'",
+        '\u201C':'"','\u201D':'"','\u201E':'"','\u201F':'"',
+        '\u2013':'-','\u2014':' - ','\u2015':'-','\u2026':'...',
+        '\u00A0':' ','\u2009':' ','\u200A':' ','\u202F':' ',
+        // Emoji bot/icone chat (ampia coverage)
         '\u{1F916}':'','\u{1F9D8}':'','\u{1F331}':'','\u{1F33F}':'',
         '\u{1F33A}':'','\u{1F338}':'','\u{1F3B5}':'','\u{1F4E7}':'',
         '\u{1F4F1}':'','\u{1F310}':'','\u{1F44D}':'','\u{1F44E}':'',
         '\u{1F4CC}':'','\u{1F4DD}':'','\u{1F4CB}':'','\u{1F4AC}':'',
         '\u{1F9E0}':'','\u{2728}':'','\u{1F31F}':'','\u{1F4A7}':'',
-        '\u{1F48E}':'','\u{1F525}':'','\u{1F33E}':'','\u{1F3AF}':''
+        '\u{1F48E}':'','\u{1F525}':'','\u{1F33E}':'','\u{1F3AF}':'',
+        '\u{1F4DC}':'','\u{1F4D6}':'','\u{1F5E3}':'','\u{1F44B}':'',
+        '\u{1F642}':'','\u{1F60A}':'','\u{1F389}':'','\u{26A1}':'',
+        '\u{1F6AB}':'[x] ','\u{23F3}':'...','\u{1F4C4}':'','\u{2699}':''
       };
       for(const [k,v] of Object.entries(MAP)){ s=s.split(k).join(v); }
-      // Rimuove tutto ciò che non è Latin-1 (catches surrogate pairs of unmapped emoji)
-      return s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')
-              .replace(/[^\x00-\xFF]/g, '');
+      // Rimuove surrogate pairs emoji non mappate
+      s = s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+      // Rimuove tutto ciò che non è Latin-1
+      return s.replace(/[^\x00-\xFF]/g, function(c){
+        const cp=c.codePointAt(0);
+        if(cp===0x25C9||cp===0x25CF) return '-';
+        if(cp===0x2714||cp===0x2713) return 'v ';
+        if(cp===0x26A0) return '! ';
+        if(cp===0x2022) return '- ';
+        return '';
+      });
     }
 
     // ── Pre-processore Markdown: converte MD in testo leggibile per PDF ──
@@ -4832,11 +4780,12 @@ async function exportChatPdf(){
           r.replace(/^\||\|$/g, '').split('|').map(c => c.trim())
         );
         const clean = rows.filter(r => !r.every(c => /^[-:\s]*$/.test(c)));
+        if(clean.length === 0) return '\n';
         return '\n' + clean.map(r => r.join('   |   ')).join('\n') + '\n\n';
       });
-      // Code fences ``` → rimuovi delimitatori, mantieni contenuto
+      // Code fences ```
       s = s.replace(/```[a-z]*\n?([\s\S]*?)```/gi, '\n$1\n');
-      // Inline code `X` → X
+      // Inline code `X`
       s = s.replace(/`([^`]+)`/g, '$1');
       // Headers # ## ### → testo evidenziato in ASCII (robusto per Helvetica)
       s = s.replace(/^######\s+(.+)$/gm, '\n$1\n');
@@ -4845,23 +4794,23 @@ async function exportChatPdf(){
       s = s.replace(/^###\s+(.+)$/gm, '\n>> $1\n');
       s = s.replace(/^##\s+(.+)$/gm, '\n\n=== $1 ===\n');
       s = s.replace(/^#\s+(.+)$/gm, '\n\n### $1 ###\n');
-      // Separatori orizzontali ---
+      // Separatori orizzontali
       s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n. . . . . . . . . . . . . . . . .\n');
-      // Bold **X** e __X__ → X (rimuovi marker, no inline bold in jsPDF semplice)
+      // Bold **X** e __X__
       s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1');
       s = s.replace(/__([^_\n]+)__/g, '$1');
-      // Italic *X* e _X_ → X (evita di mangiare asterischi di liste)
+      // Italic *X* e _X_ (senza mangiare bullet)
       s = s.replace(/(^|[^\*\w])\*([^\*\n]+)\*(?!\*)/g, '$1$2');
       s = s.replace(/(^|[^_\w])_([^_\n]+)_(?!_)/g, '$1$2');
-      // Liste con - o * all'inizio riga → bullet (lasciamo ASCII)
+      // Liste - o * all'inizio riga → bullet ASCII
       s = s.replace(/^[ \t]*[-*][ \t]+/gm, '- ');
-      // Link [testo](url) → testo (url)
+      // Link [testo](url)
       s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
-      // Blockquote > X → "  X" (indent)
+      // Blockquote
       s = s.replace(/^>[ \t]?/gm, '  ');
-      // Assicura newline doppio tra paragrafi di testo
+      // Newline tra frasi
       s = s.replace(/([.!?:])\n([A-Z])/g, '$1\n\n$2');
-      // Comprime sequenze eccessive di newline
+      // Comprime
       s = s.replace(/\n{4,}/g, '\n\n\n');
       return s.trim();
     }
@@ -4888,12 +4837,10 @@ async function exportChatPdf(){
       if(!h) return '';
       const d = document.createElement('div');
       d.innerHTML = h;
-
       function walk(node){
-        if(node.nodeType === 3) return node.textContent || ''; // text
-        if(node.nodeType !== 1) return '';                      // non-element
+        if(node.nodeType === 3) return node.textContent || '';
+        if(node.nodeType !== 1) return '';
         const tag = (node.tagName || '').toLowerCase();
-        // Tabelle: gestisci <tr> estraendo celle ordinate
         if(tag === 'tr'){
           const cells = [];
           for(const c of node.children){
@@ -4938,9 +4885,7 @@ async function exportChatPdf(){
           default:        return kids;
         }
       }
-
       let out = walk(d);
-      // Normalizza spaziatura
       out = out.replace(/[ \t]+\n/g, '\n')
                .replace(/\n{3,}/g, '\n\n')
                .replace(/^\s+|\s+$/g, '');
@@ -5044,7 +4989,7 @@ async function exportChatPdf(){
       const label = isUser ? 'Tu' : 'Consulente Olistica';
       const labelColor = isUser ? GOLD : INK3;
 
-      // Wrap text (con pre-processore markdown per le risposte AI)
+      // Wrap text (md() solo per AI: l'utente scrive testo piano)
       const processed = isUser ? se(text) : se(md(text));
       const lines = wrapText(processed, maxBubbleW - bubblePad * 2, fs);
       const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
@@ -5086,15 +5031,60 @@ async function exportChatPdf(){
         doc.rect(bubbleX, y, 1.5, bubbleH, 'F');
       }
 
-      // Bubble text
+      // Bubble text con rendering differenziato per tipo di riga
       doc.setFontSize(fs);
       doc.setFont('helvetica', isUser ? 'bold' : 'normal');
       doc.setTextColor(...INK);
       let ty = y + bubblePad + lineH - 0.5;
 
       lines.forEach(line => {
-        // Check if line fits (split across pages not ideal but handled)
-        doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
+        // Detect line type
+        const isH1 = /^### .+ ###$/.test(line);
+        const isH2 = /^=== .+ ===$/.test(line);
+        const isH3 = /^>> /.test(line);
+        const isH4 = /^>>> /.test(line);
+        const isBullet = /^- /.test(line);
+        const isSeparator = /^\. (\. )+\.?$/.test(line);
+        const isTable = line.includes('   |   ');
+
+        if(!isUser && isH1){
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(fs + 2);
+          doc.setTextColor(...GOLD);
+          const clean = line.replace(/^### | ###$/g, '');
+          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
+          doc.setFontSize(fs); doc.setFont('helvetica','normal'); doc.setTextColor(...INK);
+        } else if(!isUser && isH2){
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(fs + 1);
+          doc.setTextColor(...GOLD);
+          const clean = line.replace(/^=== | ===$/g, '');
+          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
+          doc.setFontSize(fs); doc.setFont('helvetica','normal'); doc.setTextColor(...INK);
+        } else if(!isUser && (isH3 || isH4)){
+          doc.setFont('helvetica', 'bold');
+          doc.setTextColor(...INK);
+          const clean = line.replace(/^>+\s*/, '');
+          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
+          doc.setFont('helvetica','normal');
+        } else if(!isUser && isSeparator){
+          doc.setDrawColor(...GOLD);
+          doc.setLineWidth(0.25);
+          doc.line(bubbleX + bubblePad + 2, ty - 1.3, bubbleX + maxBubbleW - bubblePad - 2, ty - 1.3);
+        } else if(!isUser && isBullet){
+          doc.setTextColor(...GOLD);
+          doc.text('-', bubbleX + bubblePad + 1.8, ty);
+          doc.setTextColor(...INK);
+          doc.text(line.substring(2), bubbleX + bubblePad + 5.5, ty);
+        } else if(!isUser && isTable){
+          doc.setFont('courier', 'normal');
+          doc.setFontSize(fs - 0.5);
+          doc.text(line, bubbleX + bubblePad + 1.8, ty);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(fs);
+        } else {
+          doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
+        }
         ty += lineH;
       });
 
@@ -5123,100 +5113,204 @@ async function exportChatPdf(){
       throw new Error('Nessun messaggio trovato nella chat.');
     }
 
-    // ── Cover page ──
-    // Background
+    // ── Cover page (editorial design) ──
+
+    // Background avorio pieno
     doc.setFillColor(...IVORY);
     doc.rect(0, 0, PW, PH, 'F');
 
-    // Top gold bar
+    // Texture: banda verticale dorata laterale sinistra
     doc.setFillColor(...GOLD);
-    doc.rect(0, 0, PW, 55, 'F');
+    doc.rect(0, 0, 6, PH, 'F');
 
-    // Logo mark large
-    doc.setFillColor(255,255,255,0.2);
-    doc.setFillColor(255,255,255);
-    doc.circle(PW/2, 30, 16, 'F');
+    // Hero block dorato superiore con gradiente simulato (strisce orizzontali)
+    for(let i = 0; i < 80; i++){
+      const t = i / 80;
+      const r = 184 - t * 20;
+      const g = 147 - t * 15;
+      const b = 90 - t * 10;
+      doc.setFillColor(r, g, b);
+      doc.rect(6, i, PW - 6, 1, 'F');
+    }
+
+    // Monogramma OI in cerchio bianco
+    doc.setFillColor(...WHITE);
+    doc.circle(PW/2, 30, 14, 'F');
+    doc.setDrawColor(...GOLD);
+    doc.setLineWidth(0.8);
+    doc.circle(PW/2, 30, 14, 'S');
+    doc.circle(PW/2, 30, 11.5, 'S');
     doc.setTextColor(...GOLD);
-    doc.setFontSize(20);
+    doc.setFontSize(18);
     doc.setFont('helvetica', 'bold');
-    doc.text('*', PW/2 - 4, 34);
+    doc.text('OI', PW/2, 33.5, {align: 'center'});
 
-    // Title
+    // Titolo
     doc.setTextColor(...WHITE);
-    doc.setFontSize(22);
+    doc.setFontSize(26);
     doc.setFont('helvetica', 'bold');
-    doc.text('OLISMO INTEGRATO', PW/2, 63, {align: 'center'});
+    doc.text('OLISMO INTEGRATO', PW/2, 58, {align: 'center'});
+
+    // Sottotitolo con spaziatura espansa
+    doc.setFontSize(9.5);
+    doc.setFont('helvetica', 'normal');
+    doc.text('P O R T A L E    D I    A R M O N I A    O L I S T I C A', PW/2, 66, {align: 'center'});
+
+    // Linea decorativa doppia
+    doc.setDrawColor(255,255,255);
+    doc.setLineWidth(0.4);
+    doc.line(PW/2 - 30, 71, PW/2 - 4, 71);
+    doc.line(PW/2 + 4, 71, PW/2 + 30, 71);
+    doc.setFillColor(255,255,255);
+    doc.circle(PW/2, 71, 1, 'F');
+
+    // ── Sezione centrale bianca ──
+    const centerY = 95;
+
+    // Titolo documento
+    doc.setTextColor(...INK);
+    doc.setFontSize(15);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Trascrizione della Consulenza', PW/2, centerY, {align: 'center'});
 
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
-    doc.text('Trascrizione della Consulenza Olistica AI', PW/2, 71, {align: 'center'});
+    doc.setTextColor(...INK2);
+    doc.text('Olistica AI Personalizzata', PW/2, centerY + 7, {align: 'center'});
 
-    // Gold line
+    // Linea gold breve
     doc.setDrawColor(...GOLD);
-    doc.setLineWidth(0.5);
-    doc.line(PW/2 - 40, 78, PW/2 + 40, 78);
+    doc.setLineWidth(0.6);
+    doc.line(PW/2 - 20, centerY + 13, PW/2 + 20, centerY + 13);
 
-    // Date / meta
+    // Box meta data con stile a lastra
+    const metaY = centerY + 22;
+    doc.setFillColor(...WHITE);
+    doc.setDrawColor(...GOLD);
+    doc.setLineWidth(0.35);
+    doc.roundedRect(ML + 10, metaY, CW - 20, 26, 2, 2, 'FD');
+
     const now = new Date();
     const dateStr = now.toLocaleDateString('it-IT', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
     const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+    const userQs = messages.filter(m=>m.role==='user').length;
+    const aiAs = messages.filter(m=>m.role==='ai').length;
+
+    // Meta in due righe con etichette in gold
+    doc.setFontSize(7.5);
+    doc.setTextColor(...GOLD);
+    doc.setFont('helvetica', 'bold');
+    doc.text('DATA', ML + 18, metaY + 8);
+    doc.text('ORA', ML + 72, metaY + 8);
+    doc.text('INTERAZIONI', ML + 110, metaY + 8);
 
     doc.setFontSize(9.5);
-    doc.setTextColor(...INK2);
+    doc.setTextColor(...INK);
     doc.setFont('helvetica', 'normal');
-    doc.text('Data: ' + dateStr + '  |  Ora: ' + timeStr, PW/2, 88, {align: 'center'});
-    doc.text('Messaggi: ' + messages.length + '  |  ' + (messages.filter(m=>m.role==='user').length) + ' domande  ·  ' + (messages.filter(m=>m.role==='ai').length) + ' risposte', PW/2, 95, {align: 'center'});
+    doc.text(dateStr.charAt(0).toUpperCase() + dateStr.slice(1), ML + 18, metaY + 14);
+    doc.text(timeStr, ML + 72, metaY + 14);
+    doc.text(userQs + ' domande - ' + aiAs + ' risposte', ML + 110, metaY + 14);
 
-    // Info box
-    doc.setFillColor(255,255,255);
+    doc.setFontSize(7);
+    doc.setTextColor(...INK3);
+    doc.setFont('helvetica', 'italic');
+    doc.text('Documento generato automaticamente dal sistema Olismo Integrato', PW/2, metaY + 22, {align: 'center'});
+
+    // ── Card autore elegante ──
+    const authorY = metaY + 36;
+
+    // Card base ombreggiata
+    doc.setFillColor(250, 246, 238);
+    doc.roundedRect(ML + 6, authorY, CW - 12, 52, 3, 3, 'F');
     doc.setDrawColor(...GOLD);
     doc.setLineWidth(0.4);
-    doc.roundedRect(ML + 15, 108, CW - 30, 42, 3, 3, 'FD');
+    doc.roundedRect(ML + 6, authorY, CW - 12, 52, 3, 3, 'S');
 
-    doc.setFontSize(9);
+    // Barra gold laterale
+    doc.setFillColor(...GOLD);
+    doc.rect(ML + 6, authorY, 1.2, 52, 'F');
+
+    // Nome autore
+    doc.setTextColor(...INK);
+    doc.setFontSize(13);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...GOLD);
-    doc.text('Carlo Alberto Calcagno', PW/2, 118, {align: 'center'});
+    doc.text('Avv. Carlo Alberto Calcagno', PW/2, authorY + 11, {align: 'center'});
 
-    doc.setFontSize(8);
+    // Qualifiche in due righe
+    doc.setFontSize(8.5);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...INK2);
-    doc.text('Mediatore Familiare Certificato · Formatore · Pranoterapista', PW/2, 124, {align: 'center'});
-    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, 130, {align: 'center'});
+    doc.text('Mediatore Familiare Certificato  -  Formatore  -  Pranoterapista', PW/2, authorY + 19, {align: 'center'});
+    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, authorY + 25, {align: 'center'});
 
+    // Linea separatore
+    doc.setDrawColor(210, 195, 170);
+    doc.setLineWidth(0.2);
+    doc.line(PW/2 - 25, authorY + 30, PW/2 + 25, authorY + 30);
+
+    // Contatti con icone ASCII pulite
     doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
     doc.setTextColor(...GOLD);
-    doc.text('calcagnocarloalberto1@gmail.com  ·  +39 347 366 6508', PW/2, 138, {align: 'center'});
-    doc.text('olismo-integrato.it', PW/2, 144, {align: 'center'});
+    doc.text('@', ML + 22, authorY + 37);
+    doc.text('T', ML + 22, authorY + 43);
+    doc.text('W', ML + 22, authorY + 49);
 
-    // Discipline chips
+    doc.setTextColor(...INK2);
+    doc.text('calcagnocarloalberto1@gmail.com', ML + 28, authorY + 37);
+    doc.text('+39 347 366 6508', ML + 28, authorY + 43);
+    doc.text('www.olismo-integrato.it', ML + 28, authorY + 49);
+
+    // ── Chips discipline ──
+    const chipsY = authorY + 62;
+    doc.setTextColor(...GOLD);
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.text('DISCIPLINE INTEGRATE', PW/2, chipsY, {align: 'center'});
+
     const chips = ['Chakra','Enneagramma','Fiori di Bach','AT','Frequenze','Cristalli','VAK','Pranoterapia'];
-    let chipStartY = 160;
-    let cx = ML + 8;
+    let chipStartY = chipsY + 6;
+    // Calcola larghezze per centrare la riga
+    doc.setFontSize(7.5);
+    const chipWidths = chips.map(c => doc.getTextWidth(c) + 7);
+    const totalRow1 = chipWidths.slice(0,4).reduce((a,b) => a + b, 0) + 9;
+    const totalRow2 = chipWidths.slice(4,8).reduce((a,b) => a + b, 0) + 9;
+    let cxRow1 = (PW - totalRow1) / 2;
+    let cxRow2 = (PW - totalRow2) / 2;
+
     chips.forEach((chip, i) => {
-      doc.setFontSize(7);
-      const w = doc.getTextWidth(chip) + 6;
+      doc.setFontSize(7.5);
+      const w = chipWidths[i];
+      const useY = i < 4 ? chipStartY : chipStartY + 9;
+      const useX = i < 4 ? cxRow1 : cxRow2;
       doc.setFillColor(...GOLD_LIGHT);
       doc.setDrawColor(...GOLD);
       doc.setLineWidth(0.3);
-      doc.roundedRect(cx, chipStartY, w, 6, 1.5, 1.5, 'FD');
-      doc.setTextColor(...INK2);
-      doc.text(chip, cx + 3, chipStartY + 4.2);
-      cx += w + 3;
-      if(cx > PW - MR - 30){cx = ML + 8; chipStartY += 10;}
+      doc.roundedRect(useX, useY, w, 7, 2, 2, 'FD');
+      doc.setTextColor(...INK);
+      doc.text(chip, useX + w/2, useY + 4.8, {align: 'center'});
+      if(i < 4) cxRow1 += w + 3;
+      else cxRow2 += w + 3;
     });
 
-    // Disclaimer
-    doc.setFontSize(7.5);
-    doc.setTextColor(180, 175, 170);
-    doc.text('Le indicazioni hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche.', PW/2, PH - 30, {align: 'center'});
+    // ── Disclaimer e footer ──
+    doc.setFontSize(6.5);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(140, 130, 120);
+    doc.text('Le indicazioni contenute hanno finalita\' divulgativa e non sostituiscono', PW/2, PH - 22, {align: 'center'});
+    doc.text('consulenze mediche o psicologiche professionali.', PW/2, PH - 18, {align: 'center'});
 
-    // Bottom bar
+    // Bottom bar con marchio
     doc.setFillColor(...GOLD);
-    doc.rect(0, PH - 8, PW, 8, 'F');
+    doc.rect(0, PH - 10, PW, 10, 'F');
     doc.setTextColor(...WHITE);
-    doc.setFontSize(7);
-    doc.text('olismo-integrato.it', PW/2, PH - 3, {align: 'center'});
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'bold');
+    doc.text('OLISMO-INTEGRATO.IT', PW/2, PH - 4, {align: 'center'});
+    doc.setFontSize(6);
+    doc.setFont('helvetica', 'normal');
+    doc.text('(c) ' + now.getFullYear() + ' Carlo Alberto Calcagno', ML + 8, PH - 4);
+    doc.text('Tutti i diritti riservati', PW - MR - 8, PH - 4, {align: 'right'});
 
     // ── Chat pages ──
     doc.addPage();
@@ -5630,7 +5724,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
@@ -5806,7 +5900,7 @@ async function fesSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -5857,7 +5951,7 @@ async function bushSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -6157,7 +6251,7 @@ window.addEventListener('load',function(){
       name:'Crea il tuo cammino', icon:'✦',
       steps:[
         {id:'percorso-viaggio',       label:'Mappa del percorso'},
-        {id:'i-miei-fiori-ext',       label:'Fiori adatti a te (AI FES) ↗',     external:'ai-fes.html'},
+        {id:'i-miei-fiori-ext',       label:'I miei Fiori ↗',     external:'i_miei_fiori.html'},
         {id:'il-mio-copione-ext',     label:'Il mio Copione ↗',   external:'il_mio_copione.html'},
         {id:'consulente',             label:'Piano personalizzato AI'}
       ],

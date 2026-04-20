@@ -4801,17 +4801,69 @@ async function exportChatPdf(){
     function se(s){
       if(!s) return '';
       s = String(s);
-      const MAP={'\u2714':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
-        '\u25c9':'-','\u2605':'*','\u2022':'-','\u25cf':'-'};
+      const MAP={
+        // Simboli decorativi
+        '\u2714':' v ','\u2713':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
+        '\u25c9':'-','\u2605':'*','\u2022':'- ','\u25cf':'-',
+        // Punteggiatura tipografica
+        '\u2018':"'",'\u2019':"'",'\u201C':'"','\u201D':'"',
+        '\u2013':'-','\u2014':'--','\u2026':'...','\u00A0':' ',
+        // Emoji bot/icone chat
+        '\u{1F916}':'','\u{1F9D8}':'','\u{1F331}':'','\u{1F33F}':'',
+        '\u{1F33A}':'','\u{1F338}':'','\u{1F3B5}':'','\u{1F4E7}':'',
+        '\u{1F4F1}':'','\u{1F310}':'','\u{1F44D}':'','\u{1F44E}':'',
+        '\u{1F4CC}':'','\u{1F4DD}':'','\u{1F4CB}':'','\u{1F4AC}':'',
+        '\u{1F9E0}':'','\u{2728}':'','\u{1F31F}':'','\u{1F4A7}':'',
+        '\u{1F48E}':'','\u{1F525}':'','\u{1F33E}':'','\u{1F3AF}':''
+      };
       for(const [k,v] of Object.entries(MAP)){ s=s.split(k).join(v); }
-      return s.replace(/[^\x00-\xFF]/g, function(c){
-        const cp=c.codePointAt(0);
-        if(cp===0x25C9||cp===0x25CF) return '-';
-        if(cp===0x2714||cp===0x2713) return 'v ';
-        if(cp===0x26A0) return '! ';
-        if(cp===0x2022) return '- ';
-        return '';
+      // Rimuove tutto ciò che non è Latin-1 (catches surrogate pairs of unmapped emoji)
+      return s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')
+              .replace(/[^\x00-\xFF]/g, '');
+    }
+
+    // ── Pre-processore Markdown: converte MD in testo leggibile per PDF ──
+    function md(s){
+      if(!s) return '';
+      s = String(s).replace(/\r\n?/g, '\n');
+      // Tabelle pipe → formato tabulato
+      s = s.replace(/(?:^\|.*\|[ \t]*\n?)+/gm, function(block){
+        const rows = block.trim().split('\n').map(r =>
+          r.replace(/^\||\|$/g, '').split('|').map(c => c.trim())
+        );
+        const clean = rows.filter(r => !r.every(c => /^[-:\s]*$/.test(c)));
+        return '\n' + clean.map(r => r.join('   |   ')).join('\n') + '\n\n';
       });
+      // Code fences ``` → rimuovi delimitatori, mantieni contenuto
+      s = s.replace(/```[a-z]*\n?([\s\S]*?)```/gi, '\n$1\n');
+      // Inline code `X` → X
+      s = s.replace(/`([^`]+)`/g, '$1');
+      // Headers # ## ### → testo con spaziatura (simbolo + per evidenza)
+      s = s.replace(/^######\s+(.+)$/gm, '\n$1\n');
+      s = s.replace(/^#####\s+(.+)$/gm, '\n$1\n');
+      s = s.replace(/^####\s+(.+)$/gm, '\n$1\n');
+      s = s.replace(/^###\s+(.+)$/gm, '\n» $1\n');
+      s = s.replace(/^##\s+(.+)$/gm, '\n■ $1\n');
+      s = s.replace(/^#\s+(.+)$/gm, '\n▌ $1\n');
+      // Separatori orizzontali ---
+      s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n- - - - - - - - - - - - - - -\n');
+      // Bold **X** e __X__ → X (rimuovi marker, no inline bold in jsPDF semplice)
+      s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1');
+      s = s.replace(/__([^_\n]+)__/g, '$1');
+      // Italic *X* e _X_ → X (evita di mangiare asterischi di liste)
+      s = s.replace(/(^|[^\*\w])\*([^\*\n]+)\*(?!\*)/g, '$1$2');
+      s = s.replace(/(^|[^_\w])_([^_\n]+)_(?!_)/g, '$1$2');
+      // Liste con - o * all'inizio riga → bullet (lasciamo ASCII)
+      s = s.replace(/^[ \t]*[-*][ \t]+/gm, '- ');
+      // Link [testo](url) → testo (url)
+      s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
+      // Blockquote > X → "  X" (indent)
+      s = s.replace(/^>[ \t]?/gm, '  ');
+      // Assicura newline doppio tra paragrafi di testo
+      s = s.replace(/([.!?:])\n([A-Z])/g, '$1\n\n$2');
+      // Comprime sequenze eccessive di newline
+      s = s.replace(/\n{4,}/g, '\n\n\n');
+      return s.trim();
     }
 
     const doc = new jsPDF({
@@ -4935,8 +4987,9 @@ async function exportChatPdf(){
       const label = isUser ? 'Tu' : 'Consulente Olistica';
       const labelColor = isUser ? GOLD : INK3;
 
-      // Wrap text
-      const lines = wrapText(se(text), maxBubbleW - bubblePad * 2, fs);
+      // Wrap text (con pre-processore markdown per le risposte AI)
+      const processed = isUser ? se(text) : se(md(text));
+      const lines = wrapText(processed, maxBubbleW - bubblePad * 2, fs);
       const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
 
       // Space between messages
@@ -4949,7 +5002,7 @@ async function exportChatPdf(){
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(...labelColor);
       const labelX = isUser ? PW - MR - maxBubbleW : ML;
-      doc.text(label, labelX, y);
+      doc.text(se(label), labelX, y);
 
       // Time
       if(time){
@@ -4957,7 +5010,7 @@ async function exportChatPdf(){
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(...INK3);
         const timeX = isUser ? PW - MR : ML + maxBubbleW;
-        doc.text(time, timeX, y, {align: isUser ? 'right' : 'left'});
+        doc.text(se(time), timeX, y, {align: isUser ? 'right' : 'left'});
       }
       y += 3.5;
 

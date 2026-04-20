@@ -4031,6 +4031,14 @@ async function exportReportPdf(){
 
     const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
+    // ── DIMENSIONI PAGINA E MARGINI (fix: queste sono usate ma non erano dichiarate) ──
+    const W = doc.internal.pageSize.getWidth();
+    const H = doc.internal.pageSize.getHeight();
+    const ML = 16, MR = 16, MT = 30, MB = 22;
+    const CW = W - ML - MR;
+    let pageNum = 1;
+    let y = MT + 10;
+
     // ── TEXT SANITIZER: replace emoji/symbols with Latin-1 safe equivalents ──
     const EMOJI_MAP = {
       '\u2714':' [OK]','\u25ce':' [o]','\u2622':' [!]','\u26a0':' [!]',

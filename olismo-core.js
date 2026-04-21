@@ -1,3 +1,36 @@
+/*!
+ * ═══════════════════════════════════════════════════════════════════════
+ * olismo-core.js
+ * © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+ * Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+ * 
+ * AVVISO LEGALE — Questo software è opera dell'ingegno protetta dal
+ * diritto d'autore. È VIETATO copiare, riprodurre, modificare,
+ * distribuire, decompilare o utilizzare questo software e i suoi
+ * contenuti senza preventiva autorizzazione scritta dell'autore.
+ * 
+ * RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE)
+ * 2019/790: l'uso di questo materiale per l'addestramento di modelli
+ * di intelligenza artificiale, fine-tuning, RAG, embedding o qualsiasi
+ * forma di alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
+ * 
+ * I system prompts dei motori AI integrati in questo file (Consulente
+ * AI, Consulente AI Mediatore, Empowerment in Mediazione, Psicologia
+ * Analogica, Matrice della Svalutazione, Motori AI FES e Bush) sono
+ * opera originale dell'autore e non possono essere estratti, riusati
+ * o adattati senza licenza.
+ * 
+ * L'integrazione metodologica originale tra mediazione trasformativa,
+ * enneagramma evolutivo, analisi transazionale, neuroscienze polivagali,
+ * psicologia analogica, fiori di Bach/FES/Bush, chakra e frequenze
+ * Solfeggio applicata al contesto della mediazione civile e familiare
+ * costituisce paternità intellettuale dell'autore.
+ * 
+ * Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
+ * 
+ * Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-core-engine
+ * ═══════════════════════════════════════════════════════════════════════
+ */
 // v202604131323
 // ════════════════════════════════════════
 // DATABASE COMPLETO
@@ -862,7 +895,7 @@ function renderAtCards(){
       `<div class="at-gioco"><span class="at-gioco-icon">♟</span><span>${g}</span></div>`
     ).join('');
 
-    return `<div class="at-card" style="--ac:${col}">
+    return `<div class="at-card" id="${a.id}" style="--ac:${col};scroll-margin-top:80px">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:var(--rxl) var(--rxl) 0 0"></div>
       <div class="at-card-tipo">
         <span class="at-tipo-badge ${a.tipo==='Sopravvivenza'?'at-sopravv':'at-perf'}">${a.tipo||''}</span>
@@ -1289,6 +1322,10 @@ function showResult(scores, topTipo, ala){
   resEl.classList.add("active");
   
   const f=TEST_FRUTTI.find(x=>x.tipo===topTipo)||{};
+  
+  // Sorted scores for chart and profile (needed before saveProfileResult)
+  const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  
   // Save to profile
   saveProfileResult('frutti',{tipo:topTipo, nome:f.nome||'', tipo2:sorted[1]?Number(sorted[1][0]):null, ala:ala||null});
 
@@ -1296,8 +1333,6 @@ function showResult(scores, topTipo, ala){
   const ex=ENNEAGRAMMA_EXTRA[String(topTipo)]||{};
   const col=TIPO_COLORS[topTipo]||"#888";
   
-  // Sorted scores for chart
-  const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const barsHtml=sorted.map(([tipo,score])=>{
     const ft=TEST_FRUTTI.find(x=>x.tipo==tipo)||{};
     const pct=Math.round(score/20*100);
@@ -1642,7 +1677,7 @@ function showAtResult(results, primary, secondary, totalE, totalI){
       </div>`:''}
       
       <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--ivory3)">
-        <button class="btn-gold" onclick="goTo('${AT_AD_MAP[primary]}','adattamenti');st('at-adattamenti')">Vedi scheda completa →</button>
+        <button class="btn-gold" onclick="window.location.href='at-adattamenti.html#${AT_AD_MAP[primary]}'">Vedi scheda completa →</button>
         <button class="btn-ghost" onclick="askAiAboutAtResult('${primary}','${secondary}')">Chiedi alla AI →</button>
         <button class="btn-ghost" onclick="st('egogramma')">Egogramma →</button>
         <button onclick="resetAtTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
@@ -2228,6 +2263,17 @@ CONTROMOSSE (esempi): contro O1 «Le propongo: per cinque minuti elenchiamo TUTT
 
 Il punto di arrivo della svalutazione NON deve derivare dalla domanda del mediatore, ma EMERGERE dalle parole dell\'interlocutore. Il sito ha una pagina dedicata: matrice-svalutazione.html con motore guidato + analisi AI di frasi libere.
 
+CONSULENTE AI MEDIATORE: per domande TECNICHE-PROCEDURALI di mediazione civile/commerciale/familiare — come impostare il discorso introduttivo secondo Harvard, cosa verbalizzare, come gestire indennità/prosecuzione/ritrattazione, procura sostanziale (Cass. Civ. III 8473/2019 — NON Sezioni Unite), primo incontro 20-40 giorni dal deposito (art. 8 c.1 novellato dalla Riforma Cartabia, NON più 30 giorni come pre-2023), mediazione condominiale (art. 5-ter, Cass 2119/2025), protocollo rinuncia istante, mediazione telematica/remoto (art. 8-bis), CTM, responsabilità mediatore, proposta art. 11 e conseguenze art. 13 — il portale ha un motore dedicato: consulente-mediatore.html. Se la domanda del mediatore è su questi temi, suggerisci di usare quel motore perché contiene il pieno database: linee guida ODM Genova 26/11/2025, Circolare 12/2025, Circolare indennità 27/11/2025, Circolare sottoscrizione verbale, decalogo mediatore v14, template verbale annotato con giurisprudenza 2024-2026. Rispondi comunque brevemente e poi linka.
+
+EMPOWERMENT IN MEDIAZIONE: per domande che uniscono MEDIAZIONE + OLISTICO + PROFILO PSICOLOGICO — come aiutare una parte in stress in sessione, quale chakra riattivare in un tipo X, che fiori di Bach suggerire in una mediazione condominiale, come calibrare Harvard su un enneatipo 4 + adattamento istrionico, come ripristinare empowerment di una parte in congelamento dorsovagale o iperattivazione simpatica — il portale ha un motore dedicato: empowerment-mediazione.html. Integra teoria polivagale (Porges), 9 enneatipi, 6 adattamenti AT, 7 chakra, 38 fiori Bach + FES + Bush, cristalli, frequenze Solfeggio, tecniche Harvard calibrate. Produce un piano operativo strutturato con template linguistici per il mediatore. È il motore più completo per il ponte fra olismo e mediazione.
+
+PSICOLOGIA ANALOGICA — LINGUAGGIO DEL CORPO: per domande sul LINGUAGGIO DEL CORPO e i GESTI in mediazione — "cosa significa quando il cliente si gratta il naso/il sopracciglio", "il cliente mi evita lo sguardo cosa vuol dire", "come riconosco se la parte è in chiusura", "che tipo è una persona che gesticola così", "Asta/Triangolo/Cerchio", "psicologia analogica", "stretta di mano debole/dominante", "% tensione di un grattamento", "lettura del comportamento osservato in sessione" — il portale ha un motore dedicato: psicologia-analogica.html. Contiene 95 gesti catalogati dal corso del dr. Calcagno "Come comunicare" (366 slide), AI di lettura del comportamento osservato che restituisce ipotesi tipologica + enneatipo + adattamento AT + stato polivagale + sintesi operativa, schede stampabili A4 da portare in sessione (completa, civile, familiare, Asta/Triangolo/Cerchio). Le 3 tipologie analogiche: ASTA (dito puntato, stretta penetrativa, conflitto col padre, enneatipi 8/1/6, adattamento paranoide/ossessivo) — TRIANGOLO (mani a triangolo, stretta a tenaglia, alleato del mediatore, enneatipi 2/9/4, adattamento istrionico/passivo-aggressivo) — CERCHIO (gesti circolari OK, stretta avvolgente, ego moderno, enneatipi 3/5/7, adattamento ossessivo/schizoide/antisociale). Scala tensione per posizione del grattamento: prurito naso 100%, maxillo-facciale 90%, radice naso 70%, tempia 55%, sopracciglio 40%, lacrimale 35%, frontale 30%, occipitale/collo 25-30%, parietale/auricolare 20%, gambe 15%. Più ci si allontana dalla bocca/naso, più bassa è la tensione sull'argomento appena trattato. È il motore complementare a Empowerment: prima leggo il corpo (Psicologia Analogica), poi calibro l'intervento (Empowerment).
+
+MEDIAZIONE CIVILE E COMMERCIALE — HUB: quando l'utente chiede un QUADRO D'INSIEME di una controversia CIVILE/COMMERCIALE (condominiale, bancaria, responsabilità medica, societaria, successioni/divisioni, locazioni/comodato, diritti reali/usucapione), oppure chiede "come imposto questa mediazione civile", "da dove comincio con questo caso", "quale strumento del portale usare per un caso X", "tavolo della mediazione civile" — il portale ha un hub strategico dedicato: mediazione-civile.html. È il punto di partenza che orchestra i 4 motori AI del portale (Consulente, Empowerment, Psicologia Analogica, Matrice) calibrati per tipologia di controversia civile. Contiene: procedura in 5 step (D.Lgs. 28/2010 novellato da Riforma Cartabia D.Lgs. 149/2022 in vigore 30/6/2023, primo incontro 20-40 gg ex art. 8 c.1), manifesto del ponte olistico, matrice di 7 tipologie di controversia ciascuna con dinamica psicologica tipica e strumenti consigliati, 4 casi tipici, AI chat dedicato (mediazione civile), normativa essenziale (D.M. 150/2023 indennità, Cass. III 8473/2019 sulla procura sostanziale — NON SS.UU., Cass. 2119/2025 condominiale, linee guida ODM Genova 2025). Rimanda suggerendo l'hub quando la domanda è strategica (pianificazione) più che tecnica (procedurale specifica).
+
+MEDIAZIONE FAMILIARE — HUB: quando l'utente chiede un QUADRO D'INSIEME di una mediazione FAMILIARE (separazione, divorzio, affido, assegno mantenimento, assegno divorzile, casa familiare, co-genitorialità post-rottura, conflitto genitori-adolescenti, famiglie ricomposte, lutto familiare), oppure "come imposto questa mediazione familiare", "come leggo questa coppia", "tavolo della mediazione familiare" — il portale ha un hub sistemico dedicato: mediazione-familiare.html. È il punto di partenza che integra lettura sistemica della coppia + danza del conflitto (Porges) + enneatipi + AT genitoriale + fiori della separazione + chakra del cuore + frequenze del rilascio (639 Hz). Contiene: 5 step del processo (extragiudiziale, L. 162/2014 negoziazione assistita), manifesto del "sistema vivente che si riorganizza", i 4 poli della danza del conflitto di coppia (simpatico, dorsovagale, ventrale, collasso), matrice di 7 fasi familiari ciascuna con dinamica e strumenti, casistica (genitore perfetto, adolescente che rifiuta un genitore, chi è stato lasciato, guerra dei dossier), AI sistemica dedicata, normativa (artt. 337-bis ss. c.c., Cass. SS.UU. 18287/2018 assegno divorzile, Convenzione Istanbul L. 77/2013). ATTENZIONE DEONTOLOGICA: se emerge violenza/abuso/squilibrio grave di potere, NO mediazione — segnalare servizi sociali (1522), evidenziarlo sempre in risposta.
+
+
 
 EGOGRAMMA — 5 STATI DELL\'IO FUNZIONALI:
 - GN (Genitore Normativo): critica, norme, regole. Ok: protegge. Non ok: svaluta.
@@ -2498,18 +2544,6 @@ function saveChatHistory(){
   } catch(e){}
 }
 
-// Testo di benvenuto unificato (usato sia al primo load che dopo "Nuova")
-const OLISMO_WELCOME_TEXT = "Benvenuto nel Portale Olistico Integrato. \ud83c\udf3f\n\nSono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione \u2014 un disturbo fisico, una difficolt\u00e0 emotiva, il tuo enneatipo, o semplicemente come ti senti oggi \u2014 e costruiremo insieme un percorso personalizzato che integra pi\u00f9 discipline.";
-
-function addWelcomeIfEmpty(){
-  const msgs = document.getElementById('chat-messages');
-  if(!msgs) return;
-  // Aggiungi welcome solo se il DOM è davvero vuoto
-  if(msgs.children.length === 0){
-    addMsg("ai", formatAiReply(OLISMO_WELCOME_TEXT), "");
-  }
-}
-
 function loadChatHistory(){
   // Show profile badges if data accumulated
   const badges = getProfileBadges();
@@ -2542,11 +2576,7 @@ function clearChatHistory(){
   localStorage.removeItem('olismo_chat');
   localStorage.removeItem('olismo_chat_html');
   const msgs = document.getElementById('chat-messages');
-  if(msgs){
-    msgs.innerHTML = '';
-    // Ripristina welcome invece di lasciare chat vuota
-    addMsg("ai", formatAiReply(OLISMO_WELCOME_TEXT), "");
-  }
+  if(msgs) msgs.innerHTML = '';
 }
 
 function timeNow(){const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')}
@@ -2775,7 +2805,7 @@ async function sendMsg(){
       headers,
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 6000,
+        max_tokens: 16000,
         system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
@@ -2829,10 +2859,22 @@ window.addEventListener("DOMContentLoaded",()=>{
   try{initCheckTest();}catch(e){}
   try{initCookieBanner();}catch(e){}
   try{initDark();}catch(e){}
+  
+  // Post-render: scroll to hash anchor if URL contains one (for pages with dynamic content like at-adattamenti.html#ad6)
+  try{
+    if(window.location.hash){
+      const targetId = window.location.hash.substring(1);
+      const target = document.getElementById(targetId);
+      if(target){
+        setTimeout(() => {
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 150);
+      }
+    }
+  }catch(e){}
   try{initCristalliSection();}catch(e){}
   try{if(!loadChatHistory()){
-    // Aggiungi welcome SOLO se il DOM è vuoto (evita duplicati con welcome hardcoded in HTML)
-    addWelcomeIfEmpty();
+  addMsg("ai",formatAiReply("Benvenuto nel Portale Olistico Integrato. 🌿\n\nSono la tua consulente olistica: conosco l\'intero database di chakra, cristalli, enneatipi, fiori di Bach, **Fiori Californiani FES** (100 essenze), **Fiori Australiani Bush** (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.\n\nDescrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline."),"");
   }}catch(e){}
 
 });
@@ -4031,14 +4073,6 @@ async function exportReportPdf(){
 
     const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
-    // ── DIMENSIONI PAGINA E MARGINI (fix: queste sono usate ma non erano dichiarate) ──
-    const W = doc.internal.pageSize.getWidth();
-    const H = doc.internal.pageSize.getHeight();
-    const ML = 16, MR = 16, MT = 30, MB = 22;
-    const CW = W - ML - MR;
-    let pageNum = 1;
-    let y = MT + 10;
-
     // ── TEXT SANITIZER: replace emoji/symbols with Latin-1 safe equivalents ──
     const EMOJI_MAP = {
       '\u2714':' [OK]','\u25ce':' [o]','\u2622':' [!]','\u26a0':' [!]',
@@ -4761,30 +4795,9 @@ async function exportChatPdf(){
     function se(s){
       if(!s) return '';
       s = String(s);
-      const MAP={
-        // Simboli decorativi
-        '\u2714':' v ','\u2713':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
-        '\u25c9':'-','\u2605':'*','\u2022':'- ','\u25cf':'-',
-        // Punteggiatura tipografica
-        '\u2018':"'",'\u2019':"'",'\u201A':"'",'\u201B':"'",
-        '\u201C':'"','\u201D':'"','\u201E':'"','\u201F':'"',
-        '\u2013':'-','\u2014':' - ','\u2015':'-','\u2026':'...',
-        '\u00A0':' ','\u2009':' ','\u200A':' ','\u202F':' ',
-        // Emoji bot/icone chat (ampia coverage)
-        '\u{1F916}':'','\u{1F9D8}':'','\u{1F331}':'','\u{1F33F}':'',
-        '\u{1F33A}':'','\u{1F338}':'','\u{1F3B5}':'','\u{1F4E7}':'',
-        '\u{1F4F1}':'','\u{1F310}':'','\u{1F44D}':'','\u{1F44E}':'',
-        '\u{1F4CC}':'','\u{1F4DD}':'','\u{1F4CB}':'','\u{1F4AC}':'',
-        '\u{1F9E0}':'','\u{2728}':'','\u{1F31F}':'','\u{1F4A7}':'',
-        '\u{1F48E}':'','\u{1F525}':'','\u{1F33E}':'','\u{1F3AF}':'',
-        '\u{1F4DC}':'','\u{1F4D6}':'','\u{1F5E3}':'','\u{1F44B}':'',
-        '\u{1F642}':'','\u{1F60A}':'','\u{1F389}':'','\u{26A1}':'',
-        '\u{1F6AB}':'[x] ','\u{23F3}':'...','\u{1F4C4}':'','\u{2699}':''
-      };
+      const MAP={'\u2714':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
+        '\u25c9':'-','\u2605':'*','\u2022':'-','\u25cf':'-'};
       for(const [k,v] of Object.entries(MAP)){ s=s.split(k).join(v); }
-      // Rimuove surrogate pairs emoji non mappate
-      s = s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
-      // Rimuove tutto ciò che non è Latin-1
       return s.replace(/[^\x00-\xFF]/g, function(c){
         const cp=c.codePointAt(0);
         if(cp===0x25C9||cp===0x25CF) return '-';
@@ -4793,69 +4806,6 @@ async function exportChatPdf(){
         if(cp===0x2022) return '- ';
         return '';
       });
-    }
-
-    // ── Pre-processore Markdown: converte MD in testo leggibile per PDF ──
-    function md(s){
-      if(!s) return '';
-      s = String(s).replace(/\r\n?/g, '\n');
-      // Tabelle pipe → formato VERTICALE chiave:valore (più leggibile in colonna stretta)
-      s = s.replace(/(?:^\|.*\|[ \t]*\n?)+/gm, function(block){
-        const rows = block.trim().split('\n').map(r =>
-          r.replace(/^\||\|$/g, '').split('|').map(c => c.trim())
-        );
-        const clean = rows.filter(r => !r.every(c => /^[-:\s]*$/.test(c)));
-        if(clean.length === 0) return '\n';
-        // Se è tabella vera con header (più di 1 riga e più di 2 colonne): formato verticale
-        if(clean.length >= 2 && clean[0].length >= 2){
-          const headers = clean[0];
-          const dataRows = clean.slice(1);
-          let out = '\n';
-          dataRows.forEach((row, idx) => {
-            if(idx > 0) out += '\n';
-            row.forEach((cell, i) => {
-              const label = headers[i] || '';
-              if(cell) out += '- ' + (label ? label + ': ' : '') + cell + '\n';
-            });
-          });
-          return out + '\n';
-        }
-        // Tabella semplice (2 colonne o singola riga): formato orizzontale
-        return '\n' + clean.map(r => r.join('  -  ')).join('\n') + '\n\n';
-      });
-      // Code fences ```
-      s = s.replace(/```[a-z]*\n?([\s\S]*?)```/gi, '\n$1\n');
-      // Inline code `X`
-      s = s.replace(/`([^`]+)`/g, '$1');
-      // Headers # ## ### → testo evidenziato in ASCII (robusto per Helvetica)
-      s = s.replace(/^######\s+(.+)$/gm, '\n$1\n');
-      s = s.replace(/^#####\s+(.+)$/gm, '\n$1\n');
-      s = s.replace(/^####\s+(.+)$/gm, '\n>>> $1\n');
-      s = s.replace(/^###\s+(.+)$/gm, '\n>> $1\n');
-      s = s.replace(/^##\s+(.+)$/gm, '\n\n=== $1 ===\n');
-      s = s.replace(/^#\s+(.+)$/gm, '\n\n### $1 ###\n');
-      // Separatori orizzontali --- (riga isolata)
-      s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\n. . . . . . . . . . . . . . . . .\n');
-      // Separatori --- inline attaccati a testo (es. "corpo.---" → "corpo.\n\n...\n")
-      s = s.replace(/([^\n])-{3,}(\s|$)/g, '$1\n\n. . . . . . . . . . . . . . . . .\n$2');
-      s = s.replace(/(^|\s)-{3,}([^\n-])/g, '$1\n. . . . . . . . . . . . . . . . .\n$2');
-      // Bold **X** e __X__
-      s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1');
-      s = s.replace(/__([^_\n]+)__/g, '$1');
-      // Italic *X* e _X_ (senza mangiare bullet)
-      s = s.replace(/(^|[^\*\w])\*([^\*\n]+)\*(?!\*)/g, '$1$2');
-      s = s.replace(/(^|[^_\w])_([^_\n]+)_(?!_)/g, '$1$2');
-      // Liste - o * all'inizio riga → bullet ASCII
-      s = s.replace(/^[ \t]*[-*][ \t]+/gm, '- ');
-      // Link [testo](url)
-      s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
-      // Blockquote
-      s = s.replace(/^>[ \t]?/gm, '  ');
-      // Newline tra frasi
-      s = s.replace(/([.!?:])\n([A-Z])/g, '$1\n\n$2');
-      // Comprime
-      s = s.replace(/\n{4,}/g, '\n\n\n');
-      return s.trim();
     }
 
     const doc = new jsPDF({
@@ -4875,64 +4825,11 @@ async function exportChatPdf(){
     let page = 1;
     let y = 0;
 
-    // ── Helper: strip HTML preservando struttura markdown ──
+    // ── Helper: strip HTML ──
     function stripHtml(h){
-      if(!h) return '';
       const d = document.createElement('div');
       d.innerHTML = h;
-      function walk(node){
-        if(node.nodeType === 3) return node.textContent || '';
-        if(node.nodeType !== 1) return '';
-        const tag = (node.tagName || '').toLowerCase();
-        if(tag === 'tr'){
-          const cells = [];
-          for(const c of node.children){
-            const t = (c.tagName || '').toLowerCase();
-            if(t === 'td' || t === 'th'){
-              cells.push(Array.from(c.childNodes).map(walk).join('').trim().replace(/\s+/g,' '));
-            }
-          }
-          return '| ' + cells.join(' | ') + ' |\n';
-        }
-        const kids = Array.from(node.childNodes).map(walk).join('');
-        switch(tag){
-          case 'br':      return '\n';
-          case 'hr':      return '\n---\n';
-          case 'p': case 'div': case 'section': case 'article':
-          case 'figure': case 'figcaption': case 'blockquote':
-                          return kids.trim() ? kids + '\n\n' : kids;
-          case 'h1':      return '\n# '     + kids.trim() + '\n\n';
-          case 'h2':      return '\n## '    + kids.trim() + '\n\n';
-          case 'h3':      return '\n### '   + kids.trim() + '\n\n';
-          case 'h4':      return '\n#### '  + kids.trim() + '\n\n';
-          case 'h5': case 'h6':
-                          return '\n##### ' + kids.trim() + '\n\n';
-          case 'ul': case 'ol':
-                          return '\n' + kids + '\n';
-          case 'li':      return '- ' + kids.trim() + '\n';
-          case 'strong': case 'b':
-                          return '**' + kids + '**';
-          case 'em': case 'i':
-                          return '*' + kids + '*';
-          case 'code':    return '`' + kids + '`';
-          case 'pre':     return '\n```\n' + kids + '\n```\n';
-          case 'a': {
-            const href = node.getAttribute && node.getAttribute('href');
-            return href ? '[' + kids + '](' + href + ')' : kids;
-          }
-          case 'table':   return '\n' + kids + '\n';
-          case 'thead': case 'tbody': case 'tfoot':
-                          return kids;
-          case 'script': case 'style': case 'noscript':
-                          return '';
-          default:        return kids;
-        }
-      }
-      let out = walk(d);
-      out = out.replace(/[ \t]+\n/g, '\n')
-               .replace(/\n{3,}/g, '\n\n')
-               .replace(/^\s+|\s+$/g, '');
-      return out;
+      return (d.textContent || d.innerText || '').trim();
     }
 
     // ── Helper: wrap text ──
@@ -4951,13 +4848,13 @@ async function exportChatPdf(){
       doc.setFillColor(...IVORY);
       doc.rect(0, 7, PW, 18, 'F');
 
-      // Logo mark: cerchio gold con monogramma OI
+      // Logo mark ◉
       doc.setFillColor(...GOLD);
       doc.circle(ML + 5, 16, 4, 'F');
       doc.setTextColor(...WHITE);
-      doc.setFontSize(6);
+      doc.setFontSize(8);
       doc.setFont('helvetica', 'bold');
-      doc.text('OI', ML + 5, 17.2, {align: 'center'});
+      doc.text('*', ML + 3.5, 17.5);
 
       // Site name
       doc.setTextColor(...INK);
@@ -5016,120 +4913,29 @@ async function exportChatPdf(){
       }
     }
 
-    // ── Draw a message bubble (con split automatico su più pagine) ──
+    // ── Draw a message bubble ──
     function drawMessage(role, text, time){
       const isUser = role === 'user';
       const maxBubbleW = CW * 0.82;
       const bubblePad = 3.5;
       const lineH = 4.5;
       const fs = 9;
-      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
-      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
+
+      // Set font for measurement
+      doc.setFontSize(fs);
+      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+
+      // Header label
       const label = isUser ? 'Tu' : 'Consulente Olistica';
       const labelColor = isUser ? GOLD : INK3;
 
-      // Wrap text (md() solo per AI: l'utente scrive testo piano)
-      doc.setFontSize(fs);
-      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
-      const processed = isUser ? se(text) : se(md(text));
-      const allLines = wrapText(processed, maxBubbleW - bubblePad * 2, fs);
+      // Wrap text
+      const lines = wrapText(se(text), maxBubbleW - bubblePad * 2, fs);
+      const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
 
-      // Funzione che renderizza una singola riga al punto (ty) dato
-      function renderLine(line, ty){
-        const isH1 = /^### .+ ###$/.test(line);
-        const isH2 = /^=== .+ ===$/.test(line);
-        const isH3 = /^>> /.test(line);
-        const isH4 = /^>>> /.test(line);
-        const isBullet = /^- /.test(line);
-        const isSeparator = /^\. (\. )+\.?$/.test(line);
-        if(!isUser && isH1){
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(fs + 2);
-          doc.setTextColor(...GOLD);
-          const clean = line.replace(/^### | ###$/g, '');
-          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
-          doc.setFontSize(fs); doc.setFont('helvetica','normal'); doc.setTextColor(...INK);
-        } else if(!isUser && isH2){
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(fs + 1);
-          doc.setTextColor(...GOLD);
-          const clean = line.replace(/^=== | ===$/g, '');
-          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
-          doc.setFontSize(fs); doc.setFont('helvetica','normal'); doc.setTextColor(...INK);
-        } else if(!isUser && (isH3 || isH4)){
-          doc.setFont('helvetica', 'bold');
-          doc.setTextColor(...INK);
-          const clean = line.replace(/^>+\s*/, '');
-          doc.text(clean, bubbleX + bubblePad + 1.8, ty);
-          doc.setFont('helvetica','normal');
-        } else if(!isUser && isSeparator){
-          doc.setDrawColor(...GOLD);
-          doc.setLineWidth(0.25);
-          doc.line(bubbleX + bubblePad + 2, ty - 1.3, bubbleX + maxBubbleW - bubblePad - 2, ty - 1.3);
-        } else if(!isUser && isBullet){
-          doc.setTextColor(...GOLD);
-          doc.text('-', bubbleX + bubblePad + 1.8, ty);
-          doc.setTextColor(...INK);
-          doc.text(line.substring(2), bubbleX + bubblePad + 5.5, ty);
-        } else {
-          doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
-        }
-      }
-
-      // Funzione che disegna un segmento di bolla con N linee
-      function drawBubbleSegment(segLines, isFirst, isLast){
-        const segH = segLines.length * lineH + bubblePad * 2;
-        doc.setFillColor(...bubbleBgColor);
-        doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
-        doc.setLineWidth(0.3);
-        // Se è segmento intero: roundedRect; se intermedio: rect normale
-        if(isFirst && isLast){
-          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
-        } else if(isFirst){
-          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
-        } else if(isLast){
-          doc.roundedRect(bubbleX, y, maxBubbleW, segH, 2.5, 2.5, 'FD');
-        } else {
-          doc.rect(bubbleX, y, maxBubbleW, segH, 'FD');
-        }
-        // Accent bar per AI
-        if(!isUser){
-          doc.setFillColor(...GOLD);
-          doc.rect(bubbleX, y, 1.5, segH, 'F');
-        }
-        // Indicatore "continua" se non è l'ultimo segmento
-        if(!isLast){
-          doc.setTextColor(...INK3);
-          doc.setFontSize(6);
-          doc.setFont('helvetica', 'italic');
-          doc.text('(continua sulla pagina seguente...)', bubbleX + maxBubbleW - bubblePad - 2, y + segH - 1.5, {align: 'right'});
-        }
-        // Render lines
-        doc.setFontSize(fs);
-        doc.setFont('helvetica', isUser ? 'bold' : 'normal');
-        doc.setTextColor(...INK);
-        let ty = y + bubblePad + lineH - 0.5;
-        segLines.forEach(line => {
-          renderLine(line, ty);
-          ty += lineH;
-        });
-        y += segH;
-      }
-
-      // ── Paginazione: prima spazio per label + stima primo segmento ──
+      // Space between messages
       const spaceBefore = 4;
-      const availH = PH - MB - y - spaceBefore - 5 - 3.5; // spazio utile per bolla
-      const firstNeedsHeader = true;
-
-      // Se non c'è spazio per almeno 4 righe + header, nuova pagina
-      const minSpaceNeeded = 4 * lineH + bubblePad * 2 + 8;
-      if(availH < minSpaceNeeded){
-        drawFooter();
-        doc.addPage();
-        page++;
-        drawHeader();
-      }
-
+      checkBreak(spaceBefore + 5 + bubbleH + 2);
       y += spaceBefore;
 
       // Label row
@@ -5137,7 +4943,7 @@ async function exportChatPdf(){
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(...labelColor);
       const labelX = isUser ? PW - MR - maxBubbleW : ML;
-      doc.text(se(label), labelX, y);
+      doc.text(label, labelX, y);
 
       // Time
       if(time){
@@ -5145,29 +4951,38 @@ async function exportChatPdf(){
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(...INK3);
         const timeX = isUser ? PW - MR : ML + maxBubbleW;
-        doc.text(se(time), timeX, y, {align: isUser ? 'right' : 'left'});
+        doc.text(time, timeX, y, {align: isUser ? 'right' : 'left'});
       }
       y += 3.5;
 
-      // Split delle linee in segmenti per pagina
-      let remaining = allLines.slice();
-      let isFirst = true;
-      while(remaining.length > 0){
-        const spaceOnPage = PH - MB - y - 4; // margine bottom
-        const maxLinesThisSeg = Math.max(3, Math.floor((spaceOnPage - bubblePad * 2) / lineH));
-        const takeN = Math.min(remaining.length, maxLinesThisSeg);
-        const segLines = remaining.slice(0, takeN);
-        remaining = remaining.slice(takeN);
-        const isLast = remaining.length === 0;
-        drawBubbleSegment(segLines, isFirst, isLast);
-        if(!isLast){
-          drawFooter();
-          doc.addPage();
-          page++;
-          drawHeader();
-        }
-        isFirst = false;
+      // Bubble background
+      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
+      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
+
+      doc.setFillColor(...bubbleBgColor);
+      doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
+      doc.setLineWidth(0.3);
+      doc.roundedRect(bubbleX, y, maxBubbleW, bubbleH, 2.5, 2.5, 'FD');
+
+      // User: accent bar on left
+      if(!isUser){
+        doc.setFillColor(...GOLD);
+        doc.rect(bubbleX, y, 1.5, bubbleH, 'F');
       }
+
+      // Bubble text
+      doc.setFontSize(fs);
+      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+      doc.setTextColor(...INK);
+      let ty = y + bubblePad + lineH - 0.5;
+
+      lines.forEach(line => {
+        // Check if line fits (split across pages not ideal but handled)
+        doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
+        ty += lineH;
+      });
+
+      y += bubbleH;
     }
 
     // ── Build the chat list from chatHistory ──
@@ -5192,204 +5007,100 @@ async function exportChatPdf(){
       throw new Error('Nessun messaggio trovato nella chat.');
     }
 
-    // ── Cover page (editorial design) ──
-
-    // Background avorio pieno
+    // ── Cover page ──
+    // Background
     doc.setFillColor(...IVORY);
     doc.rect(0, 0, PW, PH, 'F');
 
-    // Texture: banda verticale dorata laterale sinistra
+    // Top gold bar
     doc.setFillColor(...GOLD);
-    doc.rect(0, 0, 6, PH, 'F');
+    doc.rect(0, 0, PW, 55, 'F');
 
-    // Hero block dorato superiore con gradiente simulato (strisce orizzontali)
-    for(let i = 0; i < 80; i++){
-      const t = i / 80;
-      const r = 184 - t * 20;
-      const g = 147 - t * 15;
-      const b = 90 - t * 10;
-      doc.setFillColor(r, g, b);
-      doc.rect(6, i, PW - 6, 1, 'F');
-    }
-
-    // Monogramma OI in cerchio bianco
-    doc.setFillColor(...WHITE);
-    doc.circle(PW/2, 30, 14, 'F');
-    doc.setDrawColor(...GOLD);
-    doc.setLineWidth(0.8);
-    doc.circle(PW/2, 30, 14, 'S');
-    doc.circle(PW/2, 30, 11.5, 'S');
-    doc.setTextColor(...GOLD);
-    doc.setFontSize(18);
-    doc.setFont('helvetica', 'bold');
-    doc.text('OI', PW/2, 33.5, {align: 'center'});
-
-    // Titolo
-    doc.setTextColor(...WHITE);
-    doc.setFontSize(26);
-    doc.setFont('helvetica', 'bold');
-    doc.text('OLISMO INTEGRATO', PW/2, 58, {align: 'center'});
-
-    // Sottotitolo con spaziatura espansa
-    doc.setFontSize(9.5);
-    doc.setFont('helvetica', 'normal');
-    doc.text('P O R T A L E    D I    A R M O N I A    O L I S T I C A', PW/2, 66, {align: 'center'});
-
-    // Linea decorativa doppia
-    doc.setDrawColor(255,255,255);
-    doc.setLineWidth(0.4);
-    doc.line(PW/2 - 30, 71, PW/2 - 4, 71);
-    doc.line(PW/2 + 4, 71, PW/2 + 30, 71);
+    // Logo mark large
+    doc.setFillColor(255,255,255,0.2);
     doc.setFillColor(255,255,255);
-    doc.circle(PW/2, 71, 1, 'F');
-
-    // ── Sezione centrale bianca ──
-    const centerY = 95;
-
-    // Titolo documento
-    doc.setTextColor(...INK);
-    doc.setFontSize(15);
+    doc.circle(PW/2, 30, 16, 'F');
+    doc.setTextColor(...GOLD);
+    doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.text('Trascrizione della Consulenza', PW/2, centerY, {align: 'center'});
+    doc.text('*', PW/2 - 4, 34);
+
+    // Title
+    doc.setTextColor(...WHITE);
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('OLISMO INTEGRATO', PW/2, 63, {align: 'center'});
 
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK2);
-    doc.text('Olistica AI Personalizzata', PW/2, centerY + 7, {align: 'center'});
+    doc.text('Trascrizione della Consulenza Olistica AI', PW/2, 71, {align: 'center'});
 
-    // Linea gold breve
+    // Gold line
     doc.setDrawColor(...GOLD);
-    doc.setLineWidth(0.6);
-    doc.line(PW/2 - 20, centerY + 13, PW/2 + 20, centerY + 13);
+    doc.setLineWidth(0.5);
+    doc.line(PW/2 - 40, 78, PW/2 + 40, 78);
 
-    // Box meta data con stile a lastra
-    const metaY = centerY + 22;
-    doc.setFillColor(...WHITE);
-    doc.setDrawColor(...GOLD);
-    doc.setLineWidth(0.35);
-    doc.roundedRect(ML + 10, metaY, CW - 20, 26, 2, 2, 'FD');
-
+    // Date / meta
     const now = new Date();
     const dateStr = now.toLocaleDateString('it-IT', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
     const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
-    const userQs = messages.filter(m=>m.role==='user').length;
-    const aiAs = messages.filter(m=>m.role==='ai').length;
-
-    // Meta in due righe con etichette in gold
-    doc.setFontSize(7.5);
-    doc.setTextColor(...GOLD);
-    doc.setFont('helvetica', 'bold');
-    doc.text('DATA', ML + 18, metaY + 8);
-    doc.text('ORA', ML + 72, metaY + 8);
-    doc.text('INTERAZIONI', ML + 110, metaY + 8);
 
     doc.setFontSize(9.5);
-    doc.setTextColor(...INK);
+    doc.setTextColor(...INK2);
     doc.setFont('helvetica', 'normal');
-    doc.text(dateStr.charAt(0).toUpperCase() + dateStr.slice(1), ML + 18, metaY + 14);
-    doc.text(timeStr, ML + 72, metaY + 14);
-    doc.text(userQs + ' domande - ' + aiAs + ' risposte', ML + 110, metaY + 14);
+    doc.text('Data: ' + dateStr + '  |  Ora: ' + timeStr, PW/2, 88, {align: 'center'});
+    doc.text('Messaggi: ' + messages.length + '  |  ' + (messages.filter(m=>m.role==='user').length) + ' domande  ·  ' + (messages.filter(m=>m.role==='ai').length) + ' risposte', PW/2, 95, {align: 'center'});
 
-    doc.setFontSize(7);
-    doc.setTextColor(...INK3);
-    doc.setFont('helvetica', 'italic');
-    doc.text('Documento generato automaticamente dal sistema Olismo Integrato', PW/2, metaY + 22, {align: 'center'});
-
-    // ── Card autore elegante ──
-    const authorY = metaY + 36;
-
-    // Card base ombreggiata
-    doc.setFillColor(250, 246, 238);
-    doc.roundedRect(ML + 6, authorY, CW - 12, 52, 3, 3, 'F');
+    // Info box
+    doc.setFillColor(255,255,255);
     doc.setDrawColor(...GOLD);
     doc.setLineWidth(0.4);
-    doc.roundedRect(ML + 6, authorY, CW - 12, 52, 3, 3, 'S');
+    doc.roundedRect(ML + 15, 108, CW - 30, 42, 3, 3, 'FD');
 
-    // Barra gold laterale
-    doc.setFillColor(...GOLD);
-    doc.rect(ML + 6, authorY, 1.2, 52, 'F');
-
-    // Nome autore
-    doc.setTextColor(...INK);
-    doc.setFontSize(13);
+    doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
-    doc.text('Avv. Carlo Alberto Calcagno', PW/2, authorY + 11, {align: 'center'});
+    doc.setTextColor(...GOLD);
+    doc.text('Carlo Alberto Calcagno', PW/2, 118, {align: 'center'});
 
-    // Qualifiche in due righe
-    doc.setFontSize(8.5);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK2);
-    doc.text('Mediatore Familiare Certificato  -  Formatore  -  Pranoterapista', PW/2, authorY + 19, {align: 'center'});
-    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, authorY + 25, {align: 'center'});
-
-    // Linea separatore
-    doc.setDrawColor(210, 195, 170);
-    doc.setLineWidth(0.2);
-    doc.line(PW/2 - 25, authorY + 30, PW/2 + 25, authorY + 30);
-
-    // Contatti con icone ASCII pulite
     doc.setFontSize(8);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...GOLD);
-    doc.text('@', ML + 22, authorY + 37);
-    doc.text('T', ML + 22, authorY + 43);
-    doc.text('W', ML + 22, authorY + 49);
-
     doc.setTextColor(...INK2);
-    doc.text('calcagnocarloalberto1@gmail.com', ML + 28, authorY + 37);
-    doc.text('+39 347 366 6508', ML + 28, authorY + 43);
-    doc.text('www.olismo-integrato.it', ML + 28, authorY + 49);
+    doc.text('Mediatore Familiare Certificato · Formatore · Pranoterapista', PW/2, 124, {align: 'center'});
+    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, 130, {align: 'center'});
 
-    // ── Chips discipline ──
-    const chipsY = authorY + 62;
+    doc.setFontSize(8);
     doc.setTextColor(...GOLD);
-    doc.setFontSize(7);
-    doc.setFont('helvetica', 'bold');
-    doc.text('DISCIPLINE INTEGRATE', PW/2, chipsY, {align: 'center'});
+    doc.text('calcagnocarloalberto1@gmail.com  ·  +39 347 366 6508', PW/2, 138, {align: 'center'});
+    doc.text('olismo-integrato.it', PW/2, 144, {align: 'center'});
 
+    // Discipline chips
     const chips = ['Chakra','Enneagramma','Fiori di Bach','AT','Frequenze','Cristalli','VAK','Pranoterapia'];
-    let chipStartY = chipsY + 6;
-    // Calcola larghezze per centrare la riga
-    doc.setFontSize(7.5);
-    const chipWidths = chips.map(c => doc.getTextWidth(c) + 7);
-    const totalRow1 = chipWidths.slice(0,4).reduce((a,b) => a + b, 0) + 9;
-    const totalRow2 = chipWidths.slice(4,8).reduce((a,b) => a + b, 0) + 9;
-    let cxRow1 = (PW - totalRow1) / 2;
-    let cxRow2 = (PW - totalRow2) / 2;
-
+    const chipStartY = 160;
+    let cx = ML + 8;
     chips.forEach((chip, i) => {
-      doc.setFontSize(7.5);
-      const w = chipWidths[i];
-      const useY = i < 4 ? chipStartY : chipStartY + 9;
-      const useX = i < 4 ? cxRow1 : cxRow2;
+      doc.setFontSize(7);
+      const w = doc.getTextWidth(chip) + 6;
       doc.setFillColor(...GOLD_LIGHT);
       doc.setDrawColor(...GOLD);
       doc.setLineWidth(0.3);
-      doc.roundedRect(useX, useY, w, 7, 2, 2, 'FD');
-      doc.setTextColor(...INK);
-      doc.text(chip, useX + w/2, useY + 4.8, {align: 'center'});
-      if(i < 4) cxRow1 += w + 3;
-      else cxRow2 += w + 3;
+      doc.roundedRect(cx, chipStartY, w, 6, 1.5, 1.5, 'FD');
+      doc.setTextColor(...INK2);
+      doc.text(chip, cx + 3, chipStartY + 4.2);
+      cx += w + 3;
+      if(cx > PW - MR - 30){cx = ML + 8; chipStartY += 10;}
     });
 
-    // ── Disclaimer e footer ──
-    doc.setFontSize(6.5);
-    doc.setFont('helvetica', 'italic');
-    doc.setTextColor(140, 130, 120);
-    doc.text('Le indicazioni contenute hanno finalita\' divulgativa e non sostituiscono', PW/2, PH - 22, {align: 'center'});
-    doc.text('consulenze mediche o psicologiche professionali.', PW/2, PH - 18, {align: 'center'});
-
-    // Bottom bar con marchio
-    doc.setFillColor(...GOLD);
-    doc.rect(0, PH - 10, PW, 10, 'F');
-    doc.setTextColor(...WHITE);
+    // Disclaimer
     doc.setFontSize(7.5);
-    doc.setFont('helvetica', 'bold');
-    doc.text('OLISMO-INTEGRATO.IT', PW/2, PH - 4, {align: 'center'});
-    doc.setFontSize(6);
-    doc.setFont('helvetica', 'normal');
-    doc.text('(c) ' + now.getFullYear() + ' Carlo Alberto Calcagno', ML + 8, PH - 4);
-    doc.text('Tutti i diritti riservati', PW - MR - 8, PH - 4, {align: 'right'});
+    doc.setTextColor(180, 175, 170);
+    doc.text('Le indicazioni hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche.', PW/2, PH - 30, {align: 'center'});
+
+    // Bottom bar
+    doc.setFillColor(...GOLD);
+    doc.rect(0, PH - 8, PW, 8, 'F');
+    doc.setTextColor(...WHITE);
+    doc.setFontSize(7);
+    doc.text('olismo-integrato.it', PW/2, PH - 3, {align: 'center'});
 
     // ── Chat pages ──
     doc.addPage();
@@ -5803,7 +5514,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:800,system,messages})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
@@ -5979,7 +5690,7 @@ async function fesSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: FES_PROMPT, messages: fesHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -6030,7 +5741,7 @@ async function bushSend() {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 4000, system: BUSH_PROMPT, messages: bushHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
@@ -6330,7 +6041,7 @@ window.addEventListener('load',function(){
       name:'Crea il tuo cammino', icon:'✦',
       steps:[
         {id:'percorso-viaggio',       label:'Mappa del percorso'},
-        {id:'i-miei-fiori-ext',       label:'I miei Fiori ↗',     external:'i_miei_fiori.html'},
+        {id:'i-miei-fiori-ext',       label:'Fiori adatti a te (AI FES) ↗',     external:'ai-fes.html'},
         {id:'il-mio-copione-ext',     label:'Il mio Copione ↗',   external:'il_mio_copione.html'},
         {id:'consulente',             label:'Piano personalizzato AI'}
       ],
@@ -6731,449 +6442,3 @@ async function exportBushPdf(){
     fileName: 'Olismo-Integrato-AI-Bush'
   });
 }
-
-
-/* ══════════════════════════════════════════════════════════════════════
-   SISTEMA CONDIVISIONE UNIVERSALE — OLISMO INTEGRATO
-   Auto-injection su tutte le pagine che contengono #chat-messages
-   Pulsante globale nell'header chat + icone Copia/Condividi su ogni AI
-   ══════════════════════════════════════════════════════════════════════ */
-(function(){
-  'use strict';
-
-  // Evita doppia inizializzazione (se presente script inline in una pagina)
-  if(window.olismoShareGlobal) return;
-
-  // ─── Inject CSS ─────────────────────────────────────────────────
-  function injectCSS(){
-    if(document.getElementById('olismo-share-core-css')) return;
-    const css = `
-      .chat-share-btn{
-        font-size:.72rem;padding:.35rem .9rem;
-        background:transparent;color:var(--gold,#b8935a);
-        border:1.5px solid var(--gold,#b8935a);border-radius:6px;
-        cursor:pointer;font-weight:600;font-family:'Outfit',sans-serif;
-        display:inline-flex;align-items:center;gap:.35rem;
-        transition:all .15s ease
-      }
-      .chat-share-btn:hover{background:var(--gold,#b8935a);color:white}
-      .chat-share-btn .arr{font-size:.9rem;line-height:1}
-      .msg-rating .msg-share{
-        background:none;border:none;cursor:pointer;
-        padding:.15rem .3rem;font-size:.9rem;
-        opacity:.55;transition:opacity .15s ease;
-        line-height:1;vertical-align:middle
-      }
-      .msg-rating .msg-share:hover{opacity:1}
-      .olismo-share-menu{
-        position:absolute;z-index:9999;
-        background:white;border:1px solid rgba(184,147,90,.3);
-        border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.15);
-        padding:.35rem;min-width:190px;
-        font-family:'Outfit',sans-serif;font-size:.84rem;
-        animation:olismoMenuIn .12s ease-out
-      }
-      @keyframes olismoMenuIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-      .olismo-share-menu button{
-        display:flex;align-items:center;gap:.7rem;
-        width:100%;padding:.55rem .8rem;
-        background:transparent;border:none;border-radius:6px;
-        cursor:pointer;font:inherit;color:#2a2520;
-        text-align:left;transition:background .12s
-      }
-      .olismo-share-menu button:hover{background:rgba(184,147,90,.10)}
-      .olismo-share-menu .olismo-share-ico{width:22px;font-size:1.05rem;text-align:center;flex-shrink:0}
-      .olismo-share-menu .olismo-share-divider{height:1px;background:rgba(184,147,90,.2);margin:.25rem .4rem}
-      #olismo-toast{
-        position:fixed;bottom:30px;left:50%;
-        transform:translateX(-50%) translateY(10px);
-        background:var(--gold,#b8935a);color:white;
-        padding:.7rem 1.4rem;border-radius:24px;
-        font-family:'Outfit',sans-serif;font-size:.88rem;
-        box-shadow:0 8px 24px rgba(0,0,0,.20);
-        z-index:10000;opacity:0;pointer-events:none;
-        transition:opacity .25s ease, transform .25s ease
-      }
-      #olismo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-      @media(max-width:640px){
-        .chat-share-btn{padding:.3rem .6rem;font-size:.68rem}
-        .chat-share-btn .lbl{display:none}
-      }
-    `;
-    const s = document.createElement('style');
-    s.id = 'olismo-share-core-css';
-    s.textContent = css;
-    document.head.appendChild(s);
-  }
-
-  // ─── Conversione HTML → testo pulito per condivisione ───────────
-  function toShareText(html, platform){
-    if(!html) return '';
-    let s;
-    if(html.indexOf('<') >= 0){
-      const tmp = document.createElement('div');
-      tmp.innerHTML = html;
-      tmp.querySelectorAll('.msg-rating, .msg-time, .msg-share').forEach(el => el.remove());
-      function walk(n){
-        if(n.nodeType === 3) return n.textContent || '';
-        if(n.nodeType !== 1) return '';
-        const tag = (n.tagName||'').toLowerCase();
-        if(tag === 'tr'){
-          const cells = [];
-          for(const c of n.children){
-            const t = (c.tagName||'').toLowerCase();
-            if(t==='td'||t==='th') cells.push(Array.from(c.childNodes).map(walk).join('').trim().replace(/\s+/g,' '));
-          }
-          return cells.join(' \u2014 ') + '\n';
-        }
-        const kids = Array.from(n.childNodes).map(walk).join('');
-        switch(tag){
-          case 'br': return '\n';
-          case 'hr': return '\n\u2014\u2014\u2014\n';
-          case 'p': case 'div': case 'section': return kids.trim()? kids+'\n\n' : kids;
-          case 'h1': case 'h2': return '\n*'+kids.trim().toUpperCase()+'*\n';
-          case 'h3': case 'h4': case 'h5': case 'h6': return '\n*'+kids.trim()+'*\n';
-          case 'ul': case 'ol': return '\n'+kids+'\n';
-          case 'li': return '\u2022 '+kids.trim()+'\n';
-          case 'strong': case 'b': return '*'+kids+'*';
-          case 'em': case 'i': return platform==='whatsapp' ? '_'+kids+'_' : kids;
-          case 'a': { const h=n.getAttribute&&n.getAttribute('href'); return h?kids+' ('+h+')':kids; }
-          case 'table': return '\n'+kids+'\n';
-          case 'thead': case 'tbody': case 'tfoot': return kids;
-          case 'script': case 'style': return '';
-          default: return kids;
-        }
-      }
-      s = walk(tmp);
-    } else { s = html; }
-    s = s.replace(/\*\*([^*\n]+)\*\*/g, '*$1*');
-    s = s.replace(/^#{1,6}\s+(.+)$/gm, function(m,h){ return '\n*'+h.toUpperCase()+'*\n'; });
-    s = s.replace(/^[ \t]*[-_*]{3,}[ \t]*$/gm, '\u2014\u2014\u2014\u2014\u2014\u2014\u2014');
-    s = s.replace(/^[ \t]*[-*][ \t]+/gm, '\u2022 ');
-    s = s.replace(/\n{3,}/g, '\n\n');
-    if(platform === 'plain' || platform === 'email' || platform === 'sms'){
-      s = s.replace(/\*([^*\n]+)\*/g, '$1');
-      s = s.replace(/_([^_\n]+)_/g, '$1');
-    }
-    return s.trim();
-  }
-
-  async function copyText(text){
-    try {
-      if(navigator.clipboard && window.isSecureContext){
-        await navigator.clipboard.writeText(text);
-        return true;
-      }
-    } catch(e){}
-    try {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
-      ta.setAttribute('readonly','');
-      document.body.appendChild(ta);
-      if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
-        const range = document.createRange();
-        range.selectNodeContents(ta);
-        const sel = window.getSelection();
-        sel.removeAllRanges(); sel.addRange(range);
-        ta.setSelectionRange(0, 999999);
-      } else { ta.select(); }
-      const ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-      return ok;
-    } catch(e){ return false; }
-  }
-
-  function toast(msg){
-    let t = document.getElementById('olismo-toast');
-    if(!t){ t = document.createElement('div'); t.id = 'olismo-toast'; document.body.appendChild(t); }
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(t._tm);
-    t._tm = setTimeout(() => t.classList.remove('show'), 2400);
-  }
-
-  const SIGN = '\n\n\u2014 Dalla Consulenza Olistica AI \u00b7 olismo-integrato.it';
-
-  function doWhatsApp(h, t){
-    const b = toShareText(h, 'whatsapp');
-    window.open('https://wa.me/?text=' + encodeURIComponent((t?'*'+t+'*\n\n':'') + b + SIGN), '_blank');
-  }
-  function doTelegram(h, t){
-    const b = toShareText(h, 'plain');
-    window.open('https://t.me/share/url?url=' + encodeURIComponent('https://olismo-integrato.it') +
-                '&text=' + encodeURIComponent((t?t+'\n\n':'') + b + SIGN), '_blank');
-  }
-  function doEmail(h, t){
-    const b = toShareText(h, 'email');
-    const s = t || 'Consulenza Olistica \u2014 olismo-integrato.it';
-    window.location.href = 'mailto:?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(b + SIGN);
-  }
-  function doSMS(h, t){
-    let b = toShareText(h, 'sms');
-    if(b.length > 1200) b = b.substring(0, 1200) + '\u2026';
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const sep = isIOS ? '&' : '?';
-    window.location.href = 'sms:' + sep + 'body=' + encodeURIComponent((t?t+'\n\n':'') + b + SIGN);
-  }
-  async function doCopy(h, t){
-    const b = toShareText(h, 'plain');
-    const ok = await copyText((t?t+'\n\n':'') + b + SIGN);
-    toast(ok ? '\u2713 Copiato negli appunti' : '\u26a0 Copia non riuscita');
-  }
-  async function doNative(h, t){
-    if(!navigator.share) return doCopy(h, t);
-    try {
-      await navigator.share({
-        title: t || 'Consulenza Olistica',
-        text: toShareText(h, 'plain') + SIGN,
-        url: 'https://olismo-integrato.it'
-      });
-    } catch(e){}
-  }
-
-  function buildMenu(anchor, html, titolo){
-    document.querySelectorAll('.olismo-share-menu').forEach(m => m.remove());
-    const menu = document.createElement('div');
-    menu.className = 'olismo-share-menu';
-    const opts = [];
-    if(navigator.share){
-      opts.push({ico:'\u22ef', lab:'Sistema (tutte le app\u2026)', fn:() => doNative(html, titolo)});
-      opts.push({divider:true});
-    }
-    opts.push({ico:'\ud83d\udcac', lab:'WhatsApp',  fn:() => doWhatsApp(html, titolo)});
-    opts.push({ico:'\ud83d\udccb', lab:'Copia testo', fn:() => doCopy(html, titolo)});
-    opts.push({ico:'\u2709',       lab:'Email',     fn:() => doEmail(html, titolo)});
-    opts.push({ico:'\u2708',       lab:'Telegram',  fn:() => doTelegram(html, titolo)});
-    opts.push({ico:'\ud83d\udcf1', lab:'SMS',       fn:() => doSMS(html, titolo)});
-    opts.forEach(o => {
-      if(o.divider){
-        const d = document.createElement('div'); d.className = 'olismo-share-divider';
-        menu.appendChild(d); return;
-      }
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.innerHTML = '<span class="olismo-share-ico">' + o.ico + '</span><span>' + o.lab + '</span>';
-      b.onclick = (ev) => { ev.stopPropagation(); menu.remove(); o.fn(); };
-      menu.appendChild(b);
-    });
-    document.body.appendChild(menu);
-    const r = anchor.getBoundingClientRect();
-    const mw = menu.offsetWidth;
-    const vw = window.innerWidth;
-    let left = r.right + window.scrollX - mw;
-    if(left < 8) left = 8;
-    if(left + mw > vw - 8) left = vw - mw - 8;
-    menu.style.top  = (r.bottom + window.scrollY + 6) + 'px';
-    menu.style.left = left + 'px';
-    setTimeout(() => {
-      document.addEventListener('click', function closer(ev){
-        if(!menu.contains(ev.target)){ menu.remove(); document.removeEventListener('click', closer); }
-      });
-    }, 10);
-  }
-
-  function findChatContainer(){
-    // Trova qualsiasi contenitore chat delle varie pagine (consulente, fes, bush, mediatore, ecc.)
-    return document.querySelector('#chat-messages, #fes-messages, #bush-messages, #chat-messages-mediatore, #empowerment-messages, #matrice-messages, #psicologia-messages, [data-olismo-chat]');
-  }
-
-  function collectAllHtml(container){
-    if(!container) return '';
-    return '<div>' + Array.from(container.querySelectorAll('.msg'))
-      .map(m => {
-        const isUser = m.classList.contains('user');
-        const b = m.querySelector('.msg-bubble');
-        const t = m.querySelector('.msg-time');
-        const who = isUser ? '\ud83d\udc64 Tu' : '\ud83c\udf3f Consulente';
-        const time = t && t.childNodes[0] ? t.childNodes[0].textContent.trim() : '';
-        return '<p><strong>' + who + (time ? ' \u00b7 ' + time : '') + '</strong></p>' +
-               (b ? b.innerHTML : '') + '<hr>';
-      }).join('') + '</div>';
-  }
-
-  // ─── API PUBBLICHE ─────────────────────────────────────────────
-  window.olismoShareGlobal = function(ev){
-    ev && ev.stopPropagation();
-    const anchor = (ev && ev.currentTarget) ||
-                   document.getElementById('olismo-share-btn') ||
-                   document.querySelector('.chat-share-btn');
-    const container = findChatContainer();
-    buildMenu(anchor, collectAllHtml(container), 'Consulenza Olistica completa');
-  };
-  window.olismoShareMsg = function(ev, btn){
-    ev && ev.stopPropagation();
-    const msg = btn.closest('.msg');
-    const bubble = msg && msg.querySelector('.msg-bubble');
-    if(!bubble) return;
-    buildMenu(btn, bubble.innerHTML, 'Dalla Consulenza Olistica');
-  };
-  window.olismoCopyMsg = function(ev, btn){
-    ev && ev.stopPropagation();
-    const msg = btn.closest('.msg');
-    const bubble = msg && msg.querySelector('.msg-bubble');
-    if(!bubble) return;
-    doCopy(bubble.innerHTML, 'Dalla Consulenza Olistica');
-  };
-
-  // ─── Auto-injection ─────────────────────────────────────────────
-  function injectGlobalButton(){
-    // Se già presente (es. in consulente.html hardcoded), non duplica
-    if(document.getElementById('olismo-share-btn')) return;
-    const header = document.querySelector('.chat-header');
-    if(!header) return;
-    // Non inietta se non c'è una chat nella stessa pagina
-    if(!findChatContainer()) return;
-    const btn = document.createElement('button');
-    btn.id = 'olismo-share-btn';
-    btn.className = 'chat-share-btn';
-    btn.title = 'Condividi la conversazione';
-    btn.innerHTML = '<span class="arr">\u2197</span><span class="lbl">Condividi</span>';
-    btn.onclick = window.olismoShareGlobal;
-    header.appendChild(btn);
-  }
-
-  function injectOnRating(ratingEl){
-    if(!ratingEl || ratingEl.dataset.olismoInj) return;
-    const msg = ratingEl.closest('.msg');
-    if(!msg) return;
-    if(msg.classList.contains('user')) return;
-    ratingEl.dataset.olismoInj = '1';
-    const bCopy = document.createElement('button');
-    bCopy.type = 'button'; bCopy.className = 'msg-share';
-    bCopy.title = 'Copia questa risposta';
-    bCopy.innerHTML = '\ud83d\udccb';
-    bCopy.onclick = function(ev){ window.olismoCopyMsg(ev, this); };
-    ratingEl.appendChild(bCopy);
-    const bShare = document.createElement('button');
-    bShare.type = 'button'; bShare.className = 'msg-share';
-    bShare.title = 'Condividi questa risposta';
-    bShare.innerHTML = '\u2197';
-    bShare.onclick = function(ev){ window.olismoShareMsg(ev, this); };
-    ratingEl.appendChild(bShare);
-  }
-
-  function injectAll(){
-    injectCSS();
-    injectGlobalButton();
-    document.querySelectorAll('.msg-rating').forEach(injectOnRating);
-  }
-
-  function init(){
-    injectAll();
-    const obs = new MutationObserver(muts => {
-      for(const m of muts){
-        for(const node of m.addedNodes){
-          if(node.nodeType !== 1) continue;
-          if(node.matches && node.matches('.msg-rating')){
-            injectOnRating(node);
-          } else if(node.querySelectorAll){
-            node.querySelectorAll('.msg-rating').forEach(injectOnRating);
-            // Re-inietta bottone globale se viene creata una chat dinamicamente
-            if(node.matches && node.matches('.chat-header')) injectGlobalButton();
-            else if(node.querySelector && node.querySelector('.chat-header')) injectGlobalButton();
-          }
-        }
-      }
-    });
-    obs.observe(document.body, {childList: true, subtree: true});
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-
-
-/* ══════════════════════════════════════════════════════════════════════
-   ANALYTICS GDPR-FRIENDLY — OLISMO INTEGRATO
-   Carica Plausible (no cookie, no IP, no fingerprint) solo se:
-   - Il visitatore ha dato consenso per gli analytics nel banner
-   - Oppure il sistema di consenso non è presente (fallback)
-   
-   Per attivare: crea un account su plausible.io, aggiungi il dominio
-   "olismo-integrato.it", e il tracking partirà automaticamente.
-   Per cambiare provider, modifica ANALYTICS_CONFIG qui sotto.
-   ══════════════════════════════════════════════════════════════════════ */
-(function(){
-  'use strict';
-
-  const ANALYTICS_CONFIG = {
-    // Provider: 'plausible' | 'goatcounter' | 'umami' | 'off'
-    provider: 'plausible',
-    // Il tuo dominio registrato sul provider
-    domain: 'olismo-integrato.it',
-    // URL dello script del provider (cambiare solo se usi self-hosting)
-    plausibleScript: 'https://plausible.io/js/script.outbound-links.js',
-    goatcounterScript: 'https://olismo-integrato.goatcounter.com/count.js',
-    umamiScript: '' // es: 'https://analytics.example.com/script.js'
-  };
-
-  let loaded = false;
-
-  function hasAnalyticsConsent(){
-    // Se il sistema consenso è presente, rispetta la scelta
-    if(window.olismoConsent && typeof window.olismoConsent.has === 'function'){
-      return window.olismoConsent.has('analytics');
-    }
-    // Fallback: se non c'è sistema consenso, carica comunque
-    // (Plausible è cookie-free e anonimo, ma puoi cambiare qui il comportamento)
-    return true;
-  }
-
-  function loadAnalytics(){
-    if(loaded) return;
-    if(ANALYTICS_CONFIG.provider === 'off') return;
-    if(!hasAnalyticsConsent()) return;
-
-    const script = document.createElement('script');
-    script.defer = true;
-
-    if(ANALYTICS_CONFIG.provider === 'plausible'){
-      script.setAttribute('data-domain', ANALYTICS_CONFIG.domain);
-      script.src = ANALYTICS_CONFIG.plausibleScript;
-      // API per eventi custom — window.plausible('Nome evento', {props:{...}})
-      window.plausible = window.plausible || function(){
-        (window.plausible.q = window.plausible.q || []).push(arguments);
-      };
-    } else if(ANALYTICS_CONFIG.provider === 'goatcounter'){
-      script.src = ANALYTICS_CONFIG.goatcounterScript;
-      script.setAttribute('data-goatcounter', 'https://' + ANALYTICS_CONFIG.domain.replace(/\./g,'-') + '.goatcounter.com/count');
-    } else if(ANALYTICS_CONFIG.provider === 'umami' && ANALYTICS_CONFIG.umamiScript){
-      script.src = ANALYTICS_CONFIG.umamiScript;
-      script.setAttribute('data-domains', ANALYTICS_CONFIG.domain);
-    } else {
-      return;
-    }
-
-    document.head.appendChild(script);
-    loaded = true;
-  }
-
-  // API unificata per tracciare eventi custom (es. completamento test, download PDF)
-  window.olismoTrack = function(eventName, props){
-    try {
-      if(ANALYTICS_CONFIG.provider === 'plausible' && typeof window.plausible === 'function'){
-        window.plausible(eventName, props ? {props: props} : undefined);
-      } else if(ANALYTICS_CONFIG.provider === 'goatcounter' && window.goatcounter && window.goatcounter.count){
-        window.goatcounter.count({event: true, path: eventName, title: eventName});
-      } else if(ANALYTICS_CONFIG.provider === 'umami' && window.umami && window.umami.track){
-        window.umami.track(eventName, props);
-      }
-    } catch(e){ /* silent */ }
-  };
-
-  // Carica subito al load
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', loadAnalytics);
-  } else {
-    loadAnalytics();
-  }
-
-  // Se il consenso cambia (es. utente riapre banner e attiva analytics) → ricarica
-  window.addEventListener('olismo-consent-change', function(){
-    if(!loaded) loadAnalytics();
-  });
-})();

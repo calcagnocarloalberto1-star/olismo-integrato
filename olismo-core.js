@@ -4043,15 +4043,15 @@ async function exportReportPdf(){
   try{
     // Wait for jsPDF to load (retry up to 3s)
     var _waited = 0;
-    while(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined' && _waited < 30){
+    while(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined' && _waited < 30){
       await new Promise(r => setTimeout(r, 100));
       _waited++;
     }
-    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+    if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
       alert('jsPDF non disponibile. Controlla la connessione.');
       return;
     }
-    const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+    const jsPDF = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
 
     // ── PALETTE ──
     const GOLD    = [184,147,90];
@@ -4072,6 +4072,17 @@ async function exportReportPdf(){
     const PURPLE_D= [123,47,160];
 
     const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+
+    // ── DIMENSIONI PAGINA E MARGINI ──
+    const W  = doc.internal.pageSize.getWidth();   // Page Width 210mm
+    const H  = doc.internal.pageSize.getHeight();  // Page Height 297mm
+    const ML = 16;   // Margin Left
+    const MR = 16;   // Margin Right
+    const MT = 30;   // Margin Top (dopo header)
+    const MB = 22;   // Margin Bottom (prima footer)
+    const CW = W - ML - MR;  // Content Width
+    let y = MT;      // Posizione verticale corrente
+    let pageNum = 1; // Contatore pagine
 
     // ── TEXT SANITIZER: replace emoji/symbols with Latin-1 safe equivalents ──
     const EMOJI_MAP = {
@@ -4766,19 +4777,19 @@ async function exportChatPdf(){
   try {
     // Wait for jsPDF to load (retry up to 3s)
     var _waited = 0;
-    while(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined' && _waited < 30){
+    while(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined' && _waited < 30){
       await new Promise(r => setTimeout(r, 100));
       _waited++;
     }
-    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+    if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
       alert('jsPDF non disponibile. Controlla la connessione.');
       return;
     }
     // Wait for jsPDF to load
-    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+    if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
       throw new Error('jsPDF non disponibile. Ricarica la pagina e riprova.');
     }
-    const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+    const jsPDF = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
 
     // ── Costanti design ──
     const GOLD = [184, 147, 90];
@@ -6259,11 +6270,11 @@ async function exportMotorPdf(cfg){
   if(cfg.btn){ cfg.btn.classList.add('loading'); cfg.btn.textContent = '...'; }
   try{
     var _w = 0;
-    while(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined' && _w < 30){
+    while(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined' && _w < 30){
       await new Promise(function(r){setTimeout(r,100);});
       _w++;
     }
-    if(typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined'){
+    if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
       throw new Error('jsPDF non disponibile. Controlla la connessione.');
     }
     var jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;

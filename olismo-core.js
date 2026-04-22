@@ -2533,10 +2533,10 @@ RUOLO MEDIATORE (Calcagno): non risolvere ne "aggiustare" ma creare uno spazio a
 let chatHistory = [];
 let isLoading = false;
 
-// ── Helper: fetch con timeout di 45 secondi ──
-// Se la chiamata API impiega più di 45s, la aborta e lancia un errore leggibile
+// ── Helper: fetch con timeout di 2 minuti ──
+// Se la chiamata API impiega più di 120s, la aborta e lancia un errore leggibile
 async function fetchWithTimeout(url, options, timeoutMs){
-  timeoutMs = timeoutMs || 45000;
+  timeoutMs = timeoutMs || 120000;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -2546,7 +2546,7 @@ async function fetchWithTimeout(url, options, timeoutMs){
   } catch(err){
     clearTimeout(timeoutId);
     if(err.name === 'AbortError'){
-      throw new Error('La connessione ha impiegato troppo tempo (oltre 45s). Riprova tra qualche secondo.');
+      throw new Error('La connessione ha impiegato troppo tempo (oltre 2 minuti). Riprova tra qualche secondo.');
     }
     throw err;
   }

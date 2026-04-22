@@ -5086,7 +5086,7 @@ async function exportChatPdf(){
 
     // Discipline chips
     const chips = ['Chakra','Enneagramma','Fiori di Bach','AT','Frequenze','Cristalli','VAK','Pranoterapia'];
-    const chipStartY = 160;
+    let chipStartY = 160;
     let cx = ML + 8;
     chips.forEach((chip, i) => {
       doc.setFontSize(7);

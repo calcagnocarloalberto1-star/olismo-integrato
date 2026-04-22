@@ -2533,6 +2533,25 @@ RUOLO MEDIATORE (Calcagno): non risolvere ne "aggiustare" ma creare uno spazio a
 let chatHistory = [];
 let isLoading = false;
 
+// ── Helper: fetch con timeout di 45 secondi ──
+// Se la chiamata API impiega più di 45s, la aborta e lancia un errore leggibile
+async function fetchWithTimeout(url, options, timeoutMs){
+  timeoutMs = timeoutMs || 45000;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+    clearTimeout(timeoutId);
+    return response;
+  } catch(err){
+    clearTimeout(timeoutId);
+    if(err.name === 'AbortError'){
+      throw new Error('La connessione ha impiegato troppo tempo (oltre 45s). Riprova tra qualche secondo.');
+    }
+    throw err;
+  }
+}
+
 // ── Chat history persistence ──
 function saveChatHistory(){
   try {
@@ -2800,7 +2819,7 @@ async function sendMsg(){
   try{
       const _ok=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
     const headers = {"Content-Type":"application/json","x-api-key":_ok,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"};
-    const res=await fetch("https://api.anthropic.com/v1/messages",{
+    const res=await fetchWithTimeout("https://api.anthropic.com/v1/messages",{
       method:"POST",
       headers,
       body:JSON.stringify({
@@ -5877,14 +5896,20 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
+    const resp=await fetchWithTimeout('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
     document.getElementById(typId)?.remove();
     msgs.innerHTML+=`<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">${reply.replace(/\n/g,'<br>')}</div></div>`;
     msgs.scrollTop=msgs.scrollHeight;
-  }catch(e){document.getElementById(typId)?.remove();}
+  }catch(e){
+    console.error('[Dieta chat] Errore:', e);
+    document.getElementById(typId)?.remove();
+    const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
+    msgs.innerHTML += `<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:#fde8e8;border:1px solid #e09090;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#c04040">!</div><div style="background:#fef5f5;border:1px solid #f0c8c8;border-radius:8px;padding:.6rem .9rem;font-size:.78rem;color:#7a4040;line-height:1.5"><strong>Errore di connessione.</strong> ${errTxt} Riprova tra qualche secondo.</div></div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }
 }
 
 // ── AI Message Rating ──
@@ -6050,7 +6075,7 @@ async function fesSend() {
   const FES_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Californiani FES (Flower Essence Services) di Richard Katz e Patricia Kaminski. Rispondi in italiano, con tono caldo e spiritualmente raffinato. Conosci tutte le 100 essenze FES (Agrimony, Alpine Lily, Angelica, Arnica, Baby Blue Eyes, Blackberry, Bleeding Heart, Borage, Buttercup, California Poppy, California Wild Rose, Cayenne, Chamomile, Chaparral, Cosmos, Dill, Echinacea, Fairy Lantern, Fawn Lily, Filaree, Forget-Me-Not, Fuchsia, Golden Yarrow, Goldenrod, Hound's Tongue, Indian Paintbrush, Indian Pink, Iris, Larkspur, Lavender, Lotus, Love-Lies-Bleeding, Madia, Manzanita, Mariposa Lily, Milkweed, Morning Glory, Mountain Pennyroyal, Mountain Pride, Mugwort, Mullein, Nasturtium, Oregon Grape, Penstemon, Pink Monkeyflower, Pink Yarrow, Poison Oak, Pretty Face, Purple Monkeyflower, Queen Anne's Lace, Quince, Red Clover, Sagebrush, Sage, Scarlet Monkeyflower, Self-Heal, Shasta Daisy, Shooting Star, Snapdragon, Star Thistle, Star Tulip, Sticky Monkeyflower, Sunflower, Sweet Pea, Tansy, Tiger Lily, Trillium, Trumpet Vine, Violet, White Yarrow, Yerba Santa, Yellow Star Tulip, Zinnia, e altri). Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, e quando preferire FES rispetto a Bach (stati emotivi di base archetipici) o australiani (karma familiare, trauma, sessualità). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa con pattern negativo, potenziale positivo, enneatipo, cristalli, confronto con altri sistemi. Non fai diagnosi mediche.`;
   try {
     const _k=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetchWithTimeout('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
@@ -6060,7 +6085,11 @@ async function fesSend() {
     fesHistory.push({ role: 'assistant', content: aiText });
     const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + fmt;
-  } catch(e) { typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div><p>⚠️ Errore. Riprova tra un momento.</p>'; }
+  } catch(e) {
+    console.error('[FES] Errore:', e);
+    const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
+    typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c04040;margin-bottom:.5rem">⚠ Errore di connessione</div><p style="color:#7a4040"><strong>Non sono riuscito a contattare l\'assistente FES.</strong><br>' + errTxt + '<br><em>Riprova tra qualche secondo.</em></p>';
+  }
   document.getElementById('fes-send').disabled = false;
 }
 
@@ -6101,7 +6130,7 @@ async function bushSend() {
   const BUSH_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Australiani ABFE (Australian Bush Flower Essences) di Ian White. Rispondi in italiano, con tono caldo e profondo. Conosci tutti i 65 rimedi ABFE: Banksia Robur (stanchezza cronica), Billy Goat Plum (vergogna corporea), Black-eyed Susan (fretta, impazienza), Bluebell (cuore chiuso), Boab (schemi familiari), Bottlebrush (cambiamenti), Bush Fuchsia (intuizione), Bush Gardenia (coppia), Bush Iris (paura morte), Crowea (preoccupazione), Dagger Hakea (risentimento), Dog Rose (timidezza), Five Corners (autostima), Flannel Flower (intimità), Fringed Violet (protezione aurica), Grey Spider Flower (terrore), Gymea Lily (arroganza), Hibbertia (perfezionismo), Isopogon (memoria), Jacaranda (dispersività), Kangaroo Paw (sensibilità sociale), Kapok Bush (apatia), Macrocarpa (stanchezza surrenale), Mountain Devil (odio), Paw Paw (sopraffazione), Pink Mulla Mulla (spine interiori), Red Lily (dissociazione), Silver Princess (scopo di vita), Southern Cross (vittimismo), Sturt Desert Pea (dolore profondo), Sturt Desert Rose (senso di colpa), Sundew (procrastinazione), Sunshine Wattle (pessimismo), Waratah (disperazione), Wedding Bush (impegno), Wild Potato Bush (pesantezza), Wisteria (sessualità repressa), Yellow Cowslip Orchid (critica), e altri. Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, quando preferire australiani rispetto a Bach (stati archetipici base) o FES (anima e scopo evolutivo). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa. Non fai diagnosi mediche.`;
   try {
     const _k2=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetchWithTimeout('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
@@ -6111,7 +6140,11 @@ async function bushSend() {
     bushHistory.push({ role: 'assistant', content: aiText });
     const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + fmt;
-  } catch(e) { typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div><p>⚠️ Errore. Riprova tra un momento.</p>'; }
+  } catch(e) {
+    console.error('[Bush] Errore:', e);
+    const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
+    typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c04040;margin-bottom:.5rem">⚠ Errore di connessione</div><p style="color:#7a4040"><strong>Non sono riuscito a contattare l\'assistente Bush.</strong><br>' + errTxt + '<br><em>Riprova tra qualche secondo.</em></p>';
+  }
   document.getElementById('bush-send').disabled = false;
 }
 

@@ -4805,6 +4805,76 @@ async function exportChatPdf(){
     let page = 1;
     let y = 0;
 
+    // ── Ruota Lulliana (Ars Brevis) ──
+    // 9 dignitates B-K su cerchio + 36 linee combinatorie + A (Deus) al centro
+    function drawLullianWheel(cx, cy, radius, opts){
+      opts = opts || {};
+      const showLabels = opts.labels !== false;
+      const labelStyle = opts.labelStyle || 'letters';  // 'letters' | 'words'
+      const letters = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K'];
+      const words   = ['Bonitas','Magnitudo','Aeternitas','Potestas','Sapientia',
+                       'Voluntas','Virtus','Veritas','Gloria'];
+      const N = 9;
+
+      // Posizioni vertici (parte dall'alto, senso orario)
+      const pts = [];
+      for(let i = 0; i < N; i++){
+        const a = -Math.PI/2 + i * (2*Math.PI/N);
+        pts.push({ x: cx + radius * Math.cos(a), y: cy + radius * Math.sin(a), a: a });
+      }
+
+      // Cerchio esterno
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.setLineWidth(Math.max(0.25, radius * 0.03));
+      doc.circle(cx, cy, radius, 'S');
+
+      // Linee combinatorie (36 linee, stile ars brevis)
+      const palePink = [228, 212, 180];
+      doc.setDrawColor(palePink[0], palePink[1], palePink[2]);
+      doc.setLineWidth(Math.max(0.08, radius * 0.012));
+      for(let i = 0; i < N; i++){
+        for(let j = i+1; j < N; j++){
+          doc.line(pts[i].x, pts[i].y, pts[j].x, pts[j].y);
+        }
+      }
+
+      // Vertici: piccoli cerchi pieni oro
+      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+      const vr = Math.max(0.4, radius * 0.055);
+      for(let i = 0; i < N; i++){
+        doc.circle(pts[i].x, pts[i].y, vr, 'F');
+      }
+
+      // Etichette (fuori dal cerchio)
+      if(showLabels && radius >= 5){
+        const labelR = radius + (labelStyle === 'words' ? radius * 0.28 : radius * 0.18);
+        doc.setFont('times', 'italic');
+        const fs = Math.max(5, radius * (labelStyle === 'words' ? 0.22 : 0.38));
+        doc.setFontSize(fs);
+        doc.setTextColor(INK[0], INK[1], INK[2]);
+        for(let i = 0; i < N; i++){
+          const a = pts[i].a;
+          const lx = cx + labelR * Math.cos(a);
+          const ly = cy + labelR * Math.sin(a) + fs * 0.12;
+          const lab = labelStyle === 'words' ? words[i] : letters[i];
+          doc.text(lab, lx, ly, { align: 'center' });
+        }
+      }
+
+      // Cerchio centrale con A (Deus)
+      const centerR = radius * 0.22;
+      doc.setFillColor(255, 255, 255);
+      doc.circle(cx, cy, centerR, 'F');
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.setLineWidth(Math.max(0.2, radius * 0.022));
+      doc.circle(cx, cy, centerR, 'S');
+      doc.setFont('times', 'italic');
+      const fa = Math.max(6, radius * 0.55);
+      doc.setFontSize(fa);
+      doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.text('A', cx, cy + fa * 0.22, { align: 'center' });
+    }
+
     // ── Sanitize ogni carattere non-Latin1 (emoji incluse) ──
     function sa(s){
       if(s == null) return '';
@@ -5076,7 +5146,8 @@ async function exportChatPdf(){
             break;
 
           case 'h1':
-            checkBreak(10);
+            // Widow control: titolo + almeno 3 righe successive
+            checkBreak(25);
             y += 3;
             setFont('bold', 13, GOLD);
             doc.text(sa(b.content), ML, y);
@@ -5088,7 +5159,8 @@ async function exportChatPdf(){
             break;
 
           case 'h2':
-            checkBreak(9);
+            // Widow control: titolo + almeno 3 righe successive
+            checkBreak(22);
             y += 2.5;
             setFont('bold', 11, GOLD);
             doc.text(sa(b.content), ML, y);
@@ -5096,7 +5168,8 @@ async function exportChatPdf(){
             break;
 
           case 'h3':
-            checkBreak(7);
+            // Widow control: titolo + almeno 2 righe successive
+            checkBreak(16);
             y += 1.5;
             setFont('bold', 9.5, INK);
             doc.text(sa(b.content), ML, y);
@@ -5104,7 +5177,8 @@ async function exportChatPdf(){
             break;
 
           case 'p':
-            checkBreak(5);
+            // Widow control: se paragrafo lungo, pretende almeno 10mm per non iniziarlo orfano
+            checkBreak(10);
             renderInline(parseInline(b.content), ML, CW, color, base);
             y += 1.5;
             break;
@@ -5249,18 +5323,16 @@ async function exportChatPdf(){
     doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
     doc.rect(0, 0, PW, 52, 'F');
 
-    // Logo centrale: cerchio oro con "A" (non asterisco!)
+    // Logo centrale: RUOTA LULLIANA (Ars Brevis)
+    // Sfondo bianco circolare per far risaltare la ruota sulla banda oro
     doc.setFillColor(255, 255, 255);
-    doc.circle(PW/2, 28, 14, 'F');
+    doc.circle(PW/2, 31, 20, 'F');
     doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
-    doc.setLineWidth(0.8);
-    doc.circle(PW/2, 28, 14, 'S');
     doc.setLineWidth(0.3);
-    doc.circle(PW/2, 28, 11.5, 'S');
-    doc.setFont('times', 'italic');
-    doc.setFontSize(22);
-    doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
-    doc.text('A', PW/2, 33, { align: 'center' });
+    doc.circle(PW/2, 31, 20, 'S');
+
+    // La ruota: 9 dignitates (B-K) con lettere visibili + A centrale
+    drawLullianWheel(PW/2, 31, 14, { labels: true, labelStyle: 'letters' });
 
     // Titolo
     setFont('bold', 22, WHITE);

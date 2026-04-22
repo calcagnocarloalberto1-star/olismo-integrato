@@ -4775,365 +4775,636 @@ async function exportChatPdf(){
   if(btn){ btn.classList.add('loading'); btn.textContent = 'Generazione...'; }
 
   try {
-    // Wait for jsPDF to load (retry up to 3s)
-    var _waited = 0;
-    while(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined' && _waited < 30){
+    // ── Wait jsPDF ──
+    let waited = 0;
+    while(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined' && waited < 30){
       await new Promise(r => setTimeout(r, 100));
-      _waited++;
+      waited++;
     }
     if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
-      alert('jsPDF non disponibile. Controlla la connessione.');
-      return;
-    }
-    // Wait for jsPDF to load
-    if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
-      throw new Error('jsPDF non disponibile. Ricarica la pagina e riprova.');
+      throw new Error('jsPDF non disponibile.');
     }
     const jsPDF = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
 
-    // ── Costanti design ──
-    const GOLD = [184, 147, 90];
+    // ── Palette ──
+    const GOLD       = [184, 147, 90];
     const GOLD_LIGHT = [245, 236, 216];
-    const IVORY = [249, 245, 239];
-    const IVORY2 = [243, 237, 227];
-    const INK = [42, 37, 32];
-    const INK2 = [74, 69, 64];
-    const INK3 = [122, 114, 104];
-    const WHITE = [255, 255, 255];
-    const BLUE_LIGHT = [224, 234, 248];
+    const IVORY      = [249, 245, 239];
+    const IVORY2     = [243, 237, 227];
+    const INK        = [42, 37, 32];
+    const INK2       = [74, 69, 64];
+    const INK3       = [122, 114, 104];
+    const WHITE      = [255, 255, 255];
 
-    // ── TEXT SANITIZER ──
-    function se(s){
-      if(!s) return '';
-      s = String(s);
-      const MAP={'\u2714':' v ','\u25ce':'-','\u26a0':'! ','\u2663':'-',
-        '\u25c9':'-','\u2605':'*','\u2022':'-','\u25cf':'-'};
-      for(const [k,v] of Object.entries(MAP)){ s=s.split(k).join(v); }
-      return s.replace(/[^\x00-\xFF]/g, function(c){
-        const cp=c.codePointAt(0);
-        if(cp===0x25C9||cp===0x25CF) return '-';
-        if(cp===0x2714||cp===0x2713) return 'v ';
-        if(cp===0x26A0) return '! ';
-        if(cp===0x2022) return '- ';
-        return '';
-      });
-    }
-
-    const doc = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4'
-    });
-
-    const PW = doc.internal.pageSize.getWidth();  // 210mm
-    const PH = doc.internal.pageSize.getHeight(); // 297mm
-    const ML = 16;   // margin left
-    const MR = 16;   // margin right
-    const MT = 30;   // margin top (after header)
-    const MB = 22;   // margin bottom (before footer)
-    const CW = PW - ML - MR; // content width
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const PW = doc.internal.pageSize.getWidth();   // 210
+    const PH = doc.internal.pageSize.getHeight();  // 297
+    const ML = 18, MR = 18, MT = 32, MB = 22;
+    const CW = PW - ML - MR;
 
     let page = 1;
     let y = 0;
 
-    // ── Helper: strip HTML ──
-    function stripHtml(h){
-      const d = document.createElement('div');
-      d.innerHTML = h;
-      return (d.textContent || d.innerText || '').trim();
+    // ── Sanitize ogni carattere non-Latin1 (emoji incluse) ──
+    function sa(s){
+      if(s == null) return '';
+      s = String(s);
+      const map = {
+        '\u00A9':'(c)', '\u00AE':'(R)',
+        '\u2013':'-', '\u2014':'-', '\u2018':"'", '\u2019':"'",
+        '\u201C':'"', '\u201D':'"', '\u2026':'...',
+        '\u2022':'-', '\u2023':'>', '\u25CF':'-', '\u25CB':'o',
+        '\u2713':'v', '\u2714':'v', '\u2717':'x', '\u2718':'x',
+        '\u2605':'*', '\u2606':'*', '\u2736':'*', '\u2738':'*',
+        '\u2192':'->', '\u2190':'<-', '\u2194':'<->',
+        '\u00B7':'-', '\u00AB':'"', '\u00BB':'"',
+        '\u2192':'->', '\u21D2':'=>'
+      };
+      for(const k in map) s = s.split(k).join(map[k]);
+      return s.replace(/[^\x00-\xFF]/g, '');
     }
 
-    // ── Helper: wrap text ──
-    function wrapText(text, maxW, fontSize){
-      doc.setFontSize(fontSize);
-      return doc.splitTextToSize(text, maxW);
+    // ── Font helper ──
+    function setFont(style, size, rgb){
+      doc.setFont('helvetica', style || 'normal');
+      doc.setFontSize(size || 10);
+      doc.setTextColor(rgb[0], rgb[1], rgb[2]);
     }
 
-    // ── Draw page header ──
+    // ── Header pagina ──
     function drawHeader(){
-      // Gold bar top
-      doc.setFillColor(...GOLD);
+      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
       doc.rect(0, 0, PW, 7, 'F');
+      doc.setFillColor(IVORY[0], IVORY[1], IVORY[2]);
+      doc.rect(0, 7, PW, 19, 'F');
 
-      // Logo area
-      doc.setFillColor(...IVORY);
-      doc.rect(0, 7, PW, 18, 'F');
-
-      // Logo mark ◉
-      doc.setFillColor(...GOLD);
-      doc.circle(ML + 5, 16, 4, 'F');
-      doc.setTextColor(...WHITE);
-      doc.setFontSize(8);
-      doc.setFont('helvetica', 'bold');
-      doc.text('*', ML + 3.5, 17.5);
-
-      // Site name
-      doc.setTextColor(...INK);
-      doc.setFontSize(13);
-      doc.setFont('helvetica', 'bold');
-      doc.text('OLISMO INTEGRATO', ML + 12, 14);
-
-      // Subtitle
-      doc.setFontSize(7.5);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(...INK3);
-      doc.text('Consulente Olistica AI  ·  Carlo Alberto Calcagno', ML + 12, 19);
-
-      // URL right
+      // Logo: cerchio oro con "A" (Deus) in stile lulliano
+      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.circle(ML + 6, 16.5, 5, 'F');
+      doc.setFillColor(255, 255, 255);
+      doc.circle(ML + 6, 16.5, 2.2, 'F');
+      doc.setFont('times', 'italic');
       doc.setFontSize(7);
-      doc.setTextColor(...GOLD);
-      doc.text('olismo-integrato.it', PW - MR - 2, 19, {align: 'right'});
+      doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.text('A', ML + 6, 17.8, { align: 'center' });
 
-      // Thin gold separator
-      doc.setDrawColor(...GOLD);
+      setFont('bold', 12.5, INK);
+      doc.text('OLISMO INTEGRATO', ML + 15, 15);
+      setFont('normal', 7.5, INK3);
+      doc.text(sa('Consulente Olistica AI  -  Carlo Alberto Calcagno'), ML + 15, 20);
+      setFont('normal', 7, GOLD);
+      doc.text('olismo-integrato.it', PW - MR, 20, { align: 'right' });
+
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
       doc.setLineWidth(0.3);
-      doc.line(ML, 25, PW - MR, 25);
-
-      y = MT;
+      doc.line(ML, 26, PW - MR, 26);
     }
 
-    // ── Draw page footer ──
+    // ── Footer pagina ──
     function drawFooter(){
       const fy = PH - 14;
-      doc.setDrawColor(...GOLD);
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
       doc.setLineWidth(0.2);
       doc.line(ML, fy, PW - MR, fy);
 
-      doc.setFontSize(7);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(...INK3);
-
-      const dateStr = new Date().toLocaleDateString('it-IT', {day:'2-digit', month:'long', year:'numeric'});
+      setFont('normal', 7, INK3);
+      const d = new Date().toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
       doc.text('olismo-integrato.it', ML, fy + 5);
-      doc.text('Pag. ' + page, PW / 2, fy + 5, {align: 'center'});
-      doc.text(dateStr, PW - MR, fy + 5, {align: 'right'});
+      doc.text('Pag. ' + page, PW / 2, fy + 5, { align: 'center' });
+      doc.text(sa(d), PW - MR, fy + 5, { align: 'right' });
 
-      // Disclaimer
-      doc.setFontSize(6.5);
-      doc.setTextColor(180, 175, 170);
-      doc.text('I contenuti hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche. © Carlo Alberto Calcagno', PW/2, fy + 9.5, {align: 'center'});
+      setFont('italic', 6.5, [170, 165, 160]);
+      doc.text(sa('I contenuti hanno finalità divulgativa. (c) Carlo Alberto Calcagno'),
+               PW / 2, fy + 9.5, { align: 'center' });
     }
 
-    // ── Check page break ──
-    function checkBreak(neededH){
-      if(y + neededH > PH - MB){
+    function checkBreak(needed){
+      if(y + needed > PH - MB){
         drawFooter();
         doc.addPage();
         page++;
         drawHeader();
+        y = MT;
       }
     }
 
-    // ── Draw a message bubble ──
-    function drawMessage(role, text, time){
-      const isUser = role === 'user';
-      const maxBubbleW = CW * 0.82;
-      const bubblePad = 3.5;
-      const lineH = 4.5;
-      const fs = 9;
+    // ═════════════════════════════════════════════
+    // PARSER MARKDOWN  →  array di blocchi strutturati
+    // ═════════════════════════════════════════════
+    function parseMd(text){
+      if(!text) return [];
+      text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      const lines = text.split('\n');
+      const blocks = [];
+      let i = 0;
 
-      // Set font for measurement
-      doc.setFontSize(fs);
-      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
+      while(i < lines.length){
+        const line = lines[i];
+        const t = line.trim();
 
-      // Header label
-      const label = isUser ? 'Tu' : 'Consulente Olistica';
-      const labelColor = isUser ? GOLD : INK3;
+        if(t === ''){ blocks.push({type:'blank'}); i++; continue; }
 
-      // Wrap text
-      const lines = wrapText(se(text), maxBubbleW - bubblePad * 2, fs);
-      const bubbleH = lines.length * lineH + bubblePad * 2 + 4;
+        // HR
+        if(/^(-{3,}|_{3,}|\*{3,})$/.test(t)){ blocks.push({type:'hr'}); i++; continue; }
 
-      // Space between messages
-      const spaceBefore = 4;
-      checkBreak(spaceBefore + 5 + bubbleH + 2);
-      y += spaceBefore;
+        // Code ```
+        if(/^```/.test(t)){
+          const c = [];
+          i++;
+          while(i < lines.length && !/^```/.test(lines[i].trim())){ c.push(lines[i]); i++; }
+          if(i < lines.length) i++;
+          blocks.push({type:'code', content:c.join('\n')});
+          continue;
+        }
 
-      // Label row
-      doc.setFontSize(7.5);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(...labelColor);
-      const labelX = isUser ? PW - MR - maxBubbleW : ML;
-      doc.text(label, labelX, y);
+        // Heading
+        const hm = t.match(/^(#{1,6})\s+(.+)$/);
+        if(hm){
+          blocks.push({ type:'h' + Math.min(hm[1].length, 3), content: hm[2].replace(/\s*#+\s*$/, '') });
+          i++; continue;
+        }
 
-      // Time
-      if(time){
-        doc.setFontSize(6.5);
-        doc.setFont('helvetica', 'normal');
-        doc.setTextColor(...INK3);
-        const timeX = isUser ? PW - MR : ML + maxBubbleW;
-        doc.text(time, timeX, y, {align: isUser ? 'right' : 'left'});
+        // Tabella Markdown
+        if(t.startsWith('|') && t.endsWith('|') && i+1 < lines.length
+           && /^\|[\s:\-|]+\|$/.test(lines[i+1].trim())){
+          const header = t.slice(1,-1).split('|').map(c=>c.trim());
+          i += 2;
+          const rows = [];
+          while(i < lines.length){
+            const rt = lines[i].trim();
+            if(!rt.startsWith('|') || !rt.endsWith('|')) break;
+            rows.push(rt.slice(1,-1).split('|').map(c=>c.trim()));
+            i++;
+          }
+          blocks.push({type:'table', header, rows});
+          continue;
+        }
+
+        // Lista non-ordinata
+        const um = t.match(/^[-*+]\s+(.+)$/);
+        if(um){
+          const items = [];
+          while(i < lines.length){
+            const mm = lines[i].trim().match(/^[-*+]\s+(.+)$/);
+            if(!mm) break;
+            items.push(mm[1]);
+            i++;
+          }
+          blocks.push({type:'ul', items});
+          continue;
+        }
+
+        // Lista ordinata
+        const om = t.match(/^\d+[.)]\s+(.+)$/);
+        if(om){
+          const items = [];
+          while(i < lines.length){
+            const mm = lines[i].trim().match(/^\d+[.)]\s+(.+)$/);
+            if(!mm) break;
+            items.push(mm[1]);
+            i++;
+          }
+          blocks.push({type:'ol', items});
+          continue;
+        }
+
+        // Paragrafo
+        const pl = [];
+        while(i < lines.length){
+          const pt = lines[i].trim();
+          if(pt === '') break;
+          if(/^(#{1,6}\s|[-*+]\s|\d+[.)]\s|```|---|___|\*\*\*)/.test(pt)) break;
+          if(pt.startsWith('|') && pt.endsWith('|')) break;
+          pl.push(lines[i]);
+          i++;
+        }
+        if(pl.length) blocks.push({type:'p', content: pl.join(' ').replace(/\s+/g,' ').trim()});
       }
-      y += 3.5;
+      return blocks;
+    }
 
-      // Bubble background
-      const bubbleX = isUser ? PW - MR - maxBubbleW : ML;
-      const bubbleBgColor = isUser ? GOLD_LIGHT : IVORY2;
-
-      doc.setFillColor(...bubbleBgColor);
-      doc.setDrawColor(...(isUser ? GOLD : [220, 210, 200]));
-      doc.setLineWidth(0.3);
-      doc.roundedRect(bubbleX, y, maxBubbleW, bubbleH, 2.5, 2.5, 'FD');
-
-      // User: accent bar on left
-      if(!isUser){
-        doc.setFillColor(...GOLD);
-        doc.rect(bubbleX, y, 1.5, bubbleH, 'F');
+    // Parse inline: **bold** *italic* `code`
+    function parseInline(text){
+      const segs = [];
+      let cur = '';
+      let bold = false, italic = false, mono = false;
+      const flush = () => { if(cur !== ''){ segs.push({text:cur, bold, italic, mono}); cur=''; } };
+      let i = 0;
+      while(i < text.length){
+        if(text.substr(i,2) === '**'){ flush(); bold = !bold; i += 2; continue; }
+        if(text[i] === '`'){ flush(); mono = !mono; i++; continue; }
+        if(text[i] === '*' && text[i-1] !== '*' && text[i+1] !== '*'){
+          flush(); italic = !italic; i++; continue;
+        }
+        cur += text[i]; i++;
       }
+      flush();
+      return segs;
+    }
 
-      // Bubble text
-      doc.setFontSize(fs);
-      doc.setFont('helvetica', isUser ? 'bold' : 'normal');
-      doc.setTextColor(...INK);
-      let ty = y + bubblePad + lineH - 0.5;
-
-      lines.forEach(line => {
-        // Check if line fits (split across pages not ideal but handled)
-        doc.text(line, bubbleX + bubblePad + (isUser ? 0 : 1.8), ty);
-        ty += lineH;
+    // Render riga con segmenti bold/italic e wrap
+    function renderInline(segments, x, maxW, color, size){
+      const words = [];
+      segments.forEach(seg => {
+        const parts = sa(seg.text).split(/(\s+)/);
+        parts.forEach(p => {
+          if(p === '') return;
+          words.push({ text: p, bold: seg.bold, italic: seg.italic, mono: seg.mono, isSp: /^\s+$/.test(p) });
+        });
       });
 
-      y += bubbleH;
+      const lineH = size * 0.48;
+      const styleFor = w => {
+        if(w.mono) doc.setFont('courier', w.bold?'bold':'normal');
+        else if(w.bold && w.italic) doc.setFont('helvetica','bolditalic');
+        else if(w.bold) doc.setFont('helvetica','bold');
+        else if(w.italic) doc.setFont('helvetica','italic');
+        else doc.setFont('helvetica','normal');
+        doc.setFontSize(size);
+      };
+
+      // Misura e wrap
+      const lines = [[]];
+      let curW = 0;
+      words.forEach(w => {
+        styleFor(w);
+        const wW = doc.getTextWidth(w.text);
+        const last = lines[lines.length - 1];
+        if(w.isSp && last.length === 0) return; // skip space a inizio riga
+        if(curW + wW > maxW && !w.isSp){
+          lines.push([]); curW = 0;
+        }
+        lines[lines.length - 1].push({ w, wW });
+        curW += wW;
+      });
+
+      // Disegna
+      lines.forEach(line => {
+        if(line.length === 0) return;
+        checkBreak(lineH + 1);
+        let dx = x;
+        line.forEach(p => {
+          styleFor(p.w);
+          if(p.w.mono){
+            doc.setFillColor(245, 242, 237);
+            doc.rect(dx - 0.3, y - size * 0.33, p.wW + 0.6, size * 0.46, 'F');
+            doc.setTextColor(INK2[0], INK2[1], INK2[2]);
+          } else {
+            doc.setTextColor(color[0], color[1], color[2]);
+          }
+          doc.text(p.w.text, dx, y);
+          dx += p.wW;
+        });
+        y += lineH;
+      });
     }
 
-    // ── Build the chat list from chatHistory ──
-    // chatHistory = [{role:"user",content:"..."}, {role:"assistant",content:"..."}]
-    // We skip the first AI welcome message if very long
-    const messages = [];
-    const msgEls = document.querySelectorAll('#chat-messages .msg');
-    msgEls.forEach(el => {
-      const isUser = el.classList.contains('user');
-      const bubble = el.querySelector('.msg-bubble');
-      const timeEl = el.querySelector('.msg-time');
-      if(bubble){
-        messages.push({
-          role: isUser ? 'user' : 'ai',
-          text: stripHtml(bubble.innerHTML),
-          time: timeEl ? timeEl.textContent : ''
+    function renderBlocks(blocks, color){
+      const base = 9;
+      blocks.forEach(b => {
+        switch(b.type){
+          case 'blank':
+            y += 2; break;
+
+          case 'hr':
+            checkBreak(5);
+            y += 1;
+            doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.setLineWidth(0.3);
+            doc.line(ML + 15, y, PW - MR - 15, y);
+            y += 4;
+            break;
+
+          case 'h1':
+            checkBreak(10);
+            y += 3;
+            setFont('bold', 13, GOLD);
+            doc.text(sa(b.content), ML, y);
+            y += 2;
+            doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.setLineWidth(0.4);
+            doc.line(ML, y, ML + 18, y);
+            y += 4.5;
+            break;
+
+          case 'h2':
+            checkBreak(9);
+            y += 2.5;
+            setFont('bold', 11, GOLD);
+            doc.text(sa(b.content), ML, y);
+            y += 5.5;
+            break;
+
+          case 'h3':
+            checkBreak(7);
+            y += 1.5;
+            setFont('bold', 9.5, INK);
+            doc.text(sa(b.content), ML, y);
+            y += 5;
+            break;
+
+          case 'p':
+            checkBreak(5);
+            renderInline(parseInline(b.content), ML, CW, color, base);
+            y += 1.5;
+            break;
+
+          case 'ul':
+            b.items.forEach(item => {
+              checkBreak(5);
+              setFont('bold', base, GOLD);
+              doc.text('-', ML + 1.5, y);
+              renderInline(parseInline(item), ML + 5, CW - 5, color, base);
+            });
+            y += 1;
+            break;
+
+          case 'ol':
+            b.items.forEach((item, idx) => {
+              checkBreak(5);
+              setFont('bold', base, GOLD);
+              doc.text((idx + 1) + '.', ML, y);
+              renderInline(parseInline(item), ML + 6, CW - 6, color, base);
+            });
+            y += 1;
+            break;
+
+          case 'table':
+            renderTable(b);
+            y += 2;
+            break;
+
+          case 'code':
+            renderCode(b.content);
+            y += 2;
+            break;
+        }
+      });
+    }
+
+    function renderTable(block){
+      const cols = block.header.length;
+      if(cols === 0) return;
+      const colW = CW / cols;
+      const tx = ML;
+
+      // Header
+      const hH = 6.5;
+      checkBreak(hH + 5);
+      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.rect(tx, y - 4, CW, hH, 'F');
+      setFont('bold', 7.5, WHITE);
+      block.header.forEach((h, i) => {
+        const hLines = doc.splitTextToSize(sa(h), colW - 3);
+        doc.text(hLines[0] || '', tx + i * colW + 1.5, y);
+      });
+      y += hH - 1;
+
+      // Righe
+      block.rows.forEach((row, ri) => {
+        doc.setFontSize(7.5);
+        doc.setFont('helvetica', 'normal');
+        const cellLines = row.map(c => doc.splitTextToSize(sa(c), colW - 3));
+        let maxL = 1;
+        cellLines.forEach(l => { if(l.length > maxL) maxL = l.length; });
+        const rH = maxL * 3.6 + 2;
+
+        checkBreak(rH);
+        doc.setFillColor(
+          ri % 2 === 0 ? IVORY[0] : IVORY2[0],
+          ri % 2 === 0 ? IVORY[1] : IVORY2[1],
+          ri % 2 === 0 ? IVORY[2] : IVORY2[2]
+        );
+        doc.rect(tx, y - 3, CW, rH, 'F');
+
+        cellLines.forEach((lines, ci) => {
+          setFont('normal', 7.5, INK2);
+          // Prima colonna in grassetto
+          if(ci === 0) setFont('bold', 7.5, INK);
+          lines.forEach((ln, li) => {
+            doc.text(ln, tx + ci * colW + 1.5, y + li * 3.6);
+          });
         });
-      }
+        y += rH;
+      });
+
+      // Bordo
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.setLineWidth(0.2);
+      // (nessun bordo completo, le righe sono già stacked)
+    }
+
+    function renderCode(code){
+      const lines = code.split('\n');
+      const lineH = 3.8;
+      const pad = 2.5;
+      // Sanitize ogni riga
+      const safeLines = lines.map(l => sa(l));
+      // Wrap lunghe
+      doc.setFont('courier', 'normal');
+      doc.setFontSize(7.5);
+      const wrapped = [];
+      safeLines.forEach(l => {
+        const w = doc.splitTextToSize(l || ' ', CW - pad * 2);
+        w.forEach(wl => wrapped.push(wl));
+      });
+      const h = wrapped.length * lineH + pad * 2;
+      checkBreak(h + 3);
+      doc.setFillColor(245, 242, 237);
+      doc.setDrawColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
+      doc.setLineWidth(0.2);
+      doc.rect(ML, y - 2, CW, h, 'FD');
+      setFont('normal', 7.5, INK2);
+      doc.setFont('courier', 'normal');
+      let cy = y + pad;
+      wrapped.forEach(l => {
+        checkBreak(lineH + 1);
+        doc.text(l, ML + pad, cy);
+        cy += lineH;
+      });
+      y += h;
+    }
+
+    // ═════════════════════════════════════════════
+    // RACCOGLI MESSAGGI
+    // ═════════════════════════════════════════════
+    const messages = [];
+    // Usa sempre chatHistory che contiene Markdown raw
+    chatHistory.forEach(m => {
+      messages.push({
+        role: m.role === 'user' ? 'user' : 'ai',
+        text: m.content || ''
+      });
     });
 
-    if(messages.length === 0){
-      throw new Error('Nessun messaggio trovato nella chat.');
-    }
+    if(messages.length === 0) throw new Error('Nessun messaggio nella chat.');
 
-    // ── Cover page ──
-    // Background
-    doc.setFillColor(...IVORY);
+    // ═════════════════════════════════════════════
+    // COVER
+    // ═════════════════════════════════════════════
+    doc.setFillColor(IVORY[0], IVORY[1], IVORY[2]);
     doc.rect(0, 0, PW, PH, 'F');
 
-    // Top gold bar
-    doc.setFillColor(...GOLD);
-    doc.rect(0, 0, PW, 55, 'F');
+    // Banda oro superiore
+    doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.rect(0, 0, PW, 52, 'F');
 
-    // Logo mark large
-    doc.setFillColor(255,255,255,0.2);
-    doc.setFillColor(255,255,255);
-    doc.circle(PW/2, 30, 16, 'F');
-    doc.setTextColor(...GOLD);
-    doc.setFontSize(20);
-    doc.setFont('helvetica', 'bold');
-    doc.text('*', PW/2 - 4, 34);
-
-    // Title
-    doc.setTextColor(...WHITE);
+    // Logo centrale: cerchio oro con "A" (non asterisco!)
+    doc.setFillColor(255, 255, 255);
+    doc.circle(PW/2, 28, 14, 'F');
+    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.setLineWidth(0.8);
+    doc.circle(PW/2, 28, 14, 'S');
+    doc.setLineWidth(0.3);
+    doc.circle(PW/2, 28, 11.5, 'S');
+    doc.setFont('times', 'italic');
     doc.setFontSize(22);
-    doc.setFont('helvetica', 'bold');
-    doc.text('OLISMO INTEGRATO', PW/2, 63, {align: 'center'});
+    doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.text('A', PW/2, 33, { align: 'center' });
 
-    doc.setFontSize(11);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Trascrizione della Consulenza Olistica AI', PW/2, 71, {align: 'center'});
+    // Titolo
+    setFont('bold', 22, WHITE);
+    doc.text('OLISMO INTEGRATO', PW/2, 65, { align: 'center' });
+    setFont('italic', 11, WHITE);
+    doc.text('Consulenza Olistica AI', PW/2, 73, { align: 'center' });
 
-    // Gold line
-    doc.setDrawColor(...GOLD);
-    doc.setLineWidth(0.5);
-    doc.line(PW/2 - 40, 78, PW/2 + 40, 78);
+    // Separatore
+    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.setLineWidth(0.6);
+    doc.line(PW/2 - 30, 83, PW/2 + 30, 83);
 
-    // Date / meta
+    // Data
     const now = new Date();
-    const dateStr = now.toLocaleDateString('it-IT', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
-    const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+    const dLong = sa(now.toLocaleDateString('it-IT', { weekday:'long', day:'2-digit', month:'long', year:'numeric' }));
+    const tStr = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+    const qC = messages.filter(m => m.role === 'user').length;
+    const aC = messages.filter(m => m.role === 'ai').length;
 
-    doc.setFontSize(9.5);
-    doc.setTextColor(...INK2);
-    doc.setFont('helvetica', 'normal');
-    doc.text('Data: ' + dateStr + '  |  Ora: ' + timeStr, PW/2, 88, {align: 'center'});
-    doc.text('Messaggi: ' + messages.length + '  |  ' + (messages.filter(m=>m.role==='user').length) + ' domande  ·  ' + (messages.filter(m=>m.role==='ai').length) + ' risposte', PW/2, 95, {align: 'center'});
+    setFont('normal', 10, INK2);
+    doc.text(dLong + sa('  -  ore ') + tStr, PW/2, 97, { align: 'center' });
+    setFont('italic', 9, INK3);
+    doc.text(messages.length + sa(' messaggi  -  ') + qC + sa(' domande  -  ') + aC + ' risposte',
+             PW/2, 104, { align: 'center' });
 
-    // Info box
-    doc.setFillColor(255,255,255);
-    doc.setDrawColor(...GOLD);
+    // Box autore
+    doc.setFillColor(255, 255, 255);
+    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
     doc.setLineWidth(0.4);
-    doc.roundedRect(ML + 15, 108, CW - 30, 42, 3, 3, 'FD');
+    doc.roundedRect(ML + 10, 120, CW - 20, 44, 3, 3, 'FD');
 
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...GOLD);
-    doc.text('Carlo Alberto Calcagno', PW/2, 118, {align: 'center'});
+    setFont('bold', 11, GOLD);
+    doc.text('Carlo Alberto Calcagno', PW/2, 131, { align: 'center' });
+    setFont('normal', 8.5, INK2);
+    doc.text(sa('Mediatore Familiare - Formatore - Pranoterapista'), PW/2, 138, { align: 'center' });
+    doc.text(sa("Inventore dell'Enneagramma Evolutivo"), PW/2, 144, { align: 'center' });
+    setFont('normal', 8.5, GOLD);
+    doc.text(sa('calcagnocarloalberto1@gmail.com  -  +39 347 366 6508'), PW/2, 152, { align: 'center' });
+    doc.text('olismo-integrato.it', PW/2, 158, { align: 'center' });
 
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...INK2);
-    doc.text('Mediatore Familiare Certificato · Formatore · Pranoterapista', PW/2, 124, {align: 'center'});
-    doc.text('Inventore dell\'Enneagramma Evolutivo', PW/2, 130, {align: 'center'});
-
-    doc.setFontSize(8);
-    doc.setTextColor(...GOLD);
-    doc.text('calcagnocarloalberto1@gmail.com  ·  +39 347 366 6508', PW/2, 138, {align: 'center'});
-    doc.text('olismo-integrato.it', PW/2, 144, {align: 'center'});
-
-    // Discipline chips
-    const chips = ['Chakra','Enneagramma','Fiori di Bach','AT','Frequenze','Cristalli','VAK','Pranoterapia'];
-    let chipStartY = 160;
-    let cx = ML + 8;
-    chips.forEach((chip, i) => {
-      doc.setFontSize(7);
+    // Chips discipline
+    const chips = ['Chakra', 'Enneagramma', 'Fiori di Bach', 'AT', 'Frequenze', 'Cristalli', 'VAK', 'Pranoterapia'];
+    let ccy = 180;
+    const cStart = ML + 6;
+    let cxCur = cStart;
+    setFont('normal', 7.5, INK2);
+    chips.forEach(chip => {
       const w = doc.getTextWidth(chip) + 6;
-      doc.setFillColor(...GOLD_LIGHT);
-      doc.setDrawColor(...GOLD);
-      doc.setLineWidth(0.3);
-      doc.roundedRect(cx, chipStartY, w, 6, 1.5, 1.5, 'FD');
-      doc.setTextColor(...INK2);
-      doc.text(chip, cx + 3, chipStartY + 4.2);
-      cx += w + 3;
-      if(cx > PW - MR - 30){cx = ML + 8; chipStartY += 10;}
+      if(cxCur + w > PW - MR - 6){ cxCur = cStart; ccy += 9; }
+      doc.setFillColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
+      doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.setLineWidth(0.25);
+      doc.roundedRect(cxCur, ccy, w, 6.5, 1.5, 1.5, 'FD');
+      doc.setTextColor(INK2[0], INK2[1], INK2[2]);
+      doc.text(chip, cxCur + 3, ccy + 4.5);
+      cxCur += w + 3;
     });
 
     // Disclaimer
-    doc.setFontSize(7.5);
-    doc.setTextColor(180, 175, 170);
-    doc.text('Le indicazioni hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche.', PW/2, PH - 30, {align: 'center'});
+    setFont('italic', 7.5, [170, 165, 160]);
+    doc.text(sa('Le indicazioni hanno finalità divulgativa e non sostituiscono consulenze mediche o psicologiche.'),
+             PW/2, PH - 26, { align: 'center' });
 
     // Bottom bar
-    doc.setFillColor(...GOLD);
-    doc.rect(0, PH - 8, PW, 8, 'F');
-    doc.setTextColor(...WHITE);
-    doc.setFontSize(7);
-    doc.text('olismo-integrato.it', PW/2, PH - 3, {align: 'center'});
+    doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.rect(0, PH - 9, PW, 9, 'F');
+    setFont('normal', 7.5, WHITE);
+    doc.text('olismo-integrato.it', PW/2, PH - 3.5, { align: 'center' });
 
-    // ── Chat pages ──
+    // ═════════════════════════════════════════════
+    // PAGINE CONVERSAZIONE
+    // ═════════════════════════════════════════════
     doc.addPage();
     page = 1;
     drawHeader();
+    y = MT;
 
-    // Section title
-    doc.setFontSize(11);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...INK);
+    setFont('bold', 12, INK);
     doc.text('Trascrizione della conversazione', ML, y);
-    y += 8;
+    y += 3;
+    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.setLineWidth(0.3);
+    doc.line(ML, y, ML + 60, y);
+    y += 7;
 
-    // Draw all messages
-    messages.forEach(m => {
-      drawMessage(m.role, m.text, m.time);
+    messages.forEach((m, idx) => {
+      const isUser = m.role === 'user';
+      checkBreak(12);
+
+      // Label
+      setFont('bold', 8, isUser ? GOLD : INK);
+      if(isUser){
+        doc.text('Tu', PW - MR, y, { align: 'right' });
+      } else {
+        doc.text('Consulente Olistica', ML, y);
+      }
+      y += 4.5;
+
+      if(isUser){
+        // Bolla utente compatta a destra
+        const txt = sa(m.text);
+        setFont('normal', 9.5, INK);
+        const maxW = CW * 0.75;
+        const lines = doc.splitTextToSize(txt, maxW - 6);
+        const lH = 4.8;
+        const h = lines.length * lH + 5;
+        const bx = PW - MR - maxW;
+        checkBreak(h + 3);
+        doc.setFillColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
+        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.setLineWidth(0.3);
+        doc.roundedRect(bx, y - 1, maxW, h, 2.5, 2.5, 'FD');
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.rect(bx + maxW - 1.5, y - 1, 1.5, h, 'F');
+        doc.setTextColor(INK[0], INK[1], INK[2]);
+        let ty = y + 3.5;
+        lines.forEach(l => { doc.text(l, bx + 3, ty); ty += lH; });
+        y += h + 4;
+      } else {
+        // AI: render Markdown con barra verticale oro
+        const startY = y;
+        const blocks = parseMd(m.text);
+        renderBlocks(blocks, INK);
+        const endY = y;
+        // Barra verticale oro a sinistra (ridisegnata dopo, altezza nota)
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.rect(ML - 3, startY, 1, Math.min(endY - startY, PH - MB - startY), 'F');
+        y += 4;
+      }
+
+      // Separatore tra messaggi
+      if(idx < messages.length - 1){
+        checkBreak(4);
+        doc.setDrawColor(230, 224, 214);
+        doc.setLineWidth(0.2);
+        doc.line(ML + 30, y, PW - MR - 30, y);
+        y += 4;
+      }
     });
 
     drawFooter();
 
     // ── Save ──
-    const dateFile = new Date().toISOString().slice(0,10);
+    const dateFile = new Date().toISOString().slice(0, 10);
     doc.save('Olismo-Integrato-Consulenza-' + dateFile + '.pdf');
 
   } catch(err) {

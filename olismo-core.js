@@ -5319,31 +5319,40 @@ async function exportChatPdf(){
     doc.setFillColor(IVORY[0], IVORY[1], IVORY[2]);
     doc.rect(0, 0, PW, PH, 'F');
 
-    // Banda oro superiore
+    // Banda oro superiore con TITOLO (bianco su oro = leggibile)
     doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
-    doc.rect(0, 0, PW, 52, 'F');
+    doc.rect(0, 0, PW, 42, 'F');
 
-    // Logo centrale: RUOTA LULLIANA (Ars Brevis)
-    // Sfondo bianco circolare per far risaltare la ruota sulla banda oro
-    doc.setFillColor(255, 255, 255);
-    doc.circle(PW/2, 31, 20, 'F');
-    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+    // Titolo principale DENTRO la banda oro
+    setFont('bold', 24, WHITE);
+    doc.text('OLISMO INTEGRATO', PW/2, 19, { align: 'center' });
+    setFont('italic', 11.5, WHITE);
+    doc.text('Consulenza Olistica AI', PW/2, 30, { align: 'center' });
+
+    // Sottile linea separatrice sotto il titolo
+    doc.setDrawColor(255, 255, 255);
     doc.setLineWidth(0.3);
-    doc.circle(PW/2, 31, 20, 'S');
+    doc.line(PW/2 - 22, 36, PW/2 + 22, 36);
 
-    // La ruota: 9 dignitates (B-K) con lettere visibili + A centrale
-    drawLullianWheel(PW/2, 31, 14, { labels: true, labelStyle: 'letters' });
+    // Ruota Lulliana SOTTO la banda oro, su fondo avorio con cerchio bianco
+    doc.setFillColor(255, 255, 255);
+    doc.circle(PW/2, 78, 28, 'F');
+    doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+    doc.setLineWidth(0.5);
+    doc.circle(PW/2, 78, 28, 'S');
+    doc.setLineWidth(0.2);
+    doc.circle(PW/2, 78, 25, 'S');
 
-    // Titolo
-    setFont('bold', 22, WHITE);
-    doc.text('OLISMO INTEGRATO', PW/2, 65, { align: 'center' });
-    setFont('italic', 11, WHITE);
-    doc.text('Consulenza Olistica AI', PW/2, 73, { align: 'center' });
+    drawLullianWheel(PW/2, 78, 20, { labels: true, labelStyle: 'letters' });
 
-    // Separatore
+    // Didascalia sotto la ruota
+    setFont('italic', 7.5, INK3);
+    doc.text(sa('Ars Brevis  -  Le nove dignitates'), PW/2, 113, { align: 'center' });
+
+    // Separatore oro
     doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
     doc.setLineWidth(0.6);
-    doc.line(PW/2 - 30, 83, PW/2 + 30, 83);
+    doc.line(PW/2 - 30, 120, PW/2 + 30, 120);
 
     // Data
     const now = new Date();
@@ -5353,29 +5362,29 @@ async function exportChatPdf(){
     const aC = messages.filter(m => m.role === 'ai').length;
 
     setFont('normal', 10, INK2);
-    doc.text(dLong + sa('  -  ore ') + tStr, PW/2, 97, { align: 'center' });
+    doc.text(dLong + sa('  -  ore ') + tStr, PW/2, 130, { align: 'center' });
     setFont('italic', 9, INK3);
     doc.text(messages.length + sa(' messaggi  -  ') + qC + sa(' domande  -  ') + aC + ' risposte',
-             PW/2, 104, { align: 'center' });
+             PW/2, 137, { align: 'center' });
 
     // Box autore
     doc.setFillColor(255, 255, 255);
     doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
     doc.setLineWidth(0.4);
-    doc.roundedRect(ML + 10, 120, CW - 20, 44, 3, 3, 'FD');
+    doc.roundedRect(ML + 10, 150, CW - 20, 44, 3, 3, 'FD');
 
     setFont('bold', 11, GOLD);
-    doc.text('Carlo Alberto Calcagno', PW/2, 131, { align: 'center' });
+    doc.text('Carlo Alberto Calcagno', PW/2, 161, { align: 'center' });
     setFont('normal', 8.5, INK2);
-    doc.text(sa('Mediatore Familiare - Formatore - Pranoterapista'), PW/2, 138, { align: 'center' });
-    doc.text(sa("Inventore dell'Enneagramma Evolutivo"), PW/2, 144, { align: 'center' });
+    doc.text(sa('Mediatore Familiare - Formatore - Pranoterapista'), PW/2, 168, { align: 'center' });
+    doc.text(sa("Inventore dell'Enneagramma Evolutivo"), PW/2, 174, { align: 'center' });
     setFont('normal', 8.5, GOLD);
-    doc.text(sa('calcagnocarloalberto1@gmail.com  -  +39 347 366 6508'), PW/2, 152, { align: 'center' });
-    doc.text('olismo-integrato.it', PW/2, 158, { align: 'center' });
+    doc.text(sa('calcagnocarloalberto1@gmail.com  -  +39 347 366 6508'), PW/2, 182, { align: 'center' });
+    doc.text('olismo-integrato.it', PW/2, 188, { align: 'center' });
 
     // Chips discipline
     const chips = ['Chakra', 'Enneagramma', 'Fiori di Bach', 'AT', 'Frequenze', 'Cristalli', 'VAK', 'Pranoterapia'];
-    let ccy = 180;
+    let ccy = 210;
     const cStart = ML + 6;
     let cxCur = cStart;
     setFont('normal', 7.5, INK2);

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ti sta succedendo? — Riconoscere la violenza in una relazione</title>
+<meta name="description" content="Test riservato e anonimo di autoriconoscimento. Quindici domande per aiutare a distinguere un conflitto relazionale da una dinamica di controllo coercitivo e violenza domestica.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="olismo-portale.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<!--
+  olismo-integrato.it · © 2016-2026 Avv. Carlo Alberto Calcagno
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-riconoscere-violenza
+  Questa pagina NON salva alcun dato. Il test è elaborato esclusivamente
+  nel browser (JavaScript client-side). Nessuna informazione viene
+  trasmessa al server. Non ci sono cookie di tracciamento.
+-->
+<style>
+/* Pulsante di uscita rapida — sempre visibile */
+.quick-exit {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: #1a1a1a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 9999;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  letter-spacing: .05em;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+.quick-exit:hover { background: #c62828; color: white; }
+.quick-exit::before { content: "✕ "; }
+
+/* Avviso di sicurezza iniziale */
+.safety-warning {
+  background: #1a1a1a;
+  color: #f5efe0;
+  padding: 22px 26px;
+  border-radius: 6px;
+  margin: 28px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.safety-warning h4 {
+  color: #e8d08a;
+  margin: 0 0 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.safety-warning p { margin: 0 0 10px; }
+.safety-warning p:last-child { margin-bottom: 0; }
+.safety-warning strong { color: white; }
+.safety-warning a { color: #e8d08a; }
+
+/* Quesiti */
+.quiz-area { margin: 40px 0; }
+.quiz-section {
+  margin: 36px 0;
+  padding: 24px 28px;
+  background: #fff;
+  border: 1px solid var(--ivory-3);
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+}
+.quiz-section__title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin: 0 0 6px;
+}
+.quiz-section__desc {
+  font-size: 14px;
+  color: var(--ink-3);
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.question {
+  margin: 20px 0;
+  padding: 16px 0;
+  border-top: 1px dashed var(--ivory-3);
+}
+.question:first-of-type { border-top: none; padding-top: 0; }
+.question__text {
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+.question__text .num {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  background: var(--gold);
+  color: white;
+  border-radius: 50%;
+  font-family: var(--font-title);
+  font-size: 14px;
+  margin-right: 10px;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+.answer-label {
+  display: block;
+  padding: 10px 12px;
+  background: var(--ivory-2);
+  border: 1.5px solid var(--ivory-3);
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--ink-2);
+  user-select: none;
+}
+.answer-label:hover {
+  background: #fdf6dc;
+  border-color: var(--gold-soft);
+}
+.answer-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.answer-label.selected {
+  background: var(--gold-dark);
+  color: white;
+  border-color: var(--gold-dark);
+  font-weight: 600;
+}
+
+/* Submit */
+.quiz-submit-area {
+  text-align: center;
+  margin: 40px 0 24px;
+  padding: 24px;
+  background: var(--ivory-2);
+  border-radius: 6px;
+}
+.quiz-progress {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-bottom: 14px;
+}
+.quiz-progress strong { color: var(--gold-dark); font-size: 15px; }
+
+/* Risultato */
+.result-area { display: none; }
+.result-area.active { display: block; }
+.result-box {
+  padding: 32px 36px;
+  border-radius: 8px;
+  margin: 32px 0;
+  border: 2px solid;
+}
+.result-box h3 {
+  font-family: var(--font-title);
+  margin: 0 0 14px;
+  font-size: 28px;
+  font-weight: 600;
+}
+.result-box p { font-size: 16px; line-height: 1.7; }
+.result-box--low {
+  background: #f4faf5;
+  border-color: #2e7d4f;
+  color: #1a4a30;
+}
+.result-box--low h3 { color: #1a4a30; }
+.result-box--medium {
+  background: #fdf7e4;
+  border-color: #c49a1a;
+  color: #5a4708;
+}
+.result-box--medium h3 { color: #5a4708; }
+.result-box--high {
+  background: #fbf0f0;
+  border-color: #7a1c1c;
+  color: #4a1414;
+}
+.result-box--high h3 { color: #4a1414; }
+.result-box--severe {
+  background: #7a1c1c;
+  border-color: #4a1414;
+  color: #fef4f0;
+}
+.result-box--severe h3 { color: #fde4d4; }
+.result-box--severe strong { color: #fdd4b4; }
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0 8px;
+}
+.result-actions a {
+  padding: 12px 20px;
+  background: white;
+  color: #7a1c1c;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 2px solid currentColor;
+  font-size: 15px;
+}
+.result-box--severe .result-actions a {
+  background: #fde4d4;
+  color: #7a1c1c;
+  border-color: #fde4d4;
+}
+.result-box--severe .result-actions a:hover {
+  background: white;
+}
+
+.restart-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: transparent;
+  border: 1.5px solid var(--ink-3);
+  color: var(--ink-3);
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* Spinner per submit */
+.error-msg {
+  background: #fbf0f0;
+  border: 1px solid #7a1c1c;
+  color: #4a1414;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<!-- Pulsante di uscita rapida: sempre visibile -->
+<button class="quick-exit" onclick="quickExit()" title="Chiudi immediatamente questa pagina">ESCI SUBITO</button>
+
+<!-- Banner emergenza -->
+<div class="emergency-banner" role="alert">
+  <strong>Se sei in pericolo ora, chiama il 1522</strong> — numero nazionale antiviolenza, gratuito, attivo 24 ore su 24. Oppure il <strong>112</strong> per emergenze immediate.
+</div>
+
+<header class="site-header">
+  <div class="container-wide site-header__inner">
+    <a href="index.html" class="site-logo">
+      Olismo Integrato
+      <span>Mediazione · Enneagramma · Neuroscienze</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="violenza.html">Violenza</a>
+      <a href="chi-sono.html">Chi sono</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__eyebrow">Strumento riservato di autoriconoscimento</div>
+    <h1 class="page-hero__title">Ti sta succedendo?</h1>
+    <p class="page-hero__subtitle">
+      Quindici domande per aiutarti a distinguere un conflitto di coppia ordinario
+      da una dinamica di controllo e violenza. Riservate. Anonime. Nessun dato viene salvato.
+    </p>
+  </div>
+</section>
+
+<article class="container">
+
+<div class="safety-warning">
+  <h4>Prima di cominciare — leggi questo</h4>
+  <p>
+    Questo test è pensato per <strong>aiutarti a mettere in parole</strong> quello
+    che potresti stare vivendo. Non è una diagnosi, non è una sentenza: è uno specchio.
+  </p>
+  <p>
+    Il test <strong>non salva nulla</strong>: funziona interamente nel tuo browser.
+    Nessun dato arriva al server, nessun cookie viene conservato. Quando chiudi
+    la pagina, tutto sparisce.
+  </p>
+  <p>
+    <strong>Se pensi che il tuo telefono o il tuo computer siano controllati</strong>
+    — se sospetti app spia, cronologia monitorata, accessi non tuoi — fai questo test
+    <strong>in navigazione privata</strong>, o meglio ancora da un dispositivo diverso
+    (biblioteca, casa di un'amica, telefono di fiducia).
+  </p>
+  <p>
+    Il pulsante <strong>ESCI SUBITO</strong> in alto a destra chiude immediatamente
+    la pagina e ti porta altrove. Usalo se qualcuno arriva.
+  </p>
+</div>
+
+<div id="quiz-area" class="quiz-area">
+
+  <!-- Area 1 -->
+  <div class="quiz-section">
+    <div class="quiz-section__title">1. Controllo della vita quotidiana</div>
+    <div class="quiz-section__desc">Sei libera di muoverti, decidere, parlare con chi vuoi?</div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">1</span>
+        Ti chiede di spiegargli dove sei stata, con chi hai parlato, quanto ci hai messo —
+        anche quando è chiaro che non ci sarebbe nulla da spiegare?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q1" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q1" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q1" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q1" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">2</span>
+        Ha criticato amici, familiari, colleghi al punto che tu li vedi meno di prima —
+        o non li vedi più?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q2" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q2" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q2" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q2" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">3</span>
+        Controlla — o sospetti che controlli — il tuo telefono, i messaggi,
+        i social, la tua posizione GPS?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q3" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q3" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q3" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q3" value="3"> Sempre</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area 2 -->
+  <div class="quiz-section">
+    <div class="quiz-section__title">2. Svalutazione e umiliazione</div>
+    <div class="quiz-section__desc">Come ti fa sentire rispetto a te stessa?</div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">4</span>
+        Ti dice — con insulti o con frasi più sottili — che sei incapace, stupida,
+        troppo emotiva, sbagliata?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q4" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q4" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q4" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q4" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">5</span>
+        Ti ridicolizza davanti ad altre persone — in pubblico, in famiglia, con gli amici?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q5" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q5" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q5" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q5" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">6</span>
+        Ti fa sentire che senza di lui non vali niente — che nessun altro ti prenderebbe,
+        che dovresti essergli grata?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q6" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q6" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q6" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q6" value="3"> Sempre</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area 3 -->
+  <div class="quiz-section">
+    <div class="quiz-section__title">3. Manipolazione della realtà</div>
+    <div class="quiz-section__desc">Ti fa dubitare di ciò che hai visto, sentito, vissuto?</div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">7</span>
+        Quando gli fai notare qualcosa che ha detto o fatto, nega — anche di fronte
+        all'evidenza?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q7" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q7" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q7" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q7" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">8</span>
+        Dopo una discussione ti ritrovi a pensare che forse il problema sei tu,
+        che esageri, che ricordi male, che reagisci troppo?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q8" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q8" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q8" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q8" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">9</span>
+        Cambia le regole senza dirlo — ciò che ieri andava bene oggi è sbagliato —
+        e poi si arrabbia perché non le segui?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q9" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q9" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q9" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q9" value="3"> Sempre</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area 4 — con trigger di severità -->
+  <div class="quiz-section">
+    <div class="quiz-section__title">4. Paura, minaccia, violenza fisica</div>
+    <div class="quiz-section__desc">Queste tre domande riguardano la tua sicurezza.</div>
+
+    <div class="question" data-weight="1" data-severe="true">
+      <div class="question__text"><span class="num">10</span>
+        Hai paura di come reagirà a qualcosa che dirai o farai — al punto da
+        pensarci prima di parlare, di uscire, di vestirti?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q10" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q10" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q10" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q10" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1" data-severe="true">
+      <div class="question__text"><span class="num">11</span>
+        Ti minaccia — di lasciarti, di portarti via i figli, di farsi del male,
+        di farti del male, di rovinarti la reputazione?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q11" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q11" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q11" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q11" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1" data-severe="true" data-severe-threshold="1">
+      <div class="question__text"><span class="num">12</span>
+        Ti è capitato che ti spinga, ti strattoni, ti colpisca, ti stringa forte,
+        ti costringa a un contatto fisico o sessuale che non volevi?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q12" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q12" value="1"> Una volta</label>
+        <label class="answer-label"><input type="radio" name="q12" value="2"> Più volte</label>
+        <label class="answer-label"><input type="radio" name="q12" value="3"> Ricorrentemente</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area 5 -->
+  <div class="quiz-section">
+    <div class="quiz-section__title">5. Controllo economico e digitale</div>
+    <div class="quiz-section__desc">Sei libera sul piano economico, lavorativo, della tua immagine?</div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">13</span>
+        Decide lui come si spendono i soldi — anche quelli che guadagni tu — o ti
+        chiede conto di ogni spesa?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q13" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q13" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q13" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q13" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1">
+      <div class="question__text"><span class="num">14</span>
+        Ti ha impedito — apertamente o in modo indiretto — di lavorare, di studiare,
+        di avere un conto tuo, di uscire di casa quando vuoi?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q14" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q14" value="1"> A volte</label>
+        <label class="answer-label"><input type="radio" name="q14" value="2"> Spesso</label>
+        <label class="answer-label"><input type="radio" name="q14" value="3"> Sempre</label>
+      </div>
+    </div>
+
+    <div class="question" data-weight="1" data-severe="true" data-severe-threshold="1">
+      <div class="question__text"><span class="num">15</span>
+        Ha mai diffuso o minacciato di diffondere tue foto o video intimi?
+        Ha mai installato app spia o GPS nascosti sui tuoi dispositivi?
+      </div>
+      <div class="answers">
+        <label class="answer-label"><input type="radio" name="q15" value="0"> Mai</label>
+        <label class="answer-label"><input type="radio" name="q15" value="1"> Una volta</label>
+        <label class="answer-label"><input type="radio" name="q15" value="2"> Più volte</label>
+        <label class="answer-label"><input type="radio" name="q15" value="3"> Ricorrentemente</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-submit-area">
+    <div class="quiz-progress"><strong id="answered-count">0</strong> risposte su 15</div>
+    <button id="submit-btn" class="cta-button" onclick="computeResult()">Vedi il risultato</button>
+    <div id="error-msg" class="error-msg" style="display:none"></div>
+  </div>
+
+</div>
+
+<!-- Area risultato (nascosta fino al calcolo) -->
+<div id="result-area" class="result-area">
+
+  <h2 id="result-title">Il tuo risultato</h2>
+
+  <div id="result-box" class="result-box">
+    <h3 id="result-heading">—</h3>
+    <p id="result-body">—</p>
+    <div id="result-actions" class="result-actions"></div>
+  </div>
+
+  <div class="box-gold">
+    <div class="box-gold__title">Ricorda</div>
+    <p>
+      Questo test è uno <strong>specchio</strong>, non una sentenza. Le operatrici
+      del <strong>1522</strong> (gratuito, anonimo, attivo 24 ore su 24) sono
+      formate per aiutarti a capire cosa stai vivendo, senza imporre nessuna scelta.
+      Puoi chiamare anche solo per parlare, senza alcun impegno.
+    </p>
+    <p style="margin-bottom:0">
+      Anche la <a href="https://www.1522.eu" rel="external noopener">chat sul sito 1522.eu</a>
+      è un modo sicuro di chiedere se una telefonata non è possibile.
+    </p>
+  </div>
+
+  <p style="text-align:center; margin: 32px 0;">
+    <button class="restart-btn" onclick="restart()">Rifai il test</button>
+    &nbsp;
+    <a class="restart-btn" href="violenza.html">Torna alla pagina informativa</a>
+  </p>
+</div>
+
+</article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="site-footer__grid">
+      <div>
+        <h5>Emergenza</h5>
+        <a href="tel:1522"><strong>1522</strong> — Antiviolenza 24/7</a>
+        <a href="tel:112"><strong>112</strong> — Emergenze</a>
+        <a href="https://www.1522.eu" rel="external noopener">Chat 1522.eu</a>
+        <a href="https://www.direcontrolaviolenza.it" rel="external noopener">D.i.Re — Centri antiviolenza</a>
+      </div>
+      <div>
+        <h5>Pagine collegate</h5>
+        <a href="violenza.html">Violenza e mediazione</a>
+        <a href="index.html">Home del portale</a>
+      </div>
+      <div>
+        <h5>Privacy del test</h5>
+        <p style="font-size:12px;color:var(--ivory-3);line-height:1.6;margin:0">
+          Questo test funziona interamente nel tuo browser.
+          Nessun dato viene salvato, trasmesso o tracciato.
+          Al momento della chiusura della pagina, tutte le risposte sono cancellate.
+        </p>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>© 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   SAFETY FEATURES
+   ═══════════════════════════════════════════════════════ */
+
+// Pulsante "Esci subito": redirect immediato a google, sostituendo history
+function quickExit() {
+  // Sostituisce la pagina corrente nella cronologia con google,
+  // così anche il tasto "back" non riporta qui.
+  window.location.replace('https://www.google.com/search?q=meteo+oggi');
+}
+
+// Tasto ESC → esci subito (per chi naviga da tastiera in situazioni di urgenza)
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') quickExit();
+});
+
+/* ═══════════════════════════════════════════════════════
+   QUIZ LOGIC
+   ═══════════════════════════════════════════════════════ */
+
+// Gestione visiva della selezione
+document.querySelectorAll('.answer-label').forEach(function(lbl) {
+  lbl.addEventListener('click', function() {
+    var input = lbl.querySelector('input[type="radio"]');
+    if (!input) return;
+    var name = input.name;
+    // Rimuovo selected da tutti i label dello stesso gruppo
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(inp) {
+      inp.closest('.answer-label').classList.remove('selected');
+    });
+    lbl.classList.add('selected');
+    input.checked = true;
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  var answered = 0;
+  for (var i = 1; i <= 15; i++) {
+    if (document.querySelector('input[name="q' + i + '"]:checked')) answered++;
+  }
+  document.getElementById('answered-count').textContent = answered;
+}
+
+function computeResult() {
+  // Verifica completezza
+  var answers = [];
+  var missing = [];
+  for (var i = 1; i <= 15; i++) {
+    var checked = document.querySelector('input[name="q' + i + '"]:checked');
+    if (!checked) {
+      missing.push(i);
+      answers.push(null);
+    } else {
+      answers.push(parseInt(checked.value, 10));
+    }
+  }
+
+  var errEl = document.getElementById('error-msg');
+  if (missing.length > 0) {
+    errEl.textContent = 'Per vedere il risultato, rispondi a tutte le domande. Mancano: ' +
+      missing.join(', ') + '.';
+    errEl.style.display = 'block';
+    // Scrolla alla prima non risposta
+    var firstMissing = document.querySelector('input[name="q' + missing[0] + '"]');
+    if (firstMissing) {
+      firstMissing.closest('.question').scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+    return;
+  }
+  errEl.style.display = 'none';
+
+  // Calcolo punteggio totale
+  var total = answers.reduce(function(a, b) { return a + b; }, 0);
+
+  // Trigger di severità: se su domande "gravi" c'è una risposta sopra soglia
+  // → esito automaticamente "serio" indipendentemente dal totale.
+  // Domande marcate data-severe="true":
+  //  - q10, q11: severa se "Spesso" (2) o "Sempre" (3)
+  //  - q12, q15: severa se ≥ "Una volta" (1) — violenza fisica/sessuale/stalking digitale
+  //             bastano un singolo episodio a configurare l'allerta
+  var severeTriggered = false;
+  var severeReasons = [];
+  if (answers[11] >= 1) { severeTriggered = true; severeReasons.push('violenza fisica o sessuale'); }
+  if (answers[14] >= 1) { severeTriggered = true; severeReasons.push('diffusione di immagini intime o stalkerware'); }
+  if (answers[9] >= 2)  { severeTriggered = true; severeReasons.push('paura costante della reazione del partner'); }
+  if (answers[10] >= 2) { severeTriggered = true; severeReasons.push('minacce ricorrenti'); }
+
+  // Fasce di punteggio (max = 45)
+  // 0-8: basso / 9-18: medio-basso / 19-30: medio-alto / 31-45: alto
+  var band;
+  if (severeTriggered) {
+    band = 'severe';
+  } else if (total <= 8) {
+    band = 'low';
+  } else if (total <= 18) {
+    band = 'medium';
+  } else if (total <= 30) {
+    band = 'high';
+  } else {
+    band = 'severe';
+  }
+
+  displayResult(band, total, severeReasons);
+}
+
+function displayResult(band, total, severeReasons) {
+  var box = document.getElementById('result-box');
+  var heading = document.getElementById('result-heading');
+  var body = document.getElementById('result-body');
+  var actions = document.getElementById('result-actions');
+
+  // Reset classi
+  box.className = 'result-box';
+
+  var messages = {
+    low: {
+      cls: 'result-box--low',
+      heading: 'Dalle tue risposte non emergono elementi riconducibili a violenza domestica.',
+      body: 'Ci sono molte situazioni in cui due persone litigano, si feriscono, fanno fatica — senza che ci sia violenza. Da quello che hai segnato, la tua relazione sembra avere caratteristiche di conflitto ordinario, non di controllo coercitivo. Se comunque non stai bene nella relazione, parlare con un mediatore familiare, un counselor o uno psicologo può aiutarti a capire cosa sta succedendo.',
+      actions: [
+        {text: 'Leggi sulla mediazione familiare', href: 'mediazione-familiare.html'},
+        {text: 'Leggi «La danza del conflitto»', href: 'danza.html'}
+      ]
+    },
+    medium: {
+      cls: 'result-box--medium',
+      heading: 'Ci sono segnali di tensione che vale la pena non ignorare.',
+      body: 'Alcune delle tue risposte descrivono dinamiche che, se si intensificano o si ripetono, possono portare a forme di controllo. Non è necessariamente violenza in senso pieno — ma sono segnali che meritano attenzione. Parlare con qualcuno (un Centro antiviolenza per un colloquio informativo, uno psicologo, una persona di fiducia) ti può aiutare a vedere la situazione con più chiarezza. Non devi aspettare che peggiori.',
+      actions: [
+        {text: 'Chiama il 1522 — anche solo per parlare', href: 'tel:1522'},
+        {text: 'Trova un Centro antiviolenza', href: 'https://www.direcontrolaviolenza.it'},
+        {text: 'Leggi la pagina su violenza e mediazione', href: 'violenza.html'}
+      ]
+    },
+    high: {
+      cls: 'result-box--high',
+      heading: 'Molti tratti della tua relazione corrispondono a schemi di controllo coercitivo.',
+      body: 'Quello che descrivi non è un semplice conflitto di coppia: sono modalità con cui una persona limita, svaluta e controlla l\'altra. Il sociologo Evan Stark chiama tutto questo «controllo coercitivo» — una prigione fatta di regole, silenzi, manipolazioni, anche senza bisogno di colpi. Riconoscerla è il primo passo, ma serve supporto esterno. Chiamare il <strong>1522</strong> non significa denunciare, non significa lasciare il partner: significa parlare con qualcuno formato per ascoltarti senza giudicarti, in modo anonimo e gratuito.',
+      actions: [
+        {text: '📞 Chiama il 1522 adesso', href: 'tel:1522'},
+        {text: '💬 Chat riservata 1522.eu', href: 'https://www.1522.eu'},
+        {text: 'Trova un Centro antiviolenza', href: 'https://www.direcontrolaviolenza.it'}
+      ]
+    },
+    severe: {
+      cls: 'result-box--severe',
+      heading: 'Le tue risposte descrivono una situazione di violenza domestica.',
+      body: severeReasons.length > 0
+        ? 'In particolare, hai segnalato: <strong>' + severeReasons.join(', ') + '</strong>. Queste sono forme di violenza riconosciute dalla legge italiana (artt. 572, 609-bis, 612-bis c.p.) e comportano il diritto al <strong>patrocinio a spese dello Stato senza limiti di reddito</strong> (art. 76 DPR 115/2002). Non sei sola, non è colpa tua, e hai diritto a essere protetta. <strong>Chiamare il 1522 oggi</strong> è la cosa più utile che puoi fare: è gratuito, anonimo, e le operatrici sono formate specificamente per situazioni come la tua. Se sei in pericolo immediato, chiama il 112.'
+        : 'Quello che descrivi è, secondo la legge italiana, violenza domestica. Hai diritto a tutele specifiche, incluso il <strong>patrocinio a spese dello Stato senza limiti di reddito</strong>. Non devi affrontarlo da sola. <strong>Chiamare il 1522 oggi</strong> è la cosa più utile che puoi fare.',
+      actions: [
+        {text: '📞 Chiama il 1522 adesso', href: 'tel:1522'},
+        {text: '🆘 112 — emergenza immediata', href: 'tel:112'},
+        {text: '💬 Chat riservata 1522.eu', href: 'https://www.1522.eu'}
+      ]
+    }
+  };
+
+  var m = messages[band];
+  box.classList.add(m.cls);
+  heading.textContent = m.heading;
+  body.innerHTML = m.body;
+  actions.innerHTML = '';
+  m.actions.forEach(function(a) {
+    var link = document.createElement('a');
+    link.href = a.href;
+    link.textContent = a.text;
+    if (a.href.indexOf('http') === 0) {
+      link.setAttribute('rel', 'external noopener');
+      link.setAttribute('target', '_blank');
+    }
+    actions.appendChild(link);
+  });
+
+  // Mostra area risultato, nasconde quiz
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('result-area').classList.add('active');
+
+  // Scroll all'inizio del risultato
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function restart() {
+  // Reset radio
+  document.querySelectorAll('input[type="radio"]').forEach(function(inp) {
+    inp.checked = false;
+  });
+  document.querySelectorAll('.answer-label.selected').forEach(function(lbl) {
+    lbl.classList.remove('selected');
+  });
+  document.getElementById('answered-count').textContent = '0';
+  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('result-area').classList.remove('active');
+  document.getElementById('quiz-area').style.display = 'block';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>

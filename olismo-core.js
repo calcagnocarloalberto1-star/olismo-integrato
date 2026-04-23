@@ -624,47 +624,38 @@ const VETTORI_LABELS = {
   'BL+': {name:'Bambino Libero positivo', short:'BL+', color:'#10b981', desc:'Spontaneo, creativo, curioso, vitale.'},
   'BL-': {name:'Bambino Libero negativo', short:'BL−', color:'#059669', desc:'Egoistico, impulsivo, manipolativo.'},
   'BA+': {name:'Bambino Adattato positivo', short:'BA+', color:'#8b5cf6', desc:'Coopera, rispetta, negozia, sa adattarsi.'},
-  'BA-': {name:'Bambino Adattato negativo', short:'BA−', color:'#6d28d9', desc:'Compiacente, ritirato, soppresso, evitante.'},
-};
+  'BA-': {name:'Bambino Adattato negativo', short:'BA−', color:'#6d28d9', desc:'Compiacente, ritirato, soppresso, evitante.'}};
 
 // Transazioni incrociate da vettore dominante
 const TRANS_RISCHIO = {
   'GN-': {
     incrociata:'Invii messaggi G→B (critici) attendendoti A→A. L\'altro percepisce un giudizio e risponde con difesa (B→G) o silenzio (BA-). Stallo.',
     enneatipo:'Tipico di T1 (perfezione/critica) e T6 (ipervigilanza). Il controllo rompe le conversazioni.',
-    correzione:'Sostituisci la critica con la domanda: «Cosa ne pensi?» invece di «Dovresti fare così».',
-  },
+    correzione:'Sostituisci la critica con la domanda: «Cosa ne pensi?» invece di «Dovresti fare così».'},
   'GA+': {
     incrociata:'Offri supporto (G→B) quando l\'altro non lo ha chiesto (A→A). L\'altro si sente infantilizzato o in debito.',
     enneatipo:'Tipico di T2 (dare/aiutare) e T9 (armonia a tutti i costi). Il salvataggio genera dipendenza.',
-    correzione:'Prima di aiutare, chiedi: «Vuoi che ti aiuti o vuoi che ascolti solo?»',
-  },
+    correzione:'Prima di aiutare, chiedi: «Vuoi che ti aiuti o vuoi che ascolti solo?»'},
   'A': {
     incrociata:'Raramente. Rischio: freddo/distaccato quando l\'altro ha bisogno di un vettore emotivo (GA+ o BL+).',
     enneatipo:'Tipico di T5 (analisi), T1 (logica), T6 (ragionamento). L\'eccessivo distacco emotivo isola.',
-    correzione:'Integra il vettore GA+ nelle situazioni emotive: «Capisco come ti senti» prima dei dati.',
-  },
+    correzione:'Integra il vettore GA+ nelle situazioni emotive: «Capisco come ti senti» prima dei dati.'},
   'BL+': {
     incrociata:'Entusiasmo (B→B) in contesti che richiedono A→A. L\'altro si sente non ascoltato o distratto.',
     enneatipo:'Tipico di T7 (entusiasmo) e T4 (espressività). L\'impulsività può saltare le fasi di ascolto.',
-    correzione:'Prima di rispondere con l\'energia, fai una pausa: «Lasciami capire bene la situazione.»',
-  },
+    correzione:'Prima di rispondere con l\'energia, fai una pausa: «Lasciami capire bene la situazione.»'},
   'BL-': {
     incrociata:'Risposte impulsive/sarcasmo (BL−→GN−) a stimoli neutri (A→A). L\'altro si irrigidisce o si chiude.',
     enneatipo:'Tipico di T8 (forza/dominio) e T4 in stress. La reattività escalation i conflitti.',
-    correzione:'Identifica il trigger. Pratica il \'timeout\': esci fisicamente 5 minuti prima di rispondere.',
-  },
+    correzione:'Identifica il trigger. Pratica il \'timeout\': esci fisicamente 5 minuti prima di rispondere.'},
   'BA+': {
     incrociata:'Compliance (BA+) quando l\'altro si aspetta una risposta diretta (A→A). Crei confusione: «Sei d\'accordo o no?»',
     enneatipo:'Tipico di T2 (piacere) e T9 (pace). La compiacenza sistematica alimenta risentimenti silenti.',
-    correzione:'Allena il diritto a dissentire: «Non sono d\'accordo su questo specifico punto.»',
-  },
+    correzione:'Allena il diritto a dissentire: «Non sono d\'accordo su questo specifico punto.»'},
   'BA-': {
     incrociata:'Ritiro o silenzio (BA−) a qualsiasi stimolo. L\'altro non sa mai a cosa aggrapparsi. Frustrazione.',
     enneatipo:'Tipico di T5 (ritiro) e T6 (paura). L\'evitamento sistematico non permette la risoluzione.',
-    correzione:'Pratiche di espressione graduale: inizia con piccole opinioni, poi aumenta la consistenza.',
-  },
-};
+    correzione:'Pratiche di espressione graduale: inizia con piccole opinioni, poi aumenta la consistenza.'}};
 
 let transAnswers = {};
 let transStarted = false;
@@ -724,13 +715,11 @@ function showTransResult(){
     'GN+': scores['GN+'],
     'GA+': scores['GA+'],
     'BL+': scores['BL+'],
-    'BA+': scores['BA+'],
-  };
+    'BA+': scores['BA+']};
   const negative = {
     'GN-': scores['GN-'],
     'BL-': scores['BL-'],
-    'BA-': scores['BA-'],
-  };
+    'BA-': scores['BA-']};
 
   const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const primary = sorted[0][0];
@@ -2657,8 +2646,7 @@ function shareOn(platform){
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(SHARE_URL)}`,
     whatsapp: `https://wa.me/?text=${enc(SHARE_TEXT + ' ' + SHARE_URL)}`,
     telegram: `https://t.me/share/url?url=${enc(SHARE_URL)}&text=${enc(SHARE_TEXT)}`,
-    email:    `mailto:?subject=${enc('Olismo Integrato — Portale delle Discipline Olistiche')}&body=${enc(SHARE_TEXT + '\n\n' + SHARE_URL)}`,
-  };
+    email:    `mailto:?subject=${enc('Olismo Integrato — Portale delle Discipline Olistiche')}&body=${enc(SHARE_TEXT + '\n\n' + SHARE_URL)}`};
   if(urls[platform]) window.open(urls[platform], '_blank', 'noopener,width=600,height=500');
 }
 
@@ -2817,9 +2805,9 @@ async function sendMsg(){
   document.getElementById("send-btn").disabled=true;
   showTyping();
   try{
-      const _ok=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
-    const headers = {"Content-Type":"application/json","x-api-key":_ok,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"};
-    const res=await fetchWithTimeout("https://api.anthropic.com/v1/messages",{
+      /* CHIAVE API RIMOSSA — gestita dal proxy Cloudflare */
+    const headers = {"Content-Type":"application/json","anthropic-version":"2023-06-01"};
+    const res=await fetchWithTimeout("https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages",{
       method:"POST",
       headers,
       body:JSON.stringify({
@@ -4114,8 +4102,7 @@ async function exportReportPdf(){
       '\u{1F6AB}':'[X] ','\u{1F33A}':'[Bach] ','\u{273F}':'[FES] ',
       '\u{1F3B5}':'[Freq.] ','\u{1F9D8}':'[Med.] ','\u{2699}':'[>>] ',
       '\u{1F4E9}':'[invia] ','\u{1F5D1}':'[cancella] ','\u23F3':'...',
-      '\u{1F4C4}':'[PDF] ','\u2728':'* ','\u{1F31F}':'* ',
-    };
+      '\u{1F4C4}':'[PDF] ','\u2728':'* ','\u{1F31F}':'* '};
     function se(s){
       if(!s) return '';
       s = String(s);
@@ -4994,7 +4981,7 @@ async function exportChatPdf(){
         if(t === ''){ blocks.push({type:'blank'}); i++; continue; }
 
         // HR
-        if(/^(-{3,}|_{3,}|\*{3,})$/.test(t)){ blocks.push({type:'hr'}); i++; continue; }
+        if(/^(-{3}|_{3}|\*{3})$/.test(t)){ blocks.push({type:'hr'}); i++; continue; }
 
         // Code ```
         if(/^```/.test(t)){
@@ -5896,7 +5883,7 @@ async function sendDietMsg(){
   try{
     const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetchWithTimeout('https://api.anthropic.com/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","x-api-key":['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
+    const resp=await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
     const data=await resp.json();
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
@@ -6074,10 +6061,10 @@ async function fesSend() {
   const typing = fesAppend('ai', '<div style="display:flex;gap:5px;align-items:center"><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#8b78e6;animation:fesdot 1.2s .4s infinite"></span></div>');
   const FES_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Californiani FES (Flower Essence Services) di Richard Katz e Patricia Kaminski. Rispondi in italiano, con tono caldo e spiritualmente raffinato. Conosci tutte le 100 essenze FES (Agrimony, Alpine Lily, Angelica, Arnica, Baby Blue Eyes, Blackberry, Bleeding Heart, Borage, Buttercup, California Poppy, California Wild Rose, Cayenne, Chamomile, Chaparral, Cosmos, Dill, Echinacea, Fairy Lantern, Fawn Lily, Filaree, Forget-Me-Not, Fuchsia, Golden Yarrow, Goldenrod, Hound's Tongue, Indian Paintbrush, Indian Pink, Iris, Larkspur, Lavender, Lotus, Love-Lies-Bleeding, Madia, Manzanita, Mariposa Lily, Milkweed, Morning Glory, Mountain Pennyroyal, Mountain Pride, Mugwort, Mullein, Nasturtium, Oregon Grape, Penstemon, Pink Monkeyflower, Pink Yarrow, Poison Oak, Pretty Face, Purple Monkeyflower, Queen Anne's Lace, Quince, Red Clover, Sagebrush, Sage, Scarlet Monkeyflower, Self-Heal, Shasta Daisy, Shooting Star, Snapdragon, Star Thistle, Star Tulip, Sticky Monkeyflower, Sunflower, Sweet Pea, Tansy, Tiger Lily, Trillium, Trumpet Vine, Violet, White Yarrow, Yerba Santa, Yellow Star Tulip, Zinnia, e altri). Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, e quando preferire FES rispetto a Bach (stati emotivi di base archetipici) o australiani (karma familiare, trauma, sessualità). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa con pattern negativo, potenziale positivo, enneatipo, cristalli, confronto con altri sistemi. Non fai diagnosi mediche.`;
   try {
-    const _k=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
-    const res = await fetchWithTimeout('https://api.anthropic.com/v1/messages', {
+    /* CHIAVE API RIMOSSA — gestita dal proxy Cloudflare */
+    const res = await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': _k, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01'},
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
@@ -6129,10 +6116,10 @@ async function bushSend() {
   const typing = bushAppend('ai', '<div style="display:flex;gap:5px;align-items:center"><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s .2s infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#c8813a;animation:fesdot 1.2s .4s infinite"></span></div>');
   const BUSH_PROMPT = `Sei un esperto assistente olistico specializzato nei Fiori Australiani ABFE (Australian Bush Flower Essences) di Ian White. Rispondi in italiano, con tono caldo e profondo. Conosci tutti i 65 rimedi ABFE: Banksia Robur (stanchezza cronica), Billy Goat Plum (vergogna corporea), Black-eyed Susan (fretta, impazienza), Bluebell (cuore chiuso), Boab (schemi familiari), Bottlebrush (cambiamenti), Bush Fuchsia (intuizione), Bush Gardenia (coppia), Bush Iris (paura morte), Crowea (preoccupazione), Dagger Hakea (risentimento), Dog Rose (timidezza), Five Corners (autostima), Flannel Flower (intimità), Fringed Violet (protezione aurica), Grey Spider Flower (terrore), Gymea Lily (arroganza), Hibbertia (perfezionismo), Isopogon (memoria), Jacaranda (dispersività), Kangaroo Paw (sensibilità sociale), Kapok Bush (apatia), Macrocarpa (stanchezza surrenale), Mountain Devil (odio), Paw Paw (sopraffazione), Pink Mulla Mulla (spine interiori), Red Lily (dissociazione), Silver Princess (scopo di vita), Southern Cross (vittimismo), Sturt Desert Pea (dolore profondo), Sturt Desert Rose (senso di colpa), Sundew (procrastinazione), Sunshine Wattle (pessimismo), Waratah (disperazione), Wedding Bush (impegno), Wild Potato Bush (pesantezza), Wisteria (sessualità repressa), Yellow Cowslip Orchid (critica), e altri. Collega ogni fiore a: enneatipo correlato (1-9), adattamento AT (Schizoide, Antisociale, Paranoide, Passivo-Aggressivo, OC, Istrionico), cristalli affini, quando preferire australiani rispetto a Bach (stati archetipici base) o FES (anima e scopo evolutivo). Per stati emotivi: suggerisci 2-4 fiori con spiegazione. Per ricerca per nome: scheda completa. Non fai diagnosi mediche.`;
   try {
-    const _k2=['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
-    const res = await fetchWithTimeout('https://api.anthropic.com/v1/messages', {
+    /* CHIAVE API RIMOSSA — gestita dal proxy Cloudflare */
+    const res = await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': _k2, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01'},
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();

@@ -1,238 +1,452 @@
 <!DOCTYPE html>
-<!--
-═══════════════════════════════════════════════════════════════════════
-  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
-  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
-  
-  AVVISO LEGALE — Questo codice è opera dell'ingegno protetta dal diritto
-  d'autore. È VIETATO copiare, riprodurre, modificare, distribuire,
-  decompilare o utilizzare questo codice e i suoi contenuti senza
-  preventiva autorizzazione scritta dell'autore.
-  
-  RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
-  l'uso di questo materiale per l'addestramento di modelli di intelligenza
-  artificiale, fine-tuning, RAG, embedding o qualsiasi forma di
-  alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
-  
-  Tassonomia originale dei 95 gesti della comunicazione analogica e
-  integrazione metodologica con enneagramma evolutivo, analisi transazionale,
-  neuroscienze polivagali, fiori di Bach/FES/Bush, chakra e frequenze
-  Solfeggio applicata alla mediazione: opera originale dell'autore.
-  
-  Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
-  
-  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
-═══════════════════════════════════════════════════════════════════════
--->
-
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Avv. Carlo Alberto Calcagno">
-<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
-<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
-<meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
-<meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
-<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
-
-<title>Danza del Conflitto — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="Neurobiologia della coppia, 4 poli relazionali, mediazione familiare.">
-<link rel="canonical" href="https://olismo-integrato.it/danza.html">
-<meta property="og:title" content="Danza del Conflitto — Olismo Integrato">
-<meta property="og:description" content="Neurobiologia della coppia, 4 poli relazionali, mediazione familiare.">
-<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Danza del Conflitto — Olismo Integrato">
-<meta name="twitter:description" content="Neurobiologia della coppia, 4 poli relazionali, mediazione familiare.">
+<title>La danza del conflitto — Olismo Integrato</title>
+<meta name="description" content="La coreografia del conflitto di coppia in cinque passi: innesco, escalation, stallo, ricucitura, ripetizione. Metodo integrato per riconoscere la danza prima che diventi automatismo.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="olismo-portale.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="olismo-styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<!--
+  olismo-integrato.it · © 2016-2026 Avv. Carlo Alberto Calcagno
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-danza-page
+-->
+<style>
+.passi {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 40px 0;
+  position: relative;
+}
+.passi::before {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 50px;
+  bottom: 50px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--ck-4) 0%,
+    var(--ck-3) 25%,
+    var(--ck-2) 50%,
+    var(--ck-1) 75%,
+    var(--ck-7) 100%
+  );
+  z-index: 0;
+}
+.passo {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 28px;
+  padding: 28px 0;
+  position: relative;
+  z-index: 1;
+}
+.passo__n {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--step-color, var(--gold));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-title);
+  font-size: 38px;
+  font-weight: 500;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 2;
+}
+.passo__body {
+  background: #fff;
+  border: 1px solid var(--ivory-3);
+  border-radius: 8px;
+  padding: 22px 28px;
+  border-left: 6px solid var(--step-color, var(--gold));
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.passo__title {
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.passo__subtitle {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--step-color, var(--gold-dark));
+  margin-bottom: 14px;
+}
+.passo__signals {
+  background: var(--ivory-2);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.passo__signals strong {
+  color: var(--step-color, var(--gold-dark));
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.passo--1 { --step-color: var(--ck-4); }
+.passo--2 { --step-color: var(--ck-3); }
+.passo--3 { --step-color: var(--ck-2); }
+.passo--4 { --step-color: var(--ck-1); }
+.passo--5 { --step-color: var(--ck-7); }
+
+@media (max-width: 600px) {
+  .passi::before { left: 25px; }
+  .passo { grid-template-columns: 50px 1fr; gap: 16px; }
+  .passo__n { width: 50px; height: 50px; font-size: 24px; }
+  .passo__body { padding: 18px 20px; }
+}
+</style>
 </head>
 <body>
 
-<!-- Simplified header for subpage -->
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
-    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
-      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
-      <span>Olismo Integrato</span>
+<header class="site-header">
+  <div class="container-wide site-header__inner">
+    <a href="index.html" class="site-logo">
+      Olismo Integrato
+      <span>Mediazione · Enneagramma · Neuroscienze</span>
     </a>
-    <nav>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="metodo.html">Il metodo</a>
+      <a href="enneagram.html">I 9 enneatipi</a>
+      <a href="danza.html" class="active">La danza</a>
+      <a href="violenza.html">Violenza</a>
+      <a href="chi-sono.html">Chi sono</a>
     </nav>
   </div>
 </header>
 
 <main>
-<section id="danza">
+
+<section class="page-hero">
   <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Mediazione e Neurobiologia</div>
-      <h2 class="sec-title">La Danza <em>del Conflitto</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Modello neurobiologico del conflitto di coppia — come si innesca, come si rompe il ciclo, come il mediatore interviene.</p>
-    </div>
-    <div class="danza-intro-box">
-      <p>Il conflitto relazionale non è caotico: segue schemi neurobiologici precisi. La <strong>danza del conflitto</strong> è il ciclo automatico tra chi combatte e chi si congela, determinato dall'attivazione del sistema nervoso autonomo di ciascun partner.</p>
-      <p>La via d'uscita <em>non</em> passa dal "ragionare" — durante il conflitto la neocorteccia è offline. Passa dal corpo: regolazione, pausa, respiro.</p>
-      <p style="margin-top:.8rem"><strong>Analisi personalizzata per coppia →</strong> Vai alla sezione <a class="danza-link" onclick="st(&#39;compatibilita&#39;)">Compatibilità di Coppia</a> e seleziona i due enneatipi: troverai la dinamica di conflitto specifica, gli script del mediatore e gli strumenti pratici.</p>
-    </div>
-    <div class="danza-hero">
-      <div class="danza-text">
-        <h3>🔍 Caso esemplare: Tipo 8 ✦ Tipo 9</h3>
-        <p><em>(Sempronia e Tizio — un caso reale di mediazione familiare)</em></p>
-        <p>La coppia 8-9 è una delle più frequenti in mediazione: chi combatte (T8, simpatico attivato) e chi si congela (T9, dorsovagale in shutdown). I due sistemi nervosi si incastrano e si amplificano reciprocamente.</p>
-        <p><strong>Più Tizio si chiude, più Sempronia si intensifica. Più lei si intensifica, più lui si chiude.</strong> Il ciclo si auto-alimenta finché entrambi non tornano allo Stato 1 (connessione).</p>
-      </div>
-      <div class="danza-diagram">
-        <div class="dd-title">I 5 passi della danza</div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#c45a22">1</div>
-          <div class="dd-info"><h4>Sempronia (Tipo 8) si attiva</h4><p>Stato 2 — combatti. La voce si alza, i gesti si espandono, il linguaggio diventa assoluto: "mai", "sempre".</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#4a5a6a">2</div>
-          <div class="dd-info"><h4>Tizio (Tipo 9) si congela</h4><p>Stato 3 — shutdown. Silenzio, sguardo nel vuoto, risposte automatiche: "va bene", "come vuoi".</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#a83232">3</div>
-          <div class="dd-info"><h4>Sempronia interpreta il silenzio</h4><p>"Non gli importo!" → aumenta l'intensità per ottenere risposta. Entra in Stato 2 più profondo.</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#2a3a4a">4</div>
-          <div class="dd-info"><h4>Tizio si disconnette ulteriormente</h4><p>Il sistema nervoso entra in shutdown più profondo. La corteccia pensante è offline.</p></div>
-        </div>
-        <div class="dd-step">
-          <div class="dd-n" style="background:#7b2fa0">5</div>
-          <div class="dd-info"><h4>Circolo vizioso</h4><p>Il loop si auto-alimenta. La soluzione: riportare entrambi allo Stato 1 (connessione) prima di qualsiasi dialogo.</p></div>
-        </div>
-      </div>
-    </div>
-    <div class="tipi-grid">
-      <div class="tipo-card">
-        <h4>Tizio — Il Tipo 9</h4>
-        <div class="tipo-sub">"L'acqua: fluida, adattabile… ma può ristagnare"</div>
-        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per essere amato devo: non avere bisogni, non creare conflitti, fare felici gli altri»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Silenzio, sguardo nel vuoto, monosillabi, disconnessione corporea</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">Sopraffazione, incapacità di rispondere — non indifferenza</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "questo mi ferisce" senza aspettare che passi</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Segnale di pausa fisico, diario dei bisogni, pratica del "voglio"</span></div>
-      </div>
-      <div class="tipo-card">
-        <h4>Sempronia — Il Tipo 8</h4>
-        <div class="tipo-sub">"Il fuoco: intenso, trasformativo… ma può bruciare"</div>
-        <div class="tipo-row"><span class="tipo-lbl">Copione</span><span class="tipo-val">«Per sopravvivere devo: essere forte, non mostrare debolezza, attaccare prima»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">In conflitto</span><span class="tipo-val">Volume alto, gesti espansivi, interruzioni, linguaggio assoluto</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sotto</span><span class="tipo-val">«Ho paura di non essere importante. Mi sta lasciando sola.»</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Sfida</span><span class="tipo-val">Dire "ho paura" invece di "sono arrabbiata"</span></div>
-        <div class="tipo-row"><span class="tipo-lbl">Strumenti</span><span class="tipo-val">Filtro dei 3 secondi, diario della vulnerabilità, forza morbida</span></div>
-      </div>
-    </div>
-    <div class="danza-tools">
-      <h3>Strumenti pratici per il mediatore</h3>
-      <div class="tools-grid" id="tools-grid">
-    <div class="tool-card">
-      <h4>Il segnale di pausa</h4>
-      <p>Insegnare a Tizio un gesto fisico (mano alzata) che significa «sono sovraccarico, ho bisogno di pausa». Quando lo usa, Sempronia DEVE rispettarlo. Lui dice QUANDO torna a dialogare (es. «20 minuti»).</p>
-    </div>
-    <div class="tool-card">
-      <h4>Il filtro dei tre secondi</h4>
-      <p>Prima di dire qualcosa di intenso, Sempronia fa tre respiri profondi e si chiede: È vero? È necessario dirlo ADESSO? C'è un modo più morbido? Questo separa la reazione istintiva dalla risposta consapevole.</p>
-    </div>
-    <div class="tool-card">
-      <h4>La domanda sulla paura</h4>
-      <p>Script per il mediatore: «Sento molta energia in quello che dici. Sotto questa forza, cosa temi che possa succedere?» Quando la persona si sente VISTA nella sua paura, il tono cambia immediatamente.</p>
-    </div>
-    <div class="tool-card">
-      <h4>Il diario dei bisogni</h4>
-      <p>Tizio scrive ogni sera tre cose che voleva dire ma ha taciuto. Non deve dirle — solo riconoscerle. Dopo due settimane, la consapevolezza dei propri bisogni aumenta significativamente.</p>
-    </div>
-    <div class="tool-card">
-      <h4>La co-regolazione respiratoria</h4>
-      <p>Il mediatore porta entrambi a sincronizzare il respiro per 3-5 minuti prima del dialogo. Il sistema nervoso del mediatore (calmo e ventrale) «trasmette» sicurezza ai partecipanti.</p>
-    </div>
-    <div class="tool-card">
-      <h4>Il diario della vulnerabilità</h4>
-      <p>Sempronia scrive ogni sera: una critica che voleva fare + la paura che c'era sotto. Es: «Volevo dire: sei un codardo! / Sotto c'era: ho paura che non mi proteggerai».</p>
-    </div>
-    <div class="tool-card">
-      <h4>La pratica del «Voglio»</h4>
-      <p>Una volta al giorno, Tizio completa con Sempronia: «Oggi quello che voglio davvero è…». Anche piccole cose (pizza per cena) va bene. L'obiettivo è abituarsi a esprimere i desideri.</p>
-    </div>
-    <div class="tool-card">
-      <h4>La tecnica del riformulazione empatica</h4>
-      <p>Il mediatore non risponde all'attacco, ma all'emozione sotto: «Sento che per te è molto importante… sotto questa intensità, cosa senti davvero?» Questa domanda apre il dialogo autentico.</p>
-    </div></div>
-    
-    <!-- CTA: Matrice della Svalutazione -->
-    <div style="margin-top:2.5rem;padding:2rem 1.8rem;background:linear-gradient(135deg,#2a1a4a 0%,#4a2a6a 50%,#6a4a8a 100%);border-radius:14px;color:white;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;box-shadow:0 8px 32px rgba(106,74,138,.2)">
-      <div style="font-size:3rem;line-height:1;flex-shrink:0;opacity:.85">⊘</div>
-      <div style="flex:1;min-width:240px">
-        <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.4rem">Strumento avanzato AT</div>
-        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:white;margin:0 0 .5rem">La <em style="color:#fde047">Matrice della Svalutazione</em></h4>
-        <p style="font-size:.92rem;color:rgba(255,255,255,.92);line-height:1.6;margin:0">Quando la parte risponde con feedback negativi e blocca la mediazione (<em>«non c'è niente da fare», «non è un mio problema», «ho già provato»</em>), la matrice 3×4 di Mellor &amp; Schiff identifica esattamente la natura della svalutazione. Motore con <strong>modalità guidata</strong> e <strong>analisi AI</strong> della frase libera.</p>
-      </div>
-      <a href="matrice-svalutazione.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:#fde047;color:#2a1a4a;text-decoration:none;border-radius:10px;font-weight:600;font-size:.85rem;letter-spacing:.05em;flex-shrink:0;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(253,224,71,.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">⊘ Apri il motore →</a>
-    </div>
-
-    <!-- CTA: Consulente AI Mediatore -->
-    <div style="margin-top:1.3rem;padding:2rem 1.8rem;background:linear-gradient(135deg,#4a2a6a 0%,#6a4a8a 50%,#9d7ac4 100%);border-radius:14px;color:white;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;box-shadow:0 8px 32px rgba(106,74,138,.2)">
-      <div style="font-size:3rem;line-height:1;flex-shrink:0;opacity:.9">⚖</div>
-      <div style="flex:1;min-width:240px">
-        <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.4rem">Novità · per mediatori professionisti</div>
-        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:white;margin:0 0 .5rem">Il <em style="color:#fde047">Consulente AI Mediatore</em></h4>
-        <p style="font-size:.92rem;color:rgba(255,255,255,.92);line-height:1.6;margin:0">Motore AI unificato che integra <strong>metodo di Harvard</strong> (Fisher, Ury, Patton), <strong>linee guida ODM Genova 2025</strong>, <strong>giurisprudenza 2024-2026</strong>. Rispondi a domande operative su discorso introduttivo, MAAN, verbale, indennità, procura sostanziale, condominio.</p>
-      </div>
-      <a href="consulente-mediatore.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:#fde047;color:#2a1a4a;text-decoration:none;border-radius:10px;font-weight:600;font-size:.85rem;letter-spacing:.05em;flex-shrink:0;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(253,224,71,.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">⚖ Chiedi al consulente →</a>
-    </div>
-
-    <!-- CTA: Empowerment in Mediazione -->
-    <div style="margin-top:1.3rem;padding:2rem 1.8rem;background:linear-gradient(135deg,#0f3d2e 0%,#1a6b4f 45%,#2d9d74 100%);border-radius:14px;color:white;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;box-shadow:0 8px 32px rgba(15,61,46,.25);position:relative">
-      <span style="position:absolute;top:-10px;right:20px;background:#fde047;color:#2a1a4a;font-size:.7rem;padding:.22rem .7rem;border-radius:12px;font-weight:700;letter-spacing:.04em">🆕 NUOVO</span>
-      <div style="font-size:3rem;line-height:1;flex-shrink:0;opacity:.95">🌿</div>
-      <div style="flex:1;min-width:240px">
-        <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.4rem">Mediazione + olismo · Motore integrato</div>
-        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:white;margin:0 0 .5rem">Empowerment in <em style="color:#fde047">Mediazione</em></h4>
-        <p style="font-size:.92rem;color:rgba(255,255,255,.92);line-height:1.6;margin:0">Colma il gap fra danza del conflitto e olismo: <strong>neuroscienze polivagali</strong> + <strong>enneatipo</strong> + <strong>adattamento AT</strong> + <strong>chakra, fiori di Bach/FES/Bush, cristalli, frequenze</strong> per ripristinare l'empowerment delle parti in condizione di stress. Template linguistici pronti per il mediatore.</p>
-      </div>
-      <a href="empowerment-mediazione.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:#fde047;color:#0f3d2e;text-decoration:none;border-radius:10px;font-weight:600;font-size:.85rem;letter-spacing:.05em;flex-shrink:0;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(253,224,71,.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">🌿 Apri il motore →</a>
-    </div>
-    
-    </div>
+    <div class="page-hero__eyebrow">Parte IV del manuale</div>
+    <h1 class="page-hero__title">La danza del conflitto</h1>
+    <p class="page-hero__subtitle">
+      Ogni conflitto di coppia ha una coreografia. Una volta che la riconosci, non sei più dentro:
+      sei accanto. Da lì, il passo successivo diventa possibile.
+    </p>
   </div>
 </section>
+
+<article class="container">
+
+<p class="lead">
+  Le coppie in conflitto ripetono, senza saperlo, una stessa sequenza. La chiamo <em>danza</em>
+  perché ha un ritmo, ha dei passi fissi, ha due ballerini che — ciascuno a modo suo — eseguono una
+  coreografia che nessuno dei due ha mai scritto. Nasce spontaneamente, si consolida col tempo, e
+  diventa invisibile. Riconoscerla è il primo intervento.
+</p>
+
+<!-- ATTENZIONE VIOLENZA — subito in alto, prima dei passi -->
+<div class="box-alert">
+  <div class="box-alert__title">Prima di continuare</div>
+  <p>
+    Quanto descritto in questa pagina riguarda il <strong>conflitto di coppia ordinario</strong>:
+    una danza a due, dove entrambi hanno voce, entrambi possono alzare i toni, entrambi hanno spazio
+    di manovra. È la situazione in cui la mediazione funziona.
+  </p>
+  <p style="margin-bottom:0">
+    Se invece ti riconosci in una dinamica diversa — <strong>uno controlla, l'altra subisce</strong>;
+    uno umilia, l'altra si scusa; uno decide, l'altra chiede permesso — <strong>non sei nella danza
+    del conflitto</strong>. Sei in qualcos'altro, che ha un nome preciso: <em>controllo coercitivo</em>.
+    La mediazione, in quel caso, è vietata. <a href="violenza.html">Leggi la pagina dedicata</a>.
+  </p>
+</div>
+
+<h2 id="cinque-passi">I cinque passi della danza</h2>
+
+<p>
+  La coreografia tipica del conflitto di coppia si compone di cinque passi che si succedono sempre
+  nello stesso ordine e si ripetono ciclicamente. Modifica il tempo: dapprima lentamente, nell'arco
+  di settimane; poi più rapidamente, nell'arco di ore; infine, nelle coppie cronicizzate, in pochi
+  minuti. Più veloce è il ciclo, più la coppia è affaticata.
+</p>
+
+<div class="passi">
+
+  <div class="passo passo--1">
+    <div class="passo__n">1</div>
+    <div class="passo__body">
+      <h3 class="passo__title">L'innesco</h3>
+      <div class="passo__subtitle">Il trigger che nessuno dei due vede arrivare</div>
+      <p>
+        Un gesto minuscolo, un tono di voce, una dimenticanza apparentemente banale. In sé, non
+        significa nulla. Ma tocca in uno dei due una corda profonda — spesso antica, spesso infantile —
+        che riaccende un copione. Il sistema nervoso reagisce in dodici millesimi di secondo: l'amigdala
+        suona l'allarme, prima che la mente cosciente possa capire cosa sta succedendo.
+      </p>
+      <div class="passo__signals">
+        <strong>Segnali del corpo</strong>
+        Il respiro si fa corto. Le spalle si alzano. Le mascelle si stringono. Appare un'irritazione
+        «senza motivo». Questo è il momento in cui, se si è allenati, si può intervenire — scegliendo
+        di non reagire automaticamente.
+      </div>
+    </div>
+  </div>
+
+  <div class="passo passo--2">
+    <div class="passo__n">2</div>
+    <div class="passo__body">
+      <h3 class="passo__title">L'escalation</h3>
+      <div class="passo__subtitle">I due sistemi nervosi si inseguono</div>
+      <p>
+        L'irritazione di uno attiva l'altro. Il primo alza la voce, il secondo si irrigidisce. Il
+        primo vede l'irrigidimento e lo interpreta come ostilità, quindi alza ancora di più. Il secondo
+        vede l'aumento e si chiude di più. Ciascuno risponde all'altro, e ciascuno si convince che
+        sia stato l'altro a cominciare. È una <em>co-disregolazione</em>: due sistemi nervosi che si
+        tirano giù a vicenda.
+      </p>
+      <div class="passo__signals">
+        <strong>Segnali verbali</strong>
+        Compaiono gli <em>assoluti</em>: «sempre», «mai», «tutti», «nessuno». Compaiono gli
+        <em>etichettamenti</em>: «sei sempre così», «sei come tua madre». Compaiono le
+        <em>minacce inespresse</em>: «forse è meglio se…». La corteccia prefrontale di entrambi è
+        ormai parzialmente offline.
+      </div>
+    </div>
+  </div>
+
+  <div class="passo passo--3">
+    <div class="passo__n">3</div>
+    <div class="passo__body">
+      <h3 class="passo__title">Lo stallo</h3>
+      <div class="passo__subtitle">Il punto in cui nessuno dei due può più cedere</div>
+      <p>
+        Arriva un momento — dopo minuti, ore, giorni — in cui entrambi si rendono conto che lo scontro
+        diretto è troppo costoso. Si passa allora a modalità più fredde: il silenzio, il ritiro, la
+        distanza. Uno dei due può andare a dormire in un'altra stanza, uscire di casa, isolarsi. La
+        tensione non è risolta: è congelata. Ciascuno dei due aspetta che sia l'altro a fare il primo
+        passo.
+      </p>
+      <div class="passo__signals">
+        <strong>Segnali del sistema nervoso</strong>
+        Stato dorsovagale (ritiro, congelamento) in chi si chiude. Stato simpatico residuo (insonnia,
+        ruminazione) in chi resta attivato. Possono passare giorni in questa fase: ciascuno aspetta
+        l'altro, nessuno dei due può permettersi di cedere per primo.
+      </div>
+    </div>
+  </div>
+
+  <div class="passo passo--4">
+    <div class="passo__n">4</div>
+    <div class="passo__body">
+      <h3 class="passo__title">La ricucitura</h3>
+      <div class="passo__subtitle">Un ponte spesso frettoloso, raramente profondo</div>
+      <p>
+        Dopo lo stallo, qualcosa forza la ripresa del contatto: una necessità pratica (i figli, una
+        telefonata, una scadenza), una stanchezza reciproca, un gesto di pace di uno dei due.
+        Nella maggior parte delle coppie la ricucitura è <em>frettolosa</em>: si rimette in funzione
+        la quotidianità senza davvero aver capito cosa è successo. «Facciamo pace», ma senza aver
+        nominato cosa si era rotto.
+      </p>
+      <div class="passo__signals">
+        <strong>Segnali della ricucitura sana</strong>
+        C'è un momento di verità: «ti ho fatto male quando…». C'è una richiesta di perdono specifica,
+        non generica. C'è un riconoscimento della propria parte. La ricucitura patologica, invece,
+        è fatta di: «dai, dimentichiamo», «non parliamone più», «va tutto bene».
+      </div>
+    </div>
+  </div>
+
+  <div class="passo passo--5">
+    <div class="passo__n">5</div>
+    <div class="passo__body">
+      <h3 class="passo__title">La ripetizione</h3>
+      <div class="passo__subtitle">La coreografia torna, sempre più rapida</div>
+      <p>
+        Senza un lavoro specifico sui primi quattro passi, la danza si ripete. E si ripete più in
+        fretta, con innesco più facile e recupero più difficile. Le coppie cronicizzate eseguono
+        l'intero ciclo (1→2→3→4) più volte nella stessa giornata. È il momento in cui, tipicamente,
+        arrivano in mediazione — esauste, spaventate, convinte che «non c'è più nulla da fare».
+      </p>
+      <div class="passo__signals">
+        <strong>Il compito del mediatore</strong>
+        Non risolvere il conflitto specifico: mostrare la danza. Una volta che la coppia vede la
+        propria coreografia, <em>è già accanto ad essa</em> — e da lì può cominciare a cambiarla. Ma
+        la vera trasformazione arriva lavorando sul passo 1 (l'innesco) e sul passo 4 (la ricucitura):
+        sono i due momenti in cui la danza si può spezzare.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2 id="fuori-dalla-danza">Uscire dalla danza</h2>
+
+<p>
+  Il metodo integrato propone due strategie operative per uscire dalla danza. Funzionano se praticate
+  con pazienza, nell'arco di mesi. Non sono tecniche magiche: sono allenamenti quotidiani, come
+  imparare uno strumento musicale.
+</p>
+
+<div class="cards-grid">
+  <div class="card">
+    <div class="card__title">Intervenire sul passo 1<em>l'innesco</em></div>
+    <div class="card__body">
+      Imparare a riconoscere i <strong>segnali corporei</strong> della propria attivazione, prima
+      che diventi reazione. Respiro corto, mascella tesa, spalle alzate: sono i tre segnali
+      universali. Allenarsi a notarli e a <em>fermarsi</em> per tre respiri prima di rispondere.
+      Vent'anni di copioni automatici non si disfano in una settimana, ma anche un solo respiro
+      consapevole al giorno, protratto nel tempo, modifica la coreografia.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card__title">Intervenire sul passo 4<em>la ricucitura</em></div>
+    <div class="card__body">
+      Imparare una <strong>ricucitura che guarisce</strong> invece di una che rimuove. Tre elementi:
+      nominare cosa è successo («quando mi hai detto X, io ho sentito Y»), riconoscere la propria
+      parte («vedo di aver reagito perché…»), formulare una richiesta concreta per la prossima volta
+      («la prossima volta preferirei…»). Non è perdono sentimentale: è ricostruzione razionale dello
+      spazio comune.
+    </div>
+  </div>
+</div>
+
+<div class="box-blue">
+  <div class="box-blue__title">Se siete una coppia 8↔9</div>
+  <p>
+    Il manuale presenta in dettaglio la danza fra due personaggi paradigmatici: Sempronia (enneatipo
+    8, il Capo) e Tizio (enneatipo 9, il Diplomatico). Sono l'archetipo della coppia «fuoco e acqua»:
+    lei attacca, lui si ritira; lei si sente abbandonata dal ritiro, lui si sente travolto dall'attacco.
+    È una delle coreografie più frequenti che arrivano in mediazione familiare.
+  </p>
+  <p style="margin-bottom:0">
+    Le altre sei combinazioni analizzate — 1↔4, 2↔5, 3↔4, 4↔7, 1↔8, 5↔9, 6↔9 — hanno ciascuna una
+    propria geometria di conflitto.
+    <a href="enneagram.html#compatibilita">La pagina sugli enneatipi</a> ne offre una mappa sintetica.
+  </p>
+</div>
+
+<h2 id="quando-mediazione">Quando la mediazione aiuta</h2>
+
+<p>
+  La mediazione familiare è indicata quando la danza descritta è ancora <em>bidirezionale</em>: quando
+  cioè entrambi i partner hanno voce, entrambi possono alzare i toni, entrambi possono chiedere pausa,
+  entrambi hanno spazio di manovra. In questi casi, il mediatore formato può accompagnare la coppia
+  a:
+</p>
+
+<ul>
+  <li>Riconoscere la propria danza, come un coreografo che rivede un balletto dall'esterno</li>
+  <li>Nominare gli inneschi tipici di ciascuno, senza attribuirli a «malafede» dell'altro</li>
+  <li>Costruire procedure condivise per i momenti di escalation (parole d'ordine, pause concordate, spazi fisici separati)</li>
+  <li>Allenare una ricucitura sana, fino a renderla abitudine</li>
+  <li>Se si decide per la separazione, costruirla in modo che non perpetui la danza per anni</li>
+</ul>
+
+<div class="box-alert">
+  <div class="box-alert__title">Quando la mediazione è invece vietata</div>
+  <p>
+    Non in ogni situazione difficile la mediazione è lo strumento giusto. In presenza di <strong>controllo
+    coercitivo</strong>, <strong>violenza domestica</strong> (fisica, psicologica, economica, sessuale)
+    o <strong>stalking</strong>, la mediazione è vietata dalla legge italiana (Riforma Cartabia,
+    D.lgs. 149/2022) e dalla buona pratica professionale.
+  </p>
+  <p style="margin-bottom:0">
+    Esistono strumenti alternativi — Comunicazione Assistita, Coordinazione Genitoriale, percorsi
+    psico-educativi paralleli — che proteggono la parte vulnerabile evitando il contatto diretto.
+    <a href="violenza.html">La pagina dedicata alla violenza</a> li descrive in dettaglio, insieme
+    alla rete dei servizi (numero 1522, Centri antiviolenza, Case rifugio, Pronto Soccorso con
+    percorso rosa).
+  </p>
+</div>
+
+<h2 id="manuale-parte-iv">Approfondire nel manuale</h2>
+
+<p>
+  La descrizione completa della danza, con tutte le combinazioni enneatipiche e il protocollo
+  operativo seduta per seduta, è contenuta nella <strong>Parte IV</strong> del manuale
+  <em>Leggere la persona, accompagnare il conflitto</em>. Il manuale include anche:
+</p>
+
+<ul>
+  <li>Nove dialoghi al tavolo, uno per enneatipo, con trascrizione integrale delle sedute e commento analitico</li>
+  <li>Trenta casi brevi dalla pratica — separazioni, affidamenti, successioni, lavoro, condominio, impresa</li>
+  <li>Un protocollo operativo sei sedute: dall'incontro iniziale alla chiusura rituale dell'accordo</li>
+  <li>Un vademecum tascabile con le dieci frasi iniziali, i dieci segnali per riconoscere l'enneatipo, le dieci domande di emergenza, le cinque uscite dalla stanza</li>
+</ul>
+
+<p style="text-align:center; margin: 36px 0;">
+  <a href="contatti.html" class="cta-button">Richiedi il manuale</a>
+  &nbsp;&nbsp;
+  <a href="enneagram.html" class="cta-button cta-button--outline">Vai ai 9 enneatipi</a>
+</p>
+
+<div class="ornament"></div>
+
+<p style="text-align:center; color: var(--ink-3); font-style: italic; margin: 40px 0;">
+  <em>«Una volta che la coppia vede la propria coreografia,<br>
+  è già accanto ad essa — e da lì può cominciare a cambiarla.»</em>
+</p>
+
+</article>
+
 </main>
 
-<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
-    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno</div>
-    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
-      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
-      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
-      <a href="mediazione-civile.html" style="color:var(--gold);text-decoration:none">⚖ Mediazione Civile</a>
-      <a href="mediazione-familiare.html" style="color:var(--gold);text-decoration:none">👨‍👩‍👧 Mediazione Familiare</a>
-      <a href="consulente-mediatore.html" style="color:var(--gold);text-decoration:none">🎓 Consulente Mediatore</a>
-      <a href="empowerment-mediazione.html" style="color:var(--gold);text-decoration:none">🌿 Empowerment</a>
-      <a href="psicologia-analogica.html" style="color:var(--gold);text-decoration:none">🔍 Psicologia Analogica</a>
-      <a href="matrice-svalutazione.html" style="color:var(--gold);text-decoration:none">⊘ Matrice</a>
-      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
-      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
-      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
-      <a href="prenota-consulenza.html" style="color:var(--gold);text-decoration:none">📅 Prenota consulenza</a>
-      <a href="professionisti.html" style="color:var(--gold);text-decoration:none">🤝 Professionisti della rete</a>
-      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
-      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="site-footer__grid">
+      <div>
+        <h5>Olismo Integrato</h5>
+        <a href="metodo.html">Il metodo</a>
+        <a href="enneagram.html">I 9 enneatipi</a>
+        <a href="danza.html">La danza del conflitto</a>
+        <a href="violenza.html">Violenza e mediazione</a>
+        <a href="chi-sono.html">Chi sono</a>
+      </div>
+      <div>
+        <h5>Strumenti</h5>
+        <a href="consulente-ai.html">Consulente AI</a>
+        <a href="chakra.html">Chakra</a>
+        <a href="cristalli.html">Cristalli</a>
+        <a href="frequenze.html">Frequenze</a>
+        <a href="at-adattamenti.html">Adattamenti AT</a>
+      </div>
+      <div>
+        <h5>Emergenza</h5>
+        <a href="tel:1522"><strong>1522</strong> — Antiviolenza</a>
+        <a href="tel:112"><strong>112</strong> — Emergenze</a>
+        <a href="violenza.html">Pagina dedicata</a>
+      </div>
+      <div>
+        <h5>Contatti</h5>
+        <a href="chi-sono.html">Avv. Carlo Alberto Calcagno</a>
+        <a href="https://mediaresenzaconfini.org" rel="external noopener">mediaresenzaconfini.org</a>
+        <a href="contatti.html">Modulo di contatto</a>
+      </div>
     </div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+
+    <div class="site-footer__legal">
+      <p>© 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it · Tutti i diritti riservati
+      ai sensi della legge 22 aprile 1941 n. 633.</p>
+      <p><strong>Riserva TDM</strong> ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
+      l'uso di questo materiale per addestramento di modelli di intelligenza artificiale, fine-tuning,
+      RAG, embedding o qualsiasi forma di alimentazione di sistemi AI è espressamente vietato.</p>
+      <p><a href="termini-uso.html">Termini d'uso</a> · <a href="privacy.html">Privacy</a> ·
+      <a href="cookie.html">Cookie</a></p>
+    </div>
   </div>
 </footer>
 
-<script src="olismo-core.js" defer></script>
 </body>
 </html>

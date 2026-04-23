@@ -1,251 +1,579 @@
 <!DOCTYPE html>
-<!--
-═══════════════════════════════════════════════════════════════════════
-  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
-  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
-  
-  AVVISO LEGALE — Questo codice è opera dell'ingegno protetta dal diritto
-  d'autore. È VIETATO copiare, riprodurre, modificare, distribuire,
-  decompilare o utilizzare questo codice e i suoi contenuti senza
-  preventiva autorizzazione scritta dell'autore.
-  
-  RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
-  l'uso di questo materiale per l'addestramento di modelli di intelligenza
-  artificiale, fine-tuning, RAG, embedding o qualsiasi forma di
-  alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
-  
-  Tassonomia originale dei 95 gesti della comunicazione analogica e
-  integrazione metodologica con enneagramma evolutivo, analisi transazionale,
-  neuroscienze polivagali, fiori di Bach/FES/Bush, chakra e frequenze
-  Solfeggio applicata alla mediazione: opera originale dell'autore.
-  
-  Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
-  
-  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
-═══════════════════════════════════════════════════════════════════════
--->
-
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Avv. Carlo Alberto Calcagno">
-<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
-<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
-<meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
-<meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
-<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
-
-<title>Enneagramma Evolutivo — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
-<link rel="canonical" href="https://olismo-integrato.it/enneagram.html">
-<meta property="og:title" content="Enneagramma Evolutivo — Olismo Integrato">
-<meta property="og:description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
-<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enneagramma Evolutivo — Olismo Integrato">
-<meta name="twitter:description" content="I 9 enneatipi in una visione evolutiva con fasi di integrazione.">
+<title>I nove enneatipi — Olismo Integrato</title>
+<meta name="description" content="I nove enneatipi nel metodo integrato: dignità divine, muse, pianeti, aree cerebrali, chakra, virtù e vizi, personaggi paradigmatici del manuale 'Leggere la persona, accompagnare il conflitto'.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="olismo-portale.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="olismo-styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<!--
+  olismo-integrato.it · © 2016-2026 Avv. Carlo Alberto Calcagno
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-enneagram-page
+-->
+<style>
+/* Colori accentuati per enneatipo */
+.ennea-1 { --accent: var(--ck-1); }    /* Grandezza · Marte */
+.ennea-2 { --accent: var(--ck-3); }    /* Eternità · Sole */
+.ennea-3 { --accent: var(--ck-2); }    /* Potenza · Rahu */
+.ennea-4 { --accent: var(--ck-6); }    /* Sapienza · Mercurio */
+.ennea-5 { --accent: var(--ink-2); }   /* Volontà · Saturno */
+.ennea-6 { --accent: var(--ck-5); }    /* Virtù · Ketu */
+.ennea-7 { --accent: var(--gold); }    /* Verità · Giove */
+.ennea-8 { --accent: var(--ck-4); }    /* Gloria · Venere */
+.ennea-9 { --accent: var(--ck-7); }    /* Bontà · Luna */
+
+.ennea-cards .card {
+  position: relative;
+  padding-left: 28px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--ivory) 100%);
+}
+.ennea-cards .card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 8px;
+  background: var(--accent);
+  border-radius: 2px 0 0 2px;
+}
+.ennea-cards .card__number-ennea {
+  font-family: var(--font-title);
+  font-size: 64px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+  opacity: .85;
+}
+.ennea-cards .card__title {
+  color: var(--ink);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.ennea-cards .card__role {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.ennea-cards .card__attrs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+}
+.ennea-cards .card__attrs dt {
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.ennea-cards .card__attrs dd {
+  margin: 0;
+}
+.ennea-cards .card__personaggio {
+  font-family: var(--font-title);
+  font-style: italic;
+  color: var(--ink-2);
+  padding-top: 10px;
+  border-top: 1px dashed var(--ivory-3);
+  font-size: 14px;
+}
+.ennea-cards .card__personaggio strong {
+  color: var(--accent);
+  font-style: normal;
+}
+.ennea-cards { grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); }
+</style>
 </head>
 <body>
 
-<!-- Simplified header for subpage -->
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
-    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
-      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
-      <span>Olismo Integrato</span>
+<header class="site-header">
+  <div class="container-wide site-header__inner">
+    <a href="index.html" class="site-logo">
+      Olismo Integrato
+      <span>Mediazione · Enneagramma · Neuroscienze</span>
     </a>
-    <nav>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="metodo.html">Il metodo</a>
+      <a href="enneagram.html" class="active">I 9 enneatipi</a>
+      <a href="danza.html">La danza</a>
+      <a href="violenza.html">Violenza</a>
+      <a href="chi-sono.html">Chi sono</a>
     </nav>
   </div>
 </header>
 
 <main>
-<section id="enneagram">
+
+<section class="page-hero">
   <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Enneagramma Evolutivo</div>
-      <h2 class="sec-title">I nove <em>enneatipi</em></h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Il ciclo breve (3-6-9) attraversa tre fasi in 0-30, 30-60 e 60+ anni. Il ciclo lungo (1-2-4-5-7-8) ne attraversa sei. Non categorie fisse, ma percorsi di trasformazione viventi.</p>
-    </div>
-    <div class="enn-grid" id="enn-grid">
-    <div class="enn-card" onclick="showEnnDetail(&#39;e1&#39;)">
-      <div class="enn-big-num">1</div>
-      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍎 Mela</div>
-      <div class="enn-name">Tipo 1 — Il Perfezionista</div>
-      <div class="enn-italic">Serenità · Ira repressa</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Volontà</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Serafini</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 7</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 4</span></div>
-      <div class="enn-path">0–30: rigidità moralistica · 30–60: saggezza disciplinata · 60+: integrazione gioiosa</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e2&#39;)">
-      <div class="enn-big-num">2</div>
-      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍐 Pera</div>
-      <div class="enn-name">Tipo 2 — L'Altruista</div>
-      <div class="enn-italic">Umiltà · Orgoglio</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Eternità</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Cherubini</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 4</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 8</span></div>
-      <div class="enn-path">0–30: aiuto compulsivo · 30–60: equilibrio dare/ricevere · 60+: amore incondizionato</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e3&#39;)">
-      <div class="enn-big-num">3</div>
-      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍒 Ciliegia</div>
-      <div class="enn-name">Tipo 3 — Il Manager</div>
-      <div class="enn-italic">Autenticità · Vanità</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Sapienza</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Troni</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 6</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 9</span></div>
-      <div class="enn-path">0–30: identità nell'immagine · 30–60: efficienza autentica · 60+: servizio umile</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e4&#39;)">
-      <div class="enn-big-num">4</div>
-      <div class="enn-centro" style="border-color:#c45a2240;color:#c45a22">Emotivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍊 Nespola</div>
-      <div class="enn-name">Tipo 4 — Il Romantico</div>
-      <div class="enn-italic">Equanimità · Invidia</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Sapienza</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Dominazioni</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 1</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 2</span></div>
-      <div class="enn-path">0–30: romanticismo drammatico · 30–60: creatività strutturata · 60+: bellezza nell'ordinario</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e5&#39;)">
-      <div class="enn-big-num">5</div>
-      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍇 Uva</div>
-      <div class="enn-name">Tipo 5 — L'Eremita</div>
-      <div class="enn-italic">Distacco sano · Avarizia di sé</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Verità</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Potestà</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 8</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 7</span></div>
-      <div class="enn-path">0–30: accumulo di conoscenza · 30–60: condivisione del sapere · 60+: saggezza incarnata</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e6&#39;)">
-      <div class="enn-big-num">6</div>
-      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🫐 Mirtillo</div>
-      <div class="enn-name">Tipo 6 — Il Leale</div>
-      <div class="enn-italic">Coraggio · Paura</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Grandezza</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Virtù</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 9</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 3</span></div>
-      <div class="enn-path">0–30: dipendenza dall'autorità · 30–60: lealtà consapevole · 60+: fede in sé</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e7&#39;)">
-      <div class="enn-big-num">7</div>
-      <div class="enn-centro" style="border-color:#1565c040;color:#1565c0">Mentale</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍍 Ananas</div>
-      <div class="enn-name">Tipo 7 — L'Entusiasta</div>
-      <div class="enn-italic">Sobrietà · Gola</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Grandezza</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Principati</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 5</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 1</span></div>
-      <div class="enn-path">0–30: fuga nel piacere · 30–60: profondità gioiosa · 60+: gratitudine per il presente</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e8&#39;)">
-      <div class="enn-big-num">8</div>
-      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍑 Albicocca</div>
-      <div class="enn-name">Tipo 8 — Il Capo</div>
-      <div class="enn-italic">Innocenza · Lussuria di controllo</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Gloria</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Arcangeli</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 2</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 5</span></div>
-      <div class="enn-path">0–25: espressione istintiva · 25–30: shock vulnerabilità · 30–60: protezione consapevole · 60+: autorità servente</div>
-    </div>
-    <div class="enn-card" onclick="showEnnDetail(&#39;e9&#39;)">
-      <div class="enn-big-num">9</div>
-      <div class="enn-centro" style="border-color:#a8323240;color:#a83232">Istintivo</div>
-      <div class="evo-badge" style="background:var(--gold-pale);color:var(--gold)">🍓 Fragola</div>
-      <div class="enn-name">Tipo 9 — Il Diplomatico</div>
-      <div class="enn-italic">Azione · Pigrizia di sé</div>
-      <div style="font-size:.7rem;color:var(--gold);margin-top:.3rem;font-family:&#39;Cormorant Garamond&#39;,serif;font-style:italic">Dignità: Perfezione</div>
-      <div style="font-size:.68rem;color:var(--ink4)">☩ Angeli</div>
-      <div class="enn-line"><span class="enn-ll">Integrazione</span><span class="enn-lr">→ Tipo 3</span></div>
-      <div class="enn-line"><span class="enn-ll">Disintegrazione</span><span class="enn-lr">→ Tipo 6</span></div>
-      <div class="enn-path">0–30: pace nella fusione · 30–60: azione consapevole · 60+: mediatore saggio</div>
-    </div><div id="enn-detail-panel" class="enn-detail-panel" style="grid-column: 1 / -1;"></div></div>
+    <div class="page-hero__eyebrow">Enneagramma evolutivo</div>
+    <h1 class="page-hero__title">I nove enneatipi</h1>
+    <p class="page-hero__subtitle">
+      Non una gabbia, un punto di partenza. Ciascuno di noi porta nel mondo una dignità specifica
+      che ha una vita intera per svelare.
+    </p>
   </div>
 </section>
 
-<!-- CTA: Enneagramma Evolutivo (sito partner del dr. Calcagno) -->
-<section style="max-width:1100px;margin:3rem auto 0;padding:0 1.5rem">
-  <div style="padding:2rem 1.8rem;background:linear-gradient(135deg,#2a1a4a 0%,#4a2a6a 55%,#6a4a8a 100%);border-radius:14px;color:white;box-shadow:0 8px 32px rgba(42,26,74,.2)">
-    <div style="text-align:center;margin-bottom:1.3rem">
-      <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.35rem;font-weight:600">🔗 Sito partner · Link esterno</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:white;margin:0 0 .4rem">Enneagramma <em style="color:#fde047;font-style:italic">Evolutivo</em></h3>
-      <p style="font-size:.9rem;color:rgba(255,255,255,.9);max-width:640px;margin:0 auto;line-height:1.5">Il sito dedicato del dr. Calcagno sull'Enneagramma Evolutivo: test dei 9 Frutti dell'Albero della Vita, database enneatipi, percorsi di vita, compatibilità di coppia/famiglia/lavoro e strumenti AI specifici per la mediazione.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem">
-      <a href="https://enneagrammaevolutivo.it/test" target="_blank" rel="noopener" style="display:block;padding:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''">
-        <div style="font-size:1.4rem;margin-bottom:.3rem">🍎</div>
-        <div style="font-weight:600;color:#fde047;font-size:.88rem">Test 9 Frutti</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.8);margin-top:.2rem">Scopri il tuo enneatipo</div>
-      </a>
-      <a href="https://enneagrammaevolutivo.it/compatibilita/coppia" target="_blank" rel="noopener" style="display:block;padding:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''">
-        <div style="font-size:1.4rem;margin-bottom:.3rem">💞</div>
-        <div style="font-weight:600;color:#fde047;font-size:.88rem">Compatibilità</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.8);margin-top:.2rem">Coppia/famiglia/lavoro</div>
-      </a>
-      <a href="mediazione-civile.html" style="position:relative;display:block;padding:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''"><div style="font-size:1.4rem;margin-bottom:.3rem">⚖</div>
-        <div style="font-weight:600;color:#fde047;font-size:.88rem">Med. Civile</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.8);margin-top:.2rem">Analisi + bozza accordo</div>
-      </a>
-      <a href="mediazione-familiare.html" style="position:relative;display:block;padding:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''"><div style="font-size:1.4rem;margin-bottom:.3rem">👨‍👩‍👧</div>
-        <div style="font-weight:600;color:#fde047;font-size:.88rem">Med. Familiare</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.8);margin-top:.2rem">Dinamiche familiari</div>
-      </a>
+<article class="container">
+
+<p class="lead">
+  Nella tradizione integrata da Raimondo Lullo (ruota delle dignità divine), Athanasius Kircher
+  (enneagramma angelico) e Claudio Naranjo (tipologia psicologica contemporanea), ciascun enneatipo
+  corrisponde a una qualità divina specifica — una <em>dignità</em> — che la persona è chiamata a
+  incarnare nel corso della propria vita. Non è destino: è vocazione. Il percorso evolutivo è proprio
+  il progressivo passaggio dalla forma immatura di quella qualità (che crea sofferenza a sé e agli
+  altri) alla forma matura (che diventa dono per il mondo).
+</p>
+
+<h2 id="mappa">La mappa completa</h2>
+
+<p>
+  Ogni enneatipo è correlato a una serie di elementi che il metodo integrato usa come chiavi di
+  lettura. La tabella che segue raccoglie le corrispondenze principali. Sono <em>chiavi euristiche</em>
+  — aiutano a vedere — non dogmi.
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Enneatipo</th>
+      <th>Dignità</th>
+      <th>Gerarchia angelica</th>
+      <th>Musa</th>
+      <th>Pianeta</th>
+      <th>Area cerebrale</th>
+      <th>Chakra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>Perfezionista</td>
+      <td>Grandezza</td>
+      <td>Serafini</td>
+      <td>Urania<br><small>(astronomia)</small></td>
+      <td>Marte</td>
+      <td>Amigdala</td>
+      <td>3°</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Altruista</td>
+      <td>Eternità</td>
+      <td>Cherubini</td>
+      <td>Polimnia<br><small>(memoria)</small></td>
+      <td>Sole</td>
+      <td>Talamo</td>
+      <td>4°</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>Manager</td>
+      <td>Potenza</td>
+      <td>Troni</td>
+      <td>Euterpe<br><small>(musica)</small></td>
+      <td>Rahu</td>
+      <td>Testa caudato</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td>Romantico</td>
+      <td>Sapienza</td>
+      <td>Dominazioni</td>
+      <td>Erato<br><small>(canto corale)</small></td>
+      <td>Mercurio</td>
+      <td>Nucleo subtalamico</td>
+      <td>6°</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td>Eremita</td>
+      <td>Volontà</td>
+      <td>Potestà</td>
+      <td>Melpomene<br><small>(tragedia)</small></td>
+      <td>Saturno</td>
+      <td>Putamen</td>
+      <td>1°</td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td>Leale</td>
+      <td>Virtù</td>
+      <td>Virtù</td>
+      <td>Tersicore<br><small>(danza)</small></td>
+      <td>Ketu</td>
+      <td>Coda caudato</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td>Entusiasta</td>
+      <td>Verità</td>
+      <td>Principati</td>
+      <td>Calliope<br><small>(poesia epica)</small></td>
+      <td>Giove</td>
+      <td>Globo pallido</td>
+      <td>2°</td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td>Capo</td>
+      <td>Gloria</td>
+      <td>Arcangeli</td>
+      <td>Clio<br><small>(storia)</small></td>
+      <td>Venere</td>
+      <td>Pars Reticolata</td>
+      <td>5°</td>
+    </tr>
+    <tr>
+      <td><strong>9</strong></td>
+      <td>Diplomatico</td>
+      <td>Bontà</td>
+      <td>Angeli</td>
+      <td>Talia<br><small>(poesia bucolica)</small></td>
+      <td>Luna</td>
+      <td>Ipotalamo</td>
+      <td>7°</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ritratti">I nove ritratti</h2>
+
+<p>
+  Per ogni enneatipo, il manuale <em>Leggere la persona, accompagnare il conflitto</em> presenta un
+  personaggio paradigmatico: un nome, una storia, un modo concreto di stare al mondo. Servono perché
+  vedere un tipo in movimento è più efficace di leggerne la descrizione astratta.
+</p>
+
+<div class="cards-grid ennea-cards">
+
+  <!-- ENNEATIPO 1 -->
+  <div class="card ennea-1">
+    <div class="card__number-ennea">1</div>
+    <div class="card__title">Il Perfezionista</div>
+    <div class="card__role">Grandezza · Marte · Serafino</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Serenità</dd>
+      <dt>Vizio</dt><dd>Ira repressa</dd>
+      <dt>Paura</dt><dd>Di essere imperfetto</dd>
+      <dt>Integrazione</dt><dd>→ verso il 7 (gioia)</dd>
+    </dl>
+    <p class="card__body">
+      Mosso da un super-io intransigente. Cane da caccia: quando prende un impegno lo assolve ad ogni
+      costo. Il suo ribelle interiore si esprime come critica morale di sé e degli altri.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Publio</strong>, magistrato cinquantottenne, al tavolo di una
+      mediazione ereditaria.
     </div>
   </div>
-</section>
+
+  <!-- ENNEATIPO 2 -->
+  <div class="card ennea-2">
+    <div class="card__number-ennea">2</div>
+    <div class="card__title">L'Altruista</div>
+    <div class="card__role">Eternità · Sole · Cherubino</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Umiltà</dd>
+      <dt>Vizio</dt><dd>Orgoglio</dd>
+      <dt>Paura</dt><dd>Di non essere amato</dd>
+      <dt>Integrazione</dt><dd>→ verso il 4 (autenticità)</dd>
+    </dl>
+    <p class="card__body">
+      Il carattere della nutrice. Cenestesico: percepisce il mondo attraverso il corpo. Cane San
+      Bernardo: generoso, sempre disponibile. La trappola è la seduzione come strumento di aiuto.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Martha</strong>, infermiera cinquantaseienne, in una mediazione
+      familiare con la figlia.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 3 -->
+  <div class="card ennea-3">
+    <div class="card__number-ennea">3</div>
+    <div class="card__title">Il Manager</div>
+    <div class="card__role">Potenza · Rahu · Trono</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Autenticità</dd>
+      <dt>Vizio</dt><dd>Vanità</dd>
+      <dt>Paura</dt><dd>Di fallire, di essere senza valore</dd>
+      <dt>Integrazione</dt><dd>→ verso il 6 (lealtà)</dd>
+    </dl>
+    <p class="card__body">
+      Il manager-trasformista. Aquila: risolve problemi con efficacia. Visivo in accesso, cenestesico
+      in elaborazione. Identifica sé con il proprio risultato.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Achille</strong>, manager trentottenne, in mediazione per
+      l'affidamento del figlio.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 4 -->
+  <div class="card ennea-4">
+    <div class="card__number-ennea">4</div>
+    <div class="card__title">Il Romantico</div>
+    <div class="card__role">Sapienza · Mercurio · Dominazione</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Equanimità</dd>
+      <dt>Vizio</dt><dd>Invidia</dd>
+      <dt>Paura</dt><dd>Di non avere identità</dd>
+      <dt>Integrazione</dt><dd>→ verso il 1 (disciplina creativa)</dd>
+    </dl>
+    <p class="card__body">
+      Basset Hound: si sente diverso dagli altri. Personalità masochista: la vittima designata della
+      vita. Vede bellezza dove altri non vedono, dolore dove altri non vedono.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Beatrice</strong>, scenografa trentaquattrenne, in crisi
+      identitaria dopo la maternità.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 5 -->
+  <div class="card ennea-5">
+    <div class="card__number-ennea">5</div>
+    <div class="card__title">L'Eremita</div>
+    <div class="card__role">Volontà · Saturno · Potestà</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Distacco sano</dd>
+      <dt>Vizio</dt><dd>Avarizia di sé</dd>
+      <dt>Paura</dt><dd>Di essere svuotato, invaso</dd>
+      <dt>Integrazione</dt><dd>→ verso l'8 (assertività incarnata)</dd>
+    </dl>
+    <p class="card__body">
+      Il grande saggio. Personalità schizoide. Triade del pensiero. Avaro di sé, difende strenuamente
+      la privacy. La campana di profondità.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Isaac</strong>, ricercatore cinquantasettenne, in una mediazione
+      di coppia dopo trent'anni di matrimonio.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 6 -->
+  <div class="card ennea-6">
+    <div class="card__number-ennea">6</div>
+    <div class="card__title">Il Leale</div>
+    <div class="card__role">Virtù · Ketu · Virtù angelica</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Coraggio</dd>
+      <dt>Vizio</dt><dd>Paura</dd>
+      <dt>Paura</dt><dd>Di essere senza guida, di essere abbandonato</dd>
+      <dt>Integrazione</dt><dd>→ verso il 9 (equanimità)</dd>
+    </dl>
+    <p class="card__body">
+      Lo scettico. Cane lupo. Personalità evitante-paranoide. Triade del pensiero. Risponde alla paura
+      con sottomissione o con contro-fobia (aggressività).
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Antigone</strong>, ispettore del lavoro quarantaquattrenne,
+      madre in ansia per un figlio adolescente.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 7 -->
+  <div class="card ennea-7">
+    <div class="card__number-ennea">7</div>
+    <div class="card__title">L'Entusiasta</div>
+    <div class="card__role">Verità · Giove · Principato</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Sobrietà</dd>
+      <dt>Vizio</dt><dd>Gola</dd>
+      <dt>Paura</dt><dd>Di essere intrappolato nel dolore</dd>
+      <dt>Integrazione</dt><dd>→ verso il 5 (profondità sobria)</dd>
+    </dl>
+    <p class="card__body">
+      L'artista. Sindrome narcisistica nella lettura di Naranjo. Vivere sulle ali della libertà. Evita
+      il dolore moltiplicando le esperienze.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Ulisse</strong>, imprenditore quarantunenne, di ritorno da tre
+      anni a San Francisco, in mediazione con l'ex.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 8 -->
+  <div class="card ennea-8">
+    <div class="card__number-ennea">8</div>
+    <div class="card__title">Il Capo</div>
+    <div class="card__role">Gloria · Venere · Arcangelo</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Innocenza</dd>
+      <dt>Vizio</dt><dd>Lussuria di controllo</dd>
+      <dt>Paura</dt><dd>Di essere tradito, di essere schiacciato</dd>
+      <dt>Integrazione</dt><dd>→ verso il 2 (tenerezza)</dd>
+    </dl>
+    <p class="card__body">
+      Il capo. Mastino: nessuno controlla il territorio come me. Personalità antisociale-sadica nella
+      lettura di Naranjo. La vera paura: essere traditi.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Sempronia</strong>, avvocato trentaseienne, in mediazione
+      di coppia col compagno Tizio.
+    </div>
+  </div>
+
+  <!-- ENNEATIPO 9 -->
+  <div class="card ennea-9">
+    <div class="card__number-ennea">9</div>
+    <div class="card__title">Il Diplomatico</div>
+    <div class="card__role">Bontà · Luna · Angelo</div>
+    <dl class="card__attrs">
+      <dt>Virtù</dt><dd>Azione</dd>
+      <dt>Vizio</dt><dd>Pigrizia di sé</dd>
+      <dt>Paura</dt><dd>Di perdere la pace, di sparire</dd>
+      <dt>Integrazione</dt><dd>→ verso il 3 (efficacia visibile)</dd>
+    </dl>
+    <p class="card__body">
+      Personalità dipendente nella lettura di Naranjo. Evita il conflitto fondendosi con l'ambiente.
+      La sfida: non perdersi negli altri.
+    </p>
+    <div class="card__personaggio">
+      Personaggio del manuale: <strong>Tizio</strong>, ingegnere trentasettenne, paradigmatico del
+      silenzio come armatura.
+    </div>
+  </div>
+
+</div>
+
+<h2 id="percorsi">I due percorsi evolutivi</h2>
+
+<p>
+  Nell'enneagramma evolutivo, ogni persona, nato il suo enneatipo, può percorrere nella vita uno di
+  due cammini, chiamati <strong>Percorso 1</strong> e <strong>Percorso 2</strong>. Non sono alternativi
+  nel senso che si sceglie una volta per tutte: la persona vi oscilla durante la vita, e la qualità
+  complessiva del proprio percorso dipende da quanto ha frequentato l'uno o l'altro.
+</p>
+
+<div class="cards-grid">
+  <div class="card">
+    <div class="card__title">Percorso 1<em>integrazione</em></div>
+    <div class="card__body">
+      Il cammino verso l'integrazione della propria dignità. Il 1 diventa sereno, il 2 umile, il 3
+      autentico, il 4 equanime, il 5 generoso, il 6 coraggioso, il 7 sobrio, l'8 innocente, il 9 attivo.
+      Ciascuno arriva a incarnare la qualità divina che porta nel mondo.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card__title">Percorso 2<em>regressione</em></div>
+    <div class="card__body">
+      Il cammino della chiusura. Il 1 diventa cinico, il 2 manipolatore, il 3 vanesio, il 4 depresso,
+      il 5 isolato, il 6 paranoico, il 7 compulsivo, l'8 tiranno, il 9 inerte. La dignità, non
+      incarnata, diventa veleno per sé e per gli altri.
+    </div>
+  </div>
+</div>
+
+<div class="box-gold">
+  <div class="box-gold__title">La scelta, giorno per giorno</div>
+  <p style="margin-bottom:0">
+    I due percorsi non sono scelti in un momento decisivo. Si scelgono giorno per giorno, in
+    centinaia di piccole occasioni in cui possiamo stare all'altezza del nostro meglio oppure cedere
+    al nostro peggio. I punti di shock della vita (perdite, crisi, passaggi d'età) sono i momenti in
+    cui quella scelta diventa cruciale. Il metodo integrato offre strumenti per riconoscerli e per
+    non sprecarli.
+  </p>
+</div>
+
+<h2 id="compatibilita">Le combinazioni al tavolo</h2>
+
+<p>
+  Quando due persone con enneatipi diversi entrano in relazione — in coppia, come soci, come fratelli
+  — producono coreografie ricorrenti di conflitto. Il manuale analizza in dettaglio sette delle
+  trentasei combinazioni possibili, quelle che più frequentemente arrivano al tavolo di mediazione.
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Combinazione</th>
+      <th>Cosa produce tipicamente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1 ↔ 4</strong></td><td>Giudizio contro abbandono. Il perfezionista severo e il romantico escluso.</td></tr>
+    <tr><td><strong>2 ↔ 5</strong></td><td>Invadenza contro ritiro. L'altruista che pretende vicinanza e l'eremita che chiede spazio.</td></tr>
+    <tr><td><strong>3 ↔ 4</strong></td><td>Prestazione contro autenticità. Il manager e il romantico in perenne incomprensione del valore.</td></tr>
+    <tr><td><strong>4 ↔ 7</strong></td><td>Malinconia contro dispersione. La profondità del 4 e la leggerezza del 7 che si cercano ma non si incontrano.</td></tr>
+    <tr><td><strong>1 ↔ 8</strong></td><td>Giudizio contro potenza. Due autorità che si scontrano su chi ha l'ultima parola.</td></tr>
+    <tr><td><strong>5 ↔ 9</strong></td><td>Ritiro contro fusione. La coppia silenziosa: nessuno chiede, nessuno riceve.</td></tr>
+    <tr><td><strong>6 ↔ 9</strong></td><td>Ansia contro pace. Il leale che vuole certezze e il diplomatico che vuole quiete.</td></tr>
+  </tbody>
+</table>
+
+<p style="text-align:center; margin: 36px 0;">
+  <a href="danza.html" class="cta-button">Vai a «La danza del conflitto»</a>
+  &nbsp;&nbsp;
+  <a href="contatti.html" class="cta-button cta-button--outline">Richiedi il manuale</a>
+</p>
+
+<div class="ornament"></div>
+
+<p style="text-align:center; color: var(--ink-3); font-style: italic; margin: 40px 0;">
+  <em>«Non lasciate che la griglia delle combinazioni diventi una gabbia.<br>
+  Le persone sono sempre più complesse delle loro tipologie.»</em>
+</p>
+
+</article>
+
 </main>
 
-<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
-    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno</div>
-    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
-      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
-      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
-      <a href="mediazione-civile.html" style="color:var(--gold);text-decoration:none">⚖ Mediazione Civile</a>
-      <a href="mediazione-familiare.html" style="color:var(--gold);text-decoration:none">👨‍👩‍👧 Mediazione Familiare</a>
-      <a href="consulente-mediatore.html" style="color:var(--gold);text-decoration:none">🎓 Consulente Mediatore</a>
-      <a href="empowerment-mediazione.html" style="color:var(--gold);text-decoration:none">🌿 Empowerment</a>
-      <a href="psicologia-analogica.html" style="color:var(--gold);text-decoration:none">🔍 Psicologia Analogica</a>
-      <a href="matrice-svalutazione.html" style="color:var(--gold);text-decoration:none">⊘ Matrice</a>
-      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
-      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
-      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
-      <a href="prenota-consulenza.html" style="color:var(--gold);text-decoration:none">📅 Prenota consulenza</a>
-      <a href="professionisti.html" style="color:var(--gold);text-decoration:none">🤝 Professionisti della rete</a>
-      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
-      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="site-footer__grid">
+      <div>
+        <h5>Olismo Integrato</h5>
+        <a href="metodo.html">Il metodo</a>
+        <a href="enneagram.html">I 9 enneatipi</a>
+        <a href="danza.html">La danza del conflitto</a>
+        <a href="violenza.html">Violenza e mediazione</a>
+        <a href="chi-sono.html">Chi sono</a>
+      </div>
+      <div>
+        <h5>Strumenti</h5>
+        <a href="consulente-ai.html">Consulente AI</a>
+        <a href="chakra.html">Chakra</a>
+        <a href="cristalli.html">Cristalli</a>
+        <a href="frequenze.html">Frequenze</a>
+        <a href="at-adattamenti.html">Adattamenti AT</a>
+      </div>
+      <div>
+        <h5>Emergenza</h5>
+        <a href="tel:1522"><strong>1522</strong> — Antiviolenza</a>
+        <a href="tel:112"><strong>112</strong> — Emergenze</a>
+        <a href="violenza.html">Pagina dedicata</a>
+      </div>
+      <div>
+        <h5>Contatti</h5>
+        <a href="chi-sono.html">Avv. Carlo Alberto Calcagno</a>
+        <a href="https://mediaresenzaconfini.org" rel="external noopener">mediaresenzaconfini.org</a>
+        <a href="contatti.html">Modulo di contatto</a>
+      </div>
     </div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+
+    <div class="site-footer__legal">
+      <p>© 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it · Tutti i diritti riservati
+      ai sensi della legge 22 aprile 1941 n. 633.</p>
+      <p><strong>Riserva TDM</strong> ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
+      l'uso di questo materiale per addestramento di modelli di intelligenza artificiale, fine-tuning,
+      RAG, embedding o qualsiasi forma di alimentazione di sistemi AI è espressamente vietato.</p>
+      <p><a href="termini-uso.html">Termini d'uso</a> · <a href="privacy.html">Privacy</a> ·
+      <a href="cookie.html">Cookie</a></p>
+    </div>
   </div>
 </footer>
 
-<script src="olismo-core.js" defer></script>
 </body>
 </html>

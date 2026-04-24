@@ -21,7 +21,7 @@
   
   Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
   
-  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6-suno-lab
 ═══════════════════════════════════════════════════════════════════════
 -->
 
@@ -36,21 +36,272 @@
 <meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
 <meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
 
-<title>Frequenze solfeggio e musicoterapia — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<title>Frequenze solfeggio e Laboratorio Suno — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra e Laboratorio dei Prompt Musicali per Suno AI con integrazione completa del metodo olistico.">
 <link rel="canonical" href="https://olismo-integrato.it/frequenze.html">
-<meta property="og:title" content="Frequenze solfeggio e musicoterapia — Olismo Integrato">
-<meta property="og:description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<meta property="og:title" content="Frequenze solfeggio e Laboratorio Suno — Olismo Integrato">
+<meta property="og:description" content="Frequenze solfeggio e generatore di prompt Suno integrato con enneagramma, AT, chakra, cristalli, fiori.">
 <meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Frequenze solfeggio e musicoterapia — Olismo Integrato">
-<meta name="twitter:description" content="8 frequenze solfeggio (396-963 Hz) con effetti specifici sui chakra.">
+<meta name="twitter:title" content="Frequenze solfeggio e Laboratorio Suno — Olismo Integrato">
+<meta name="twitter:description" content="Frequenze solfeggio e generatore prompt Suno.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="olismo-styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE del Laboratorio Suno — auto-contenuto, non interferisce col resto
+   ═══════════════════════════════════════════════════════════════════ */
+
+#suno-lab {
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(180deg, var(--ivory, #f9f5ef) 0%, #f0e8da 100%);
+  border-top: 1px solid var(--border, #e5dbc8);
+}
+#suno-lab .container { max-width: 1100px; margin: 0 auto; }
+
+.suno-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+}
+.suno-intro p {
+  color: var(--ink2, #5a4e3c);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Tab selector base/avanzato */
+.suno-tabs {
+  display: flex;
+  gap: .4rem;
+  background: rgba(255,255,255,.6);
+  padding: .35rem;
+  border-radius: 12px;
+  max-width: 440px;
+  margin: 0 auto 2rem;
+  border: 1px solid var(--border, #e5dbc8);
+}
+.suno-tab {
+  flex: 1;
+  padding: .75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--ink2, #5a4e3c);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.suno-tab.active {
+  background: var(--gold, #b8935a);
+  color: white;
+  box-shadow: 0 2px 8px rgba(184,147,90,0.3);
+}
+.suno-tab:not(.active):hover {
+  background: rgba(184,147,90,0.1);
+}
+
+/* Pannello */
+.suno-panel {
+  display: none;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.05);
+  border: 1px solid var(--border, #e5dbc8);
+}
+.suno-panel.active { display: block; }
+
+/* Griglia campi */
+.suno-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.suno-field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.suno-field label {
+  font-family: 'Outfit', sans-serif;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink3, #7a6f5c);
+}
+.suno-field label .opt {
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--gold, #b8935a);
+  margin-left: .3rem;
+}
+.suno-field select,
+.suno-field input[type="text"],
+.suno-field input[type="number"],
+.suno-field input[type="range"] {
+  padding: .65rem .8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .9rem;
+  color: var(--ink, #2a2520);
+  background: var(--ivory, #f9f5ef);
+  border: 1px solid var(--border, #e5dbc8);
+  border-radius: 6px;
+  transition: border-color .15s;
+}
+.suno-field select:focus,
+.suno-field input:focus {
+  outline: none;
+  border-color: var(--gold, #b8935a);
+}
+.suno-field input[type="range"] { padding: 0; background: transparent; }
+.suno-field .range-value {
+  font-size: .78rem;
+  color: var(--gold, #b8935a);
+  font-weight: 600;
+  margin-top: .2rem;
+  text-align: center;
+}
+
+/* Gruppi avanzati con titolo */
+.suno-section-hd {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink, #2a2520);
+  margin: 1.6rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1.5px dashed var(--border, #e5dbc8);
+}
+.suno-section-hd:first-child { margin-top: 0; }
+.suno-section-hd em {
+  color: var(--gold, #b8935a);
+  font-style: italic;
+}
+
+/* Bottone genera */
+.suno-generate {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto 0;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--gold, #b8935a) 0%, #8a6a3a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(184,147,90,0.3);
+}
+.suno-generate:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(184,147,90,0.4);
+}
+.suno-generate:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+.suno-generate .spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin-right: .5rem;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Box output */
+.suno-output {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #faf7f0;
+  border-left: 4px solid var(--gold, #b8935a);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  font-family: 'Outfit', sans-serif;
+  font-size: .9rem;
+  line-height: 1.55;
+  color: var(--ink, #2a2520);
+  position: relative;
+}
+.suno-output.show { display: block; }
+.suno-output h4 {
+  margin: 0 0 .8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--ink, #2a2520);
+}
+.suno-copy-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: white;
+  border: 1px solid var(--border, #e5dbc8);
+  border-radius: 4px;
+  padding: .4rem .7rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .72rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink2, #5a4e3c);
+  transition: all .15s;
+}
+.suno-copy-btn:hover {
+  background: var(--gold, #b8935a);
+  color: white;
+  border-color: var(--gold, #b8935a);
+}
+.suno-copy-btn.copied {
+  background: #4caf82;
+  color: white;
+  border-color: #4caf82;
+}
+
+.suno-error {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
+  background: #fff3e0;
+  border-left: 4px solid #e65100;
+  border-radius: 6px;
+  color: #bf360c;
+  font-size: .88rem;
+}
+.suno-error.show { display: block; }
+
+.suno-help {
+  text-align: center;
+  color: var(--ink3, #7a6f5c);
+  font-size: .82rem;
+  margin-top: 1.2rem;
+  font-style: italic;
+}
+
+.suno-help a { color: var(--gold, #b8935a); text-decoration: none; }
+.suno-help a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
 
@@ -68,6 +319,10 @@
 </header>
 
 <main>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SEZIONE 1 — LE 8 FREQUENZE (identica alla versione precedente)
+     ════════════════════════════════════════════════════════════════ -->
 <section id="musica">
   <div class="container">
     <div class="sec-hd">
@@ -135,6 +390,359 @@
     </div></div>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SEZIONE 2 — LABORATORIO SUNO (NUOVO)
+     Genera prompt musicali per Suno AI combinando tutto il metodo.
+     ════════════════════════════════════════════════════════════════ -->
+<section id="suno-lab">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">AI · Musicoterapia Personalizzata</div>
+      <h2 class="sec-title">Laboratorio <em>Suno</em></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="suno-intro">
+      <p>Genera <strong>prompt musicali in inglese</strong> pronti da incollare in <a href="https://suno.com" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">Suno AI</a>, calibrati sul tuo enneatipo, adattamento AT, chakra, cristallo, fiori di Bach/FES/Bush e frequenza solfeggio terapeutica. Due modalità: <strong>Base</strong> per chi vuole un risultato rapido, <strong>Avanzata</strong> per chi conosce il metodo integrato.</p>
+    </div>
+
+    <!-- Tab selector -->
+    <div class="suno-tabs" role="tablist">
+      <button class="suno-tab active" data-panel="suno-base" type="button">🎵 Base</button>
+      <button class="suno-tab" data-panel="suno-avanzato" type="button">🔬 Avanzata</button>
+    </div>
+
+    <!-- ─────────────── MOTORE BASE ─────────────── -->
+    <div id="suno-base" class="suno-panel active">
+
+      <div class="suno-grid">
+        <div class="suno-field">
+          <label for="sb-enneatipo">Enneatipo</label>
+          <select id="sb-enneatipo">
+            <option value="">— Seleziona o usa test 9 Frutti —</option>
+            <option value="1">Tipo 1 · Perfezionista</option>
+            <option value="2">Tipo 2 · Altruista</option>
+            <option value="3">Tipo 3 · Manager</option>
+            <option value="4">Tipo 4 · Romantico</option>
+            <option value="5">Tipo 5 · Eremita</option>
+            <option value="6">Tipo 6 · Leale</option>
+            <option value="7">Tipo 7 · Entusiasta</option>
+            <option value="8">Tipo 8 · Capo</option>
+            <option value="9">Tipo 9 · Diplomatico</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sb-disturbo">Stato o disturbo</label>
+          <select id="sb-disturbo">
+            <option value="">— Seleziona —</option>
+            <optgroup label="Emotivi">
+              <option value="ansia">Ansia generalizzata</option>
+              <option value="stress cronico">Stress cronico</option>
+              <option value="tristezza">Tristezza, malinconia</option>
+              <option value="rabbia">Rabbia, irritabilità</option>
+              <option value="paura">Paura, panico</option>
+              <option value="lutto">Lutto, dolore profondo</option>
+              <option value="blocco emotivo">Blocco emotivo</option>
+            </optgroup>
+            <optgroup label="Fisici">
+              <option value="insonnia">Insonnia</option>
+              <option value="nebbia mentale">Nebbia mentale</option>
+              <option value="stanchezza cronica">Stanchezza cronica</option>
+              <option value="tensione muscolare">Tensione muscolare</option>
+              <option value="mal di testa">Mal di testa</option>
+            </optgroup>
+            <optgroup label="Relazionali">
+              <option value="conflitto in corso">Conflitto in corso</option>
+              <option value="separazione">Separazione</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sb-durata">Durata target</label>
+          <select id="sb-durata">
+            <option value="breve">Breve · 1-2 min</option>
+            <option value="media" selected>Media · 3-5 min</option>
+            <option value="lunga">Lunga · 8-12 min</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="suno-generate" id="sb-btn" type="button">✦ Genera prompt Suno</button>
+      <div class="suno-help">Il generatore userà l'enneatipo per scegliere chakra, cristallo, fiore e frequenza più adatti. <a href="test-frutti.html">Non conosci il tuo enneatipo? Fai il test →</a></div>
+
+      <div class="suno-error" id="sb-error"></div>
+      <div class="suno-output" id="sb-output">
+        <button class="suno-copy-btn" type="button" onclick="sunoCopy('sb-output-text', this)">📋 Copia</button>
+        <h4>🎵 Prompt Suno</h4>
+        <div id="sb-output-text"></div>
+      </div>
+
+    </div>
+
+    <!-- ─────────────── MOTORE AVANZATO ─────────────── -->
+    <div id="suno-avanzato" class="suno-panel">
+
+      <div class="suno-section-hd">Profilo <em>personale</em></div>
+      <div class="suno-grid">
+        <div class="suno-field">
+          <label for="sa-enneatipo">Enneatipo</label>
+          <select id="sa-enneatipo">
+            <option value="">— Seleziona —</option>
+            <option value="1">Tipo 1 · Perfezionista</option>
+            <option value="2">Tipo 2 · Altruista</option>
+            <option value="3">Tipo 3 · Manager</option>
+            <option value="4">Tipo 4 · Romantico</option>
+            <option value="5">Tipo 5 · Eremita</option>
+            <option value="6">Tipo 6 · Leale</option>
+            <option value="7">Tipo 7 · Entusiasta</option>
+            <option value="8">Tipo 8 · Capo</option>
+            <option value="9">Tipo 9 · Diplomatico</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-adattamento">Adattamento AT <span class="opt">(opz.)</span></label>
+          <select id="sa-adattamento">
+            <option value="">— Nessuno —</option>
+            <option value="schizoide">🌙 Schizoide · Creativo-Sognatore</option>
+            <option value="antisociale">⚡ Antisociale · Affascinante-Manipolatore</option>
+            <option value="paranoide">🔍 Paranoide · Brillante-Scettico</option>
+            <option value="ossessivo">📋 Ossessivo · Responsabile-Stakanovista</option>
+            <option value="istrionico">✨ Istrionico · Entusiasta-Iperreattivo</option>
+            <option value="passivo-aggressivo">🌊 Passivo-Aggressivo · Scherzoso-Oppositivo</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-vak">Canale VAK dominante <span class="opt">(opz.)</span></label>
+          <select id="sa-vak">
+            <option value="">— Automatico —</option>
+            <option value="V">Visivo</option>
+            <option value="A">Auditivo</option>
+            <option value="K">Cinestesico</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="suno-section-hd">Stato <em>terapeutico</em></div>
+      <div class="suno-grid">
+        <div class="suno-field">
+          <label for="sa-disturbo">Stato o disturbo</label>
+          <select id="sa-disturbo">
+            <option value="">— Seleziona —</option>
+            <optgroup label="Emotivi">
+              <option value="ansia">Ansia generalizzata</option>
+              <option value="stress cronico">Stress cronico</option>
+              <option value="tristezza">Tristezza, malinconia</option>
+              <option value="rabbia">Rabbia, irritabilità</option>
+              <option value="paura">Paura, panico</option>
+              <option value="lutto">Lutto, dolore profondo</option>
+              <option value="blocco emotivo">Blocco emotivo</option>
+              <option value="senso di colpa">Senso di colpa</option>
+              <option value="vergogna">Vergogna</option>
+            </optgroup>
+            <optgroup label="Fisici">
+              <option value="insonnia">Insonnia</option>
+              <option value="nebbia mentale">Nebbia mentale</option>
+              <option value="stanchezza cronica">Stanchezza cronica</option>
+              <option value="tensione muscolare">Tensione muscolare</option>
+              <option value="mal di testa">Mal di testa</option>
+              <option value="dolore allo stomaco">Dolore allo stomaco</option>
+            </optgroup>
+            <optgroup label="Relazionali">
+              <option value="conflitto in corso">Conflitto in corso</option>
+              <option value="separazione">Separazione</option>
+              <option value="difficoltà di comunicazione">Difficoltà di comunicazione</option>
+            </optgroup>
+            <optgroup label="Evolutivi">
+              <option value="crisi di mezza età">Crisi di mezza età</option>
+              <option value="ricerca di senso">Ricerca di senso</option>
+              <option value="creatività bloccata">Creatività bloccata</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-disturbo-libero">…oppure scrivi <span class="opt">(priorità)</span></label>
+          <input type="text" id="sa-disturbo-libero" placeholder="es. ruminazione notturna">
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-chakra">Chakra <span class="opt">(auto se vuoto)</span></label>
+          <select id="sa-chakra">
+            <option value="">— Automatico —</option>
+            <option value="1">1° Muladhara · Radice</option>
+            <option value="2">2° Svadhisthana · Sacrale</option>
+            <option value="3">3° Manipura · Plesso solare</option>
+            <option value="4">4° Anahata · Cuore</option>
+            <option value="5">5° Vishuddha · Gola</option>
+            <option value="6">6° Ajna · Terzo occhio</option>
+            <option value="7">7° Sahasrara · Corona</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="suno-section-hd">Supporto <em>olistico opzionale</em></div>
+      <div class="suno-grid">
+        <div class="suno-field">
+          <label for="sa-cristallo">Cristallo <span class="opt">(opz.)</span></label>
+          <select id="sa-cristallo">
+            <option value="">— Nessuno / auto —</option>
+            <option value="ametista">Ametista · calma mentale</option>
+            <option value="quarzo rosa">Quarzo rosa · amore e cuore</option>
+            <option value="quarzo ialino">Quarzo ialino · chiarezza</option>
+            <option value="citrino">Citrino · gioia e autostima</option>
+            <option value="lapislazzuli">Lapislazzuli · intuizione</option>
+            <option value="ossidiana">Ossidiana · protezione radicamento</option>
+            <option value="tormalina nera">Tormalina nera · scarico energetico</option>
+            <option value="turchese">Turchese · espressione</option>
+            <option value="selenite">Selenite · corona, luce</option>
+            <option value="sodalite">Sodalite · verità interiore</option>
+            <option value="pietra di luna">Pietra di luna · femminino, sogni</option>
+            <option value="corniola">Corniola · creatività e fuoco</option>
+            <option value="smeraldo">Smeraldo · cuore evoluto</option>
+            <option value="diaspro rosso">Diaspro rosso · forza vitale</option>
+            <option value="labradorite">Labradorite · aura e protezione</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-bach">Fiore di Bach <span class="opt">(opz.)</span></label>
+          <select id="sa-bach">
+            <option value="">— Nessuno —</option>
+            <optgroup label="Paura">
+              <option value="Mimulus">Mimulus · paura nota</option>
+              <option value="Rock Rose">Rock Rose · terrore</option>
+              <option value="Aspen">Aspen · paure vaghe</option>
+              <option value="Red Chestnut">Red Chestnut · ansia per gli altri</option>
+              <option value="Cherry Plum">Cherry Plum · paura di perdersi</option>
+            </optgroup>
+            <optgroup label="Incertezza">
+              <option value="Cerato">Cerato · dubbio sul proprio giudizio</option>
+              <option value="Scleranthus">Scleranthus · oscillazione</option>
+              <option value="Gentian">Gentian · scoraggiamento</option>
+              <option value="Gorse">Gorse · disperazione</option>
+              <option value="Hornbeam">Hornbeam · stanchezza mentale</option>
+              <option value="Wild Oat">Wild Oat · ricerca di senso</option>
+            </optgroup>
+            <optgroup label="Assenza">
+              <option value="Clematis">Clematis · sogno a occhi aperti</option>
+              <option value="Honeysuckle">Honeysuckle · nostalgia</option>
+              <option value="Wild Rose">Wild Rose · apatia</option>
+              <option value="Olive">Olive · esaurimento</option>
+              <option value="White Chestnut">White Chestnut · pensieri ripetitivi</option>
+              <option value="Mustard">Mustard · malinconia improvvisa</option>
+              <option value="Chestnut Bud">Chestnut Bud · ripetere errori</option>
+            </optgroup>
+            <optgroup label="Solitudine">
+              <option value="Heather">Heather · egocentrismo</option>
+              <option value="Water Violet">Water Violet · orgoglio distante</option>
+              <option value="Impatiens">Impatiens · impazienza</option>
+            </optgroup>
+            <optgroup label="Ipersensibilità">
+              <option value="Agrimony">Agrimony · maschera allegra</option>
+              <option value="Centaury">Centaury · non sapere dire no</option>
+              <option value="Walnut">Walnut · transizioni</option>
+              <option value="Holly">Holly · invidia, odio</option>
+            </optgroup>
+            <optgroup label="Scoraggiamento">
+              <option value="Larch">Larch · insicurezza</option>
+              <option value="Pine">Pine · colpa</option>
+              <option value="Elm">Elm · sovraccarico</option>
+              <option value="Sweet Chestnut">Sweet Chestnut · angoscia profonda</option>
+              <option value="Star of Bethlehem">Star of Bethlehem · trauma</option>
+              <option value="Willow">Willow · risentimento</option>
+              <option value="Oak">Oak · forza fino allo stremo</option>
+              <option value="Crab Apple">Crab Apple · vergogna del corpo</option>
+            </optgroup>
+            <optgroup label="Preoccupazione per gli altri">
+              <option value="Chicory">Chicory · amore possessivo</option>
+              <option value="Vervain">Vervain · iperattivismo</option>
+              <option value="Vine">Vine · dominio</option>
+              <option value="Beech">Beech · critica intollerante</option>
+              <option value="Rock Water">Rock Water · rigore ascetico</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-fes">Fiore FES <span class="opt">(opz. - libero)</span></label>
+          <input type="text" id="sa-fes" placeholder="es. Yarrow, Mountain Pride, Self-Heal…">
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-bush">Fiore Bush <span class="opt">(opz. - libero)</span></label>
+          <input type="text" id="sa-bush" placeholder="es. Waratah, Flannel Flower, Bush Fuchsia…">
+        </div>
+      </div>
+
+      <div class="suno-section-hd">Parametri <em>musicali</em></div>
+      <div class="suno-grid">
+        <div class="suno-field">
+          <label for="sa-stile">Stile musicale</label>
+          <select id="sa-stile">
+            <option value="">Automatico (in base all'enneatipo)</option>
+            <option value="ambient">Ambient · Drone · Atmospheric</option>
+            <option value="neoclassical">Neoclassico · Piano · Orchestrale</option>
+            <option value="electronic">Electronic · Synth · Meditative</option>
+            <option value="world">World Music · Etnico · Tradizionale</option>
+            <option value="acoustic">Acoustic · Folk · Unplugged</option>
+            <option value="healing">Healing · Binaural · Sound Bath</option>
+            <option value="gregorian">Canto gregoriano · Sacro</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-bpm">BPM target <span class="opt" id="sa-bpm-value">70</span></label>
+          <input type="range" id="sa-bpm" min="40" max="120" value="70" step="5">
+          <div class="range-value" id="sa-bpm-display">70 BPM · Rilassato</div>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-accordatura">Accordatura</label>
+          <select id="sa-accordatura">
+            <option value="432">432 Hz · naturale</option>
+            <option value="440" selected>440 Hz · standard</option>
+            <option value="444">444 Hz · alternativa</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-durata">Durata target</label>
+          <select id="sa-durata">
+            <option value="breve">Breve · 1-2 min</option>
+            <option value="media" selected>Media · 3-5 min</option>
+            <option value="lunga">Lunga · 8-12 min</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
+          <label for="sa-varianti">Numero di varianti</label>
+          <select id="sa-varianti">
+            <option value="1" selected>1 prompt</option>
+            <option value="2">2 prompt (alternativi)</option>
+            <option value="3">3 prompt (diversificati)</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="suno-generate" id="sa-btn" type="button">✦ Genera prompt Suno avanzato</button>
+      <div class="suno-help">Il motore integra tutti i tuoi dati nel <em>system prompt</em> inviato a Claude. <a href="test-adattamenti.html">Fai il test Adattamenti AT →</a></div>
+
+      <div class="suno-error" id="sa-error"></div>
+      <div class="suno-output" id="sa-output">
+        <button class="suno-copy-btn" type="button" onclick="sunoCopy('sa-output-text', this)">📋 Copia</button>
+        <h4>🎵 Prompt Suno</h4>
+        <div id="sa-output-text"></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
@@ -164,5 +772,303 @@
 </footer>
 
 <script src="olismo-core.js" defer></script>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LOGICA DEL LABORATORIO SUNO — auto-contenuta
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  const PROXY_URL = 'https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages';
+  const MODEL = 'claude-sonnet-4-20250514';
+
+  // ─── Tab switching ─────────────────────────────────────────────────
+  document.querySelectorAll('.suno-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.suno-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.suno-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+    });
+  });
+
+  // ─── BPM slider live display ───────────────────────────────────────
+  const bpmSlider = document.getElementById('sa-bpm');
+  const bpmDisplay = document.getElementById('sa-bpm-display');
+  function bpmLabel(v) {
+    v = +v;
+    if (v < 55) return v + ' BPM · Profondo / sonno';
+    if (v < 70) return v + ' BPM · Meditativo';
+    if (v < 85) return v + ' BPM · Rilassato';
+    if (v < 100) return v + ' BPM · Attivante dolce';
+    return v + ' BPM · Energizzante';
+  }
+  bpmSlider.addEventListener('input', () => {
+    bpmDisplay.textContent = bpmLabel(bpmSlider.value);
+  });
+  bpmDisplay.textContent = bpmLabel(bpmSlider.value);
+
+  // ─── Try to pre-fill from localStorage (if tests saved something) ──
+  function tryLoadFromStorage() {
+    try {
+      // Try common key names
+      const candidates = [
+        'enneatipo', 'enneatipo-risultato', 'test-frutti-risultato',
+        'test9frutti', 'risultato-9-frutti', 'olismo-enneatipo'
+      ];
+      for (const k of candidates) {
+        const v = localStorage.getItem(k);
+        if (v && /^[1-9]$/.test(String(v).trim())) {
+          document.getElementById('sb-enneatipo').value = v;
+          document.getElementById('sa-enneatipo').value = v;
+          break;
+        }
+      }
+      const atCandidates = [
+        'adattamento-at', 'test-at-risultato', 'adattamento',
+        'risultato-at', 'olismo-adattamento'
+      ];
+      for (const k of atCandidates) {
+        const v = localStorage.getItem(k);
+        if (v) {
+          const adapt = String(v).toLowerCase().trim();
+          const matches = ['schizoide','antisociale','paranoide','ossessivo','istrionico','passivo-aggressivo'];
+          const found = matches.find(m => adapt.includes(m));
+          if (found) {
+            document.getElementById('sa-adattamento').value = found;
+            break;
+          }
+        }
+      }
+    } catch (e) { /* localStorage non disponibile, pazienza */ }
+  }
+  tryLoadFromStorage();
+
+  // ─── Helper: get value or empty ────────────────────────────────────
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  // ─── Copy to clipboard ─────────────────────────────────────────────
+  window.sunoCopy = function(targetId, btn) {
+    const text = document.getElementById(targetId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.classList.add('copied');
+      btn.textContent = '✓ Copiato';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = orig;
+      }, 2000);
+    }).catch(() => {
+      // Fallback per browser vecchi
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e){}
+      document.body.removeChild(ta);
+      btn.textContent = '✓ Copiato';
+      setTimeout(() => btn.textContent = '📋 Copia', 2000);
+    });
+  };
+
+  // ─── Build system prompt ───────────────────────────────────────────
+  function buildSystemPrompt() {
+    return `Sei un compositore esperto di musicoterapia integrata e prompt engineer per Suno AI. Il tuo compito è produrre prompt musicali in INGLESE, ottimizzati per Suno, che traducano in suono un profilo terapeutico completo.
+
+PRINCIPI:
+- I prompt Suno in inglese sono più efficaci di quelli in italiano.
+- Ogni prompt deve specificare: genere musicale, mood, strumenti principali, BPM (tempo), accordatura in Hz, struttura/sezioni, effetti (reverb, delay), ed eventuali texture sonore.
+- Devi tradurre il profilo olistico (enneatipo, chakra, cristallo, fiore, adattamento AT, VAK) in scelte musicali coerenti.
+- La frequenza solfeggio scelta deve corrispondere al chakra e al disturbo.
+- La durata influenza la struttura: breve = un'unica sezione; media = A-B-A; lunga = struttura evolutiva con crescendo e ritorno.
+
+MAPPING FREQUENZE SOLFEGGIO:
+- 396 Hz (Do): radice, paura, colpa, stabilizzazione SNA, 1° chakra
+- 417 Hz (Re): cambiamento, trauma, sacrale, 2° chakra
+- 528 Hz (Mi): autostima, gioia, plesso solare, 3° chakra
+- 639 Hz (Fa): cuore, relazioni, 4° chakra
+- 741 Hz (Sol): espressione, gola, 5° chakra
+- 852 Hz (La): intuizione, terzo occhio, 6° chakra
+- 963 Hz (Si): coscienza, corona, 7° chakra
+- 432 Hz: accordatura naturale sistemica, ansia generale
+
+MAPPING ENNEATIPI → STILE:
+- T1 Perfezionista: neoclassico ordinato, pianoforte, strutture chiare
+- T2 Altruista: canto devozionale, arpa, voce calda
+- T3 Manager: elettronica raffinata, beat sottili ma presenti
+- T4 Romantico: ambient nostalgico, violoncello, pianoforte malinconico
+- T5 Eremita: drone minimalista, synth profondi, campane tibetane
+- T6 Leale: folk rassicurante, chitarra acustica, voci corali
+- T7 Entusiasta: world music leggera, flauti, percussioni etniche
+- T8 Capo: orchestral potente, tamburi profondi, archi forti
+- T9 Diplomatico: ambient pacifico, fluido, senza picchi
+
+FORMATO OUTPUT (per ogni variante richiesta):
+---
+🎵 VARIANTE N — [titolo breve in inglese]
+📝 Suno prompt (copy and paste):
+[il prompt completo in inglese, una riga compatta ma ricca di dettagli, che Suno accetta]
+
+🔮 Razionale olistico (in italiano):
+[2-3 frasi che spiegano perché queste scelte corrispondono al profilo]
+---
+
+Termina con una singola riga di istruzione: "Incolla in Suno (Custom Mode) e genera."
+
+NON produrre mai:
+- audio reale (solo testo)
+- consigli medici o psicologici
+- reclami o avvertenze generiche
+
+Se mancano informazioni critiche (enneatipo e disturbo), chiedi all'utente di completarle.`;
+  }
+
+  // ─── Build user message (base) ─────────────────────────────────────
+  function buildUserMessageBase() {
+    const e = val('sb-enneatipo');
+    const d = val('sb-disturbo');
+    const dur = val('sb-durata');
+    if (!e || !d) return null;
+
+    return `Genera UN prompt Suno basato su questo profilo minimo (scegli tu chakra, cristallo, fiore e frequenza solfeggio più coerenti):
+- Enneatipo: Tipo ${e}
+- Disturbo/stato: ${d}
+- Durata target: ${dur}
+
+Scegli:
+- il chakra corrispondente
+- un cristallo di supporto
+- un fiore (Bach preferibilmente) adatto
+- la frequenza solfeggio terapeutica più pertinente
+- lo stile musicale giusto per l'enneatipo
+- BPM adatto al disturbo
+- accordatura (432 Hz se ansia sistemica, altrimenti 440 Hz)
+
+Spiega brevemente in italiano il razionale olistico.`;
+  }
+
+  // ─── Build user message (advanced) ─────────────────────────────────
+  function buildUserMessageAdvanced() {
+    const e = val('sa-enneatipo');
+    const at = val('sa-adattamento');
+    const vak = val('sa-vak');
+    const dSel = val('sa-disturbo');
+    const dLib = val('sa-disturbo-libero');
+    const d = dLib || dSel;
+    const ch = val('sa-chakra');
+    const cri = val('sa-cristallo');
+    const bach = val('sa-bach');
+    const fes = val('sa-fes');
+    const bush = val('sa-bush');
+    const stile = val('sa-stile');
+    const bpm = val('sa-bpm');
+    const acc = val('sa-accordatura');
+    const dur = val('sa-durata');
+    const var_ = val('sa-varianti');
+
+    if (!e || !d) return null;
+
+    const lines = [
+      `Genera ${var_} prompt Suno diversificati in base a questo profilo olistico completo:`,
+      '',
+      `• Enneatipo: Tipo ${e}`,
+      at ? `• Adattamento AT: ${at}` : null,
+      vak ? `• Canale VAK dominante: ${vak}` : `• Canale VAK: scegli tu in base all'enneatipo`,
+      `• Stato/disturbo: ${d}`,
+      ch ? `• Chakra di lavoro: ${ch}° chakra` : `• Chakra: scegli tu in base al disturbo`,
+      cri ? `• Cristallo di supporto: ${cri}` : `• Cristallo: suggeriscine uno coerente`,
+      bach ? `• Fiore di Bach: ${bach}` : null,
+      fes ? `• Fiore FES: ${fes}` : null,
+      bush ? `• Fiore Bush: ${bush}` : null,
+      '',
+      `Parametri musicali richiesti:`,
+      stile ? `• Stile: ${stile}` : `• Stile: scegli tu in base all'enneatipo`,
+      `• BPM target: ${bpm}`,
+      `• Accordatura: ${acc} Hz`,
+      `• Durata: ${dur}`,
+      `• Numero di varianti: ${var_}`,
+      '',
+      `Se generi più varianti, fai in modo che siano davvero DIVERSE (es. stili alternativi, mood differenti, texture cambiate), non semplici variazioni minime. Scegli la frequenza solfeggio più coerente col profilo e giustificala brevemente.`
+    ].filter(Boolean);
+
+    return lines.join('\n');
+  }
+
+  // ─── API call ───────────────────────────────────────────────────────
+  async function callClaude(userMessage) {
+    const body = {
+      model: MODEL,
+      max_tokens: 2000,
+      system: buildSystemPrompt(),
+      messages: [{ role: 'user', content: userMessage }]
+    };
+    const res = await fetch(PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      let err = 'Errore server (' + res.status + ')';
+      try { const j = await res.json(); if (j.error) err = j.error; } catch(e){}
+      throw new Error(err);
+    }
+    const data = await res.json();
+    if (!data.content || !data.content.length) {
+      throw new Error('Risposta vuota dal motore AI');
+    }
+    return data.content
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('\n');
+  }
+
+  // ─── Generate handlers ─────────────────────────────────────────────
+  async function handleGenerate(mode) {
+    const isBase = mode === 'base';
+    const btn = document.getElementById(isBase ? 'sb-btn' : 'sa-btn');
+    const errBox = document.getElementById(isBase ? 'sb-error' : 'sa-error');
+    const outBox = document.getElementById(isBase ? 'sb-output' : 'sa-output');
+    const outText = document.getElementById(isBase ? 'sb-output-text' : 'sa-output-text');
+
+    errBox.classList.remove('show');
+    outBox.classList.remove('show');
+    errBox.textContent = '';
+
+    const userMsg = isBase ? buildUserMessageBase() : buildUserMessageAdvanced();
+    if (!userMsg) {
+      errBox.textContent = 'Devi selezionare almeno enneatipo e disturbo.';
+      errBox.classList.add('show');
+      return;
+    }
+
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Composizione in corso…';
+
+    try {
+      const response = await callClaude(userMsg);
+      outText.textContent = response;
+      outBox.classList.add('show');
+      // Scroll to output
+      setTimeout(() => outBox.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    } catch (e) {
+      errBox.textContent = '⚠ ' + (e.message || 'Errore generico. Riprova tra qualche istante.');
+      errBox.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
+  }
+
+  document.getElementById('sb-btn').addEventListener('click', () => handleGenerate('base'));
+  document.getElementById('sa-btn').addEventListener('click', () => handleGenerate('avanzato'));
+
+})();
+</script>
+
 </body>
 </html>

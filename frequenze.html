@@ -301,6 +301,72 @@
 
 .suno-help a { color: var(--gold, #b8935a); text-decoration: none; }
 .suno-help a:hover { text-decoration: underline; }
+
+/* ─── Legende didattiche (modalità avanzata) ─── */
+.suno-legenda {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  background: rgba(184, 147, 90, 0.06);
+  border-left: 3px solid var(--gold, #b8935a);
+  border-radius: 4px;
+  font-size: .82rem;
+  line-height: 1.55;
+  color: var(--ink2, #5a4e3c);
+}
+.suno-legenda summary {
+  font-family: 'Outfit', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold, #b8935a);
+  cursor: pointer;
+  padding: .15rem 0;
+  outline: none;
+  user-select: none;
+}
+.suno-legenda summary:hover { color: #8a6a3a; }
+.suno-legenda[open] summary { margin-bottom: .8rem; }
+.suno-legenda summary::-webkit-details-marker { display: none; }
+.suno-legenda summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform .2s;
+  margin-right: .3rem;
+}
+.suno-legenda[open] summary::before {
+  transform: rotate(90deg);
+}
+.suno-legenda table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: .4rem;
+}
+.suno-legenda th,
+.suno-legenda td {
+  padding: .4rem .6rem;
+  text-align: left;
+  border-bottom: 1px dashed rgba(184, 147, 90, 0.2);
+  font-size: .8rem;
+}
+.suno-legenda th {
+  font-family: 'Outfit', sans-serif;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink3, #7a6f5c);
+  background: rgba(184, 147, 90, 0.04);
+}
+.suno-legenda td:first-child {
+  font-weight: 600;
+  color: var(--ink, #2a2520);
+  white-space: nowrap;
+}
+.suno-legenda tr:last-child td { border-bottom: none; }
+.suno-legenda p { margin: .4rem 0; }
+.suno-legenda p:first-of-type { margin-top: 0; }
+.suno-legenda strong { color: var(--ink, #2a2520); }
 </style>
 </head>
 <body>
@@ -679,6 +745,27 @@
       </div>
 
       <div class="suno-section-hd">Parametri <em>musicali</em></div>
+
+      <details class="suno-legenda">
+        <summary>📖 Legenda — le 8 frequenze solfeggio che il motore sceglierà</summary>
+        <p>Il motore sceglie automaticamente la <strong>frequenza solfeggio</strong> più coerente con il tuo profilo (enneatipo, chakra, disturbo). Non devi selezionarla, ma è utile sapere cosa evocano:</p>
+        <table>
+          <thead>
+            <tr><th>Hz</th><th>Nota</th><th>Chakra</th><th>Effetto terapeutico</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>396 Hz</td><td>Do / Ut</td><td>1° Radice</td><td>Libera paura e senso di colpa, stabilizza il SNA</td></tr>
+            <tr><td>417 Hz</td><td>Re</td><td>2° Sacrale</td><td>Facilita il cambiamento, scioglie blocchi creativi, purifica dai traumi</td></tr>
+            <tr><td>528 Hz</td><td>Mi</td><td>3° Plesso solare</td><td>Rinforza l'autostima, riattiva la gioia, stimola la guarigione cellulare</td></tr>
+            <tr><td>639 Hz</td><td>Fa</td><td>4° Cuore</td><td>Apre il cuore, migliora le relazioni, favorisce empatia e riconciliazione</td></tr>
+            <tr><td>741 Hz</td><td>Sol</td><td>5° Gola</td><td>Libera l'espressione autentica, dissolve blocchi vocali, rafforza l'intuizione</td></tr>
+            <tr><td>852 Hz</td><td>La</td><td>6° Terzo occhio</td><td>Apre la visione interiore, amplifica l'intuizione</td></tr>
+            <tr><td>963 Hz</td><td>Si</td><td>7° Corona</td><td>Connette alla coscienza universale, stati contemplativi profondi</td></tr>
+            <tr><td>432 Hz</td><td>La naturale</td><td>Sistemico</td><td>Accordatura della natura, riduce ansia e stress sistemico</td></tr>
+          </tbody>
+        </table>
+      </details>
+
       <div class="suno-grid">
         <div class="suno-field">
           <label for="sa-stile">Stile musicale</label>
@@ -727,6 +814,40 @@
           </select>
         </div>
       </div>
+
+      <details class="suno-legenda">
+        <summary>📖 Legenda — le fasce di BPM (velocità musicale)</summary>
+        <p>Il <strong>BPM</strong> (<em>beats per minute</em>, battiti al minuto) determina la velocità della musica e ha un effetto diretto sul sistema nervoso autonomo. Scegli la fascia che serve:</p>
+        <table>
+          <thead>
+            <tr><th>Fascia</th><th>Effetto</th><th>Quando usarla</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>40–54 BPM</td><td>Profondo · Sonno</td><td>Induzione del sonno, stati ipnagogici, yoga nidra</td></tr>
+            <tr><td>55–69 BPM</td><td>Meditativo</td><td>Meditazione seduta, respirazione profonda, contemplazione</td></tr>
+            <tr><td>70–84 BPM</td><td>Rilassato</td><td>Rilassamento da stress, ascolto passivo, lettura</td></tr>
+            <tr><td>85–99 BPM</td><td>Attivante dolce</td><td>Camminata lenta, ripresa dopo stanchezza, studio</td></tr>
+            <tr><td>100–120 BPM</td><td>Energizzante</td><td>Motivazione, risveglio mattutino, attività fisica leggera</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-bottom:0"><strong>Suggerimento:</strong> per ansia e stress cronico, preferisci <strong>60-70 BPM</strong>; il cuore si sincronizza con la musica e rallenta.</p>
+      </details>
+
+      <details class="suno-legenda">
+        <summary>📖 Legenda — le tre accordature (432 / 440 / 444 Hz)</summary>
+        <p>L'<strong>accordatura</strong> è la frequenza di riferimento del La centrale. Cambia la percezione generale del brano:</p>
+        <table>
+          <thead>
+            <tr><th>Accordatura</th><th>Tradizione</th><th>Qualità percepita</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>432 Hz</td><td>Accordatura "naturale" (usata da Verdi e da molti strumenti antichi)</td><td>Calma, risonanza corporea più profonda, senso di pace. Preferita in musicoterapia e meditazione.</td></tr>
+            <tr><td>440 Hz</td><td>Standard internazionale ISO 16 (1955). È l'accordatura di tutta la musica commerciale e classica moderna.</td><td>Chiara, brillante, familiare. La scelta neutra se vuoi un suono "normale".</td></tr>
+            <tr><td>444 Hz</td><td>Accordatura alternativa legata al 528 Hz (Mi a 528)</td><td>Energizzante, leggermente più luminosa. Usata in alcune correnti di sound healing.</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-bottom:0"><strong>Nota:</strong> le differenze fra 432 e 440 Hz sono sottili ma percepibili dopo qualche minuto di ascolto. Per disturbi di ansia e insonnia il 432 Hz è la scelta tradizionalmente consigliata.</p>
+      </details>
 
       <button class="suno-generate" id="sa-btn" type="button">✦ Genera prompt Suno avanzato</button>
       <div class="suno-help">Il motore integra tutti i tuoi dati nel <em>system prompt</em> inviato a Claude. <a href="test-adattamenti.html">Fai il test Adattamenti AT →</a></div>

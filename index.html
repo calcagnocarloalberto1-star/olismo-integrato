@@ -71,12 +71,18 @@
       "url": "https://olismo-integrato.it/",
       "name": "Olismo Integrato",
       "alternateName": "Leggere la persona, accompagnare il conflitto",
-      "description": "Leggere la persona, accompagnare il conflitto. Portale di Avv. Carlo Alberto Calcagno che integra 4 motori AI per la mediazione (Consulente, Empowerment, Psicologia Analogica, Matrice della Svalutazione) e 7 sistemi olistici (chakra, enneagramma evolutivo, analisi transazionale, fiori di Bach/FES/Bush, cristalli, frequenze Solfeggio, VAK).",
+      "description": "Portale di Avv. Carlo Alberto Calcagno che integra 4 motori AI per la mediazione (Consulente, Empowerment, Psicologia Analogica, Matrice della Svalutazione) e 7 sistemi olistici (chakra, enneagramma evolutivo, analisi transazionale, fiori di Bach/FES/Bush, cristalli, frequenze Solfeggio, VAK).",
       "inLanguage": "it-IT",
       "publisher": {"@id": "https://olismo-integrato.it/#person"},
+      "author": {"@id": "https://olismo-integrato.it/#person"},
+      "copyrightHolder": {"@id": "https://olismo-integrato.it/#person"},
+      "copyrightYear": 2016,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://olismo-integrato.it/?cerca={search_term_string}",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://olismo-integrato.it/?cerca={search_term_string}"
+        },
         "query-input": "required name=search_term_string"
       }
     },
@@ -86,63 +92,123 @@
       "name": "Carlo Alberto Calcagno",
       "givenName": "Carlo Alberto",
       "familyName": "Calcagno",
+      "honorificPrefix": "Avv.",
       "url": "https://olismo-integrato.it/",
       "email": "calcagnocarloalberto1@gmail.com",
       "telephone": "+393473666508",
-      "jobTitle": ["Mediatore Familiare Certificato", "Formatore", "Pranoterapista", "Inventore dell'Enneagramma Evolutivo"],
-      "description": "Avvocato, mediatore familiare certificato, formatore, pranoterapista e ricercatore con 35 anni di esperienza nelle discipline olistiche e nella mediazione dei conflitti.",
-      "address": {"@type": "PostalAddress", "addressLocality": "Genova", "addressCountry": "IT"},
+      "jobTitle": [
+        "Avvocato",
+        "Mediatore Civile e Commerciale",
+        "Mediatore Familiare Certificato UNI 11644:2016",
+        "Formatore accreditato Ministero della Giustizia",
+        "Counselor olistico",
+        "Pranoterapista"
+      ],
+      "description": "Avvocato del Foro di Genova e mediatore familiare certificato UNI 11644:2016 (n. registro 0119-MF). Direttore della Scuola di Alta Formazione U.N.A.M. (Unione Nazionale Avvocati per la Mediazione). Responsabile scientifico dell'Organismo di mediazione e formazione dell'Ordine Avvocati di Genova e presso il Tribunale di Reggio Emilia. Rappresentante italiano del CIM-ICM (Consiglio Internazionale di Mediazione). Autore di pubblicazioni ARACNE e UTET sulla mediazione. Ha sviluppato il metodo Olismo Integrato che unisce enneagramma evolutivo, analisi transazionale, neuroscienze polivagali e tradizioni olistiche applicato alla mediazione civile e familiare.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Trieste 4/9",
+        "addressLocality": "Arenzano",
+        "addressRegion": "GE",
+        "postalCode": "16011",
+        "addressCountry": "IT"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Università degli Studi di Genova",
+        "url": "https://unige.it"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Mediatore familiare certificato UNI 11644:2016",
+          "identifier": "0119-MF",
+          "dateCreated": "2020-10-23"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Formatore teorico-pratico accreditato presso il Ministero della Giustizia",
+          "dateCreated": "2011"
+        }
+      ],
+      "memberOf": [
+        {"@type": "Organization", "name": "Ordine degli Avvocati di Genova"},
+        {"@type": "Organization", "name": "AIMEF - Associazione Italiana Mediatori Familiari", "url": "https://aimef.it"},
+        {"@type": "Organization", "name": "CIM-ICM - Consiglio Internazionale di Mediazione"},
+        {"@type": "Organization", "name": "U.N.A.M. - Unione Nazionale Avvocati per la Mediazione"}
+      ],
       "sameAs": [
-        "https://mediaresenzaconfini.org",
+        "https://mediaresenzaconfini.org/author/mediaresenzaconfini/",
+        "https://www.cnma.it/professionista/avvocato-carlo-calcagno/",
         "https://frequenze-evolutive.it",
         "https://guarigionequantica.eu",
-        "https://percorsidicrescitalucca.it",
         "https://ladanzadelconflitto.it",
-        "https://tieniinmanolaluce.me"
+        "https://tieniinmanolaluce.wordpress.com"
       ],
       "knowsAbout": [
+        "Mediazione civile e commerciale",
+        "Mediazione familiare",
+        "Mediazione d'impresa",
         "Enneagramma Evolutivo",
         "Analisi Transazionale",
-        "Mediazione Familiare",
-        "Mediazione Civile",
+        "Neuroscienze Polivagali",
+        "Psicologia Dinamica",
+        "Psicologia Analogica",
         "Pranoterapia",
-        "Programmazione Neuro-Linguistica",
+        "Counseling Olistico",
         "Chakra",
+        "Cristalloterapia",
         "Fiori di Bach",
         "Essenze FES Californiane",
         "Essenze Bush Australiane",
         "Frequenze Solfeggio",
-        "Psicologia Dinamica",
-        "Psicologia Umanistica",
-        "Violenza domestica",
-        "Controllo coercitivo",
+        "Violenza domestica e controllo coercitivo",
         "Convenzione di Istanbul",
-        "Riforma Cartabia",
+        "Riforma Cartabia D.Lgs. 149/2022",
         "Deontologia del mediatore"
       ]
     },
     {
-      "@type": "ProfessionalService",
-      "@id": "https://olismo-integrato.it/#service",
-      "name": "Olismo Integrato — Consulenza Olistica",
+      "@type": ["LegalService", "ProfessionalService"],
+      "@id": "https://olismo-integrato.it/#studio",
+      "name": "Studio legale Avv. Carlo Alberto Calcagno · Mediazione Integrata",
       "url": "https://olismo-integrato.it/",
-      "description": "Consulenza olistica integrata che unisce enneagramma, analisi transazionale, chakra, fiori di Bach, essenze FES e Bush, frequenze sonore e pranoterapia.",
+      "description": "Studio legale privato in Arenzano (Genova) specializzato in mediazione civile, mediazione familiare e mediazione d'impresa. Approccio integrato che unisce diritto, enneagramma evolutivo, analisi transazionale, neuroscienze polivagali e tradizioni olistiche.",
+      "founder": {"@id": "https://olismo-integrato.it/#person"},
       "provider": {"@id": "https://olismo-integrato.it/#person"},
-      "areaServed": {"@type": "Country", "name": "Italia"},
       "serviceType": [
-        "Counseling Olistico",
-        "Mediazione Familiare",
-        "Formazione",
-        "Pranoterapia",
-        "Enneagramma Evolutivo"
+        "Mediazione civile e commerciale",
+        "Mediazione familiare",
+        "Mediazione d'impresa",
+        "Consulenza legale in materia di ADR",
+        "Formazione professionale per mediatori"
       ],
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "description": "Database olistico consultabile gratuitamente, consulente AI incluso"
-      }
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Liguria"},
+        {"@type": "Country", "name": "Italia"}
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Trieste 4/9",
+        "addressLocality": "Arenzano",
+        "addressRegion": "GE",
+        "postalCode": "16011",
+        "addressCountry": "IT"
+      },
+      "priceRange": "€€",
+      "availableLanguage": ["it", "Italian"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://olismo-integrato.it/#homepage",
+      "url": "https://olismo-integrato.it/",
+      "name": "Olismo Integrato — Leggere la persona, accompagnare il conflitto",
+      "isPartOf": {"@id": "https://olismo-integrato.it/#website"},
+      "about": {"@id": "https://olismo-integrato.it/#person"},
+      "mainEntity": {"@id": "https://olismo-integrato.it/#studio"},
+      "inLanguage": "it-IT",
+      "datePublished": "2016-01-01",
+      "dateModified": "2026-04-24"
     }
   ]
 }
@@ -630,7 +696,9 @@
       <a class="f-link" href="faq.html">❓ FAQ</a>
       <a class="f-link" href="violenza.html" style="color:#c62828;font-weight:600">⚠ Violenza e mediazione</a>
       <a class="f-link" href="#percorso-viaggio">🗺 Mappa del percorso</a>
-      <button class="f-link" onclick="openPrivacy()" style="background:transparent;border:none;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit">🔒 Privacy</button>
+      <a class="f-link" href="privacy.html">🛡 Privacy Policy</a>
+      <a class="f-link" href="cookie.html">🍪 Cookie Policy</a>
+      <button class="f-link" onclick="if(window.olismoConsent){olismoConsent.showBanner()}" style="background:transparent;border:none;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit">🔒 Preferenze privacy</button>
     </div>
     <div>
       <div class="f-col-title" style="color:#c62828">🆘 Emergenza violenza</div>
@@ -641,7 +709,7 @@
       <a class="f-link" href="https://www.direcontrolaviolenza.it" target="_blank" rel="noopener">🤝 D.i.Re — CAV</a>
     </div>
   </div>
-  <div class="footer-copy">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:inherit;opacity:.85">📜 Termini d'uso</a></div>
+  <div class="footer-copy">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:inherit;opacity:.85">📜 Termini d'uso</a> · <a href="privacy.html" style="color:inherit;opacity:.85">🛡 Privacy</a> · <a href="cookie.html" style="color:inherit;opacity:.85">🍪 Cookie</a></div>
 </footer>
 
 <!-- Progress Widget -->

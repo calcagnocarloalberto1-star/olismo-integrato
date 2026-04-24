@@ -37,20 +37,58 @@
 <meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
 
 <title>Fiori di Bach — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="I 38 rimedi floreali di Bach: schede complete, stati emotivi, usi.">
+<meta name="description" content="I 38 rimedi floreali di Bach nei 7 gruppi originali: schede complete con stato negativo, trasformazione, enneatipi e chakra corrispondenti.">
 <link rel="canonical" href="https://olismo-integrato.it/bach.html">
 <meta property="og:title" content="Fiori di Bach — Olismo Integrato">
-<meta property="og:description" content="I 38 rimedi floreali di Bach: schede complete, stati emotivi, usi.">
+<meta property="og:description" content="I 38 rimedi floreali di Bach nei 7 gruppi originali: schede complete con stato negativo, trasformazione, enneatipi e chakra corrispondenti.">
 <meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fiori di Bach — Olismo Integrato">
-<meta name="twitter:description" content="I 38 rimedi floreali di Bach: schede complete, stati emotivi, usi.">
+<meta name="twitter:description" content="I 38 rimedi floreali di Bach nei 7 gruppi originali.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="olismo-styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  .bach-gruppo-hd {
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .bach-gruppo-hd:first-child { margin-top: 1.5rem; }
+  .bach-gruppo-num {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: .4rem;
+  }
+  .bach-gruppo-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 .5rem 0;
+    line-height: 1.2;
+  }
+  .bach-gruppo-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .bach-gruppo-desc {
+    font-size: .92rem;
+    color: var(--ink3);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
 </head>
 <body>
 
@@ -80,196 +118,620 @@
         <h3>La trasformazione degli stati emotivi</h3>
         <p>Eduard Bach, medico e omeopata gallese (1886–1936), identificò 38 rimedi floreali capaci di trasformare gli stati emotivi negativi nelle virtù opposte. La sua visione era semplice e rivoluzionaria: la malattia è il conflitto tra l'anima e la personalità.</p>
         <p>Ogni rimedio agisce su una specifica paura, difficoltà o qualità da sviluppare. Non trattano il sintomo fisico, ma l'attitudine mentale e il terreno emotivo da cui esso emerge. Il metodo è sicuro, non tossico e compatibile con qualsiasi altro trattamento.</p>
-        <p>I fiori di Bach si collegano ai chakra attraverso il piano emotivo: agiscono là dove il blocco energetico ha la sua radice psicologica più profonda.</p>
+        <p>Bach stesso raggruppò i 38 rimedi in <strong>7 gruppi</strong> corrispondenti ai principali stati di disagio dell'anima: paura, incertezza, mancanza di interesse per il presente, solitudine, ipersensibilità, scoraggiamento e disperazione, eccessiva preoccupazione per gli altri.</p>
+        <p>In questa pagina i fiori si collegano ai chakra attraverso il piano emotivo e agli enneatipi del metodo integrato: agiscono là dove il blocco energetico ha la sua radice psicologica più profonda.</p>
       </div>
       <div class="bach-quote">
         <blockquote>«Non è la nostra funzione quella di sapere che cosa fare per guarire la malattia del corpo — questo è compito del medico. Il nostro lavoro è capire la condizione spirituale e mentale della persona e aiutarla ad armonizzarsi.»</blockquote>
         <cite>— Eduard Bach</cite>
       </div>
     </div>
-    <div class="bach-grid" id="bach-grid">
-    <div class="bach-card">
-      <div class="bach-flower">🌟</div>
-      <div class="bach-name">Rescue Remedy</div>
-      <div class="bach-it">Rimedio d'emergenza</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Shock, trauma acuto, panico improvviso</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da reazione automatica a risposta consapevole</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tutti</p>
-      <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 1 — PAURA
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 1 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per la <em>paura</em></h3>
+      <p class="bach-gruppo-desc">Cinque rimedi per le diverse sfumature della paura: dalla paura conosciuta al terrore irrazionale, dalla paura per gli altri alla paura della propria mente.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌼</div>
-      <div class="bach-name">Mimulus</div>
-      <div class="bach-it">Mimolo</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paura di cose specifiche e note</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da timidezza e paura a coraggio e forza</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 1</p>
-      <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">🌼</div>
+        <div class="bach-name">Mimulus</div>
+        <div class="bach-it">Mimolo</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paura di cose specifiche e conosciute</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da timidezza e paura a coraggio quieto</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 1</p>
+        <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌸</div>
+        <div class="bach-name">Rock Rose</div>
+        <div class="bach-it">Eliantemo (Helianthemum)</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Terrore, panico, paura paralizzante</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da terrore a coraggio eroico</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6</p>
+        <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌫</div>
+        <div class="bach-name">Aspen</div>
+        <div class="bach-it">Pioppo tremulo</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paure vaghe, inspiegabili, senza causa conosciuta</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da ansia indefinita a fiducia nell'invisibile</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 4</p>
+        <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌰</div>
+        <div class="bach-name">Red Chestnut</div>
+        <div class="bach-it">Castagno rosso</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paura per i propri cari, ansia anticipatoria sulla salute degli altri</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da preoccupazione a fiducia e serenità</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 6</p>
+        <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍒</div>
+        <div class="bach-name">Cherry Plum</div>
+        <div class="bach-it">Mirabolano</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paura di perdere il controllo, di commettere atti estremi</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da panico di impazzire a autocontrollo interiore</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 6, Tipo 4</p>
+        <span class="bach-chakra" style="background:#7b2fa0">7° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌸</div>
-      <div class="bach-name">Rock Rose</div>
-      <div class="bach-it">Elianthemum</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Terrore, panico, paura paralizzante</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da terrore a coraggio eroico</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6</p>
-      <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 2 — INCERTEZZA
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 2 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per l'<em>incertezza</em></h3>
+      <p class="bach-gruppo-desc">Sei rimedi per le molte forme del dubbio: dal non sapere cosa scegliere al non fidarsi di sé, dallo scoraggiamento quotidiano al dubbio sulla propria strada.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌲</div>
-      <div class="bach-name">Larch</div>
-      <div class="bach-it">Larice</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Mancanza di fiducia in sé, aspettarsi il fallimento</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da insicurezza a fiducia autentica</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 3, Tipo 6</p>
-      <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">💜</div>
+        <div class="bach-name">Cerato</div>
+        <div class="bach-it">Cerato</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Non fidarsi del proprio giudizio, chiedere consiglio a tutti</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da dubbio a intuizione e fiducia in sé</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 9</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">⚖</div>
+        <div class="bach-name">Scleranthus</div>
+        <div class="bach-it">Scleranto</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Indecisione fra due alternative, oscillazione di umore</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da oscillazione a stabilità e determinazione</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 9, Tipo 4</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🟣</div>
+        <div class="bach-name">Gentian</div>
+        <div class="bach-it">Genziana</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Scoraggiamento dopo un insuccesso, scetticismo rapido</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da dubbio alla fede operativa, dalla caduta alla ripresa</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 4</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌾</div>
+        <div class="bach-name">Gorse</div>
+        <div class="bach-it">Ginestra</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Disperazione profonda, rinuncia a qualsiasi speranza</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da rassegnazione a speranza viva</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 4, Tipo 9, Tipo 5</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌳</div>
+        <div class="bach-name">Hornbeam</div>
+        <div class="bach-it">Carpino</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Stanchezza del lunedì mattina, senso di peso prima di iniziare</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da stanchezza mentale a freschezza e vitalità</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 5, Tipo 9, Tipo 1</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌱</div>
+        <div class="bach-name">Wild Oat</div>
+        <div class="bach-it">Avena selvatica</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Insoddisfazione per non aver trovato la propria strada</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da inquietudine vocazionale a riconoscimento del proprio cammino</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 7, Tipo 3, Tipo 4</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">💛</div>
-      <div class="bach-name">Centaury</div>
-      <div class="bach-it">Centaurea</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Incapacità di dire no, servire gli altri dimenticando sé</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da compiacenza a servizio autentico con volontà propria</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 9</p>
-      <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 3 — MANCANZA DI INTERESSE PER IL PRESENTE
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 3 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per chi è <em>assente dal presente</em></h3>
+      <p class="bach-gruppo-desc">Sette rimedi per chi vive altrove: nei sogni, nel passato, in pensieri ripetitivi, in stanchezza cronica. Riportano l'anima al qui e ora.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌹</div>
-      <div class="bach-name">Wild Rose</div>
-      <div class="bach-it">Rosa canina</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Rassegnazione, apatia, mancanza di motivazione</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da rassegnazione a rinnovato interesse per la vita</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 9, Tipo 5</p>
-      <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">🌺</div>
+        <div class="bach-name">Clematis</div>
+        <div class="bach-it">Clematide</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Sognare ad occhi aperti, mancanza di presenza mentale</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Da assenza mentale a radicamento nel presente</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 9, Tipo 7, Tipo 4</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍯</div>
+        <div class="bach-name">Honeysuckle</div>
+        <div class="bach-it">Caprifoglio</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Nostalgia del passato, vivere di ricordi, rimpianto</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla nostalgia al presente vissuto, con memoria pacificata</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 4, Tipo 9</p>
+        <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌿</div>
+        <div class="bach-name">Wild Rose</div>
+        <div class="bach-it">Rosa canina</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Rassegnazione, apatia, accettare passivamente le circostanze</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla rassegnazione all'interesse rinnovato per la vita</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 9, Tipo 5</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🫒</div>
+        <div class="bach-name">Olive</div>
+        <div class="bach-it">Olivo</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Esaurimento totale dopo sforzo prolungato, stanchezza fisica e mentale</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dallo sfinimento al recupero delle energie profonde</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 3, Tipo 1</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">⚪</div>
+        <div class="bach-name">White Chestnut</div>
+        <div class="bach-it">Castagno bianco</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Pensieri indesiderati ripetitivi, mente che non si ferma, ruminazione</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal circolo vizioso mentale a pace e chiarezza</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 6, Tipo 5</p>
+        <span class="bach-chakra" style="background:#7b2fa0">7° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌻</div>
+        <div class="bach-name">Mustard</div>
+        <div class="bach-it">Senape</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Malinconia improvvisa, nube oscura senza causa apparente</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla tristezza inspiegabile alla gioia serena</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 4, Tipo 9</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌰</div>
+        <div class="bach-name">Chestnut Bud</div>
+        <div class="bach-it">Gemma di castagno</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Ripetere gli stessi errori, non imparare dall'esperienza</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla ripetizione inconsapevole all'apprendimento dalla vita</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 7, Tipo 9, Tipo 6</p>
+        <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🍃</div>
-      <div class="bach-name">Holly</div>
-      <div class="bach-it">Agrifoglio</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Odio, invidia, gelosia, sospetto</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da odio e sospetto a amore e generosità</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 8, Tipo 4</p>
-      <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 4 — SOLITUDINE
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 4 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per la <em>solitudine</em></h3>
+      <p class="bach-gruppo-desc">Tre rimedi per chi soffre di non sapere stare con sé o con gli altri: dal bisogno affamato di compagnia all'isolamento orgoglioso, dalla fretta impaziente di chi non tollera i tempi altrui.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">💙</div>
-      <div class="bach-name">Chicory</div>
-      <div class="bach-it">Cicoria</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Possessività, amore condizionato, manipolazione affettiva</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da amore possessivo a amore incondizionato</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 8</p>
-      <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">💗</div>
+        <div class="bach-name">Heather</div>
+        <div class="bach-it">Erica</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Egocentrismo, bisogno di parlare di sé, non tollerare la solitudine</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'egocentrismo all'empatia, dal bisogno di attenzione alla capacità di ascolto</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 4, Tipo 7</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌸</div>
+        <div class="bach-name">Water Violet</div>
+        <div class="bach-it">Violetta d'acqua</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Orgoglio, distanza, preferire la solitudine anche quando servirebbe aiuto</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'isolamento orgoglioso a connessione serena</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 5, Tipo 4</p>
+        <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">💐</div>
+        <div class="bach-name">Impatiens</div>
+        <div class="bach-it">Balsamina dell'Himalaya</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Impazienza, irritazione per i ritmi altrui, fretta costante</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'impazienza a pazienza empatica e rispetto dei ritmi dell'altro</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 8, Tipo 1, Tipo 3</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌰</div>
-      <div class="bach-name">Red Chestnut</div>
-      <div class="bach-it">Castagno rosso</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Paura per i propri cari, ansia per la salute degli altri</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da preoccupazione in fiducia e serenità</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 6</p>
-      <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 5 — IPERSENSIBILITÀ
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 5 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per l'<em>ipersensibilità</em> agli influssi</h3>
+      <p class="bach-gruppo-desc">Quattro rimedi per chi è troppo permeabile al mondo esterno: alle aspettative altrui, ai cambiamenti, ai risentimenti, alle maschere sociali.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌾</div>
-      <div class="bach-name">Agrimony</div>
-      <div class="bach-it">Agrimonia</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Nascondere i problemi dietro una facciata allegra</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da maschera gioiosa a pace interiore autentica</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 3, Tipo 7</p>
-      <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">🌾</div>
+        <div class="bach-name">Agrimony</div>
+        <div class="bach-it">Agrimonia</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Nascondere i problemi dietro una facciata allegra e socievole</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla maschera gioiosa alla pace interiore autentica</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 3, Tipo 7</p>
+        <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">💛</div>
+        <div class="bach-name">Centaury</div>
+        <div class="bach-it">Centaurea</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Incapacità di dire no, servire gli altri dimenticando sé</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla compiacenza al servizio autentico con volontà propria</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 9</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌰</div>
+        <div class="bach-name">Walnut</div>
+        <div class="bach-it">Noce</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Facilmente influenzabili; difficoltà nelle transizioni e nei cambiamenti</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'influenzabilità alla protezione interiore durante i passaggi di vita</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tutti (scudo nei punti di shock)</p>
+        <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍃</div>
+        <div class="bach-name">Holly</div>
+        <div class="bach-it">Agrifoglio</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Odio, invidia, gelosia, sospetto, vendetta</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'odio e sospetto all'amore e generosità</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 8, Tipo 4</p>
+        <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌿</div>
-      <div class="bach-name">Vervain</div>
-      <div class="bach-it">Verbena</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Iper-entusiasmo, sovra-impegno, fanatismo</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da tensione e forza eccessiva a quiete e tolleranza</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 8</p>
-      <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 6 — SCORAGGIAMENTO E DISPERAZIONE
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 6 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per lo <em>scoraggiamento e la disperazione</em></h3>
+      <p class="bach-gruppo-desc">Otto rimedi per le molte forme della caduta: dall'insicurezza alla colpa, dal trauma al senso di esaurimento, dalla disperazione totale all'amarezza che non si scioglie.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌸</div>
-      <div class="bach-name">Water Violet</div>
-      <div class="bach-it">Violetta d'acqua</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Orgoglio, distanza, preferire la solitudine</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da isolamento orgoglioso a connessione serena</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 5, Tipo 4</p>
-      <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">🌲</div>
+        <div class="bach-name">Larch</div>
+        <div class="bach-it">Larice</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Mancanza di fiducia in sé, aspettarsi il fallimento</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'insicurezza a fiducia autentica</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 3, Tipo 6</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌲</div>
+        <div class="bach-name">Pine</div>
+        <div class="bach-it">Pino silvestre</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Senso di colpa pervasivo, auto-rimprovero, scusarsi di esistere</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla colpa nevrotica alla responsabilità matura e al perdono di sé</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 2, Tipo 6</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌳</div>
+        <div class="bach-name">Elm</div>
+        <div class="bach-it">Olmo</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Sovraccarico temporaneo di chi ha grandi responsabilità</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal senso di inadeguatezza momentaneo alla ripresa della propria forza</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 3, Tipo 8</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍯</div>
+        <div class="bach-name">Sweet Chestnut</div>
+        <div class="bach-it">Castagno dolce</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Angoscia estrema, "notte oscura dell'anima", sentirsi al limite</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'angoscia totale all'apertura del cuore, alla fede ritrovata</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 4, Tipo 6, Tipo 1</p>
+        <span class="bach-chakra" style="background:#7b2fa0">7° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">⭐</div>
+        <div class="bach-name">Star of Bethlehem</div>
+        <div class="bach-it">Latte di gallina</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Trauma recente o antico, lutto, shock che ancora risuona nel corpo</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal trauma congelato alla ripresa della fluidità vitale</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tutti (il consolatore universale)</p>
+        <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🥀</div>
+        <div class="bach-name">Willow</div>
+        <div class="bach-it">Salice</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Risentimento, vittimismo, amarezza per torti subiti</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal risentimento alla responsabilità attiva del proprio destino</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 4, Tipo 6, Tipo 8</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌳</div>
+        <div class="bach-name">Oak</div>
+        <div class="bach-it">Quercia</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Lottare fino allo stremo per dovere, non permettersi di fermarsi</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla resistenza ostinata alla forza saggia che sa riposare</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 8, Tipo 3</p>
+        <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍎</div>
+        <div class="bach-name">Crab Apple</div>
+        <div class="bach-it">Melo selvatico</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Senso di impurità, ossessione per la pulizia, vergogna del proprio corpo</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla vergogna di sé all'accettazione serena di tutte le proprie parti</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 4, Tipo 6</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">🌺</div>
-      <div class="bach-name">Clematis</div>
-      <div class="bach-it">Clematide</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Sognare ad occhi aperti, mancanza di presenza</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da assenza mentale a radicamento nel presente</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 9, Tipo 7, Tipo 4</p>
-      <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         GRUPPO 7 — ECCESSIVA PREOCCUPAZIONE PER GLI ALTRI
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Gruppo 7 di 7</div>
+      <h3 class="bach-gruppo-title">Fiori per chi si <em>occupa troppo degli altri</em></h3>
+      <p class="bach-gruppo-desc">Cinque rimedi per chi ha perso la misura nel rapportarsi all'altro: dal dominio rigido alla possessività, dalla pretesa di convertire al rigore estremo con sé, dall'intolleranza al perfezionismo combattivo.</p>
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">💜</div>
-      <div class="bach-name">Cerato</div>
-      <div class="bach-it">Cerato</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Non fidarsi del proprio giudizio, cercare consigli continui</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da dubbio a intuizione e fiducia in sé</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 6, Tipo 9</p>
-      <span class="bach-chakra" style="background:#4527a0">6° Chakra</span>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">💙</div>
+        <div class="bach-name">Chicory</div>
+        <div class="bach-it">Cicoria</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Possessività, amore condizionato, manipolazione affettiva</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dall'amore possessivo all'amore incondizionato</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 2, Tipo 8</p>
+        <span class="bach-chakra" style="background:#2e7d4f">4° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌿</div>
+        <div class="bach-name">Vervain</div>
+        <div class="bach-it">Verbena</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Iper-entusiasmo, sovra-impegno, voler convertire gli altri alle proprie idee</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla tensione eccessiva alla quiete e tolleranza</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 8</p>
+        <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🍇</div>
+        <div class="bach-name">Vine</div>
+        <div class="bach-it">Vite</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Dominio, volontà di comando, imporre le proprie decisioni</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal dominio autoritario alla leadership al servizio</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 8, Tipo 1, Tipo 3</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">🌳</div>
+        <div class="bach-name">Beech</div>
+        <div class="bach-it">Faggio</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Intolleranza, critica costante, rigidità giudicante</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla critica all'indulgenza comprensiva</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 5, Tipo 8</p>
+        <span class="bach-chakra" style="background:#1565c0">5° Chakra</span>
+      </div>
+
+      <div class="bach-card">
+        <div class="bach-flower">💧</div>
+        <div class="bach-name">Rock Water</div>
+        <div class="bach-it">Acqua di roccia</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Rigore estremo con sé, perfezionismo ascetico, esempio da martire</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dal perfezionismo rigido alla flessibilità e gentilezza con sé</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 3, Tipo 5</p>
+        <span class="bach-chakra" style="background:#c49a1a">3° Chakra</span>
+      </div>
+
     </div>
-    <div class="bach-card">
-      <div class="bach-flower">⚪</div>
-      <div class="bach-name">Crown Chestnut</div>
-      <div class="bach-it">Castagno bianco</div>
-      <div class="bach-stato">Stato negativo</div>
-      <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Pensieri indesiderati ripetitivi, mente che non si ferma</em></p>
-      <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
-      <p class="bach-desc">Da circolo vizioso mentale a pace e chiarezza</p>
-      <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
-      <p class="bach-desc" style="margin-bottom:.5rem">Tipo 1, Tipo 6, Tipo 5</p>
-      <span class="bach-chakra" style="background:#7b2fa0">7° Chakra</span>
-    </div></div>
-    <div style="text-align:center;margin-top:2.5rem;padding-bottom:.5rem">
-      <a href="ai-fes.html" style="display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid #3a7a28;color:#7ab648;padding:.85rem 2.2rem;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;font-family:&#39;Outfit&#39;,sans-serif">✦ Scopri i fiori adatti a te (AI FES) →</a>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         RIMEDIO D'EMERGENZA — COMPOSTO
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="bach-gruppo-hd">
+      <div class="bach-gruppo-num">Rimedio d'emergenza</div>
+      <h3 class="bach-gruppo-title">Il <em>Rescue Remedy</em></h3>
+      <p class="bach-gruppo-desc">Non è un 39° fiore ma un <em>composto</em> di cinque fiori — Star of Bethlehem, Rock Rose, Cherry Plum, Impatiens, Clematis — ideato da Bach stesso per gli stati acuti: shock, trauma improvviso, crisi di panico, attese angosciose. Si usa al bisogno, anche più volte nell'arco della stessa giornata.</p>
+    </div>
+    <div class="bach-grid">
+
+      <div class="bach-card">
+        <div class="bach-flower">🌟</div>
+        <div class="bach-name">Rescue Remedy</div>
+        <div class="bach-it">Composto: Star of Bethlehem + Rock Rose + Cherry Plum + Impatiens + Clematis</div>
+        <div class="bach-stato">Stato negativo</div>
+        <p class="bach-desc" style="font-size:.78rem;color:var(--ink3);margin-bottom:.35rem"><em>Shock acuto, trauma improvviso, panico, ansia da prestazione imminente</em></p>
+        <div class="bach-stato" style="color:var(--sage)">Trasformazione</div>
+        <p class="bach-desc">Dalla reazione automatica di sopravvivenza a una risposta consapevole e presente</p>
+        <div class="bach-stato" style="margin-top:.5rem">Enneatipi</div>
+        <p class="bach-desc" style="margin-bottom:.5rem">Tutti</p>
+        <span class="bach-chakra" style="background:#a83232">1° Chakra</span>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;padding-bottom:.5rem">
+      <a href="ai-fes.html" style="display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid #3a7a28;color:#7ab648;padding:.85rem 2.2rem;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;font-family:'Outfit',sans-serif">✦ Scopri i fiori adatti a te (AI FES) →</a>
     </div>
   </div>
 </section>

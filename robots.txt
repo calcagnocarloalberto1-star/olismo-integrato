@@ -68,6 +68,10 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
+# Google Other (research dataset crawler — separato da Googlebot)
+User-agent: GoogleOther
+Disallow: /
+
 # Apple AI training
 User-agent: Applebot-Extended
 Disallow: /
@@ -127,6 +131,10 @@ Disallow: /
 User-agent: Ai2Bot-Dolma
 Disallow: /
 
+# Naver / Yeti (Corea — ha attivato AI training nel 2025)
+User-agent: Yeti
+Disallow: /
+
 # Image AI training
 User-agent: ImagesiftBot
 Disallow: /
@@ -164,6 +172,7 @@ Disallow: /
 
 User-agent: DotBot
 Disallow: /
+
 
 # Generic catch-all per ogni bot non identificato
 # (i bot legittimi dei motori di ricerca sono già ammessi sopra)

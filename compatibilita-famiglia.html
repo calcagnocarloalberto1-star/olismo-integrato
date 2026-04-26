@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-compatibilita-famiglia
+  Tool integrato dall'app enneagrammaevolutivo.it
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
+<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+
+<title>Compatibilità in famiglia — Enneagramma evolutivo | Olismo Integrato</title>
+<meta name="description" content="Tool interattivo: analizza la compatibilità tra membri della famiglia per enneatipo, ala, percorso ed età. Riassunto e PDF scaricabile.">
+<link rel="canonical" href="https://olismo-integrato.it/compatibilita-famiglia.html">
+<meta property="og:title" content="Compatibilità in famiglia — Olismo Integrato">
+<meta property="og:description" content="Calcola la compatibilità tra i membri della tua famiglia in base all'enneatipo evolutivo. Tool con riassunto e PDF.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+<style>
+.fc-hero{padding:1.5rem 0 1rem;text-align:center}
+.fc-section{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.6rem}
+.fc-section h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--ink);margin:0 0 1rem;display:flex;align-items:center;gap:.5rem}
+.fc-section h2 em{font-style:italic;color:var(--gold)}
+.fc-member{display:grid;grid-template-columns:1.4fr .9fr .8fr 1fr .8fr auto;gap:.7rem;align-items:end;padding:.85rem 1rem;background:#faf6ec;border:1px solid var(--border);border-radius:10px;margin-bottom:.7rem}
+@media(max-width:880px){.fc-member{grid-template-columns:1fr 1fr 1fr;gap:.6rem}.fc-member-rm{grid-column:3}}
+@media(max-width:560px){.fc-member{grid-template-columns:1fr 1fr}.fc-member-rm{grid-column:2}}
+.fc-fld{display:flex;flex-direction:column;gap:.25rem}
+.fc-fld label{font-size:.7rem;font-weight:600;color:var(--ink3);font-family:'Outfit',sans-serif;letter-spacing:.04em}
+.fc-fld input,.fc-fld select{width:100%;padding:.45rem .55rem;border:1px solid var(--border);border-radius:7px;font-family:inherit;font-size:.85rem;color:var(--ink);background:#fff;box-sizing:border-box}
+.fc-fld input:focus,.fc-fld select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.fc-rm-btn{background:transparent;border:1px solid var(--border);color:#A32D2D;padding:.45rem .6rem;border-radius:7px;cursor:pointer;font-size:.85rem;font-family:'Outfit',sans-serif;transition:all .15s}
+.fc-rm-btn:hover:not(:disabled){background:rgba(163,45,45,.08);border-color:#A32D2D}
+.fc-rm-btn:disabled{opacity:.3;cursor:not-allowed}
+.fc-add-btn{display:block;width:100%;padding:.7rem;background:transparent;border:1.5px dashed var(--gold);color:var(--gold);border-radius:10px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.05em;margin-top:.5rem;transition:all .15s}
+.fc-add-btn:hover{background:rgba(184,147,90,.06)}
+.fc-phase-card{background:#faf6ec;border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;margin-bottom:.7rem}
+.fc-phase-hd{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.fc-phase-hd .fc-emoji{font-size:1.4rem}
+.fc-phase-hd .fc-info-name{font-family:'Outfit',sans-serif;font-weight:600;font-size:.92rem;color:var(--ink)}
+.fc-phase-hd .fc-info-meta{font-size:.74rem;color:var(--ink3);margin-top:.1rem}
+.fc-phase-hd .fc-info-wing{font-size:.74rem;color:var(--gold);font-style:italic;margin-top:.1rem}
+.fc-attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem .9rem;font-size:.78rem}
+@media(max-width:680px){.fc-attrs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.fc-attrs{grid-template-columns:1fr}}
+.fc-attrs span:first-child{color:var(--ink3);font-weight:500}
+.fc-attrs b{color:var(--ink);font-weight:600}
+.fc-pair{background:#fff;border:1px solid #d4c8b0;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem}
+.fc-pair-hd{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink)}
+.fc-pair-hd .fc-vs{color:#c44569;font-size:1.1rem}
+.fc-pair-score{margin-left:auto;background:var(--gold);color:#fff;padding:.25rem .65rem;border-radius:14px;font-size:.74rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.04em;white-space:nowrap}
+.fc-pair-shared,.fc-pair-diffs,.fc-pair-wings,.fc-pair-at{margin-top:.7rem}
+.fc-pair-label{font-size:.72rem;font-weight:600;color:var(--ink3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:.3rem}
+.fc-tag{display:inline-block;padding:.2rem .55rem;border-radius:11px;font-size:.72rem;margin:.2rem .25rem .2rem 0}
+.fc-tag-ok{background:rgba(58,143,79,.1);color:#3A8F4F;border:1px solid rgba(58,143,79,.25)}
+.fc-tag-diff{background:#fff;border:1px solid var(--border);color:var(--ink2);font-size:.7rem}
+.fc-pair-diffs .fc-diff{display:flex;align-items:flex-start;gap:.5rem;padding:.3rem 0;font-size:.78rem;border-bottom:1px dotted var(--border);flex-wrap:wrap}
+.fc-pair-diffs .fc-diff:last-child{border-bottom:none}
+.fc-pair-diffs .fc-diff-attr{color:var(--ink3);min-width:130px;flex-shrink:0}
+.fc-pair-diffs .fc-diff-vs{color:var(--ink4);font-style:italic;font-size:.72rem}
+.fc-pair-wings,.fc-pair-at{background:rgba(184,147,90,.06);padding:.6rem .8rem;border-radius:7px;font-size:.78rem;color:var(--ink2);line-height:1.5}
+.fc-pair-wings .fc-pair-label{color:var(--gold);margin-bottom:.3rem}
+.fc-pdf-row{display:flex;justify-content:flex-end;margin:1rem 0}
+.fc-pdf-btn{background:var(--gold);color:#fff;border:none;padding:.6rem 1.3rem;border-radius:22px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.04em;display:inline-flex;align-items:center;gap:.4rem;transition:all .18s}
+.fc-pdf-btn:hover{background:#a07f4a;transform:translateY(-1px);box-shadow:0 6px 16px rgba(184,147,90,.25)}
+.fc-summary{background:linear-gradient(135deg,#fdf6e3 0%,#f9eecf 100%);border:1px solid var(--gold);border-radius:14px;padding:1.3rem 1.6rem}
+.fc-summary h2{margin-top:0}
+.fc-summary p{font-size:.92rem;line-height:1.65;color:var(--ink2);margin:0 0 .5rem;white-space:pre-line}
+.fc-disclaimer{background:rgba(184,147,90,.05);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:1.5rem 0;font-size:.78rem;color:var(--ink3);line-height:1.5;border-radius:0 7px 7px 0}
+</style>
+</head>
+<body>
+
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="famiglia">
+  <div class="container" style="max-width:1100px">
+    <div class="sec-hd fc-hero">
+      <div class="sec-eye">👨‍👩‍👧 Compatibilità in famiglia</div>
+      <h2 class="sec-title">Le <em>dinamiche</em> familiari</h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Aggiungi i membri della tua famiglia indicando enneatipo, ala, percorso evolutivo ed età. Il tool mostrerà la fase attuale di ciascuno, gli attributi condivisi e le aree di potenziale attrito tra ogni coppia. Il riassunto e il PDF scaricabile rendono il quadro completo.</p>
+    </div>
+
+    <div class="fc-section">
+      <h2>👨‍👩‍👧 Membri della <em>famiglia</em></h2>
+      <div id="members-container"></div>
+      <button class="fc-add-btn" onclick="addMember()">＋ Aggiungi membro</button>
+    </div>
+
+    <div class="fc-section" id="phases-section" style="display:none">
+      <h2>🌱 Fasi <em>attuali</em></h2>
+      <div id="phases-container"></div>
+    </div>
+
+    <div class="fc-pdf-row" id="pdf-row" style="display:none">
+      <button class="fc-pdf-btn" onclick="generatePdf()">↓ Scarica PDF dell'analisi</button>
+    </div>
+
+    <div class="fc-section" id="pairs-section" style="display:none">
+      <h2>💞 Compatibilità a <em>coppie</em></h2>
+      <div id="pairs-container"></div>
+    </div>
+
+    <div class="fc-summary" id="summary-section" style="display:none;margin-bottom:1.6rem">
+      <h2>✦ Riassunto <em>integrato</em></h2>
+      <p id="summary-text"></p>
+    </div>
+
+    <div class="fc-disclaimer" id="at-disclaimer" style="display:none">
+      <strong>Nota sugli adattamenti AT:</strong> <span id="at-disclaimer-text"></span>
+    </div>
+
+    <div style="text-align:center;margin:2rem 0 1rem;padding:1.2rem;background:#faf6ec;border:1px solid var(--border);border-radius:10px">
+      <p style="font-size:.85rem;color:var(--ink3);margin:0 0 .8rem;font-style:italic">Vuoi un'analisi olistica integrata che colleghi enneatipi, AT, chakra, fiori di Bach e dinamiche di mediazione familiare?</p>
+      <a href="consulente.html" style="display:inline-block;padding:.55rem 1.3rem;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:20px;text-decoration:none;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.05em;transition:all .18s">🤖 Chiedi al Consulente AI →</a>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno · Tool integrato da Enneagramma Evolutivo</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="compatibilita.html" style="color:var(--gold);text-decoration:none">♡ Test compatibilità coppia</a>
+      <a href="enneagram.html" style="color:var(--gold);text-decoration:none">⬟ I 9 enneatipi</a>
+      <a href="mediazione-familiare.html" style="color:var(--gold);text-decoration:none">👨‍👩‍👧 Mediazione familiare</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="manuale.html" style="color:var(--gold);text-decoration:none">📖 Il manuale</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+  </div>
+</footer>
+
+<script>
+// Percorsi di Vita - Dati completi dei percorsi evolutivi per ogni enneatipo
+// Estratti dal Prontuario dell'Enneagramma Evolutivo
+// Mapping enneatipo → adattamento principale
+const enneatipoATMapping = {
+    1: { adattamento: "Ossessivo-compulsivo" },
+    2: { adattamento: "Istrionico", adattamentoSecondario: "Passivo-aggressivo" },
+    3: { adattamento: "Istrionico" }, // Isteria → simile a Istrionico nella performance
+    4: { adattamento: "Borderline" }, // Adattamento anomalo
+    5: { adattamento: "Schizoide" },
+    6: { adattamento: "Paranoide" },
+    7: { adattamento: "Narcisista" }, // Adattamento anomalo
+    8: { adattamento: "Antisociale", adattamentoSecondario: "Narcisista" },
+    9: { adattamento: "Passivo-aggressivo" },
+};
+// Helper: trova l'adattamento AT per un enneatipo
+function getATForEnneatipo(enneatipo) {
+    const mapping = enneatipoATMapping[enneatipo];
+    if (!mapping)
+        return undefined;
+    return adattamentiAT.find(a => a.nome === mapping.adattamento)
+        || adattamentiAT.find(a => a.enneatipo === enneatipo);
+}
+// Helper: trova tutti gli adattamenti rilevanti per un enneatipo
+function getATListForEnneatipo(enneatipo) {
+    const mapping = enneatipoATMapping[enneatipo];
+    if (!mapping)
+        return [];
+    const primary = adattamentiAT.find(a => a.nome === mapping.adattamento);
+    const secondary = mapping.adattamentoSecondario
+        ? adattamentiAT.find(a => a.nome === mapping.adattamentoSecondario)
+        : undefined;
+    return [primary, secondary].filter(Boolean);
+}
+// Disclaimer AT obbligatorio
+const AT_DISCLAIMER = "La terminologia degli adattamenti serve unicamente a facilitare il riconoscimento degli stili di personalità. Non si tratta di diagnosi cliniche.";
+// Le 6 Età della Vita (dal Prontuario — tradizione antica + Freud + Erikson)
+// Queste sono le fasce d'età usate nei percorsi dell'esagramma
+const etaVita = [
+    { numero: 1, eta: "0-3", nome: "Infantia (Infanzia)", enneatipo: 0, descrizione: "Fase orale di fiducia/sfiducia (Erikson). Si forma il legame primario e l'attaccamento. Primo contatto con il proprio enneatipo di base." },
+    { numero: 2, eta: "3-12", nome: "Pueritia (Puerizia)", enneatipo: 0, descrizione: "Spirito d'iniziativa e operosità opposti a senso di colpa e inferiorità (Erikson). Fase di latenza: il bambino sviluppa competenze e socialità." },
+    { numero: 3, eta: "12-19", nome: "Adolescentia (Adolescenza)", enneatipo: 0, descrizione: "Età dell'identità o della dispersione dei ruoli (Erikson). Si affrontano le sfide della pubertà, si cerca sicurezza e appartenenza." },
+    { numero: 4, eta: "20-30", nome: "Juventus (Gioventù)", enneatipo: 0, descrizione: "Giovane età adulta: intimità e solidarietà oppure isolamento (Erikson). Amore, amicizia e lavoro, o isolamento se fallite le fasi precedenti." },
+    { numero: 5, eta: "25-60", nome: "Virilitas (Virilità)", enneatipo: 0, descrizione: "Generatività opposta a stagnazione e auto-assorbimento (Erikson). Si procrea, si cura, si costruisce — o si regredisce chiudendosi in un ruolo." },
+    { numero: 6, eta: "60+", nome: "Senectutes (Vecchiaia)", enneatipo: 0, descrizione: "Integrità opposta a disperazione (Erikson). Riflessione e bilancio sulla vita; disperazione se si pensa a ciò che non si è potuto realizzare." },
+];
+// Adattamenti dell'Analisi Transazionale (dati completi dal Prontuario)
+const adattamentiAT = [
+    {
+        nome: "Istrionico",
+        nomeAlternativo: "Entusiasta-iperreattivo",
+        enneatipo: 2,
+        enneatipiSecondari: [3, 7],
+        eysenck: "Estroverso",
+        tipo: "Adattamento di performance",
+        descrizione: "I genitori enfatizzano il fatto di far felici gli altri: il bambino cerca di mettersi al centro dell'attenzione e di intrattenere gli altri, ma non cresce nel pensiero. Tende ad equiparare amore e attenzione. È iperreattivo.",
+        stileSociale: "Attivo socievole — è attraente per gli altri («l'anima della festa»)",
+        portaAperta: "Emozioni",
+        portaBersaglio: "Pensiero",
+        portaTrappola: "Comportamento",
+        sequenzaPorte: "e.p.c.",
+        spinta: "Compiaci",
+        ingiunzioni: ["Non crescere", "Non pensare", "Non essere importante", "Non essere te stesso"],
+        giocoPsicologico: "Tutta colpa tua",
+        copione: "Dopo",
+        copioneMotto: "Posso divertirmi oggi, ma dovrò pagarlo domani",
+        copioneDescrizione: "Si concede qualcosa di buono, ma poi si punisce con qualcosa di spiacevole. Può essere anche «Quasi tipo I» (inizia un progetto ma poi non riesce a finire) e «Quasi tipo II» (finisce un progetto e ne inizia subito un altro).",
+        dilemma: "Se sono indipendente devo rinunciare al calore e al supporto",
+        andatura: "Lievemente oscillante o con lieve rimbalzo ad ogni passo",
+        diFronteAMinaccia: "Intensifica le emozioni",
+        domandaConferma: "Si impegna a fare in modo che le persone che la circondano siano felici e serene?",
+        stileComunicazione: "Lo stile affettivo unitamente a quello emotivo è indicato per comunicare con l'Istrionico",
+        rapport: "Premura ed essere divertenti",
+        obiettiviTerapia: [
+            "Sono amato anche se non sto al centro dell'attenzione",
+            "Non è vero ciò che sento vero",
+            "So agire e so pensare",
+        ],
+        statoIo: "Adulto contaminato dal Bambino",
+        contaminazioneAdulto: "L'Adulto è contaminato dal Bambino: le emozioni distorcono il pensiero razionale",
+        strutturaTempoPreferita: "Passatempi, giochi e intimità",
+        strutturaTempoEvitata: "Rituali",
+    },
+    {
+        nome: "Ossessivo-compulsivo",
+        nomeAlternativo: "Responsabile-stakanovista",
+        enneatipo: 1,
+        enneatipiSecondari: [3],
+        eysenck: "Introverso",
+        tipo: "Adattamento di performance",
+        descrizione: "Il genitore enfatizza il risultato: il bambino cerca di essere bravo per evitare di vergognarsi e di sentirsi in colpa. Mantiene la parola data ed è considerato un pilastro sociale. Non sa porre limite alla sua responsabilità.",
+        stileSociale: "Attivo ritirato — introverso nelle relazioni, ma prende iniziativa per risolvere i problemi e per relazionarsi con pochi",
+        portaAperta: "Pensiero",
+        portaBersaglio: "Emozioni",
+        portaTrappola: "Comportamento",
+        sequenzaPorte: "p.e.c.",
+        spinta: "Sii perfetto",
+        ingiunzioni: ["Non essere un bambino", "Non sentire", "Non essere intimo", "Non essere importante", "Non divertirti"],
+        giocoPsicologico: "Tutta colpa tua",
+        copione: "Finché",
+        copioneMotto: "Non mi posso divertire finché non ho fatto il mio lavoro",
+        copioneDescrizione: "Si trattiene dal provare piacere sino a che qualcosa di spiacevole non è stato completato. Può essere anche «Quasi tipo 2» (finisce un progetto e ne inizia subito un altro, senza darsi tregua) e «Finale aperto» (raggiunge un certo punto nella vita, dopo di che trova il vuoto).",
+        dilemma: "Posso essere libero se non perdo la testa e non mi arrendo completamente all'amore",
+        andatura: "Tiene sotto controllo i movimenti eccessivi",
+        diFronteAMinaccia: "Diventa iper-razionale",
+        domandaConferma: "Fa del suo meglio per essere bravo a fare ogni cosa nel modo giusto?",
+        stileComunicazione: "L'esplorativo e il direttivo sono stili utili per comunicare con questo adattamento",
+        rapport: "Aggancio a livello cognitivo e aiuto a liberare emozioni (premura e gioco)",
+        obiettiviTerapia: [
+            "Accetto di essere sufficientemente buono anche se non sono perfetto",
+            "Devo stare bene anche se non faccio niente",
+            "Non devo vivere nella paura che qualcuno mi faccia notare un difetto",
+        ],
+        statoIo: "Adulto contaminato dal Genitore (dai pregiudizi)",
+        contaminazioneAdulto: "L'Adulto è contaminato dal Genitore: i pregiudizi e le regole interiorizzate distorcono la percezione della realtà",
+        strutturaTempoPreferita: "Attività, giochi, intimità",
+        strutturaTempoEvitata: "Rituali",
+    },
+    {
+        nome: "Paranoide",
+        nomeAlternativo: "Brillante-scettico",
+        enneatipo: 6,
+        eysenck: "Introverso",
+        tipo: "Adattamento di sopravvivenza",
+        descrizione: "Genitori inconsistenti che reagiscono in modo imprevedibile: non sapendo che cosa aspettarsi, vigilerà e controllerà tutta la vita. Devono recuperare le sicurezze perdute da piccoli. Brillanti pensatori, giuristi, organizzatori, controllori; svalutano a torto.",
+        stileSociale: "A cavallo tra attivo e passivo ritirato — prima di assumere una posizione attiva o passiva si ritira e valuta la situazione",
+        portaAperta: "Pensiero",
+        portaBersaglio: "Emozioni",
+        portaTrappola: "Comportamento",
+        sequenzaPorte: "p.e.c.",
+        spinta: "Sii perfetto + Sii forte",
+        ingiunzioni: ["Non essere un bambino", "Non essere intimo", "Non fidarti", "Non sentire", "Non divertirti", "Non appartenere"],
+        giocoPsicologico: "Ti ho beccato figlio di puttana",
+        copione: "Mai + Finché",
+        copioneMotto: "Non posso avere mai quello che più desidero",
+        copioneDescrizione: "Non parte e non andrà mai da nessuna parte; si trattiene dal provare piacere sino a che qualcosa di spiacevole non è stato completato. Svaluta la realtà.",
+        dilemma: "Posso essere libero se non perdo la testa e non mi arrendo completamente all'amore",
+        andatura: "In modo rigido come se avesse un palo d'acciaio nella schiena",
+        diFronteAMinaccia: "Attacca con ragionamenti logici molto acuti",
+        domandaConferma: "Prima valuta accuratamente e poi si attiva con decisione per risolvere i problemi?",
+        stileComunicazione: "L'esplorativo insieme allo stile direttivo è opportuno per comunicare col Paranoide",
+        rapport: "Essere razionali e coerenti, dimostrare affidabilità nel tempo",
+        obiettiviTerapia: [
+            "Anche se non controllo le cose non per questo vanno fuori controllo",
+            "Devo imparare a confrontarmi con gli altri",
+            "Devo imparare a verificare le mie percezioni con quelle degli altri",
+        ],
+        statoIo: "Adulto contaminato dal Genitore; Bambino escluso",
+        contaminazioneAdulto: "Lo stato dell'Io Adulto è contaminato dal Genitore ed il Bambino è escluso: prevale la sospettosità e manca la spontaneità",
+        strutturaTempoPreferita: "Rituali, passatempi e giochi",
+        strutturaTempoEvitata: "Intimità",
+    },
+    {
+        nome: "Schizoide",
+        nomeAlternativo: "Creativo-sognatore",
+        enneatipo: 5,
+        eysenck: "Introverso",
+        tipo: "Adattamento di sopravvivenza",
+        descrizione: "Ha genitori esitanti su come interagire (si sentono sopraffatti): il bambino cerca di aiutarli, ma se fallisce decide di farcela da solo. Carattere comune a pensatori, artisti e scrittori. È gentile e rispettoso, si perde nei suoi sogni e talvolta non sa agire.",
+        stileSociale: "Passivo ritirato — preferisce non fare e star da solo",
+        portaAperta: "Comportamento",
+        portaBersaglio: "Pensiero",
+        portaTrappola: "Emozioni",
+        sequenzaPorte: "c.p.e.",
+        spinta: "Sii forte",
+        ingiunzioni: ["Non farlo", "Non appartenere", "Non essere sano", "Non sentire (gioia, sessualità, rabbia)", "Non divertirti", "Non crescere", "Non pensare"],
+        giocoPsicologico: "Tutta colpa tua",
+        copione: "Mai",
+        copioneMotto: "Non posso avere mai quello che più desidero",
+        copioneDescrizione: "Non parte e non andrà da nessuna parte. Può essere anche «Sempre»: rimane nelle situazioni in cui si trova anche se sono negative.",
+        dilemma: "Posso esistere sino a che non chiedo troppo",
+        andatura: "Fiacco e poco coordinato nei movimenti",
+        diFronteAMinaccia: "Tiene un basso profilo",
+        domandaConferma: "Si tira indietro e aspetta che le cose tornino alla normalità?",
+        stileComunicazione: "Lo stile direttivo è particolarmente congeniale per lo Schizoide",
+        rapport: "Prendere iniziativa ed incoraggiare ad esprimere i pensieri e ad agire",
+        obiettiviTerapia: [
+            "Devo prendermi cura di me come faccio con tutti gli altri",
+            "Ho diritto come tutti ad avere uno spazio nel mondo",
+            "È ok che io abbia bisogni ed emozioni e che gli altri le prendano in considerazione",
+            "Posso avvicinarmi agli altri senza rinunciare a me stesso",
+        ],
+        statoIo: "Doppia contaminazione dell'Adulto (Bambino e Genitore)",
+        contaminazioneAdulto: "Si assiste ad una doppia contaminazione dell'Adulto ad opera del Bambino e del Genitore: paure infantili e regole rigide offuscano la razionalità",
+        strutturaTempoPreferita: "Isolamento, attività, intimità",
+        strutturaTempoEvitata: "Giochi e passatempi",
+    },
+    {
+        nome: "Passivo-aggressivo",
+        nomeAlternativo: "Scherzoso-oppositivo",
+        enneatipo: 9,
+        enneatipiSecondari: [2],
+        eysenck: "Estroverso",
+        tipo: "Adattamento di performance",
+        descrizione: "Genitori ipercontrollanti che dicono «Devi fare le cose come dico io!»: la vita diventa una lotta. I bambini divengono tenaci e se non raggiungono lo scopo cercano di impedire agli altri di raggiungerlo. Combatte il controllo anche quando nessuno tenta di controllarlo.",
+        stileSociale: "Passivo socievole — ama appartenere al gruppo ma è passivo davanti al problema",
+        portaAperta: "Comportamento",
+        portaBersaglio: "Emozioni",
+        portaTrappola: "Pensiero",
+        sequenzaPorte: "c.e.p.",
+        spinta: "Sforzati",
+        ingiunzioni: ["Non crescere", "Non sentire", "Non farlo", "Non essere intimo", "Non divertirti"],
+        giocoPsicologico: "Perché non… sì ma",
+        copione: "Sempre",
+        copioneMotto: "L'hai voluta la bicicletta e ora pedala",
+        copioneDescrizione: "Rimane nelle situazioni in cui si trova anche se negative. Può essere anche «Quasi tipo 2»: finisce un progetto e ne continua subito un altro senza darsi tregua.",
+        dilemma: "Se faccio quel che voglio perdo il tuo amore. Per avere il tuo amore devo rinunciare a me stesso",
+        andatura: "A scatti",
+        diFronteAMinaccia: "Si lamenta, protesta, oppone resistenza",
+        domandaConferma: "Contrasta costantemente le aspettative degli altri per fare le cose alla sua maniera?",
+        stileComunicazione: "Stile emotivo che si può tradurre in ironia e nel fare battute",
+        rapport: "Essere scherzosi, favorire l'emozione e chiedere quel che vuole. Non farlo pensare.",
+        obiettiviTerapia: [
+            "Non si deve sempre combattere per sopravvivere",
+            "Devo imparare a chiedere: gli altri mi daranno; posso essere cooperativo",
+            "Devo sperimentare la libertà di sentirmi diverso e sentirmi OK",
+        ],
+        statoIo: "Doppia contaminazione dell'Adulto (Bambino e Genitore)",
+        contaminazioneAdulto: "Si assiste ad una doppia contaminazione dell'Adulto ad opera del Bambino e del Genitore: resistenza passiva e regole rigide si sovrappongono",
+        strutturaTempoPreferita: "Passatempi e giochi",
+        strutturaTempoEvitata: "Rituali, attività e intimità",
+    },
+    {
+        nome: "Antisociale",
+        nomeAlternativo: "Affascinante-manipolatore",
+        enneatipo: 8,
+        eysenck: "Estroverso",
+        tipo: "Adattamento di sopravvivenza",
+        descrizione: "Ha subito un atteggiamento anticipatorio dei genitori (che fanno qualcosa prima che il bambino ne abbia bisogno). Quando sono stanchi il bambino si sente abbandonato; se fallisce nella richiesta di attenzione pretende ciò che gli era stato dato. Aggredisce, intimidisce e seduce (venditore, politico, imprenditore).",
+        stileSociale: "Sta in centro — oscilla tra agire e stare con gli altri e non fare e stare da solo",
+        portaAperta: "Comportamento",
+        portaBersaglio: "Emozioni",
+        portaTrappola: "Pensiero",
+        sequenzaPorte: "c.e.p.",
+        spinta: "Sii forte + Compiaci",
+        ingiunzioni: ["Non essere intimo", "Non sentire (tristezza, paura)", "Non farlo", "Non pensare (alle soluzioni a lungo termine)"],
+        giocoPsicologico: "Prova a riscuotere",
+        copione: "Mai",
+        copioneMotto: "Non posso avere mai quello che più desidero",
+        copioneDescrizione: "Non parte e non andrà da nessuna parte. Può essere anche «Sempre» (rimane nelle situazioni negative) o «Quasi tipo 1» (inizia un progetto ma poi non riesce a finire).",
+        dilemma: "Posso esserti vicino se mi cedi la tua libertà e lasci che io ti usi o ti controlli",
+        andatura: "Con il bacino in avanti pavoneggiandosi",
+        diFronteAMinaccia: "Cerca di intimidire e sedurre per ottenere un vantaggio",
+        domandaConferma: "Prima valuta la situazione e poi prova a sfruttarla in modo da trarne un vantaggio personale?",
+        stileComunicazione: "Il direttivo, l'emotivo e l'affettivo a seconda dell'opportunità",
+        rapport: "Prendere in giro scherzosamente il suo tentativo di raggirare gli altri",
+        obiettiviTerapia: [
+            "Che cosa realmente vorresti che non puoi ottenere (e quindi inganni)?",
+            "Troverai sempre qualcuno: non resterai solo e abbandonato",
+            "Non c'è più bisogno di fingere",
+            "Ora è il momento di diventare disponibili per gli altri e cooperare",
+        ],
+        statoIo: "Genitore escluso; Adulto contaminato dal Bambino",
+        contaminazioneAdulto: "Il Genitore è escluso e l'Adulto è contaminato dal Bambino: prevale l'impulsività senza il filtro delle norme interiorizzate",
+        strutturaTempoPreferita: "Passatempi e giochi",
+        strutturaTempoEvitata: "Rituali, attività e intimità",
+    },
+];
+function getATInterazione(enneatipo1, enneatipo2) {
+    const a1 = getATForEnneatipo(enneatipo1);
+    const a2 = getATForEnneatipo(enneatipo2);
+    if (!a1 || !a2)
+        return null;
+    // Stessa sequenza porte → buoni amici
+    if (a1.sequenzaPorte === a2.sequenzaPorte) {
+        return {
+            tipo: "amicizia",
+            descrizione: `${a1.nome} e ${a2.nome} condividono la stessa sequenza di porte (${a1.sequenzaPorte}): tendono ad andare d'accordo e a scegliersi come amici o colleghi, perché si trovano a proprio agio.`,
+            consiglio: "Valorizzate la naturale sintonia. Attenzione a non rinforzarvi a vicenda le stesse aree cieche.",
+        };
+    }
+    // Coppie di attrazione note (porte opposte con adattamento in comune)
+    const attrazioni = [
+        {
+            nomi: ["Istrionico", "Ossessivo-compulsivo"],
+            desc: "L'Istrionico (e.p.c.) e l'Ossessivo-compulsivo (p.e.c.) si attraggono: il primo ha bisogno di imparare a pensare e a non iperreagire, il secondo a mettersi in contatto con le proprie emozioni.",
+            consiglio: "La porta bersaglio in comune è il «pensiero»: la relazione migliora quando entrambi imparano a riflettere prima di reagire.",
+        },
+        {
+            nomi: ["Ossessivo-compulsivo", "Passivo-aggressivo"],
+            desc: "L'Ossessivo-compulsivo (p.e.c.) e il Passivo-aggressivo (c.e.p.) si attraggono: il primo è premuroso e il secondo vuole essere accudito.",
+            consiglio: "Porta bersaglio comune «emozioni»: finiranno di litigare quando si metteranno in contatto con le proprie emozioni.",
+        },
+        {
+            nomi: ["Paranoide", "Antisociale"],
+            desc: "Il Paranoide (p.e.c.) cerca l'Antisociale (c.e.p.): il primo vorrebbe più eccitazione e il secondo più controllo.",
+            consiglio: "Porta bersaglio comune «emozioni»: la relazione migliora quando entrambi accedono alle proprie emozioni autentiche.",
+        },
+        {
+            nomi: ["Istrionico", "Schizoide"],
+            desc: "L'Istrionico (e.p.c.) e lo Schizoide (c.p.e.) si attraggono: il primo dà energia ed il secondo tende a calmare.",
+            consiglio: "Porta bersaglio comune «pensiero»: la relazione migliora quando iniziano a riflettere insieme, privilegiando il dialogo razionale.",
+        },
+    ];
+    // Coppie problematiche note
+    const problematiche = [
+        {
+            nomi: ["Paranoide", "Istrionico"],
+            desc: "Uomo Paranoide e donna Istrionica: il primo è geloso e tenderà ad equivocare l'atteggiamento seduttivo della seconda, andando in collera. Questa combinazione può generare dinamiche molto conflittuali.",
+            consiglio: "È fondamentale che il Paranoide impari a verificare le proprie percezioni e che l'Istrionico chiarisca le proprie intenzioni.",
+        },
+        {
+            nomi: ["Antisociale", "Paranoide"],
+            desc: "Antisociale e Paranoide: il primo si lamenta di quanto il secondo lo controlli, e il secondo si lamenta di quanto il primo sia inaffidabile.",
+            consiglio: "Lavorare sulla fiducia reciproca e accettare che il controllo non porta sicurezza.",
+        },
+        {
+            nomi: ["Antisociale", "Schizoide"],
+            desc: "Antisociale e Schizoide: lo Schizoide crede di ottenere attenzioni compiacendo l'altro, ma l'Antisociale lo usa soltanto.",
+            consiglio: "Lo Schizoide deve imparare a riconoscere i propri bisogni e a stabilire confini chiari.",
+        },
+        {
+            nomi: ["Ossessivo-compulsivo", "Passivo-aggressivo"],
+            desc: "Ossessivo-compulsivo e Passivo-aggressivo: il primo cercherà di essere perfetto e il secondo noterà sempre che ci sono dei difetti.",
+            consiglio: "Entrambi devono lavorare sulle emozioni: l'Ossessivo-compulsivo su quelle proprie, il Passivo-aggressivo sull'esprimerle direttamente.",
+        },
+    ];
+    // Cerca match nelle attrazioni
+    for (const attr of attrazioni) {
+        if ((a1.nome === attr.nomi[0] && a2.nome === attr.nomi[1]) ||
+            (a1.nome === attr.nomi[1] && a2.nome === attr.nomi[0])) {
+            return { tipo: "attrazione", descrizione: attr.desc, consiglio: attr.consiglio };
+        }
+    }
+    // Cerca match nelle problematiche
+    for (const prob of problematiche) {
+        if ((a1.nome === prob.nomi[0] && a2.nome === prob.nomi[1]) ||
+            (a1.nome === prob.nomi[1] && a2.nome === prob.nomi[0])) {
+            return { tipo: "problematica", descrizione: prob.desc, consiglio: prob.consiglio };
+        }
+    }
+    // Caso generico: sequenze opposte senza match specifico
+    const opposte = (a1.sequenzaPorte === "p.e.c." && a2.sequenzaPorte === "c.e.p.")
+        || (a1.sequenzaPorte === "c.e.p." && a2.sequenzaPorte === "p.e.c.")
+        || (a1.sequenzaPorte === "e.p.c." && a2.sequenzaPorte === "c.p.e.")
+        || (a1.sequenzaPorte === "c.p.e." && a2.sequenzaPorte === "e.p.c.");
+    if (opposte) {
+        return {
+            tipo: "attrazione",
+            descrizione: `${a1.nome} (${a1.sequenzaPorte}) e ${a2.nome} (${a2.sequenzaPorte}) hanno sequenze di porte opposte: cercano nell'altro ciò che non sanno fare con naturalezza.`,
+            consiglio: "Valorizzate la porta bersaglio in comune per risolvere i conflitti e trovare un terreno di comprensione reciproca.",
+        };
+    }
+    // Default
+    return {
+        tipo: "amicizia",
+        descrizione: `${a1.nome} e ${a2.nome} possono costruire una relazione equilibrata rispettando le reciproche porte di accesso.`,
+        consiglio: `Per comunicare meglio: contatta ${a1.nomeAlternativo} attraverso la porta aperta (${a1.portaAperta.toLowerCase()}) e ${a2.nomeAlternativo} attraverso la propria (${a2.portaAperta.toLowerCase()}).`,
+    };
+}
+// Helper: attributi base per ogni enneatipo (necessari per costruire le fasi)
+const attrBase = {
+    1: { dignita: "Grandezza", virtu: "Prudenza", vizio: "Gola", gerarchia: "Serafini", musa: "Urania", facolta: "Mente", melodia: "Re", topica: "Super-Io", meccanismoDifesa: "Formazione reattiva", chakra: "3 (sotto ombelico)", pianeta: "Marte", correlazioneCerebrale: "Amigdala", ideaSacra: "Perfezione" },
+    2: { dignita: "Eternità", virtu: "Perseveranza", vizio: "Lussuria", gerarchia: "Cherubini", musa: "Polimnia", facolta: "Intelletto", melodia: "Mi", topica: "Io", meccanismoDifesa: "Rimozione", chakra: "6 (terzo occhio)", pianeta: "Sole", correlazioneCerebrale: "Talamo", ideaSacra: "Volontà" },
+    3: { dignita: "Potenza", virtu: "Temperanza", vizio: "Superbia", gerarchia: "Troni", musa: "Euterpe", facolta: "Ragione", melodia: "-", topica: "Io", meccanismoDifesa: "Identificazione", chakra: "Ketu", pianeta: "Ketu", correlazioneCerebrale: "Testa del nucleo caudato", ideaSacra: "Armonia" },
+    4: { dignita: "Sapienza", virtu: "Fede", vizio: "Accidia", gerarchia: "Dominazioni", musa: "Erato", facolta: "Immaginazione", melodia: "Fa", topica: "Io", meccanismoDifesa: "Introiezione", chakra: "5 (gola)", pianeta: "Mercurio", correlazioneCerebrale: "Nucleo subtalamico", ideaSacra: "Origine" },
+    5: { dignita: "Volontà", virtu: "Speranza", vizio: "Invidia", gerarchia: "Potestà", musa: "Melpomene", facolta: "Udito", melodia: "Sol", topica: "Super-Io", meccanismoDifesa: "Isolamento", chakra: "1 (base spina dorsale)", pianeta: "Saturno", correlazioneCerebrale: "Putamen", ideaSacra: "Onniscienza" },
+    6: { dignita: "Virtù", virtu: "Carità", vizio: "Ira", gerarchia: "Virtù", musa: "Tersicore", facolta: "Vista", melodia: "-", topica: "Super-Io", meccanismoDifesa: "Proiezione", chakra: "Ketu", pianeta: "Ketu", correlazioneCerebrale: "Coda del nucleo caudato", ideaSacra: "Forza" },
+    7: { dignita: "Verità", virtu: "Pazienza", vizio: "Menzogna", gerarchia: "Principati", musa: "Calliope", facolta: "Olfatto", melodia: "La", topica: "Es", meccanismoDifesa: "Razionalizzazione", chakra: "2 (sopra genitali)", pianeta: "Giove", correlazioneCerebrale: "Globo pallido", ideaSacra: "Saggezza" },
+    8: { dignita: "Gloria", virtu: "Pietà", vizio: "Incostanza", gerarchia: "Arcangeli", musa: "Clio", facolta: "Gusto", melodia: "Si", topica: "Es", meccanismoDifesa: "Diniego", chakra: "4 (cuore)", pianeta: "Venere", correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", ideaSacra: "Verità" },
+    9: { dignita: "Bontà", virtu: "Giustizia", vizio: "Avarizia", gerarchia: "Angeli Custodi", musa: "Talia", facolta: "Tatto", melodia: "Do", topica: "Es", meccanismoDifesa: "Narcotizzazione", chakra: "7 (parte superiore testa)", pianeta: "Luna", correlazioneCerebrale: "Ipotalamo", ideaSacra: "Amore" },
+};
+function makePhase(eta, enneatipoNum) {
+    const a = attrBase[enneatipoNum];
+    return Object.assign({ eta, enneatipo: enneatipoNum }, a);
+}
+// Fasce d'età per esagramma e triangolo
+const etaEsagramma = ["0-3", "3-12", "12-19", "20-30", "25-60", "60+"];
+const etaTriangolo = ["0-30", "25-60", "60+"];
+// Tutti i 18 percorsi (9 enneatipi × 2 percorsi)
+const journeys = [
+    // ══════════════════════════════════════════
+    // ENNEATIPO 1
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 1, percorso: 1, tipo: "esagramma",
+        sequenza: [1, 4, 2, 8, 5, 7],
+        principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola",
+        influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente",
+        musaPartenza: "Urania, Musa dell'astronomia e della geometria",
+        domandaPartenza: "Che cosa?", puntoStallo: "Tra i 3 e i 19 anni",
+        topica: "Super-Io", meccanismoDifesa: "Formazione reattiva",
+        correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo",
+        fasi: [1, 4, 2, 8, 5, 7].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 1, percorso: 2, tipo: "esagramma",
+        sequenza: [1, 7, 5, 8, 2, 4],
+        principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola",
+        influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente",
+        musaPartenza: "Urania, Musa dell'astronomia e della geometria",
+        domandaPartenza: "Che cosa?", puntoStallo: "Tra i 25 e i 60 anni",
+        topica: "Super-Io", meccanismoDifesa: "Formazione reattiva",
+        correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo",
+        fasi: [1, 7, 5, 8, 2, 4].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 2
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 2, percorso: 1, tipo: "esagramma",
+        sequenza: [2, 4, 1, 7, 5, 8],
+        principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria",
+        influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto",
+        musaPartenza: "Polimnia, Musa della memoria e della retorica",
+        domandaPartenza: "Di che cosa?", puntoStallo: "Dai 0 ai 3 anni e dopo i 60 anni",
+        topica: "Io", meccanismoDifesa: "Rimozione",
+        correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo",
+        fasi: [2, 4, 1, 7, 5, 8].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 2, percorso: 2, tipo: "esagramma",
+        sequenza: [2, 8, 5, 7, 1, 4],
+        principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria",
+        influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto",
+        musaPartenza: "Polimnia, Musa della memoria e della retorica",
+        domandaPartenza: "Di che cosa?", puntoStallo: "0-12 anni",
+        topica: "Io", meccanismoDifesa: "Rimozione",
+        correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo",
+        fasi: [2, 8, 5, 7, 1, 4].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 3
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 3, percorso: 1, tipo: "triangolo",
+        sequenza: [3, 9, 6],
+        principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia",
+        influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione",
+        musaPartenza: "Euterpe, Musa della musica",
+        domandaPartenza: "Perché?", puntoStallo: "25-60 anni",
+        topica: "Io", meccanismoDifesa: "Identificazione",
+        correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)",
+        fasi: [3, 9, 6].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+    {
+        enneatipo: 3, percorso: 2, tipo: "triangolo",
+        sequenza: [3, 6, 9],
+        principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia",
+        influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione",
+        musaPartenza: "Euterpe, Musa della musica",
+        domandaPartenza: "Perché?", puntoStallo: "0-30 e 0-60 anni",
+        topica: "Io", meccanismoDifesa: "Identificazione",
+        correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)",
+        fasi: [3, 6, 9].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 4
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 4, percorso: 1, tipo: "esagramma",
+        sequenza: [4, 1, 7, 5, 8, 2],
+        principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia",
+        influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione",
+        musaPartenza: "Erato, Musa del canto corale e della poesia amorosa",
+        domandaPartenza: "Quanto?", puntoStallo: "25-60 anni",
+        topica: "Io", meccanismoDifesa: "Introiezione",
+        correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-",
+        fasi: [4, 1, 7, 5, 8, 2].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 4, percorso: 2, tipo: "esagramma",
+        sequenza: [4, 2, 8, 5, 7, 1],
+        principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia",
+        influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione",
+        musaPartenza: "Erato, Musa del canto corale e della poesia amorosa",
+        domandaPartenza: "Quanto?", puntoStallo: "0-12 anni",
+        topica: "Io", meccanismoDifesa: "Introiezione",
+        correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-",
+        fasi: [4, 2, 8, 5, 7, 1].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 5
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 5, percorso: 1, tipo: "esagramma",
+        sequenza: [5, 7, 1, 4, 2, 8],
+        principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia",
+        influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito",
+        musaPartenza: "Melpomene, Musa della tragedia",
+        domandaPartenza: "Quale?", puntoStallo: "Dai 20-30 e dopo i 60",
+        topica: "Super-Io", meccanismoDifesa: "Isolamento",
+        correlazioneCerebrale: "Putamen", adattamento: "Schizoide",
+        fasi: [5, 7, 1, 4, 2, 8].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 5, percorso: 2, tipo: "esagramma",
+        sequenza: [5, 8, 2, 4, 1, 7],
+        principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia",
+        influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito",
+        musaPartenza: "Melpomene, Musa della tragedia",
+        domandaPartenza: "Quale?", puntoStallo: "12-30 e dai 25 in poi",
+        topica: "Super-Io", meccanismoDifesa: "Isolamento",
+        correlazioneCerebrale: "Putamen", adattamento: "Schizoide",
+        fasi: [5, 8, 2, 4, 1, 7].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 6
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 6, percorso: 1, tipo: "triangolo",
+        sequenza: [6, 9, 3],
+        principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira",
+        influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista",
+        musaPartenza: "Tersicore, Musa della danza",
+        domandaPartenza: "Quando?", puntoStallo: "0-30 anni",
+        topica: "Super-Io", meccanismoDifesa: "Proiezione",
+        correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide",
+        fasi: [6, 9, 3].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+    {
+        enneatipo: 6, percorso: 2, tipo: "triangolo",
+        sequenza: [6, 3, 9],
+        principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira",
+        influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista",
+        musaPartenza: "Tersicore, Musa della danza",
+        domandaPartenza: "Quando?", puntoStallo: "25-60 anni",
+        topica: "Super-Io", meccanismoDifesa: "Proiezione",
+        correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide",
+        fasi: [6, 3, 9].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 7
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 7, percorso: 1, tipo: "esagramma",
+        sequenza: [7, 1, 4, 2, 8, 5],
+        principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna",
+        influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto",
+        musaPartenza: "Calliope, Musa della poesia epica",
+        domandaPartenza: "Dove?", puntoStallo: "12-30 anni",
+        topica: "Es", meccanismoDifesa: "Razionalizzazione",
+        correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico",
+        fasi: [7, 1, 4, 2, 8, 5].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 7, percorso: 2, tipo: "esagramma",
+        sequenza: [7, 5, 8, 2, 4, 1],
+        principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna",
+        influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto",
+        musaPartenza: "Calliope, Musa della poesia epica",
+        domandaPartenza: "Dove?", puntoStallo: "-",
+        topica: "Es", meccanismoDifesa: "Razionalizzazione",
+        correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico",
+        fasi: [7, 5, 8, 2, 4, 1].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 8
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 8, percorso: 1, tipo: "esagramma",
+        sequenza: [8, 2, 4, 1, 7, 5],
+        principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza",
+        influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto",
+        musaPartenza: "Clio, Musa della storia",
+        domandaPartenza: "Come? Con chi?", puntoStallo: "-",
+        topica: "Es", meccanismoDifesa: "Diniego",
+        correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale",
+        fasi: [8, 2, 4, 1, 7, 5].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    {
+        enneatipo: 8, percorso: 2, tipo: "esagramma",
+        sequenza: [8, 5, 7, 1, 4, 2],
+        principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza",
+        influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto",
+        musaPartenza: "Clio, Musa della storia",
+        domandaPartenza: "Come? Con chi?", puntoStallo: "-",
+        topica: "Es", meccanismoDifesa: "Diniego",
+        correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale",
+        fasi: [8, 5, 7, 1, 4, 2].map((e, i) => makePhase(etaEsagramma[i], e)),
+    },
+    // ══════════════════════════════════════════
+    // ENNEATIPO 9
+    // ══════════════════════════════════════════
+    {
+        enneatipo: 9, percorso: 1, tipo: "triangolo",
+        sequenza: [9, 3, 6],
+        principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia",
+        influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto",
+        musaPartenza: "Talia, Musa della poesia bucolica",
+        domandaPartenza: "Di che si tratta?", puntoStallo: "-",
+        topica: "Es", meccanismoDifesa: "Narcotizzazione",
+        correlazioneCerebrale: "Ipotalamo", adattamento: "-",
+        fasi: [9, 3, 6].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+    {
+        enneatipo: 9, percorso: 2, tipo: "triangolo",
+        sequenza: [9, 6, 3],
+        principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia",
+        influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto",
+        musaPartenza: "Talia, Musa della poesia bucolica",
+        domandaPartenza: "Di che si tratta?", puntoStallo: "-",
+        topica: "Es", meccanismoDifesa: "Narcotizzazione",
+        correlazioneCerebrale: "Ipotalamo", adattamento: "-",
+        fasi: [9, 6, 3].map((e, i) => makePhase(etaTriangolo[i], e)),
+    },
+];
+// Helper: trova i percorsi per un dato enneatipo
+function getJourneysForType(enneatipo) {
+    return journeys.filter(j => j.enneatipo === enneatipo);
+}
+// Helper: trova un percorso specifico
+function getJourney(enneatipo, percorso) {
+    return journeys.find(j => j.enneatipo === enneatipo && j.percorso === percorso);
+}
+// Helper: determina la fase corrente in base all'età
+function getCurrentPhase(journey, age) {
+    const fasi = journey.fasi;
+    if (journey.tipo === "triangolo") {
+        if (age <= 30)
+            return fasi[0];
+        if (age <= 60)
+            return fasi[1];
+        return fasi[2];
+    }
+    // esagramma
+    if (age <= 3)
+        return fasi[0];
+    if (age <= 12)
+        return fasi[1];
+    if (age <= 19)
+        return fasi[2];
+    if (age <= 30)
+        return fasi[3];
+    if (age <= 60)
+        return fasi[4];
+    return fasi[5];
+}
+// Helper: indice della fase corrente
+function getCurrentPhaseIndex(journey, age) {
+    if (journey.tipo === "triangolo") {
+        if (age <= 30)
+            return 0;
+        if (age <= 60)
+            return 1;
+        return 2;
+    }
+    if (age <= 3)
+        return 0;
+    if (age <= 12)
+        return 1;
+    if (age <= 19)
+        return 2;
+    if (age <= 30)
+        return 3;
+    if (age <= 60)
+        return 4;
+    return 5;
+}
+// Helper: trova attributi condivisi tra due fasi
+function findSharedAttributes(phase1, phase2) {
+    const shared = [];
+    if (phase1.dignita === phase2.dignita)
+        shared.push(`Dignità: ${phase1.dignita}`);
+    if (phase1.virtu === phase2.virtu)
+        shared.push(`Virtù: ${phase1.virtu}`);
+    if (phase1.vizio === phase2.vizio)
+        shared.push(`Vizio: ${phase1.vizio}`);
+    if (phase1.gerarchia === phase2.gerarchia)
+        shared.push(`Gerarchia: ${phase1.gerarchia}`);
+    if (phase1.musa === phase2.musa)
+        shared.push(`Musa: ${phase1.musa}`);
+    if (phase1.facolta === phase2.facolta)
+        shared.push(`Facoltà: ${phase1.facolta}`);
+    if (phase1.melodia === phase2.melodia && phase1.melodia !== "-")
+        shared.push(`Melodia: ${phase1.melodia}`);
+    if (phase1.topica === phase2.topica)
+        shared.push(`Topica: ${phase1.topica}`);
+    if (phase1.meccanismoDifesa === phase2.meccanismoDifesa)
+        shared.push(`Meccanismo di difesa: ${phase1.meccanismoDifesa}`);
+    if (phase1.chakra === phase2.chakra)
+        shared.push(`Chakra: ${phase1.chakra}`);
+    if (phase1.pianeta === phase2.pianeta)
+        shared.push(`Pianeta: ${phase1.pianeta}`);
+    if (phase1.correlazioneCerebrale === phase2.correlazioneCerebrale)
+        shared.push(`Correlazione cerebrale: ${phase1.correlazioneCerebrale}`);
+    if (phase1.ideaSacra === phase2.ideaSacra)
+        shared.push(`Idea sacra: ${phase1.ideaSacra}`);
+    return shared;
+}
+// Helper: trova differenze tra due fasi
+function findDifferentAttributes(phase1, phase2) {
+    const diffs = [];
+    const fields = [
+        { key: "dignita", label: "Dignità" },
+        { key: "virtu", label: "Virtù" },
+        { key: "vizio", label: "Vizio" },
+        { key: "gerarchia", label: "Gerarchia" },
+        { key: "musa", label: "Musa" },
+        { key: "facolta", label: "Facoltà" },
+        { key: "melodia", label: "Melodia" },
+        { key: "topica", label: "Topica" },
+        { key: "meccanismoDifesa", label: "Meccanismo di difesa" },
+        { key: "chakra", label: "Chakra" },
+        { key: "pianeta", label: "Pianeta" },
+        { key: "correlazioneCerebrale", label: "Correlazione cerebrale" },
+        { key: "ideaSacra", label: "Idea sacra" },
+    ];
+    for (const f of fields) {
+        const v1 = phase1[f.key];
+        const v2 = phase2[f.key];
+        if (v1 !== v2) {
+            diffs.push({ attributo: f.label, persona1: v1, persona2: v2 });
+        }
+    }
+    return diffs;
+}
+// Nomi degli enneatipi
+const typeNames = {
+    1: "Il Perfezionista", 2: "L'Altruista", 3: "Il Realizzatore",
+    4: "L'Individualista", 5: "L'Osservatore", 6: "Il Leale",
+    7: "L'Entusiasta", 8: "Il Leader", 9: "Il Pacificatore",
+};
+// Emoji dei frutti
+const fruitEmoji = {
+    1: "🍎", 2: "🍐", 3: "🍒", 4: "🫐",
+    5: "🍇", 6: "🫐", 7: "🍍", 8: "🍑", 9: "🍓",
+};
+
+// ═══ State management ═══
+var members = [
+  { id: 1, nome: "", enneatipo: "", ala: "nessuna", percorso: "1", eta: "" },
+  { id: 2, nome: "", enneatipo: "", ala: "nessuna", percorso: "1", eta: "" }
+];
+var nextId = 3;
+
+// ═══ Helper: ali adiacenti sul cerchio dell'enneagramma (1↔9 wrap) ═══
+function getWings(type) {
+  if (type < 1 || type > 9) return [];
+  var left = type === 1 ? 9 : type - 1;
+  var right = type === 9 ? 1 : type + 1;
+  return [left, right];
+}
+
+var wingDescriptions = {
+  "1w9": "più riflessivo e calmo, idealistico",
+  "1w2": "più caloroso e orientato agli altri",
+  "2w1": "più disciplinato e critico",
+  "2w3": "più ambizioso e orientato al successo",
+  "3w2": "più carismatico e relazionale",
+  "3w4": "più introspettivo e creativo",
+  "4w3": "più orientato al risultato e visibile",
+  "4w5": "più riservato e intellettuale",
+  "5w4": "più creativo e emotivo",
+  "5w6": "più analitico e leale",
+  "6w5": "più introverso e cerebrale",
+  "6w7": "più estroverso e avventuroso",
+  "7w6": "più responsabile e leale",
+  "7w8": "più assertivo e deciso",
+  "8w7": "più energico e impulsivo",
+  "8w9": "più calmo e protettivo",
+  "9w8": "più assertivo e determinato",
+  "9w1": "più ordinato e principiale"
+};
+
+// ═══ HTML escape helper (per inserire nomi utente nei template) ═══
+function esc(s) {
+  if (s == null) return "";
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+
+// ═══ Mutators ═══
+function addMember() {
+  members.push({ id: nextId++, nome: "", enneatipo: "", ala: "nessuna", percorso: "1", eta: "" });
+  render();
+}
+
+function removeMember(id) {
+  if (members.length <= 2) return;
+  members = members.filter(function(m){ return m.id !== id; });
+  render();
+}
+
+function updateMember(id, field, value) {
+  var m = members.find(function(x){ return x.id === id; });
+  if (!m) return;
+  m[field] = value;
+  if (field === "enneatipo") m.ala = "nessuna";
+  render();
+}
+
+// ═══ Rendering: form membri ═══
+function renderMembers() {
+  var c = document.getElementById("members-container");
+  c.innerHTML = "";
+  members.forEach(function(m){
+    var enneOpts = '<option value="">Tipo...</option>';
+    for (var i = 1; i <= 9; i++) {
+      enneOpts += '<option value="'+i+'"'+(String(i)===m.enneatipo?' selected':'')+'>'+fruitEmoji[i]+' Tipo '+i+'</option>';
+    }
+    var alaOpts = '<option value="nessuna">Nessuna</option>';
+    if (m.enneatipo) {
+      var wings = getWings(parseInt(m.enneatipo));
+      wings.forEach(function(w){
+        alaOpts += '<option value="'+w+'"'+(String(w)===m.ala?' selected':'')+'>Ala '+w+'</option>';
+      });
+    }
+    var perc1Sel = m.percorso === "1" ? " selected" : "";
+    var perc2Sel = m.percorso === "2" ? " selected" : "";
+    var disableRm = members.length <= 2 ? " disabled" : "";
+
+    var div = document.createElement("div");
+    div.className = "fc-member";
+    div.innerHTML =
+      '<div class="fc-fld"><label>Nome</label><input type="text" placeholder="Es. Anna" value="'+esc(m.nome)+'" oninput="updateMember('+m.id+",'nome',this.value)\"></div>" +
+      '<div class="fc-fld"><label>Enneatipo</label><select onchange="updateMember('+m.id+",'enneatipo',this.value)\">"+enneOpts+'</select></div>' +
+      '<div class="fc-fld"><label>Ala</label><select onchange="updateMember('+m.id+",'ala',this.value)\""+(m.enneatipo?"":' disabled')+'>'+alaOpts+'</select></div>' +
+      '<div class="fc-fld"><label>Percorso</label><select onchange="updateMember('+m.id+",'percorso',this.value)\"><option value=\"1\""+perc1Sel+">Percorso 1</option><option value=\"2\""+perc2Sel+'>Percorso 2</option></select></div>' +
+      '<div class="fc-fld"><label>Età</label><input type="number" min="0" max="120" placeholder="Es. 42" value="'+esc(m.eta)+'" oninput="updateMember('+m.id+",'eta',this.value)\"></div>" +
+      '<div class="fc-fld fc-member-rm"><label>&nbsp;</label><button class="fc-rm-btn" onclick="removeMember('+m.id+')"'+disableRm+' title="Rimuovi membro">🗑</button></div>';
+    c.appendChild(div);
+  });
+}
+
+// ═══ Calcola le fasi attuali ═══
+function getMemberPhases() {
+  var result = [];
+  members.forEach(function(m){
+    if (!m.enneatipo || !m.eta) return;
+    var enneNum = parseInt(m.enneatipo);
+    var percNum = parseInt(m.percorso);
+    var ageNum = parseInt(m.eta);
+    if (isNaN(enneNum) || isNaN(percNum) || isNaN(ageNum)) return;
+    var journey = getJourney(enneNum, percNum);
+    if (!journey) return;
+    var phase = getCurrentPhase(journey, ageNum);
+    if (!phase) return;
+    result.push({ member: m, phase: phase });
+  });
+  return result;
+}
+
+// ═══ Render: card fasi ═══
+function renderPhases() {
+  var memberPhases = getMemberPhases();
+  var section = document.getElementById("phases-section");
+  if (memberPhases.length === 0) {
+    section.style.display = "none";
+    return;
+  }
+  section.style.display = "block";
+  var c = document.getElementById("phases-container");
+  c.innerHTML = "";
+  memberPhases.forEach(function(mp){
+    var m = mp.member, p = mp.phase;
+    var emoji = fruitEmoji[parseInt(m.enneatipo)] || "✦";
+    var nome = m.nome || "Membro "+m.id;
+    var alaTxt = (m.ala && m.ala !== "nessuna") ? " · Ala "+m.ala : "";
+    var wingDesc = (m.ala && m.ala !== "nessuna") ? wingDescriptions[m.enneatipo+"w"+m.ala] : "";
+    var div = document.createElement("div");
+    div.className = "fc-phase-card";
+    div.innerHTML =
+      '<div class="fc-phase-hd"><span class="fc-emoji">'+emoji+'</span><div>'+
+        '<div class="fc-info-name">'+esc(nome)+' — Tipo '+m.enneatipo+' · '+typeNames[parseInt(m.enneatipo)]+alaTxt+'</div>'+
+        '<div class="fc-info-meta">'+m.eta+' anni · Percorso '+m.percorso+' · Fase enneatipo '+p.enneatipo+'</div>'+
+        (wingDesc ? '<div class="fc-info-wing">↳ '+wingDesc+'</div>' : '')+
+      '</div></div>'+
+      '<div class="fc-attrs">'+
+        '<div><span>Dignità:</span> <b>'+esc(p.dignita)+'</b></div>'+
+        '<div><span>Virtù:</span> <b>'+esc(p.virtu)+'</b></div>'+
+        '<div><span>Vizio:</span> <b>'+esc(p.vizio)+'</b></div>'+
+        '<div><span>Gerarchia:</span> <b>'+esc(p.gerarchia)+'</b></div>'+
+        '<div><span>Musa:</span> <b>'+esc(p.musa)+'</b></div>'+
+        '<div><span>Facoltà:</span> <b>'+esc(p.facolta)+'</b></div>'+
+        '<div><span>Topica:</span> <b>'+esc(p.topica)+'</b></div>'+
+        '<div><span>Difesa:</span> <b>'+esc(p.meccanismoDifesa)+'</b></div>'+
+        '<div><span>Idea sacra:</span> <b>'+esc(p.ideaSacra)+'</b></div>'+
+        '<div><span>Chakra:</span> <b>'+esc(p.chakra)+'</b></div>'+
+        '<div><span>Pianeta:</span> <b>'+esc(p.pianeta)+'</b></div>'+
+        '<div><span>Cervello:</span> <b>'+esc(p.correlazioneCerebrale)+'</b></div>'+
+      '</div>';
+    c.appendChild(div);
+  });
+}
+
+// ═══ Calcola tutte le coppie ordinate ═══
+function getPairs() {
+  var memberPhases = getMemberPhases();
+  var pairs = [];
+  for (var i = 0; i < memberPhases.length; i++) {
+    for (var j = i + 1; j < memberPhases.length; j++) {
+      pairs.push({
+        m1: memberPhases[i].member, p1: memberPhases[i].phase,
+        m2: memberPhases[j].member, p2: memberPhases[j].phase
+      });
+    }
+  }
+  return pairs;
+}
+
+// ═══ Render: card coppie ═══
+function renderPairs() {
+  var pairs = getPairs();
+  var section = document.getElementById("pairs-section");
+  var pdfRow = document.getElementById("pdf-row");
+  if (pairs.length === 0) {
+    section.style.display = "none";
+    pdfRow.style.display = "none";
+    return;
+  }
+  section.style.display = "block";
+  pdfRow.style.display = "flex";
+  var c = document.getElementById("pairs-container");
+  c.innerHTML = "";
+  pairs.forEach(function(pr){
+    var m1 = pr.m1, m2 = pr.m2, p1 = pr.p1, p2 = pr.p2;
+    var shared = findSharedAttributes(p1, p2);
+    var diffs = findDifferentAttributes(p1, p2);
+    var compatScore = Math.round((shared.length / 13) * 100);
+    var emoji1 = fruitEmoji[parseInt(m1.enneatipo)] || "✦";
+    var emoji2 = fruitEmoji[parseInt(m2.enneatipo)] || "✦";
+    var nome1 = (m1.nome || "Membro "+m1.id) + (m1.ala && m1.ala !== "nessuna" ? " (Ala "+m1.ala+")" : "");
+    var nome2 = (m2.nome || "Membro "+m2.id) + (m2.ala && m2.ala !== "nessuna" ? " (Ala "+m2.ala+")" : "");
+
+    var html = '<div class="fc-pair-hd"><span>'+emoji1+'</span><span>'+esc(nome1)+'</span><span class="fc-vs">♡</span><span>'+emoji2+'</span><span>'+esc(nome2)+'</span><span class="fc-pair-score">'+compatScore+'% affinità</span></div>';
+
+    if (shared.length > 0) {
+      html += '<div class="fc-pair-shared"><div class="fc-pair-label">✓ Attributi condivisi ('+shared.length+')</div><div>';
+      shared.forEach(function(s){ html += '<span class="fc-tag fc-tag-ok">'+esc(s)+'</span>'; });
+      html += '</div></div>';
+    }
+
+    if (diffs.length > 0) {
+      html += '<div class="fc-pair-diffs"><div class="fc-pair-label">⚠ Differenze ('+diffs.length+')</div>';
+      diffs.forEach(function(d){
+        html += '<div class="fc-diff"><span class="fc-diff-attr">'+esc(d.attributo)+':</span>'+
+          '<span class="fc-tag fc-tag-diff">'+esc(m1.nome || "Membro "+m1.id)+': '+esc(d.persona1)+'</span>'+
+          '<span class="fc-diff-vs">vs</span>'+
+          '<span class="fc-tag fc-tag-diff">'+esc(m2.nome || "Membro "+m2.id)+': '+esc(d.persona2)+'</span>'+
+        '</div>';
+      });
+      html += '</div>';
+    }
+
+    var hasWing1 = m1.ala && m1.ala !== "nessuna";
+    var hasWing2 = m2.ala && m2.ala !== "nessuna";
+    if (hasWing1 || hasWing2) {
+      html += '<div class="fc-pair-wings"><div class="fc-pair-label">🪶 Influenza delle ali</div>';
+      var bits = [];
+      if (hasWing1) bits.push('<b>'+esc(m1.nome||"Membro "+m1.id)+'</b> ('+m1.enneatipo+'w'+m1.ala+'): '+wingDescriptions[m1.enneatipo+"w"+m1.ala]);
+      if (hasWing2) bits.push('<b>'+esc(m2.nome||"Membro "+m2.id)+'</b> ('+m2.enneatipo+'w'+m2.ala+'): '+wingDescriptions[m2.enneatipo+"w"+m2.ala]);
+      html += bits.join(' — ');
+      html += '</div>';
+    }
+
+    var atInter = getATInterazione(parseInt(m1.enneatipo), parseInt(m2.enneatipo));
+    if (atInter) {
+      html += '<div class="fc-pair-at"><div class="fc-pair-label">🧠 Dinamica AT</div><b>'+esc(atInter.tipo)+':</b> '+esc(atInter.descrizione)+'<br><br><b>Consiglio:</b> <em>'+esc(atInter.consiglio)+'</em></div>';
+    }
+
+    var div = document.createElement("div");
+    div.className = "fc-pair";
+    div.innerHTML = html;
+    c.appendChild(div);
+  });
+}
+
+// ═══ Riassunto testuale automatico ═══
+function generateFamilySummary(memberPhases, pairs) {
+  if (memberPhases.length === 0) return "";
+
+  var memberList = memberPhases.map(function(mp){
+    var m = mp.member;
+    return (m.nome||"Membro "+m.id)+" (Tipo "+m.enneatipo+" — "+typeNames[parseInt(m.enneatipo)]+(m.ala && m.ala !== "nessuna" ? ", Ala "+m.ala : "")+")";
+  }).join(", ");
+
+  var text = "Questa famiglia è composta da "+memberPhases.length+" membri: "+memberList+".";
+
+  if (pairs.length > 0) {
+    var scored = pairs.map(function(p){
+      var shared = findSharedAttributes(p.p1, p.p2);
+      return Object.assign({}, p, { score: Math.round((shared.length/13)*100) });
+    });
+    scored.sort(function(a,b){ return b.score - a.score; });
+    var best = scored[0];
+    var worst = scored[scored.length - 1];
+
+    text += "\n\nDall'analisi dei "+pairs.length+" confronti a coppie emerge un quadro ricco e sfaccettato delle dinamiche familiari.";
+    text += "\n\nLa relazione con la maggiore affinità è quella tra "+(best.m1.nome||"Membro "+best.m1.id)+" e "+(best.m2.nome||"Membro "+best.m2.id)+" ("+best.score+"% di attributi condivisi), il che suggerisce una naturale comprensione reciproca e una base solida per il supporto emotivo.";
+
+    if (worst !== best) {
+      text += " La coppia che presenta le maggiori differenze è quella tra "+(worst.m1.nome||"Membro "+worst.m1.id)+" e "+(worst.m2.nome||"Membro "+worst.m2.id)+" ("+worst.score+"% di affinità), un'area che richiede maggiore consapevolezza e impegno per favorire la comprensione reciproca.";
+    }
+
+    var avgScore = Math.round(scored.reduce(function(s,p){return s+p.score;}, 0) / scored.length);
+    text += "\n\nComplessivamente, la famiglia presenta un livello medio di affinità del "+avgScore+"%.";
+  }
+
+  var agesNote = memberPhases.map(function(mp){
+    return (mp.member.nome||"Membro "+mp.member.id)+" ("+mp.member.eta+" anni, fase enneatipo "+mp.phase.enneatipo+")";
+  }).join(", ");
+  text += " Le fasi di vita attuali sono: "+agesNote+". Queste fasi influenzano il modo in cui ciascun membro vive ed esprime il proprio enneatipo, creando dinamiche che evolvono nel tempo.";
+
+  var withWings = memberPhases.filter(function(mp){ return mp.member.ala && mp.member.ala !== "nessuna"; });
+  if (withWings.length > 0) {
+    text += "\n\nLe ali aggiungono sfumature importanti alle personalità familiari: ";
+    text += withWings.map(function(mp){
+      return (mp.member.nome||"Membro "+mp.member.id)+" con Ala "+mp.member.ala+" ("+(wingDescriptions[mp.member.enneatipo+"w"+mp.member.ala] || "")+")";
+    }).join(", ");
+    text += ". Queste influenze rendono le dinamiche familiari più complesse e interessanti.";
+  }
+
+  return text;
+}
+
+function renderSummary() {
+  var memberPhases = getMemberPhases();
+  var pairs = getPairs();
+  var section = document.getElementById("summary-section");
+  if (memberPhases.length < 2 || pairs.length === 0) {
+    section.style.display = "none";
+    return;
+  }
+  section.style.display = "block";
+  document.getElementById("summary-text").textContent = generateFamilySummary(memberPhases, pairs);
+}
+
+function renderDisclaimer() {
+  var pairs = getPairs();
+  var hasAT = pairs.some(function(pr){
+    return getATInterazione(parseInt(pr.m1.enneatipo), parseInt(pr.m2.enneatipo)) != null;
+  });
+  var section = document.getElementById("at-disclaimer");
+  if (hasAT) {
+    section.style.display = "block";
+    document.getElementById("at-disclaimer-text").textContent = AT_DISCLAIMER;
+  } else {
+    section.style.display = "none";
+  }
+}
+
+function render() {
+  renderMembers();
+  renderPhases();
+  renderPairs();
+  renderSummary();
+  renderDisclaimer();
+}
+
+// ═══ Generazione PDF ═══
+function generatePdf() {
+  var memberPhases = getMemberPhases();
+  var pairs = getPairs();
+  if (memberPhases.length === 0) { alert("Aggiungi almeno 2 membri completi per generare il PDF."); return; }
+
+  var summaryText = generateFamilySummary(memberPhases, pairs);
+  var jsPDF = window.jspdf.jsPDF;
+  var doc = new jsPDF();
+  var pageWidth = doc.internal.pageSize.getWidth();
+  var margin = 20;
+  var contentWidth = pageWidth - margin * 2;
+  var y = 20;
+
+  function checkPage(needed) {
+    if (y + needed > doc.internal.pageSize.getHeight() - 25) {
+      doc.addPage();
+      y = 20;
+    }
+  }
+  function addSectionTitle(title) {
+    checkPage(20);
+    doc.setFontSize(13);
+    doc.setFont("helvetica","bold");
+    doc.text(title, margin, y);
+    y += 8;
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(10);
+  }
+  function addWrappedText(text) {
+    var lines = doc.splitTextToSize(text, contentWidth);
+    checkPage(lines.length * 5 + 5);
+    doc.text(lines, margin, y);
+    y += lines.length * 5 + 4;
+  }
+
+  doc.setFontSize(18);
+  doc.setFont("helvetica","bold");
+  doc.text("Analisi di Compatibilita Familiare", pageWidth/2, y, { align: "center" });
+  y += 7;
+  doc.setFontSize(11);
+  doc.setFont("helvetica","normal");
+  doc.text("Olismo Integrato - Enneagramma Evolutivo", pageWidth/2, y, { align: "center" });
+  y += 10;
+  doc.setFontSize(9);
+  doc.text("Data analisi: "+new Date().toLocaleDateString("it-IT"), margin, y);
+  y += 10;
+
+  addSectionTitle("Membri della Famiglia");
+  memberPhases.forEach(function(mp){
+    var m = mp.member, p = mp.phase;
+    var wing = (m.ala && m.ala !== "nessuna") ? ", Ala "+m.ala+" ("+(wingDescriptions[m.enneatipo+"w"+m.ala]||"")+")" : "";
+    addWrappedText((m.nome||"Membro "+m.id)+": Tipo "+m.enneatipo+" - "+typeNames[parseInt(m.enneatipo)]+wing+", "+m.eta+" anni, Percorso "+m.percorso+", Fase enneatipo "+p.enneatipo);
+  });
+  y += 4;
+
+  if (pairs.length > 0) {
+    addSectionTitle("Confronto a Coppie");
+    pairs.forEach(function(pr){
+      var shared = findSharedAttributes(pr.p1, pr.p2);
+      var diffs = findDifferentAttributes(pr.p1, pr.p2);
+      var score = Math.round((shared.length/13)*100);
+      checkPage(40);
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(11);
+      var n1 = pr.m1.nome||"Membro "+pr.m1.id;
+      var n2 = pr.m2.nome||"Membro "+pr.m2.id;
+      doc.text(n1+" vs "+n2+" ("+score+"% affinita)", margin, y);
+      y += 6;
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(9);
+      if (shared.length > 0) addWrappedText("Attributi condivisi: "+shared.join(", "));
+      if (diffs.length > 0) {
+        addWrappedText("Differenze:");
+        diffs.forEach(function(d){
+          addWrappedText("  - "+d.attributo+": "+n1+"="+d.persona1+", "+n2+"="+d.persona2);
+        });
+      }
+      y += 3;
+    });
+  }
+
+  if (summaryText) {
+    addSectionTitle("Riassunto");
+    addWrappedText(summaryText);
+  }
+
+  var totalPages = doc.internal.pages.length - 1;
+  for (var i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    doc.setFontSize(8);
+    doc.setFont("helvetica","italic");
+    doc.text("(c) Olismo Integrato - olismo-integrato.it - Pagina "+i+"/"+totalPages, pageWidth/2, doc.internal.pageSize.getHeight()-10, { align:"center" });
+  }
+
+  doc.save("compatibilita-famiglia-"+new Date().toISOString().slice(0,10)+".pdf");
+}
+
+document.addEventListener("DOMContentLoaded", function(){ render(); });
+
+</script>
+</body>
+</html>

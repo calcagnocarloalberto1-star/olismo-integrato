@@ -392,8 +392,8 @@ function byId(id){return getAll().find(x=>x.id===id)}
 function gc(item){if(!item)return"#888";if(item.cat==="chakra"||item.color)return item.color||CMETA[item.cat]?.color||"#888";return CMETA[item.cat]?.color||"#888"}
 
 // ── SEARCH ──
-function openSearch(){document.getElementById("search-overlay").classList.add("open");setTimeout(()=>document.getElementById("s-input").focus(),50)}
-function closeSearch(){document.getElementById("search-overlay").classList.remove("open");document.getElementById("s-input").value="";document.getElementById("s-list").innerHTML=""}
+function openSearch(){const ov=document.getElementById("search-overlay"); if(!ov) return; ov.classList.add("open"); setTimeout(()=>{const i=document.getElementById("s-input"); if(i) i.focus();},50)}
+function closeSearch(){const ov=document.getElementById("search-overlay"); if(!ov) return; ov.classList.remove("open"); const i=document.getElementById("s-input"); if(i) i.value=""; const l=document.getElementById("s-list"); if(l) l.innerHTML=""}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSearch()});
 (function(){
   const sInput = document.getElementById("s-input");
@@ -414,9 +414,16 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSearch()});
   });
 })();
 function goTo(id,cat){
-  closeSearch();curCat=cat;selId=id;
-  renderTabs();renderList();renderPanel(byId(id));
-  st("explorer");
+  // Se siamo nella pagina Explorer (presenza dei 3 contenitori), aggiorna in-place;
+  // altrimenti naviga cross-page a explorer.html con i parametri ?id=X&cat=Y
+  const hasExplorer=document.getElementById("exp-tabs")&&document.getElementById("exp-list")&&document.getElementById("exp-panel");
+  if(hasExplorer){
+    closeSearch();curCat=cat;selId=id;
+    renderTabs();renderList();renderPanel(byId(id));
+    st("explorer");
+  } else {
+    window.location.href="explorer.html?id="+encodeURIComponent(id)+"&cat="+encodeURIComponent(cat);
+  }
 }
 
 // ── EXPLORER ──
@@ -778,7 +785,7 @@ function showTransResult(){
 
     <div class="trans-res-actions">
       <button onclick="startTransTest()" class="trans-restart-btn">↩ Rifai il test</button>
-      <button onclick="st('consulente');setTimeout(()=>document.getElementById('chat-input').value='Ho completato il Test del Vettore Comunicativo: vettore primario ${primary}. Analizza il mio stile comunicativo e collega alla mia personalità AT.',150)" style="padding:.5rem 1.4rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer">✦ Chiedi all\'AI una lettura</button>
+      <button onclick="window.location.href='consulente.html?prompt='+encodeURIComponent('Ho completato il Test del Vettore Comunicativo: vettore primario ${primary}. Analizza il mio stile comunicativo e collega alla mia personalità AT.')" style="padding:.5rem 1.4rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer">✦ Chiedi all\'AI una lettura</button>
     </div>
   `;
 
@@ -1358,8 +1365,8 @@ function showResult(scores, topTipo, ala){
     <div class="result-connections">
       <h4>Le tue connessioni nel database</h4>
       <div class="result-conn-grid">
-        ${chakraNames?`<div class="result-conn-card" onclick="goTo('e${topTipo}','enneatipi');st('chakra-sec')"><div class="result-conn-label">Chakra correlati</div><div class="result-conn-val">${chakraNames}</div></div>`:''}
-        ${cristNames?`<div class="result-conn-card" onclick="goTo('${(e.cristalli||['cr1'])[0]}','cristalli');st('explorer')"><div class="result-conn-label">Cristalli curativi</div><div class="result-conn-val">${cristNames}</div></div>`:''}
+        ${chakraNames?`<div class="result-conn-card" onclick="window.location.href='chakra.html'"><div class="result-conn-label">Chakra correlati</div><div class="result-conn-val">${chakraNames}</div></div>`:''}
+        ${cristNames?`<div class="result-conn-card" onclick="window.location.href='cristalli.html'"><div class="result-conn-label">Cristalli curativi</div><div class="result-conn-val">${cristNames}</div></div>`:''}
         ${freqNames?`<div class="result-conn-card" onclick="st('musica')"><div class="result-conn-label">Frequenze solfeggio</div><div class="result-conn-val">${freqNames}</div></div>`:''}
         ${bachNames?`<div class="result-conn-card" onclick="st('bach')"><div class="result-conn-label">Fiori di Bach</div><div class="result-conn-val">${bachNames}</div></div>`:''}
         ${adNames?`<div class="result-conn-card" onclick="st('at-adattamenti')"><div class="result-conn-label">Adattamento AT</div><div class="result-conn-val">${adNames}</div></div>`:''}
@@ -1369,7 +1376,7 @@ function showResult(scores, topTipo, ala){
       </div>
       
       <div class="result-actions" style="margin-top:1.5rem">
-        <button class="btn-gold" onclick="window.location.href='enneagram.html?tipo=${topTipo}#e${topTipo}'">Vedi percorso evolutivo →</button>
+        <button class="btn-gold" onclick="window.location.href='enneagram.html?tipo=${topTipo}'">Vedi percorso evolutivo →</button>
         <button class="btn-ghost" onclick="window.location.href='compatibilita.html?t1=${topTipo}'">Compatibilità →</button>
         <button class="btn-ghost" onclick="window.location.href='consulente.html?tipo=${topTipo}&prompt=${encodeURIComponent('Ho completato il test dei 9 Frutti e sono Tipo '+topTipo+'. Puoi darmi un percorso personalizzato integrando chakra, cristalli, adattamento AT e ciò che mi serve per evolvermi?')}'">Chiedi alla AI →</button>
         <button onclick="resetTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
@@ -1380,18 +1387,29 @@ function showResult(scores, topTipo, ala){
 }
 
 function showCompatFromResult(tipo){
-  document.getElementById("compat-t1").value=tipo;
-  st("compatibilita");
-  setTimeout(()=>{document.getElementById("compat-t2").focus();},600);
+  // Se siamo già nella pagina compatibilita popoliamo il select; altrimenti navighiamo via URL
+  const sel=document.getElementById("compat-t1");
+  if(sel){
+    sel.value=tipo;
+    if(typeof showCompat==="function") showCompat();
+    setTimeout(()=>{const s2=document.getElementById("compat-t2"); if(s2) s2.focus();},600);
+  } else {
+    window.location.href="compatibilita.html?t1="+encodeURIComponent(tipo);
+  }
 }
 
 function askAiAboutResult(tipo){
   const e=DB.enneatipi.find(x=>x.id==="e"+tipo)||{};
   const f=TEST_FRUTTI.find(x=>x.tipo===tipo)||{};
   const msg=`Ho appena completato il test dei 9 Frutti e sono risultato Tipo ${tipo} (${f.nome||e.short||''}). ${e.name||''}. Puoi darmi un percorso personalizzato integrando chakra, cristalli, adattamento AT e ciò che mi serve per evolvermi?`;
-  document.getElementById("chat-input").value=msg;
-  st("consulente");
-  setTimeout(()=>sendMsg(),400);
+  const ta=document.getElementById("chat-input");
+  if(ta){
+    ta.value=msg;
+    if(typeof autoResize==="function") autoResize(ta);
+    if(typeof sendMsg==="function") setTimeout(()=>sendMsg(),400);
+  } else {
+    window.location.href="consulente.html?prompt="+encodeURIComponent(msg);
+  }
 }
 
 function resetTest(){
@@ -1681,9 +1699,16 @@ function askAiAboutAtResult(primary, secondary){
   const sm=AT_AD_META[secondary]||{};
   const pd=byId(AT_AD_MAP[primary])||{};
   const msg=`Ho appena completato il test degli adattamenti AT. Il mio adattamento primario è ${pm.label} (${pm.alias}), il secondario è ${sm.label} (${sm.alias}). La porta aperta è "${pd.portaAperta||''}", la spinta è "${pd.spinta||''}". Puoi spiegarmi come questi adattamenti influenzano le mie relazioni e darmi indicazioni pratiche per lavorarci? Collegami anche ai chakra, cristalli e frequenze correlate.`;
-  document.getElementById("chat-input").value=msg;
-  st("consulente");
-  setTimeout(()=>sendMsg(),400);
+  // Se la chat è presente nella pagina corrente la usiamo direttamente,
+  // altrimenti navighiamo a consulente.html passando il prompt via URL
+  const ta=document.getElementById("chat-input");
+  if(ta){
+    ta.value=msg;
+    if(typeof autoResize==="function") autoResize(ta);
+    if(typeof sendMsg==="function") setTimeout(()=>sendMsg(),400);
+  } else {
+    window.location.href="consulente.html?prompt="+encodeURIComponent(msg);
+  }
 }
 
 function resetAtTest(){
@@ -1696,13 +1721,15 @@ function resetAtTest(){
 }
 
 function renderTabs(){
-  document.getElementById("exp-tabs").innerHTML=Object.entries(CMETA).map(([c,m])=>
+  const el=document.getElementById("exp-tabs"); if(!el) return;
+  el.innerHTML=Object.entries(CMETA).map(([c,m])=>
     `<button class="exp-tab${c===curCat?" active":""}" onclick="swCat('${c}')">${m.icon} ${m.label}</button>`
   ).join("");
 }
 function swCat(cat){curCat=cat;selId=null;renderTabs();renderList();renderPanel(null)}
 function renderList(){
-  document.getElementById("exp-list").innerHTML=(DB[curCat]||[]).map(item=>{
+  const el=document.getElementById("exp-list"); if(!el) return;
+  el.innerHTML=(DB[curCat]||[]).map(item=>{
     const col=gc({...item,cat:curCat});
     const sub=item.nota||item.centro||item.tipo||item.categoria||"";
     return`<div class="exp-card${item.id===selId?" sel":""}" onclick="selItem('${item.id}')">
@@ -1714,6 +1741,7 @@ function renderList(){
 function selItem(id){selId=id;renderList();renderPanel(byId(id))}
 function renderPanel(item){
   const el=document.getElementById("exp-panel");
+  if(!el) return;
   if(!item){el.innerHTML='<div class="panel-empty"><div class="panel-empty-icon">◈</div><p>Seleziona un elemento per esplorare le sue connessioni</p></div>';return}
   const col=gc(item);const cat=item.cat;const meta=CMETA[cat];
   const connIds=[...(item.chakra||[]),...(item.cristalli||[]),...(item.enneatipi||[]),...(item.frequenze||[]),...(item.adattamenti||[]),...(item.esercizi||[])];
@@ -6526,14 +6554,20 @@ window.addEventListener('load',function(){
     try{percId = localStorage.getItem(PERC_KEY);}catch(e){return;}
     if(!percId || !PERCORSI[percId]) return;
     var p = PERCORSI[percId];
-    st('consulente');
-    setTimeout(function(){
-      var input = document.getElementById('chat-input');
-      if(input && p.finalPrompt){
-        input.value = p.finalPrompt;
-        input.focus();
-      }
-    }, 700);
+    if(!p.finalPrompt){ st('consulente'); return; }
+    // Se siamo già nella pagina del consulente con #chat-input pronto, popola in loco;
+    // altrimenti naviga a consulente.html passando il prompt via querystring (lo
+    // raccoglie il parser inline di consulente.html).
+    var input = document.getElementById('chat-input');
+    if(input){
+      input.value = p.finalPrompt;
+      if(typeof autoResize==='function') autoResize(input);
+      input.focus();
+      try{ input.setSelectionRange(input.value.length, input.value.length); }catch(e){}
+      input.scrollIntoView({behavior:'smooth',block:'center'});
+    } else {
+      window.location.href = 'consulente.html?prompt=' + encodeURIComponent(p.finalPrompt);
+    }
   };
 
   /* ── DOM ready hooks ── */

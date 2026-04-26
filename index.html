@@ -181,6 +181,12 @@
 @media(max-width:1100px){.mega-cols-redesign{grid-template-columns:repeat(3,1fr)}.mega-strip-start__cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.mega-cols-redesign{grid-template-columns:repeat(2,1fr)}.mega-strip-start__cards{grid-template-columns:1fr}}
 @media(max-width:500px){.mega-cols-redesign{grid-template-columns:1fr}}
+/* ═══ Quick-start bar — 4° pulsante "Il mio profilo" ═══ */
+.qs-btn-4{background:linear-gradient(135deg,#ede4f5 0%,#dccdef 100%);border:1px solid #9f8ad4 !important;color:#4a3a7a !important}
+.qs-btn-4:hover{background:linear-gradient(135deg,#e3d6f0 0%,#d2bfeb 100%);border-color:#7967c4 !important}
+.qs-btn-4 .qs-ic{color:#5a4a8c}
+.qs-btn-4 strong{color:#4a3a7a}
+.qs-btn-4 em{color:#7967c4;font-style:italic}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -393,9 +399,10 @@
   <div class="qs-inner">
     <div class="qs-label">Non sai da dove iniziare?</div>
     <div class="qs-buttons">
-      <a class="qs-btn qs-btn-1" href="check-integrato.html"><span class="qs-ic">✦</span><span class="qs-txt"><strong>Scopri il tuo profilo</strong><em>Check · 5 min</em></span></a>
-      <a class="qs-btn qs-btn-2" href="test-frutti.html"><span class="qs-ic">🌳</span><span class="qs-txt"><strong>Conosci il tuo enneatipo</strong><em>9 Frutti · 3 min</em></span></a>
+      <a class="qs-btn qs-btn-1" href="#" onclick="event.preventDefault();window.toggleMega();return false"><span class="qs-ic">🧭</span><span class="qs-txt"><strong>Esplora il portale</strong><em>Apri il menu completo</em></span></a>
+      <a class="qs-btn qs-btn-2" href="check-integrato.html"><span class="qs-ic">✦</span><span class="qs-txt"><strong>Check Integrato</strong><em>Profilo · 5 min</em></span></a>
       <a class="qs-btn qs-btn-3" href="consulente.html"><span class="qs-ic">🤖</span><span class="qs-txt"><strong>Chiedi all'AI</strong><em>Risposta istantanea</em></span></a>
+      <a class="qs-btn qs-btn-4" href="il-mio-profilo.html"><span class="qs-ic">📊</span><span class="qs-txt"><strong>Il mio profilo</strong><em>Disponibile dopo il 1° test</em></span></a>
     </div>
     <button class="qs-dismiss" onclick="document.getElementById('quick-start-bar').style.display='none';localStorage.setItem('qs_dismissed','1')">✕</button>
   </div>

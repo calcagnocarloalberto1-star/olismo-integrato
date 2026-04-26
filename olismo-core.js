@@ -6859,3 +6859,74 @@ async function exportBushPdf(){
     fileName: 'Olismo-Integrato-AI-Bush'
   });
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   AUTO-INIEZIONE VOCE "📖 IL MANUALE" NEL MENU
+   ───────────────────────────────────────────────────────────────────
+   Aggiunge la voce nel mega-menu, menu mobile e footer di ogni pagina.
+   Idempotente: non duplica se già presente (es. nella home).
+   Silenzioso: se gli elementi attesi non esistono nella pagina (es.
+   sottopagine "tool" con header semplificato), non fa nulla.
+   ═══════════════════════════════════════════════════════════════════ */
+(function injectManualeNav() {
+  function inject() {
+    try {
+      // ─── 1. MEGA-MENU: aggiungo nella colonna "Altro" (ultima) ───
+      var megaPanel = document.getElementById('mega-panel');
+      if (megaPanel && !megaPanel.querySelector('a[href="manuale.html"]')) {
+        var databaseLink = megaPanel.querySelector('a[href="explorer.html"]');
+        if (databaseLink) {
+          var sectionTitle = document.createElement('div');
+          sectionTitle.className = 'mega-col-title';
+          sectionTitle.style.marginTop = '1.2rem';
+          sectionTitle.textContent = '📖 Il manuale';
+
+          var link = document.createElement('a');
+          link.className = 'mega-item mega-item-star';
+          link.href = 'manuale.html';
+          link.innerHTML = '<span class="mi-ic">📖</span><span class="mi-body"><strong>Il manuale</strong><em>Download gratuito</em></span>';
+
+          // Inserisco prima il link, poi il titolo (così appaiono nell'ordine giusto)
+          databaseLink.insertAdjacentElement('afterend', link);
+          databaseLink.insertAdjacentElement('afterend', sectionTitle);
+        }
+      }
+
+      // ─── 2. MENU MOBILE: aggiungo nella sezione "Inizia qui" ───
+      var mobMenu = document.getElementById('mob-menu');
+      if (mobMenu && !mobMenu.querySelector('a[href="manuale.html"]')) {
+        var guidaLink = mobMenu.querySelector('a[href="guida.html"]');
+        if (guidaLink) {
+          var newLinkMob = document.createElement('a');
+          newLinkMob.className = 'mob-link';
+          newLinkMob.style.color = 'var(--gold)';
+          newLinkMob.style.fontWeight = '600';
+          newLinkMob.href = 'manuale.html';
+          newLinkMob.innerHTML = '📖 Il manuale (gratis)';
+          guidaLink.insertAdjacentElement('beforebegin', newLinkMob);
+        }
+      }
+
+      // ─── 3. FOOTER: aggiungo nella colonna "Inizia qui" ───
+      var footer = document.querySelector('footer.site-footer');
+      if (footer && !footer.querySelector('a[href="manuale.html"]')) {
+        var guidaFooter = footer.querySelector('a[href="guida.html"]');
+        if (guidaFooter) {
+          var newLinkFt = document.createElement('a');
+          newLinkFt.className = 'f-link';
+          newLinkFt.href = 'manuale.html';
+          newLinkFt.innerHTML = '📖 Il manuale';
+          guidaFooter.insertAdjacentElement('beforebegin', newLinkFt);
+        }
+      }
+    } catch (err) {
+      console.warn('[manuale-nav] iniezione fallita:', err);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inject);
+  } else {
+    inject();
+  }
+})();

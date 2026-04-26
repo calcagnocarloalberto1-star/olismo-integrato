@@ -156,5 +156,23 @@
 </footer>
 
 <script src="olismo-core.js" defer></script>
+
+<!-- Parser URL params: precompila la chat con ?prompt= (no auto-invio: l'utente decide se inviare) -->
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  var p=new URLSearchParams(location.search);
+  var prompt=p.get("prompt");
+  if(!prompt)return;
+  var ta=document.getElementById("chat-input");
+  if(!ta)return;
+  ta.value=prompt;
+  if(typeof autoResize==="function") autoResize(ta);
+  setTimeout(function(){
+    ta.scrollIntoView({behavior:"smooth",block:"center"});
+    ta.focus();
+    try{ ta.setSelectionRange(ta.value.length, ta.value.length); }catch(e){}
+  },250);
+});
+</script>
 </body>
 </html>

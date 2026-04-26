@@ -174,5 +174,22 @@
 </footer>
 
 <script src="olismo-core.js" defer></script>
+
+<!-- Parser URL params: pre-seleziona enneatipo/i da ?t1= e ?t2= e calcola compatibilità -->
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  var p=new URLSearchParams(location.search);
+  var t1=p.get("t1"), t2=p.get("t2");
+  var s1=document.getElementById("compat-t1");
+  var s2=document.getElementById("compat-t2");
+  if(!s1||!s2)return;
+  if(t1&&/^[1-9]$/.test(t1)) s1.value=t1;
+  if(t2&&/^[1-9]$/.test(t2)) s2.value=t2;
+  if(typeof showCompat==="function" && s1.value && s2.value){ showCompat(); }
+  if(s1.value && !s2.value){
+    setTimeout(function(){ s2.focus(); s2.scrollIntoView({behavior:"smooth",block:"center"}); },300);
+  }
+});
+</script>
 </body>
 </html>

@@ -154,18 +154,19 @@
 .book-promo__features li::before{content:'\2726';position:absolute;left:0;color:var(--gold)}
 .book-promo__cta{display:flex;flex-wrap:wrap;gap:.8rem}
 /* ═══ Mega-menu Esplora — REDESIGN 4 colonne + 2 strisce ═══ */
-.mega-panel--redesign{display:flex !important;flex-direction:column;gap:14px;grid-template-columns:none !important}
+.mega-menu-wrap.open .mega-panel--redesign{display:flex !important;flex-direction:column;gap:14px;grid-template-columns:none !important}
 .mega-strip-start{background:linear-gradient(135deg,#fdf6e3 0%,#f9eecf 100%);border:1px solid var(--gold);border-radius:12px;padding:14px 16px}
 .mega-strip-start__label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b6c2e;margin-bottom:10px;font-family:'Outfit',sans-serif}
-.mega-strip-start__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mega-strip-start__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .mega-strip-start__card{background:#fff;border:1px solid #e8e2d0;border-radius:10px;padding:12px 14px;text-decoration:none;display:block;transition:transform .18s,border-color .18s,box-shadow .18s}
 .mega-strip-start__card:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 4px 12px rgba(184,147,90,.15)}
 .mega-strip-start__card-ic{font-size:1.3rem;display:block;margin-bottom:4px}
 .mega-strip-start__card-title{font-weight:600;font-size:.92rem;color:var(--ink);margin-bottom:2px;font-family:'Cormorant Garamond',serif}
 .mega-strip-start__card-sub{font-size:.74rem;color:var(--ink3);font-family:'Outfit',sans-serif}
-.mega-cols-redesign{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mega-cols-redesign{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .mega-col--mediation .mega-col-title{color:#185FA5}
 .mega-col--persona .mega-col-title{color:#534AB7}
+.mega-col--test .mega-col-title{color:#3B6D11}
 .mega-col--tools .mega-col-title{color:#0F6E56}
 .mega-col--olistic .mega-col-title{color:#888780}
 .mega-col--olistic .mega-item{opacity:.88}
@@ -177,8 +178,9 @@
 .mega-strip-bottom__sep{color:#d0c8b0;font-size:.78rem}
 .mega-strip-bottom__admin{margin-left:auto;font-size:.7rem;opacity:.45}
 .mega-strip-bottom__admin:hover{opacity:.9}
-@media(max-width:900px){.mega-cols-redesign{grid-template-columns:repeat(2,1fr)}.mega-strip-start__cards{grid-template-columns:1fr}}
-@media(max-width:560px){.mega-cols-redesign{grid-template-columns:1fr}}
+@media(max-width:1100px){.mega-cols-redesign{grid-template-columns:repeat(3,1fr)}.mega-strip-start__cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.mega-cols-redesign{grid-template-columns:repeat(2,1fr)}.mega-strip-start__cards{grid-template-columns:1fr}}
+@media(max-width:500px){.mega-cols-redesign{grid-template-columns:1fr}}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -218,6 +220,11 @@
                 <span class="mega-strip-start__card-title">Check Integrato</span>
                 <span class="mega-strip-start__card-sub">Profilo personale completo</span>
               </a>
+              <a class="mega-strip-start__card" href="il-mio-profilo.html">
+                <span class="mega-strip-start__card-ic">📊</span>
+                <span class="mega-strip-start__card-title">Il mio profilo</span>
+                <span class="mega-strip-start__card-sub">I miei test in un posto</span>
+              </a>
             </div>
           </div>
 
@@ -237,18 +244,26 @@
               <a class="mega-item mega-item--violenza" href="violenza.html"><span class="mi-ic">⚠</span><span class="mi-body"><strong>Violenza</strong><em>Limite deontologico</em></span></a>
             </div>
 
-            <!-- Colonna 2 — Leggere la persona -->
+            <!-- Colonna 2 — Leggere la persona (sistemi e teorie) -->
             <div class="mega-col mega-col--persona">
               <div class="mega-col-title">🧠 Leggere la persona</div>
               <a class="mega-item" href="enneagram.html"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Enneatipi</strong><em>I 9 tipi</em></span></a>
-              <a class="mega-item" href="at-adattamenti.html"><span class="mi-ic">⬡</span><span class="mi-body"><strong>Adattamenti AT</strong><em>Le schede</em></span></a>
+              <a class="mega-item" href="at-adattamenti.html"><span class="mi-ic">⬡</span><span class="mi-body"><strong>Adattamenti AT</strong><em>Le 6 schede</em></span></a>
+              <a class="mega-item" href="carezze.html"><span class="mi-ic">◎</span><span class="mi-body"><strong>Carezze AT</strong></span></a>
+              <a class="mega-item" href="discipline.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Discipline psicologiche</strong></span></a>
+              <a class="mega-item" href="il_mio_copione.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Il mio Copione</strong></span></a>
+            </div>
+
+            <!-- Colonna 3 — Test interattivi -->
+            <div class="mega-col mega-col--test">
+              <div class="mega-col-title">🧪 Test interattivi</div>
+              <a class="mega-item mega-item-star" href="check-integrato.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Check Integrato</strong><em>Profilo completo</em></span></a>
               <a class="mega-item" href="test-frutti.html"><span class="mi-ic">🌳</span><span class="mi-body"><strong>Test 9 Frutti</strong><em>Scopri l'enneatipo</em></span></a>
               <a class="mega-item" href="test-adattamenti.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Test Adattamenti AT</strong></span></a>
               <a class="mega-item" href="vak.html"><span class="mi-ic">👁</span><span class="mi-body"><strong>Test VAK</strong></span></a>
               <a class="mega-item" href="egogramma.html"><span class="mi-ic">⚙</span><span class="mi-body"><strong>Egogramma</strong></span></a>
-              <a class="mega-item" href="compatibilita.html"><span class="mi-ic">♡</span><span class="mi-body"><strong>Compatibilità</strong></span></a>
               <a class="mega-item" href="transazioni.html"><span class="mi-ic">🎯</span><span class="mi-body"><strong>Vettore Comunicativo</strong></span></a>
-              <a class="mega-item" href="il_mio_copione.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Il mio Copione</strong></span></a>
+              <a class="mega-item" href="compatibilita.html"><span class="mi-ic">♡</span><span class="mi-body"><strong>Compatibilità</strong></span></a>
             </div>
 
             <!-- Colonna 3 — Strumenti AI -->
@@ -257,7 +272,7 @@
               <a class="mega-item mega-item-ai-fes" href="ai-fes.html"><span class="mi-ic">✿</span><span class="mi-body"><strong>Motore AI FES</strong><em>100 essenze</em></span></a>
               <a class="mega-item mega-item-ai-bush" href="ai-bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Motore AI Bush</strong><em>65 essenze</em></span></a>
               <a class="mega-item" href="explorer.html"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Database Esplora</strong><em>Tutto in un posto</em></span></a>
-              <a class="mega-item" href="#percorso-viaggio"><span class="mi-ic">🗺</span><span class="mi-body"><strong>Mappa percorso</strong><em>Orientati</em></span></a>
+              <a class="mega-item" href="#percorso-viaggio" onclick="window.closeMega()"><span class="mi-ic">🗺</span><span class="mi-body"><strong>Mappa percorso</strong><em>Orientati</em></span></a>
               <button class="mega-item" onclick="window.restartTour();window.closeMega()" style="background:transparent;border:none;text-align:left;cursor:pointer;width:100%"><span class="mi-ic">🎓</span><span class="mi-body"><strong>Tour guidato</strong><em>Ricomincia</em></span></button>
             </div>
 
@@ -273,8 +288,6 @@
               <a class="mega-item" href="bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Fiori Bush</strong></span></a>
               <a class="mega-item" href="alimentazione.html"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Alimentazione</strong></span></a>
               <a class="mega-item" href="prano.html"><span class="mi-ic">🤲</span><span class="mi-body"><strong>Pranoterapia</strong></span></a>
-              <a class="mega-item" href="carezze.html"><span class="mi-ic">◎</span><span class="mi-body"><strong>Carezze AT</strong></span></a>
-              <a class="mega-item" href="discipline.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Discipline psicologiche</strong></span></a>
             </div>
 
           </div>

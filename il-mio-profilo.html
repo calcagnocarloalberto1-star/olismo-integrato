@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-il-mio-profilo
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
+<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+
+<title>Il mio profilo — i miei test in un solo posto | Olismo Integrato</title>
+<meta name="description" content="Tutti i risultati dei tuoi test in un solo posto. Convoglia ogni profilo nel Consulente AI per un'analisi mirata o integrata.">
+<link rel="canonical" href="https://olismo-integrato.it/il-mio-profilo.html">
+<meta property="og:title" content="Il mio profilo — Olismo Integrato">
+<meta property="og:description" content="Tutti i tuoi risultati dei test in un solo posto, pronti per l'analisi del Consulente AI.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+
+<style>
+/* ═══ Stili specifici per Il mio profilo ═══ */
+.profilo-hero{padding:1.5rem 0 1rem;text-align:center}
+.profilo-meta{margin-top:1rem;font-size:.78rem;color:var(--ink3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.profilo-meta-clear{background:transparent;border:none;color:var(--ink3);font-size:.78rem;cursor:pointer;padding:.3rem .6rem;border-radius:6px;transition:color .15s,background .15s;font-family:'Outfit',sans-serif}
+.profilo-meta-clear:hover{color:#A32D2D;background:rgba(163,45,45,.06)}
+.profilo-integrated{background:linear-gradient(135deg,#fdf6e3 0%,#f9eecf 100%);border:1px solid var(--gold);border-radius:14px;padding:1.4rem 1.6rem;margin-bottom:1.6rem;text-align:center}
+.profilo-integrated__eye{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#8b6c2e;font-weight:600;margin-bottom:.4rem;font-family:'Outfit',sans-serif}
+.profilo-integrated__title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--ink);margin:0 0 .35rem}
+.profilo-integrated__title em{font-style:italic;color:var(--gold)}
+.profilo-integrated__desc{font-size:.88rem;color:var(--ink3);margin:0 0 1rem;line-height:1.5}
+.profilo-integrated__btn{display:inline-block;background:var(--gold);color:#fff;padding:.75rem 1.6rem;border-radius:24px;text-decoration:none;font-weight:600;font-size:.92rem;transition:background .18s,transform .18s,box-shadow .18s;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+.profilo-integrated__btn:hover{background:#a07f4a;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,147,90,.25)}
+.profilo-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:680px){.profilo-cards{grid-template-columns:1fr}}
+.profilo-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s}
+.profilo-card:hover{border-color:#d4c8b0;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+.profilo-card-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.7rem;gap:.6rem}
+.profilo-card-title{font-size:.92rem;font-weight:600;font-family:'Outfit',sans-serif}
+.profilo-card-date{font-size:.7rem;color:var(--ink3);white-space:nowrap}
+.profilo-card-body{font-size:.88rem;line-height:1.7;color:var(--ink);margin-bottom:1rem;flex:1}
+.profilo-card-body b{color:var(--ink);font-weight:600}
+.profilo-card-btn{display:block;text-align:center;background:transparent;border:1px solid;padding:.55rem .9rem;border-radius:8px;text-decoration:none;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;transition:background .18s,color .18s}
+.profilo-card-btn:hover{filter:brightness(.95)}
+.profilo-empty{text-align:center;padding:2.5rem 1rem;background:#faf6ec;border:1px dashed var(--border);border-radius:14px}
+.profilo-empty-ic{font-size:2.4rem;margin-bottom:.6rem;opacity:.6}
+.profilo-empty-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin:0 0 .5rem}
+.profilo-empty-desc{font-size:.92rem;color:var(--ink3);max-width:480px;margin:0 auto 1.5rem;line-height:1.55}
+.profilo-empty-cta{display:inline-flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.profilo-empty-cta a{display:inline-block;padding:.6rem 1.2rem;background:var(--gold);color:#fff;border-radius:20px;text-decoration:none;font-size:.82rem;font-weight:600;font-family:'Outfit',sans-serif}
+.profilo-empty-cta a.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+</style>
+</head>
+<body>
+
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="profilo">
+  <div class="container" style="max-width:900px">
+
+    <div class="sec-hd profilo-hero">
+      <div class="sec-eye">📊 Profilo personale</div>
+      <h2 class="sec-title">I miei <em>risultati</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Tutti i tuoi test in un solo posto. Ogni risultato può essere inviato al Consulente AI per un'analisi mirata, oppure tutti insieme per una lettura olistica integrata.</p>
+    </div>
+
+    <!-- Riquadro dorato: analisi integrata (visibile solo se ≥1 test fatto) -->
+    <div class="profilo-integrated" id="integrated-block" style="display:none">
+      <div class="profilo-integrated__eye">✦ Analisi più potente</div>
+      <h3 class="profilo-integrated__title">Chiedi al Consulente AI di leggere <em>tutto insieme</em></h3>
+      <p class="profilo-integrated__desc">Invia <span id="integrated-count">tutti</span> i tuoi risultati al Consulente AI in un'unica analisi olistica integrata.</p>
+      <a id="integrated-btn" href="#" class="profilo-integrated__btn">🤖 Analisi integrata di tutti i miei test →</a>
+    </div>
+
+    <!-- Container card dei test completati -->
+    <div class="profilo-cards" id="profile-cards"></div>
+
+    <!-- Stato vuoto: nessun test completato -->
+    <div class="profilo-empty" id="empty-state" style="display:none">
+      <div class="profilo-empty-ic">📋</div>
+      <h3 class="profilo-empty-title">Non hai ancora <em>nessun test</em> salvato</h3>
+      <p class="profilo-empty-desc">Per popolare il tuo profilo, completa almeno uno dei test del portale. Il Check Integrato è il punto di partenza consigliato perché in 5 minuti restituisce una mappa olistica di base.</p>
+      <div class="profilo-empty-cta">
+        <a href="check-integrato.html">✦ Inizia dal Check Integrato</a>
+        <a href="test-frutti.html" class="ghost">🌳 Test 9 Frutti</a>
+        <a href="consulente.html" class="ghost">🤖 Vai al Consulente AI</a>
+      </div>
+    </div>
+
+    <!-- Meta in fondo (visibile solo se ≥1 test) -->
+    <div class="profilo-meta" id="profile-meta" style="display:none">
+      <span id="profile-meta-text">—</span>
+      <button class="profilo-meta-clear" onclick="window._cancellaProfilo()">🗑 Cancella tutti i risultati</button>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check Integrato</a>
+      <a href="manuale.html" style="color:var(--gold);text-decoration:none">📖 Il manuale</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+
+<!-- Logica di rendering del profilo personale -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  // Helper: legge un profilo dal localStorage tramite la funzione globale di olismo-core.js,
+  // con fallback diretto se la funzione non fosse caricata
+  function readProfile(key){
+    try{
+      if(typeof getProfileResult === "function") return getProfileResult(key);
+      var v = localStorage.getItem("olismo_profile_"+key);
+      return v ? JSON.parse(v) : null;
+    }catch(e){ return null; }
+  }
+
+  // Definizione dei 7 test, ognuno con: come si descrive, quale prompt costruisce per l'AI
+  var TESTS = [
+    {
+      key:"check", label:"Check Integrato", icon:"✦", color:"#534AB7",
+      describe: function(d){
+        var p = [];
+        if(d.enneatipo) p.push("Enneatipo ipotesi: <b>T"+d.enneatipo+"</b>");
+        if(d.enn2) p.push("2° enneatipo: <b>T"+d.enn2+"</b>");
+        if(d.vak) p.push("Canale VAK: <b>"+d.vak+"</b>");
+        if(d.at_stato) p.push("Stato AT: <b>"+d.at_stato+"</b>");
+        if(d.chakra_forte) p.push("Chakra di forza: <b>"+d.chakra_forte+"</b>");
+        if(d.chakra_debole) p.push("Chakra da lavorare: <b>"+d.chakra_debole+"</b>");
+        if(d.spinte && d.spinte.length) p.push("Spinte copione: <b>"+d.spinte.join(", ")+"</b>");
+        if(d.conf_stile) p.push("Stile conflitto: <b>"+d.conf_stile+"</b>");
+        return p.length ? p.join("<br>") : "<i>Profilo salvato (nessun campo riconosciuto)</i>";
+      },
+      buildPrompt: function(d){
+        var p = "Ho fatto il Check Integrato il "+(d._date||"")+". Il mio profilo: ";
+        var bits = [];
+        if(d.enneatipo) bits.push("enneatipo ipotesi T"+d.enneatipo);
+        if(d.enn2) bits.push("2° enneatipo T"+d.enn2);
+        if(d.vak) bits.push("canale VAK "+d.vak);
+        if(d.at_stato) bits.push("stato AT prevalente "+d.at_stato);
+        if(d.chakra_forte) bits.push("chakra di forza "+d.chakra_forte);
+        if(d.chakra_debole) bits.push("chakra da lavorare "+d.chakra_debole);
+        if(d.spinte && d.spinte.length) bits.push("spinte copione "+d.spinte.join(", "));
+        if(d.conf_stile) bits.push("stile conflitto "+d.conf_stile);
+        p += bits.join(", ");
+        if(d.cerca_di) p += ". Sto cercando: "+d.cerca_di;
+        p += ". Puoi darmi un'analisi olistica integrata del mio profilo e suggerirmi un percorso personalizzato?";
+        return p;
+      }
+    },
+    {
+      key:"frutti", label:"Test 9 Frutti", icon:"🌳", color:"#185FA5",
+      describe: function(d){
+        var p = [];
+        p.push("Enneatipo: <b>T"+d.tipo+(d.nome?" — "+d.nome:"")+"</b>");
+        if(d.tipo2) p.push("2° tipo: <b>T"+d.tipo2+"</b>");
+        if(d.ala) p.push("Ala dominante: <b>"+d.ala+"</b>");
+        return p.join("<br>");
+      },
+      buildPrompt: function(d){
+        var p = "Ho completato il Test dei 9 Frutti il "+(d._date||"")+": sono Tipo "+d.tipo;
+        if(d.nome) p += " ("+d.nome+")";
+        if(d.tipo2) p += ", 2° tipo T"+d.tipo2;
+        if(d.ala) p += ", ala dominante "+d.ala;
+        p += ". Puoi darmi un'analisi del mio profilo enneagrammatico evolutivo: caratteristiche, percorso di integrazione e disintegrazione, chakra correlati, fiori di Bach consigliati e indicazioni concrete per evolvermi?";
+        return p;
+      }
+    },
+    {
+      key:"at", label:"Test Adattamenti AT", icon:"🧠", color:"#3B6D11",
+      describe: function(d){
+        var p = [];
+        p.push("Primario: <b>"+d.primario+(d.primario_pct?" ("+d.primario_pct+"%)":"")+"</b>");
+        if(d.secondario) p.push("Secondario: <b>"+d.secondario+(d.secondario_pct?" ("+d.secondario_pct+"%)":"")+"</b>");
+        if(d.prevalenza) p.push("Prevalenza: <b>"+d.prevalenza+"</b>");
+        return p.join("<br>");
+      },
+      buildPrompt: function(d){
+        var p = "Ho completato il Test degli Adattamenti AT il "+(d._date||"")+": adattamento primario "+d.primario+(d.primario_pct?" ("+d.primario_pct+"%)":"");
+        if(d.secondario) p += ", secondario "+d.secondario+(d.secondario_pct?" ("+d.secondario_pct+"%)":"");
+        if(d.prevalenza) p += ", prevalenza "+d.prevalenza;
+        p += ". Puoi spiegarmi come questi adattamenti influenzano le mie relazioni e darmi indicazioni pratiche per lavorarci? Collegami anche ai chakra, cristalli e frequenze correlate.";
+        return p;
+      }
+    },
+    {
+      key:"vak", label:"Test VAK", icon:"👁", color:"#BA7517",
+      describe: function(d){
+        var p = [];
+        p.push("Canale dominante: <b>"+d.canale+(d.nome?" ("+d.nome+")":"")+(d.pct?" — "+d.pct+"%":"")+"</b>");
+        if(d.secondo) p.push("2° canale: <b>"+d.secondo+"</b>");
+        return p.join("<br>");
+      },
+      buildPrompt: function(d){
+        var p = "Il mio canale VAK dominante è "+d.canale+(d.pct?" ("+d.pct+"%)":"");
+        if(d.secondo) p += ", 2° canale "+d.secondo;
+        p += ". Puoi analizzare il mio stile di apprendimento, comunicazione e indicarmi i tipi di partner relazionale più compatibili?";
+        return p;
+      }
+    },
+    {
+      key:"ego", label:"Egogramma", icon:"⚙", color:"#0F6E56",
+      describe: function(d){
+        var p = [];
+        p.push("Stato dominante: <b>"+d.dominante+(d.dominante_val?" ("+d.dominante_val+"/10)":"")+"</b>");
+        p.push("Stato più basso: <b>"+d.minimo+(d.minimo_val?" ("+d.minimo_val+"/10)":"")+"</b>");
+        return p.join("<br>");
+      },
+      buildPrompt: function(d){
+        var p = "Il mio Egogramma di Berne: stato dominante "+d.dominante+(d.dominante_val?" ("+d.dominante_val+"/10)":"")+", stato più basso "+d.minimo+(d.minimo_val?" ("+d.minimo_val+"/10)":"");
+        p += ". Puoi analizzare le mie dinamiche relazionali e darmi indicazioni pratiche per riequilibrare gli stati dell'Io?";
+        return p;
+      }
+    },
+    {
+      key:"trans", label:"Vettore Comunicativo", icon:"🎯", color:"#993556",
+      describe: function(d){
+        var p = [];
+        p.push("Vettore primario: <b>"+d.vettore_primario+(d.pct_primario?" ("+d.pct_primario+"%)":"")+"</b>");
+        if(d.vettore_sec) p.push("Vettore secondario: <b>"+d.vettore_sec+"</b>");
+        return p.join("<br>");
+      },
+      buildPrompt: function(d){
+        var p = "Ho completato il Test del Vettore Comunicativo: vettore primario "+d.vettore_primario+(d.pct_primario?" ("+d.pct_primario+"%)":"");
+        if(d.vettore_sec) p += ", vettore secondario "+d.vettore_sec;
+        p += ". Analizza il mio stile comunicativo e collegalo alla mia personalità AT, indicandomi le aree di forza e quelle da curare nella relazione con gli altri.";
+        return p;
+      }
+    },
+    {
+      key:"diet", label:"Piano Alimentare AI", icon:"🌿", color:"#3B6D11",
+      describe: function(d){
+        var p = [];
+        if(d.tipo) p.push("Generato per: <b>T"+d.tipo+(d.adattamento?" / "+d.adattamento:"")+"</b>");
+        return p.length ? p.join("<br>") : "<i>Piano alimentare salvato</i>";
+      },
+      buildPrompt: function(d){
+        var p = "Ho un piano alimentare olistico generato per Tipo "+(d.tipo||"")+(d.adattamento?" e adattamento "+d.adattamento:"");
+        p += ". Puoi spiegarmi i principi del piano e darmi indicazioni pratiche per adattarlo alla mia routine settimanale?";
+        return p;
+      }
+    }
+  ];
+
+  var container = document.getElementById("profile-cards");
+  var emptyState = document.getElementById("empty-state");
+  var integratedBlock = document.getElementById("integrated-block");
+  var integratedBtn = document.getElementById("integrated-btn");
+  var integratedCount = document.getElementById("integrated-count");
+  var metaBlock = document.getElementById("profile-meta");
+  var metaText = document.getElementById("profile-meta-text");
+
+  var count = 0;
+  var lastDate = null;
+
+  TESTS.forEach(function(t){
+    var data = readProfile(t.key);
+    if(!data) return;
+    count++;
+    if(data._date && (!lastDate || data._date > lastDate)) lastDate = data._date;
+
+    var prompt = t.buildPrompt(data);
+    var card = document.createElement("div");
+    card.className = "profilo-card";
+    card.innerHTML =
+      '<div class="profilo-card-hd">' +
+        '<span class="profilo-card-title" style="color:'+t.color+'">'+t.icon+' '+t.label+'</span>' +
+        '<span class="profilo-card-date">'+(data._date||"")+'</span>' +
+      '</div>' +
+      '<div class="profilo-card-body">'+t.describe(data)+'</div>' +
+      '<a href="consulente.html?prompt='+encodeURIComponent(prompt)+'" ' +
+         'class="profilo-card-btn" style="border-color:'+t.color+';color:'+t.color+'">' +
+         '🤖 Chiedi all\'AI di approfondire' +
+      '</a>';
+    container.appendChild(card);
+  });
+
+  if(count === 0){
+    container.style.display = "none";
+    integratedBlock.style.display = "none";
+    metaBlock.style.display = "none";
+    emptyState.style.display = "block";
+  } else {
+    emptyState.style.display = "none";
+    integratedBlock.style.display = "block";
+    metaBlock.style.display = "flex";
+    integratedCount.textContent = (count === 1) ? "il" : "tutti i "+count;
+
+    // Costruzione del prompt integrato (usa buildUserProfile se disponibile)
+    var integratedPrompt;
+    if(typeof buildUserProfile === "function"){
+      integratedPrompt = buildUserProfile() +
+        "\n\nDammi una lettura olistica integrata di tutto il mio profilo: come si collegano i diversi sistemi tra loro, indicazioni operative concrete e cosa ti consigli di lavorare per primo.";
+    } else {
+      // Fallback: concatena i singoli prompt
+      var parts = [];
+      TESTS.forEach(function(t){
+        var d = readProfile(t.key);
+        if(d) parts.push("▶ "+t.label+":\n"+t.buildPrompt(d));
+      });
+      integratedPrompt = parts.join("\n\n") + "\n\nFammi una lettura olistica integrata di tutto.";
+    }
+    integratedBtn.href = "consulente.html?prompt=" + encodeURIComponent(integratedPrompt);
+
+    metaText.textContent = count + " test " + (count === 1 ? "completato" : "completati") + " su 7" + (lastDate ? " · ultimo aggiornamento " + lastDate : "");
+  }
+
+  // Funzione globale per cancellare tutti i risultati
+  window._cancellaProfilo = function(){
+    if(!confirm("Sei sicuro di voler cancellare TUTTI i risultati salvati? L'azione non è reversibile.")) return;
+    try{
+      if(typeof clearAllProfiles === "function"){
+        clearAllProfiles();
+      } else {
+        ["check","frutti","at","vak","ego","diet","trans"].forEach(function(k){
+          try{ localStorage.removeItem("olismo_profile_"+k); }catch(e){}
+        });
+      }
+    }catch(e){}
+    location.reload();
+  };
+
+});
+</script>
+
+</body>
+</html>

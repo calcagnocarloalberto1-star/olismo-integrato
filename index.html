@@ -154,7 +154,8 @@
 .book-promo__features li::before{content:'\2726';position:absolute;left:0;color:var(--gold)}
 .book-promo__cta{display:flex;flex-wrap:wrap;gap:.8rem}
 /* ═══ Mega-menu Esplora — REDESIGN 4 colonne + 2 strisce ═══ */
-.mega-menu-wrap.open .mega-panel--redesign{display:flex !important;flex-direction:column;gap:14px;grid-template-columns:none !important}
+/* Override minimo: trasformo solo grid-5-col in flex-column, il resto eredita dal CSS originale */
+.mega-menu-wrap.open .mega-panel--redesign{display:flex !important;flex-direction:column !important;grid-template-columns:none !important;gap:14px !important}
 .mega-strip-start{background:linear-gradient(135deg,#fdf6e3 0%,#f9eecf 100%);border:1px solid var(--gold);border-radius:12px;padding:14px 16px}
 .mega-strip-start__label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b6c2e;margin-bottom:10px;font-family:'Outfit',sans-serif}
 .mega-strip-start__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}

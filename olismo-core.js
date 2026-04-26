@@ -6935,7 +6935,7 @@ async function exportBushPdf(){
         }
       }
 
-      // ─── 5. FOOTER "EDITORIALE" (Famiglia B): prima colonna del grid ───
+      // ─── 5. FOOTER "EDITORIALE" (Famiglia 3): prima colonna del grid ───
       var siteFooterFirstCol = document.querySelector('footer.site-footer .site-footer__grid > div:first-child');
       if (siteFooterFirstCol && !siteFooterFirstCol.querySelector('a[href="manuale.html"]')) {
         var firstColLink = siteFooterFirstCol.querySelector('a');
@@ -6946,6 +6946,66 @@ async function exportBushPdf(){
           firstColLink.insertAdjacentElement('beforebegin', newFooterLinkEd);
         } else {
           siteFooterFirstCol.appendChild(newFooterLinkEd);
+        }
+      }
+
+      // ─── 6. HEADER NAV GENERICO (Famiglia 2: mediazione-civile.html, mediazione-familiare.html, etc.) ───
+      // Cerca QUALUNQUE <header> con dentro un <nav> di almeno 3 link (esclude header semplificati con solo "← Home")
+      var allHeaderNavs = document.querySelectorAll('header nav');
+      allHeaderNavs.forEach(function(navEl) {
+        if (navEl.querySelector('a[href="manuale.html"]')) return; // anti-duplicato
+        var navLinks = navEl.querySelectorAll('a');
+        if (navLinks.length < 3) return; // skip header semplificati
+        // Skip se è già stato gestito dai blocchi 1-4 (mega-panel, mob-menu, site-nav)
+        if (navEl.id === 'mega-panel' || navEl.id === 'mob-menu' || navEl.classList.contains('site-nav')) return;
+
+        var manualeNavLink = document.createElement('a');
+        manualeNavLink.href = 'manuale.html';
+        manualeNavLink.textContent = '📖 Manuale';
+        manualeNavLink.style.color = 'var(--gold, #b8935a)';
+        manualeNavLink.style.fontWeight = '600';
+
+        // Inserisco prima dell'ultimo link se contiene "Home" o "←", altrimenti in coda
+        var lastLink = navLinks[navLinks.length - 1];
+        var lastTxt = (lastLink.textContent || '').toLowerCase();
+        if (lastTxt.indexOf('home') !== -1 || lastTxt.indexOf('←') !== -1) {
+          lastLink.insertAdjacentElement('beforebegin', manualeNavLink);
+        } else {
+          navEl.appendChild(manualeNavLink);
+        }
+      });
+
+      // ─── 7. FOOTER GENERICO (Famiglia 2: footer inline senza class site-footer) ───
+      // Cerca il <footer>, dentro trova il container con più link diretti, aggiunge in coda
+      var anyFooter = document.querySelector('footer');
+      if (anyFooter && !anyFooter.querySelector('a[href="manuale.html"]')) {
+        // Trovo il container con il maggior numero di link diretti (la "nav del footer")
+        var bestContainer = null;
+        var maxLinks = 0;
+        var candidates = anyFooter.querySelectorAll('div, p, nav, ul');
+        candidates.forEach(function(c) {
+          var directA = 0;
+          for (var i = 0; i < c.children.length; i++) {
+            if (c.children[i].tagName === 'A' && c.children[i].getAttribute('href')) {
+              directA++;
+            }
+          }
+          if (directA > maxLinks) {
+            maxLinks = directA;
+            bestContainer = c;
+          }
+        });
+        if (bestContainer && maxLinks >= 3) {
+          var newFLink = document.createElement('a');
+          newFLink.href = 'manuale.html';
+          newFLink.innerHTML = '📖 Il manuale';
+          newFLink.style.color = 'var(--gold, #b8935a)';
+          newFLink.style.fontWeight = '600';
+          // Se i link sono separati da " · " in linea, replico il separatore
+          if (bestContainer.innerHTML.indexOf(' · ') !== -1) {
+            bestContainer.appendChild(document.createTextNode(' · '));
+          }
+          bestContainer.appendChild(newFLink);
         }
       }
     } catch (err) {

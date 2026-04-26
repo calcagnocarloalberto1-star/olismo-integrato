@@ -6919,6 +6919,35 @@ async function exportBushPdf(){
           guidaFooter.insertAdjacentElement('beforebegin', newLinkFt);
         }
       }
+
+      // ─── 4. NAV "EDITORIALE" (Famiglia B: chi-sono.html, metodo.html, ecc.) ───
+      // Selettore: nav.site-nav dentro header.site-header
+      var siteNavEd = document.querySelector('header.site-header nav.site-nav');
+      if (siteNavEd && !siteNavEd.querySelector('a[href="manuale.html"]')) {
+        var chiSonoNav = siteNavEd.querySelector('a[href="chi-sono.html"]');
+        var newNavLinkEd = document.createElement('a');
+        newNavLinkEd.href = 'manuale.html';
+        newNavLinkEd.textContent = 'Il manuale';
+        if (chiSonoNav) {
+          chiSonoNav.insertAdjacentElement('beforebegin', newNavLinkEd);
+        } else {
+          siteNavEd.appendChild(newNavLinkEd);
+        }
+      }
+
+      // ─── 5. FOOTER "EDITORIALE" (Famiglia B): prima colonna del grid ───
+      var siteFooterFirstCol = document.querySelector('footer.site-footer .site-footer__grid > div:first-child');
+      if (siteFooterFirstCol && !siteFooterFirstCol.querySelector('a[href="manuale.html"]')) {
+        var firstColLink = siteFooterFirstCol.querySelector('a');
+        var newFooterLinkEd = document.createElement('a');
+        newFooterLinkEd.href = 'manuale.html';
+        newFooterLinkEd.innerHTML = '📖 Il manuale';
+        if (firstColLink) {
+          firstColLink.insertAdjacentElement('beforebegin', newFooterLinkEd);
+        } else {
+          siteFooterFirstCol.appendChild(newFooterLinkEd);
+        }
+      }
     } catch (err) {
       console.warn('[manuale-nav] iniezione fallita:', err);
     }

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
+  
+  AVVISO LEGALE — Questo codice è opera dell'ingegno protetta dal diritto
+  d'autore. È VIETATO copiare, riprodurre, modificare, distribuire,
+  decompilare o utilizzare questo codice e i suoi contenuti senza
+  preventiva autorizzazione scritta dell'autore.
+  
+  RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
+  l'uso di questo materiale per l'addestramento di modelli di intelligenza
+  artificiale, fine-tuning, RAG, embedding o qualsiasi forma di
+  alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
+  
+  Tassonomia originale dei 95 gesti della comunicazione analogica e
+  integrazione metodologica con enneagramma evolutivo, analisi transazionale,
+  neuroscienze polivagali, fiori di Bach/FES/Bush, chakra e frequenze
+  Solfeggio applicata alla mediazione: opera originale dell'autore.
+  
+  Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
+  
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
+═══════════════════════════════════════════════════════════════════════
+-->
+
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
+<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
+<meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
+<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+
+<title>Compatibilità tra enneatipi — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<link rel="canonical" href="https://olismo-integrato.it/compatibilita.html">
+<meta property="og:title" content="Compatibilità tra enneatipi — Olismo Integrato">
+<meta property="og:description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compatibilità tra enneatipi — Olismo Integrato">
+<meta name="twitter:description" content="Calcola la compatibilità di coppia basata sui 9 enneatipi evolutivi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Simplified header for subpage -->
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="compatibilita">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+      <h2 class="sec-title">Compatibilità <em>di coppia</em></h2>
+      <div class="sec-div"></div>
+      <p class="sec-desc">Scopri il livello di compatibilità tra due enneatipi, i punti di forza, le sfide e i consigli pratici per la relazione.</p>
+    </div>
+    <div class="compat-selectors">
+      <div class="compat-select-wrap">
+        <label>Tipo 1</label>
+        <select class="compat-select" id="compat-t1" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🍊 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div class="compat-vs">✦</div>
+      <div class="compat-select-wrap">
+        <label>Tipo 2</label>
+        <select class="compat-select" id="compat-t2" onchange="showCompat()">
+          <option value="">Seleziona enneatipo...</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🍊 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+    </div>
+    <div class="compat-result" id="compat-result"></div>
+  </div>
+</section>
+
+<!-- CTA Approfondimenti: analisi familiare e lavorativa -->
+<section style="max-width:1100px;margin:3rem auto 0;padding:0 1.5rem">
+  <div style="padding:2rem 1.8rem;background:linear-gradient(135deg,#2a1a4a 0%,#4a2a6a 55%,#6a4a8a 100%);border-radius:14px;color:white;box-shadow:0 8px 32px rgba(42,26,74,.2)">
+    <div style="text-align:center;margin-bottom:1.3rem">
+      <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fde047;margin-bottom:.35rem;font-weight:600">🌟 Approfondisci · 2 percorsi</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:white;margin:0 0 .4rem">Vuoi un'analisi <em style="color:#fde047;font-style:italic">più approfondita</em>?</h3>
+      <p style="font-size:.9rem;color:rgba(255,255,255,.9);max-width:680px;margin:0 auto;line-height:1.55">Questo test di compatibilità dà una prima lettura. Per un'analisi completa, prosegui con l'<strong style="color:#fde047">analisi familiare</strong> e, se può servire, anche con quella <strong style="color:#fde047">lavorativa</strong>.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;max-width:600px;margin:0 auto">
+      <a href="compatibilita-famiglia.html" style="display:block;padding:1.1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''">
+        <div style="font-size:1.5rem;margin-bottom:.3rem">👨‍👩‍👧</div>
+        <div style="font-weight:600;color:#fde047;font-size:.92rem">Famiglia</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);margin-top:.25rem">Tool interattivo · fino a 8 membri, fasi di vita e affinità</div>
+      </a>
+      <a href="consulente.html?prompt=Voglio%20analizzare%20le%20dinamiche%20lavorative%20tra%20enneatipi%20nel%20mio%20team.%20Come%20si%20manifestano%20i%20diversi%20tipi%20al%20lavoro%2C%20quali%20sono%20le%20tensioni%20pi%C3%B9%20comuni%20e%20come%20posso%20migliorare%20la%20collaborazione%20con%20colleghi%20e%20capi%3F" style="display:block;padding:1.1rem;background:rgba(255,255,255,.1);border:1px solid rgba(253,224,71,.3);border-radius:8px;color:white;text-decoration:none;transition:all .2s;text-align:center" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.transform=''">
+        <div style="font-size:1.5rem;margin-bottom:.3rem">💼</div>
+        <div style="font-weight:600;color:#fde047;font-size:.92rem">Lavoro</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);margin-top:.25rem">Chiedi al Consulente AI · Domanda precompilata</div>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
+    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno</div>
+    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
+      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
+      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
+      <a href="mediazione-civile.html" style="color:var(--gold);text-decoration:none">⚖ Mediazione Civile</a>
+      <a href="mediazione-familiare.html" style="color:var(--gold);text-decoration:none">👨‍👩‍👧 Mediazione Familiare</a>
+      <a href="consulente-mediatore.html" style="color:var(--gold);text-decoration:none">🎓 Consulente Mediatore</a>
+      <a href="empowerment-mediazione.html" style="color:var(--gold);text-decoration:none">🌿 Empowerment</a>
+      <a href="psicologia-analogica.html" style="color:var(--gold);text-decoration:none">🔍 Psicologia Analogica</a>
+      <a href="matrice-svalutazione.html" style="color:var(--gold);text-decoration:none">⊘ Matrice</a>
+      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
+      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
+      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
+      <a href="prenota-consulenza.html" style="color:var(--gold);text-decoration:none">📅 Prenota consulenza</a>
+      <a href="professionisti.html" style="color:var(--gold);text-decoration:none">🤝 Professionisti della rete</a>
+      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
+      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
+    </div>
+    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+  </div>
+</footer>
+
+<script src="olismo-core.js" defer></script>
+
+<!-- Parser URL params: pre-seleziona enneatipo/i da ?t1= e ?t2= e calcola compatibilità -->
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  var p=new URLSearchParams(location.search);
+  var t1=p.get("t1"), t2=p.get("t2");
+  var s1=document.getElementById("compat-t1");
+  var s2=document.getElementById("compat-t2");
+  if(!s1||!s2)return;
+  if(t1&&/^[1-9]$/.test(t1)) s1.value=t1;
+  if(t2&&/^[1-9]$/.test(t2)) s2.value=t2;
+  if(typeof showCompat==="function" && s1.value && s2.value){ showCompat(); }
+  if(s1.value && !s2.value){
+    setTimeout(function(){ s2.focus(); s2.scrollIntoView({behavior:"smooth",block:"center"}); },300);
+  }
+});
+</script>
+</body>
+</html>

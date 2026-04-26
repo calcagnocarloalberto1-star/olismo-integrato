@@ -1369,9 +1369,9 @@ function showResult(scores, topTipo, ala){
       </div>
       
       <div class="result-actions" style="margin-top:1.5rem">
-        <button class="btn-gold" onclick="goTo('e${topTipo}','enneatipi');st('enneagram')">Vedi percorso evolutivo →</button>
-        <button class="btn-ghost" onclick="showCompatFromResult(${topTipo})">Compatibilità →</button>
-        <button class="btn-ghost" onclick="askAiAboutResult(${topTipo})">Chiedi alla AI →</button>
+        <button class="btn-gold" onclick="window.location.href='enneagram.html?tipo=${topTipo}#e${topTipo}'">Vedi percorso evolutivo →</button>
+        <button class="btn-ghost" onclick="window.location.href='compatibilita.html?t1=${topTipo}'">Compatibilità →</button>
+        <button class="btn-ghost" onclick="window.location.href='consulente.html?tipo=${topTipo}&prompt=${encodeURIComponent('Ho completato il test dei 9 Frutti e sono Tipo '+topTipo+'. Puoi darmi un percorso personalizzato integrando chakra, cristalli, adattamento AT e ciò che mi serve per evolvermi?')}'">Chiedi alla AI →</button>
         <button onclick="resetTest()" style="padding:.6rem 1.2rem;border:1.5px solid var(--border);border-radius:var(--r);background:transparent;color:var(--ink3);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem">Rifai il test</button>
       </div>
     </div>`;

@@ -13,7 +13,7 @@
   - 1.0  Home
   - 0.95 Hub mediazione (civile, familiare, consulente, empowerment)
   - 0.90 Strumenti AI principali, professionisti, prenota, contatti
-  - 0.85 Pagine personali strutturate (chi-sono, metodo)
+  - 0.85 Pagine personali strutturate (chi-sono, metodo, manuale)
   - 0.80 Database e schede informative principali
   - 0.70 Test e strumenti secondari
   - 0.60 Pagine di servizio (faq, guida)
@@ -28,7 +28,7 @@
   <!-- ═══ HOME ═══ -->
   <url>
     <loc>https://olismo-integrato.it/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -106,12 +106,12 @@
   </url>
   <url>
     <loc>https://olismo-integrato.it/professionisti.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- ═══ AUTORE E METODO (alta priorità SEO E-E-A-T) ═══ -->
+  <!-- ═══ AUTORE, METODO E MANUALE (alta priorità SEO E-E-A-T) ═══ -->
   <url>
     <loc>https://olismo-integrato.it/chi-sono.html</loc>
     <lastmod>2026-04-25</lastmod>
@@ -121,6 +121,12 @@
   <url>
     <loc>https://olismo-integrato.it/metodo.html</loc>
     <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/manuale.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -142,7 +148,7 @@
   <!-- ═══ DATABASE PRINCIPALI ═══ -->
   <url>
     <loc>https://olismo-integrato.it/enneagram.html</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -267,6 +273,18 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://olismo-integrato.it/compatibilita-coppia.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/compatibilita-famiglia.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://olismo-integrato.it/explorer.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -274,6 +292,12 @@
   </url>
 
   <!-- ═══ STRUMENTI PERSONALI ═══ -->
+  <url>
+    <loc>https://olismo-integrato.it/il-mio-profilo.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
   <url>
     <loc>https://olismo-integrato.it/i_miei_fiori.html</loc>
     <lastmod>2026-04-18</lastmod>

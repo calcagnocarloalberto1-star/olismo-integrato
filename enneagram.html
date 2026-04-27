@@ -569,7 +569,7 @@
 <p style="text-align:center; margin: 36px 0;">
   <a href="danza.html" class="cta-button">Vai a «La danza del conflitto»</a>
   &nbsp;&nbsp;
-  <a href="prenota-consulenza.html" class="cta-button cta-button--outline">Richiedi il manuale</a>
+  <a href="prenota-consulenza.html" class="cta-button cta-button--outline">Richiedi una consulenza</a>
 </p>
 
 <div class="ornament"></div>
@@ -627,30 +627,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Parser URL params: scroll + highlight su .ennea-N quando si arriva con ?tipo=N -->
-<script>
-document.addEventListener("DOMContentLoaded",function(){
-  var p=new URLSearchParams(location.search);
-  var tipo=p.get("tipo");
-  if(!tipo||!/^[1-9]$/.test(tipo))return;
-  var target=document.querySelector(".ennea-"+tipo);
-  if(!target)return;
-  setTimeout(function(){
-    target.scrollIntoView({behavior:"smooth",block:"center"});
-    var oldShadow=target.style.boxShadow;
-    var oldTrans=target.style.transition;
-    target.style.transition="box-shadow .5s ease, transform .5s ease";
-    target.style.boxShadow="0 0 0 4px var(--gold,#b8935a), 0 12px 40px rgba(184,147,90,.35)";
-    target.style.transform="scale(1.015)";
-    setTimeout(function(){
-      target.style.boxShadow=oldShadow;
-      target.style.transform="";
-      setTimeout(function(){ target.style.transition=oldTrans; },600);
-    },2800);
-  },300);
-});
-</script>
 
 </body>
 </html>

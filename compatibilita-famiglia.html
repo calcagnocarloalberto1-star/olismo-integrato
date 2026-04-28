@@ -64,7 +64,15 @@
 .fc-pair{background:#fff;border:1px solid #d4c8b0;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem}
 .fc-pair-hd{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink)}
 .fc-pair-hd .fc-vs{color:#c44569;font-size:1.1rem}
-.fc-pair-score{margin-left:auto;background:var(--gold);color:#fff;padding:.25rem .65rem;border-radius:14px;font-size:.74rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.04em;white-space:nowrap}
+.fc-pair-scores{margin-left:auto;display:flex;gap:.4rem;flex-wrap:wrap}
+.fc-score-pill{padding:.25rem .6rem;border-radius:14px;font-size:.7rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.03em;white-space:nowrap;color:#fff}
+.fc-score-pill.base.ottima{background:linear-gradient(90deg,#5fa055,#7fb670)}
+.fc-score-pill.base.buona{background:linear-gradient(90deg,#c9a961,#d4b876)}
+.fc-score-pill.base.media{background:linear-gradient(90deg,#a07e4b,#b8935a)}
+.fc-score-pill.eta.ottima{background:linear-gradient(90deg,#3b6d11,#5fa055)}
+.fc-score-pill.eta.buona{background:linear-gradient(90deg,#7a5810,#c9a961)}
+.fc-score-pill.eta.media{background:linear-gradient(90deg,#8a5510,#a07e4b)}
+.fc-pair-tagline{margin-top:-.3rem;margin-bottom:.7rem;font-size:.78rem;color:var(--ink3);font-style:italic;line-height:1.45}
 .fc-pair-shared,.fc-pair-diffs,.fc-pair-wings,.fc-pair-at{margin-top:.7rem}
 .fc-pair-label{font-size:.72rem;font-weight:600;color:var(--ink3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:.3rem}
 .fc-tag{display:inline-block;padding:.2rem .55rem;border-radius:11px;font-size:.72rem;margin:.2rem .25rem .2rem 0}
@@ -83,6 +91,8 @@
 .fc-summary h2{margin-top:0}
 .fc-summary p{font-size:.92rem;line-height:1.65;color:var(--ink2);margin:0 0 .5rem;white-space:pre-line}
 .fc-disclaimer{background:rgba(184,147,90,.05);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:1.5rem 0;font-size:.78rem;color:var(--ink3);line-height:1.5;border-radius:0 7px 7px 0}
+.fc-double-intro{background:#fdf6e3;border:1px solid var(--gold);border-radius:10px;padding:.85rem 1.05rem;margin-bottom:1rem;font-size:.82rem;line-height:1.55;color:var(--ink2)}
+.fc-double-intro b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -106,7 +116,7 @@
       <div class="sec-eye">👨‍👩‍👧 Compatibilità in famiglia</div>
       <h2 class="sec-title">Le <em>dinamiche</em> familiari</h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">Aggiungi i membri della tua famiglia indicando enneatipo, ala, percorso evolutivo ed età. Il tool mostrerà la fase attuale di ciascuno, gli attributi condivisi e le aree di potenziale attrito tra ogni coppia. Il riassunto e il PDF scaricabile rendono il quadro completo.</p>
+      <p class="sec-desc">Aggiungi i membri della tua famiglia indicando enneatipo, ala, percorso evolutivo ed età. Il tool mostrerà la fase attuale di ciascuno, la <b>compatibilità di base</b> tra ogni coppia di enneatipi e l'<b>affinità per fase di vita</b> calcolata sulle età. Il riassunto e il PDF scaricabile rendono il quadro completo.</p>
     </div>
 
     <div class="fc-section">
@@ -126,6 +136,9 @@
 
     <div class="fc-section" id="pairs-section" style="display:none">
       <h2>💞 Compatibilità a <em>coppie</em></h2>
+      <div class="fc-double-intro" id="cf-double-intro" style="display:none">
+        <b>Doppia analisi:</b> per ogni coppia mostriamo due metriche distinte. La <b>Compatibilità di base</b> (45 schede 9×9) descrive l'affinità strutturale tra i due enneatipi — è permanente. L'<b>Affinità per età</b> misura quanto le fasi di vita attuali (calcolate sulle età sui percorsi evolutivi) condividono attributi — è transitoria e cambia col tempo. Una grande differenza tra le due spiega le crisi del tipo «una volta funzionavamo, adesso non più».
+      </div>
       <div id="pairs-container"></div>
     </div>
 
@@ -165,43 +178,125 @@
 </footer>
 
 <script>
-// Percorsi di Vita - Dati completi dei percorsi evolutivi per ogni enneatipo
-// Estratti dal Prontuario dell'Enneagramma Evolutivo
+// ═══════════════════════════════════════════════════════════════════
+// COMPATIBILITÀ DI BASE TRA ENNEATIPI (45 schede 9×9 simmetriche, formato compatto)
+// Sincronizzato con compatibilita-coppia.html
+// ═══════════════════════════════════════════════════════════════════
+const compatBase = {
+  "1-1":{l:"buona",p:75},"1-2":{l:"ottima",p:85},"1-3":{l:"buona",p:70},
+  "1-4":{l:"media",p:60},"1-5":{l:"buona",p:72},"1-6":{l:"ottima",p:80},
+  "1-7":{l:"media",p:65},"1-8":{l:"buona",p:73},"1-9":{l:"ottima",p:82},
+  "2-2":{l:"buona",p:70},"2-3":{l:"ottima",p:85},"2-4":{l:"buona",p:75},
+  "2-5":{l:"media",p:58},"2-6":{l:"ottima",p:83},"2-7":{l:"buona",p:78},
+  "2-8":{l:"ottima",p:80},"2-9":{l:"ottima",p:88},
+  "3-3":{l:"buona",p:72},"3-4":{l:"media",p:65},"3-5":{l:"media",p:62},
+  "3-6":{l:"buona",p:74},"3-7":{l:"ottima",p:85},"3-8":{l:"ottima",p:82},
+  "3-9":{l:"buona",p:76},
+  "4-4":{l:"media",p:60},"4-5":{l:"buona",p:73},"4-6":{l:"buona",p:70},
+  "4-7":{l:"media",p:64},"4-8":{l:"buona",p:75},"4-9":{l:"ottima",p:80},
+  "5-5":{l:"buona",p:68},"5-6":{l:"buona",p:72},"5-7":{l:"media",p:63},
+  "5-8":{l:"buona",p:70},"5-9":{l:"ottima",p:78},
+  "6-6":{l:"buona",p:70},"6-7":{l:"ottima",p:82},"6-8":{l:"ottima",p:80},
+  "6-9":{l:"ottima",p:85},
+  "7-7":{l:"ottima",p:80},"7-8":{l:"ottima",p:83},"7-9":{l:"ottima",p:84},
+  "8-8":{l:"media",p:65},"8-9":{l:"ottima",p:88},
+  "9-9":{l:"buona",p:75}
+};
+
+// Frasi descrittive brevi (1 riga) per ogni coppia di enneatipi
+const compatBaseDesc = {
+  "1-1":"Due Perfezionisti: alti standard condivisi ma rischio di critica reciproca.",
+  "1-2":"Perfezionista + Altruista: complementarità tra struttura e calore.",
+  "1-3":"Perfezionista + Realizzatore: produttività e ambizione, attenti all'intimità.",
+  "1-4":"Perfezionista + Individualista: razionalità ed emozione si bilanciano con sforzo.",
+  "1-5":"Perfezionista + Osservatore: rispetto reciproco e indipendenza, distacco emotivo.",
+  "1-6":"Perfezionista + Leale: lealtà e valori condivisi, attenzione all'ansia.",
+  "1-7":"Perfezionista + Entusiasta: serietà vs leggerezza, complementarità da gestire.",
+  "1-8":"Perfezionista + Leader: forza e integrità, lotte di potere da disinnescare.",
+  "1-9":"Perfezionista + Pacificatore: armonia naturale, attenti all'evitamento.",
+  "2-2":"Due Altruisti: calore reciproco, rischio di trascurare i bisogni personali.",
+  "2-3":"Altruista + Realizzatore: supporto e successo, autenticità da coltivare.",
+  "2-4":"Altruista + Individualista: profondità emotiva, intensità da bilanciare.",
+  "2-5":"Altruista + Osservatore: bisogni di vicinanza/distanza opposti.",
+  "2-6":"Altruista + Leale: lealtà e affetto, ansia condivisa da gestire.",
+  "2-7":"Altruista + Entusiasta: energia e socialità, profondità da costruire.",
+  "2-8":"Altruista + Leader: protezione reciproca, lotte di potere sottili.",
+  "2-9":"Altruista + Pacificatore: una delle coppie più armoniose.",
+  "3-3":"Due Realizzatori: successo e dinamismo, attenti alla competizione.",
+  "3-4":"Realizzatore + Individualista: esterno vs interno, valori molto diversi.",
+  "3-5":"Realizzatore + Osservatore: ritmi opposti, comprensione reciproca necessaria.",
+  "3-6":"Realizzatore + Leale: produttività e lealtà, ottimismo vs ansia.",
+  "3-7":"Realizzatore + Entusiasta: energia e ottimismo condivisi.",
+  "3-8":"Realizzatore + Leader: potere e azione, gestire la competizione.",
+  "3-9":"Realizzatore + Pacificatore: equilibrio tra direzione e calma.",
+  "4-4":"Due Individualisti: profondità intensa, rischio di drammi.",
+  "4-5":"Individualista + Osservatore: autenticità condivisa, isolamento da evitare.",
+  "4-6":"Individualista + Leale: lealtà e profondità, ansia/malinconia da bilanciare.",
+  "4-7":"Individualista + Entusiasta: profondità vs evitamento, complementarità difficile.",
+  "4-8":"Individualista + Leader: intensità e passione, conflitti da canalizzare.",
+  "4-9":"Individualista + Pacificatore: profondità e accettazione si incontrano.",
+  "5-5":"Due Osservatori: rispetto e privacy, distacco emotivo da contrastare.",
+  "5-6":"Osservatore + Leale: stabilità intellettuale, ansia da non amplificare.",
+  "5-7":"Osservatore + Entusiasta: bisogni energetici opposti.",
+  "5-8":"Osservatore + Leader: rispetto reciproco, intensità vs distacco.",
+  "5-9":"Osservatore + Pacificatore: pace e tranquillità condivise.",
+  "6-6":"Due Leali: stabilità e affidabilità, ansia amplificata da gestire.",
+  "6-7":"Leale + Entusiasta: equilibrio perfetto tra sicurezza e spontaneità.",
+  "6-8":"Leale + Leader: protezione reciproca, fiducia da coltivare.",
+  "6-9":"Leale + Pacificatore: stabilità e armonia durature.",
+  "7-7":"Due Entusiasti: divertimento ed energia, profondità da costruire.",
+  "7-8":"Entusiasta + Leader: passione e azione, intensità da regolare.",
+  "7-9":"Entusiasta + Pacificatore: complementarità meravigliosa tra energia e calma.",
+  "8-8":"Due Leader: potere e intensità, lotte da governare.",
+  "8-9":"Leader + Pacificatore: una delle coppie più complementari.",
+  "9-9":"Due Pacificatori: armonia e pace, passività da contrastare."
+};
+
+function getCompatBase(t1, t2){
+  const a = Math.min(t1,t2), b = Math.max(t1,t2);
+  return compatBase[a+"-"+b] || null;
+}
+function getCompatBaseDesc(t1, t2){
+  const a = Math.min(t1,t2), b = Math.max(t1,t2);
+  return compatBaseDesc[a+"-"+b] || "";
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PERCORSI DI VITA E ANALISI TRANSAZIONALE
+// ═══════════════════════════════════════════════════════════════════
+
 // Mapping enneatipo → adattamento principale
 const enneatipoATMapping = {
     1: { adattamento: "Ossessivo-compulsivo" },
     2: { adattamento: "Istrionico", adattamentoSecondario: "Passivo-aggressivo" },
-    3: { adattamento: "Istrionico" }, // Isteria → simile a Istrionico nella performance
-    4: { adattamento: "Borderline" }, // Adattamento anomalo
+    3: { adattamento: "Istrionico" },
+    4: { adattamento: "Borderline" },
     5: { adattamento: "Schizoide" },
     6: { adattamento: "Paranoide" },
-    7: { adattamento: "Narcisista" }, // Adattamento anomalo
+    7: { adattamento: "Narcisista" },
     8: { adattamento: "Antisociale", adattamentoSecondario: "Narcisista" },
     9: { adattamento: "Passivo-aggressivo" },
 };
-// Helper: trova l'adattamento AT per un enneatipo
+
 function getATForEnneatipo(enneatipo) {
     const mapping = enneatipoATMapping[enneatipo];
-    if (!mapping)
-        return undefined;
+    if (!mapping) return undefined;
     return adattamentiAT.find(a => a.nome === mapping.adattamento)
         || adattamentiAT.find(a => a.enneatipo === enneatipo);
 }
-// Helper: trova tutti gli adattamenti rilevanti per un enneatipo
+
 function getATListForEnneatipo(enneatipo) {
     const mapping = enneatipoATMapping[enneatipo];
-    if (!mapping)
-        return [];
+    if (!mapping) return [];
     const primary = adattamentiAT.find(a => a.nome === mapping.adattamento);
     const secondary = mapping.adattamentoSecondario
         ? adattamentiAT.find(a => a.nome === mapping.adattamentoSecondario)
         : undefined;
     return [primary, secondary].filter(Boolean);
 }
-// Disclaimer AT obbligatorio
+
 const AT_DISCLAIMER = "La terminologia degli adattamenti serve unicamente a facilitare il riconoscimento degli stili di personalità. Non si tratta di diagnosi cliniche.";
-// Le 6 Età della Vita (dal Prontuario — tradizione antica + Freud + Erikson)
-// Queste sono le fasce d'età usate nei percorsi dell'esagramma
+
 const etaVita = [
     { numero: 1, eta: "0-3", nome: "Infantia (Infanzia)", enneatipo: 0, descrizione: "Fase orale di fiducia/sfiducia (Erikson). Si forma il legame primario e l'attaccamento. Primo contatto con il proprio enneatipo di base." },
     { numero: 2, eta: "3-12", nome: "Pueritia (Puerizia)", enneatipo: 0, descrizione: "Spirito d'iniziativa e operosità opposti a senso di colpa e inferiorità (Erikson). Fase di latenza: il bambino sviluppa competenze e socialità." },
@@ -422,12 +517,11 @@ const adattamentiAT = [
         strutturaTempoEvitata: "Rituali, attività e intimità",
     },
 ];
+
 function getATInterazione(enneatipo1, enneatipo2) {
     const a1 = getATForEnneatipo(enneatipo1);
     const a2 = getATForEnneatipo(enneatipo2);
-    if (!a1 || !a2)
-        return null;
-    // Stessa sequenza porte → buoni amici
+    if (!a1 || !a2) return null;
     if (a1.sequenzaPorte === a2.sequenzaPorte) {
         return {
             tipo: "amicizia",
@@ -435,7 +529,6 @@ function getATInterazione(enneatipo1, enneatipo2) {
             consiglio: "Valorizzate la naturale sintonia. Attenzione a non rinforzarvi a vicenda le stesse aree cieche.",
         };
     }
-    // Coppie di attrazione note (porte opposte con adattamento in comune)
     const attrazioni = [
         {
             nomi: ["Istrionico", "Ossessivo-compulsivo"],
@@ -458,7 +551,6 @@ function getATInterazione(enneatipo1, enneatipo2) {
             consiglio: "Porta bersaglio comune «pensiero»: la relazione migliora quando iniziano a riflettere insieme, privilegiando il dialogo razionale.",
         },
     ];
-    // Coppie problematiche note
     const problematiche = [
         {
             nomi: ["Paranoide", "Istrionico"],
@@ -481,21 +573,18 @@ function getATInterazione(enneatipo1, enneatipo2) {
             consiglio: "Entrambi devono lavorare sulle emozioni: l'Ossessivo-compulsivo su quelle proprie, il Passivo-aggressivo sull'esprimerle direttamente.",
         },
     ];
-    // Cerca match nelle attrazioni
     for (const attr of attrazioni) {
         if ((a1.nome === attr.nomi[0] && a2.nome === attr.nomi[1]) ||
             (a1.nome === attr.nomi[1] && a2.nome === attr.nomi[0])) {
             return { tipo: "attrazione", descrizione: attr.desc, consiglio: attr.consiglio };
         }
     }
-    // Cerca match nelle problematiche
     for (const prob of problematiche) {
         if ((a1.nome === prob.nomi[0] && a2.nome === prob.nomi[1]) ||
             (a1.nome === prob.nomi[1] && a2.nome === prob.nomi[0])) {
             return { tipo: "problematica", descrizione: prob.desc, consiglio: prob.consiglio };
         }
     }
-    // Caso generico: sequenze opposte senza match specifico
     const opposte = (a1.sequenzaPorte === "p.e.c." && a2.sequenzaPorte === "c.e.p.")
         || (a1.sequenzaPorte === "c.e.p." && a2.sequenzaPorte === "p.e.c.")
         || (a1.sequenzaPorte === "e.p.c." && a2.sequenzaPorte === "c.p.e.")
@@ -507,14 +596,13 @@ function getATInterazione(enneatipo1, enneatipo2) {
             consiglio: "Valorizzate la porta bersaglio in comune per risolvere i conflitti e trovare un terreno di comprensione reciproca.",
         };
     }
-    // Default
     return {
         tipo: "amicizia",
         descrizione: `${a1.nome} e ${a2.nome} possono costruire una relazione equilibrata rispettando le reciproche porte di accesso.`,
         consiglio: `Per comunicare meglio: contatta ${a1.nomeAlternativo} attraverso la porta aperta (${a1.portaAperta.toLowerCase()}) e ${a2.nomeAlternativo} attraverso la propria (${a2.portaAperta.toLowerCase()}).`,
     };
 }
-// Helper: attributi base per ogni enneatipo (necessari per costruire le fasi)
+// Helper: attributi base per ogni enneatipo
 const attrBase = {
     1: { dignita: "Grandezza", virtu: "Prudenza", vizio: "Gola", gerarchia: "Serafini", musa: "Urania", facolta: "Mente", melodia: "Re", topica: "Super-Io", meccanismoDifesa: "Formazione reattiva", chakra: "3 (sotto ombelico)", pianeta: "Marte", correlazioneCerebrale: "Amigdala", ideaSacra: "Perfezione" },
     2: { dignita: "Eternità", virtu: "Perseveranza", vizio: "Lussuria", gerarchia: "Cherubini", musa: "Polimnia", facolta: "Intelletto", melodia: "Mi", topica: "Io", meccanismoDifesa: "Rimozione", chakra: "6 (terzo occhio)", pianeta: "Sole", correlazioneCerebrale: "Talamo", ideaSacra: "Volontà" },
@@ -526,325 +614,88 @@ const attrBase = {
     8: { dignita: "Gloria", virtu: "Pietà", vizio: "Incostanza", gerarchia: "Arcangeli", musa: "Clio", facolta: "Gusto", melodia: "Si", topica: "Es", meccanismoDifesa: "Diniego", chakra: "4 (cuore)", pianeta: "Venere", correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", ideaSacra: "Verità" },
     9: { dignita: "Bontà", virtu: "Giustizia", vizio: "Avarizia", gerarchia: "Angeli Custodi", musa: "Talia", facolta: "Tatto", melodia: "Do", topica: "Es", meccanismoDifesa: "Narcotizzazione", chakra: "7 (parte superiore testa)", pianeta: "Luna", correlazioneCerebrale: "Ipotalamo", ideaSacra: "Amore" },
 };
+
 function makePhase(eta, enneatipoNum) {
     const a = attrBase[enneatipoNum];
     return Object.assign({ eta, enneatipo: enneatipoNum }, a);
 }
-// Fasce d'età per esagramma e triangolo
+
 const etaEsagramma = ["0-3", "3-12", "12-19", "20-30", "25-60", "60+"];
 const etaTriangolo = ["0-30", "25-60", "60+"];
-// Tutti i 18 percorsi (9 enneatipi × 2 percorsi)
+
 const journeys = [
-    // ══════════════════════════════════════════
-    // ENNEATIPO 1
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 1, percorso: 1, tipo: "esagramma",
-        sequenza: [1, 4, 2, 8, 5, 7],
-        principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola",
-        influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente",
-        musaPartenza: "Urania, Musa dell'astronomia e della geometria",
-        domandaPartenza: "Che cosa?", puntoStallo: "Tra i 3 e i 19 anni",
-        topica: "Super-Io", meccanismoDifesa: "Formazione reattiva",
-        correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo",
-        fasi: [1, 4, 2, 8, 5, 7].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 1, percorso: 2, tipo: "esagramma",
-        sequenza: [1, 7, 5, 8, 2, 4],
-        principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola",
-        influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente",
-        musaPartenza: "Urania, Musa dell'astronomia e della geometria",
-        domandaPartenza: "Che cosa?", puntoStallo: "Tra i 25 e i 60 anni",
-        topica: "Super-Io", meccanismoDifesa: "Formazione reattiva",
-        correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo",
-        fasi: [1, 7, 5, 8, 2, 4].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 2
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 2, percorso: 1, tipo: "esagramma",
-        sequenza: [2, 4, 1, 7, 5, 8],
-        principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria",
-        influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto",
-        musaPartenza: "Polimnia, Musa della memoria e della retorica",
-        domandaPartenza: "Di che cosa?", puntoStallo: "Dai 0 ai 3 anni e dopo i 60 anni",
-        topica: "Io", meccanismoDifesa: "Rimozione",
-        correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo",
-        fasi: [2, 4, 1, 7, 5, 8].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 2, percorso: 2, tipo: "esagramma",
-        sequenza: [2, 8, 5, 7, 1, 4],
-        principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria",
-        influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto",
-        musaPartenza: "Polimnia, Musa della memoria e della retorica",
-        domandaPartenza: "Di che cosa?", puntoStallo: "0-12 anni",
-        topica: "Io", meccanismoDifesa: "Rimozione",
-        correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo",
-        fasi: [2, 8, 5, 7, 1, 4].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 3
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 3, percorso: 1, tipo: "triangolo",
-        sequenza: [3, 9, 6],
-        principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia",
-        influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione",
-        musaPartenza: "Euterpe, Musa della musica",
-        domandaPartenza: "Perché?", puntoStallo: "25-60 anni",
-        topica: "Io", meccanismoDifesa: "Identificazione",
-        correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)",
-        fasi: [3, 9, 6].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
-    {
-        enneatipo: 3, percorso: 2, tipo: "triangolo",
-        sequenza: [3, 6, 9],
-        principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia",
-        influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione",
-        musaPartenza: "Euterpe, Musa della musica",
-        domandaPartenza: "Perché?", puntoStallo: "0-30 e 0-60 anni",
-        topica: "Io", meccanismoDifesa: "Identificazione",
-        correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)",
-        fasi: [3, 6, 9].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 4
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 4, percorso: 1, tipo: "esagramma",
-        sequenza: [4, 1, 7, 5, 8, 2],
-        principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia",
-        influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione",
-        musaPartenza: "Erato, Musa del canto corale e della poesia amorosa",
-        domandaPartenza: "Quanto?", puntoStallo: "25-60 anni",
-        topica: "Io", meccanismoDifesa: "Introiezione",
-        correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-",
-        fasi: [4, 1, 7, 5, 8, 2].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 4, percorso: 2, tipo: "esagramma",
-        sequenza: [4, 2, 8, 5, 7, 1],
-        principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia",
-        influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione",
-        musaPartenza: "Erato, Musa del canto corale e della poesia amorosa",
-        domandaPartenza: "Quanto?", puntoStallo: "0-12 anni",
-        topica: "Io", meccanismoDifesa: "Introiezione",
-        correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-",
-        fasi: [4, 2, 8, 5, 7, 1].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 5
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 5, percorso: 1, tipo: "esagramma",
-        sequenza: [5, 7, 1, 4, 2, 8],
-        principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia",
-        influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito",
-        musaPartenza: "Melpomene, Musa della tragedia",
-        domandaPartenza: "Quale?", puntoStallo: "Dai 20-30 e dopo i 60",
-        topica: "Super-Io", meccanismoDifesa: "Isolamento",
-        correlazioneCerebrale: "Putamen", adattamento: "Schizoide",
-        fasi: [5, 7, 1, 4, 2, 8].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 5, percorso: 2, tipo: "esagramma",
-        sequenza: [5, 8, 2, 4, 1, 7],
-        principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia",
-        influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito",
-        musaPartenza: "Melpomene, Musa della tragedia",
-        domandaPartenza: "Quale?", puntoStallo: "12-30 e dai 25 in poi",
-        topica: "Super-Io", meccanismoDifesa: "Isolamento",
-        correlazioneCerebrale: "Putamen", adattamento: "Schizoide",
-        fasi: [5, 8, 2, 4, 1, 7].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 6
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 6, percorso: 1, tipo: "triangolo",
-        sequenza: [6, 9, 3],
-        principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira",
-        influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista",
-        musaPartenza: "Tersicore, Musa della danza",
-        domandaPartenza: "Quando?", puntoStallo: "0-30 anni",
-        topica: "Super-Io", meccanismoDifesa: "Proiezione",
-        correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide",
-        fasi: [6, 9, 3].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
-    {
-        enneatipo: 6, percorso: 2, tipo: "triangolo",
-        sequenza: [6, 3, 9],
-        principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira",
-        influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista",
-        musaPartenza: "Tersicore, Musa della danza",
-        domandaPartenza: "Quando?", puntoStallo: "25-60 anni",
-        topica: "Super-Io", meccanismoDifesa: "Proiezione",
-        correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide",
-        fasi: [6, 3, 9].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 7
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 7, percorso: 1, tipo: "esagramma",
-        sequenza: [7, 1, 4, 2, 8, 5],
-        principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna",
-        influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto",
-        musaPartenza: "Calliope, Musa della poesia epica",
-        domandaPartenza: "Dove?", puntoStallo: "12-30 anni",
-        topica: "Es", meccanismoDifesa: "Razionalizzazione",
-        correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico",
-        fasi: [7, 1, 4, 2, 8, 5].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 7, percorso: 2, tipo: "esagramma",
-        sequenza: [7, 5, 8, 2, 4, 1],
-        principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna",
-        influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto",
-        musaPartenza: "Calliope, Musa della poesia epica",
-        domandaPartenza: "Dove?", puntoStallo: "-",
-        topica: "Es", meccanismoDifesa: "Razionalizzazione",
-        correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico",
-        fasi: [7, 5, 8, 2, 4, 1].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 8
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 8, percorso: 1, tipo: "esagramma",
-        sequenza: [8, 2, 4, 1, 7, 5],
-        principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza",
-        influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto",
-        musaPartenza: "Clio, Musa della storia",
-        domandaPartenza: "Come? Con chi?", puntoStallo: "-",
-        topica: "Es", meccanismoDifesa: "Diniego",
-        correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale",
-        fasi: [8, 2, 4, 1, 7, 5].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    {
-        enneatipo: 8, percorso: 2, tipo: "esagramma",
-        sequenza: [8, 5, 7, 1, 4, 2],
-        principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza",
-        influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto",
-        musaPartenza: "Clio, Musa della storia",
-        domandaPartenza: "Come? Con chi?", puntoStallo: "-",
-        topica: "Es", meccanismoDifesa: "Diniego",
-        correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale",
-        fasi: [8, 5, 7, 1, 4, 2].map((e, i) => makePhase(etaEsagramma[i], e)),
-    },
-    // ══════════════════════════════════════════
-    // ENNEATIPO 9
-    // ══════════════════════════════════════════
-    {
-        enneatipo: 9, percorso: 1, tipo: "triangolo",
-        sequenza: [9, 3, 6],
-        principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia",
-        influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto",
-        musaPartenza: "Talia, Musa della poesia bucolica",
-        domandaPartenza: "Di che si tratta?", puntoStallo: "-",
-        topica: "Es", meccanismoDifesa: "Narcotizzazione",
-        correlazioneCerebrale: "Ipotalamo", adattamento: "-",
-        fasi: [9, 3, 6].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
-    {
-        enneatipo: 9, percorso: 2, tipo: "triangolo",
-        sequenza: [9, 6, 3],
-        principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia",
-        influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto",
-        musaPartenza: "Talia, Musa della poesia bucolica",
-        domandaPartenza: "Di che si tratta?", puntoStallo: "-",
-        topica: "Es", meccanismoDifesa: "Narcotizzazione",
-        correlazioneCerebrale: "Ipotalamo", adattamento: "-",
-        fasi: [9, 6, 3].map((e, i) => makePhase(etaTriangolo[i], e)),
-    },
+    { enneatipo: 1, percorso: 1, tipo: "esagramma", sequenza: [1, 4, 2, 8, 5, 7], principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola", influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente", musaPartenza: "Urania, Musa dell'astronomia e della geometria", domandaPartenza: "Che cosa?", puntoStallo: "Tra i 3 e i 19 anni", topica: "Super-Io", meccanismoDifesa: "Formazione reattiva", correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo", fasi: [1, 4, 2, 8, 5, 7].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 1, percorso: 2, tipo: "esagramma", sequenza: [1, 7, 5, 8, 2, 4], principio: "Grandezza", virtuPartenza: "Prudenza", vizioPartenza: "Gola", influenzaIniziale: "Serafini", vak: "VA", facolta: "Mente", musaPartenza: "Urania, Musa dell'astronomia e della geometria", domandaPartenza: "Che cosa?", puntoStallo: "Tra i 25 e i 60 anni", topica: "Super-Io", meccanismoDifesa: "Formazione reattiva", correlazioneCerebrale: "Amigdala", adattamento: "Ossessivo-compulsivo", fasi: [1, 7, 5, 8, 2, 4].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 2, percorso: 1, tipo: "esagramma", sequenza: [2, 4, 1, 7, 5, 8], principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria", influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto", musaPartenza: "Polimnia, Musa della memoria e della retorica", domandaPartenza: "Di che cosa?", puntoStallo: "Dai 0 ai 3 anni e dopo i 60 anni", topica: "Io", meccanismoDifesa: "Rimozione", correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo", fasi: [2, 4, 1, 7, 5, 8].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 2, percorso: 2, tipo: "esagramma", sequenza: [2, 8, 5, 7, 1, 4], principio: "Eternità", virtuPartenza: "Perseveranza", vizioPartenza: "Lussuria", influenzaIniziale: "Cherubini", vak: "KV", facolta: "Intelletto", musaPartenza: "Polimnia, Musa della memoria e della retorica", domandaPartenza: "Di che cosa?", puntoStallo: "0-12 anni", topica: "Io", meccanismoDifesa: "Rimozione", correlazioneCerebrale: "Talamo", adattamento: "Istrionico/passivo aggressivo", fasi: [2, 8, 5, 7, 1, 4].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 3, percorso: 1, tipo: "triangolo", sequenza: [3, 9, 6], principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia", influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione", musaPartenza: "Euterpe, Musa della musica", domandaPartenza: "Perché?", puntoStallo: "25-60 anni", topica: "Io", meccanismoDifesa: "Identificazione", correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)", fasi: [3, 9, 6].map((e, i) => makePhase(etaTriangolo[i], e)) },
+    { enneatipo: 3, percorso: 2, tipo: "triangolo", sequenza: [3, 6, 9], principio: "Potenza", virtuPartenza: "Temperanza", vizioPartenza: "Superbia", influenzaIniziale: "Troni", vak: "VK", facolta: "Ragione", musaPartenza: "Euterpe, Musa della musica", domandaPartenza: "Perché?", puntoStallo: "0-30 e 0-60 anni", topica: "Io", meccanismoDifesa: "Identificazione", correlazioneCerebrale: "Testa del nucleo caudato", adattamento: "Ossessivo-compulsivo (enfasi risultati)", fasi: [3, 6, 9].map((e, i) => makePhase(etaTriangolo[i], e)) },
+    { enneatipo: 4, percorso: 1, tipo: "esagramma", sequenza: [4, 1, 7, 5, 8, 2], principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia", influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione", musaPartenza: "Erato, Musa del canto corale e della poesia amorosa", domandaPartenza: "Quanto?", puntoStallo: "25-60 anni", topica: "Io", meccanismoDifesa: "Introiezione", correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-", fasi: [4, 1, 7, 5, 8, 2].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 4, percorso: 2, tipo: "esagramma", sequenza: [4, 2, 8, 5, 7, 1], principio: "Sapienza", virtuPartenza: "Fede", vizioPartenza: "Accidia", influenzaIniziale: "Dominazioni", vak: "KA", facolta: "Immaginazione", musaPartenza: "Erato, Musa del canto corale e della poesia amorosa", domandaPartenza: "Quanto?", puntoStallo: "0-12 anni", topica: "Io", meccanismoDifesa: "Introiezione", correlazioneCerebrale: "Nucleo subtalamico", adattamento: "-", fasi: [4, 2, 8, 5, 7, 1].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 5, percorso: 1, tipo: "esagramma", sequenza: [5, 7, 1, 4, 2, 8], principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia", influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito", musaPartenza: "Melpomene, Musa della tragedia", domandaPartenza: "Quale?", puntoStallo: "Dai 20-30 e dopo i 60", topica: "Super-Io", meccanismoDifesa: "Isolamento", correlazioneCerebrale: "Putamen", adattamento: "Schizoide", fasi: [5, 7, 1, 4, 2, 8].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 5, percorso: 2, tipo: "esagramma", sequenza: [5, 8, 2, 4, 1, 7], principio: "Volontà", virtuPartenza: "Speranza", vizioPartenza: "Invidia", influenzaIniziale: "Potestà", vak: "AV", facolta: "Udito", musaPartenza: "Melpomene, Musa della tragedia", domandaPartenza: "Quale?", puntoStallo: "12-30 e dai 25 in poi", topica: "Super-Io", meccanismoDifesa: "Isolamento", correlazioneCerebrale: "Putamen", adattamento: "Schizoide", fasi: [5, 8, 2, 4, 1, 7].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 6, percorso: 1, tipo: "triangolo", sequenza: [6, 9, 3], principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira", influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista", musaPartenza: "Tersicore, Musa della danza", domandaPartenza: "Quando?", puntoStallo: "0-30 anni", topica: "Super-Io", meccanismoDifesa: "Proiezione", correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide", fasi: [6, 9, 3].map((e, i) => makePhase(etaTriangolo[i], e)) },
+    { enneatipo: 6, percorso: 2, tipo: "triangolo", sequenza: [6, 3, 9], principio: "Virtù", virtuPartenza: "Carità", vizioPartenza: "Ira", influenzaIniziale: "Virtù", vak: "AV", facolta: "Vista", musaPartenza: "Tersicore, Musa della danza", domandaPartenza: "Quando?", puntoStallo: "25-60 anni", topica: "Super-Io", meccanismoDifesa: "Proiezione", correlazioneCerebrale: "Coda del nucleo caudato", adattamento: "Paranoide", fasi: [6, 3, 9].map((e, i) => makePhase(etaTriangolo[i], e)) },
+    { enneatipo: 7, percorso: 1, tipo: "esagramma", sequenza: [7, 1, 4, 2, 8, 5], principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna", influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto", musaPartenza: "Calliope, Musa della poesia epica", domandaPartenza: "Dove?", puntoStallo: "12-30 anni", topica: "Es", meccanismoDifesa: "Razionalizzazione", correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico", fasi: [7, 1, 4, 2, 8, 5].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 7, percorso: 2, tipo: "esagramma", sequenza: [7, 5, 8, 2, 4, 1], principio: "Verità", virtuPartenza: "Pazienza", vizioPartenza: "Menzogna", influenzaIniziale: "Principati", vak: "VK", facolta: "Olfatto", musaPartenza: "Calliope, Musa della poesia epica", domandaPartenza: "Dove?", puntoStallo: "-", topica: "Es", meccanismoDifesa: "Razionalizzazione", correlazioneCerebrale: "Globo pallido", adattamento: "Istrionico", fasi: [7, 5, 8, 2, 4, 1].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 8, percorso: 1, tipo: "esagramma", sequenza: [8, 2, 4, 1, 7, 5], principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza", influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto", musaPartenza: "Clio, Musa della storia", domandaPartenza: "Come? Con chi?", puntoStallo: "-", topica: "Es", meccanismoDifesa: "Diniego", correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale", fasi: [8, 2, 4, 1, 7, 5].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 8, percorso: 2, tipo: "esagramma", sequenza: [8, 5, 7, 1, 4, 2], principio: "Gloria", virtuPartenza: "Pietà", vizioPartenza: "Incostanza", influenzaIniziale: "Arcangeli", vak: "AK", facolta: "Gusto", musaPartenza: "Clio, Musa della storia", domandaPartenza: "Come? Con chi?", puntoStallo: "-", topica: "Es", meccanismoDifesa: "Diniego", correlazioneCerebrale: "Pars Reticolare e Substantia Nigra", adattamento: "Antisociale", fasi: [8, 5, 7, 1, 4, 2].map((e, i) => makePhase(etaEsagramma[i], e)) },
+    { enneatipo: 9, percorso: 1, tipo: "triangolo", sequenza: [9, 3, 6], principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia", influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto", musaPartenza: "Talia, Musa della poesia bucolica", domandaPartenza: "Di che si tratta?", puntoStallo: "-", topica: "Es", meccanismoDifesa: "Narcotizzazione", correlazioneCerebrale: "Ipotalamo", adattamento: "-", fasi: [9, 3, 6].map((e, i) => makePhase(etaTriangolo[i], e)) },
+    { enneatipo: 9, percorso: 2, tipo: "triangolo", sequenza: [9, 6, 3], principio: "Bontà", virtuPartenza: "Giustizia", vizioPartenza: "Avarizia", influenzaIniziale: "Angeli Custodi", vak: "KA", facolta: "Tatto", musaPartenza: "Talia, Musa della poesia bucolica", domandaPartenza: "Di che si tratta?", puntoStallo: "-", topica: "Es", meccanismoDifesa: "Narcotizzazione", correlazioneCerebrale: "Ipotalamo", adattamento: "-", fasi: [9, 6, 3].map((e, i) => makePhase(etaTriangolo[i], e)) },
 ];
-// Helper: trova i percorsi per un dato enneatipo
+
 function getJourneysForType(enneatipo) {
     return journeys.filter(j => j.enneatipo === enneatipo);
 }
-// Helper: trova un percorso specifico
 function getJourney(enneatipo, percorso) {
     return journeys.find(j => j.enneatipo === enneatipo && j.percorso === percorso);
 }
-// Helper: determina la fase corrente in base all'età
 function getCurrentPhase(journey, age) {
     const fasi = journey.fasi;
     if (journey.tipo === "triangolo") {
-        if (age <= 30)
-            return fasi[0];
-        if (age <= 60)
-            return fasi[1];
+        if (age <= 30) return fasi[0];
+        if (age <= 60) return fasi[1];
         return fasi[2];
     }
-    // esagramma
-    if (age <= 3)
-        return fasi[0];
-    if (age <= 12)
-        return fasi[1];
-    if (age <= 19)
-        return fasi[2];
-    if (age <= 30)
-        return fasi[3];
-    if (age <= 60)
-        return fasi[4];
+    if (age <= 3) return fasi[0];
+    if (age <= 12) return fasi[1];
+    if (age <= 19) return fasi[2];
+    if (age <= 30) return fasi[3];
+    if (age <= 60) return fasi[4];
     return fasi[5];
 }
-// Helper: indice della fase corrente
 function getCurrentPhaseIndex(journey, age) {
     if (journey.tipo === "triangolo") {
-        if (age <= 30)
-            return 0;
-        if (age <= 60)
-            return 1;
+        if (age <= 30) return 0;
+        if (age <= 60) return 1;
         return 2;
     }
-    if (age <= 3)
-        return 0;
-    if (age <= 12)
-        return 1;
-    if (age <= 19)
-        return 2;
-    if (age <= 30)
-        return 3;
-    if (age <= 60)
-        return 4;
+    if (age <= 3) return 0;
+    if (age <= 12) return 1;
+    if (age <= 19) return 2;
+    if (age <= 30) return 3;
+    if (age <= 60) return 4;
     return 5;
 }
-// Helper: trova attributi condivisi tra due fasi
+
 function findSharedAttributes(phase1, phase2) {
     const shared = [];
-    if (phase1.dignita === phase2.dignita)
-        shared.push(`Dignità: ${phase1.dignita}`);
-    if (phase1.virtu === phase2.virtu)
-        shared.push(`Virtù: ${phase1.virtu}`);
-    if (phase1.vizio === phase2.vizio)
-        shared.push(`Vizio: ${phase1.vizio}`);
-    if (phase1.gerarchia === phase2.gerarchia)
-        shared.push(`Gerarchia: ${phase1.gerarchia}`);
-    if (phase1.musa === phase2.musa)
-        shared.push(`Musa: ${phase1.musa}`);
-    if (phase1.facolta === phase2.facolta)
-        shared.push(`Facoltà: ${phase1.facolta}`);
-    if (phase1.melodia === phase2.melodia && phase1.melodia !== "-")
-        shared.push(`Melodia: ${phase1.melodia}`);
-    if (phase1.topica === phase2.topica)
-        shared.push(`Topica: ${phase1.topica}`);
-    if (phase1.meccanismoDifesa === phase2.meccanismoDifesa)
-        shared.push(`Meccanismo di difesa: ${phase1.meccanismoDifesa}`);
-    if (phase1.chakra === phase2.chakra)
-        shared.push(`Chakra: ${phase1.chakra}`);
-    if (phase1.pianeta === phase2.pianeta)
-        shared.push(`Pianeta: ${phase1.pianeta}`);
-    if (phase1.correlazioneCerebrale === phase2.correlazioneCerebrale)
-        shared.push(`Correlazione cerebrale: ${phase1.correlazioneCerebrale}`);
-    if (phase1.ideaSacra === phase2.ideaSacra)
-        shared.push(`Idea sacra: ${phase1.ideaSacra}`);
+    if (phase1.dignita === phase2.dignita) shared.push(`Dignità: ${phase1.dignita}`);
+    if (phase1.virtu === phase2.virtu) shared.push(`Virtù: ${phase1.virtu}`);
+    if (phase1.vizio === phase2.vizio) shared.push(`Vizio: ${phase1.vizio}`);
+    if (phase1.gerarchia === phase2.gerarchia) shared.push(`Gerarchia: ${phase1.gerarchia}`);
+    if (phase1.musa === phase2.musa) shared.push(`Musa: ${phase1.musa}`);
+    if (phase1.facolta === phase2.facolta) shared.push(`Facoltà: ${phase1.facolta}`);
+    if (phase1.melodia === phase2.melodia && phase1.melodia !== "-") shared.push(`Melodia: ${phase1.melodia}`);
+    if (phase1.topica === phase2.topica) shared.push(`Topica: ${phase1.topica}`);
+    if (phase1.meccanismoDifesa === phase2.meccanismoDifesa) shared.push(`Meccanismo di difesa: ${phase1.meccanismoDifesa}`);
+    if (phase1.chakra === phase2.chakra) shared.push(`Chakra: ${phase1.chakra}`);
+    if (phase1.pianeta === phase2.pianeta) shared.push(`Pianeta: ${phase1.pianeta}`);
+    if (phase1.correlazioneCerebrale === phase2.correlazioneCerebrale) shared.push(`Correlazione cerebrale: ${phase1.correlazioneCerebrale}`);
+    if (phase1.ideaSacra === phase2.ideaSacra) shared.push(`Idea sacra: ${phase1.ideaSacra}`);
     return shared;
 }
-// Helper: trova differenze tra due fasi
+
 function findDifferentAttributes(phase1, phase2) {
     const diffs = [];
     const fields = [
@@ -871,18 +722,25 @@ function findDifferentAttributes(phase1, phase2) {
     }
     return diffs;
 }
+
+// Helper: livello affinità per età (in base alla %)
+function getAffinitaLevel(pct){
+    if (pct >= 70) return "ottima";
+    if (pct >= 40) return "buona";
+    return "media";
+}
+
 // Nomi degli enneatipi
 const typeNames = {
     1: "Il Perfezionista", 2: "L'Altruista", 3: "Il Realizzatore",
     4: "L'Individualista", 5: "L'Osservatore", 6: "Il Leale",
     7: "L'Entusiasta", 8: "Il Leader", 9: "Il Pacificatore",
 };
-// Emoji dei frutti
+
 const fruitEmoji = {
     1: "🍎", 2: "🍐", 3: "🍒", 4: "🫐",
     5: "🍇", 6: "🫐", 7: "🍍", 8: "🍑", 9: "🍓",
 };
-
 // ═══ State management ═══
 var members = [
   { id: 1, nome: "", enneatipo: "", ala: "nessuna", percorso: "1", eta: "", sub: "" },
@@ -890,7 +748,7 @@ var members = [
 ];
 var nextId = 3;
 
-// ═══ Helper: ali adiacenti sul cerchio dell'enneagramma (1↔9 wrap) ═══
+// Ali adiacenti
 function getWings(type) {
   if (type < 1 || type > 9) return [];
   var left = type === 1 ? 9 : type - 1;
@@ -919,7 +777,6 @@ var wingDescriptions = {
   "9w1": "più ordinato e principiale"
 };
 
-// Sottotipi: 27 combinazioni (9 enneatipi × 3 istinti) con parola-chiave dal Prontuario
 var subtypeData = {
   "1conservativo":"ansiogeno (reprime rabbia su sé, paura errori, autocritico)",
   "1sociale":"inadattabile (rigido, bianco/nero, insegnante pedante)",
@@ -955,7 +812,6 @@ function getSubtypeLabel(t, sub){
   return subtypeData[t+sub] || "";
 }
 
-// ═══ HTML escape helper (per inserire nomi utente nei template) ═══
 function esc(s) {
   if (s == null) return "";
   return String(s).replace(/[&<>"']/g, function(c){
@@ -981,9 +837,8 @@ function updateMember(id, field, value) {
   m[field] = value;
   if (field === "enneatipo") {
     m.ala = "nessuna";
-    render(); // ricostruisce anche il form (le ali disponibili dipendono dall'enneatipo)
+    render();
   } else {
-    // Aggiorna solo le sezioni risultati, NON il form (così non perde il focus l'input attivo)
     renderPhases();
     renderPairs();
     renderSummary();
@@ -1029,7 +884,6 @@ function renderMembers() {
   });
 }
 
-// ═══ Calcola le fasi attuali ═══
 function getMemberPhases() {
   var result = [];
   members.forEach(function(m){
@@ -1047,7 +901,6 @@ function getMemberPhases() {
   return result;
 }
 
-// ═══ Render: card fasi ═══
 function renderPhases() {
   var memberPhases = getMemberPhases();
   var section = document.getElementById("phases-section");
@@ -1093,7 +946,6 @@ function renderPhases() {
   });
 }
 
-// ═══ Calcola tutte le coppie ordinate ═══
 function getPairs() {
   var memberPhases = getMemberPhases();
   var pairs = [];
@@ -1108,11 +960,12 @@ function getPairs() {
   return pairs;
 }
 
-// ═══ Render: card coppie ═══
+// ═══ Render: card coppie con DOPPIA ANALISI ═══
 function renderPairs() {
   var pairs = getPairs();
   var section = document.getElementById("pairs-section");
   var pdfRow = document.getElementById("pdf-row");
+  var doubleIntro = document.getElementById("cf-double-intro");
   if (pairs.length === 0) {
     section.style.display = "none";
     pdfRow.style.display = "none";
@@ -1120,22 +973,41 @@ function renderPairs() {
   }
   section.style.display = "block";
   pdfRow.style.display = "flex";
+  if (doubleIntro) doubleIntro.style.display = "block";
   var c = document.getElementById("pairs-container");
   c.innerHTML = "";
   pairs.forEach(function(pr){
     var m1 = pr.m1, m2 = pr.m2, p1 = pr.p1, p2 = pr.p2;
     var shared = findSharedAttributes(p1, p2);
     var diffs = findDifferentAttributes(p1, p2);
-    var compatScore = Math.round((shared.length / 13) * 100);
-    var emoji1 = fruitEmoji[parseInt(m1.enneatipo)] || "✦";
-    var emoji2 = fruitEmoji[parseInt(m2.enneatipo)] || "✦";
+    var affinitaEta = Math.round((shared.length / 13) * 100);
+    var affinitaEtaLvl = getAffinitaLevel(affinitaEta);
+
+    // Compatibilità di base per enneatipo
+    var t1 = parseInt(m1.enneatipo,10), t2 = parseInt(m2.enneatipo,10);
+    var compatBaseObj = getCompatBase(t1, t2);
+    var compatBaseDescStr = getCompatBaseDesc(t1, t2);
+
+    var emoji1 = fruitEmoji[t1] || "✦";
+    var emoji2 = fruitEmoji[t2] || "✦";
     var nome1 = (m1.nome || "Membro "+m1.id) + (m1.ala && m1.ala !== "nessuna" ? " (Ala "+m1.ala+")" : "");
     var nome2 = (m2.nome || "Membro "+m2.id) + (m2.ala && m2.ala !== "nessuna" ? " (Ala "+m2.ala+")" : "");
 
-    var html = '<div class="fc-pair-hd"><span>'+emoji1+'</span><span>'+esc(nome1)+'</span><span class="fc-vs">♡</span><span>'+emoji2+'</span><span>'+esc(nome2)+'</span><span class="fc-pair-score">'+compatScore+'% affinità</span></div>';
+    var pillsHtml = '<div class="fc-pair-scores">';
+    if (compatBaseObj) {
+      pillsHtml += '<span class="fc-score-pill base '+compatBaseObj.l+'">Base: '+compatBaseObj.p+'% · '+compatBaseObj.l+'</span>';
+    }
+    pillsHtml += '<span class="fc-score-pill eta '+affinitaEtaLvl+'">Affinità età: '+affinitaEta+'%</span>';
+    pillsHtml += '</div>';
+
+    var html = '<div class="fc-pair-hd"><span>'+emoji1+'</span><span>'+esc(nome1)+'</span><span class="fc-vs">♡</span><span>'+emoji2+'</span><span>'+esc(nome2)+'</span>'+pillsHtml+'</div>';
+
+    if (compatBaseDescStr) {
+      html += '<div class="fc-pair-tagline">'+esc(compatBaseDescStr)+'</div>';
+    }
 
     if (shared.length > 0) {
-      html += '<div class="fc-pair-shared"><div class="fc-pair-label">✓ Attributi condivisi ('+shared.length+')</div><div>';
+      html += '<div class="fc-pair-shared"><div class="fc-pair-label">✓ Attributi condivisi nelle fasi attuali ('+shared.length+'/13)</div><div>';
       shared.forEach(function(s){ html += '<span class="fc-tag fc-tag-ok">'+esc(s)+'</span>'; });
       html += '</div></div>';
     }
@@ -1163,7 +1035,7 @@ function renderPairs() {
       html += '</div>';
     }
 
-    var atInter = getATInterazione(parseInt(m1.enneatipo), parseInt(m2.enneatipo));
+    var atInter = getATInterazione(t1, t2);
     if (atInter) {
       html += '<div class="fc-pair-at"><div class="fc-pair-label">🧠 Dinamica AT</div><b>'+esc(atInter.tipo)+':</b> '+esc(atInter.descrizione)+'<br><br><b>Consiglio:</b> <em>'+esc(atInter.consiglio)+'</em></div>';
     }
@@ -1175,7 +1047,7 @@ function renderPairs() {
   });
 }
 
-// ═══ Riassunto testuale automatico ═══
+// ═══ Riassunto testuale automatico (con DOPPIA ANALISI) ═══
 function generateFamilySummary(memberPhases, pairs) {
   if (memberPhases.length === 0) return "";
 
@@ -1189,27 +1061,62 @@ function generateFamilySummary(memberPhases, pairs) {
   if (pairs.length > 0) {
     var scored = pairs.map(function(p){
       var shared = findSharedAttributes(p.p1, p.p2);
-      return Object.assign({}, p, { score: Math.round((shared.length/13)*100) });
+      var t1 = parseInt(p.m1.enneatipo,10), t2 = parseInt(p.m2.enneatipo,10);
+      var cb = getCompatBase(t1, t2);
+      return Object.assign({}, p, {
+        affinitaEta: Math.round((shared.length/13)*100),
+        compatBaseP: cb ? cb.p : null,
+        compatBaseL: cb ? cb.l : null
+      });
     });
-    scored.sort(function(a,b){ return b.score - a.score; });
-    var best = scored[0];
-    var worst = scored[scored.length - 1];
 
-    text += "\n\nDall'analisi dei "+pairs.length+" confronti a coppie emerge un quadro ricco e sfaccettato delle dinamiche familiari.";
-    text += "\n\nLa relazione con la maggiore affinità è quella tra "+(best.m1.nome||"Membro "+best.m1.id)+" e "+(best.m2.nome||"Membro "+best.m2.id)+" ("+best.score+"% di attributi condivisi), il che suggerisce una naturale comprensione reciproca e una base solida per il supporto emotivo.";
+    var sortedByEta = scored.slice().sort(function(a,b){ return b.affinitaEta - a.affinitaEta; });
+    var bestEta = sortedByEta[0];
+    var worstEta = sortedByEta[sortedByEta.length - 1];
 
-    if (worst !== best) {
-      text += " La coppia che presenta le maggiori differenze è quella tra "+(worst.m1.nome||"Membro "+worst.m1.id)+" e "+(worst.m2.nome||"Membro "+worst.m2.id)+" ("+worst.score+"% di affinità), un'area che richiede maggiore consapevolezza e impegno per favorire la comprensione reciproca.";
+    text += "\n\n=== DOPPIA ANALISI ===";
+    text += "\nPer ogni coppia abbiamo calcolato due metriche distinte:";
+    text += "\n• Compatibilità BASE (per enneatipo): caratteristica strutturale e permanente.";
+    text += "\n• Affinità per FASE DI VITA (per età): caratteristica transitoria, calcolata sui percorsi evolutivi.";
+
+    text += "\n\nDettaglio dei "+pairs.length+" confronti a coppie:";
+    scored.forEach(function(p){
+      var n1 = p.m1.nome || "Membro "+p.m1.id;
+      var n2 = p.m2.nome || "Membro "+p.m2.id;
+      var basePart = p.compatBaseP !== null ? ("Base: "+p.compatBaseP+"% "+p.compatBaseL) : "Base: n/d";
+      text += "\n• "+n1+" vs "+n2+" → "+basePart+" | Affinità età: "+p.affinitaEta+"%";
+      if (p.compatBaseP !== null) {
+        var divario = Math.abs(p.compatBaseP - p.affinitaEta);
+        if (divario >= 25) {
+          if (p.compatBaseP > p.affinitaEta) {
+            text += " (divario rilevante: la base è solida ma le fasi di vita sono distanti — dinamica «una volta funzionavamo, adesso non più»)";
+          } else {
+            text += " (divario rilevante: le fasi di vita sono in sintonia, mentre la base presenta sfide strutturali)";
+          }
+        }
+      }
+    });
+
+    text += "\n\nLa coppia con la maggiore affinità per fase di vita è quella tra "+(bestEta.m1.nome||"Membro "+bestEta.m1.id)+" e "+(bestEta.m2.nome||"Membro "+bestEta.m2.id)+" ("+bestEta.affinitaEta+"%): in questo momento condividono il maggior numero di attributi sui percorsi evolutivi.";
+
+    if (worstEta !== bestEta) {
+      text += " La coppia con minor affinità di fase è quella tra "+(worstEta.m1.nome||"Membro "+worstEta.m1.id)+" e "+(worstEta.m2.nome||"Membro "+worstEta.m2.id)+" ("+worstEta.affinitaEta+"%): un'area che richiede maggiore consapevolezza del momento di vita di ciascuno.";
     }
 
-    var avgScore = Math.round(scored.reduce(function(s,p){return s+p.score;}, 0) / scored.length);
-    text += "\n\nComplessivamente, la famiglia presenta un livello medio di affinità del "+avgScore+"%.";
+    var avgEta = Math.round(scored.reduce(function(s,p){return s+p.affinitaEta;}, 0) / scored.length);
+    var avgBase = scored.filter(function(p){return p.compatBaseP!==null;});
+    if (avgBase.length > 0) {
+      var avgBaseVal = Math.round(avgBase.reduce(function(s,p){return s+p.compatBaseP;}, 0) / avgBase.length);
+      text += "\n\nMedia di sistema — Compatibilità base: "+avgBaseVal+"% · Affinità per età: "+avgEta+"%.";
+    } else {
+      text += "\n\nAffinità media per età del sistema famigliare: "+avgEta+"%.";
+    }
   }
 
   var agesNote = memberPhases.map(function(mp){
     return (mp.member.nome||"Membro "+mp.member.id)+" ("+mp.member.eta+" anni, fase enneatipo "+mp.phase.enneatipo+")";
   }).join(", ");
-  text += " Le fasi di vita attuali sono: "+agesNote+". Queste fasi influenzano il modo in cui ciascun membro vive ed esprime il proprio enneatipo, creando dinamiche che evolvono nel tempo.";
+  text += "\n\nLe fasi di vita attuali sono: "+agesNote+". Queste fasi influenzano il modo in cui ciascun membro vive ed esprime il proprio enneatipo, creando dinamiche che evolvono nel tempo.";
 
   var withWings = memberPhases.filter(function(mp){ return mp.member.ala && mp.member.ala !== "nessuna"; });
   if (withWings.length > 0) {
@@ -1257,7 +1164,7 @@ function render() {
   renderDisclaimer();
 }
 
-// ═══ Generazione PDF ═══
+// ═══ Generazione PDF (con DOPPIA ANALISI) ═══
 function generatePdf() {
   var memberPhases = getMemberPhases();
   var pairs = getPairs();
@@ -1315,21 +1222,48 @@ function generatePdf() {
   y += 4;
 
   if (pairs.length > 0) {
-    addSectionTitle("Confronto a Coppie");
+    addSectionTitle("Confronto a Coppie - DOPPIA ANALISI");
+    addWrappedText("Per ogni coppia: Compatibilita BASE (per enneatipo, strutturale) | Affinita per FASE DI VITA (per eta, transitoria).");
+    y += 2;
+
     pairs.forEach(function(pr){
       var shared = findSharedAttributes(pr.p1, pr.p2);
       var diffs = findDifferentAttributes(pr.p1, pr.p2);
-      var score = Math.round((shared.length/13)*100);
+      var affinitaEta = Math.round((shared.length/13)*100);
+      var t1 = parseInt(pr.m1.enneatipo,10), t2 = parseInt(pr.m2.enneatipo,10);
+      var cb = getCompatBase(t1, t2);
+      var cbDesc = getCompatBaseDesc(t1, t2);
+
       checkPage(40);
       doc.setFont("helvetica","bold");
       doc.setFontSize(11);
       var n1 = pr.m1.nome||"Membro "+pr.m1.id;
       var n2 = pr.m2.nome||"Membro "+pr.m2.id;
-      doc.text(n1+" vs "+n2+" ("+score+"% affinita)", margin, y);
+      var headerLine = n1+" vs "+n2;
+      if (cb) {
+        headerLine += "  -  Base: "+cb.p+"% "+cb.l+"  |  Affinita eta: "+affinitaEta+"%";
+      } else {
+        headerLine += "  -  Affinita eta: "+affinitaEta+"%";
+      }
+      doc.text(headerLine, margin, y);
       y += 6;
       doc.setFont("helvetica","normal");
       doc.setFontSize(9);
-      if (shared.length > 0) addWrappedText("Attributi condivisi: "+shared.join(", "));
+
+      if (cbDesc) addWrappedText("Base (enneatipo): "+cbDesc);
+
+      if (cb && cb.p !== null) {
+        var divario = Math.abs(cb.p - affinitaEta);
+        if (divario >= 25) {
+          if (cb.p > affinitaEta) {
+            addWrappedText("Nota: divario di "+divario+" punti tra base e fase di vita. La compatibilita strutturale e' solida ma il momento attuale crea distanza temporanea.");
+          } else {
+            addWrappedText("Nota: divario di "+divario+" punti. Le fasi di vita attuali sono in sintonia anche se la base presenta sfide strutturali.");
+          }
+        }
+      }
+
+      if (shared.length > 0) addWrappedText("Attributi condivisi nelle fasi attuali ("+shared.length+"/13): "+shared.join(", "));
       if (diffs.length > 0) {
         addWrappedText("Differenze:");
         diffs.forEach(function(d){
@@ -1357,7 +1291,6 @@ function generatePdf() {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-  // Bottoni globali
   var btnAdd = document.getElementById("cf-btn-add");
   if (btnAdd) btnAdd.addEventListener("click", addMember);
   var btnPdf = document.getElementById("cf-btn-pdf");
@@ -1365,7 +1298,6 @@ document.addEventListener("DOMContentLoaded", function(){
   var btnAi = document.getElementById("cf-btn-ai");
   if (btnAi) btnAi.addEventListener("click", askAI);
 
-  // Event delegation sul container dei membri
   var container = document.getElementById("members-container");
   if (container) {
     container.addEventListener("input", function(e){
@@ -1391,11 +1323,9 @@ document.addEventListener("DOMContentLoaded", function(){
   render();
 });
 
-// ═══ Chiedi al Consulente AI con prompt precompilato sui membri ═══
 function askAI(){
   var memberPhases = getMemberPhases();
   if (memberPhases.length < 2) {
-    // Anche senza membri completi, apriamo il consulente
     window.location.href = "consulente.html";
     return;
   }
@@ -1406,7 +1336,7 @@ function askAI(){
       (m.sub ? (", sottotipo "+m.sub) : "") +
       ", " + m.eta + " anni, Percorso " + m.percorso + ")";
   }).join("; ");
-  var prompt = "Analizza la compatibilità della mia famiglia. Membri: " + desc + ". Spiegami le dinamiche relazionali tipiche tra questi enneatipi nel sistema famiglia, le aree di forza, le possibili tensioni e i consigli pratici per la comunicazione, considerando anche le rispettive fasi di vita e gli istinti dominanti (sottotipi).";
+  var prompt = "Analizza la compatibilità della mia famiglia. Membri: " + desc + ". Spiegami le dinamiche relazionali tipiche tra questi enneatipi nel sistema famiglia, le aree di forza, le possibili tensioni e i consigli pratici per la comunicazione, considerando sia la compatibilità di base tra i loro enneatipi sia l'affinità delle rispettive fasi di vita.";
   window.location.href = "consulente.html?prompt=" + encodeURIComponent(prompt);
 }
 

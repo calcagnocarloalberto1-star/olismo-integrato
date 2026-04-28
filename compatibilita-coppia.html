@@ -71,6 +71,10 @@
 .cc-percent{font-size:1.7rem;font-weight:700;color:var(--gold);font-family:'Outfit',sans-serif}
 .cc-desc{font-size:.88rem;line-height:1.6;color:var(--ink2)}
 
+/* Doppia analisi - intro */
+.cc-double-intro{background:#fdf6e3;border:1px solid var(--gold);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1rem;font-size:.82rem;line-height:1.55;color:var(--ink2)}
+.cc-double-intro b{color:var(--ink)}
+
 /* Wing influence */
 .cc-wings{margin-top:1rem;padding:.9rem 1rem;background:#f5edff;border:1px solid #d4c2ec;border-radius:8px}
 .cc-wings-title{font-size:.82rem;font-weight:600;color:#5a4a8c;margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
@@ -123,7 +127,12 @@
 
 /* Age phases */
 .cc-age-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1rem}
-.cc-age-title{font-size:1rem;font-weight:600;font-family:'Cormorant Garamond',serif;color:var(--ink);margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.cc-age-title-row{display:flex;align-items:center;justify-content:space-between;gap:.7rem;margin-bottom:.8rem;flex-wrap:wrap}
+.cc-age-title{font-size:1rem;font-weight:600;font-family:'Cormorant Garamond',serif;color:var(--ink);display:flex;align-items:center;gap:.4rem;margin:0}
+.cc-affinita-pill{padding:.3rem .8rem;border-radius:16px;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;color:#fff;letter-spacing:.03em}
+.cc-affinita-pill.ottima{background:linear-gradient(90deg,#5fa055,#7fb670)}
+.cc-affinita-pill.buona{background:linear-gradient(90deg,#c9a961,#d4b876)}
+.cc-affinita-pill.media{background:linear-gradient(90deg,#a07e4b,#b8935a)}
 .cc-age-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
 @media(max-width:560px){.cc-age-grid{grid-template-columns:1fr}}
 .cc-age-side{background:#faf6ec;border:1px solid var(--border);border-radius:8px;padding:.8rem .9rem}
@@ -1153,7 +1162,6 @@ const compatibilitaData = {
     "consigli": "Sforzatevi di prendere iniziative e affrontare i problemi. Cercate supporto esterno per la motivazione."
   }
 };
-
 // ═══════════════════════════════════════════════════════════════════
 // DATI BASE (estratti da percorsi-eta.ts)
 // ═══════════════════════════════════════════════════════════════════
@@ -1371,6 +1379,13 @@ function getCompat(t1,t2){
   return compatibilitaData[a+"-"+b] || null;
 }
 
+// Helper: livello affinità per età (in base alla %)
+function getAffinitaLevel(pct){
+  if(pct >= 70) return "ottima";
+  if(pct >= 40) return "buona";
+  return "media";
+}
+
 function escapeHtml(s){
   if(s==null)return"";
   return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
@@ -1413,14 +1428,50 @@ function updateWings(idx){
   sel.value = "nessuna";
 }
 
-// Generazione testo riassuntivo
+// Generazione testo riassuntivo (con DOPPIA ANALISI: base per enneatipo + per fase di vita)
 function generateCoupleSummary(){
   const t1 = parseInt(state.type1,10), t2 = parseInt(state.type2,10);
   const compat = getCompat(t1,t2);
   if(!compat) return "";
   const name1 = "Tipo "+t1+" - "+typeNames[t1];
   const name2 = "Tipo "+t2+" - "+typeNames[t2];
-  let text = "La coppia formata da "+name1+" e "+name2+" presenta un livello di compatibilità "+compat.livello+" ("+compat.percentuale+"%). ";
+
+  // Calcolo affinità per età (se entrambe le età sono presenti)
+  let affinitaEta = null, sharedEta = [];
+  if(state.age1 && state.age2){
+    const a1 = parseInt(state.age1,10), a2 = parseInt(state.age2,10);
+    if(!isNaN(a1) && !isNaN(a2)){
+      const j1 = getJourney(t1, parseInt(state.percorso1,10));
+      const j2 = getJourney(t2, parseInt(state.percorso2,10));
+      if(j1 && j2){
+        const ph1 = getCurrentPhase(j1, a1);
+        const ph2 = getCurrentPhase(j2, a2);
+        sharedEta = findSharedAttributes(ph1, ph2);
+        affinitaEta = Math.round((sharedEta.length / 12) * 100);
+      }
+    }
+  }
+
+  let text = "";
+
+  // Sezione doppia analisi (solo se entrambe le età sono compilate)
+  if(affinitaEta !== null){
+    text += "=== DOPPIA ANALISI ===\n";
+    text += "• Compatibilità BASE per enneatipo: "+compat.percentuale+"% ("+compat.livello+")\n";
+    text += "• Affinità per FASE DI VITA (in base alle età): "+affinitaEta+"%\n\n";
+    const divario = Math.abs(compat.percentuale - affinitaEta);
+    if(divario >= 25){
+      if(compat.percentuale > affinitaEta){
+        text += "Il divario tra le due metriche è significativo ("+divario+" punti). La compatibilità di base è solida ma la fase di vita attuale dei due partner crea una distanza temporanea: spesso questa è la dinamica delle coppie che dicono «una volta funzionavamo, adesso non più». Non è un problema strutturale ma di sincronizzazione del momento di vita.\n\n";
+      } else {
+        text += "Il divario tra le due metriche è significativo ("+divario+" punti). La fase di vita attuale è in forte sintonia, anche se la compatibilità di base presenta sfide strutturali: la coppia trova in questo momento un terreno comune che può essere prezioso per affrontare insieme le differenze caratteriali profonde.\n\n";
+      }
+    } else {
+      text += "Le due metriche sono allineate, segno di una coerenza tra base caratteriale e momento di vita attuale.\n\n";
+    }
+  }
+
+  text += "La coppia formata da "+name1+" e "+name2+" presenta un livello di compatibilità di base "+compat.livello+" ("+compat.percentuale+"%). ";
   text += compat.descrizione + " ";
   if(compat.puntiForza && compat.puntiForza.length>0){
     text += "\n\nTra i principali punti di forza emergono: "+compat.puntiForza.join(", ")+". ";
@@ -1449,9 +1500,14 @@ function generateCoupleSummary(){
       text += "Avere istinti dominanti differenti significa privilegiare aree di vita diverse: la consapevolezza reciproca aiuta a non sentirsi in competizione. ";
     }
   }
-  if(state.age1 && state.age2){
-    text += "\n\nConsiderando le età dei partner ("+state.age1+" e "+state.age2+" anni), la fase di vita attuale influenza significativamente il modo in cui ciascuno vive ed esprime il proprio enneatipo. ";
-    text += "Le fasi di crescita personale possono creare momenti di grande sintonia o di temporanea distanza, rendendo la consapevolezza reciproca ancora più importante.";
+  if(state.age1 && state.age2 && affinitaEta !== null){
+    text += "\n\nConsiderando le età dei partner ("+state.age1+" e "+state.age2+" anni), le fasi di vita attualmente attraversate sui rispettivi percorsi evolutivi mostrano un'affinità del "+affinitaEta+"% (";
+    if(sharedEta.length > 0){
+      text += sharedEta.length+" attributi condivisi su 12";
+    } else {
+      text += "nessun attributo condiviso in questa fase";
+    }
+    text += "). Le fasi di crescita personale possono creare momenti di grande sintonia o di temporanea distanza, rendendo la consapevolezza reciproca ancora più importante.";
   }
   if(compat.consigli){
     text += "\n\nConsiglio pratico: "+compat.consigli;
@@ -1504,7 +1560,7 @@ function renderResults(){
     '</div>'+
     '<div class="cc-meter-bar"><div class="cc-meter-fill '+compat.livello+'" style="width:'+compat.percentuale+'%"></div></div>'+
     '<div class="cc-meter-stats">'+
-      '<span class="cc-level-pill '+compat.livello+'">'+compat.livello+'</span>'+
+      '<span class="cc-level-pill '+compat.livello+'">Compatibilità base: '+compat.livello+'</span>'+
       '<span class="cc-percent">'+compat.percentuale+'%</span>'+
     '</div>'+
     '<p class="cc-desc">'+escapeHtml(compat.descrizione)+'</p>';
@@ -1536,6 +1592,13 @@ function renderResults(){
     html += '</div></div>';
   }
   html += '</div>';
+
+  // === Intro doppia analisi (se entrambe le età sono compilate) ===
+  if(state.age1 && state.age2 && !isNaN(parseInt(state.age1,10)) && !isNaN(parseInt(state.age2,10))){
+    html += '<div class="cc-double-intro">'+
+      '<b>Doppia analisi:</b> il punteggio sopra ('+compat.percentuale+'%) misura la <b>compatibilità di base</b> tra i due enneatipi (caratteristica permanente). Più sotto trova invece l\'<b>affinità per fase di vita</b>, calcolata sulle età indicate: descrive quanto i due partner stanno attraversando esperienze simili in questo momento (caratteristica transitoria, che cambia col tempo). Una grande differenza tra le due metriche spiega le crisi del tipo «una volta funzionavamo, adesso non più».'+
+      '</div>';
+  }
 
   // === Punti di forza ===
   if(compat.puntiForza && compat.puntiForza.length>0){
@@ -1585,7 +1648,7 @@ function renderResults(){
     html += '</div>';
   }
 
-  // === Age phases (se entrambe le età sono compilate) ===
+  // === Age phases (se entrambe le età sono compilate) — con pill affinità ===
   if(state.age1 && state.age2 && !isNaN(parseInt(state.age1,10)) && !isNaN(parseInt(state.age2,10))){
     const a1 = parseInt(state.age1,10), a2 = parseInt(state.age2,10);
     const j1 = getJourney(t1, parseInt(state.percorso1,10));
@@ -1595,8 +1658,13 @@ function renderResults(){
       const ph2 = getCurrentPhase(j2, a2);
       const shared = findSharedAttributes(ph1, ph2);
       const diffs = findDifferentAttributes(ph1, ph2);
+      const affinitaEta = Math.round((shared.length / 12) * 100);
+      const affinitaLvl = getAffinitaLevel(affinitaEta);
       html += '<div class="cc-age-card">'+
-        '<div class="cc-age-title">🌱 Fasi di Vita Attuali</div>'+
+        '<div class="cc-age-title-row">'+
+          '<h3 class="cc-age-title">🌱 Fasi di Vita Attuali</h3>'+
+          '<span class="cc-affinita-pill '+affinitaLvl+'">Affinità per età: '+affinitaEta+'%</span>'+
+        '</div>'+
         '<div class="cc-age-grid">'+
           renderAgeSide("Partner 1", t1, a1, ph1, state.percorso1)+
           renderAgeSide("Partner 2", t2, a2, ph2, state.percorso2)+
@@ -1664,7 +1732,7 @@ function renderAgeSide(label, t, age, phase, percorso){
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// PDF
+// PDF (con DOPPIA ANALISI)
 // ═══════════════════════════════════════════════════════════════════
 
 function generatePdf(){
@@ -1696,7 +1764,7 @@ function generatePdf(){
   txt("Partner 2: Tipo "+t2+" - "+typeNames[t2]+(state.wing2!=="nessuna"?(", Ala "+state.wing2):"")+(state.sub2?(", sottotipo "+state.sub2):"")+(state.age2?(", "+state.age2+" anni"):""));
   y+=4;
 
-  title("Livello di Compatibilita: "+compat.livello.toUpperCase()+" - "+compat.percentuale+"%");
+  title("Compatibilita di BASE per enneatipo: "+compat.livello.toUpperCase()+" - "+compat.percentuale+"%");
   if(compat.descrizione) txt(compat.descrizione);
   y+=2;
 
@@ -1714,6 +1782,40 @@ function generatePdf(){
     title("Consigli");
     txt(compat.consigli);
     y+=2;
+  }
+
+  // === Analisi per Fase di Vita (se età compilate) ===
+  if(state.age1 && state.age2 && !isNaN(parseInt(state.age1,10)) && !isNaN(parseInt(state.age2,10))){
+    const a1 = parseInt(state.age1,10), a2 = parseInt(state.age2,10);
+    const j1 = getJourney(t1, parseInt(state.percorso1,10));
+    const j2 = getJourney(t2, parseInt(state.percorso2,10));
+    if(j1 && j2){
+      const ph1 = getCurrentPhase(j1, a1);
+      const ph2 = getCurrentPhase(j2, a2);
+      const shared = findSharedAttributes(ph1, ph2);
+      const diffs = findDifferentAttributes(ph1, ph2);
+      const affinitaEta = Math.round((shared.length / 12) * 100);
+      title("Analisi per FASE DI VITA - Affinita: "+affinitaEta+"%");
+      txt("Partner 1 ("+a1+" anni, Percorso "+state.percorso1+"): attualmente attraversa la fase enneatipo "+ph1.enneatipo+" - Dignita: "+ph1.dignita+", Virtu: "+ph1.virtu+", Vizio: "+ph1.vizio+", Idea sacra: "+ph1.ideaSacra+".");
+      txt("Partner 2 ("+a2+" anni, Percorso "+state.percorso2+"): attualmente attraversa la fase enneatipo "+ph2.enneatipo+" - Dignita: "+ph2.dignita+", Virtu: "+ph2.virtu+", Vizio: "+ph2.vizio+", Idea sacra: "+ph2.ideaSacra+".");
+      if(shared.length>0){
+        txt("Attributi condivisi in questa fase ("+shared.length+"/12): "+shared.join(", "));
+      } else {
+        txt("Nessun attributo condiviso nelle fasi attuali.");
+      }
+      if(diffs.length>0){
+        txt("Aree di differenza: "+diffs.map(function(d){return d.label;}).join(", "));
+      }
+      const divario = Math.abs(compat.percentuale - affinitaEta);
+      if(divario >= 25){
+        if(compat.percentuale > affinitaEta){
+          txt("Nota: il divario di "+divario+" punti tra base ("+compat.percentuale+"%) e fase di vita ("+affinitaEta+"%) indica una distanza temporanea legata al momento di vita, non una incompatibilita strutturale.");
+        } else {
+          txt("Nota: il divario di "+divario+" punti tra base ("+compat.percentuale+"%) e fase di vita ("+affinitaEta+"%) indica una sintonia attuale che puo essere preziosa per affrontare le differenze caratteriali profonde.");
+        }
+      }
+      y+=2;
+    }
   }
 
   // AT

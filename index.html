@@ -153,6 +153,36 @@
 .book-promo__features li{font-size:.85rem;color:var(--ink);position:relative;padding-left:1rem}
 .book-promo__features li::before{content:'\2726';position:absolute;left:0;color:var(--gold)}
 .book-promo__cta{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* ═══ MEGA-MENU REDESIGN: striscia top "Inizia qui" + 5 colonne tematiche + striscia bottom ═══ */
+.mega-menu-wrap.open .mega-panel--redesign{display:flex !important;flex-direction:column;gap:14px;grid-template-columns:none !important;padding:18px 20px;max-width:none}
+.mega-strip-start{background:#FAEEDA;border:1px solid #BA7517;border-radius:10px;padding:12px 14px}
+.mega-strip-start-title{font-size:.7rem;color:#854F0B;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:.4rem}
+.mega-strip-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:680px){.mega-strip-cards{grid-template-columns:1fr}}
+.mega-strip-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-decoration:none;color:inherit;transition:all .15s}
+.mega-strip-card:hover{border-color:var(--gold);transform:translateY(-1px);box-shadow:0 4px 10px rgba(184,147,90,.15)}
+.mega-strip-card strong{font-size:.92rem;font-weight:600;color:#412402;margin-bottom:2px}
+.mega-strip-card em{font-size:.78rem;color:#7a4f10;font-style:normal}
+.mega-cols-redesign{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:1100px){.mega-cols-redesign{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.mega-cols-redesign{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.mega-cols-redesign{grid-template-columns:1fr}}
+.mega-cols-redesign .mega-col{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px}
+.mega-cols-redesign .mega-col-title{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #f0e8d8}
+.mega-col--mediation .mega-col-title{color:#185FA5}
+.mega-col--persona .mega-col-title{color:#534AB7}
+.mega-col--test .mega-col-title{color:#0F6E56}
+.mega-col--tools .mega-col-title{color:#A4501C}
+.mega-col--olistic .mega-col-title{color:#888780}
+.mega-cols-redesign .mega-item{padding:.45rem .5rem;font-size:.84rem}
+.mega-cols-redesign .mega-item-violenza{color:#A32D2D;font-weight:600}
+.mega-strip-bottom{padding-top:10px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:center;align-items:center;font-size:.78rem}
+.mega-strip-bottom a,.mega-strip-bottom button{color:var(--ink2);text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:inherit;font-size:inherit;padding:.2rem .4rem;transition:color .15s}
+.mega-strip-bottom a:hover,.mega-strip-bottom button:hover{color:var(--gold)}
+.mega-strip-bottom-admin{margin-left:auto;opacity:.45;font-size:.72rem}
+.mega-strip-bottom-admin:hover{opacity:1}
+@media(max-width:560px){.mega-strip-bottom-admin{margin-left:0}}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -171,74 +201,91 @@
           <span>Esplora</span>
           <span class="mega-arrow">▾</span>
         </button>
-        <div class="mega-panel" id="mega-panel" role="menu">
-          <div class="mega-col">
-            <div class="mega-col-title">✦ Inizia qui</div>
-            <a class="mega-item mega-item-star" href="check-integrato.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Check Integrato</strong><em>Profilo completo</em></span></a>
-            <a class="mega-item mega-item-star" href="consulente.html"><span class="mi-ic">🤖</span><span class="mi-body"><strong>Consulente AI</strong><em>Fai una domanda</em></span></a>
-            <a class="mega-item" href="#percorso-viaggio"><span class="mi-ic">🗺</span><span class="mi-body"><strong>Mappa percorso</strong><em>Orientati</em></span></a>
+        <div class="mega-panel mega-panel--redesign" id="mega-panel" role="menu">
+
+          <div class="mega-strip-start">
+            <div class="mega-strip-start-title">✦ Inizia qui</div>
+            <div class="mega-strip-cards">
+              <a class="mega-strip-card" href="manuale.html"><strong>📖 Il manuale</strong><em>Leggere la persona</em></a>
+              <a class="mega-strip-card" href="consulente.html"><strong>🤖 Consulente AI</strong><em>Fai una domanda</em></a>
+              <a class="mega-strip-card" href="check-integrato.html"><strong>✦ Check Integrato</strong><em>Profilo completo</em></a>
+            </div>
           </div>
-          <div class="mega-col">
-            <div class="mega-col-title">🧪 Test</div>
-            <a class="mega-item" href="test-frutti.html"><span class="mi-ic">🌳</span><span class="mi-body"><strong>9 Frutti</strong><em>Enneatipo</em></span></a>
-            <a class="mega-item" href="test-adattamenti.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Adattamenti AT</strong></span></a>
-            <a class="mega-item" href="vak.html"><span class="mi-ic">👁</span><span class="mi-body"><strong>Test VAK</strong></span></a>
-            <a class="mega-item" href="egogramma.html"><span class="mi-ic">⚙</span><span class="mi-body"><strong>Egogramma</strong></span></a>
-            <a class="mega-item" href="compatibilita.html"><span class="mi-ic">♡</span><span class="mi-body"><strong>Compatibilità</strong></span></a>
+
+          <div class="mega-cols-redesign">
+
+            <div class="mega-col mega-col--mediation">
+              <div class="mega-col-title">⚖ Mediazione</div>
+              <a class="mega-item mega-item-star" href="mediazione-civile.html"><span class="mi-ic">⚖</span><span class="mi-body"><strong>Mediazione Civile</strong><em>Hub procedurale</em></span></a>
+              <a class="mega-item mega-item-star" href="mediazione-familiare.html"><span class="mi-ic">👨‍👩‍👧</span><span class="mi-body"><strong>Mediazione Familiare</strong><em>Hub sistemico</em></span></a>
+              <a class="mega-item" href="consulente-mediatore.html"><span class="mi-ic">🎓</span><span class="mi-body"><strong>Consulente Mediatore</strong></span></a>
+              <a class="mega-item" href="empowerment-mediazione.html"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Empowerment</strong></span></a>
+              <a class="mega-item" href="psicologia-analogica.html"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Psicologia Analogica</strong></span></a>
+              <a class="mega-item" href="matrice-svalutazione.html"><span class="mi-ic">⊘</span><span class="mi-body"><strong>Matrice Svalutazione</strong></span></a>
+              <a class="mega-item" href="danza.html"><span class="mi-ic">⚡</span><span class="mi-body"><strong>Danza Conflitto</strong></span></a>
+              <a class="mega-item mega-item-violenza" href="violenza.html"><span class="mi-ic">⚠</span><span class="mi-body"><strong>Violenza e mediazione</strong></span></a>
+            </div>
+
+            <div class="mega-col mega-col--persona">
+              <div class="mega-col-title">🧠 Leggere la persona</div>
+              <a class="mega-item" href="enneagram.html"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Enneatipi (i 9 tipi)</strong></span></a>
+              <a class="mega-item" href="at-adattamenti.html"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Adattamenti AT</strong></span></a>
+              <a class="mega-item" href="transazioni.html"><span class="mi-ic">🔀</span><span class="mi-body"><strong>Transazioni</strong></span></a>
+              <a class="mega-item" href="carezze.html"><span class="mi-ic">◎</span><span class="mi-body"><strong>Carezze AT</strong></span></a>
+              <a class="mega-item" href="il_mio_copione.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Il mio Copione</strong></span></a>
+              <a class="mega-item" href="discipline.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Discipline psicologiche</strong></span></a>
+            </div>
+
+            <div class="mega-col mega-col--test">
+              <div class="mega-col-title">🧪 Test interattivi</div>
+              <a class="mega-item" href="check-integrato.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Check Integrato</strong></span></a>
+              <a class="mega-item" href="test-frutti.html"><span class="mi-ic">🌳</span><span class="mi-body"><strong>9 Frutti</strong><em>Enneatipo</em></span></a>
+              <a class="mega-item" href="test-adattamenti.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Test AT</strong></span></a>
+              <a class="mega-item" href="vak.html"><span class="mi-ic">👁</span><span class="mi-body"><strong>Test VAK</strong></span></a>
+              <a class="mega-item" href="egogramma.html"><span class="mi-ic">⚙</span><span class="mi-body"><strong>Egogramma</strong></span></a>
+              <a class="mega-item" href="compatibilita.html"><span class="mi-ic">♡</span><span class="mi-body"><strong>Compatibilità</strong></span></a>
+            </div>
+
+            <div class="mega-col mega-col--tools">
+              <div class="mega-col-title">🛠 Strumenti AI</div>
+              <a class="mega-item mega-item-ai-fes" href="ai-fes.html"><span class="mi-ic">✿</span><span class="mi-body"><strong>Motore AI FES</strong></span></a>
+              <a class="mega-item mega-item-ai-bush" href="ai-bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Motore AI Bush</strong></span></a>
+              <a class="mega-item" href="explorer.html"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Database</strong></span></a>
+              <a class="mega-item" href="#percorso-viaggio" onclick="window.closeMega()"><span class="mi-ic">🗺</span><span class="mi-body"><strong>Mappa percorso</strong></span></a>
+            </div>
+
+            <div class="mega-col mega-col--olistic">
+              <div class="mega-col-title">🌿 Approfondimenti olistici</div>
+              <a class="mega-item" href="chakra.html"><span class="mi-ic">◉</span><span class="mi-body"><strong>Chakra</strong></span></a>
+              <a class="mega-item" href="cristalli.html"><span class="mi-ic">💎</span><span class="mi-body"><strong>Cristalli</strong></span></a>
+              <a class="mega-item" href="frequenze.html"><span class="mi-ic">♬</span><span class="mi-body"><strong>Frequenze</strong></span></a>
+              <a class="mega-item" href="meditazione.html"><span class="mi-ic">🧘</span><span class="mi-body"><strong>Meditazione</strong></span></a>
+              <a class="mega-item" href="bach.html"><span class="mi-ic">🌸</span><span class="mi-body"><strong>Bach</strong></span></a>
+              <a class="mega-item" href="fes.html"><span class="mi-ic">✿</span><span class="mi-body"><strong>FES</strong></span></a>
+              <a class="mega-item" href="bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Bush</strong></span></a>
+              <a class="mega-item" href="alimentazione.html"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Alimentazione</strong></span></a>
+              <a class="mega-item" href="prano.html"><span class="mi-ic">🤲</span><span class="mi-body"><strong>Pranoterapia</strong></span></a>
+            </div>
+
           </div>
-          <div class="mega-col">
-            <div class="mega-col-title">🌸 Fiori</div>
-            <a class="mega-item" href="bach.html"><span class="mi-ic">🌸</span><span class="mi-body"><strong>Bach</strong></span></a>
-            <a class="mega-item" href="fes.html"><span class="mi-ic">✿</span><span class="mi-body"><strong>FES</strong></span></a>
-            <a class="mega-item mega-item-ai-fes" href="ai-fes.html"><span class="mi-ic">✿</span><span class="mi-body"><strong>Motore AI FES</strong></span></a>
-            <a class="mega-item" href="bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Bush</strong></span></a>
-            <a class="mega-item mega-item-ai-bush" href="ai-bush.html"><span class="mi-ic">❋</span><span class="mi-body"><strong>Motore AI Bush</strong></span></a>
+
+          <div class="mega-strip-bottom">
+            <a href="prenota-consulenza.html">📅 Prenota consulenza</a>
+            <span style="color:#ccc">·</span>
+            <a href="professionisti.html">🤝 Professionisti della rete</a>
+            <span style="color:#ccc">·</span>
+            <a href="chi-sono.html">🧑 Chi sono</a>
+            <span style="color:#ccc">·</span>
+            <a href="metodo.html">◈ Il metodo</a>
+            <span style="color:#ccc">·</span>
+            <a href="faq.html">❓ FAQ</a>
+            <span style="color:#ccc">·</span>
+            <a href="guida.html">🗺 Guida</a>
+            <span style="color:#ccc">·</span>
+            <button onclick="window.restartTour();window.closeMega()">🎓 Riavvia tour</button>
+            <button class="mega-strip-bottom-admin" onclick="window.openAdmin();window.closeMega()">⚙ Admin</button>
           </div>
-          <div class="mega-col">
-            <div class="mega-col-title">◉ Energia</div>
-            <a class="mega-item" href="chakra.html"><span class="mi-ic">◉</span><span class="mi-body"><strong>Chakra</strong></span></a>
-            <a class="mega-item" href="cristalli.html"><span class="mi-ic">💎</span><span class="mi-body"><strong>Cristalli</strong></span></a>
-            <a class="mega-item" href="enneagram.html"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Enneatipi</strong></span></a>
-            <a class="mega-item" href="meditazione.html"><span class="mi-ic">🧘</span><span class="mi-body"><strong>Meditazione</strong></span></a>
-            <a class="mega-item" href="frequenze.html"><span class="mi-ic">♬</span><span class="mi-body"><strong>Frequenze</strong></span></a>
-          </div>
-          <div class="mega-col">
-            <div class="mega-col-title">⚖ Mediazione</div>
-            <a class="mega-item mega-item-star" href="mediazione-civile.html"><span class="mi-ic">⚖</span><span class="mi-body"><strong>Mediazione Civile</strong><em>Hub procedurale</em></span></a>
-            <a class="mega-item mega-item-star" href="mediazione-familiare.html"><span class="mi-ic">👨‍👩‍👧</span><span class="mi-body"><strong>Mediazione Familiare</strong><em>Hub sistemico</em></span></a>
-            <a class="mega-item" href="consulente-mediatore.html"><span class="mi-ic">🎓</span><span class="mi-body"><strong>Consulente Mediatore</strong><em>Harvard + ODM</em></span></a>
-            <a class="mega-item" href="empowerment-mediazione.html"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Empowerment</strong><em>Motore olistico</em></span></a>
-            <a class="mega-item" href="psicologia-analogica.html"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Psicologia Analogica</strong><em>Lettura del corpo</em></span></a>
-            <a class="mega-item" href="matrice-svalutazione.html"><span class="mi-ic">⊘</span><span class="mi-body"><strong>Matrice Svalutazione</strong></span></a>
-            <a class="mega-item" href="violenza.html"><span class="mi-ic">⚠</span><span class="mi-body"><strong>Violenza e mediazione</strong><em>Limite deontologico</em></span></a>
-          </div>
-          <div class="mega-col">
-            <div class="mega-col-title">⬟ AT</div>
-            <a class="mega-item" href="at-adattamenti.html"><span class="mi-ic">⬟</span><span class="mi-body"><strong>Adattamenti AT</strong></span></a>
-            <a class="mega-item" href="transazioni.html"><span class="mi-ic">🔀</span><span class="mi-body"><strong>Transazioni</strong></span></a>
-            <a class="mega-item" href="carezze.html"><span class="mi-ic">◎</span><span class="mi-body"><strong>Carezze</strong></span></a>
-            <a class="mega-item" href="il_mio_copione.html"><span class="mi-ic">✦</span><span class="mi-body"><strong>Il mio Copione</strong></span></a>
-            <a class="mega-item" href="danza.html"><span class="mi-ic">⚡</span><span class="mi-body"><strong>Danza Conflitto</strong></span></a>
-            <a class="mega-item" href="discipline.html"><span class="mi-ic">🧠</span><span class="mi-body"><strong>Psicologia</strong></span></a>
-          </div>
-          <div class="mega-col">
-            <div class="mega-col-title">🌿 Altro</div>
-            <a class="mega-item" href="alimentazione.html"><span class="mi-ic">🌿</span><span class="mi-body"><strong>Alimentazione</strong></span></a>
-            <a class="mega-item" href="prano.html"><span class="mi-ic">🤲</span><span class="mi-body"><strong>Pranoterapia</strong></span></a>
-            <a class="mega-item" href="explorer.html"><span class="mi-ic">🔍</span><span class="mi-body"><strong>Database</strong></span></a>
-            <div class="mega-col-title" style="margin-top:1.2rem">📖 Il manuale</div>
-            <a class="mega-item mega-item-star" href="manuale.html"><span class="mi-ic">📖</span><span class="mi-body"><strong>Il manuale</strong><em>Download gratuito</em></span></a>
-            <div class="mega-col-title" style="margin-top:1.2rem">🤝 Contatti &amp; rete</div>
-            <a class="mega-item mega-item-star" href="prenota-consulenza.html"><span class="mi-ic">📅</span><span class="mi-body"><strong>Prenota consulenza</strong><em>Primo colloquio</em></span></a>
-            <a class="mega-item" href="professionisti.html"><span class="mi-ic">🤝</span><span class="mi-body"><strong>Professionisti della rete</strong></span></a>
-            <div class="mega-col-title" style="margin-top:1.2rem">ℹ Info</div>
-            <a class="mega-item mega-item-small" href="chi-sono.html">🧑 Chi sono</a>
-            <a class="mega-item mega-item-small" href="metodo.html">◈ Il metodo</a>
-            <a class="mega-item mega-item-small" href="faq.html">❓ FAQ</a>
-            <a class="mega-item mega-item-small" href="guida.html">🗺 Guida</a>
-            <button class="mega-item mega-item-small" onclick="window.restartTour();window.closeMega()" style="color:var(--gold);background:transparent;border:none;text-align:left">🎓 Riavvia tour</button>
-            <button class="mega-item mega-item-small" onclick="window.openAdmin();window.closeMega()" style="color:var(--gold2);background:transparent;border:none;text-align:left">⚙ Admin</button>
-          </div>
+
         </div>
       </div>
       <button class="search-btn" onclick="openSearch()" aria-label="Cerca" title="Cerca nel database">⌕</button>
@@ -382,7 +429,7 @@
           <text x="160" y="344" fill="#f0ece4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="32" font-weight="700">il conflitto</text>
           <line x1="100" y1="380" x2="220" y2="380" stroke="#b8935a" stroke-width="0.5" stroke-opacity="0.7"/>
           <text x="160" y="406" fill="#b8935a" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">MANUALE DI MEDIAZIONE INTEGRATA</text>
-          <text x="160" y="440" fill="#b8935a" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" opacity="0.7">282 PAGINE</text>
+          <text x="160" y="440" fill="#b8935a" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" opacity="0.7">333 PAGINE</text>
         </svg>
       </a>
       <div class="book-promo__content">
@@ -391,13 +438,13 @@
         <h2 class="book-promo__title">Leggere la persona,<br><em>accompagnare il conflitto</em></h2>
         <p class="book-promo__desc">Il primo manuale italiano di mediazione integrata. Cornice deontologica del D.Lgs. 28/2010 e Riforma Cartabia, sette sistemi olistici di lettura della persona, limite sulla violenza domestica (Convenzione di Istanbul), appendice scientifica con bibliografia ragionata e glossario tecnico per i professionisti della relazione d'aiuto.</p>
         <ul class="book-promo__features">
-          <li><strong>282 pagine</strong> A4 · Edizione 2026</li>
+          <li><strong>333 pagine</strong> A4 · Edizione 2026</li>
           <li><strong>3 parti</strong> + appendice scientifica</li>
           <li><strong>Download gratuito</strong> PDF + Word</li>
         </ul>
         <div class="book-promo__cta">
           <a href="manuale.html" class="btn-gold" style="padding:.95rem 2rem;font-size:.9rem">📖 Scopri il manuale</a>
-          <a href="Manuale-completo-Leggere-la-persona.pdf" class="btn-ghost" download>↓ Scarica subito (PDF · 2.4 MB)</a>
+          <a href="Manuale-completo-Leggere-la-persona.pdf" class="btn-ghost" download>↓ Scarica subito (PDF · 3.7 MB)</a>
         </div>
       </div>
     </div>

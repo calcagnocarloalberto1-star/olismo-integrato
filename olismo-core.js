@@ -2390,7 +2390,7 @@ CONTROMOSSE (esempi): contro O1 «Le propongo: per cinque minuti elenchiamo TUTT
 
 Il punto di arrivo della svalutazione NON deve derivare dalla domanda del mediatore, ma EMERGERE dalle parole dell\'interlocutore. Il sito ha una pagina dedicata: matrice-svalutazione.html con motore guidato + analisi AI di frasi libere.
 
-CONSULENTE AI MEDIATORE: per domande TECNICHE-PROCEDURALI di mediazione civile/commerciale/familiare — come impostare il discorso introduttivo secondo Harvard, cosa verbalizzare, come gestire indennità/prosecuzione/ritrattazione, procura sostanziale (Cass. Civ. III 8473/2019 aggiornata da Cass. III ord. 9608/2026: il difensore NON può essere il delegato — deve essere un terzo o avvocato diverso dal difensore costituito), primo incontro 20-40 giorni dal deposito (art. 8 c.1 novellato dalla Riforma Cartabia, NON più 30 giorni come pre-2023), mediazione condominiale (art. 5-ter: amministratore legittimato SENZA delibera preventiva; delibera richiesta solo per approvare accordo/proposta — Cass. 2119/2025), protocollo rinuncia istante, mediazione telematica/remoto (art. 8-bis), CTM, responsabilità mediatore, proposta art. 11 e conseguenze art. 13 — il portale ha un motore dedicato: consulente-mediatore.html. Se la domanda del mediatore è su questi temi, suggerisci di usare quel motore perché contiene il pieno database: linee guida ODM Genova 26/11/2025, Circolare 12/2025, Circolare indennità 27/11/2025, Circolare sottoscrizione verbale, decalogo mediatore v14, template verbale annotato con giurisprudenza 2024-2026 (57 pronunce aggiornate al 30/4/2026). Rispondi comunque brevemente e poi linka.
+CONSULENTE AI MEDIATORE: per domande TECNICHE-PROCEDURALI di mediazione civile/commerciale/familiare — come impostare il discorso introduttivo secondo Harvard, cosa verbalizzare, come gestire indennità/prosecuzione/ritrattazione, procura sostanziale (Cass. Civ. III 8473/2019 — NON Sezioni Unite), primo incontro 20-40 giorni dal deposito (art. 8 c.1 novellato dalla Riforma Cartabia, NON più 30 giorni come pre-2023), mediazione condominiale (art. 5-ter, Cass 2119/2025), protocollo rinuncia istante, mediazione telematica/remoto (art. 8-bis), CTM, responsabilità mediatore, proposta art. 11 e conseguenze art. 13 — il portale ha un motore dedicato: consulente-mediatore.html. Se la domanda del mediatore è su questi temi, suggerisci di usare quel motore perché contiene il pieno database: linee guida ODM Genova 26/11/2025, Circolare 12/2025, Circolare indennità 27/11/2025, Circolare sottoscrizione verbale, decalogo mediatore v14, template verbale annotato con giurisprudenza 2024-2026. Rispondi comunque brevemente e poi linka.
 
 EMPOWERMENT IN MEDIAZIONE: per domande che uniscono MEDIAZIONE + OLISTICO + PROFILO PSICOLOGICO — come aiutare una parte in stress in sessione, quale chakra riattivare in un tipo X, che fiori di Bach suggerire in una mediazione condominiale, come calibrare Harvard su un enneatipo 4 + adattamento istrionico, come ripristinare empowerment di una parte in congelamento dorsovagale o iperattivazione simpatica — il portale ha un motore dedicato: empowerment-mediazione.html. Integra teoria polivagale (Porges), 9 enneatipi, 6 adattamenti AT, 7 chakra, 38 fiori Bach + FES + Bush, cristalli, frequenze Solfeggio, tecniche Harvard calibrate. Produce un piano operativo strutturato con template linguistici per il mediatore. È il motore più completo per il ponte fra olismo e mediazione.
 
@@ -7224,108 +7224,3 @@ async function exportBushPdf(){
     inject();
   }
 })();
-Spiega
-Chat
-
-Nuova conversazione
-
-🤓 Spiega una cosa complessa
-
-Spiega l'Intelligenza Artificiale in modo che io possa spiegarla al mio bambino di sei anni.
-
-
-🧠 Ottieni suggerimenti e crea nuove idee
-
-Per favore dammi le migliori 10 idee di viaggio nel mondo
-
-
-💭 Traduci, riassumi, correggi la grammatica e altro...
-
-Ti amo", in francese
-
-
-Grok 3 Mini
-Ciao, come posso aiutarti oggi?
-Page Content
-Page favicon
-Viaggio del Guaritore: Trasformazione e Guarigione - DeepSeek
-https://chat.deepseek.com/a/chat/s/4a8e203e-fe7f-402a-ba05-65717c7dc5cf
- 🪄 Riassumere
-Get a brief overview of the main points and key takeaways
-Grok 3 Mini
-(Connessione internet persa. Per favore riprova)
-AITOPIA
-coin image
-10
-Aggiornamento
-
-
-
-
-Chiedimi qualsiasi cosa...
-
-
-
-Alimentato da AITOPIA 
-Chat
-Chiedere
-Ricerca
-Scrivere
-Immagine
-ChatFile
-Visione
-Pagina Intera
-Chat
-
-Nuova conversazione
-
-🤓 Spiega una cosa complessa
-
-Spiega l'Intelligenza Artificiale in modo che io possa spiegarla al mio bambino di sei anni.
-
-
-🧠 Ottieni suggerimenti e crea nuove idee
-
-Per favore dammi le migliori 10 idee di viaggio nel mondo
-
-
-💭 Traduci, riassumi, correggi la grammatica e altro...
-
-Ti amo", in francese
-
-
-GPT-4o Mini
-Hello, how can I help you today?
-Siete due alberi con radici intrecciate e rami che cercano cieli diversi. Non tagliate le radici, non spezzate i rami:  imparate a sentire il vento che scuote entrambi. Crea un'immagine
-GPT-4o Mini
-Immagina due alberi maestosi, il loro tronco robusto eretto e forte, ma le radici si intrecciano sotto la superficie della terra, formando un labirinto invisibile che li unisce. Le foglie di ciascun albero brillano sotto la luce del sole, alcune di un verde intenso, altre di un giallo dorato, mentre i rami si allungano verso il cielo, ognuno cercando la propria strada, ma sempre consapevoli dell’altro.
-Il vento soffia dolcemente, facendo frusciare le foglie e creando un concerto di suoni che racconta storie antiche. Le radici si muovono impercettibilmente nel terreno, nutrendosi insieme della stessa terra, mentre i rami si sfiorano, accarezzandosi nella danza del vento. In questo gioco di vicinanza e distanza, i due alberi insegnano la bellezza della coesistenza e dell'interconnessione, creando un equilibrio tra individualità e unità.
-Gli uccelli si posano sui rami, cantando melodie che risuonano nel bosco, un richiamo alla vita e alla libertà. L'immagine evoca un senso di armonia, dove i confini tra i due alberi si dissolvono, rivelando un legame profondo e resistente, un invito a celebrare le differenze senza dimenticare ciò che ci unisce.
-Puoi ricopiare tutto l'intervento del convegno?
-GPT-4o Mini
-Mi dispiace, ma non posso fornirti il testo di un intervento specifico di un convegno se non è stato pubblicato o è di dominio pubblico. Se hai bisogno di informazioni o di un riassunto su un tema specifico trattato in un convegno, fammi sapere e sarò felice di aiutarti!
-è quello a sinistra
-GPT-4o Mini
-Mi dispiace, ma non posso visualizzare o recuperare contenuti esterni, inclusi documenti o testi a sinistra nel tuo schermo. Se hai un testo specifico o un argomento di cui vorresti discutere, puoi condividerlo qui, e io farò del mio meglio per aiutarti!
-
-AITOPIA
-coin image
-10
-Aggiornamento
-
-
-
-Chiedimi qualsiasi cosa...
-
-
-
-Alimentato da AITOPIA 
-Chat
-Chiedere
-Ricerca
-Scrivere
-Immagine
-ChatFile
-Visione
-Agente
-Pagina Intera

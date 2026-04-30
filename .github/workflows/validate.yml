@@ -17,6 +17,10 @@ jobs:
           ERRORS=0
           for file in *.html; do
             [ -f "$file" ] || continue
+            # Escludi file speciali che non sono pagine complete
+            case "$file" in
+              googleb2392e1f3564a1be.html|olismo-footer.html) echo "⏭ skip $file (file speciale)"; continue ;;
+            esac
             # Find line of </html>
             CLOSE=$(grep -n "</html>" "$file" | tail -1 | cut -d: -f1)
             if [ -z "$CLOSE" ]; then

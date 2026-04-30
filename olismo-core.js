@@ -6838,7 +6838,7 @@ window.addEventListener('load',function(){
 
     /* Auto-collapse long intros */
     try{
-      var introSelectors = ['.bach-intro', '.bach-text', '.alim-intro', '.at-desc', '.ego-text', '.danza-text', '.disc-text'];
+      var introSelectors = ['.alim-intro', '.at-desc', '.ego-text', '.danza-text', '.disc-text'];
       introSelectors.forEach(function(sel){
         document.querySelectorAll(sel).forEach(function(el){
           if(el.querySelector('.intro-collapsible')) return;

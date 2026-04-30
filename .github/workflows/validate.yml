@@ -79,15 +79,15 @@ jobs:
           ERRORS=0
           for file in *.html; do
             [ -f "$file" ] || continue
-            # Extract all href values pointing to local .html files
+            # Extract only RELATIVE href values (no http/https, no #anchors)
             grep -oP 'href="[^"#][^"]*\.html"' "$file" | \
               sed 's/href="//;s/"//' | \
+              grep -v '^https\?://' | \
               sort -u | while read link; do
-                # Strip query strings and anchors
                 TARGET=$(echo "$link" | cut -d'?' -f1 | cut -d'#' -f1)
                 if [ ! -f "$TARGET" ]; then
                   echo "❌ BROKEN LINK: $file → $TARGET"
-                  echo "BROKEN_LINK_FOUND" >> /tmp/link_errors.txt
+                  echo "BROKEN" >> /tmp/link_errors.txt
                 fi
               done
           done
@@ -99,7 +99,7 @@ jobs:
             echo "══════════════════════════════════════════"
             exit 1
           fi
-          echo "✅ Tutti i link interni sono validi"
+          echo "✅ Tutti i link interni relativi sono validi"
 
       - name: Check sitemap URLs match existing files
         run: |

@@ -2,136 +2,527 @@
 <!--
 ═══════════════════════════════════════════════════════════════════════
   © 2016-2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
-  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
-  
-  AVVISO LEGALE — Questo codice è opera dell'ingegno protetta dal diritto
-  d'autore. È VIETATO copiare, riprodurre, modificare, distribuire,
-  decompilare o utilizzare questo codice e i suoi contenuti senza
-  preventiva autorizzazione scritta dell'autore.
-  
-  RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790:
-  l'uso di questo materiale per l'addestramento di modelli di intelligenza
-  artificiale, fine-tuning, RAG, embedding o qualsiasi forma di
-  alimentazione di sistemi AI è ESPRESSAMENTE VIETATO.
-  
-  Tassonomia originale dei 95 gesti della comunicazione analogica e
-  integrazione metodologica con enneagramma evolutivo, analisi transazionale,
-  neuroscienze polivagali, fiori di Bach/FES/Bush, chakra e frequenze
-  Solfeggio applicata alla mediazione: opera originale dell'autore.
-  
-  Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
-  
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+  RISERVA TDM ex art. 70-quater L. 633/1941: uso per AI vietato.
   Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
 ═══════════════════════════════════════════════════════════════════════
 -->
-
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Avv. Carlo Alberto Calcagno">
-<meta name="copyright" content="© 2016-2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
-<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
-<meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
-<meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
-<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
-
+<meta name="robots" content="noai, noimageai">
 <title>Database Explorer — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
+<meta name="description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze solfeggio, adattamenti AT ed esercizi terapeutici. Database interattivo del portale Olismo Integrato.">
 <link rel="canonical" href="https://olismo-integrato.it/explorer.html">
-<meta property="og:title" content="Database Explorer — Olismo Integrato">
-<meta property="og:description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
-<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Database Explorer — Olismo Integrato">
-<meta name="twitter:description" content="Esplora le connessioni tra chakra, cristalli, enneatipi, frequenze.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="olismo-styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+/* ═══ EXPLORER STYLES ═══ */
+:root{--gold:#b8935a;--gold2:#d4a76a;--ink:#2a2520;--ink2:#3d3530;--ink3:#6a5a4a;--ivory:#f9f5ef;--ivory2:#f3ede4;--border:rgba(184,147,90,.22);--border2:rgba(184,147,90,.38);--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:var(--ivory);color:var(--ink);min-height:100vh}
+
+/* HEADER */
+.exp-header{background:var(--ink);color:var(--ivory);padding:2.5rem 1.5rem 2rem;text-align:center}
+.exp-header-inner{max-width:900px;margin:0 auto}
+.exp-eye{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:500;line-height:1.15;margin-bottom:.5rem}
+.exp-title em{font-style:italic;color:var(--gold2)}
+.exp-sub{font-size:.9rem;color:rgba(249,245,239,.7);max-width:600px;margin:0 auto 1.4rem}
+.exp-stats{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.exp-stat{font-size:.8rem;color:rgba(249,245,239,.6)}
+.exp-stat strong{color:var(--gold2);font-weight:600}
+
+/* SEARCH BAR */
+.exp-search-wrap{max-width:700px;margin:2rem auto 0;padding:0 1rem}
+.exp-search-box{position:relative}
+.exp-search-box input{width:100%;padding:.9rem 1.2rem .9rem 3rem;border:2px solid var(--border2);border-radius:30px;font-family:'Outfit',sans-serif;font-size:1rem;background:#fff;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+.exp-search-box input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,147,90,.15)}
+.exp-search-box input::placeholder{color:#b0a898}
+.exp-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.5;pointer-events:none}
+.exp-search-clear{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.1rem;cursor:pointer;opacity:.4;transition:opacity .2s;display:none}
+.exp-search-clear:hover{opacity:.8}
+
+/* CATEGORY TABS */
+.exp-cats{max-width:900px;margin:1.5rem auto 0;padding:0 1rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+.exp-cat{padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid var(--border2);background:#fff;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink3);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:.4rem}
+.exp-cat:hover{border-color:var(--gold);color:var(--ink)}
+.exp-cat.active{background:var(--ink);border-color:var(--ink);color:var(--ivory)}
+.exp-cat-count{background:rgba(255,255,255,.2);border-radius:10px;padding:.1rem .45rem;font-size:.72rem;font-weight:700}
+.exp-cat.active .exp-cat-count{background:rgba(255,255,255,.15)}
+.exp-cat:not(.active) .exp-cat-count{background:var(--ivory2);color:var(--ink3)}
+
+/* MAIN GRID */
+.exp-main{max-width:1200px;margin:2rem auto;padding:0 1rem 4rem}
+.exp-count{font-size:.82rem;color:var(--ink3);margin-bottom:1rem;padding:0 .2rem}
+.exp-count strong{color:var(--ink);font-weight:600}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+
+/* CARDS */
+.exp-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:1.2rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.exp-card:hover{border-color:var(--gold);box-shadow:0 6px 24px rgba(184,147,90,.15);transform:translateY(-2px)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+.exp-card[data-cat="chakra"]::before{background:var(--card-color,var(--gold))}
+.exp-card[data-cat="cristalli"]::before{background:var(--card-color,#7b9cbf)}
+.exp-card[data-cat="enneatipi"]::before{background:var(--gold)}
+.exp-card[data-cat="frequenze"]::before{background:#5a8a6a}
+.exp-card[data-cat="adattamenti"]::before{background:#8a5a7a}
+.exp-card[data-cat="esercizi"]::before{background:#7a8a5a}
+
+.exp-card-head{display:flex;align-items:flex-start;gap:.8rem;margin-bottom:.7rem}
+.exp-card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.exp-card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.3}
+.exp-card-short{font-size:.75rem;color:var(--gold);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
+.exp-card-desc{font-size:.82rem;color:var(--ink3);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.exp-card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.8rem}
+.exp-tag{font-size:.7rem;padding:.2rem .55rem;border-radius:10px;border:1px solid var(--border);color:var(--ink3);background:var(--ivory2)}
+.exp-tag-chakra{border-color:rgba(184,147,90,.4);color:#7a5a2a;background:rgba(184,147,90,.08)}
+.exp-tag-conn{border-color:rgba(90,138,106,.4);color:#2a5a3a;background:rgba(90,138,106,.08)}
+
+/* EMPTY STATE */
+.exp-empty{text-align:center;padding:4rem 2rem;color:var(--ink3)}
+.exp-empty-ic{font-size:3rem;margin-bottom:1rem;opacity:.4}
+
+/* MODAL */
+.exp-modal-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(42,37,32,.7);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.exp-modal-overlay.open{display:flex;align-items:center;justify-content:center;padding:1rem}
+.exp-modal{background:#fff;border-radius:16px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(42,37,32,.3)}
+.exp-modal-head{padding:1.8rem 1.8rem 1rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;z-index:1;border-radius:16px 16px 0 0}
+.exp-modal-eye{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.exp-modal-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:.3rem}
+.exp-modal-short{font-size:.82rem;color:var(--ink3)}
+.exp-modal-close{position:absolute;top:1.2rem;right:1.2rem;background:var(--ivory2);border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.exp-modal-close:hover{background:var(--border2)}
+.exp-modal-body{padding:1.4rem 1.8rem 2rem}
+.exp-modal-desc{font-size:.92rem;color:var(--ink3);line-height:1.7;margin-bottom:1.4rem;font-style:italic;padding-left:1rem;border-left:3px solid var(--border2)}
+.exp-modal-section{margin-bottom:1.4rem}
+.exp-modal-section-title{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.exp-modal-props{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.5rem}
+.exp-modal-prop{background:var(--ivory2);border-radius:8px;padding:.55rem .8rem}
+.exp-modal-prop-label{font-size:.68rem;color:var(--ink3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.15rem}
+.exp-modal-prop-val{font-size:.85rem;color:var(--ink);font-weight:500}
+.exp-modal-conns{display:flex;flex-wrap:wrap;gap:.5rem}
+.exp-modal-conn{display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;background:var(--ivory2);border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .18s;font-size:.82rem;color:var(--ink3);text-decoration:none}
+.exp-modal-conn:hover{border-color:var(--gold);color:var(--ink);background:#fff}
+.exp-modal-conn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* COLOR DOT for card */
+.exp-card-cat-badge{position:absolute;top:.8rem;right:.8rem;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);opacity:.6}
+
+/* BACK TO TOP / FOOTER */
+.exp-footer{text-align:center;padding:2rem 1rem 3rem;border-top:1px solid var(--border);color:var(--ink3);font-size:.8rem}
+.exp-footer a{color:var(--gold);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .exp-grid{grid-template-columns:1fr}
+  .exp-modal-props{grid-template-columns:1fr 1fr}
+  .exp-modal{border-radius:12px}
+}
+</style>
 </head>
 <body>
 
-<!-- Simplified header for subpage -->
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+<!-- HEADER SEMPLIFICATO -->
+<header style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
   <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
     <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
       <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
       <span>Olismo Integrato</span>
     </a>
-    <nav>
+    <nav style="display:flex;gap:.8rem;align-items:center">
+      <a href="consulente.html" style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--ink3);text-decoration:none;letter-spacing:.05em">🤖 Consulente AI</a>
       <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
     </nav>
   </div>
 </header>
 
-<main>
-<section id="explorer">
-  <div class="container">
-    <div class="sec-hd">
-      <div class="sec-eye">Motore di Ricerca Relazionale</div>
-      <h2 class="sec-title">Il <em>database</em> interconnesso</h2>
-      <div class="sec-div"></div>
-      <p class="sec-desc">Seleziona un dominio, scegli un elemento e scopri tutte le sue connessioni trasversali con gli altri domini. Ogni elemento rimanda a tutti gli altri.</p>
-    </div>
-    <div class="exp-tabs" id="exp-tabs"><button class="exp-tab active" onclick="swCat(&#39;chakra&#39;)">◉ Chakra</button><button class="exp-tab" onclick="swCat(&#39;cristalli&#39;)">◆ Cristalli</button><button class="exp-tab" onclick="swCat(&#39;enneatipi&#39;)">⬟ Enneatipi</button><button class="exp-tab" onclick="swCat(&#39;frequenze&#39;)">♬ Musica Curativa</button><button class="exp-tab" onclick="swCat(&#39;adattamenti&#39;)">⚙ Adattamenti AT</button><button class="exp-tab" onclick="swCat(&#39;esercizi&#39;)">◎ Esercizi</button><button class="exp-tab" onclick="swCat(&#39;fes&#39;)">✿ Fiori Californiani</button><button class="exp-tab" onclick="swCat(&#39;bush&#39;)">❋ Fiori Australiani</button></div>
-    <div class="exp-body">
-      <div class="exp-list" id="exp-list"><div class="exp-card" onclick="selItem(&#39;c1&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#a83232"></span>Muladhara — Radice</div>
-      <div class="exp-card-sub">Do / 396 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c2&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#c45a22"></span>Svadhisthana — Dolcezza</div>
-      <div class="exp-card-sub">Re / 417 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c3&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#c49a1a"></span>Manipura — Città dei Gioielli</div>
-      <div class="exp-card-sub">Mi / 528 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c4&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#2e7d4f"></span>Anahata — Inattaccabile</div>
-      <div class="exp-card-sub">Fa / 639 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c5&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#1565c0"></span>Vishuddha — Purezza</div>
-      <div class="exp-card-sub">Sol / 741 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c6&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#4527a0"></span>Ajna — Terzo Occhio</div>
-      <div class="exp-card-sub">La / 852 Hz</div>
-    </div><div class="exp-card" onclick="selItem(&#39;c7&#39;)">
-      <div class="exp-card-name"><span class="cdot" style="background:#7b2fa0"></span>Sahasrara — Mille Petali</div>
-      <div class="exp-card-sub">Si / 963 Hz</div>
-    </div></div>
-      <div class="exp-panel" id="exp-panel"><div class="panel-empty"><div class="panel-empty-icon">◈</div><p>Seleziona un elemento per esplorare le sue connessioni</p></div></div>
-    </div>
+<!-- HERO -->
+<div class="exp-header">
+  <div class="exp-header-inner">
+    <div class="exp-eye">✦ Portale Olistico Integrato</div>
+    <h1 class="exp-title">Database <em>Explorer</em></h1>
+    <p class="exp-sub">Esplora le connessioni tra le discipline. Clicca su qualsiasi elemento per vedere come si collega a chakra, enneatipi, cristalli, frequenze e tecniche terapeutiche.</p>
+    <div class="exp-stats" id="exp-stats"></div>
   </div>
-</section>
-</main>
+</div>
 
-<footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:.5rem">Olismo Integrato</div>
-    <div style="font-size:.82rem;color:var(--gold);margin-bottom:.3rem;font-style:italic">Leggere la persona, accompagnare il conflitto.</div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.7);margin-bottom:1.5rem">Portale di Avv. Carlo Alberto Calcagno</div>
-    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;font-size:.82rem">
-      <a href="index.html" style="color:var(--gold);text-decoration:none">🏠 Home</a>
-      <a href="consulente.html" style="color:var(--gold);text-decoration:none">🤖 Consulente AI</a>
-      <a href="mediazione-civile.html" style="color:var(--gold);text-decoration:none">⚖ Mediazione Civile</a>
-      <a href="mediazione-familiare.html" style="color:var(--gold);text-decoration:none">👨‍👩‍👧 Mediazione Familiare</a>
-      <a href="consulente-mediatore.html" style="color:var(--gold);text-decoration:none">🎓 Consulente Mediatore</a>
-      <a href="empowerment-mediazione.html" style="color:var(--gold);text-decoration:none">🌿 Empowerment</a>
-      <a href="psicologia-analogica.html" style="color:var(--gold);text-decoration:none">🔍 Psicologia Analogica</a>
-      <a href="matrice-svalutazione.html" style="color:var(--gold);text-decoration:none">⊘ Matrice</a>
-      <a href="check-integrato.html" style="color:var(--gold);text-decoration:none">✦ Check</a>
-      <a href="guida.html" style="color:var(--gold);text-decoration:none">🗺 Guida</a>
-      <a href="faq.html" style="color:var(--gold);text-decoration:none">❓ FAQ</a>
-      <a href="prenota-consulenza.html" style="color:var(--gold);text-decoration:none">📅 Prenota consulenza</a>
-      <a href="professionisti.html" style="color:var(--gold);text-decoration:none">🤝 Professionisti della rete</a>
-      <a href="chi-sono.html" style="color:var(--gold);text-decoration:none">🧑 Chi sono</a>
-      <a href="metodo.html" style="color:var(--gold);text-decoration:none">◈ Metodo</a>
-    </div>
-    <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
+<!-- SEARCH -->
+<div class="exp-search-wrap">
+  <div class="exp-search-box">
+    <span class="exp-search-icon">🔍</span>
+    <input type="text" id="exp-search" placeholder="Cerca per nome, funzione, disturbo, enneatipo…" autocomplete="off">
+    <button class="exp-search-clear" id="exp-clear" onclick="clearSearch()">✕</button>
   </div>
-</footer>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="exp-cats" id="exp-cats"></div>
+
+<!-- MAIN -->
+<div class="exp-main">
+  <div class="exp-count" id="exp-count"></div>
+  <div class="exp-grid" id="exp-grid"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="exp-footer">
+  <p>© 2016-2026 Avv. Carlo Alberto Calcagno · <a href="index.html">olismo-integrato.it</a> · Genova</p>
+  <p style="margin-top:.3rem">Dati formativi e divulgativi. Non sostituiscono la consulenza medica o psicologica professionale.</p>
+</div>
+
+<!-- MODAL -->
+<div class="exp-modal-overlay" id="exp-modal-overlay" onclick="closeModal(event)">
+  <div class="exp-modal" id="exp-modal">
+    <div class="exp-modal-head">
+      <div class="exp-modal-eye" id="modal-eye"></div>
+      <div class="exp-modal-name" id="modal-name"></div>
+      <div class="exp-modal-short" id="modal-short"></div>
+      <button class="exp-modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="exp-modal-body" id="modal-body"></div>
+  </div>
+</div>
 
 <script src="olismo-core.js" defer></script>
+<script>
+// ═══════════════════════════════════════════════════════
+// EXPLORER ENGINE
+// ═══════════════════════════════════════════════════════
+
+var currentCat = 'all';
+var currentSearch = '';
+
+var CAT_META = {
+  chakra:      {label:'Chakra',      emoji:'🌀', color:'#b8935a'},
+  cristalli:   {label:'Cristalli',   emoji:'💎', color:'#7b9cbf'},
+  enneatipi:   {label:'Enneatipi',   emoji:'⬟',  color:'#c8985a'},
+  frequenze:   {label:'Frequenze',   emoji:'〰️', color:'#5a8a6a'},
+  adattamenti: {label:'Adattamenti AT', emoji:'🧩', color:'#8a5a7a'},
+  esercizi:    {label:'Esercizi',    emoji:'✦',  color:'#7a8a5a'}
+};
+
+// Raccoglie tutti gli item dal DB
+function getAllItems() {
+  if (typeof DB === 'undefined') return [];
+  var all = [];
+  Object.keys(CAT_META).forEach(function(cat) {
+    if (DB[cat]) {
+      DB[cat].forEach(function(item) {
+        all.push(Object.assign({}, item, {_cat: cat}));
+      });
+    }
+  });
+  return all;
+}
+
+// Funzione di ricerca
+function matchSearch(item, q) {
+  if (!q) return true;
+  var fields = [
+    item.name, item.short, item.desc,
+    item.funzione, item.disturbo, item.tema,
+    item.effetto, item.tipo, item.categoria,
+    item.virtu, item.vizio, item.nota, item.elem,
+    (item.enneatipi || []).join(' '),
+    (item.chakra || []).join(' ')
+  ].filter(Boolean).join(' ').toLowerCase();
+  return q.toLowerCase().split(/\s+/).every(function(w) {
+    return fields.includes(w);
+  });
+}
+
+// Render stats
+function renderStats(all) {
+  var el = document.getElementById('exp-stats');
+  var parts = Object.keys(CAT_META).map(function(cat) {
+    var count = DB[cat] ? DB[cat].length : 0;
+    return '<span class="exp-stat">' + CAT_META[cat].emoji + ' <strong>' + count + '</strong> ' + CAT_META[cat].label + '</span>';
+  });
+  el.innerHTML = parts.join('');
+}
+
+// Render tabs
+function renderTabs(all) {
+  var el = document.getElementById('exp-cats');
+  var html = '<button class="exp-cat ' + (currentCat === 'all' ? 'active' : '') + '" onclick="setCat(\'all\')">Tutti <span class="exp-cat-count">' + all.length + '</span></button>';
+  Object.keys(CAT_META).forEach(function(cat) {
+    var count = all.filter(function(i){ return i._cat === cat; }).length;
+    var active = currentCat === cat ? 'active' : '';
+    html += '<button class="exp-cat ' + active + '" onclick="setCat(\'' + cat + '\')">' +
+      CAT_META[cat].emoji + ' ' + CAT_META[cat].label +
+      ' <span class="exp-cat-count">' + count + '</span></button>';
+  });
+  el.innerHTML = html;
+}
+
+// Render cards
+function renderCards() {
+  var all = getAllItems();
+  var filtered = all.filter(function(item) {
+    var catOk = currentCat === 'all' || item._cat === currentCat;
+    var searchOk = matchSearch(item, currentSearch);
+    return catOk && searchOk;
+  });
+
+  var countEl = document.getElementById('exp-count');
+  countEl.innerHTML = '<strong>' + filtered.length + '</strong> elementi' + (currentSearch ? ' per "<em>' + escHtml(currentSearch) + '</em>"' : '');
+
+  var grid = document.getElementById('exp-grid');
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="exp-empty"><div class="exp-empty-ic">🔍</div><p>Nessun elemento trovato.</p><p style="margin-top:.5rem;font-size:.82rem">Prova con termini diversi: chakra, cristallo, enneatipo, frequenza…</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(function(item) {
+    var meta = CAT_META[item._cat];
+    var color = item.color || meta.color;
+    var desc = item.desc ? item.desc.substring(0, 120) + (item.desc.length > 120 ? '…' : '') : (item.funzione || item.effetto || item.tema || '');
+    var tags = buildTags(item);
+    return '<div class="exp-card" data-cat="' + item._cat + '" data-id="' + item.id + '" style="--card-color:' + color + '" onclick="openModal(\'' + item._cat + '\',\'' + item.id + '\')">' +
+      '<div class="exp-card-cat-badge">' + meta.emoji + ' ' + meta.label + '</div>' +
+      '<div class="exp-card-head">' +
+        '<div class="exp-card-dot" style="background:' + color + '"></div>' +
+        '<div>' +
+          '<div class="exp-card-short">' + escHtml(item.short || meta.label) + '</div>' +
+          '<div class="exp-card-name">' + escHtml(item.name) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="exp-card-desc">' + escHtml(desc) + '</div>' +
+      (tags.length ? '<div class="exp-card-tags">' + tags.map(function(t){ return '<span class="exp-tag ' + t.cls + '">' + escHtml(t.label) + '</span>'; }).join('') + '</div>' : '') +
+    '</div>';
+  }).join('');
+}
+
+function buildTags(item) {
+  var tags = [];
+  // Chakra connections
+  if (item.chakra && item.chakra.length && DB.chakra) {
+    item.chakra.slice(0,2).forEach(function(cid) {
+      var c = DB.chakra.find(function(x){ return x.id === cid; });
+      if (c) tags.push({label: c.short, cls: 'exp-tag-chakra'});
+    });
+  }
+  // Enneatipi
+  if (item.enneatipi && item.enneatipi.length && DB.enneatipi) {
+    item.enneatipi.slice(0,2).forEach(function(eid) {
+      var e = DB.enneatipi.find(function(x){ return x.id === eid; });
+      if (e) tags.push({label: e.short, cls: 'exp-tag-conn'});
+    });
+  }
+  // Tipo / categoria
+  if (item.tipo) tags.push({label: item.tipo, cls: ''});
+  if (item.centro) tags.push({label: item.centro, cls: ''});
+  if (item.elem) tags.push({label: item.elem, cls: ''});
+  return tags.slice(0,4);
+}
+
+// ═══ MODAL ═══════════════════════════════════════════
+
+function openModal(cat, id) {
+  if (typeof DB === 'undefined') return;
+  var item = DB[cat] && DB[cat].find(function(x){ return x.id === id; });
+  if (!item) return;
+  var meta = CAT_META[cat];
+  var color = item.color || meta.color;
+
+  document.getElementById('modal-eye').textContent = meta.emoji + ' ' + meta.label;
+  document.getElementById('modal-name').textContent = item.name;
+  document.getElementById('modal-short').textContent = item.short || '';
+
+  var body = '';
+
+  // Descrizione
+  if (item.desc) {
+    body += '<div class="exp-modal-desc">' + escHtml(item.desc) + '</div>';
+  }
+
+  // Proprietà principali
+  var props = buildModalProps(item, cat);
+  if (props.length) {
+    body += '<div class="exp-modal-section"><div class="exp-modal-section-title">Proprietà</div><div class="exp-modal-props">';
+    props.forEach(function(p) {
+      body += '<div class="exp-modal-prop"><div class="exp-modal-prop-label">' + escHtml(p.label) + '</div><div class="exp-modal-prop-val">' + escHtml(p.val) + '</div></div>';
+    });
+    body += '</div></div>';
+  }
+
+  // Connessioni
+  var conns = buildModalConns(item);
+  if (conns.length) {
+    body += '<div class="exp-modal-section"><div class="exp-modal-section-title">Connessioni</div><div class="exp-modal-conns">';
+    conns.forEach(function(c) {
+      body += '<span class="exp-modal-conn" onclick="openModal(\'' + c.cat + '\',\'' + c.id + '\')">' +
+        '<span class="exp-modal-conn-dot" style="background:' + c.color + '"></span>' +
+        '<span>' + escHtml(c.name) + '</span>' +
+      '</span>';
+    });
+    body += '</div></div>';
+  }
+
+  // Rimedi/note extra
+  if (item.rimedi) {
+    body += '<div class="exp-modal-section"><div class="exp-modal-section-title">Rimedi consigliati</div>';
+    Object.keys(item.rimedi).forEach(function(k) {
+      body += '<div style="margin-bottom:.6rem"><div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:.25rem">' + k.toUpperCase() + '</div>';
+      body += '<div style="font-size:.85rem;color:var(--ink3);line-height:1.5">' + escHtml(item.rimedi[k]) + '</div></div>';
+    });
+    body += '</div>';
+  }
+
+  // Chiusura con link al consulente
+  body += '<div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--ivory2);border-radius:8px;border:1px solid var(--border)">' +
+    '<div style="font-size:.78rem;color:var(--ink3);margin-bottom:.5rem">Vuoi approfondire in base al tuo profilo personale?</div>' +
+    '<a href="consulente.html?prompt=' + encodeURIComponent('Parlami di ' + item.name + ' in relazione al mio profilo') + '" style="display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--gold);color:#fff;border-radius:16px;font-size:.8rem;font-weight:600;text-decoration:none;font-family:Outfit,sans-serif">🤖 Chiedi al Consulente AI →</a>' +
+  '</div>';
+
+  document.getElementById('modal-body').innerHTML = body;
+  document.getElementById('exp-modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildModalProps(item, cat) {
+  var props = [];
+  if (item.pos) props.push({label:'Posizione', val: item.pos});
+  if (item.elem) props.push({label:'Elemento', val: item.elem});
+  if (item.nota) props.push({label:'Nota/Freq.', val: item.nota});
+  if (item.ghiandola) props.push({label:'Ghiandola', val: item.ghiandola});
+  if (item.demone) props.push({label:'Demone', val: item.demone});
+  if (item.diritto) props.push({label:'Diritto', val: item.diritto});
+  if (item.tema) props.push({label:'Tema', val: item.tema});
+  if (item.funzione) props.push({label:'Funzione', val: item.funzione});
+  if (item.disturbo) props.push({label:'Indicato per', val: item.disturbo});
+  if (item.effetto) props.push({label:'Effetto', val: item.effetto});
+  if (item.strumenti) props.push({label:'Strumenti', val: item.strumenti});
+  if (item.tipo) props.push({label:'Tipo', val: item.tipo});
+  if (item.centro) props.push({label:'Centro', val: item.centro});
+  if (item.virtu) props.push({label:'Virtù', val: item.virtu});
+  if (item.vizio) props.push({label:'Vizio', val: item.vizio});
+  if (item.integrazione) props.push({label:'Integrazione', val: item.integrazione});
+  if (item.disintegrazione) props.push({label:'Disintegrazione', val: item.disintegrazione});
+  if (item.categoria) props.push({label:'Categoria', val: item.categoria});
+  if (item.eta) props.push({label:'Età sviluppo', val: item.eta});
+  if (item.spinta) props.push({label:'Spinta AT', val: item.spinta});
+  if (item.copione) props.push({label:'Copione', val: item.copione});
+  if (item.portaAperta) props.push({label:'Porta aperta', val: item.portaAperta});
+  return props;
+}
+
+function buildModalConns(item) {
+  var conns = [];
+  if (typeof DB === 'undefined') return conns;
+
+  // Chakra
+  if (item.chakra && DB.chakra) {
+    item.chakra.forEach(function(cid) {
+      var c = DB.chakra.find(function(x){ return x.id === cid; });
+      if (c) conns.push({cat:'chakra', id:c.id, name:c.short, color:c.color});
+    });
+  }
+  // Cristalli
+  if (item.cristalli && DB.cristalli) {
+    item.cristalli.forEach(function(cid) {
+      var c = DB.cristalli.find(function(x){ return x.id === cid; });
+      if (c) conns.push({cat:'cristalli', id:c.id, name:c.name, color:c.color || '#7b9cbf'});
+    });
+  }
+  // Enneatipi
+  if (item.enneatipi && DB.enneatipi) {
+    item.enneatipi.forEach(function(eid) {
+      var e = DB.enneatipi.find(function(x){ return x.id === eid; });
+      if (e) conns.push({cat:'enneatipi', id:e.id, name:e.short, color:'#c8985a'});
+    });
+  }
+  // Frequenze
+  if (item.frequenze && DB.frequenze) {
+    item.frequenze.forEach(function(fid) {
+      var f = DB.frequenze.find(function(x){ return x.id === fid; });
+      if (f) conns.push({cat:'frequenze', id:f.id, name:f.short, color:'#5a8a6a'});
+    });
+  }
+  // Esercizi
+  if (item.esercizi && DB.esercizi) {
+    item.esercizi.forEach(function(eid) {
+      var e = DB.esercizi.find(function(x){ return x.id === eid; });
+      if (e) conns.push({cat:'esercizi', id:e.id, name:e.short, color:'#7a8a5a'});
+    });
+  }
+  // Adattamenti
+  if (item.adattamenti && DB.adattamenti) {
+    item.adattamenti.forEach(function(aid) {
+      var a = DB.adattamenti.find(function(x){ return x.id === aid; });
+      if (a) conns.push({cat:'adattamenti', id:a.id, name:a.short, color:'#8a5a7a'});
+    });
+  }
+
+  return conns.slice(0, 12);
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('exp-modal-overlay')) return;
+  document.getElementById('exp-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ═══ CONTROLS ════════════════════════════════════════
+
+function setCat(cat) {
+  currentCat = cat;
+  renderTabs(getAllItems());
+  renderCards();
+  window.scrollTo({top:200, behavior:'smooth'});
+}
+
+function clearSearch() {
+  document.getElementById('exp-search').value = '';
+  currentSearch = '';
+  document.getElementById('exp-clear').style.display = 'none';
+  renderCards();
+}
+
+// ═══ UTILS ═══════════════════════════════════════════
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ═══ INIT ════════════════════════════════════════════
+
+function initExplorer() {
+  if (typeof DB === 'undefined') {
+    setTimeout(initExplorer, 100);
+    return;
+  }
+  var all = getAllItems();
+  renderStats(all);
+  renderTabs(all);
+  renderCards();
+
+  // Search handler
+  var searchInput = document.getElementById('exp-search');
+  var clearBtn = document.getElementById('exp-clear');
+  searchInput.addEventListener('input', function() {
+    currentSearch = this.value.trim();
+    clearBtn.style.display = currentSearch ? 'flex' : 'none';
+    renderCards();
+  });
+
+  // Keyboard close modal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+// Aspetta che olismo-core.js (defer) carichi il DB
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initExplorer, 200);
+});
+</script>
+
 </body>
 </html>

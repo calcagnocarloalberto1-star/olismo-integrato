@@ -1,0 +1,131 @@
+name: Validate site before deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check HTML files — no junk after </html>
+        run: |
+          ERRORS=0
+          for file in *.html; do
+            [ -f "$file" ] || continue
+            # Find line of </html>
+            CLOSE=$(grep -n "</html>" "$file" | tail -1 | cut -d: -f1)
+            if [ -z "$CLOSE" ]; then
+              echo "❌ MISSING </html> in $file"
+              ERRORS=$((ERRORS+1))
+              continue
+            fi
+            TOTAL=$(wc -l < "$file")
+            # Allow up to 2 blank lines after </html>
+            EXTRA=$((TOTAL - CLOSE))
+            if [ "$EXTRA" -gt 2 ]; then
+              echo "❌ JUNK TEXT after </html> in $file (line $CLOSE of $TOTAL — $EXTRA extra lines)"
+              # Show the offending lines
+              tail -n +$((CLOSE+1)) "$file" | head -5
+              ERRORS=$((ERRORS+1))
+            else
+              echo "✅ $file"
+            fi
+          done
+          if [ "$ERRORS" -gt 0 ]; then
+            echo ""
+            echo "══════════════════════════════════════════"
+            echo "ERRORE: $ERRORS file HTML corrotti."
+            echo "Probabilmente è stato incollato testo da"
+            echo "una chat esterna (AITOPIA, GPT, Grok...)."
+            echo "Il file deve terminare con </html>."
+            echo "══════════════════════════════════════════"
+            exit 1
+          fi
+
+      - name: Check JS files — no junk after closing statement
+        run: |
+          ERRORS=0
+          for file in *.js; do
+            [ -f "$file" ] || continue
+            # Check for common junk text markers
+            if grep -qE "^(Spiega|Chat|Nuova conversazione|AITOPIA|GPT-4o|Grok|DeepSeek|Chiedimi qualsiasi)" "$file"; then
+              LINE=$(grep -nE "^(Spiega|Chat|Nuova conversazione|AITOPIA|GPT-4o|Grok|DeepSeek|Chiedimi qualsiasi)" "$file" | head -1 | cut -d: -f1)
+              echo "❌ JUNK TEXT in $file at line $LINE"
+              ERRORS=$((ERRORS+1))
+            else
+              echo "✅ $file"
+            fi
+          done
+          if [ "$ERRORS" -gt 0 ]; then
+            echo ""
+            echo "══════════════════════════════════════════"
+            echo "ERRORE: $ERRORS file JS corrotti da testo"
+            echo "spazzatura incollato da chat esterne."
+            echo "══════════════════════════════════════════"
+            exit 1
+          fi
+
+      - name: Check internal links exist
+        run: |
+          ERRORS=0
+          for file in *.html; do
+            [ -f "$file" ] || continue
+            # Extract all href values pointing to local .html files
+            grep -oP 'href="[^"#][^"]*\.html"' "$file" | \
+              sed 's/href="//;s/"//' | \
+              sort -u | while read link; do
+                # Strip query strings and anchors
+                TARGET=$(echo "$link" | cut -d'?' -f1 | cut -d'#' -f1)
+                if [ ! -f "$TARGET" ]; then
+                  echo "❌ BROKEN LINK: $file → $TARGET"
+                  echo "BROKEN_LINK_FOUND" >> /tmp/link_errors.txt
+                fi
+              done
+          done
+          if [ -f /tmp/link_errors.txt ]; then
+            echo ""
+            echo "══════════════════════════════════════════"
+            echo "ERRORE: link interni rotti trovati."
+            echo "Aggiornare i link o creare le pagine."
+            echo "══════════════════════════════════════════"
+            exit 1
+          fi
+          echo "✅ Tutti i link interni sono validi"
+
+      - name: Check sitemap URLs match existing files
+        run: |
+          if [ ! -f sitemap.xml ]; then
+            echo "⚠️  sitemap.xml non trovata — skip"
+            exit 0
+          fi
+          ERRORS=0
+          grep -oP '(?<=<loc>)https://olismo-integrato\.it/[^<]+(?=</loc>)' sitemap.xml | while read url; do
+            FILE=$(echo "$url" | sed 's|https://olismo-integrato.it/||')
+            # Skip root URL
+            [ -z "$FILE" ] && continue
+            if [ ! -f "$FILE" ]; then
+              echo "❌ Sitemap punta a file inesistente: $FILE"
+              echo "SITEMAP_ERROR" >> /tmp/sitemap_errors.txt
+            fi
+          done
+          if [ -f /tmp/sitemap_errors.txt ]; then
+            echo "══════════════════════════════════════════"
+            echo "ERRORE: sitemap.xml contiene URL non validi"
+            echo "══════════════════════════════════════════"
+            exit 1
+          fi
+          echo "✅ Sitemap valida"
+
+      - name: Summary
+        if: success()
+        run: |
+          echo ""
+          echo "════════════════════════════════"
+          echo "✅ Tutte le verifiche superate."
+          echo "   Deploy autorizzato."
+          echo "════════════════════════════════"

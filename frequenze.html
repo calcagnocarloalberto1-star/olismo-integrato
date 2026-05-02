@@ -846,6 +846,21 @@
 
       <div class="suno-grid">
         <div class="suno-field">
+          <label for="sa-frequenza">Frequenza solfeggio <span class="opt">(auto se vuoto)</span></label>
+          <select id="sa-frequenza">
+            <option value="">— Automatica (in base al profilo) —</option>
+            <option value="396">396 Hz · Radice · Libera paura e colpa</option>
+            <option value="417">417 Hz · Sacrale · Cambiamento e fluidità</option>
+            <option value="528">528 Hz · Plesso solare · Riparazione e gioia</option>
+            <option value="639">639 Hz · Cuore · Connessione e armonia</option>
+            <option value="741">741 Hz · Gola · Espressione e intuizione</option>
+            <option value="852">852 Hz · Terzo occhio · Risveglio interiore</option>
+            <option value="963">963 Hz · Corona · Coscienza cosmica</option>
+            <option value="432">432 Hz · Sistemico · Accordatura della natura</option>
+          </select>
+        </div>
+
+        <div class="suno-field">
           <label for="sa-stile">Stile musicale</label>
           <select id="sa-stile">
             <option value="">Automatico (in base all'enneatipo)</option>
@@ -1183,6 +1198,7 @@ Spiega brevemente in italiano il razionale olistico.`;
     const bush = val('sa-bush');
     const stile = val('sa-stile');
     const bpm = val('sa-bpm');
+    const freq = val('sa-frequenza');
     const acc = val('sa-accordatura');
     const dur = val('sa-durata');
     const var_ = val('sa-varianti');
@@ -1205,6 +1221,7 @@ Spiega brevemente in italiano il razionale olistico.`;
       `Parametri musicali richiesti:`,
       stile ? `• Stile: ${stile}` : `• Stile: scegli tu in base all'enneatipo`,
       `• BPM target: ${bpm}`,
+      freq ? `• Frequenza solfeggio: ${freq} Hz — USA QUESTA (scelta esplicita dall'utente, NON cambiarla)` : `• Frequenza solfeggio: scegli tu quella più coerente col profilo`,
       `• Accordatura: ${acc} Hz`,
       `• Durata: ${dur}`,
       `• Numero di varianti: ${var_}`,

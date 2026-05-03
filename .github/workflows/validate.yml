@@ -51,6 +51,27 @@ jobs:
             exit 1
           fi
 
+      - name: Check CSS files — no junk text
+        run: |
+          ERRORS=0
+          for file in *.css; do
+            [ -f "$file" ] || continue
+            if grep -qE "^(Spiega|Chat|Nuova conversazione|AITOPIA|GPT-4o|Grok|DeepSeek|Chiedimi qualsiasi)" "$file"; then
+              LINE=$(grep -nE "^(Spiega|Chat|Nuova conversazione|AITOPIA|GPT-4o|Grok|DeepSeek|Chiedimi qualsiasi)" "$file" | head -1 | cut -d: -f1)
+              echo "❌ JUNK TEXT in $file at line $LINE"
+              ERRORS=$((ERRORS+1))
+            else
+              echo "✅ $file"
+            fi
+          done
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "══════════════════════════════════════════"
+            echo "ERRORE: file CSS corrotti da testo spazzatura."
+            echo "Il CSS rotto causa problemi di layout su mobile."
+            echo "══════════════════════════════════════════"
+            exit 1
+          fi
+
       - name: Check JS files — no junk after closing statement
         run: |
           ERRORS=0

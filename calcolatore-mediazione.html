@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///C:/Users/carlo/Downloads/calcolatore-mediazione.html -->
+<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calcolatore Costi Mediazione Familiare — D.M. 151/2023</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Calcolatore Costi Mediazione Familiare — D.M. 151_2023_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F7F1E8;
+    --cream-soft: #FBF6EE;
+    --paper: #FFFBF4;
+    --ink: #1F1B16;
+    --ink-soft: #4A423A;
+    --muted: #8A7F72;
+    --line: #E4D9C6;
+    --teal: #1F4E4A;
+    --teal-deep: #163834;
+    --copper: #B8593D;
+    --copper-soft: #D88A6E;
+    --gold: #C99A4A;
+    --shadow: 0 2px 8px rgba(31, 27, 22, 0.04), 0 12px 36px rgba(31, 27, 22, 0.06);
+    --shadow-lift: 0 4px 14px rgba(31, 27, 22, 0.08), 0 24px 48px rgba(31, 27, 22, 0.10);
+    --radius: 14px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0}
+
+  html, body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body{
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184, 89, 61, 0.06), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(31, 78, 74, 0.05), transparent 60%);
+    min-height: 100vh;
+    padding: clamp(20px, 4vw, 60px) clamp(16px, 3vw, 40px);
+  }
+
+  /* Subtle paper grain */
+  body::before{
+    content:'';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header{
+    margin-bottom: clamp(28px, 4vw, 48px);
+    text-align: left;
+    position: relative;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 14px;
+  }
+  .eyebrow::before{
+    content:'';
+    width: 28px; height: 1px;
+    background: var(--copper);
+  }
+  h1{
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(28px, 4.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+  h1 em{
+    font-style: italic;
+    color: var(--teal);
+    font-variation-settings: "opsz" 144;
+  }
+  .subtitle{
+    margin-top: 14px;
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 62ch;
+  }
+  .subtitle strong{
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Layout */
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 920px){
+    .grid{
+      grid-template-columns: 1.05fr 1fr;
+      gap: 32px;
+    }
+  }
+
+  .panel{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: clamp(22px, 3vw, 36px);
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .panel-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+    color: var(--teal-deep);
+  }
+  .panel-sub{
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 26px;
+  }
+
+  /* Form */
+  .field{
+    margin-bottom: 20px;
+  }
+  label.field-label{
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .hint{
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  select, input[type="number"], input[type="text"]{
+    width: 100%;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    transition: all 0.18s ease;
+    font-weight: 400;
+  }
+  select:focus, input:focus{
+    outline: none;
+    border-color: var(--teal);
+    background: var(--paper);
+    box-shadow: 0 0 0 3px rgba(31, 78, 74, 0.10);
+  }
+  select{
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%231F4E4A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+  }
+
+  .row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* Toggle pills for regime */
+  .pills{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px;
+  }
+  .pill{
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--ink-soft);
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  .pill:hover{ color: var(--ink); }
+  .pill.active{
+    background: var(--teal);
+    color: var(--cream);
+    box-shadow: 0 2px 8px rgba(31, 78, 74, 0.18);
+  }
+
+  /* Checkboxes */
+  .check-group{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .check{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .check input{
+    appearance: none;
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--muted);
+    border-radius: 4px;
+    background: var(--paper);
+    cursor: pointer;
+    margin-top: 2px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .check input:checked{
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .check input:checked::after{
+    content:'✓';
+    position: absolute;
+    inset: 0;
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check span small{
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .check.disabled{
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Cassa info badge */
+  .cassa-info{
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: rgba(31, 78, 74, 0.05);
+    border-left: 3px solid var(--teal);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .cassa-info strong{
+    color: var(--teal-deep);
+    font-weight: 500;
+  }
+
+  /* Custom cassa override */
+  .override{
+    margin-top: 10px;
+    display: none;
+  }
+  .override.show{ display: block; }
+
+  /* Results panel */
+  .results-panel{
+    background: linear-gradient(180deg, var(--paper) 0%, var(--cream-soft) 100%);
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+  @media (max-width: 919px){
+    .results-panel{ position: static; }
+  }
+
+  .breakdown{
+    display: flex;
+    flex-direction: column;
+  }
+  .line{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 14px;
+  }
+  .line:last-of-type{ border-bottom: none; }
+  .line .label{
+    color: var(--ink-soft);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .line .label .pct{
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .line .value{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    font-size: 16px;
+  }
+  .line.subtotal{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 4px;
+    padding: 14px 0;
+  }
+  .line.subtotal .label{ font-weight: 500; color: var(--ink); }
+  .line.muted .value, .line.muted .label{ color: var(--muted); }
+  .line.negative .value{ color: var(--copper); }
+  .line.negative .value::before{ content: '−\00a0'; }
+
+  .totals{
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .total-card{
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .total-card.primary{
+    background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    border-color: var(--teal-deep);
+    color: var(--cream);
+    box-shadow: var(--shadow-lift);
+  }
+  .total-card .lbl{
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .total-card .val{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .total-card .note{
+    font-size: 12px;
+    margin-top: 4px;
+    opacity: 0.75;
+    font-style: italic;
+  }
+
+  /* Footer / Actions */
+  .actions{
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink-soft);
+    transition: all 0.18s ease;
+  }
+  .btn:hover{ border-color: var(--teal); color: var(--teal-deep); transform: translateY(-1px);}
+  .btn.primary{
+    background: var(--copper);
+    color: var(--cream);
+    border-color: var(--copper);
+  }
+  .btn.primary:hover{
+    background: #a44e34;
+    border-color: #a44e34;
+  }
+
+  /* Disclaimer */
+  .disclaimer{
+    margin-top: 32px;
+    padding: 22px 24px;
+    border-radius: var(--radius);
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .disclaimer h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--teal-deep);
+    margin-bottom: 8px;
+  }
+  .disclaimer p + p{ margin-top: 8px; }
+  .disclaimer a{ color: var(--copper); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;}
+
+  /* Print */
+  @media print {
+    body{ background: white; padding: 20px; }
+    body::before{ display: none; }
+    .actions, .pills, select, input{ display: none !important; }
+    .panel{ box-shadow: none; border-color: #ccc; }
+    .results-panel{ position: static; }
+  }
+
+  /* Footer credits */
+  .credits{
+    margin-top: 36px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .credits .sep{ margin: 0 8px; opacity: 0.5; }
+
+  /* Subtle entrance animation */
+  .panel{ animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .panel:nth-child(2){ animation-delay: 0.1s; }
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(12px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Strumento di calcolo · olismo-integrato.it</span>
+    <h1>Costi della <em>mediazione familiare</em><br>secondo il D.M. 151/2023</h1>
+    <p class="subtitle">Calcola in trasparenza il compenso per il percorso di mediazione tenendo conto della <strong>categoria professionale</strong> del mediatore (Legge 4/2013, UNI 11644, D.M. 151/2023), del <strong>regime fiscale</strong> e della cassa di previdenza di appartenenza.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- INPUT PANEL -->
+    <section class="panel" aria-labelledby="input-title">
+      <h2 class="panel-title" id="input-title">Parametri del percorso</h2>
+      <p class="panel-sub">Compila i campi seguenti: il preventivo si aggiorna in tempo reale.</p>
+
+      <div class="field">
+        <label class="field-label" for="categoria">Categoria professionale del mediatore</label>
+        <select id="categoria">
+          <option value="avvocato">Avvocato (Cassa Forense)</option>
+          <option value="psicologo">Psicologo / Psicoterapeuta (ENPAP)</option>
+          <option value="assistente_sociale">Assistente sociale (Gestione Separata INPS)</option>
+          <option value="pedagogista">Pedagogista / Educatore (Gestione Separata INPS)</option>
+          <option value="sociologo">Sociologo / Antropologo (Gestione Separata INPS)</option>
+          <option value="counselor">Counselor / Operatore non ordinistico (Gestione Separata INPS)</option>
+          <option value="altro">Altra categoria — personalizza la cassa</option>
+        </select>
+        <div class="cassa-info" id="cassa-info">Iscritto alla <strong>Cassa Forense</strong>. Contributo integrativo del <strong>4%</strong> esposto in fattura (rivalsa). In regime forfettario il contributo si applica comunque.</div>
+        <div class="override" id="override-block">
+          <label class="field-label" for="cassa-custom" style="margin-top:14px">Aliquota cassa personalizzata (%)</label>
+          <input type="number" id="cassa-custom" min="0" max="20" step="0.1" value="4">
+          <small class="hint">Es. 4% per Gestione Separata, 2% ENPAP, 4% Cassa Forense, ecc.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Regime fiscale</label>
+        <div class="pills" role="tablist" id="regime-pills">
+          <div class="pill active" data-regime="ordinario" role="tab">Ordinario (con IVA)</div>
+          <div class="pill" data-regime="forfettario" role="tab">Forfettario</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="field-label" for="onorario">Onorario per seduta (€)</label>
+          <input type="number" id="onorario" min="0" step="10" value="120">
+        </div>
+        <div class="field">
+          <label class="field-label" for="sedute">Numero di sedute</label>
+          <input type="number" id="sedute" min="1" step="1" value="6">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Opzioni aggiuntive</label>
+        <div class="check-group">
+          <label class="check" id="ritenuta-wrap">
+            <input type="checkbox" id="ritenuta">
+            <span>
+              Applica ritenuta d'acconto 20%
+              <small>Solo se il cliente è sostituto d'imposta (azienda, studio, ente). Nei rapporti tra privati la ritenuta non si applica.</small>
+            </span>
+          </label>
+          <label class="check disabled" id="bollo-wrap">
+            <input type="checkbox" id="bollo" checked="" disabled="">
+            <span>
+              Marca da bollo €2 (forfettario, fattura &gt; €77,47)
+              <small>Obbligatoria sulle fatture in regime forfettario per importi superiori alla soglia. Può essere addebitata al cliente.</small>
+            </span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="cassa-fatturare" checked="">
+            <span>
+              Esponi contributo cassa in fattura
+              <small>I forfettari iscritti alla Gestione Separata INPS di norma <em>non</em> espongono la rivalsa in fattura. Avvocati e psicologi sì.</small>
+            </span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS PANEL -->
+    <section class="panel results-panel" aria-labelledby="results-title">
+      <h2 class="panel-title" id="results-title">Riepilogo del preventivo</h2>
+      <p class="panel-sub" id="results-sub">Regime ordinario · Avvocato · Cassa Forense (CPA)</p>
+
+      <div class="breakdown" id="breakdown">
+      <div class="line ">
+        <div class="label">
+          <span>Onorario professionale</span>
+          <span class="pct">· 6 sedute × 120,00&nbsp;€</span>
+        </div>
+        <div class="value">720,00&nbsp;€</div>
+      </div>
+    
+      <div class="line ">
+        <div class="label">
+          <span>Contributo Cassa Forense (CPA)</span>
+          <span class="pct">· 4% sul compenso</span>
+        </div>
+        <div class="value">28,80&nbsp;€</div>
+      </div>
+    
+      <div class="line subtotal">
+        <div class="label">
+          <span>Imponibile IVA</span>
+          
+        </div>
+        <div class="value">748,80&nbsp;€</div>
+      </div>
+    
+      <div class="line ">
+        <div class="label">
+          <span>IVA</span>
+          <span class="pct">· 22% sull'imponibile</span>
+        </div>
+        <div class="value">164,74&nbsp;€</div>
+      </div>
+    </div>
+
+      <div class="totals" id="totals">
+      <div class="total-card primary">
+        <div class="lbl">Totale a carico del cliente</div>
+        <div class="val">913,54&nbsp;€</div>
+        
+      </div>
+    
+      <div class="total-card">
+        <div class="lbl">Totale fattura</div>
+        <div class="val">913,54&nbsp;€</div>
+        <div class="note">comprensivo di IVA e contributo cassa</div>
+      </div>
+    
+      <div class="total-card">
+        <div class="lbl">Compenso netto al mediatore</div>
+        <div class="val">720,00&nbsp;€</div>
+        <div class="note">al netto di IVA (neutra)</div>
+      </div>
+    </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="window.print()">Stampa preventivo</button>
+        <button class="btn" id="reset-btn">Azzera</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <h3>Note di trasparenza e riferimenti normativi</h3>
+    <p><strong>Categorie professionali</strong> — Il D.M. 151/2023, art. 5, ammette all'esercizio della mediazione familiare i possessori di laurea magistrale in Giurisprudenza (LMG/01), Psicologia (LM-51), Servizio Sociale (LM-87/SNT), Scienze Pedagogiche (LM-85), Scienze dell'Educazione (LM-50, LM-57, LM-93), Sociologia (LM-88), Antropologia (LM-1), oltre ai professionisti già qualificati ai sensi della L. 4/2013 e UNI 11644.</p>
+    <p><strong>Aliquote di cassa</strong> — Le percentuali precaricate (Cassa Forense 4%, ENPAP 2%, Gestione Separata 4%) sono quelle ordinarie alla data di pubblicazione: per situazioni particolari (regimi agevolati, pensionati attivi, doppia iscrizione) usa il campo "Altra categoria" e personalizza l'aliquota.</p>
+    <p><strong>Regime forfettario</strong> — In regime forfettario non si applica IVA, non si subisce la ritenuta d'acconto e si applica la marca da bollo da €2 sulle fatture superiori a €77,47. La rivalsa previdenziale è esposta in fattura per le casse private (Forense, ENPAP) ma di norma non per la Gestione Separata INPS.</p>
+    <p><strong>Avvertenza</strong> — Il presente strumento ha funzione informativa e di stima. Il preventivo definitivo viene formalizzato per iscritto ai sensi dell'art. 12 D.M. 151/2023 nell'incontro informativo. Per il calcolo dell'imposta sostitutiva forfettaria (5%/15%) e degli oneri previdenziali a carico del professionista si rinvia al commercialista di fiducia.</p>
+  </div>
+
+  <p class="credits">
+    Avv. Carlo Alberto Calcagno · Mediatore familiare<span class="sep">·</span>olismo-integrato.it<span class="sep">·</span>mediaresenzaconfini.org
+  </p>
+</div>
+
+<script>
+  // ============================================================
+  // CONFIGURAZIONE CATEGORIE PROFESSIONALI
+  // ============================================================
+  const CATEGORIE = {
+    avvocato: {
+      label: "Avvocato",
+      cassa: 4,
+      cassaNome: "Cassa Forense (CPA)",
+      gestioneSeparata: false,
+      info: "Iscritto alla <strong>Cassa Forense</strong>. Contributo integrativo del <strong>4%</strong> esposto in fattura (rivalsa). In regime forfettario il contributo si applica comunque."
+    },
+    psicologo: {
+      label: "Psicologo",
+      cassa: 2,
+      cassaNome: "ENPAP",
+      gestioneSeparata: false,
+      info: "Iscritto a <strong>ENPAP</strong>. Contributo integrativo del <strong>2%</strong> esposto in fattura. Anche in regime forfettario la rivalsa viene applicata."
+    },
+    assistente_sociale: {
+      label: "Assistente sociale",
+      cassa: 4,
+      cassaNome: "INPS Gestione Separata",
+      gestioneSeparata: true,
+      info: "Iscritto alla <strong>Gestione Separata INPS</strong>. Rivalsa facoltativa del <strong>4%</strong>. In regime forfettario di norma <em>non</em> si espone in fattura."
+    },
+    pedagogista: {
+      label: "Pedagogista / Educatore",
+      cassa: 4,
+      cassaNome: "INPS Gestione Separata",
+      gestioneSeparata: true,
+      info: "Professione disciplinata dalla L. 205/2017. Contributo previdenziale alla <strong>Gestione Separata INPS</strong> con rivalsa facoltativa del <strong>4%</strong>."
+    },
+    sociologo: {
+      label: "Sociologo / Antropologo",
+      cassa: 4,
+      cassaNome: "INPS Gestione Separata",
+      gestioneSeparata: true,
+      info: "Professione non ordinistica ai sensi della L. 4/2013. Contributo alla <strong>Gestione Separata INPS</strong>, rivalsa del <strong>4%</strong>."
+    },
+    counselor: {
+      label: "Counselor / Operatore",
+      cassa: 4,
+      cassaNome: "INPS Gestione Separata",
+      gestioneSeparata: true,
+      info: "Figura professionale ex L. 4/2013. Contributo alla <strong>Gestione Separata INPS</strong>, rivalsa del <strong>4%</strong>."
+    },
+    altro: {
+      label: "Altra categoria",
+      cassa: 4,
+      cassaNome: "Personalizzata",
+      gestioneSeparata: true,
+      info: "Imposta manualmente la percentuale del contributo cassa nel campo sottostante.",
+      custom: true
+    }
+  };
+
+  // ============================================================
+  // STATE
+  // ============================================================
+  const state = {
+    categoria: 'avvocato',
+    cassaCustom: 4,
+    regime: 'ordinario',
+    onorario: 120,
+    sedute: 6,
+    ritenuta: false,
+    bollo: true,
+    cassaInFattura: true
+  };
+
+  // ============================================================
+  // DOM REFS
+  // ============================================================
+  const $ = (id) => document.getElementById(id);
+  const categoriaEl = $('categoria');
+  const cassaInfoEl = $('cassa-info');
+  const overrideBlock = $('override-block');
+  const cassaCustomEl = $('cassa-custom');
+  const onorarioEl = $('onorario');
+  const seduteEl = $('sedute');
+  const ritenutaEl = $('ritenuta');
+  const bolloEl = $('bollo');
+  const cassaFatturaEl = $('cassa-fatturare');
+  const breakdownEl = $('breakdown');
+  const totalsEl = $('totals');
+  const resultsSubEl = $('results-sub');
+  const ritenutaWrap = $('ritenuta-wrap');
+  const bolloWrap = $('bollo-wrap');
+
+  // ============================================================
+  // FORMATTING
+  // ============================================================
+  const fmt = (n) => new Intl.NumberFormat('it-IT', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(n);
+
+  // ============================================================
+  // RENDER CASSA INFO
+  // ============================================================
+  function renderCassaInfo(){
+    const cat = CATEGORIE[state.categoria];
+    cassaInfoEl.innerHTML = cat.info;
+    if(cat.custom){
+      overrideBlock.classList.add('show');
+    } else {
+      overrideBlock.classList.remove('show');
+      cassaCustomEl.value = cat.cassa;
+    }
+  }
+
+  // ============================================================
+  // CALCOLO
+  // ============================================================
+  function calcola(){
+    const cat = CATEGORIE[state.categoria];
+    const aliquotaCassa = cat.custom ? state.cassaCustom : cat.cassa;
+    const onorarioTotale = state.onorario * state.sedute;
+
+    // Logica: in forfettario + Gestione Separata, di default la rivalsa NON va in fattura
+    const cassaEsposta = state.cassaInFattura;
+    const contributoCassa = cassaEsposta ? onorarioTotale * (aliquotaCassa / 100) : 0;
+
+    let imponibileIva = 0, iva = 0, ritenuta = 0, bollo = 0;
+    let totaleFattura = 0, pagatoCliente = 0, nettoMediatore = 0;
+
+    if(state.regime === 'ordinario'){
+      // Imponibile IVA = compenso + cassa
+      imponibileIva = onorarioTotale + contributoCassa;
+      iva = imponibileIva * 0.22;
+      // Ritenuta 20% sul compenso (prassi prevalente)
+      ritenuta = state.ritenuta ? onorarioTotale * 0.20 : 0;
+      bollo = 0; // niente bollo in regime ordinario
+      totaleFattura = imponibileIva + iva;
+      pagatoCliente = totaleFattura - ritenuta;
+      nettoMediatore = onorarioTotale - ritenuta; // IVA è neutra per il professionista
+    } else {
+      // Forfettario
+      imponibileIva = 0;
+      iva = 0;
+      ritenuta = 0;
+      // Marca da bollo se fattura > 77.47
+      const importoFattura = onorarioTotale + contributoCassa;
+      bollo = (state.bollo && importoFattura > 77.47) ? 2 : 0;
+      totaleFattura = importoFattura + bollo;
+      pagatoCliente = totaleFattura;
+      nettoMediatore = onorarioTotale; // l'imposta sostitutiva si calcola a parte
+    }
+
+    return {
+      cat, aliquotaCassa, onorarioTotale, contributoCassa,
+      imponibileIva, iva, ritenuta, bollo, cassaEsposta,
+      totaleFattura, pagatoCliente, nettoMediatore
+    };
+  }
+
+  // ============================================================
+  // RENDER RISULTATI
+  // ============================================================
+  function render(){
+    const r = calcola();
+    const isOrd = state.regime === 'ordinario';
+
+    // Sub-titolo
+    resultsSubEl.textContent = isOrd
+      ? `Regime ordinario · ${r.cat.label} · ${r.cat.cassaNome}`
+      : `Regime forfettario · ${r.cat.label} · ${r.cat.cassaNome}`;
+
+    // Disabilita opzioni non pertinenti
+    if(isOrd){
+      ritenutaWrap.classList.remove('disabled');
+      bolloWrap.classList.add('disabled');
+      bolloEl.disabled = true;
+      ritenutaEl.disabled = false;
+    } else {
+      ritenutaWrap.classList.add('disabled');
+      bolloWrap.classList.remove('disabled');
+      bolloEl.disabled = false;
+      ritenutaEl.disabled = true;
+    }
+
+    // Breakdown
+    let html = '';
+    html += line('Onorario professionale', `${state.sedute} sedute × ${fmt(state.onorario)}`, fmt(r.onorarioTotale));
+
+    if(r.cassaEsposta && r.contributoCassa > 0){
+      html += line(`Contributo ${r.cat.cassaNome}`, `${r.aliquotaCassa}% sul compenso`, fmt(r.contributoCassa));
+    } else if(!r.cassaEsposta){
+      html += line('Contributo cassa', 'non esposto in fattura', '—', 'muted');
+    }
+
+    if(isOrd){
+      html += line('Imponibile IVA', '', fmt(r.imponibileIva), 'subtotal');
+      html += line('IVA', '22% sull\'imponibile', fmt(r.iva));
+      if(r.ritenuta > 0){
+        html += line('Ritenuta d\'acconto', '20% sul compenso', fmt(r.ritenuta), 'negative');
+      }
+    } else {
+      if(r.bollo > 0){
+        html += line('Marca da bollo', 'forfettario, fattura > €77,47', fmt(r.bollo));
+      }
+      html += line('Imposta sostitutiva', 'a carico del professionista (5%/15%)', '—', 'muted');
+    }
+
+    breakdownEl.innerHTML = html;
+
+    // Totali
+    let totalsHtml = '';
+
+    totalsHtml += `
+      <div class="total-card primary">
+        <div class="lbl">Totale a carico del cliente</div>
+        <div class="val">${fmt(r.pagatoCliente)}</div>
+        ${r.ritenuta > 0 ? `<div class="note">al netto della ritenuta d'acconto trattenuta dal cliente</div>` : ''}
+      </div>
+    `;
+
+    totalsHtml += `
+      <div class="total-card">
+        <div class="lbl">Totale fattura</div>
+        <div class="val">${fmt(r.totaleFattura)}</div>
+        ${isOrd ? `<div class="note">comprensivo di IVA${r.cassaEsposta ? ' e contributo cassa' : ''}</div>`
+                 : `<div class="note">${r.cassaEsposta ? 'comprensivo di contributo cassa' : 'senza esposizione cassa'}${r.bollo > 0 ? ' e marca da bollo' : ''}</div>`}
+      </div>
+    `;
+
+    totalsHtml += `
+      <div class="total-card">
+        <div class="lbl">Compenso netto al mediatore</div>
+        <div class="val">${fmt(r.nettoMediatore)}</div>
+        <div class="note">${isOrd
+          ? (r.ritenuta > 0 ? 'al netto di IVA (neutra) e ritenuta' : 'al netto di IVA (neutra)')
+          : 'lordo di imposta sostitutiva e contributi previdenziali'}</div>
+      </div>
+    `;
+
+    totalsEl.innerHTML = totalsHtml;
+  }
+
+  function line(label, sublabel, value, modifier=''){
+    return `
+      <div class="line ${modifier}">
+        <div class="label">
+          <span>${label}</span>
+          ${sublabel ? `<span class="pct">· ${sublabel}</span>` : ''}
+        </div>
+        <div class="value">${value}</div>
+      </div>
+    `;
+  }
+
+  // ============================================================
+  // EVENTS
+  // ============================================================
+  categoriaEl.addEventListener('change', e => {
+    state.categoria = e.target.value;
+    const cat = CATEGORIE[state.categoria];
+    state.cassaCustom = cat.cassa;
+    // Default cassaInFattura: false se gestione separata + forfettario, true altrimenti
+    state.cassaInFattura = !(cat.gestioneSeparata && state.regime === 'forfettario');
+    cassaFatturaEl.checked = state.cassaInFattura;
+    renderCassaInfo();
+    render();
+  });
+
+  cassaCustomEl.addEventListener('input', e => {
+    state.cassaCustom = parseFloat(e.target.value) || 0;
+    render();
+  });
+
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      state.regime = p.dataset.regime;
+      // Aggiorna default cassaInFattura
+      const cat = CATEGORIE[state.categoria];
+      if(cat.gestioneSeparata && state.regime === 'forfettario'){
+        state.cassaInFattura = false;
+        cassaFatturaEl.checked = false;
+      } else if(state.regime === 'ordinario'){
+        state.cassaInFattura = true;
+        cassaFatturaEl.checked = true;
+      }
+      render();
+    });
+  });
+
+  onorarioEl.addEventListener('input', e => { state.onorario = parseFloat(e.target.value) || 0; render(); });
+  seduteEl.addEventListener('input', e => { state.sedute = parseInt(e.target.value) || 1; render(); });
+  ritenutaEl.addEventListener('change', e => { state.ritenuta = e.target.checked; render(); });
+  bolloEl.addEventListener('change', e => { state.bollo = e.target.checked; render(); });
+  cassaFatturaEl.addEventListener('change', e => { state.cassaInFattura = e.target.checked; render(); });
+
+  $('reset-btn').addEventListener('click', () => {
+    state.categoria = 'avvocato';
+    state.cassaCustom = 4;
+    state.regime = 'ordinario';
+    state.onorario = 120;
+    state.sedute = 6;
+    state.ritenuta = false;
+    state.bollo = true;
+    state.cassaInFattura = true;
+
+    categoriaEl.value = 'avvocato';
+    onorarioEl.value = 120;
+    seduteEl.value = 6;
+    ritenutaEl.checked = false;
+    bolloEl.checked = true;
+    cassaFatturaEl.checked = true;
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('.pill[data-regime="ordinario"]').classList.add('active');
+    renderCassaInfo();
+    render();
+  });
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  renderCassaInfo();
+  render();
+</script>
+
+
+</body></html>

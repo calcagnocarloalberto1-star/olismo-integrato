@@ -276,6 +276,10 @@ em{color:var(--fam3);font-style:italic}
 .norm-card em{color:var(--fam2);font-size:.82rem;font-style:normal;font-weight:500;display:block;margin-bottom:.2rem}
 .norm-card p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
 
+/* ─── Calcolatore costi (iframe wrapper) ─── */
+.calc-iframe-mf{width:100%;height:1550px;border:1px solid var(--border);border-radius:var(--rmd);background:var(--ivory);display:block;margin-top:1.2rem;box-shadow:0 4px 16px rgba(42,26,74,.06)}
+@media(max-width:940px){.calc-iframe-mf{height:2600px}}
+
 /* ─── Related tools ─── */
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
 .tool-card{display:block;padding:1.2rem;background:white;border:1.5px solid var(--border);border-radius:var(--rmd);text-decoration:none;color:inherit;transition:all .25s;position:relative}
@@ -287,6 +291,7 @@ em{color:var(--fam3);font-style:italic}
 .tool-card.mat::before{background:#9333ea}
 .tool-card.dan::before{background:var(--fam3)}
 .tool-card.ext::before{background:var(--gold)}
+.tool-card.calc::before{background:var(--gold3)}
 .tool-card .tc-ic{font-size:1.5rem;margin-bottom:.4rem}
 .tool-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--med2);margin-bottom:.3rem}
 .tool-card p{font-size:.78rem;color:var(--ink3);line-height:1.5;margin:0}
@@ -505,7 +510,6 @@ em{color:var(--fam3);font-style:italic}
           <td><span class="typ-name">💰 Aspetti patrimoniali (assegno, mantenimento, casa)</span></td>
           <td>Il denaro come simbolo dell'amore dato/negato, del ruolo non riconosciuto, della sicurezza perduta. Mai solo questione economica.</td>
           <td>
-            <a href="https://calcolomediazione.it" target="_blank" rel="noopener" class="tool-link gold">🧮 Calcoli tecnici ↗</a>
             <a href="matrice-svalutazione.html" class="tool-link mat">⊘ Svalutazione Significato</a>
             <a href="transazioni.html" class="tool-link">🔁 Transazioni simbiotiche</a>
           </td>
@@ -687,11 +691,24 @@ em{color:var(--fam3);font-style:italic}
       <p>Principio guida: bigenitorialità e interesse superiore del minore. La mediazione familiare deve sempre tenerlo come bussola, al di là delle richieste delle parti.</p>
     </div>
     <div class="norm-card">
+      <strong>D.M. 151/2023</strong>
+      <em>Indennità del mediatore</em>
+      <p>Disciplina criteri e parametri delle indennità di mediazione (artt. 7-8): tariffa base per parte/incontro, moltiplicatore per complessità, spese forfettarie. Vedi calcolatore qui sotto.</p>
+    </div>
+    <div class="norm-card">
       <strong>Regolamento UE 2019/1111 (Bruxelles II ter)</strong>
       <em>Famiglia transfrontaliera</em>
       <p>Per separazioni con elementi di transfrontalità (partner di nazionalità diversa, residenza in paesi diversi, figli con doppia cittadinanza).</p>
     </div>
   </div>
+</div>
+
+<!-- ═══ CALCOLATORE COSTI MEDIAZIONE FAMILIARE D.M. 151/2023 ═══ -->
+<div class="med-section" id="calcolatore-costi">
+  <h2>🧮 <em>Calcola</em> i costi del percorso</h2>
+  <p>Il calcolatore applica le tariffe ex <strong>artt. 7 e 8 del D.M. 27 ottobre 2023, n. 151</strong>: tariffa-base di € 40 a parte per ogni incontro (art. 8 c. 4), moltiplicatore per complessità e conflittualità della controversia (art. 8 c. 5), spese forfettarie del 21% (art. 8 c. 6). Su questa base si applicano poi cassa professionale, regime fiscale (IVA o forfettario), eventuale ritenuta d'acconto e marca da bollo.</p>
+  <p>Restituisce il <strong>costo per seduta</strong> e il <strong>totale del percorso</strong> sia per ciascun mediando sia complessivo per il mediatore (somma delle due parti). Lo strumento ha funzione informativa e di stima ai sensi dell'art. 7 c. 2 D.M. 151/2023; il preventivo definitivo viene formalizzato per iscritto al conferimento dell'incarico.</p>
+  <iframe src="calcolatore-mediazione.html" title="Calcolatore costi mediazione familiare D.M. 151/2023" class="calc-iframe-mf" loading="lazy"></iframe>
 </div>
 
 <!-- ═══ STRUMENTI COLLEGATI ═══ -->
@@ -729,10 +746,15 @@ em{color:var(--fam3);font-style:italic}
       <h4>Compatibilità enneagrammica</h4>
       <p>Database delle 81 combinazioni di coppia con dinamiche tipiche, punti di rottura, strade evolutive.</p>
     </a>
+    <a href="calcolatore-mediazione.html" class="tool-card calc">
+      <div class="tc-ic">🧮</div>
+      <h4>Calcolatore costi D.M. 151/2023</h4>
+      <p>Strumento interno per stimare costi della mediazione familiare ex artt. 7-8: tariffa base, complessità, spese, cassa, IVA, ritenuta, bollo.</p>
+    </a>
     <a href="https://calcolomediazione.it" target="_blank" rel="noopener" class="tool-card ext">
       <div class="tc-ic">🧮</div>
       <h4>CalcoloMediazione.it</h4>
-      <p>Portale partner per calcoli patrimoniali, assegno di mantenimento, credito d'imposta.</p>
+      <p>Portale partner dedicato ai calcoli delle indennità in <strong>mediazione civile e commerciale</strong> ex D.M. 151/2023 (organismi di mediazione, materie obbligatorie, condizione di procedibilità).</p>
       <div class="tc-ext">↗ Sito partner</div>
     </a>
     <a href="https://enneagrammaevolutivo.it/mediazione/familiare" target="_blank" rel="noopener" class="tool-card ext">

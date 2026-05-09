@@ -22,7 +22,26 @@
   Termini d'uso completi: https://olismo-integrato.it/termini-uso.html
   
   Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-c1d4e8a6
-═══════════════════════════════════════════════════════════════════════
+
+  ───────────────────────────────────────────────────────────────────
+  AGGIORNAMENTO maggio 2026 — Knowledge module v2025-05
+  Integrazione dei nuovi contenuti del manuale «Leggere la persona,
+  accompagnare il conflitto» v6: astrologia vedica yukteswariana
+  (Parte 4, §§7.1-7.6), astrologia cosmica e Yuga (cap. 7ter),
+  hardware/wetware (Parte 2). 
+  
+  L'integrazione è realizzata via global object window.OLISMO_KB_UPDATE
+  caricato PRIMA di olismo-core.js. Per attivare l'estensione del
+  system prompt, in olismo-core.js sostituire la definizione del
+  prompt con qualcosa come:
+  
+      const SYSTEM = (window.augmentSystemPrompt
+                      ? window.augmentSystemPrompt(BASE_SYSTEM)
+                      : BASE_SYSTEM);
+  
+  Se non si modifica olismo-core.js, il knowledge resta disponibile
+  ma inattivo (variabili globali innocue).
+  ───────────────────────────────────────────────────────────────────
 -->
 
 <html lang="it">
@@ -37,15 +56,15 @@
 <meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
 
 <title>Consulente AI Olistica — Olismo Integrato | Carlo Alberto Calcagno</title>
-<meta name="description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<meta name="description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori, astrologia vedica yukteswariana.">
 <link rel="canonical" href="https://olismo-integrato.it/consulente.html">
 <meta property="og:title" content="Consulente AI Olistica — Olismo Integrato">
-<meta property="og:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<meta property="og:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori, astrologia vedica yukteswariana.">
 <meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Consulente AI Olistica — Olismo Integrato">
-<meta name="twitter:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori.">
+<meta name="twitter:description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori, astrologia vedica yukteswariana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -74,14 +93,14 @@
       <div class="sec-eye">Consulente Olistica AI</div>
       <h2 class="sec-title">Fai una <em>domanda</em> al database</h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach, AT, Bach, FES, Bush, VAK, frequenze, meditazione, alimentazione, pranoterapia ed esercizi terapeutici. Descriviti e ricevi indicazioni personalizzate.</p>
+      <p class="sec-desc">L'assistente conosce tutto il database: chakra, cristalli, enneatipi, fiori di Bach/FES/Bush, AT, VAK, frequenze, meditazione, alimentazione, pranoterapia, esercizi terapeutici e — dal maggio 2026 — astrologia vedica yukteswariana, astrologia cosmica dei Yuga, hardware/wetware del cervello. Descriviti e ricevi indicazioni personalizzate.</p>
     </div>
     <div class="chat-wrap">
       <div class="chat-header">
         <div class="chat-header-icon">◉</div>
         <div class="chat-header-text">
           <h3>Consulente Olistica</h3>
-          <p>Integrazione di chakra · cristalli · enneatipi · AT · Bach/FES/Bush · VAK · frequenze · meditazione · alimentazione · pranoterapia</p>
+          <p>Integrazione di chakra · cristalli · enneatipi · AT · Bach/FES/Bush · VAK · frequenze · meditazione · alimentazione · pranoterapia · Jyotish · Yuga · hardware/wetware</p>
         </div>
         <div class="chat-status"><span class="chat-status-dot"></span>Attiva</div>
         <button class="chat-clear-btn" onclick="if(confirm(&#39;Cancellare tutta la conversazione?&#39;))clearChatHistory()" title="Nuova chat">🗑 Nuova</button>
@@ -102,19 +121,15 @@
         <span class="sugg" onclick="askSugg(this)">Quali cristalli per dormire meglio?</span>
         <span class="sugg" onclick="askSugg(this)">Ho difficoltà ad esprimermi, quale chakra lavoro?</span>
         <span class="sugg" onclick="askSugg(this)">Sono un tipo 8 in conflitto con il mio partner tipo 9</span>
+        <span class="sugg" onclick="askSugg(this)">Cos&#39;è la Jyotish secondo Yukteswar?</span>
+        <span class="sugg" onclick="askSugg(this)">In che Yuga siamo oggi e cosa significa?</span>
       </div>
       <div class="chat-messages" id="chat-messages"><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
-    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
+    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione, esercizi terapeutici e — dalla primavera 2026 — la cornice della <strong>Jyotish yukteswariana</strong> (astrologia vedica come studio della reazione, non dell'influenza), il ciclo dei <strong>Yuga</strong> e la fisiologia del cervello (hardware vs wetware, sei leve neuro-comunicative).</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
     <div class="msg-time">15:17<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
   </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
-    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione ed esercizi terapeutici.</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
+    <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione, esercizi terapeutici e — dalla primavera 2026 — la cornice della <strong>Jyotish yukteswariana</strong>, il ciclo dei <strong>Yuga</strong> e la fisiologia del cervello (hardware vs wetware).</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
     <div class="msg-time">14:31<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
-  </div></div><div class="msg user"><div class="msg-avatar user">T</div><div>
-    <div class="msg-bubble user">Ho completato il Test del Vettore Comunicativo: vettore primario GA+. Analizza il mio stile comunicativo e collega alla mia personalità AT.</div>
-    <div class="msg-time">14:38</div>
-  </div></div><div class="msg ai"><div class="msg-avatar ai">◉</div><div>
-    <div class="msg-bubble ai"><p># <strong>ANALISI DEL VETTORE GA+ — IL TUO STILE COMUNICATIVO</strong></p><p>Ciao! Vedo dal tuo profilo che sei un <strong>T5 Schizoide</strong> con adattamento primario <strong>Creativo-Sognatore (72%)</strong>, e il tuo vettore primario è <strong>GA+</strong> (Genitore Affettivo Positivo).</p><p>Questa è una combinazione affascinante e — detto onestamente — *non frequentissima* nel T5. Scopriamo perché.</p><p>---</p><p>## <strong>Chi è GA+?</strong></p><p><strong>GA = Genitore Affettivo</strong>  <br>Il GA è lo stato dell'io che *nutre, permette, abbraccia incondizionatamente*. Quando è positivo (GA+), sei in grado di:<br>• Ascoltare senza giudicare<br>• Offrire calore autentico<br>• Creare spazi psicologici sicuri<br>• Comunicare con tenerezza e permessi ("va bene sentire quello che senti")<br>• Essere *presente* senza forzare</p><p><strong>Il paradosso T5</strong>: il Grande Saggio tende naturalmente a staccarsi, a osservare da distanza, a razionalizzare. Ma il tuo GA+ suggerisce che <strong>hai sviluppato una capacità straordinaria di empatia calda pur mantenendo la tua lucidità critica</strong>. Non è facile.</p><p>---</p><p>## <strong>Cosa significa per la TUA comunicazione?</strong><br></p><div class="ai-table-wrap"><table class="ai-table"><thead><tr><th>Aspetto</th><th>Manifestazione</th></tr></thead><tbody><tr><td><strong>Ascolto</strong></td><td>Profondo e non-direttivo; senti il dolore dell'altro senza assorbirtelo</td></tr><tr><td><strong>Linguaggio</strong></td><td>Lento, ponderato, permissivo ("è normale sentirsi così")</td></tr><tr><td><strong>Chakra energetico</strong></td><td>4° Anahata (Cuore) + 5° Vishuddha (Gola) — testa nel cuore</td></tr><tr><td><strong>Rischio</strong></td><td>Eccesso di tolleranza che può essere confuso con passività o accettazione di violazioni</td></tr><tr><td><strong>Forza</strong></td><td>Crei spazi dove le persone si sentono *autorizzate a essere fragili*</td></tr></tbody></table></div><br>Con il tuo canale <strong>Visivo (68%)</strong>, comunichi *immagini di sicurezza e accoglienza* — non con parole melense, ma con silenzi significativi e sguardi che dicono "sto con te".<p></p><p>---</p><p>## <strong>Collegamento all'Adattamento Schizoide</strong></p><p>Il tuo <strong>Schizoide Creativo-Sognatore (72%)</strong> ha imparato presto a <strong>fare da solo</strong> perché non poteva fidarsi completamente dell'ambiente. Ma il GA+ mostra che <strong>hai scelto di creare un ambiente diverso per gli altri</strong>: quello che volevi per te da piccolo.</p><p><strong>Chakra di forza (c5 — Vishuddha)</strong> + <strong>GA+</strong> = sei capace di *esprimere la verità con tenerezza*. Dici cose difficili, ma in modo che l'altro non si senta demolito.</p><p>---</p><p>## <strong>Suggerimento pratico immediato</strong></p><p>Monitora questo pattern: il tuo GA+ potrebbe portarti a <strong>sopprimere bisogni propri</strong> per non "disturbare" l'altro (eredità schizoide). Pratica dicendo:<br>• *"Io ho bisogno di..."* (non "potremmo" ma "io")<br>• Accorda il Genitore Affettivo con l'Adulto (c6 Ajna): visione + critica costruttiva</p><p><strong>Fiore di Bach consigliato</strong>: <strong>Water Violet</strong> (isolamento T5) + <strong>Agrimony</strong> (maschera allegra) per mantenere il confine tra nutrimento e auto-negazione.</p><p>---</p><p><strong>Come senti questo? Riconosci questo equilibrio difficile tra il bisogno di spazio (T5) e il desiderio di creare sicurezza negli altri (GA+)?</strong></p></div>
-    <div class="msg-time">14:39<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
   </div></div></div>
       <div id="chat-profile-badge" style="display: block; font-size: 0.72rem; color: var(--gold); background: rgba(184, 147, 90, 0.1); border: 1px solid rgba(184, 147, 90, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; margin: 0.4rem 0.8rem; text-align: center; line-height: 1.5;">📊 Profilo rilevato: Check · 9 Frutti · Test AT · VAK · Egogramma · Dieta</div>
 <div class="chat-input-area">
@@ -123,7 +138,7 @@
           <span>Invia</span><span style="font-size:1rem">→</span>
         </button>
       </div>
-      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico o dello psicologo.</div>
+      <div class="chat-footer-note">Le indicazioni hanno scopo formativo e non sostituiscono il parere del medico, dello psicologo o del consulente astrologico professionista.</div>
     </div>
   </div>
 </section>
@@ -154,6 +169,216 @@
     <div style="font-size:.72rem;color:rgba(249,245,239,.5)">© 2016-2026 Carlo Alberto Calcagno · olismo-integrato.it · Genova, Italia · Tutti i diritti riservati · <a href="termini-uso.html" style="color:rgba(249,245,239,.7)">📜 Termini d'uso</a></div>
   </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     KNOWLEDGE MODULE v2025-05 — Aggiornamento del database del Consulente AI
+     ═══════════════════════════════════════════════════════════════════════
+     Caricato PRIMA di olismo-core.js per garantire la disponibilità delle
+     variabili globali. Definisce:
+       - window.OLISMO_KB_UPDATE_2025_05  (oggetto strutturato)
+       - window.augmentSystemPrompt(base) (funzione helper)
+       - window.OLISMO_KB_VERSION         ("2025-05-09")
+     
+     Per integrare in olismo-core.js, sostituire la definizione del system
+     prompt con: 
+        const SYSTEM = (typeof window.augmentSystemPrompt === "function")
+                       ? window.augmentSystemPrompt(BASE_SYSTEM_PROMPT)
+                       : BASE_SYSTEM_PROMPT;
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  "use strict";
+
+  // ════════════════════════════════════════════════════════════════════
+  // MODULO 1 — ASTROLOGIA VEDICA YUKTESWARIANA (Manuale, Parte 4 §§7.1-7.6)
+  // ════════════════════════════════════════════════════════════════════
+  var astrologiaVedica = [
+    "═══════════════════════════════════════════════════════════════",
+    "ASTROLOGIA VEDICA YUKTESWARIANA (cap. 7 Parte 4 del manuale)",
+    "═══════════════════════════════════════════════════════════════",
+    "",
+    "REGISTRO. Quando rispondi a domande su astrologia vedica, Jyotish, Graha, chakra-pianeti, Yuga, mantieni un registro DESCRITTIVO e SIMBOLICO, non prescrittivo. La cornice di riferimento è quella di Sri Yukteswar Giri (La Scienza Sacra, 1894) e Paramahansa Yogananda (Autobiografia di uno yogi, cap. 16 «Sconfiggere gli astri»). Evita di fare oroscopi o predizioni; non sostituisci il consulto astrologico professionale.",
+    "",
+    "DEFINIZIONE YUKTESWARIANA. L'astrologia non è «lo studio del modo in cui i pianeti influenzano le nostre vite» (formulazione che presuppone passività del soggetto), ma «lo studio della reazione dell'uomo agli stimoli dei pianeti» (Yukteswar, in Yogananda, cit.). La differenza è epistemologica e operativa: nel primo caso il soggetto è un effetto, nel secondo è un agente che produce una reazione educabile, modificabile, evolvibile. Cornice analoga a quella della teoria polivagale di Porges: lo stimolo arriva, la reazione dipende dalla struttura interna, la struttura interna è lavorabile.",
+    "",
+    "GRAHA (sanscrito: «ciò che afferra», «ciò che prende»). Non è il pianeta inteso come corpo fisico, ma un'onda di energia, un campo di forze che agisce per risonanza. La Jyotish si occupa della QUALITÀ del tempo, non della sua quantità: ogni configurazione globale dei Graha è unica, irripetibile, e dà al momento la sua qualità specifica.",
+    "",
+    "MAPPATURA CHAKRA-GRAHA secondo la TRADIZIONE DI YOGANANDA (distinta da quella di Tony Nader, anch'essa nel manuale):",
+    "  • 1° chakra (muladhara) → Saturno",
+    "  • 2° chakra (svadhisthana) → Giove",
+    "  • 3° chakra (manipura) → Marte",
+    "  • 4° chakra (anahata) → Venere",
+    "  • 5° chakra (vishuddha) → Mercurio",
+    "  • 6° chakra (ajna), polarità negativa → Luna",
+    "  • 6° chakra (ajna), polarità positiva → Sole",
+    "  • 7° chakra (sahasrara) → punto di liberazione (moksha), oltre la sfera dei Graha",
+    "",
+    "KARMA E OROSCOPO. Karma come «semi» depositati nei chakra. L'oroscopo è una «fotografia del karma»: inalterabile passato, probabile futuro. Il futuro non è scritto; è probabile sulla base dei semi deposti. Gli UPAYA (rimedi) sono shock evolutivi che agiscono come il fuoco che tosta il seme: una volta tostato, il seme non germoglia più. Il Kriya Yoga di Yogananda è descritto in questa cornice come tecnica di tostatura dei semi karmici.",
+    "",
+    "PENSARE IN VERTICALE. I Graha non sono semplici pianeti: sono principi cosmici che operano simultaneamente su livelli diversi. Esempio: Saturno = pianeta + sacrificio + stambecco + nero + sabato + costrizione + struttura + tempo che mette alla prova. Non confondere il livello pianeta-fisico con il livello principio-archetipico: sono due piani della stessa realtà che la Jyotish lega per analogia di vibrazione.",
+    "",
+    "═══════════════════════════════════════════════════════════════",
+    "ASTROLOGIA COSMICA E YUGA (cap. 7ter del manuale)",
+    "═══════════════════════════════════════════════════════════════",
+    "",
+    "Ciclo dei 24.000 anni secondo Yukteswar: Kali Yuga (ferro) → Dvapara (bronzo) → Treta (argento) → Satya (oro) → discendente → Kali ascendente. Diversamente dal calcolo tradizionale indù delle ere lunghe, Yukteswar propone un ciclo «umano» legato alla precessione degli equinozi e alla distanza del sistema solare dal centro galattico (la civiltà evolve quando il sistema solare si avvicina al centro galattico, regredisce quando se ne allontana).",
+    "",
+    "Secondo Yukteswar, il Kali Yuga ascendente si è chiuso intorno al 1700. Siamo attualmente in DVAPARA YUGA ASCENDENTE: fase di scontro fra paradigma materialista (che si esaurisce) e paradigma energetico-relazionale (che si afferma). L'incertezza percepita socialmente — disorientamento, conflitti di valori, transizione tecnologica — è coerente con questa fase di transizione («otri nuovi» del Vangelo di Matteo 9,17: il vino nuovo non si mette in otri vecchi, perché si rompono).",
+    "",
+    "La proposta di Yogananda per attraversare la transizione: comunità di fratellanza mondiale, Kriya Yoga come tecnica di accelerazione evolutiva, dialogo fra le tradizioni spirituali autentiche.",
+    "",
+    "PER IL LAVORO RELAZIONALE. La cornice dei Yuga aiuta a contestualizzare disagi diffusi (ansia generazionale, perdita di senso, conflitti su valori-base) come parte di una transizione di paradigma, non come patologie individuali isolate.",
+    "",
+    "═══════════════════════════════════════════════════════════════",
+    "CAVEAT EPISTEMOLOGICO (importante)",
+    "═══════════════════════════════════════════════════════════════",
+    "",
+    "Quando rispondi su questi temi, premetti SEMPRE che si tratta di una cornice INTERPRETATIVA-SIMBOLICA, non di un sistema scientificamente verificabile. Il valore del modello è EURISTICO (aiuta a pensare la persona in chiave verticale e dinamica), non predittivo. Per consulti astrologici personali, la persona deve rivolgersi a un astrologo professionista; tu offri solo la cornice culturale e simbolica.",
+    "",
+    "REGOLA DI INGAGGIO: se l'utente chiede «mi fai un oroscopo», «cosa dicono gli astri della mia separazione», «predizione», DECLINA gentilmente. Spiega che l'assistente AI offre la cornice teorica della Jyotish yukteswariana ma non esegue letture astrali individuali. Rinvia al manuale (cap. 7-7ter) e a un astrologo qualificato per il consulto personale.",
+    "",
+    "Per il caveat epistemologico generale (anche su polivagale, enneatipi, ecc.) il riferimento è alla §35.4 del manuale, Parte 13."
+  ].join("\n");
+
+  // ════════════════════════════════════════════════════════════════════
+  // MODULO 2 — HARDWARE / WETWARE E COMUNICAZIONE PERSUASIVA (Parte 2)
+  // ════════════════════════════════════════════════════════════════════
+  var hardwareWetware = [
+    "═══════════════════════════════════════════════════════════════",
+    "HARDWARE / WETWARE E COMUNICAZIONE PERSUASIVA (Parte 2 del manuale)",
+    "═══════════════════════════════════════════════════════════════",
+    "",
+    "IL CERVELLO COME WETWARE, NON COME HARDWARE. Il cervello biologico non esegue programmi: li riscrive continuamente. L'analogia computer→cervello è didatticamente utile per parlare di input, elaborazione, output, ma il cervello differisce dal computer per difetto e per eccesso: plasticità, contestualità, capacità di riscrivere le proprie regole, dipendenza dalla rete sociale e dal corpo intero.",
+    "",
+    "MODELLO TRIADICO DI MACLEAN — usato come METAFORA DIDATTICA, non come anatomia stretta. Tre livelli evolutivi sovrapposti che cooperano e talvolta competono:",
+    "  • Cervello rettiliano: sopravvivenza, territorio, gerarchia, ritmo, ripetizione",
+    "  • Cervello limbico: emozione, memoria emotiva, attaccamento, gioco",
+    "  • Neocorteccia: analisi, simbolo, pianificazione, narrazione di sé",
+    "Sotto stress acuto, la regola del blocco fa scendere il controllo dai livelli superiori a quelli inferiori (la neocorteccia perde lucidità, parla il limbico o il rettiliano).",
+    "",
+    "CINQUE MARCE DELLE ONDE CEREBRALI:",
+    "  • Beta (13-30 Hz): veglia attiva, problem-solving, conversazione tecnica",
+    "  • Alpha (8-13 Hz): rilassamento vigile, ascolto integrato, presenza",
+    "  • Theta (4-8 Hz): immaginazione, ipnosi leggera, meditazione profonda",
+    "  • Delta (0,5-4 Hz): sonno profondo, riparazione",
+    "  • Gamma (>30 Hz): integrazione, insight, esperienze di unità",
+    "Ogni «marcia» ha la sua funzione: non si tratta di privilegiarne una.",
+    "",
+    "DISTONIA ESSERE / AVERE.",
+    "  • Modalità ESSERE: presenza, contatto, qui-e-ora, gratuità, riconoscimento",
+    "  • Modalità AVERE: possesso, controllo, accumulo, prestazione, produttività",
+    "Il lavoro relazionale — in mediazione, in counseling, nell'auto-conoscenza — è spesso un transito dalla modalità Avere alla modalità Essere. Senza demonizzare Avere: serve, ma non basta.",
+    "",
+    "SEI LEVE NEURO-COMUNICATIVE DI RENVOISÉ E MORIN (per il cervello rettiliano dell'altro):",
+    "  1. EGOCENTRICO: parla di chi ascolta, non di te. Il rettiliano risponde solo alla rilevanza per la propria sopravvivenza.",
+    "  2. CONTRASTO: prima/dopo, con/senza, scelta A vs scelta B. Il rettiliano decide per opposti.",
+    "  3. TANGIBILE: concreto, verificabile, non astratto. Parla di cose, gesti, scene, non di concetti.",
+    "  4. INIZIO E FINE: la parte centrale viene dimenticata. Apertura e chiusura sono le posizioni forti.",
+    "  5. VISIVO: l'occhio è collegato direttamente al cervello rettiliano. Le immagini valgono mille parole.",
+    "  6. EMOZIONE: l'emozione decide, la ragione razionalizza la decisione.",
+    "Queste leve si applicano nella COSTRUZIONE DEI MESSAGGI, non nella manipolazione delle persone. Sono strumenti dell'arte di comunicare con chiarezza ed efficacia."
+  ].join("\n");
+
+  // ════════════════════════════════════════════════════════════════════
+  // ASSEMBLAGGIO DEL KNOWLEDGE BASE
+  // ════════════════════════════════════════════════════════════════════
+  var fullText = [
+    "",
+    "═══════════════════════════════════════════════════════════════",
+    "ESTENSIONI DEL DATABASE — Aggiornamento maggio 2026 (v2025-05)",
+    "Fonte: Manuale «Leggere la persona, accompagnare il conflitto» v6",
+    "Avv. Carlo Alberto Calcagno · olismo-integrato.it",
+    "═══════════════════════════════════════════════════════════════",
+    "",
+    astrologiaVedica,
+    "",
+    hardwareWetware,
+    "",
+    "═══════════════════════════════════════════════════════════════",
+    "FINE ESTENSIONE v2025-05",
+    "═══════════════════════════════════════════════════════════════",
+    ""
+  ].join("\n");
+
+  // ════════════════════════════════════════════════════════════════════
+  // VARIABILI GLOBALI ESPOSTE
+  // ════════════════════════════════════════════════════════════════════
+  window.OLISMO_KB_VERSION = "2025-05-09";
+
+  window.OLISMO_KB_UPDATE_2025_05 = {
+    version: "2025-05-09",
+    source: "Manuale «Leggere la persona, accompagnare il conflitto» v6 — Avv. Carlo Alberto Calcagno",
+    blocks: {
+      astrologiaVedica: astrologiaVedica,
+      hardwareWetware: hardwareWetware
+    },
+    fullText: fullText,
+    triggers: {
+      // Parole-chiave che attivano le sezioni: usabili da olismo-core.js per
+      // un'eventuale logica di retrieval selettivo (carica solo i blocchi
+      // pertinenti alla domanda dell'utente).
+      astrologiaVedica: [
+        "jyotish", "yukteswar", "yogananda", "graha",
+        "vedica", "vedico", "astrologia indiana",
+        "chakra-pianeti", "chakra pianeti",
+        "yuga", "kali yuga", "dvapara", "treta", "satya",
+        "upaya", "karma", "oroscopo", "astri"
+      ],
+      hardwareWetware: [
+        "hardware", "wetware", "computer cervello",
+        "maclean", "rettiliano", "limbico", "neocorteccia",
+        "onde cerebrali", "alpha", "beta", "theta", "delta", "gamma",
+        "essere avere", "renvoise", "morin",
+        "sei leve", "comunicazione persuasiva"
+      ]
+    }
+  };
+
+  // Funzione helper: estende il system prompt esistente accodando il fullText.
+  // olismo-core.js può usarla così:
+  //   const SYS = window.augmentSystemPrompt
+  //               ? window.augmentSystemPrompt(BASE_SYSTEM_PROMPT)
+  //               : BASE_SYSTEM_PROMPT;
+  window.augmentSystemPrompt = function(basePrompt){
+    if (typeof basePrompt !== "string") {
+      console.warn("[OLISMO KB] augmentSystemPrompt: basePrompt non è una stringa, restituisco invariato.");
+      return basePrompt;
+    }
+    return basePrompt + "\n\n" + fullText;
+  };
+
+  // Funzione helper alternativa: retrieval selettivo basato su trigger.
+  // Per ogni domanda dell'utente, restituisce solo i blocchi pertinenti.
+  // Utile per non saturare il context window con contenuto non rilevante.
+  window.selectRelevantKB = function(userQuestion){
+    if (typeof userQuestion !== "string" || !userQuestion.trim()) return "";
+    var q = userQuestion.toLowerCase();
+    var selected = [];
+    var triggers = window.OLISMO_KB_UPDATE_2025_05.triggers;
+    var blocks = window.OLISMO_KB_UPDATE_2025_05.blocks;
+    Object.keys(triggers).forEach(function(blockKey){
+      var keys = triggers[blockKey];
+      for (var i=0; i<keys.length; i++){
+        if (q.indexOf(keys[i]) >= 0) {
+          selected.push(blocks[blockKey]);
+          return;
+        }
+      }
+    });
+    return selected.join("\n\n");
+  };
+
+  // Log discreto in console (utile per debug e verifica)
+  if (typeof console !== "undefined" && console.info) {
+    console.info(
+      "%c[OLISMO KB] Knowledge module v" + window.OLISMO_KB_VERSION + " caricato",
+      "color:#b8935a;font-weight:600",
+      "\nBlocchi disponibili:", Object.keys(window.OLISMO_KB_UPDATE_2025_05.blocks),
+      "\nFunzioni: window.augmentSystemPrompt(base), window.selectRelevantKB(question)"
+    );
+  }
+})();
+</script>
 
 <script src="olismo-core.js" defer></script>
 

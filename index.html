@@ -184,6 +184,237 @@
 .mega-strip-bottom-admin:hover{opacity:1}
 @media(max-width:560px){.mega-strip-bottom-admin{margin-left:0}}
 </style>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SITE-FIXES · 10 maggio 2026
+     Consolida desktop + mobile in un unico blocco. Caricato dopo il
+     <style> principale: vince per ordine di cascade. Per ripristinare
+     la versione precedente: cancella questo intero blocco <style id="site-fixes">.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style id="site-fixes">
+
+:root { --header-h: 68px; }
+
+
+/* ─── DESKTOP (≥901px) · Densità, ritmo e calma visiva ──────────────── */
+
+@media (min-width: 901px) {
+
+  /* Ritmo verticale: sezioni più compatte (-30% di padding accumulato) */
+  .dash-section { padding: 2.5rem 0 !important; }
+  .book-promo   { padding: 2.75rem 0 !important; }
+  .viaggio-compact-sec, #percorso-viaggio { padding: 2.5rem 0 !important; }
+  #percorsi-home { padding: 2.5rem 0 !important; }
+  .dash-hd { margin-bottom: 1.75rem !important; }
+
+  /* Sfondo: neutralizzo l'alternanza gold/bianco (evita "flicker" mentre scorri) */
+  .dash-sec-gold { background: #fdfcf9 !important; }
+  .dash-section + .dash-section,
+  .dash-section + .book-promo,
+  .book-promo + .dash-section {
+    border-top: 1px solid rgba(184, 147, 90, 0.12);
+  }
+
+  /* Carte più sobrie: niente barra oro superiore moltiplicata su 50+ carte */
+  .dash-card { padding: 1.1rem 1.1rem 1rem !important; }
+  .dash-card::before { display: none !important; }
+  .dash-card.dc-star {
+    border-color: rgba(184, 147, 90, 0.55) !important;
+    border-width: 1px !important;
+  }
+  .dash-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 14px rgba(184, 147, 90, 0.10) !important;
+  }
+  .dc-ic { font-size: 1.4rem !important; margin-bottom: 0.2rem !important; }
+  .dash-card h3 { font-size: 1.05rem !important; }
+  .dash-card p { font-size: 0.82rem !important; line-height: 1.5 !important; }
+  .dc-meta { font-size: 0.7rem !important; }
+
+  /* Gap griglie uniformi */
+  .dash-grid { gap: 1rem !important; }
+  .perc-grid { gap: 1rem !important; }
+  .mega-strip-cards { gap: 0.6rem !important; }
+  .mega-cols-redesign { gap: 0.75rem !important; }
+
+  /* Container narrow per testi (1200px è troppo largo per le descrizioni) */
+  .dash-hd { max-width: 720px !important; }
+  .hero-sub { max-width: 640px !important; margin-left: auto; margin-right: auto; }
+  .book-promo__content { max-width: 580px !important; }
+  .book-promo__desc { max-width: 540px; }
+
+  /* Tipografia: cap dei clamp per non esplodere su monitor 1440+ */
+  .hero-title { font-size: clamp(2.4rem, 4vw, 3.6rem) !important; line-height: 1.1 !important; }
+  .dash-title { font-size: clamp(1.6rem, 2.4vw, 2rem) !important; }
+  .book-promo__title { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
+  .sec-title { font-size: clamp(1.6rem, 2.4vw, 2rem) !important; }
+  .dash-eye, .book-promo__eyebrow, .sec-eye, .pb-eyebrow {
+    font-weight: 600 !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  /* Book-promo: decorazioni più tranquille */
+  .book-promo {
+    background: linear-gradient(180deg, #faf6ed 0%, #fdfcf8 100%) !important;
+  }
+  .book-promo::before { display: none !important; }
+  .book-promo__cover svg {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+    transform: rotate(-1.5deg) !important;
+  }
+  .book-promo__cover svg:hover { transform: rotate(0) scale(1.02) !important; }
+  .book-promo__grid { gap: 2.25rem !important; }
+
+  /* Hero: pulizia decorazioni e CTA in fila (non stack) */
+  .hero-bg-circle { opacity: 0.35 !important; }
+  .hero-ctas {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.7rem !important;
+    justify-content: center;
+    max-width: none !important;
+  }
+
+  /* Perc-card (sezione "Da dove vuoi iniziare?") */
+  .perc-card {
+    padding: 1.25rem 1.1rem !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  }
+  .perc-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+  }
+  .perc-icon { font-size: 1.6rem !important; }
+
+  /* Timeline viaggio */
+  .viaggio-compact-timeline { gap: 0.8rem !important; }
+  .vc-fase { padding: 1rem !important; }
+  .vc-num { font-size: 1.2rem !important; }
+}
+
+
+/* ─── TABLET (≤900px) ──────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .container { padding: 0 1.25rem; }
+}
+
+
+/* ─── MOBILE (≤768px) ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Hero: leggibilità del titolo su foto scura (Light 300 era troppo sottile) */
+  h1.hero-title {
+    font-size: clamp(2.2rem, 8vw, 3.8rem) !important;
+    font-weight: 500 !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.015em !important;
+  }
+  .hero-sub, #hero p {
+    font-size: 0.98rem !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Hero CTA: stacked compatti (3 bottoni full-width al 100% riempivano lo schermo) */
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    align-items: stretch !important;
+    width: 100%;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-ctas a.btn-gold,
+  .hero-ctas a.btn-ghost {
+    width: 100% !important;
+    padding: 0.8rem 1.25rem !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.12em !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header: altezza coerente, mob-menu allineato (Safari iOS comprime l'header) */
+  .hdr-inner {
+    padding: 0 1rem !important;
+    min-height: var(--header-h);
+  }
+  .hdr-title {
+    font-size: 1.05rem !important;
+    line-height: 1.2 !important;
+  }
+  #mob-menu {
+    top: var(--header-h) !important;
+  }
+
+  /* Tap target accessibili (WCAG 2.5.5: minimo 44x44px) */
+  .pill, .nav-link, .mob-link, .hamburger {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Sicurezza overflow orizzontale */
+  img, iframe, video, table, pre {
+    max-width: 100% !important;
+    height: auto;
+  }
+  .at-table-wrap, .data-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* ─── MOBILE PICCOLI (≤600px) ──────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .container { padding: 0 1rem; }
+  section { padding: 2.75rem 0 !important; }
+  .sec-title {
+    font-size: clamp(1.75rem, 6vw, 2.4rem) !important;
+    line-height: 1.2 !important;
+  }
+  .sec-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+  }
+}
+
+
+/* ─── FOOTER · cascade ordinata 640 → 480 → 400 ─────────────────────── */
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 0 1rem 2.5rem !important;
+    gap: 1.5rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-eyebrow {
+    font-size: 0.6rem !important;
+    letter-spacing: 0.22em !important;
+    gap: 0.7rem !important;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    width: 18px !important;
+  }
+}
+@media (max-width: 400px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+}
+
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -773,4 +1004,3 @@
 <script src="olismo-core.js" defer></script>
 </body>
 </html>
-

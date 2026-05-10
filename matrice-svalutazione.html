@@ -1411,7 +1411,7 @@ Sii pratico, specifico, professionale. Usa il "lei" rivolto al mediatore. Le con
       body: JSON.stringify({
         model: "claude-haiku-4-5-20251001",
         max_tokens: 16000,
-        system: systemPrompt,
+        system: (typeof window.augmentSystemPrompt === "function" ? window.augmentSystemPrompt(systemPrompt) : systemPrompt),
         messages: [
           {role: "user", content: `Frase pronunciata dalla parte in mediazione (${context}):\n\n"${text}"\n\nAnalizza secondo la Matrice della Svalutazione e suggerisci la contromossa.`}
         ]
@@ -1483,5 +1483,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="gender-prefs.js"></script>
 </body>
 </html>

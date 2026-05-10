@@ -1123,8 +1123,8 @@ const FAQ_DATA = [
   {cat:"Frequenze",q:"Cosa lega le frequenze solfeggio ai chakra?",a:"Ogni frequenza risuona con un centro energetico: 174Hz (dolore fisico, radice), 285Hz (rigenerazione, radice-sacrale), 396Hz (paura/colpa, radice), 417Hz (cambiamento, sacrale), 528Hz (trasformazione/DNA, plesso solare), 639Hz (relazioni, cuore), 741Hz (espressione, gola), 852Hz (intuizione, terzo occhio), 963Hz (connessione spirituale, corona). Trovi le schede complete nella sezione Frequenze del database."},
   // ── Percorsi ──
   {cat:"Percorsi",q:"Come si usa la Mappa del Viaggio?",a:"La Mappa del Viaggio (in home page) guida il tuo percorso in 5 fasi: Fase 0 Accoglienza (chi sono), Fase 1 Conosci te stesso (Check, Enneatipo, AT, VAK), Fase 2 Approfondisci (Enneagramma, AT, discipline), Fase 3 Esplora il database (chakra, cristalli, fiori), Fase 4 Integra (consulente AI, percorso di coppia), Fase 5 Pratica (esercizi, meditazione, alimentazione). Puoi seguire l'ordine o saltare dove ti serve."},
-  {cat:"Percorsi",q:"Qual è il percorso consigliato per chi inizia da zero?",a:"Parti dal Check Integrato: risponde a 5 domande rapide e ti indirizza nella sezione più adatta. Se preferisci autonomia, segui questo ordine: (1) Test dei 9 Frutti per l'enneatipo, (2) Test Adattamenti AT per lo stile relazionale, (3) Test VAK per il canale sensoriale preferito, (4) Database per esplorare chakra e cristalli del tuo profilo, (5) Consulente AI per domande personalizzate."},
-  {cat:"Percorsi",q:"Come funziona il Check Integrato?",a:"Il Check Integrato (bottone ✦ in alto nella nav e nell'hero) è un wizard in 5 passi che ti chiede cosa stai cercando — lavoro su te stesso, relazioni, benessere fisico, spiritualità o crescita professionale — e ti propone il percorso più adatto tra le sezioni del sito. È il punto di ingresso consigliato per chi non sa da dove partire."},
+  {cat:"Percorsi",q:"Qual è il percorso consigliato per chi inizia da zero?",a:"Parti dal Check Integrato (27 domande in 8 aree, circa 8 minuti) per costruire il tuo profilo olistico completo e individuare la sezione più adatta. Se preferisci autonomia, segui questo ordine: (1) Test dei 9 Frutti per l'enneatipo, (2) Test Adattamenti AT per lo stile relazionale, (3) Test VAK per il canale sensoriale preferito, (4) Database per esplorare chakra e cristalli del tuo profilo, (5) Consulente AI per domande personalizzate."},
+  {cat:"Percorsi",q:"Come funziona il Check Integrato?",a:"Il Check Integrato (bottone ✦ in alto nella nav e nell'hero) è un test di 27 domande in 8 aree — identità/enneatipo, VAK, AT/stati, chakra, conflitto, crescita, neurobiologia, scopo — che richiede circa 8 minuti. Genera un profilo olistico completo (enneatipo, canale VAK, stati AT, chakra, stile di conflitto, sistema nervoso, area di crescita) che puoi copiare con un clic e incollare nella chat del Consulente AI per una consulenza personalizzata. È il punto di ingresso consigliato per chi non sa da dove partire."},
   // ── Sito aggiuntive ──
   {cat:"Sito",q:"Cosa fa la Consulente AI e come si attiva?",a:"La Consulente AI conosce l'intero database (chakra, cristalli, enneatipi, AT, Bach, FES, Bush, frequenze, esercizi). Rispondi alle tue domande integrando sempre più sistemi. Per attivarla hai bisogno di una API Key Anthropic (gratuita al primo utilizzo su console.anthropic.com). Inseriscila nel banner che compare nella sezione Consulente AI. La chiave è salvata solo nel tuo browser."},
   {cat:"Sito",q:"Il sito raccoglie dati personali?",a:"No. Olismo Integrato non usa cookie di tracciamento, non raccoglie dati personali, non richiede registrazione. I risultati dei test rimangono nel tuo browser (sessionStorage). La chiave API, se inserita, è salvata solo nel tuo localStorage locale. Nessun dato viene inviato a server propri del sito."},
@@ -3417,6 +3417,14 @@ function calcEgogrammaTest(){
       '</div>';
   }).join('');
 
+  // Costruisci testo per condivisione e invio al Consulente
+  const _egoShareText = 'Egogramma · Stato dominante: ' + LABELS[dominant] + ' (' + scores[dominant] + '/10)' +
+    (second && scores[second] > 0 ? ', secondo: ' + LABELS[second] + ' (' + scores[second] + '/10)' : '') +
+    '. ' + d.testo.substring(0, 200) + (d.testo.length > 200 ? '...' : '');
+  const _egoConsulenteText = 'Ho fatto il test dell\'Egogramma. Stato dell\'Io dominante: ' + LABELS[dominant] +
+    ' (' + scores[dominant] + '/10). Stato secondo: ' + (second && scores[second] > 0 ? LABELS[second] + ' (' + scores[second] + '/10)' : 'nessuno significativo') +
+    '. Profilo: ' + d.testo + ' Risorsa positiva: ' + d.positivo + '. Mi consigli un percorso di approfondimento basato su questi stati dell\'Io e sulle eventuali correlazioni con enneatipo, chakra e fiori?';
+
   // Render description
   const descEl = document.getElementById('ego-test-desc');
   descEl.innerHTML =
@@ -3425,7 +3433,11 @@ function calcEgogrammaTest(){
     '<p class="ego-profile-testo">' + d.testo + '</p>' +
     '<div class="ego-profile-risorse"><strong>Risorse:</strong> ' + d.risorse + '</div>' +
     (second && scores[second] > 0 ? '<div class="ego-profile-second">Secondo stato: <strong>' + LABELS[second] + '</strong> (' + scores[second] + '/10) — tieni conto anche di questa influenza.</div>' : '') +
-    '<div class="ego-profile-total">Affermazioni selezionate: <strong>' + total + '/50</strong></div>';
+    '<div class="ego-profile-total">Affermazioni selezionate: <strong>' + total + '/50</strong></div>' +
+    '<div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem">' +
+      '<button class="share-result-btn" style="padding:.5rem 1.3rem;background:var(--slate);color:white;border:none;border-radius:20px;font-size:.78rem;cursor:pointer" onclick=\'shareResult("ego", ' + JSON.stringify(_egoShareText).replace(/'/g,"&#39;") + ')\'>↗ Condividi</button>' +
+      '<button style="padding:.5rem 1.3rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.78rem;font-weight:600;cursor:pointer" onclick=\'sendToConsulente(' + JSON.stringify(_egoConsulenteText).replace(/'/g,"&#39;") + ')\'>💬 Invia al Consulente AI</button>' +
+    '</div>';
 
   // Show and scroll
   const resDiv = document.getElementById('ego-test-result');
@@ -3684,7 +3696,8 @@ function calcVakResult(){
     '<div class="vak-profile-text">' + d.comunicare + '</div>' +
     '</div>' +
     '<div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">' +
-    '<button style="padding:.45rem 1.2rem;background:var(--slate);color:white;border:none;border-radius:20px;font-size:.75rem;cursor:pointer" onclick="shareResult(\'vak\', \'Il mio canale VAK: \' + VAK_DATA[dominant].emoji + \' \' + VAK_DATA[dominant].nome + \' — Enneatipi: T\' + VAK_DATA[dominant].enneatipi + \'\\n\' + VAK_DATA[dominant].descrizione.substring(0,120) + \'...\')">↗ Condividi</button>' +
+    '<button class="share-result-btn" style="padding:.45rem 1.2rem;background:var(--slate);color:white;border:none;border-radius:20px;font-size:.75rem;cursor:pointer" onclick="shareResult(\'vak\', \'Il mio canale VAK: \' + VAK_DATA[dominant].emoji + \' \' + VAK_DATA[dominant].nome + \' — Enneatipi: T\' + VAK_DATA[dominant].enneatipi + \'\\n\' + VAK_DATA[dominant].descrizione.substring(0,120) + \'...\')">↗ Condividi</button>' +
+    '<button style="padding:.45rem 1.2rem;background:var(--gold);color:white;border:none;border-radius:20px;font-size:.75rem;cursor:pointer;font-weight:600" onclick="sendToConsulente(\'Il mio canale VAK è \' + VAK_DATA[dominant].emoji + \' \' + VAK_DATA[dominant].nome + \' (Enneatipi correlati: T\' + VAK_DATA[dominant].enneatipi + \'). \' + VAK_DATA[dominant].descrizione + \' Mi consigli un percorso di approfondimento basato su questo canale?\')">💬 Invia al Consulente AI</button>' +
     '<button class="vak-restart-btn" onclick="restartVak()">↩ Rifai il test</button>' +
     '</div>';
 
@@ -6149,20 +6162,77 @@ function rateMsg(btn, val){
 
 // ── Share risultati test ──
 async function shareResult(type, text){
-  const shareData = {
-    title: 'Olismo Integrato — Il mio profilo',
-    text: text,
-    url: 'https://olismo-integrato.it'
+  const fullText = text + '\n\nhttps://olismo-integrato.it';
+  const successFb = (msg) => {
+    document.querySelectorAll('.share-result-btn').forEach(btn => {
+      const original = btn.textContent;
+      btn.textContent = msg;
+      setTimeout(() => { btn.textContent = original; }, 2000);
+    });
+    showShareToast(msg, false);
   };
+  const errorFb = (msg) => showShareToast(msg, true);
+
+  // Su mobile preferisce navigator.share; su desktop va dritto al clipboard
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   try {
-    if(navigator.share){
-      await navigator.share(shareData);
-    } else {
-      await navigator.clipboard.writeText(text + '\n\nhttps://olismo-integrato.it');
-      const btn = document.querySelector('.share-result-btn');
-      if(btn){ btn.textContent = '✅ Copiato!'; setTimeout(()=>{ btn.textContent = '↗ Condividi'; }, 2000); }
+    if (isMobile && navigator.share) {
+      await navigator.share({title:'Olismo Integrato — Il mio profilo', text:text, url:'https://olismo-integrato.it'});
+      successFb('✅ Condiviso');
+      return;
     }
+  } catch(e) {
+    if (e && e.name === 'AbortError') return; // utente ha annullato la dialog
+    // se navigator.share fallisce per altri motivi, scendo al clipboard
+  }
+  // Clipboard moderno
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(fullText);
+      successFb('✅ Copiato');
+      return;
+    }
+  } catch(e) { /* fallback sotto */ }
+  // Fallback execCommand (browser vecchi o contesti non sicuri)
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = fullText;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (ok) successFb('✅ Copiato');
+    else errorFb('⚠ Copia non riuscita — seleziona e copia manualmente');
+  } catch(e) {
+    errorFb('⚠ Copia non riuscita');
+  }
+}
+
+function showShareToast(msg, isError){
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText =
+    'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);' +
+    'background:' + (isError ? '#7a1c1c' : '#2e7d4f') + ';color:white;' +
+    'padding:.75rem 1.5rem;border-radius:24px;' +
+    "font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:500;" +
+    'box-shadow:0 6px 22px rgba(0,0,0,.28);z-index:99999;' +
+    'transition:opacity .3s';
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; }, 2400);
+  setTimeout(() => { t.remove(); }, 2800);
+}
+
+// ── Apri direttamente il Consulente AI con il risultato già pre-compilato ──
+function sendToConsulente(text){
+  try {
+    // Salvo anche in localStorage per backup, nel caso l'URL sia troppo lungo
+    localStorage.setItem('olismo_pending_prompt', text);
   } catch(e) {}
+  // Apro consulente.html con prompt nell'URL (consulente.html lo legge da ?prompt=)
+  const url = 'consulente.html?prompt=' + encodeURIComponent(text);
+  window.location.href = url;
 }
 
 // ── Dark Mode ──

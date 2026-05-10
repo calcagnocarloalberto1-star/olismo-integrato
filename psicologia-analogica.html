@@ -784,7 +784,7 @@ async function analyzeObservation() {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 16000,
-        system: SYS_PROMPT,
+        system: (typeof window.augmentSystemPrompt === "function" ? window.augmentSystemPrompt(SYS_PROMPT) : SYS_PROMPT),
         messages: [{role:'user', content: `Ecco ciò che ho osservato nella parte:\n\n${obs}\n\nApplica la metodologia di psicologia analogica. Segui ESATTAMENTE il formato richiesto.`}]
       })
     });

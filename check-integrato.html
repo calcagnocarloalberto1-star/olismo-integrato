@@ -51,6 +51,106 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="olismo-styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- ═══ Stile del gender-gate (passo 0 prima del check) ═══ -->
+<style id="gender-gate-style">
+  .gg-card {
+    max-width: 640px;
+    margin: 1rem auto 2rem;
+    padding: 2rem 1.6rem 1.8rem;
+    background: linear-gradient(180deg, #fdfcf8 0%, #faf6ed 100%);
+    border: 1px solid var(--border, #e6dfd0);
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(184, 147, 90, 0.08);
+    text-align: center;
+  }
+  .gg-eye {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold, #b8935a);
+    margin-bottom: 0.6rem;
+  }
+  .gg-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--ink, #2c2620);
+    line-height: 1.2;
+    margin: 0 0 0.6rem;
+  }
+  .gg-desc {
+    font-size: 0.92rem;
+    color: var(--ink3, #6b5f50);
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 1.4rem;
+  }
+  .gg-buttons {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .gg-btn {
+    flex: 1 1 160px;
+    min-height: 44px;
+    padding: 0.75rem 1.1rem;
+    background: white;
+    border: 1px solid var(--gold, #b8935a);
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--ink, #2c2620);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .gg-btn:hover {
+    background: var(--gold, #b8935a);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(184, 147, 90, 0.2);
+  }
+  .gg-btn-neutral {
+    border-color: var(--border, #c8b894);
+    color: var(--ink3, #6b5f50);
+    font-weight: 500;
+  }
+  .gg-btn-neutral:hover {
+    background: var(--ivory, #f9f5ef);
+    color: var(--ink, #2c2620);
+    border-color: var(--ink3, #6b5f50);
+  }
+  .gg-note {
+    margin-top: 1rem;
+    font-size: 0.74rem;
+    color: var(--ink4, #95897a);
+    font-style: italic;
+  }
+  /* Linkino di cambio preferenza in fondo alla pagina */
+  .gg-change-link {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+    font-size: 0.78rem;
+    color: var(--ink4, #95897a);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink4, #95897a);
+    width: max-content;
+    padding-bottom: 1px;
+  }
+  .gg-change-link:hover {
+    color: var(--gold, #b8935a);
+    border-color: var(--gold, #b8935a);
+  }
+  @media (max-width: 480px) {
+    .gg-card { padding: 1.6rem 1.1rem 1.4rem; }
+    .gg-title { font-size: 1.35rem; }
+    .gg-btn { flex: 1 1 100%; }
+  }
+</style>
 </head>
 <body>
 
@@ -76,6 +176,23 @@
       <div class="sec-div"></div>
       <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
     </div>
+
+    <!-- ═══ PASSO 0 · Gender gate (prima delle 27 domande) ═══════════════
+         Salva localStorage.olismo_user_gender ('M' / 'F' / 'X').
+         Se già impostato, è nascosto e si va dritti al check.
+    ════════════════════════════════════════════════════════════════════ -->
+    <div class="gg-card" id="gender-gate" style="display:none">
+      <div class="gg-eye">Prima di iniziare</div>
+      <h3 class="gg-title">Come preferisci che la <em>Consulente AI</em> ti scriva?</h3>
+      <p class="gg-desc">L'assistente userà la concordanza grammaticale corretta nelle risposte (al maschile, al femminile o in forme neutre). Puoi modificare la scelta in qualsiasi momento dal link in fondo alla pagina.</p>
+      <div class="gg-buttons">
+        <button class="gg-btn" type="button" onclick="setUserGender('M')">Al maschile</button>
+        <button class="gg-btn" type="button" onclick="setUserGender('F')">Al femminile</button>
+        <button class="gg-btn gg-btn-neutral" type="button" onclick="setUserGender('X')">Forme neutre</button>
+      </div>
+      <div class="gg-note">La preferenza resta sul tuo dispositivo (localStorage). Non viene inviata a server esterni.</div>
+    </div>
+
     <div class="check-test-wrap" id="check-wrap">
       <div class="check-header">
         <div class="check-header-title">Profilo Olistico Integrato</div>
@@ -89,9 +206,73 @@
       </div>
     </div>
     <div class="check-result" id="check-result"></div>
+
+    <!-- Link sempre visibile per cambiare la preferenza grammaticale -->
+    <a href="#" class="gg-change-link" id="gg-change-link" onclick="reopenGenderGate(event)">Cambia preferenza grammaticale</a>
   </div>
 </section>
 </main>
+
+<!-- ═══ Logica del gender-gate ═══ -->
+<script>
+(function () {
+  "use strict";
+  var STORAGE_KEY = "olismo_user_gender";
+
+  function $(id) { return document.getElementById(id); }
+
+  function showGate() {
+    var gate = $("gender-gate");
+    var wrap = $("check-wrap");
+    if (gate) gate.style.display = "block";
+    if (wrap) wrap.style.display = "none";
+    if (gate && gate.scrollIntoView) {
+      gate.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  function hideGate() {
+    var gate = $("gender-gate");
+    var wrap = $("check-wrap");
+    if (gate) gate.style.display = "none";
+    if (wrap) wrap.style.display = "";
+  }
+
+  function updateChangeLinkLabel() {
+    var link = $("gg-change-link");
+    if (!link) return;
+    var g = "";
+    try { g = (localStorage.getItem(STORAGE_KEY) || "").trim(); } catch (e) {}
+    var label =
+      g === "M" ? "Preferenza attiva: maschile · Cambia"
+      : g === "F" ? "Preferenza attiva: femminile · Cambia"
+      : g === "X" ? "Preferenza attiva: forme neutre · Cambia"
+      : "Imposta la preferenza grammaticale";
+    link.textContent = label;
+  }
+
+  // Esposte come globali per gli onclick inline
+  window.setUserGender = function (g) {
+    try { localStorage.setItem(STORAGE_KEY, g); } catch (e) {}
+    hideGate();
+    updateChangeLinkLabel();
+  };
+
+  window.reopenGenderGate = function (ev) {
+    if (ev && ev.preventDefault) ev.preventDefault();
+    showGate();
+  };
+
+  // All'avvio: se mai impostato, mostro il gate; altrimenti vado dritto al check
+  document.addEventListener("DOMContentLoaded", function () {
+    var g = "";
+    try { g = (localStorage.getItem(STORAGE_KEY) || "").trim(); } catch (e) {}
+    if (!g) showGate();
+    else hideGate();
+    updateChangeLinkLabel();
+  });
+})();
+</script>
 
 <footer style="background:var(--ink);color:var(--ivory);padding:3rem 1.5rem 2rem;text-align:center;margin-top:4rem">
   <div style="max-width:900px;margin:0 auto">

@@ -1397,15 +1397,12 @@ Rispondi in italiano, in formato strutturato chiaro:
 Sii pratico, specifico, professionale. Usa il "lei" rivolto al mediatore. Le contromosse devono essere realmente pronunciabili in sessione di mediazione.`;
 
   try {
-    const _ok = ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join('');
     const headers = {
       "Content-Type": "application/json",
-      "x-api-key": _ok,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true"
+      "anthropic-version": "2023-06-01"
     };
     
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages", {
       method: "POST",
       headers: headers,
       body: JSON.stringify({

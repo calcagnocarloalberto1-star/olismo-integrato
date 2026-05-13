@@ -773,13 +773,11 @@ async function analyzeObservation() {
   result.classList.remove('active');
 
   try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    const resp = await fetch('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": ['sk-ant-api03-3h_eEzEe','o8WMM-5_qCNjyiNJIHhlP','GmSU0D_1iXtPRbKalNWwf','qp3GI9046PKaInD300qnB','duvT40mlnjsPjJA-4NrKcAAA'].join(''),
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true"
+        "anthropic-version": "2023-06-01"
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',

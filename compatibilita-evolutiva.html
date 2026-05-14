@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633 e successive modifiche
+  RISERVA TDM ex art. 70-quater L. 633/1941 e art. 4 Direttiva (UE) 2019/790
+  Watermark: OLISMO-INTEGRATO-CALCAGNO-2026-evolutiva-v2
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
+<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+<title>Compatibilità evolutiva per fascia d'età — Olismo Integrato | Carlo Alberto Calcagno</title>
+<meta name="description" content="Compatibilità evolutiva fra enneatipi nelle sei fasce d'età, con i due percorsi per enneatipo e la triade istintiva. Lettura qualitativa e trasversale per dignità condivise.">
+<link rel="canonical" href="https://olismo-integrato.it/compatibilita-evolutiva.html">
+<meta property="og:title" content="Compatibilità evolutiva per fascia d'età — Olismo Integrato">
+<meta property="og:description" content="Compatibilità fra enneatipi nelle sei fasce d'età, con percorsi 1°/2° e dignità condivise.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Outfit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+
+<style>
+.evo-page{padding:2rem 0 4rem}
+.evo-intro{max-width:760px;margin:0 auto 3rem;font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:300;color:var(--ink2);line-height:1.85;text-align:center}
+.evo-intro em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)}
+
+.evo-widget{max-width:980px;margin:0 auto 4rem;background:var(--ivory);border:1px solid var(--border);border-radius:var(--rxl);box-shadow:var(--shadow);overflow:hidden}
+.evo-widget-head{padding:1.8rem 2.2rem 1.4rem;background:linear-gradient(180deg,var(--gold-pale) 0%,transparent 100%);border-bottom:1px solid var(--border)}
+.evo-widget-eye{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.evo-widget-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--ink);line-height:1.2}
+.evo-widget-title em{font-style:italic;color:var(--gold)}
+.evo-widget-desc{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:300;color:var(--ink3);margin-top:.6rem;line-height:1.65}
+.evo-widget-body{padding:2rem 2.2rem 2.4rem}
+
+.evo-selectors{display:grid;gap:1.4rem;margin-bottom:2rem}
+.evo-selectors.three{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:760px){.evo-selectors.three{grid-template-columns:1fr}}
+
+.evo-person-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+@media(max-width:760px){.evo-person-grid{grid-template-columns:1fr}}
+.evo-person{padding:1.4rem 1.4rem 1.2rem;background:var(--ivory2);border:1px solid var(--border);border-radius:var(--rl)}
+.evo-person-head{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:.55rem}
+.evo-person-head .pid{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--gold);color:white;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+.evo-person-fields{display:grid;gap:.8rem}
+
+.evo-select-wrap label{display:block;font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.evo-select{width:100%;padding:.65rem .9rem;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:400;color:var(--ink);background:white;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:border-color .2s}
+.evo-select:hover{border-color:var(--gold)}
+.evo-select:focus{outline:none;border-color:var(--gold)}
+
+.evo-path-toggle{display:flex;gap:.4rem}
+.evo-path-toggle input{display:none}
+.evo-path-toggle label{flex:1;padding:.55rem .6rem;cursor:pointer;text-align:center;background:white;border:1px solid var(--border);border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:500;color:var(--ink2);letter-spacing:.04em;transition:all .2s;text-transform:none}
+.evo-path-toggle input:checked+label{background:var(--gold);border-color:var(--gold);color:white}
+.evo-path-toggle label:hover{border-color:var(--gold)}
+
+.evo-result{margin-top:1.5rem;border-radius:var(--rl);overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.evo-result.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.evo-result-head{padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.evo-badge{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:500;color:white;flex-shrink:0}
+.evo-badge.A{background:linear-gradient(135deg,#5a7a6a,#7a9a88)}
+.evo-badge.M{background:linear-gradient(135deg,#b8935a,#d4a96a)}
+.evo-badge.B{background:linear-gradient(135deg,#8a6a7a,#b49aaa)}
+.evo-badge.C{background:linear-gradient(135deg,#8a3a3a,#b85a5a)}
+.evo-result-head-text{flex:1;min-width:200px}
+.evo-result-level{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--ink);line-height:1.2}
+.evo-result-pair{font-family:'Outfit',sans-serif;font-size:.76rem;font-weight:400;color:var(--ink3);letter-spacing:.04em;margin-top:.35rem}
+.evo-result-body{padding:0 1.6rem 1.6rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:300;color:var(--ink2);line-height:1.8}
+.evo-result-body p+p{margin-top:.85rem}
+.evo-result-body strong{color:var(--ink);font-weight:500}
+.evo-result-body em.dignita{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-weight:500;font-size:1.05em}
+
+.evo-result.A{background:linear-gradient(180deg,rgba(90,122,106,.08),rgba(90,122,106,.02));border-left:4px solid #5a7a6a}
+.evo-result.M{background:linear-gradient(180deg,rgba(184,147,90,.08),rgba(184,147,90,.02));border-left:4px solid var(--gold)}
+.evo-result.B{background:linear-gradient(180deg,rgba(138,106,122,.08),rgba(138,106,122,.02));border-left:4px solid #8a6a7a}
+.evo-result.C{background:linear-gradient(180deg,rgba(138,58,58,.08),rgba(138,58,58,.02));border-left:4px solid #8a3a3a}
+.evo-result.neutral{background:var(--ivory2);border-left:4px solid var(--ink4)}
+
+.evo-paths{margin-top:1.4rem;padding:1.4rem 1.6rem;background:var(--ivory2);border-top:1px solid var(--border)}
+.evo-paths-label{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.evo-path-row{display:grid;grid-template-columns:140px 1fr;gap:1rem;margin-bottom:1rem;align-items:center}
+.evo-path-row:last-child{margin-bottom:0}
+@media(max-width:680px){.evo-path-row{grid-template-columns:1fr}}
+.evo-path-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--ink);font-weight:500}
+.evo-path-name small{display:block;font-family:'Outfit',sans-serif;font-size:.68rem;color:var(--ink4);font-weight:400;margin-top:.1rem;letter-spacing:.04em}
+.evo-path-cells{display:grid;grid-template-columns:repeat(6,1fr);gap:.4rem}
+.evo-path-cell{text-align:center;padding:.55rem .3rem;border-radius:var(--r);font-family:'Outfit',sans-serif;background:white;border:1px solid var(--border);position:relative}
+.evo-path-cell.match{box-shadow:0 0 0 2px #5a7a6a;background:rgba(90,122,106,.06)}
+.evo-path-cell.current{box-shadow:0 0 0 2px var(--gold);background:var(--gold-pale)}
+.evo-path-cell.both{box-shadow:0 0 0 2px #5a7a6a;background:rgba(90,122,106,.12)}
+.evo-pc-fase{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.25rem}
+.evo-pc-dig{font-family:'Cormorant Garamond',serif;font-size:.82rem;font-style:italic;color:var(--ink);font-weight:500}
+.evo-pc-num{font-family:'Outfit',sans-serif;font-size:.62rem;color:var(--ink3);margin-top:.1rem}
+.evo-path-legend{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--ink3);display:flex;gap:1.5rem;flex-wrap:wrap}
+.evo-path-legend-item{display:flex;align-items:center;gap:.4rem}
+.evo-path-legend-swatch{display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid var(--border)}
+
+.evo-timeline{margin-top:1.4rem;padding:1.2rem 1.6rem;background:var(--ivory2);border-top:1px solid var(--border)}
+.evo-timeline-label{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.evo-timeline-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem}
+.evo-timeline-cell{text-align:center;padding:.8rem .4rem;border-radius:var(--r);font-family:'Outfit',sans-serif;background:white;border:1px solid var(--border)}
+.evo-timeline-cell.current{box-shadow:0 0 0 2px var(--gold)}
+.evo-tl-phase{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink4);margin-bottom:.35rem}
+.evo-tl-age{font-family:'Cormorant Garamond',serif;font-size:.78rem;font-style:italic;color:var(--ink3);margin-bottom:.45rem}
+.evo-tl-level{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500}
+.evo-tl-level.A{color:#5a7a6a}.evo-tl-level.M{color:var(--gold)}.evo-tl-level.B{color:#8a6a7a}.evo-tl-level.C{color:#8a3a3a}
+
+.evo-legend{margin-top:2rem;padding:1.4rem 1.6rem;background:var(--ivory2);border-radius:var(--rl);font-family:'Outfit',sans-serif;font-size:.82rem;color:var(--ink2);line-height:1.7}
+.evo-legend-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:.6rem}
+.evo-legend-items{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:.5rem}
+@media(max-width:760px){.evo-legend-items{grid-template-columns:1fr 1fr}}
+.evo-legend-item{display:flex;align-items:center;gap:.55rem;font-size:.78rem}
+.evo-legend-chip{width:22px;height:22px;border-radius:50%;font-family:'Cormorant Garamond',serif;font-size:.92rem;font-weight:600;color:white;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.evo-legend-chip.A{background:#5a7a6a}.evo-legend-chip.M{background:var(--gold)}.evo-legend-chip.B{background:#8a6a7a}.evo-legend-chip.C{background:#8a3a3a}
+
+.evo-note-triade{margin-top:.8rem;padding:.8rem 1rem;background:var(--gold-pale);border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:.76rem;color:var(--ink3);line-height:1.6}
+.evo-disclaimer{margin-top:2rem;padding:1.2rem 1.4rem;border-left:3px solid var(--gold);background:var(--gold-pale);font-family:'Cormorant Garamond',serif;font-size:.98rem;font-style:italic;color:var(--ink2);line-height:1.7}
+.evo-divider{text-align:center;margin:4rem 0 3rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);letter-spacing:1.2em}
+
+.evo-bottom-nav{max-width:760px;margin:4rem auto 0;text-align:center;font-family:'Outfit',sans-serif;font-size:.82rem;color:var(--ink3)}
+.evo-bottom-nav a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:2px;margin:0 .8rem;transition:all .2s}
+.evo-bottom-nav a:hover{border-bottom-color:var(--gold);color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main class="evo-page">
+<div class="container">
+
+<div class="sec-hd">
+  <div class="sec-eye">Enneagramma Evolutivo · Carlo Alberto Calcagno</div>
+  <h2 class="sec-title">Compatibilità <em>evolutiva</em> per fascia d'età</h2>
+  <div class="sec-div"></div>
+</div>
+
+<p class="evo-intro">
+La compatibilità fra due persone <em>non è statica</em>. Cambia con l'età, perché cambia la <em>dignità centrale</em> che ciascun enneatipo sta esplorando in quel momento della vita. Due enneatipi che a vent'anni si scontrano possono ritrovarsi a sessanta; una coppia armoniosa nella <em>juventus</em> può attraversare attriti gravi nella <em>virilitas</em>. I due strumenti che seguono leggono questa dinamica da due angolazioni complementari.
+</p>
+
+<!-- WIDGET 1 -->
+<div class="evo-widget">
+  <div class="evo-widget-head">
+    <div class="evo-widget-eye">Strumento 1 · dal Manuale, Parte 9 cap. 2</div>
+    <h3 class="evo-widget-title">Lettura qualitativa <em>nella stessa fascia di vita</em></h3>
+    <p class="evo-widget-desc">
+      Due partner della stessa generazione (o di età vicine). Selezioni i due enneatipi e la fascia comune e ottieni il livello di risonanza (alta · media · bassa · critica) con la lettura operativa per il tavolo. La timeline mostra come <em>quella stessa coppia evolve</em> attraverso le sei fasi della vita.
+    </p>
+  </div>
+  <div class="evo-widget-body">
+
+    <div class="evo-selectors three">
+      <div class="evo-select-wrap">
+        <label>Enneatipo · partner A</label>
+        <select id="w1-t1" class="evo-select" onchange="W1.update()">
+          <option value="">Seleziona…</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🍊 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div class="evo-select-wrap">
+        <label>Enneatipo · partner B</label>
+        <select id="w1-t2" class="evo-select" onchange="W1.update()">
+          <option value="">Seleziona…</option>
+          <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+          <option value="2">🍐 Tipo 2 — L'Altruista</option>
+          <option value="3">🍒 Tipo 3 — Il Manager</option>
+          <option value="4">🍊 Tipo 4 — Il Romantico</option>
+          <option value="5">🍇 Tipo 5 — L'Eremita</option>
+          <option value="6">🫐 Tipo 6 — Il Leale</option>
+          <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+          <option value="8">🍑 Tipo 8 — Il Capo</option>
+          <option value="9">🍓 Tipo 9 — Il Diplomatico</option>
+        </select>
+      </div>
+      <div class="evo-select-wrap">
+        <label>Fascia d'età comune</label>
+        <select id="w1-fascia" class="evo-select" onchange="W1.update()">
+          <option value="">Seleziona…</option>
+          <option value="0">Infantia · 0-3 anni</option>
+          <option value="1">Pueritia · 3-12 anni</option>
+          <option value="2">Adolescentia · 12-19 anni</option>
+          <option value="3">Juventus · 20-30 anni</option>
+          <option value="4">Virilitas · 25-60 anni</option>
+          <option value="5">Senectus · 60+ anni</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="w1-result" class="evo-result"></div>
+    <div id="w1-timeline"></div>
+
+    <div class="evo-legend">
+      <div class="evo-legend-title">Legenda dei livelli</div>
+      <p>I quattro livelli indicano la <em>risonanza</em> intrinseca della coppia nella fascia considerata. Non sono giudizi: ogni coppia ha potenziale di crescita; alcune combinazioni hanno semplicemente un prezzo di crescita più alto di altre.</p>
+      <div class="evo-legend-items">
+        <div class="evo-legend-item"><span class="evo-legend-chip A">A</span><strong>Alta</strong> · facilità intrinseca</div>
+        <div class="evo-legend-item"><span class="evo-legend-chip M">M</span><strong>Media</strong> · funziona con lavoro</div>
+        <div class="evo-legend-item"><span class="evo-legend-chip B">B</span><strong>Bassa</strong> · prezzo di crescita elevato</div>
+        <div class="evo-legend-item"><span class="evo-legend-chip C">C</span><strong>Critica</strong> · conflitto probabile senza mediazione</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="evo-divider">✦ ✦ ✦</div>
+
+<!-- WIDGET 2 -->
+<div class="evo-widget">
+  <div class="evo-widget-head">
+    <div class="evo-widget-eye">Strumento 2 · dal Saggio sull'Enneagramma delle età</div>
+    <h3 class="evo-widget-title">Lettura trasversale <em>per dignità condivisa</em></h3>
+    <p class="evo-widget-desc">
+      Due persone di generazioni e percorsi diversi — genitore e figlio, fratelli con grande differenza d'età, partner di età molto diverse — possono <em>condividere la stessa dignità centrale</em> nelle rispettive fasce. La compatibilità qui dipende da tre variabili per ciascuna persona: <strong>enneatipo</strong>, <strong>percorso evolutivo</strong> (primo o secondo) e <strong>fascia d'età</strong>. Il calcolo è deterministico sulle sequenze del Saggio (1→4→2→8→5→7 e omologhi).
+    </p>
+  </div>
+  <div class="evo-widget-body">
+
+    <div class="evo-person-grid">
+      <div class="evo-person">
+        <div class="evo-person-head"><span class="pid">A</span><span>Persona A</span></div>
+        <div class="evo-person-fields">
+          <div class="evo-select-wrap">
+            <label>Enneatipo</label>
+            <select id="w2-tA" class="evo-select" onchange="W2.update()">
+              <option value="">Seleziona…</option>
+              <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+              <option value="2">🍐 Tipo 2 — L'Altruista</option>
+              <option value="3">🍒 Tipo 3 — Il Manager · triade</option>
+              <option value="4">🍊 Tipo 4 — Il Romantico</option>
+              <option value="5">🍇 Tipo 5 — L'Eremita</option>
+              <option value="6">🫐 Tipo 6 — Il Leale · triade</option>
+              <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+              <option value="8">🍑 Tipo 8 — Il Capo</option>
+              <option value="9">🍓 Tipo 9 — Il Diplomatico · triade</option>
+            </select>
+          </div>
+          <div class="evo-select-wrap">
+            <label>Percorso evolutivo</label>
+            <div class="evo-path-toggle">
+              <input type="radio" id="w2-pA-1" name="w2-pA" value="1" checked onchange="W2.update()">
+              <label for="w2-pA-1">Primo percorso</label>
+              <input type="radio" id="w2-pA-2" name="w2-pA" value="2" onchange="W2.update()">
+              <label for="w2-pA-2">Secondo percorso</label>
+            </div>
+          </div>
+          <div class="evo-select-wrap">
+            <label>Fascia d'età attuale</label>
+            <select id="w2-fA" class="evo-select" onchange="W2.update()">
+              <option value="">Seleziona…</option>
+              <option value="0">Infantia · 0-3</option>
+              <option value="1">Pueritia · 3-12</option>
+              <option value="2">Adolescentia · 12-19</option>
+              <option value="3">Juventus · 20-30</option>
+              <option value="4">Virilitas · 25-60</option>
+              <option value="5">Senectus · 60+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="evo-person">
+        <div class="evo-person-head"><span class="pid">B</span><span>Persona B</span></div>
+        <div class="evo-person-fields">
+          <div class="evo-select-wrap">
+            <label>Enneatipo</label>
+            <select id="w2-tB" class="evo-select" onchange="W2.update()">
+              <option value="">Seleziona…</option>
+              <option value="1">🍎 Tipo 1 — Il Perfezionista</option>
+              <option value="2">🍐 Tipo 2 — L'Altruista</option>
+              <option value="3">🍒 Tipo 3 — Il Manager · triade</option>
+              <option value="4">🍊 Tipo 4 — Il Romantico</option>
+              <option value="5">🍇 Tipo 5 — L'Eremita</option>
+              <option value="6">🫐 Tipo 6 — Il Leale · triade</option>
+              <option value="7">🍍 Tipo 7 — L'Entusiasta</option>
+              <option value="8">🍑 Tipo 8 — Il Capo</option>
+              <option value="9">🍓 Tipo 9 — Il Diplomatico · triade</option>
+            </select>
+          </div>
+          <div class="evo-select-wrap">
+            <label>Percorso evolutivo</label>
+            <div class="evo-path-toggle">
+              <input type="radio" id="w2-pB-1" name="w2-pB" value="1" checked onchange="W2.update()">
+              <label for="w2-pB-1">Primo percorso</label>
+              <input type="radio" id="w2-pB-2" name="w2-pB" value="2" onchange="W2.update()">
+              <label for="w2-pB-2">Secondo percorso</label>
+            </div>
+          </div>
+          <div class="evo-select-wrap">
+            <label>Fascia d'età attuale</label>
+            <select id="w2-fB" class="evo-select" onchange="W2.update()">
+              <option value="">Seleziona…</option>
+              <option value="0">Infantia · 0-3</option>
+              <option value="1">Pueritia · 3-12</option>
+              <option value="2">Adolescentia · 12-19</option>
+              <option value="3">Juventus · 20-30</option>
+              <option value="4">Virilitas · 25-60</option>
+              <option value="5">Senectus · 60+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="w2-triade-note"></div>
+    <div id="w2-result" class="evo-result"></div>
+    <div id="w2-paths"></div>
+
+    <div class="evo-disclaimer">
+      «Se la coppia è ad esempio formata da un figlio di 12 anni, un padre di 35 ed una madre di 32, saprò che sperimentano gli stessi valori — virtù e influenze — a patto che il figlio sia un enneatipo 1 primo percorso ed i genitori siano un enneatipo 1 secondo percorso oppure un 5 primo percorso. Ovviamente non è detto che sia sempre così fortunato, ed allora dovrò andare alla ricerca di altri punti di unione.»
+      <div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-style:normal;color:var(--gold);margin-top:.6rem;letter-spacing:.06em">— dal Saggio sull'Enneagramma delle età, §11.19</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="evo-bottom-nav">
+  Per la compatibilità classica fra due enneatipi (senza dimensione evolutiva) →
+  <a href="compatibilita.html">vedi qui</a>
+  &nbsp;·&nbsp;
+  <a href="enneagram.html">i 9 enneatipi nel dettaglio</a>
+  &nbsp;·&nbsp;
+  <a href="index.html">torna alla home</a>
+</div>
+
+</div>
+</main>
+
+<script>
+const FRUTTI = ['🍎','🍐','🍒','🍊','🍇','🫐','🍍','🍑','🍓'];
+const NOMI = ['Perfezionista','Altruista','Manager','Romantico','Eremita','Leale','Entusiasta','Capo','Diplomatico'];
+
+const DIGNITA = {1:'Grandezza',2:'Eternità',3:'Potenza',4:'Sapienza',5:'Volontà',6:'Virtù',7:'Verità',8:'Gloria',9:'Bontà'};
+const VIZI    = {1:'Gola',2:'Lussuria',3:'Superbia',4:'Accidia',5:'Invidia',6:'Avarizia',7:'Menzogna',8:'Incostanza',9:'Ira'};
+const VIRTU   = {1:'Prudenza',2:'Perseveranza',3:'Giustizia',4:'Fede',5:'Speranza',6:'Carità',7:'Pazienza',8:'Pietà',9:'Temperanza'};
+
+const FASI = [
+  {nome:'Infantia',eta:'0-3 anni'},
+  {nome:'Pueritia',eta:'3-12 anni'},
+  {nome:'Adolescentia',eta:'12-19 anni'},
+  {nome:'Juventus',eta:'20-30 anni'},
+  {nome:'Virilitas',eta:'25-60 anni'},
+  {nome:'Senectus',eta:'60+ anni'}
+];
+
+const TRIADE = new Set([3,6,9]);
+
+// I 18 percorsi (sezioni 11.1-11.18 del Saggio)
+const PERCORSI = {
+  '1.1':[1,4,2,8,5,7], '1.2':[1,7,5,8,2,4],
+  '2.1':[2,4,1,7,5,8], '2.2':[2,8,5,7,1,4],
+  '4.1':[4,1,7,5,8,2], '4.2':[4,2,8,5,7,1],
+  '5.1':[5,7,1,4,2,8], '5.2':[5,8,2,4,1,7],
+  '7.1':[7,1,4,2,8,5], '7.2':[7,5,8,2,4,1],
+  '8.1':[8,2,4,1,7,5], '8.2':[8,5,7,1,4,2],
+  // Triade (legge del tre): le 4 fasce 0-3/3-12/12-19/20-30 unificate
+  '3.1':[3,3,3,3,9,6], '3.2':[3,3,3,3,6,9],
+  '6.1':[6,6,6,6,9,3], '6.2':[6,6,6,6,3,9],
+  '9.1':[9,9,9,9,3,6], '9.2':[9,9,9,9,6,3]
+};
+
+function dignitaTipo(ennetipo, percorso, fascia) {
+  return PERCORSI[ennetipo + '.' + percorso][fascia];
+}
+
+// Tabelle qualitative del Manuale (Parte 9 cap. 2)
+const TAB_QUALITATIVE = [
+  [['-','A','M','B','M','B','A','M','A'],['A','-','A','M','A','M','M','B','A'],['M','A','-','M','M','B','M','M','A'],['B','A','M','-','A','M','M','B','M'],['M','A','M','A','-','M','M','M','A'],['B','M','B','M','M','-','B','B','M'],['A','M','M','M','M','B','-','M','A'],['M','B','M','B','M','B','M','-','A'],['A','A','A','M','A','M','A','A','-']],
+  [['-','M','M','C','B','A','A','C','M'],['M','-','A','M','A','B','M','B','A'],['M','A','-','M','A','M','M','M','A'],['C','M','M','-','A','M','M','C','M'],['B','A','A','A','-','M','M','M','A'],['A','B','M','M','M','-','B','C','M'],['A','M','M','M','M','B','-','B','A'],['C','B','M','C','M','C','B','-','A'],['M','A','A','M','A','M','A','A','-']],
+  [['-','M','B','C','B','M','A','C','B'],['M','-','M','B','A','B','M','B','M'],['B','M','-','B','M','B','M','M','M'],['C','B','B','-','M','M','M','C','M'],['B','A','M','M','-','A','M','M','M'],['M','B','B','M','A','-','B','C','M'],['A','M','M','M','M','B','-','B','M'],['C','B','M','C','M','C','B','-','M'],['B','M','M','M','M','M','M','M','-']],
+  [['-','M','M','M','M','A','M','B','M'],['M','-','M','M','A','B','M','A','A'],['M','M','-','A','M','A','B','A','B'],['M','M','A','-','A','M','M','B','B'],['M','A','M','A','-','A','M','M','M'],['A','B','A','M','A','-','B','M','B'],['M','M','B','M','M','B','-','B','M'],['B','A','A','B','M','M','B','-','A'],['M','A','B','B','M','B','M','A','-']],
+  [['-','B','M','A','A','A','B','B','M'],['B','-','M','B','B','B','M','B','A'],['M','M','-','M','M','A','B','A','A'],['A','B','M','-','M','M','A','M','M'],['A','B','M','M','-','A','M','B','M'],['A','B','A','M','A','-','B','M','B'],['B','M','B','A','M','B','-','M','M'],['B','B','A','M','B','M','M','-','C'],['M','A','A','M','M','B','M','C','-']],
+  [['-','A','M','A','A','A','M','A','A'],['A','-','A','A','A','A','A','A','A'],['M','A','-','A','A','A','M','A','A'],['A','A','A','-','A','A','A','A','A'],['A','A','A','A','-','A','A','A','A'],['A','A','A','A','A','-','M','A','A'],['M','A','M','A','A','M','-','A','A'],['A','A','A','A','A','A','A','-','A'],['A','A','A','A','A','A','A','A','-']]
+];
+
+const LIVELLI_DESC = {
+  'A':{nome:'Alta risonanza',head:'In questa fascia la coppia ha facilità intrinseca.',body:'<p>Le due strutture difensive si parlano senza grandi attriti. La dignità centrale che ciascuno sta esplorando in questo momento di vita <strong>risuona</strong> con quella dell\'altro: si capiscono al volo, si correggono a vicenda, sopportano lo stress della relazione senza richiedere costanti riparazioni.</p><p><strong>Per il mediatore:</strong> se la coppia è in conflitto pur con questa risonanza, il nodo è quasi sempre <strong>fuori dalla diade</strong> — un terzo, un evento traumatico, un problema esterno che ha spinto la coppia oltre il suo punto di lavoro normale. Cerca lì prima di cercare nelle dinamiche di personalità.</p>'},
+  'M':{nome:'Risonanza media',head:'In questa fascia la coppia funziona con lavoro reciproco.',body:'<p>Le due dignità non sono in opposizione, ma neppure in armonia automatica. La coppia deve <strong>tradursi a vicenda</strong>: l\'uno ha bisogno di capire che ciò che per l\'altro è ovvio non lo è per lui. Con consapevolezza la relazione regge bene; senza, scivola verso l\'inerzia.</p><p><strong>Per il mediatore:</strong> punta sulla psicoeducazione. Spesso la coppia non sa che lo stress che vivono è il prezzo normale della loro combinazione. Una volta nominato, il prezzo diventa sostenibile.</p>'},
+  'B':{nome:'Risonanza bassa',head:'In questa fascia la coppia richiede un prezzo di crescita elevato da entrambi.',body:'<p>Le dignità centrali tirano in direzioni divergenti. Non c\'è incompatibilità di principio — molte coppie con questa combinazione hanno costruito relazioni durature e profonde — ma serve un <strong>impegno cosciente</strong> da entrambe le parti per non lasciare che la differenza si trasformi in lontananza.</p><p><strong>Per il mediatore:</strong> verifica che entrambi siano disposti a pagare il prezzo. Se uno solo dei due è in fase di consapevolezza, il rischio è che la coppia esaurisca le energie del partner sveglio. Lavora separatamente prima di rilanciare insieme.</p>'},
+  'C':{nome:'Compatibilità critica',head:'In questa fascia il conflitto intenso è probabile senza mediazione.',body:'<p>Le due strutture difensive si attaccano a vicenda nei loro punti più sensibili. Senza una cornice protettiva, la coppia tende a polarizzarsi rapidamente: l\'uno diventa la causa di tutti i mali dell\'altro, le energie escalano in fretta, la riparazione spontanea è rara.</p><p><strong>Per il mediatore:</strong> rallenta tutto. Non lasciare che si parlino a lungo senza arbitraggio. Usa il "contenitore" del setting come terza forza: respirazione condivisa, regole di parola, restituzioni neutre. Verifica anche l\'eventuale presenza di violenza o controllo coercitivo: in molte coppie critiche c\'è un sottofondo di questo tipo che il modello non cattura ma che è il vero motore del conflitto.</p>'}
+};
+
+// WIDGET 1
+const W1 = {
+  update() {
+    const t1 = document.getElementById('w1-t1').value;
+    const t2 = document.getElementById('w1-t2').value;
+    const f  = document.getElementById('w1-fascia').value;
+    const result = document.getElementById('w1-result');
+    const tline  = document.getElementById('w1-timeline');
+
+    if (!t1 || !t2 || f === '') {
+      result.className = 'evo-result'; result.innerHTML = ''; tline.innerHTML = ''; return;
+    }
+    const i1 = parseInt(t1) - 1, i2 = parseInt(t2) - 1, fi = parseInt(f);
+
+    if (i1 === i2) {
+      result.className = 'evo-result show neutral';
+      result.innerHTML = `<div class="evo-result-head"><div class="evo-badge" style="background:linear-gradient(135deg, var(--ink3), var(--ink4))">${FRUTTI[i1]}</div><div class="evo-result-head-text"><div class="evo-result-level">Stessa tipologia</div><div class="evo-result-pair">Tipo ${i1+1} ${NOMI[i1]} · ${FASI[fi].nome} (${FASI[fi].eta})</div></div></div><div class="evo-result-body"><p>Due partner dello <strong>stesso enneatipo</strong> condividono per definizione la dignità centrale <em class="dignita">${DIGNITA[i1+1]}</em>, ma proprio per questo riflettono l'uno all'altro anche i propri vizi (entrambi <em>${VIZI[i1+1]}</em>). La compatibilità intrinseca è alta sul piano dei valori; il rischio è il <strong>raddoppio dell'ombra</strong>: due ${NOMI[i1].toLowerCase()} in coppia possono perdere quel correttivo di prospettiva che un partner di tipo diverso garantirebbe.</p><p><strong>Per il mediatore:</strong> indaga se la coppia ha avuto figli o relazioni stabili con persone di altri enneatipi — quel contatto è spesso il fattore protettivo che ha permesso di non chiudersi nella propria modalità.</p></div>`;
+      tline.innerHTML = ''; return;
+    }
+
+    const liv = TAB_QUALITATIVE[fi][i1][i2];
+    const desc = LIVELLI_DESC[liv];
+    result.className = `evo-result show ${liv}`;
+    result.innerHTML = `<div class="evo-result-head"><div class="evo-badge ${liv}">${liv}</div><div class="evo-result-head-text"><div class="evo-result-level">${desc.nome}</div><div class="evo-result-pair">${FRUTTI[i1]} Tipo ${i1+1} ${NOMI[i1]} · ${FRUTTI[i2]} Tipo ${i2+1} ${NOMI[i2]} · ${FASI[fi].nome} (${FASI[fi].eta})</div></div></div><div class="evo-result-body"><p><strong>${desc.head}</strong></p>${desc.body}</div>`;
+
+    let html = '<div class="evo-timeline"><div class="evo-timeline-label">Evoluzione attraverso le sei fasi della vita</div><div class="evo-timeline-grid">';
+    for (let p = 0; p < 6; p++) {
+      const v = TAB_QUALITATIVE[p][i1][i2];
+      const isCurrent = (p === fi);
+      html += `<div class="evo-timeline-cell ${isCurrent ? 'current' : ''}"><div class="evo-tl-phase">${FASI[p].nome}</div><div class="evo-tl-age">${FASI[p].eta}</div><div class="evo-tl-level ${v}">${v}</div></div>`;
+    }
+    html += '</div></div>';
+    tline.innerHTML = html;
+  }
+};
+
+// WIDGET 2
+const W2 = {
+  update() {
+    const tA = document.getElementById('w2-tA').value;
+    const tB = document.getElementById('w2-tB').value;
+    const fA = document.getElementById('w2-fA').value;
+    const fB = document.getElementById('w2-fB').value;
+    const pA = document.querySelector('input[name="w2-pA"]:checked').value;
+    const pB = document.querySelector('input[name="w2-pB"]:checked').value;
+    const result = document.getElementById('w2-result');
+    const paths  = document.getElementById('w2-paths');
+    const triadeNote = document.getElementById('w2-triade-note');
+
+    if (!tA || !tB || fA === '' || fB === '') {
+      result.className = 'evo-result'; result.innerHTML = '';
+      paths.innerHTML = ''; triadeNote.innerHTML = ''; return;
+    }
+
+    const eA = parseInt(tA), eB = parseInt(tB);
+    const piA = parseInt(pA), piB = parseInt(pB);
+    const fiA = parseInt(fA), fiB = parseInt(fB);
+
+    let noteHtml = '';
+    if (TRIADE.has(eA) || TRIADE.has(eB)) {
+      const triadici = [];
+      if (TRIADE.has(eA)) triadici.push(`Persona A (Tipo ${eA})`);
+      if (TRIADE.has(eB)) triadici.push(`Persona B (Tipo ${eB})`);
+      noteHtml = `<div class="evo-note-triade"><strong>Nota:</strong> ${triadici.join(' e ')} ${triadici.length>1?'sono':'è'} parte della <strong>triade istintiva (3-6-9)</strong>, che segue la <em>legge del tre</em>. Le quattro fasce 0-3, 3-12, 12-19 e 20-30 sono unificate in un'unica "Gioventù (0-30 anni)" perché la dignità centrale resta la stessa fino ai trent'anni — la separazione interna in sotto-fasce è propria solo dei sei enneatipi non-triade (legge del sette). Il sistema applica correttamente la stessa dignità a tutte e quattro le sotto-fasce.</div>`;
+    }
+    triadeNote.innerHTML = noteHtml;
+
+    const digA_num = dignitaTipo(eA, piA, fiA);
+    const digB_num = dignitaTipo(eB, piB, fiB);
+    const digA = DIGNITA[digA_num];
+    const digB = DIGNITA[digB_num];
+    const condividono = (digA_num === digB_num);
+
+    const labelA = `${FRUTTI[eA-1]} Tipo ${eA} · ${piA}° percorso · ${FASI[fiA].nome} (${FASI[fiA].eta})`;
+    const labelB = `${FRUTTI[eB-1]} Tipo ${eB} · ${piB}° percorso · ${FASI[fiB].nome} (${FASI[fiB].eta})`;
+
+    if (condividono) {
+      result.className = 'evo-result show A';
+      result.innerHTML = `<div class="evo-result-head"><div class="evo-badge A">✓</div><div class="evo-result-head-text"><div class="evo-result-level">Condividono la dignità di <em class="dignita">${digA}</em></div><div class="evo-result-pair">${labelA}</div><div class="evo-result-pair">${labelB}</div></div></div><div class="evo-result-body"><p>Nelle loro rispettive fasce di vita, queste due persone <strong>stanno esplorando la stessa dignità centrale</strong> — <em class="dignita">${digA}</em> — espressa attraverso enneatipi e percorsi differenti. Vivono lo stesso vizio capitale (<em>${VIZI[digA_num]}</em>) come tentazione, e la stessa virtù (<em>${VIRTU[digA_num]}</em>) come direzione di crescita.</p><p><strong>Per il mediatore:</strong> hai una risorsa preziosa. Anche se enneatipo, percorso ed età sono diversi, c'è un <strong>terreno comune di valore vissuto</strong> che puoi rendere esplicito. Domande utili al tavolo: <em>«Che cosa è importante per te in questo momento della tua vita?» «Quale comportamento dell'altro ti ferisce di più, anche se sembra piccolo?»</em> — le risposte tenderanno a convergere intorno alla stessa dignità, e questa convergenza è il ponte.</p></div>`;
+    } else {
+      result.className = 'evo-result show B';
+      result.innerHTML = `<div class="evo-result-head"><div class="evo-badge B">~</div><div class="evo-result-head-text"><div class="evo-result-level">Dignità centrali divergenti</div><div class="evo-result-pair">${labelA} → <em class="dignita">${digA}</em></div><div class="evo-result-pair">${labelB} → <em class="dignita">${digB}</em></div></div></div><div class="evo-result-body"><p>Nelle rispettive fasce, queste due persone <strong>stanno esplorando dignità diverse</strong>: la Persona A è sulla <em class="dignita">${digA}</em> (vizio: <em>${VIZI[digA_num]}</em>, virtù: <em>${VIRTU[digA_num]}</em>), la Persona B sulla <em class="dignita">${digB}</em> (vizio: <em>${VIZI[digB_num]}</em>, virtù: <em>${VIRTU[digB_num]}</em>). Le priorità interiori e le tentazioni quotidiane sono distinte, c'è un costo di traduzione reciproca.</p><p><strong>Per il mediatore:</strong> non significa che la relazione non funzioni — significa che il punto di intesa <em>non è nella convergenza di dignità vissute adesso</em>. Cerca altrove: nella storia familiare (la mappa qui sotto mostra se condividevano dignità in fasce passate o le condivideranno in futuro), in un valore di vita ricorrente, o in un progetto comune. Spesso le coppie con dignità divergenti hanno un'<strong>alleanza di crescita</strong>: ciascuno sta lavorando su ciò che all'altro è già più familiare.</p></div>`;
+    }
+
+    const pathsHtml = `<div class="evo-paths"><div class="evo-paths-label">I due percorsi a confronto attraverso le sei fasi della vita</div>${this.renderPath('A', eA, piA, fiA, digB_num)}${this.renderPath('B', eB, piB, fiB, digA_num)}<div class="evo-path-legend"><div class="evo-path-legend-item"><span class="evo-path-legend-swatch" style="background:var(--gold-pale);box-shadow:0 0 0 2px var(--gold) inset"></span>Fascia attualmente selezionata</div><div class="evo-path-legend-item"><span class="evo-path-legend-swatch" style="background:rgba(90,122,106,.06);box-shadow:0 0 0 2px #5a7a6a inset"></span>Dignità condivisa con l'altra persona in questa fascia</div></div></div>`;
+    paths.innerHTML = pathsHtml;
+  },
+  renderPath(label, ennetipo, percorso, fasciaCorrente, digAltro) {
+    const key = ennetipo + '.' + percorso;
+    const seq = PERCORSI[key];
+    let cells = '';
+    for (let i = 0; i < 6; i++) {
+      const d = seq[i];
+      const isCurrent = (i === fasciaCorrente);
+      const isCrossMatch = (d === digAltro);
+      let cls = 'evo-path-cell';
+      if (isCurrent && isCrossMatch) cls += ' both';
+      else if (isCurrent) cls += ' current';
+      else if (isCrossMatch) cls += ' match';
+      cells += `<div class="${cls}" title="${FASI[i].nome} (${FASI[i].eta}): dignità di ${DIGNITA[d]}, percorsa attraverso il tipo ${d}"><div class="evo-pc-fase">${FASI[i].nome.substring(0,4)}.</div><div class="evo-pc-dig">${DIGNITA[d]}</div><div class="evo-pc-num">tipo ${d}</div></div>`;
+    }
+    return `<div class="evo-path-row"><div class="evo-path-name">Persona ${label}<small>${FRUTTI[ennetipo-1]} Tipo ${ennetipo} · ${percorso}° percorso</small></div><div class="evo-path-cells">${cells}</div></div>`;
+  }
+};
+</script>
+
+</body>
+</html>

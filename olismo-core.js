@@ -4052,26 +4052,81 @@ function renderCheckQ(){
   document.getElementById('check-counter').textContent = (checkCurrentQ+1) + ' / ' + total;
   document.getElementById('check-prog').style.width = (((checkCurrentQ+1)/total)*100) + '%';
   document.getElementById('check-prev-btn').disabled = checkCurrentQ === 0;
-  document.getElementById('check-next-btn').disabled = checkAnswers[checkCurrentQ] === null;
+
+  // ── Stato selezioni (con retrocompat vecchio formato numerico) ──
+  let curr = checkAnswers[checkCurrentQ];
+  if(typeof curr === 'number') curr = [curr];
+  const arr = Array.isArray(curr) ? curr : [];
+  const hasSel = arr.length > 0;
+  document.getElementById('check-next-btn').disabled = !hasSel;
   document.getElementById('check-next-btn').textContent = checkCurrentQ === total-1 ? 'Crea il mio profilo →' : 'Avanti →';
 
-  const sel = checkAnswers[checkCurrentQ];
-  const optsHtml = qd.opts.map((opt, i) =>
-    '<button class="check-opt' + (sel===i?' sel':'') + '" onclick="checkSelect(' + i + ')">' +
-    '<span class="check-dot"></span>' +
-    '<span>' + opt.t + '</span>' +
-    '</button>'
-  ).join('');
+  // ── Rendering opzioni con badge multi-select ──
+  //   1 = primaria  (oro pieno)
+  //   2-3 = secondarie (oro chiaro)
+  const optsHtml = qd.opts.map((opt, i) => {
+    const pos = arr.indexOf(i);
+    let cls = 'check-opt';
+    let badge = '';
+    if(pos === 0){
+      cls += ' sel-primary';
+      badge = '<span class="check-rank">1</span>';
+    } else if(pos === 1){
+      cls += ' sel-secondary';
+      badge = '<span class="check-rank check-rank-sec">2</span>';
+    } else if(pos === 2){
+      cls += ' sel-secondary';
+      badge = '<span class="check-rank check-rank-sec">3</span>';
+    }
+    return '<button class="' + cls + '" onclick="checkSelect(' + i + ')">' +
+      '<span class="check-dot"></span>' +
+      '<span>' + opt.t + '</span>' +
+      badge +
+      '</button>';
+  }).join('');
 
   document.getElementById('check-q-area').innerHTML =
     '<div class="check-section-label">' + qd.sez + '</div>' +
     '<div class="check-q-text">' + qd.q + '</div>' +
+    '<div class="check-hint">Tocca prima la risposta che ti rappresenta di più (diventa <strong>1</strong>, in oro pieno). Se vuoi, aggiungi fino a 2 sfumature (<strong>2</strong> e <strong>3</strong>, in oro chiaro). Per togliere una scelta, riclicca sulla stessa opzione.</div>' +
     '<div class="check-options">' + optsHtml + '</div>';
 }
 
 function checkSelect(idx){
-  checkAnswers[checkCurrentQ] = idx;
-  document.getElementById('check-next-btn').disabled = false;
+  // ── Multi-select: 1 primaria (peso 2) + fino a 2 secondarie (peso 1 ciascuna) ──
+  // Stato salvato in checkAnswers[checkCurrentQ]:
+  //   null                              → nessuna scelta
+  //   [primaryIdx]                      → solo primaria
+  //   [primaryIdx, secIdx1, secIdx2?]   → primaria + 1–2 secondarie
+  let arr = checkAnswers[checkCurrentQ];
+  // Retrocompat: profili salvati nel vecchio formato (numero singolo)
+  if(typeof arr === 'number') arr = [arr];
+  if(!Array.isArray(arr)) arr = [];
+
+  const pos = arr.indexOf(idx);
+  if(pos !== -1){
+    // Già selezionata → deseleziona.
+    // Se era la primaria e ci sono secondarie, la prima secondaria scala
+    // a primaria automaticamente (l'array conserva l'ordine).
+    arr.splice(pos, 1);
+    if(arr.length === 0) checkAnswers[checkCurrentQ] = null;
+    else checkAnswers[checkCurrentQ] = arr;
+  } else {
+    // Nuova selezione
+    if(arr.length === 0){
+      arr = [idx];                      // diventa primaria
+    } else if(arr.length < 3){
+      arr.push(idx);                    // diventa secondaria (max 2)
+    } else {
+      return;                           // 1 primaria + 2 secondarie già pieno → ignora click
+    }
+    checkAnswers[checkCurrentQ] = arr;
+  }
+
+  // Aggiorna disabled del bottone "Avanti"
+  const curr = checkAnswers[checkCurrentQ];
+  const hasSel = Array.isArray(curr) && curr.length > 0;
+  document.getElementById('check-next-btn').disabled = !hasSel;
   renderCheckQ();
 }
 
@@ -4096,22 +4151,34 @@ function calcCheckResult(){
   const spinte = [];
 
   CHECK_QS.forEach((qd, qi) => {
-    const ai = checkAnswers[qi];
-    if(ai === null) return;
-    const opt = qd.opts[ai];
-    if(!opt) return;
-    if(opt.e) opt.e.forEach(t => ennScores[t] = (ennScores[t]||0)+1);
-    if(opt.vak) vakScores[opt.vak]++;
-    if(opt.at) atScores[opt.at]++;
-    if(opt.sp) spinte.push(opt.sp);
-    if(opt.ck && !opt.blk) ckScores[opt.ck] = (ckScores[opt.ck]||0)+1;
-    if(opt.ck && opt.blk)  ckBlocked[opt.ck] = (ckBlocked[opt.ck]||0)+1;
-    if(opt.conf) confStile = opt.conf;
-    if(opt.snv)  snvTipo = opt.snv;
-    if(opt.cres) cercaDi = opt.cres;
-    if(opt.mot)  motivazione = opt.mot;
-    if(opt.fase) fase = opt.fase;
-    if(opt.prio) priorita = opt.prio;
+    // ── Multi-select: ans può essere null / numero (legacy) / array [primaria, sec1, sec2?] ──
+    let ans = checkAnswers[qi];
+    if(ans === null || ans === undefined) return;
+    if(typeof ans === 'number') ans = [ans];          // retrocompat
+    if(!Array.isArray(ans) || ans.length === 0) return;
+
+    ans.forEach((aIdx, rank) => {
+      const opt = qd.opts[aIdx];
+      if(!opt) return;
+      // Peso: primaria (rank 0) = 2; secondarie (rank 1, 2) = 1
+      const w = rank === 0 ? 2 : 1;
+
+      if(opt.e) opt.e.forEach(t => ennScores[t] = (ennScores[t]||0)+w);
+      if(opt.vak) vakScores[opt.vak] = (vakScores[opt.vak]||0)+w;
+      if(opt.at) atScores[opt.at] = (atScores[opt.at]||0)+w;
+      if(opt.sp && rank === 0) spinte.push(opt.sp);   // spinte solo dalla primaria
+      if(opt.ck && !opt.blk) ckScores[opt.ck] = (ckScores[opt.ck]||0)+w;
+      if(opt.ck && opt.blk)  ckBlocked[opt.ck] = (ckBlocked[opt.ck]||0)+w;
+      // Campi categoriali (uno solo per check): tieni la primaria, ignora secondarie
+      if(rank === 0){
+        if(opt.conf) confStile = opt.conf;
+        if(opt.snv)  snvTipo = opt.snv;
+        if(opt.cres) cercaDi = opt.cres;
+        if(opt.mot)  motivazione = opt.mot;
+        if(opt.fase) fase = opt.fase;
+        if(opt.prio) priorita = opt.prio;
+      }
+    });
   });
 
   // Find dominants

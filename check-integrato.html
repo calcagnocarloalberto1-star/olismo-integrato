@@ -151,6 +151,54 @@
     .gg-btn { flex: 1 1 100%; }
   }
 </style>
+
+<!-- ═══ Stile del multi-select del Check Integrato (primaria + secondarie) ═══ -->
+<style id="check-multiselect-style">
+  .check-opt {
+    position: relative;
+    padding-right: 2.6rem;  /* spazio per il badge numerico */
+  }
+  .check-opt.sel-primary {
+    border-color: var(--gold, #b8935a) !important;
+    background: var(--gold-pale, #f6ecd8) !important;
+    box-shadow: 0 2px 10px rgba(184, 147, 90, 0.18);
+  }
+  .check-opt.sel-secondary {
+    border-color: rgba(184, 147, 90, 0.55) !important;
+    background: rgba(184, 147, 90, 0.08) !important;
+  }
+  .check-rank {
+    position: absolute;
+    top: 50%;
+    right: 0.85rem;
+    transform: translateY(-50%);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--gold, #b8935a);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
+  .check-rank.check-rank-sec {
+    background: rgba(184, 147, 90, 0.55);
+  }
+  .check-hint {
+    font-size: 0.78rem;
+    color: var(--ink4, #95897a);
+    font-style: italic;
+    margin: -0.4rem 0 1rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 480px) {
+    .check-opt { padding-right: 2.4rem; }
+    .check-hint { font-size: 0.74rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -174,7 +222,7 @@
       <div class="sec-eye">Profilo Olistico Personale</div>
       <h2 class="sec-title">Check <em>Integrato</em></h2>
       <div class="sec-div"></div>
-      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
+      <p class="sec-desc">32 domande per costruire il tuo profilo olistico completo — enneatipo, VAK, stati AT, chakra dominante, stile di conflitto e punti di crescita. Per ogni domanda puoi scegliere la risposta principale che ti rappresenta e, se vuoi, fino a 2 sfumature aggiuntive: l'analisi sarà più ricca e più fedele alla complessità reale. Al termine ricevi un briefing da incollare direttamente nella chat con la Consulente AI per una consulenza personalizzata.</p>
     </div>
 
     <!-- ═══ PASSO 0 · Gender gate (prima delle 27 domande) ═══════════════

@@ -1423,8 +1423,12 @@ Sii pratico, specifico, professionale. Usa il "lei" rivolto al mediatore. Le con
     
     const reply = data.content && data.content[0] ? data.content[0].text : 'Nessuna risposta ricevuta';
     
-    // Format markdown to HTML
-    const formatted = reply
+    // Format markdown to HTML — tabelle PRIMA (helper globale tollerante a CRLF,
+    // celle vuote, trailing whitespace; fallback se olismo-core.js non e' caricato)
+    let formatted = (typeof window !== 'undefined' && window.parseMdTables)
+      ? window.parseMdTables(reply)
+      : reply;
+    formatted = formatted
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
       .replace(/^### (.+)$/gm, '<h3>$1</h3>')

@@ -4506,7 +4506,19 @@ async function exportReportPdf(){
 
     function wrapText(txt, x, yy, maxW, lineH){
       const lines = doc.splitTextToSize(se(txt), maxW);
-      lines.forEach(l=>{ text(se(l),x,yy); yy+=lineH||5; });
+      const lh = lineH || 5;
+      lines.forEach(l=>{
+        // Sincronizza yy con la y globale prima del check (i chiamanti
+        // riassegnano y = wrapText(...) ma durante il forEach yy puo'
+        // crescere oltre la pagina): se serve break, allinea yy a y nuova.
+        if(yy + lh > H - 25){
+          y = yy;
+          checkNewPage(lh + 2);
+          yy = y;
+        }
+        text(se(l), x, yy);
+        yy += lh;
+      });
       return yy;
     }
 
@@ -4551,29 +4563,60 @@ async function exportReportPdf(){
 
     function infoBox(lines, bgC, borderC, iconColor){
       const lh = 5.5;
-      const boxH = lines.length * lh + 8;
-      checkNewPage(boxH + 4);
-      drawRect(ML, CW, y, boxH, bgC||IVORY, borderC||GOLD_L, 2);
-      setFont('normal', 9, INK2);
-      let ty = y + 6;
-      lines.forEach(l=>{
-        if(l.startsWith('__TITLE__')){
-          setFont('bold', 9.5, INK);
-          text(se(l.replace('__TITLE__','')), ML+4, ty);
-          setFont('normal', 9, INK2);
-        } else if(l.startsWith('__BOLD__')){
-          setFont('bold', 9, INK2);
-          text(se(l.replace('__BOLD__','')), ML+4, ty);
-          setFont('normal', 9, INK2);
-        } else if(l === '') {
-          ty += 2;
-          return;
-        } else {
-          text(se(l), ML+4, ty);
+      const topPad = 6;
+      const botPad = 2;
+
+      // Helper: misura altezza di una riga (1 lh + extra spacing per '')
+      const lineHeight = l => (l === '') ? 2 : lh;
+
+      let i = 0;
+      while(i < lines.length){
+        // Calcola quanti elementi entrano nella pagina corrente
+        const avail = (H - 25) - y - (topPad + botPad);
+        if(avail < lh){
+          checkNewPage(lh + topPad + botPad + 4);
+          continue;
         }
-        ty += lh;
-      });
-      y += boxH + 5;
+        let used = 0, take = 0;
+        for(let k = i; k < lines.length; k++){
+          const lh_k = lineHeight(lines[k]);
+          if(used + lh_k > avail) break;
+          used += lh_k;
+          take++;
+        }
+        if(take === 0) take = 1; // garantisce almeno una riga
+        const chunk = lines.slice(i, i + take);
+        const chunkH = chunk.reduce((s, l) => s + lineHeight(l), 0) + topPad + botPad;
+
+        drawRect(ML, CW, y, chunkH, bgC||IVORY, borderC||GOLD_L, 2);
+        setFont('normal', 9, INK2);
+        let ty = y + topPad;
+        chunk.forEach(l=>{
+          if(l.startsWith('__TITLE__')){
+            setFont('bold', 9.5, INK);
+            text(se(l.replace('__TITLE__','')), ML+4, ty);
+            setFont('normal', 9, INK2);
+          } else if(l.startsWith('__BOLD__')){
+            setFont('bold', 9, INK2);
+            text(se(l.replace('__BOLD__','')), ML+4, ty);
+            setFont('normal', 9, INK2);
+          } else if(l === '') {
+            ty += 2;
+            return;
+          } else {
+            text(se(l), ML+4, ty);
+          }
+          ty += lh;
+        });
+        y += chunkH + 1;
+        i += take;
+
+        if(i < lines.length){
+          // Resta contenuto: nuova pagina
+          checkNewPage(lh + topPad + botPad + 4);
+        }
+      }
+      y += 4;
     }
 
     function keyValueRow(label, value, bgC){
@@ -5503,36 +5546,54 @@ async function exportChatPdf(){
             y += 4;
             break;
 
-          case 'h1':
+          case 'h1': {
             // Widow control: titolo + almeno 3 righe successive
-            checkBreak(25);
+            const h1Lines = doc.splitTextToSize(sa(b.content), CW);
+            checkBreak(25 + (h1Lines.length - 1) * 6);
             y += 3;
             setFont('bold', 13, GOLD);
-            doc.text(sa(b.content), ML, y);
+            h1Lines.forEach((ln, idx) => {
+              if(idx > 0) checkBreak(6);
+              doc.text(ln, ML, y);
+              if(idx < h1Lines.length - 1) y += 6;
+            });
             y += 2;
             doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
             doc.setLineWidth(0.4);
             doc.line(ML, y, ML + 18, y);
             y += 4.5;
             break;
+          }
 
-          case 'h2':
+          case 'h2': {
             // Widow control: titolo + almeno 3 righe successive
-            checkBreak(22);
+            const h2Lines = doc.splitTextToSize(sa(b.content), CW);
+            checkBreak(22 + (h2Lines.length - 1) * 5);
             y += 2.5;
             setFont('bold', 11, GOLD);
-            doc.text(sa(b.content), ML, y);
+            h2Lines.forEach((ln, idx) => {
+              if(idx > 0) checkBreak(5);
+              doc.text(ln, ML, y);
+              if(idx < h2Lines.length - 1) y += 5;
+            });
             y += 5.5;
             break;
+          }
 
-          case 'h3':
+          case 'h3': {
             // Widow control: titolo + almeno 2 righe successive
-            checkBreak(16);
+            const h3Lines = doc.splitTextToSize(sa(b.content), CW);
+            checkBreak(16 + (h3Lines.length - 1) * 4.5);
             y += 1.5;
             setFont('bold', 9.5, INK);
-            doc.text(sa(b.content), ML, y);
+            h3Lines.forEach((ln, idx) => {
+              if(idx > 0) checkBreak(4.5);
+              doc.text(ln, ML, y);
+              if(idx < h3Lines.length - 1) y += 4.5;
+            });
             y += 5;
             break;
+          }
 
           case 'p':
             // Widow control: se paragrafo lungo, pretende almeno 10mm per non iniziarlo orfano
@@ -5649,11 +5710,10 @@ async function exportChatPdf(){
     }
 
     function renderCode(code){
-      const lines = code.split('\n');
       const lineH = 3.8;
       const pad = 2.5;
       // Sanitize ogni riga
-      const safeLines = lines.map(l => sa(l));
+      const safeLines = code.split('\n').map(l => sa(l));
       // Wrap lunghe
       doc.setFont('courier', 'normal');
       doc.setFontSize(7.5);
@@ -5662,21 +5722,47 @@ async function exportChatPdf(){
         const w = doc.splitTextToSize(l || ' ', CW - pad * 2);
         w.forEach(wl => wrapped.push(wl));
       });
-      const h = wrapped.length * lineH + pad * 2;
-      checkBreak(h + 3);
-      doc.setFillColor(245, 242, 237);
-      doc.setDrawColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
-      doc.setLineWidth(0.2);
-      doc.rect(ML, y - 2, CW, h, 'FD');
-      setFont('normal', 7.5, INK2);
-      doc.setFont('courier', 'normal');
-      let cy = y + pad;
-      wrapped.forEach(l => {
-        checkBreak(lineH + 1);
-        doc.text(l, ML + pad, cy);
-        cy += lineH;
-      });
-      y += h;
+
+      // Render chunked: il box di sfondo riparte ad ogni pagina,
+      // così non rimane orfano se il codice supera la pagina.
+      let i = 0;
+      while(i < wrapped.length){
+        const avail = (PH - MB) - y - pad * 2;
+        const maxRows = Math.floor(avail / lineH);
+        if(maxRows < 1){
+          drawFooter();
+          doc.addPage();
+          page++;
+          drawHeader();
+          y = MT;
+          continue;
+        }
+        const take = Math.min(maxRows, wrapped.length - i);
+        const chunkH = take * lineH + pad * 2;
+
+        doc.setFillColor(245, 242, 237);
+        doc.setDrawColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
+        doc.setLineWidth(0.2);
+        doc.rect(ML, y - 2, CW, chunkH, 'FD');
+
+        setFont('normal', 7.5, INK2);
+        doc.setFont('courier', 'normal');
+        let cy = y + pad;
+        for(let k = 0; k < take; k++){
+          doc.text(wrapped[i + k], ML + pad, cy);
+          cy += lineH;
+        }
+        y += chunkH;
+        i += take;
+
+        if(i < wrapped.length){
+          drawFooter();
+          doc.addPage();
+          page++;
+          drawHeader();
+          y = MT;
+        }
+      }
     }
 
     // ═════════════════════════════════════════════
@@ -5821,34 +5907,75 @@ async function exportChatPdf(){
       y += 4.5;
 
       if(isUser){
-        // Bolla utente compatta a destra
+        // Bolla utente compatta a destra — paginata a chunk per evitare clip
         const txt = sa(m.text);
         setFont('normal', 9.5, INK);
         const maxW = CW * 0.75;
         const lines = doc.splitTextToSize(txt, maxW - 6);
         const lH = 4.8;
-        const h = lines.length * lH + 5;
         const bx = PW - MR - maxW;
-        checkBreak(h + 3);
-        doc.setFillColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
-        doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
-        doc.setLineWidth(0.3);
-        doc.roundedRect(bx, y - 1, maxW, h, 2.5, 2.5, 'FD');
-        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
-        doc.rect(bx + maxW - 1.5, y - 1, 1.5, h, 'F');
-        doc.setTextColor(INK[0], INK[1], INK[2]);
-        let ty = y + 3.5;
-        lines.forEach(l => { doc.text(l, bx + 3, ty); ty += lH; });
-        y += h + 4;
+        const pad = 5;
+        let i = 0;
+        while(i < lines.length){
+          const avail = PH - MB - y - pad;
+          const rows = Math.max(1, Math.floor(avail / lH));
+          if(rows < 1 || y + lH * 2 > PH - MB){
+            // Niente spazio: nuova pagina
+            drawFooter();
+            doc.addPage();
+            page++;
+            drawHeader();
+            y = MT;
+            continue;
+          }
+          const take = Math.min(rows, lines.length - i);
+          const chunkH = take * lH + pad;
+
+          doc.setFillColor(GOLD_LIGHT[0], GOLD_LIGHT[1], GOLD_LIGHT[2]);
+          doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
+          doc.setLineWidth(0.3);
+          doc.roundedRect(bx, y - 1, maxW, chunkH, 2.5, 2.5, 'FD');
+          doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+          doc.rect(bx + maxW - 1.5, y - 1, 1.5, chunkH, 'F');
+          doc.setTextColor(INK[0], INK[1], INK[2]);
+          let ty = y + 3.5;
+          for(let k = 0; k < take; k++){
+            doc.text(lines[i + k], bx + 3, ty);
+            ty += lH;
+          }
+          y += chunkH + 1;
+          i += take;
+
+          if(i < lines.length){
+            // Resta testo: nuova pagina
+            drawFooter();
+            doc.addPage();
+            page++;
+            drawHeader();
+            y = MT;
+          }
+        }
+        y += 4;
       } else {
-        // AI: render Markdown con barra verticale oro
-        const startY = y;
+        // AI: render Markdown con barra verticale oro paginata
+        const aiStartY = y;
+        const aiStartPage = page;
         const blocks = parseMd(m.text);
         renderBlocks(blocks, INK);
-        const endY = y;
-        // Barra verticale oro a sinistra (ridisegnata dopo, altezza nota)
-        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
-        doc.rect(ML - 3, startY, 1, Math.min(endY - startY, PH - MB - startY), 'F');
+        // Barra verticale oro a sinistra: la disegno solo sull'ultimo
+        // tratto della stessa pagina di partenza, evitando rect spuri
+        // o di altezza negativa quando il blocco e' multi-pagina.
+        if(page === aiStartPage){
+          const barH = Math.max(0, y - aiStartY);
+          if(barH > 0){
+            doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.rect(ML - 3, aiStartY, 1, barH, 'F');
+          }
+        } else {
+          // Multi-pagina: piccolo accento all'inizio per coerenza grafica
+          doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+          doc.rect(ML - 3, aiStartY, 1, Math.min(8, PH - MB - aiStartY), 'F');
+        }
         y += 4;
       }
 

@@ -1326,7 +1326,13 @@ async function askConsulente(){
 function formatResponse(md){
   // ═══ CLASSIFIER DEONTOLOGICO — definito sopra il formatResponse, non globale ═══
   // (vedi VIOLENCE_TRIGGERS e VIOLENCE_TEMPLATE_CM definiti più sotto)
-  let h = md;
+  //
+  // Tabelle Markdown -> HTML tramite helper globale (tollerante a CRLF,
+  // celle vuote, trailing whitespace, tabelle multiple). Fallback al md
+  // grezzo se olismo-core.js non e' ancora caricato.
+  let h = (typeof window !== 'undefined' && window.parseMdTables)
+    ? window.parseMdTables(md)
+    : md;
   // Headers
   h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>');
   h = h.replace(/^## (.+)$/gm, '<h2>$1</h2>');
@@ -1341,20 +1347,6 @@ function formatResponse(md){
   h = h.replace(/(<li>.*?<\/li>(\n|$))+/gs, m => '<ul>' + m.replace(/\n/g,'') + '</ul>');
   // Numbered lists
   h = h.replace(/^(\d+)\. (.+)$/gm, '<li data-num="$1">$2</li>');
-  // Tables (very simple)
-  h = h.replace(/\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g, (m, header, rows) => {
-    const hc = header.split('|').map(s=>s.trim()).filter(s=>s);
-    const rc = rows.trim().split('\n').map(r => r.split('|').map(s=>s.trim()).filter(s=>s));
-    let tbl = '<table><thead><tr>';
-    hc.forEach(c => tbl += `<th>${c}</th>`);
-    tbl += '</tr></thead><tbody>';
-    rc.forEach(row => {
-      tbl += '<tr>';
-      row.forEach(c => tbl += `<td>${c}</td>`);
-      tbl += '</tr>';
-    });
-    return tbl + '</tbody></table>';
-  });
   // Paragraphs
   h = h.split(/\n\n+/).map(p => {
     if(p.match(/^<(h[1-3]|ul|ol|table|div)/)) return p;

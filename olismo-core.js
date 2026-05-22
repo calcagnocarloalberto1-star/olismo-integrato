@@ -2789,16 +2789,55 @@ function showTyping(){
 }
 function hideTyping(){const t=document.getElementById("typing-indicator");if(t)t.remove()}
 
-function formatAiReply(text){
-  // Render Markdown tables FIRST (before other replacements)
-  text = text.replace(/(?:^|\n)(\|.+\|)\n(\|[-| :]+\|)\n((\|.+\|\n?)+)/gm, function(match, header, sep, body){
-    const heads = header.split('|').filter(c=>c.trim()).map(c=>'<th>'+c.trim()+'</th>').join('');
-    const rows = body.trim().split('\n').map(row=>{
-      const cells = row.split('|').filter(c=>c.trim()).map(c=>'<td>'+c.trim()+'</td>').join('');
-      return '<tr>'+cells+'</tr>';
-    }).join('');
-    return '<div class="ai-table-wrap"><table class="ai-table"><thead><tr>'+heads+'</tr></thead><tbody>'+rows+'</tbody></table></div>';
+// ═══════════════════════════════════════════════════════
+// HELPER MARKDOWN -> HTML CONDIVISO  (parseMdTables)
+// ═══════════════════════════════════════════════════════
+// Conversione tabelle Markdown -> HTML tollerante a:
+//   - CRLF (\r\n) e \r residui
+//   - trailing whitespace su righe di header/separator/body
+//   - celle vuote: la geometria delle colonne viene preservata
+//     (no .filter(s=>s) che cancellava le celle vuote)
+//   - righe con meno celle dell'header: pad con celle vuote
+//   - righe con piu' celle dell'header: troncate
+//   - tabelle multiple nello stesso testo
+// Esposta come window.parseMdTables per le pagine motore
+// (empowerment, consulente-mediatore, psicologia-analogica).
+function parseMdTables(text){
+  text = String(text).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  var re = /(^|\n)([ \t]*\|.+\|)[ \t]*\n[ \t]*\|[\s:|-]+\|[ \t]*\n((?:[ \t]*\|.+\|[ \t]*\n?)+)/g;
+  return text.replace(re, function(m, pre, header, body){
+    var splitRow = function(row){
+      var t = row.trim();
+      if(t.charAt(0) === '|') t = t.slice(1);
+      if(t.charAt(t.length - 1) === '|') t = t.slice(0, -1);
+      return t.split('|').map(function(c){ return c.trim(); });
+    };
+    var hCells = splitRow(header);
+    var rows = body.trim().split('\n').map(splitRow);
+    var cols = hCells.length;
+    var norm = rows.map(function(r){
+      if(r.length < cols){
+        return r.concat(new Array(cols - r.length).fill(''));
+      }
+      if(r.length > cols) return r.slice(0, cols);
+      return r;
+    });
+    var tbl = pre + '<div class="ai-table-wrap"><table class="ai-table"><thead><tr>';
+    hCells.forEach(function(c){ tbl += '<th>' + c + '</th>'; });
+    tbl += '</tr></thead><tbody>';
+    norm.forEach(function(row){
+      tbl += '<tr>';
+      row.forEach(function(c){ tbl += '<td>' + c + '</td>'; });
+      tbl += '</tr>';
+    });
+    return tbl + '</tbody></table></div>';
   });
+}
+if(typeof window !== 'undefined') window.parseMdTables = parseMdTables;
+
+function formatAiReply(text){
+  // Tabelle Markdown -> HTML (tollerante, celle vuote preservate)
+  text = parseMdTables(text);
   return text
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\n\n/g,'</p><p>')
@@ -5540,29 +5579,51 @@ async function exportChatPdf(){
       if(cols === 0) return;
       const colW = CW / cols;
       const tx = ML;
+      const cellPad = 1.5;
+      const lh = 3.6;
 
-      // Header
-      const hH = 6.5;
-      checkBreak(hH + 5);
-      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
-      doc.rect(tx, y - 4, CW, hH, 'F');
-      setFont('bold', 7.5, WHITE);
-      block.header.forEach((h, i) => {
-        const hLines = doc.splitTextToSize(sa(h), colW - 3);
-        doc.text(hLines[0] || '', tx + i * colW + 1.5, y);
-      });
-      y += hH - 1;
+      // Pre-misura header: ogni cella puo' avvolgersi su piu' righe.
+      // L'altezza dell'header e' dinamica (no piu' fissa a 6.5 mm).
+      const headerLines = block.header.map(h => doc.splitTextToSize(sa(h), colW - cellPad * 2));
+      let maxHL = 1;
+      headerLines.forEach(l => { if(l.length > maxHL) maxHL = l.length; });
+      const hH = maxHL * lh + 3;
+
+      function drawTHead(){
+        doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+        doc.rect(tx, y - 3, CW, hH, 'F');
+        setFont('bold', 7.5, WHITE);
+        headerLines.forEach((lines, ci) => {
+          lines.forEach((ln, li) => {
+            doc.text(ln, tx + ci * colW + cellPad, y + li * lh);
+          });
+        });
+        y += hH;
+      }
+
+      // Verifica spazio per header + almeno una riga; altrimenti page break
+      checkBreak(hH + lh + 2);
+      drawTHead();
 
       // Righe
       block.rows.forEach((row, ri) => {
         doc.setFontSize(7.5);
         doc.setFont('helvetica', 'normal');
-        const cellLines = row.map(c => doc.splitTextToSize(sa(c), colW - 3));
+        const cellLines = row.map(c => doc.splitTextToSize(sa(c), colW - cellPad * 2));
         let maxL = 1;
         cellLines.forEach(l => { if(l.length > maxL) maxL = l.length; });
-        const rH = maxL * 3.6 + 2;
+        const rH = maxL * lh + 2;
 
-        checkBreak(rH);
+        // Page break: se la riga non sta, vai a nuova pagina e RIDIPINGI L'HEADER
+        if(y + rH > PH - MB){
+          drawFooter();
+          doc.addPage();
+          page++;
+          drawHeader();
+          y = MT;
+          drawTHead();
+        }
+
         doc.setFillColor(
           ri % 2 === 0 ? IVORY[0] : IVORY2[0],
           ri % 2 === 0 ? IVORY[1] : IVORY2[1],
@@ -5575,16 +5636,16 @@ async function exportChatPdf(){
           // Prima colonna in grassetto
           if(ci === 0) setFont('bold', 7.5, INK);
           lines.forEach((ln, li) => {
-            doc.text(ln, tx + ci * colW + 1.5, y + li * 3.6);
+            doc.text(ln, tx + ci * colW + cellPad, y + li * lh);
           });
         });
         y += rH;
       });
 
-      // Bordo
+      // Bordo decorativo
       doc.setDrawColor(GOLD[0], GOLD[1], GOLD[2]);
       doc.setLineWidth(0.2);
-      // (nessun bordo completo, le righe sono già stacked)
+      // (nessun bordo completo, le righe sono gia' stacked)
     }
 
     function renderCode(code){
@@ -7108,32 +7169,281 @@ async function exportMotorPdf(cfg){
     
     function drawMessage(role, text){
       var isUser = role === 'user';
-      doc.setFontSize(9);
-      var lines = doc.splitTextToSize(se(text || ''), CW - 12);
-      var lineH = 4.5;
-      var pad = 4;
-      var bubbleH = lines.length * lineH + pad * 2;
-      
-      if(y + bubbleH + 8 > PH - MB) newPage();
-      
+      var safeText = se(text || '');
+
+      // Etichetta TU / NOME-MOTORE
+      if(y + 10 > PH - MB) newPage();
       doc.setFontSize(7);
       doc.setFont('helvetica','bold');
       doc.setTextColor(isUser ? INK2[0] : GOLD[0], isUser ? INK2[1] : GOLD[1], isUser ? INK2[2] : GOLD[2]);
       doc.text(isUser ? 'TU' : cfg.motorDisplay.toUpperCase(), ML, y);
       y += 4;
-      
-      doc.setFillColor(isUser ? IVORY2[0] : GOLD_LIGHT[0], isUser ? IVORY2[1] : GOLD_LIGHT[1], isUser ? IVORY2[2] : GOLD_LIGHT[2]);
-      doc.setDrawColor(isUser ? 200 : GOLD[0], isUser ? 200 : GOLD[1], isUser ? 200 : GOLD[2]);
-      doc.setLineWidth(0.2);
-      doc.roundedRect(ML, y, CW, bubbleH, 2, 2, 'FD');
-      
-      doc.setFont('helvetica','normal');
-      doc.setFontSize(9);
-      doc.setTextColor(INK[0],INK[1],INK[2]);
-      for(var i = 0; i < lines.length; i++){
-        doc.text(lines[i], ML + pad, y + pad + 3 + (i * lineH));
+
+      var fillColor = isUser ? IVORY2 : GOLD_LIGHT;
+      var strokeColor = isUser ? [200,200,200] : GOLD;
+      var lineH = 4.5;
+      var pad = 4;
+
+      // Helper: scrive un chunk di righe in una bolla, paginando se serve.
+      // Restituisce dopo aver consumato tutte le `lines`.
+      function drawChunkedBubble(lines, fontStyle){
+        fontStyle = fontStyle || 'normal';
+        var i = 0;
+        while(i < lines.length){
+          var avail = PH - MB - y - pad * 2;
+          var maxRows = Math.floor(avail / lineH);
+          if(maxRows < 1){ newPage(); continue; }
+          var take = Math.min(maxRows, lines.length - i);
+          var chunkH = take * lineH + pad * 2;
+
+          doc.setFillColor(fillColor[0], fillColor[1], fillColor[2]);
+          doc.setDrawColor(strokeColor[0], strokeColor[1], strokeColor[2]);
+          doc.setLineWidth(0.2);
+          doc.roundedRect(ML, y, CW, chunkH, 2, 2, 'FD');
+
+          doc.setFont('helvetica', fontStyle);
+          doc.setFontSize(9);
+          doc.setTextColor(INK[0],INK[1],INK[2]);
+          for(var k = 0; k < take; k++){
+            doc.text(lines[i + k], ML + pad, y + pad + 3 + (k * lineH));
+          }
+          y += chunkH;
+          i += take;
+          if(i < lines.length){ newPage(); y += 1; }
+        }
       }
-      y += bubbleH + 6;
+
+      // ── USER ───────────────────────────────────────────
+      if(isUser){
+        doc.setFontSize(9);
+        var lines = doc.splitTextToSize(safeText, CW - pad * 2);
+        drawChunkedBubble(lines, 'normal');
+        y += 6;
+        return;
+      }
+
+      // ── AI: parsing Markdown minimale (heading, bold, liste, tabelle) ──
+      // Normalizza line endings
+      var src = safeText.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+      // Parser blocchi: heading | tabella | lista | paragrafo
+      var blocks = [];
+      var L = src.split('\n');
+      var i = 0;
+      while(i < L.length){
+        var t = L[i].trim();
+        if(t === ''){ i++; continue; }
+
+        // Heading ###/##/#
+        var hm = t.match(/^(#{1,3})\s+(.+)$/);
+        if(hm){ blocks.push({type:'h', level:hm[1].length, text:hm[2]}); i++; continue; }
+
+        // Tabella Markdown
+        if(t.charAt(0) === '|' && t.charAt(t.length-1) === '|' && i + 1 < L.length
+           && /^\|[\s:|-]+\|$/.test(L[i+1].trim())){
+          var splitRow = function(row){
+            var s = row.trim();
+            if(s.charAt(0) === '|') s = s.slice(1);
+            if(s.charAt(s.length-1) === '|') s = s.slice(0,-1);
+            return s.split('|').map(function(c){ return c.trim(); });
+          };
+          var headerCells = splitRow(t);
+          i += 2;
+          var bodyRows = [];
+          while(i < L.length){
+            var rt = L[i].trim();
+            if(rt.charAt(0) !== '|' || rt.charAt(rt.length-1) !== '|') break;
+            bodyRows.push(splitRow(rt));
+            i++;
+          }
+          var cols = headerCells.length;
+          bodyRows = bodyRows.map(function(r){
+            if(r.length < cols) return r.concat(new Array(cols - r.length).fill(''));
+            if(r.length > cols) return r.slice(0, cols);
+            return r;
+          });
+          blocks.push({type:'table', header: headerCells, rows: bodyRows});
+          continue;
+        }
+
+        // Lista (- o *)
+        if(/^[-*]\s+/.test(t)){
+          var items = [];
+          while(i < L.length){
+            var mm = L[i].trim().match(/^[-*]\s+(.+)$/);
+            if(!mm) break;
+            items.push(mm[1]);
+            i++;
+          }
+          blocks.push({type:'ul', items: items});
+          continue;
+        }
+
+        // Paragrafo (righe consecutive non-vuote)
+        var para = [];
+        while(i < L.length){
+          var pt = L[i].trim();
+          if(pt === '') break;
+          if(/^(#{1,3}\s|[-*]\s)/.test(pt)) break;
+          if(pt.charAt(0) === '|' && pt.charAt(pt.length-1) === '|') break;
+          para.push(L[i]);
+          i++;
+        }
+        if(para.length) blocks.push({type:'p', text: para.join(' ').replace(/\s+/g,' ').trim()});
+      }
+
+      // Render blocchi con barra verticale oro a sinistra
+      var startY = y;
+      var totalH = 0;
+
+      // Funzione per rimuovere markdown inline (**bold** -> bold, *italic* -> italic).
+      // jsPDF non supporta inline formatting nativamente; sanitizziamo per leggibilita'.
+      function stripInline(s){
+        return s
+          .replace(/\*\*(.+?)\*\*/g, '$1')
+          .replace(/`([^`]+?)`/g, '$1')
+          .replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '$1');
+      }
+
+      // Render tabella nel PDF (header + righe, ridipinge header al page break)
+      function renderTablePdf(tb){
+        var ncols = tb.header.length;
+        if(ncols === 0) return;
+        var tableW = CW - 2;
+        var colW = tableW / ncols;
+        var tx = ML + 1;
+        var cellPad = 1.2;
+        var lh = 3.4;
+
+        var headerLines = tb.header.map(function(h){
+          return doc.splitTextToSize(stripInline(h), colW - cellPad * 2);
+        });
+        var maxHL = 1;
+        headerLines.forEach(function(l){ if(l.length > maxHL) maxHL = l.length; });
+        var hH = maxHL * lh + 2.5;
+
+        var drawTHead = function(){
+          doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+          doc.rect(tx, y, tableW, hH, 'F');
+          doc.setFont('helvetica','bold');
+          doc.setFontSize(7.5);
+          doc.setTextColor(255,255,255);
+          headerLines.forEach(function(lines, ci){
+            lines.forEach(function(ln, li){
+              doc.text(ln, tx + ci * colW + cellPad, y + 2.8 + li * lh);
+            });
+          });
+          y += hH;
+        };
+
+        // Spazio per header + 1 riga
+        if(y + hH + lh + 2 > PH - MB) newPage();
+        drawTHead();
+
+        tb.rows.forEach(function(row, ri){
+          doc.setFont('helvetica','normal');
+          doc.setFontSize(7.5);
+          var cellLines = row.map(function(c){
+            return doc.splitTextToSize(stripInline(c), colW - cellPad * 2);
+          });
+          var maxL = 1;
+          cellLines.forEach(function(l){ if(l.length > maxL) maxL = l.length; });
+          var rH = maxL * lh + 1.6;
+
+          if(y + rH > PH - MB){
+            newPage();
+            drawTHead();
+          }
+
+          doc.setFillColor(
+            ri % 2 === 0 ? IVORY[0] : IVORY2[0],
+            ri % 2 === 0 ? IVORY[1] : IVORY2[1],
+            ri % 2 === 0 ? IVORY[2] : IVORY2[2]
+          );
+          doc.rect(tx, y, tableW, rH, 'F');
+
+          cellLines.forEach(function(lines, ci){
+            doc.setFont('helvetica', ci === 0 ? 'bold' : 'normal');
+            doc.setFontSize(7.5);
+            doc.setTextColor(ci === 0 ? INK[0] : INK2[0], ci === 0 ? INK[1] : INK2[1], ci === 0 ? INK[2] : INK2[2]);
+            lines.forEach(function(ln, li){
+              doc.text(ln, tx + ci * colW + cellPad, y + 2.6 + li * lh);
+            });
+          });
+          y += rH;
+        });
+        y += 2;
+      }
+
+      // Sfondo bolla AI: la disegno DOPO i blocchi misurando l'altezza effettiva
+      // ma per semplicita' uso una barra verticale oro a sinistra, paginata.
+      function ensureSpace(needed){
+        if(y + needed > PH - MB) newPage();
+      }
+
+      blocks.forEach(function(b){
+        if(b.type === 'h'){
+          ensureSpace(8);
+          y += 1;
+          doc.setFont('helvetica','bold');
+          doc.setFontSize(b.level === 1 ? 12 : b.level === 2 ? 10.5 : 9.5);
+          doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+          var hLines = doc.splitTextToSize(stripInline(b.text), CW - pad - 4);
+          hLines.forEach(function(ln){
+            ensureSpace(5);
+            doc.text(ln, ML + pad, y + 3);
+            y += 5;
+          });
+          y += 1;
+          return;
+        }
+        if(b.type === 'p'){
+          doc.setFont('helvetica','normal');
+          doc.setFontSize(9);
+          doc.setTextColor(INK[0], INK[1], INK[2]);
+          var pLines = doc.splitTextToSize(stripInline(b.text), CW - pad - 4);
+          pLines.forEach(function(ln){
+            ensureSpace(lineH + 0.5);
+            doc.text(ln, ML + pad, y + 3);
+            y += lineH;
+          });
+          y += 1;
+          return;
+        }
+        if(b.type === 'ul'){
+          doc.setFont('helvetica','normal');
+          doc.setFontSize(9);
+          doc.setTextColor(INK[0], INK[1], INK[2]);
+          b.items.forEach(function(it){
+            var iLines = doc.splitTextToSize(stripInline(it), CW - pad - 9);
+            ensureSpace(lineH + 0.5);
+            doc.setFont('helvetica','bold');
+            doc.setTextColor(GOLD[0], GOLD[1], GOLD[2]);
+            doc.text('•', ML + pad + 1, y + 3);
+            doc.setFont('helvetica','normal');
+            doc.setTextColor(INK[0], INK[1], INK[2]);
+            iLines.forEach(function(ln, idx){
+              if(idx > 0) ensureSpace(lineH + 0.5);
+              doc.text(ln, ML + pad + 5, y + 3);
+              y += lineH;
+            });
+          });
+          y += 1;
+          return;
+        }
+        if(b.type === 'table'){
+          renderTablePdf(b);
+          return;
+        }
+      });
+
+      // Barra verticale oro a sinistra (segno della bolla AI)
+      // Disegnata a posteriori, paginata: per semplicita' una piccola
+      // banda colorata in cima al primo blocco.
+      doc.setFillColor(GOLD[0], GOLD[1], GOLD[2]);
+      doc.rect(ML, startY - 0.5, 1.2, Math.min(4, PH - MB - startY), 'F');
+
+      y += 4;
     }
     
     drawHeader();

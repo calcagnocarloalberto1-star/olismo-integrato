@@ -3089,33 +3089,32 @@ async function sendMsg(){
         messages:chatHistory
       })
     });
-    if(!res.ok && res.status === 0){
-      throw new Error("CORS");
+    hideTyping();
+    if(!res.ok){
+      // Errore HTTP del proxy (403, 429, 500, ...): mostra il messaggio reale.
+      let errMsg = "Errore " + res.status;
+      try { const ed = await res.json(); errMsg = (ed.error && ed.error.message) || ed.message || errMsg; }
+      catch(_) { try { errMsg = (await res.text()) || errMsg; } catch(__){} }
+      addMsg("ai","<em>⚠ Il consulente non è raggiungibile ("+errMsg+"). Riprova tra poco.</em>");
+      return;
     }
     const data=await res.json();
-    hideTyping();
     if(data.error){
-      const errMsg = data.error.message || "Errore API";
-      if(errMsg.includes("auth") || errMsg.includes("key") || errMsg.includes("401")){
-        showApiKeyBanner();
-      }
-      addMsg("ai","<em>⚠ "+errMsg+"</em>");
-      isLoading=false;document.getElementById("send-btn").disabled=false;return;
+      addMsg("ai","<em>⚠ "+(data.error.message||"Errore API")+"</em>");
+      return;
     }
     const reply=data.content?.[0]?.text||"Mi dispiace, non ho ricevuto una risposta. Riprova.";
     chatHistory.push({role:"assistant",content:reply});
     addMsg("ai",formatAiReply(reply));
   }catch(e){
     hideTyping();
-    if(e.message && (e.message.includes("CORS") || e.message.includes("Failed to fetch"))){
-      showApiKeyBanner();
-      addMsg("ai","<em>🔑 Connessione bloccata. Su GitHub Pages è necessaria una API Key Anthropic personale. Inseriscila nel banner qui sopra.</em>");
-    } else {
-      addMsg("ai","<em>Errore di connessione: "+e.message+". Verifica la tua connessione e riprova.</em>");
-    }
+    addMsg("ai","<em>Errore di connessione: "+(e.message||e)+". Verifica la connessione e riprova.</em>");
+  }finally{
+    // Ripristino SEMPRE lo stato, qualunque cosa accada: niente più chat bloccata.
+    isLoading=false;
+    const sb=document.getElementById("send-btn");
+    if(sb) sb.disabled=false;
   }
-  isLoading=false;
-  document.getElementById("send-btn").disabled=false;
 }
 
 function askSugg(el){

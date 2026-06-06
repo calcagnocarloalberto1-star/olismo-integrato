@@ -179,6 +179,8 @@ Disallow: /
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
+# Fragment HTML caricato via JS (non è una pagina autonoma)
+Disallow: /olismo-footer.html
 
 # ─── Sitemap ───
 Sitemap: https://olismo-integrato.it/sitemap.xml

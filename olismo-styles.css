@@ -3441,3 +3441,24 @@ nav {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
+
+/* ══ MOBILE READABILITY & TOUCH TARGETS ══ */
+/* Micro-label e chip diventano leggibili su schermi piccoli (WCAG: testo body min 12px). */
+@media (max-width: 640px) {
+  .perc-chip { font-size: 0.78rem; padding: 0.28rem 0.65rem; }
+  .percorso-tag { font-size: 0.8rem; padding: 0.22rem 0.7rem; }
+  .perc-cta { font-size: 0.82rem; }
+  .ps-new { font-size: 0.88rem; padding: 0.5rem 0; }
+}
+
+/* Garantisce area tappabile minima 44x44px (Apple HIG) per i link "brand" e bottoni icona */
+.hdr-brand { min-height: 44px; }
+.hdr-brand .hdr-logo { line-height: 1; }
+
+/* iPad (portrait/landscape): layout più arioso per la quick-start bar */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .qs-inner { gap: 0.7rem; padding: 0 1.2rem; }
+  .qs-label { font-size: 0.88rem; }
+  .qs-btn { min-width: 0; padding: 0.55rem 0.8rem; }
+  .qs-buttons { gap: 0.5rem; }
+}

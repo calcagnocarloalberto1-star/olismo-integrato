@@ -169,6 +169,18 @@
 
 <script src="olismo-core.js" defer></script>
 <script src="olismo-profilo.js" defer></script>
+<script src="olismo-reset.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.OlismoReset && window.OlismoReset.montaPulsante) {
+    window.OlismoReset.montaPulsante({
+      scope: 'tutto',
+      testo: '🗑️ Azzera dati in cache',
+      style: 'position:fixed;bottom:18px;right:18px;background:#fff;color:#b91c1c;border:1px solid #b91c1c;padding:.55rem 1rem;border-radius:20px;font-family:Outfit,sans-serif;font-size:.78rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:9999'
+    });
+  }
+});
+</script>
 
 <!-- Logica di rendering del profilo personale -->
 <script>

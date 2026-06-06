@@ -197,6 +197,10 @@ body { background: #f9f5ef; }
         <h3>Lettura <em>sistemica</em> del caso</h3>
         <p>Invia il dossier completo al <strong>Consulente Mediatore AI</strong> per un'analisi delle dinamiche d'incastro, delle aree di conflitto, di una strategia di colloqui e di eventuali red flag.</p>
         <button type="button" id="btn-invia-mediatore">⚖ Invia al Consulente Mediatore</button>
+        <div style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(212,175,55,.25)">
+          <p style="margin:0 0 .6rem;font-size:.92rem">Se nel dossier vi sono figli minori o questioni di affidamento, mantenimento o assegno divorzile, puoi richiedere un <strong>piano genitoriale</strong> strutturato con riferimenti normativi e giurisprudenziali.</p>
+          <button type="button" id="btn-piano-genitoriale" style="background:#fff;color:var(--gold);border:1px solid var(--gold)">⚖ Crea Piano Genitoriale</button>
+        </div>
       </div>
     </div>
 
@@ -318,6 +322,66 @@ body { background: #f9f5ef; }
       <label for="ms-svalutazione">Matrice di svalutazione ricorrente</label>
       <input type="text" id="ms-svalutazione" placeholder="es. svaluta soluzioni; sopravvaluta problemi">
     </div>
+
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin:1.4rem 0 .6rem;padding-top:.8rem;border-top:1px dashed var(--border)">Quadro economico</h4>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-reddito">Reddito mensile netto (€)</label>
+        <input type="text" id="ms-reddito" placeholder="es. 2200">
+      </div>
+      <div class="med-field">
+        <label for="ms-patrimonio">Patrimonio rilevante</label>
+        <input type="text" id="ms-patrimonio" placeholder="es. casa di proprietà, immobile cointestato">
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-spese">Spese fisse mensili (€)</label>
+        <input type="text" id="ms-spese" placeholder="es. 1300 (affitto, utenze, mutuo)">
+      </div>
+      <div class="med-field">
+        <label for="ms-capacita-lavorativa">Capacità lavorativa attuale</label>
+        <select id="ms-capacita-lavorativa">
+          <option value="">—</option>
+          <option>Piena</option>
+          <option>Parziale</option>
+          <option>Ridotta per cura figli</option>
+          <option>Disoccupazione recente</option>
+          <option>Non valutabile</option>
+        </select>
+      </div>
+    </div>
+
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin:1.4rem 0 .6rem;padding-top:.8rem;border-top:1px dashed var(--border)">Quadro familiare e logistico</h4>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-residenza">Residenza / luogo</label>
+        <input type="text" id="ms-residenza" placeholder="es. Genova, abita in casa coniugale">
+      </div>
+      <div class="med-field">
+        <label for="ms-stato-civile">Stato civile</label>
+        <select id="ms-stato-civile">
+          <option value="">—</option>
+          <option>Coniugato/a</option>
+          <option>Separato/a di fatto</option>
+          <option>Separato/a legalmente</option>
+          <option>Divorziato/a</option>
+          <option>Convivente</option>
+          <option>Non coniugato/a</option>
+        </select>
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-tempo-figli">Tempo attuale con i figli</label>
+        <input type="text" id="ms-tempo-figli" placeholder="es. 5 gg/sett, weekend alternati">
+      </div>
+      <div class="med-field">
+        <label for="ms-disponibilita">Disponibilità oraria</label>
+        <input type="text" id="ms-disponibilita" placeholder="es. lavoro su turni; libero pomeriggi">
+      </div>
+    </div>
+
     <div class="med-field">
       <label for="ms-note">Note specifiche sul soggetto</label>
       <textarea id="ms-note" placeholder="Comportamenti osservati in seduta, leve di motivazione, alleanze, paure..."></textarea>
@@ -352,6 +416,7 @@ body { background: #f9f5ef; }
 
 <script src="olismo-profilo.js" defer></script>
 <script src="olismo-mediazione.js" defer></script>
+<script src="olismo-reset.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   if (!window.OlismoMediazione) {
@@ -427,6 +492,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (s.stile_conflitto) campi.push('<div class="med-soggetto-campo"><b>Conflitto</b> ' + escapeHtml(s.stile_conflitto) + '</div>');
       if (s.copione)        campi.push('<div class="med-soggetto-campo"><b>Copione</b> ' + escapeHtml(s.copione) + '</div>');
       if (s.svalutazione)   campi.push('<div class="med-soggetto-campo"><b>Svalutazione</b> ' + escapeHtml(s.svalutazione) + '</div>');
+      if (s.reddito_mensile)  campi.push('<div class="med-soggetto-campo"><b>Reddito</b> €' + escapeHtml(s.reddito_mensile) + '/mese</div>');
+      if (s.patrimonio)       campi.push('<div class="med-soggetto-campo"><b>Patrimonio</b> ' + escapeHtml(s.patrimonio) + '</div>');
+      if (s.spese_fisse)      campi.push('<div class="med-soggetto-campo"><b>Spese</b> €' + escapeHtml(s.spese_fisse) + '/mese</div>');
+      if (s.capacita_lavorativa) campi.push('<div class="med-soggetto-campo"><b>Capacità lav.</b> ' + escapeHtml(s.capacita_lavorativa) + '</div>');
+      if (s.residenza)        campi.push('<div class="med-soggetto-campo"><b>Residenza</b> ' + escapeHtml(s.residenza) + '</div>');
+      if (s.stato_civile)     campi.push('<div class="med-soggetto-campo"><b>Stato civ.</b> ' + escapeHtml(s.stato_civile) + '</div>');
+      if (s.tempo_attuale_figli) campi.push('<div class="med-soggetto-campo"><b>Tempo figli</b> ' + escapeHtml(s.tempo_attuale_figli) + '</div>');
+      if (s.disponibilita_oraria) campi.push('<div class="med-soggetto-campo"><b>Disponibilità</b> ' + escapeHtml(s.disponibilita_oraria) + '</div>');
       var body = campi.length ? campi.join('') : '<div class="med-soggetto-vuoto">Profilo non ancora compilato</div>';
       var noteHtml = s.note ? '<div class="med-soggetto-campo" style="margin-top:.5rem;color:var(--ink3);font-style:italic">"' + escapeHtml(s.note) + '"</div>' : '';
       return '<div class="med-soggetto">' +
@@ -517,6 +590,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ms-chakra-debole').value = s ? s.chakra_debole : '';
     document.getElementById('ms-copione').value = s ? s.copione : '';
     document.getElementById('ms-svalutazione').value = s ? s.svalutazione : '';
+    document.getElementById('ms-reddito').value = s ? (s.reddito_mensile || '') : '';
+    document.getElementById('ms-patrimonio').value = s ? (s.patrimonio || '') : '';
+    document.getElementById('ms-spese').value = s ? (s.spese_fisse || '') : '';
+    document.getElementById('ms-capacita-lavorativa').value = s ? (s.capacita_lavorativa || '') : '';
+    document.getElementById('ms-residenza').value = s ? (s.residenza || '') : '';
+    document.getElementById('ms-stato-civile').value = s ? (s.stato_civile || '') : '';
+    document.getElementById('ms-tempo-figli').value = s ? (s.tempo_attuale_figli || '') : '';
+    document.getElementById('ms-disponibilita').value = s ? (s.disponibilita_oraria || '') : '';
     document.getElementById('ms-note').value = s ? s.note : '';
     apriModal('modal-soggetto');
   }
@@ -537,6 +618,14 @@ document.addEventListener('DOMContentLoaded', function () {
       chakra_debole: document.getElementById('ms-chakra-debole').value.trim(),
       copione: document.getElementById('ms-copione').value.trim(),
       svalutazione: document.getElementById('ms-svalutazione').value.trim(),
+      reddito_mensile: document.getElementById('ms-reddito').value.trim(),
+      patrimonio: document.getElementById('ms-patrimonio').value.trim(),
+      spese_fisse: document.getElementById('ms-spese').value.trim(),
+      capacita_lavorativa: document.getElementById('ms-capacita-lavorativa').value.trim(),
+      residenza: document.getElementById('ms-residenza').value.trim(),
+      stato_civile: document.getElementById('ms-stato-civile').value.trim(),
+      tempo_attuale_figli: document.getElementById('ms-tempo-figli').value.trim(),
+      disponibilita_oraria: document.getElementById('ms-disponibilita').value.trim(),
       note: document.getElementById('ms-note').value.trim()
     };
     if (!payload.nome) { alert('Inserisci un nome o identificativo.'); return; }
@@ -622,6 +711,25 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!d.soggetti.length) { alert('Aggiungi almeno un soggetto al dossier prima di chiedere una lettura sistemica.'); return; }
     OlismoMediazione.inviaAlConsulente(d.id);
   };
+
+  document.getElementById('btn-piano-genitoriale').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    if (!d.soggetti.length) { alert('Aggiungi almeno due soggetti (genitori) e i figli prima di richiedere un piano genitoriale.'); return; }
+    if (d.soggetti.length < 2) {
+      if (!confirm('Il dossier ha un solo soggetto. Un piano genitoriale richiede almeno due genitori (e idealmente anche i figli). Vuoi proseguire comunque?')) return;
+    }
+    OlismoMediazione.inviaPianoGenitoriale(d.id);
+  };
+
+  // Pulsante reset cache (azzera tutti i dati olismo_*)
+  if (window.OlismoReset && window.OlismoReset.montaPulsante) {
+    window.OlismoReset.montaPulsante({
+      scope: 'tutto',
+      testo: '🗑️ Azzera dati in cache',
+      style: 'position:fixed;bottom:18px;right:18px;background:#fff;color:#b91c1c;border:1px solid #b91c1c;padding:.55rem 1rem;border-radius:20px;font-family:Outfit,sans-serif;font-size:.78rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:9999'
+    });
+  }
 
   // Click esterno chiude modal
   document.querySelectorAll('.med-modal-bg').forEach(function (bg) {

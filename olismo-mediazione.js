@@ -130,7 +130,15 @@
       copione: s(soggetto.copione, 200),
       stile_conflitto: s(soggetto.stile_conflitto, 80),
       svalutazione: s(soggetto.svalutazione, 200),
-      note: s(soggetto.note, 600)
+      note: s(soggetto.note, 600),
+      reddito_mensile: s(soggetto.reddito_mensile, 30),
+      patrimonio: s(soggetto.patrimonio, 200),
+      spese_fisse: s(soggetto.spese_fisse, 200),
+      capacita_lavorativa: s(soggetto.capacita_lavorativa, 100),
+      residenza: s(soggetto.residenza, 100),
+      stato_civile: s(soggetto.stato_civile, 40),
+      tempo_attuale_figli: s(soggetto.tempo_attuale_figli, 100),
+      disponibilita_oraria: s(soggetto.disponibilita_oraria, 200)
     };
     d.soggetti.push(sogg);
     salvaDossier(d);
@@ -211,8 +219,20 @@
       if (sg.copione)         p.push('• Copione di vita: ' + sg.copione);
       if (sg.stile_conflitto) p.push('• Stile di conflitto: ' + sg.stile_conflitto);
       if (sg.svalutazione)    p.push('• Matrice di svalutazione ricorrente: ' + sg.svalutazione);
-      if (p.length === 0) p.push('(nessun dato compilato)');
+      if (p.length === 0) p.push('(nessun dato anagrafico/psicologico compilato)');
       L.push(p.join('\n'));
+      var econ = [];
+      if (sg.reddito_mensile)     econ.push('reddito ' + sg.reddito_mensile);
+      if (sg.capacita_lavorativa) econ.push('capacità lavorativa ' + sg.capacita_lavorativa);
+      if (sg.patrimonio)          econ.push('patrimonio: ' + sg.patrimonio);
+      if (sg.spese_fisse)         econ.push('spese fisse: ' + sg.spese_fisse);
+      if (econ.length) L.push('Quadro economico: ' + econ.join('; '));
+      var fam = [];
+      if (sg.residenza)             fam.push('residenza ' + sg.residenza);
+      if (sg.stato_civile)          fam.push('stato civile ' + sg.stato_civile);
+      if (sg.tempo_attuale_figli)   fam.push('tempo con figli ' + sg.tempo_attuale_figli);
+      if (sg.disponibilita_oraria)  fam.push('disponibilità oraria ' + sg.disponibilita_oraria);
+      if (fam.length) L.push('Quadro familiare/logistico: ' + fam.join('; '));
       if (sg.note) L.push('Note specifiche: ' + sg.note);
     });
     L.push('');
@@ -235,6 +255,93 @@
     try {
       sessionStorage.setItem('olismo_prompt_mediazione', prompt);
       location.href = CONSULENTE_MED_URL + '?profilo=mediazione&dossier=' + encodeURIComponent(dossierId);
+      return true;
+    } catch (e) {
+      location.href = CONSULENTE_MED_URL + '?prompt=' + encodeURIComponent(prompt.slice(0, 7000));
+      return true;
+    }
+  }
+
+  // ─── Mega-prompt PIANO GENITORIALE ───────────────────────────────
+  function costruisciPromptPianoGenitoriale(dossierId) {
+    var d = leggiDossier(dossierId);
+    if (!d) return null;
+    var L = [];
+    L.push('Ciao Consulente Mediatore. Costruisci un PIANO GENITORIALE operativo a partire da questo dossier di mediazione familiare.');
+    L.push('');
+    L.push('DOSSIER: ' + d.nome + (d.note ? '  —  ' + d.note : ''));
+    L.push('');
+    L.push('GENITORI E ALTRI SOGGETTI ADULTI');
+    L.push('═══════════════════════════════════════');
+    d.soggetti.forEach(function(sg){
+      var r = (sg.ruolo || '').toLowerCase();
+      if (r === 'figlio' || r === 'figlia' || r === 'minore' || r === 'figli') return;
+      var righe = [sg.nome + (sg.ruolo ? ' (' + sg.ruolo + ')' : '') + (sg.eta ? ' · ' + sg.eta + ' anni' : '')];
+      if (sg.enneatipo)            righe.push('enneatipo ' + sg.enneatipo);
+      if (sg.stile_conflitto)      righe.push('stile di conflitto: ' + sg.stile_conflitto);
+      if (sg.residenza)            righe.push('residenza: ' + sg.residenza);
+      if (sg.disponibilita_oraria) righe.push('disponibilità oraria: ' + sg.disponibilita_oraria);
+      if (sg.tempo_attuale_figli)  righe.push('tempo attuale con i figli: ' + sg.tempo_attuale_figli);
+      if (sg.reddito_mensile)      righe.push('reddito ' + sg.reddito_mensile);
+      L.push('• ' + righe.join(' · '));
+    });
+    var figli = d.soggetti.filter(function(sg){
+      var r = (sg.ruolo || '').toLowerCase();
+      return r === 'figlio' || r === 'figlia' || r === 'minore' || r === 'figli';
+    });
+    if (figli.length) {
+      L.push('');
+      L.push('FIGLI / MINORI COINVOLTI (' + figli.length + ')');
+      L.push('═══════════════════════════════════════');
+      figli.forEach(function(f){
+        var righe = [f.nome + (f.eta ? ' (' + f.eta + ' anni)' : '')];
+        if (f.tempo_attuale_figli) righe.push('tempo attuale con genitori: ' + f.tempo_attuale_figli);
+        if (f.residenza) righe.push('residenza: ' + f.residenza);
+        if (f.note) righe.push('note: ' + f.note);
+        L.push('• ' + righe.join(' · '));
+      });
+    }
+    var hasEcon = d.soggetti.some(function(sg){
+      return sg.reddito_mensile || sg.patrimonio || sg.spese_fisse;
+    });
+    if (hasEcon) {
+      L.push('');
+      L.push('QUADRO ECONOMICO COMPLESSIVO');
+      L.push('═══════════════════════════════════════');
+      d.soggetti.forEach(function(sg){
+        var righe = [];
+        if (sg.reddito_mensile) righe.push('reddito mensile ' + sg.reddito_mensile);
+        if (sg.patrimonio)      righe.push('patrimonio: ' + sg.patrimonio);
+        if (sg.spese_fisse)     righe.push('spese fisse: ' + sg.spese_fisse);
+        if (righe.length) L.push('• ' + sg.nome + ' — ' + righe.join('; '));
+      });
+    }
+    L.push('');
+    L.push('═══════════════════════════════════════');
+    L.push('Quello che ti chiedo — costruisci un PIANO GENITORIALE FUNZIONANTE con queste sezioni:');
+    L.push('');
+    L.push('1) PRINCIPI GUIDA del piano (centralità del minore, bigenitorialità art. 337-ter c.c., continuità affettiva, riservatezza delle dinamiche di coppia rispetto ai figli).');
+    L.push('2) RESIDENZA ABITUALE e CRITERI di scelta della casa familiare alla luce della Cass. SU 13/2014 e della giurisprudenza più recente; collocamento prevalente vs paritario.');
+    L.push('3) TEMPI DI PERMANENZA settimanali, week-end alternati, festività (Natale, Pasqua, compleanni, ricorrenze), vacanze estive: proposta concreta con calendario tipo, adattata all’età dei figli e ai turni lavorativi dei genitori.');
+    L.push('4) SCUOLA E SALUTE: chi accompagna, chi prende le decisioni di routine, chi quelle di maggiore importanza (artt. 337-ter c.c. e 316 c.c.). Modalità di scambio informazioni.');
+    L.push('5) MANTENIMENTO ORDINARIO E STRAORDINARIO: proponi un assegno di mantenimento alla luce dei redditi indicati, dei tempi di permanenza e delle spese fisse, citando i parametri di Cassazione (capacità economica, tenore di vita pregresso, tempi di permanenza, età). Spese straordinarie: elenco esemplificativo, criteri di ripartizione, modalità di concertazione.');
+    L.push('6) EVENTUALE ASSEGNO PER IL CONIUGE / ALIMENTI: valuta se ricorrono i presupposti dell’assegno divorzile (Cass. SU 18287/2018, funzione assistenziale + perequativo-compensativa) o dei meri alimenti (art. 433 c.c.); quantifica un range plausibile e indica eventi modificativi.');
+    L.push('7) CLAUSOLE DI FLESSIBILITÀ e revisione periodica del piano (es. cadenza annuale, eventi modificativi).');
+    L.push('8) GESTIONE DEI CONFLITTI: in base allo stile di conflitto e all’enneatipo dei genitori, suggerisci canali di comunicazione (app condivise, mediazione di ritorno, co-parenting coordinator).');
+    L.push('9) TUTELA DEL MINORE: parole da non dire davanti ai figli, segnali di malessere a cui prestare attenzione, indicazione su quando attivare un ascolto del minore o coinvolgere il servizio sociale.');
+    L.push('10) RED FLAG: se intravedi indicatori di violenza assistita, alienazione, manipolazione, sopruso economico, segnala come la mediazione debba essere sospesa o riformulata.');
+    L.push('11) BOZZA OPERATIVA — chiudi con una proposta sintetica (15-25 righe) in linguaggio comprensibile per le parti, da usare come canovaccio del verbale di accordo.');
+    L.push('');
+    L.push('Risposta in italiano, professionale, con riferimenti normativi e giurisprudenziali essenziali. Cala le proposte sui dati del dossier, evita le generalità.');
+    return L.join('\n');
+  }
+
+  function inviaPianoGenitoriale(dossierId) {
+    var prompt = costruisciPromptPianoGenitoriale(dossierId);
+    if (!prompt) { alert('Dossier non trovato o vuoto.'); return false; }
+    try {
+      sessionStorage.setItem('olismo_prompt_mediazione', prompt);
+      location.href = CONSULENTE_MED_URL + '?profilo=mediazione&dossier=' + encodeURIComponent(dossierId) + '&tipo=piano';
       return true;
     } catch (e) {
       location.href = CONSULENTE_MED_URL + '?prompt=' + encodeURIComponent(prompt.slice(0, 7000));
@@ -279,7 +386,9 @@
     rimuoviSoggetto: rimuoviSoggetto,
     riempiDaProfiloPersonale: riempiDaProfiloPersonale,
     costruisciPrompt: costruisciPrompt,
+    costruisciPromptPianoGenitoriale: costruisciPromptPianoGenitoriale,
     inviaAlConsulente: inviaAlConsulente,
+    inviaPianoGenitoriale: inviaPianoGenitoriale,
     recuperaPrompt: recuperaPrompt,
     esportaJSON: esportaJSON,
     importaJSON: importaJSON

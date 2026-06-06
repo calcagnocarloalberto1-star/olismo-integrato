@@ -144,5 +144,39 @@ document.addEventListener("DOMContentLoaded", function(){
   if(p) OlismoProfilo.montaPulsanteConsulente({motore:"fes"});
 });
 </script>
+
+<!-- Hook per registrare ogni consultazione FES/Bush nello storico del Profilo Integrato -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  // Attendi che olismo-core.js abbia definito fesSend e fesQuick (può essere asincrono)
+  function wrap(){
+    if(!window.OlismoProfilo || !OlismoProfilo.accumula) return setTimeout(wrap, 200);
+    var origQuick = window.fesQuick;
+    if(typeof origQuick === 'function' && !origQuick.__olismo_wrapped){
+      window.fesQuick = function(testo){
+        try{ OlismoProfilo.accumula('fes', { problema: testo, esito: '(consultazione AI FES avviata)' }); }catch(e){}
+        return origQuick.apply(this, arguments);
+      };
+      window.fesQuick.__olismo_wrapped = true;
+    }
+    var origSend = window.fesSend;
+    if(typeof origSend === 'function' && !origSend.__olismo_wrapped){
+      window.fesSend = function(){
+        try{
+          var inp = document.getElementById('fes-input');
+          var testo = inp ? (inp.value||'').trim() : '';
+          if(testo) OlismoProfilo.accumula('fes', { problema: testo, esito: '(consultazione AI FES avviata)' });
+        }catch(e){}
+        return origSend.apply(this, arguments);
+      };
+      window.fesSend.__olismo_wrapped = true;
+    }
+    if(typeof origQuick !== 'function' && typeof origSend !== 'function'){
+      setTimeout(wrap, 250);
+    }
+  }
+  wrap();
+});
+</script>
 </body>
 </html>

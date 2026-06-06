@@ -30,6 +30,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js" defer></script>
+<script src="olismo-profilo.js" defer></script>
+<script src="olismo-mediazione.js" defer></script>
 
 <style>
 .cc-hero{padding:1rem 0 1.5rem;text-align:center}
@@ -1687,6 +1689,7 @@ function renderResults(){
     '<div class="cc-actions">'+
       '<button class="cc-action-btn cc-action-btn-pdf" id="cc-btn-pdf" type="button">📄 Scarica PDF</button>'+
       '<button class="cc-action-btn cc-action-btn-ai" id="cc-btn-ai" type="button">🤖 Chiedi al Consulente AI</button>'+
+      '<button class="cc-action-btn" id="cc-btn-dossier" type="button" style="background:#fff;color:var(--gold,#b8860b);border:1px solid var(--gold,#b8860b)" title="Salva i due partner come soggetti in un dossier di mediazione">📁 Salva nel dossier mediazione</button>'+
     '</div>'+
   '</div>';
 
@@ -1697,6 +1700,53 @@ function renderResults(){
   if(btnPdf) btnPdf.addEventListener("click", generatePdf);
   const btnAi = document.getElementById("cc-btn-ai");
   if(btnAi) btnAi.addEventListener("click", askAI);
+  const btnDoss = document.getElementById("cc-btn-dossier");
+  if(btnDoss) btnDoss.addEventListener("click", salvaInDossier);
+}
+
+// ───────────────────────────────────────────────────────────────────
+// SALVA NEL DOSSIER MEDIAZIONE
+// ───────────────────────────────────────────────────────────────────
+function salvaInDossier(){
+  if(typeof OlismoMediazione === 'undefined'){
+    alert('Modulo mediazione non caricato. Ricarica la pagina.');
+    return;
+  }
+  const t1 = parseInt(state.type1,10), t2 = parseInt(state.type2,10);
+  if(!t1 || !t2){ alert('Seleziona prima entrambi gli enneatipi.'); return; }
+
+  let dossier = OlismoMediazione.getCorrente();
+  if(!dossier){
+    const nome = prompt('Nessun dossier attivo. Nome del nuovo dossier (es. "Coniugi Rossi"):', 'Coppia ' + new Date().toLocaleDateString('it-IT'));
+    if(!nome) return;
+    dossier = OlismoMediazione.creaDossier(nome);
+    OlismoMediazione.setCorrente(dossier.id);
+  } else {
+    if(!confirm('Aggiungere i due partner al dossier corrente "' + dossier.nome + '"?\n\nPer scegliere un altro dossier vai prima alla pagina Profili di Mediazione.')) return;
+  }
+
+  const w1 = state.wing1 && state.wing1!=='nessuna' ? ('Ala '+state.wing1) : '';
+  const w2 = state.wing2 && state.wing2!=='nessuna' ? ('Ala '+state.wing2) : '';
+  const noteCoppia = 'Da Compatibilità Coppia · Percorso ' + state.percorso1 + ' / ' + state.percorso2 + (w1?(' · P1 '+w1):'') + (w2?(' · P2 '+w2):'');
+
+  OlismoMediazione.aggiungiSoggetto(dossier.id, {
+    nome: 'Partner 1',
+    ruolo: 'parte',
+    eta: state.age1 || '',
+    enneatipo: String(t1) + (state.sub1 ? (' · sottotipo '+state.sub1) : ''),
+    note: noteCoppia
+  });
+  OlismoMediazione.aggiungiSoggetto(dossier.id, {
+    nome: 'Partner 2',
+    ruolo: 'parte',
+    eta: state.age2 || '',
+    enneatipo: String(t2) + (state.sub2 ? (' · sottotipo '+state.sub2) : ''),
+    note: noteCoppia
+  });
+
+  if(confirm('Soggetti aggiunti al dossier "' + dossier.nome + '". Vuoi aprire la pagina Profili di Mediazione adesso?')){
+    window.location.href = 'mediazione-profili.html';
+  }
 }
 
 function renderATSide(t, at){

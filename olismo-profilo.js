@@ -123,6 +123,58 @@
       '. Puoi commentare questo risultato in chiave olistica e collegarlo agli altri test del mio profilo?';
   }
 
+  // ─── API: ACCUMULA una voce nello storico di un motore ────────────
+  // Per motori "di consultazione ripetuta" (frequenze, fiori, cristalli):
+  // ogni volta che l'utente consulta un problema, lo registriamo.
+  // Manteniamo solo le ultime MAX_STORICO voci.
+  var MAX_STORICO = 10;
+  function accumula(motore, voce) {
+    if (!storageOk() || !motore || !voce) return false;
+    var reg = REGISTRO_MOTORI[motore] || { titolo: motore, emoji: '◉', ordine: 999 };
+    var raw = localStorage.getItem(KEY_PREFIX + motore);
+    var rec = raw ? safeJSON(raw) : null;
+    var ora = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    var nuovaVoce = {
+      ora: ora,
+      problema: String(voce.problema || '').slice(0, 280),
+      esito:    String(voce.esito || voce.risultato || '').slice(0, 500),
+      extra:    voce.extra || null
+    };
+    if (!rec || !rec.storico) {
+      rec = {
+        motore: motore,
+        titolo: voce.titolo || reg.titolo,
+        emoji:  voce.emoji  || reg.emoji,
+        data:   oggi(),
+        storico: [],
+        sintesi: '',
+        prompt: '',
+        dettagli: null
+      };
+    }
+    rec.storico.unshift(nuovaVoce);
+    rec.storico = rec.storico.slice(0, MAX_STORICO);
+    rec.data = oggi();
+    // Ricostruisce sintesi e prompt dal nuovo storico
+    var nProblemi = rec.storico.length;
+    var ultimi = rec.storico.slice(0, 5).map(function (v) {
+      return v.problema + (v.esito ? ' → ' + v.esito.split('\n')[0].slice(0, 80) : '');
+    });
+    rec.sintesi = (nProblemi === 1 ? '1 consultazione' : nProblemi + ' consultazioni') +
+      ' registrate. Tematiche ricorrenti: ' + ultimi.join('; ');
+    rec.prompt = 'Ho consultato ' + (reg.titolo || motore) + ' su ' + nProblemi + ' tematiche.\n\n' +
+      'STORICO (dalla più recente):\n' +
+      rec.storico.map(function (v, i) {
+        return (i + 1) + ') [' + v.ora + '] ' + v.problema + (v.esito ? '\n   → ' + v.esito : '');
+      }).join('\n') +
+      '\n\nNoti un pattern in queste consultazioni? Quali nodi ricorrenti vedi? Cosa mi suggerisci sul piano evolutivo?';
+    try {
+      localStorage.setItem(KEY_PREFIX + motore, JSON.stringify(rec));
+      try { global.dispatchEvent(new CustomEvent('olismo:profilo:aggiornato', { detail: rec })); } catch (e) {}
+      return true;
+    } catch (e) { return false; }
+  }
+
   // ─── API: SALVA un risultato motore ───────────────────────────────
   function salva(motore, payload) {
     if (!storageOk() || !motore) return false;
@@ -336,6 +388,7 @@
   // ─── Espone l'API globale ─────────────────────────────────────────
   global.OlismoProfilo = {
     salva: salva,
+    accumula: accumula,
     leggi: leggi,
     leggiTutti: leggiTutti,
     cancella: cancella,

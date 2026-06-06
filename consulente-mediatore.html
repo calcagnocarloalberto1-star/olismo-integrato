@@ -265,6 +265,7 @@ details.ex-list .ex-content{padding:0 1.2rem 1rem;font-size:.86rem;line-height:1
       <a href="mediazione-civile.html" class="top-nav-link" style="color:#2563eb">⚖ Civile</a>
       <a href="mediazione-familiare.html" class="top-nav-link" style="color:#db2777">👨‍👩‍👧 Familiare</a>
       <a href="consulente-mediatore.html" class="top-nav-link current">🎓 Consulente</a>
+      <a href="mediazione-profili.html" class="top-nav-link" style="color:#b8860b">📁 Profili</a>
       <a href="empowerment-mediazione.html" class="top-nav-link emp">🌿 Empowerment</a>
       <a href="psicologia-analogica.html" class="top-nav-link">🔍 Analogica</a>
       <a href="matrice-svalutazione.html" class="top-nav-link">⊘ Matrice</a>
@@ -1411,6 +1412,41 @@ document.addEventListener("DOMContentLoaded", function(){
   if(!window.OlismoProfilo) return;
   var p = OlismoProfilo.leggi("consulente_mediatore");
   if(p) OlismoProfilo.montaPulsanteConsulente({motore:"consulente_mediatore"});
+});
+</script>
+<!-- Pre-popolamento prompt dal sistema Profili di Mediazione -->
+<script src="olismo-mediazione.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    var params = new URLSearchParams(location.search);
+    if(params.get('profilo') !== 'mediazione') return;
+    var p = sessionStorage.getItem('olismo_prompt_mediazione');
+    if(!p) return;
+    var ta = document.getElementById('cmInput');
+    if(!ta) return;
+    ta.value = p;
+    ta.dispatchEvent(new Event('input', { bubbles:true }));
+    // pulisco la sessionStorage così non ricapita al refresh
+    sessionStorage.removeItem('olismo_prompt_mediazione');
+    // scroll al box e flash dorato per segnalare l'iniezione
+    setTimeout(function(){
+      ta.scrollIntoView({ behavior:'smooth', block:'center' });
+      ta.focus();
+      ta.style.transition = 'box-shadow .6s';
+      ta.style.boxShadow = '0 0 0 3px rgba(184,134,11,.4)';
+      setTimeout(function(){ ta.style.boxShadow = ''; }, 1800);
+    }, 200);
+    // banner informativo sopra al box
+    var box = ta.closest('.chat-box');
+    if(box && !document.getElementById('cm-dossier-banner')){
+      var b = document.createElement('div');
+      b.id = 'cm-dossier-banner';
+      b.style.cssText = 'margin:0 0 .8rem;padding:.7rem 1rem;background:#faf6ec;border:1px solid #e5dfd0;border-left:4px solid #b8860b;border-radius:6px;font-size:.85rem;color:#5a4220;line-height:1.5';
+      b.innerHTML = '⚖️ <strong>Dossier di mediazione caricato</strong> nel box qui sotto. Rivedi, integra con la tua domanda specifica e invia. <a href="mediazione-profili.html" style="color:#b8860b;font-weight:600;text-decoration:underline">← Torna ai Profili</a>';
+      box.insertBefore(b, box.firstChild);
+    }
+  }catch(e){}
 });
 </script>
 </body>

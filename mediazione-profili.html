@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  © 2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+  Tutti i diritti riservati · L. 22 aprile 1941 n. 633
+═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Avv. Carlo Alberto Calcagno">
+<meta name="copyright" content="© 2026 Carlo Alberto Calcagno · L. 633/1941">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Profili di mediazione — Dossier multi-soggetto | Olismo Integrato</title>
+<meta name="description" content="Strumento professionale per il mediatore: crea dossier dei casi, traccia il profilo psicologico ed energetico di ogni soggetto coinvolto (parti, figli, congiunti) e ottieni una lettura sistemica dal Consulente Mediatore AI con un solo clic.">
+<link rel="canonical" href="https://olismo-integrato.it/mediazione-profili.html">
+<link rel="icon" href="/favicon.ico">
+
+<meta property="og:title" content="Profili di mediazione — Dossier multi-soggetto">
+<meta property="og:description" content="Traccia il profilo di ogni soggetto in mediazione e ottieni una lettura sistemica dal Consulente Mediatore AI.">
+<meta property="og:url" content="https://olismo-integrato.it/mediazione-profili.html">
+<meta property="og:image" content="https://olismo-integrato.it/og-image.svg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="olismo-styles.css">
+
+<style>
+/* ═══ Stili specifici Profilo Mediazione ═══ */
+.med-hero{padding:1rem 0 .5rem;text-align:center}
+.med-toolbar{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1.5rem auto 1rem;max-width:760px}
+.med-toolbar button, .med-toolbar select {
+  font-family:'Outfit',sans-serif;font-size:.82rem;padding:.55rem 1.1rem;border-radius:8px;
+  background:#fff;border:1px solid var(--border);cursor:pointer;transition:all .15s;color:var(--ink)
+}
+.med-toolbar button:hover{border-color:var(--gold);color:var(--gold)}
+.med-toolbar .med-primary{background:var(--gold);color:#fff;border-color:var(--gold)}
+.med-toolbar .med-primary:hover{background:#a07f4a;color:#fff}
+.med-toolbar .med-danger{color:#A32D2D;border-color:#e0c5c5}
+.med-toolbar .med-danger:hover{background:#A32D2D;color:#fff;border-color:#A32D2D}
+.med-toolbar select{min-width:240px}
+
+.med-dossier{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.med-dossier-hd{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.med-dossier-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--ink);margin:0}
+.med-dossier-meta{font-size:.78rem;color:var(--ink3);margin-top:.4rem;font-family:'Outfit',sans-serif}
+.med-dossier-edit{background:transparent;border:1px solid var(--border);padding:.4rem .8rem;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:'Outfit',sans-serif;color:var(--ink3)}
+.med-dossier-edit:hover{color:var(--gold);border-color:var(--gold)}
+
+.med-soggetti{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:1.2rem}
+.med-soggetto{background:#fdf6ec;border:1px solid var(--gold);border-radius:12px;padding:1.2rem;position:relative}
+.med-soggetto-nome{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--ink);margin:0 0 .15rem}
+.med-soggetto-ruolo{font-size:.78rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;font-family:'Outfit',sans-serif;font-weight:600;margin-bottom:.8rem}
+.med-soggetto-campo{font-size:.82rem;color:var(--ink);margin:.25rem 0;font-family:'Outfit',sans-serif}
+.med-soggetto-campo b{color:var(--gold);font-weight:600}
+.med-soggetto-vuoto{font-size:.78rem;color:var(--ink3);font-style:italic;margin:.7rem 0}
+.med-soggetto-azioni{display:flex;gap:.4rem;margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(212,175,55,.3)}
+.med-soggetto-azioni button{flex:1;font-family:'Outfit',sans-serif;font-size:.72rem;padding:.4rem .5rem;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:6px;cursor:pointer;transition:all .15s}
+.med-soggetto-azioni button:hover{background:var(--gold);color:#fff}
+.med-soggetto-azioni .rm{border-color:#e0c5c5;color:#A32D2D}
+.med-soggetto-azioni .rm:hover{background:#A32D2D;color:#fff;border-color:#A32D2D}
+
+.med-cta-invio{background:linear-gradient(135deg,#fdf6e3 0%,#f9eecf 100%);border:1px solid var(--gold);border-radius:14px;padding:1.5rem 1.6rem;margin-top:1rem;text-align:center}
+.med-cta-invio h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--ink);margin:0 0 .5rem}
+.med-cta-invio h3 em{color:var(--gold);font-style:italic}
+.med-cta-invio p{font-size:.9rem;color:var(--ink3);margin:0 0 1.1rem;line-height:1.55}
+.med-cta-invio button{display:inline-block;background:var(--gold);color:#fff;padding:.85rem 1.8rem;border-radius:24px;text-decoration:none;font-weight:600;font-size:.95rem;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .18s}
+.med-cta-invio button:hover{background:#a07f4a;transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,147,90,.25)}
+.med-cta-invio button:disabled{background:#c9b890;cursor:not-allowed;transform:none}
+
+.med-empty{text-align:center;padding:3rem 1.5rem;background:#faf6ec;border:1px dashed var(--border);border-radius:14px;max-width:680px;margin:1.5rem auto}
+.med-empty-icon{font-size:2.6rem;margin-bottom:.7rem;opacity:.7}
+.med-empty h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin:0 0 .6rem}
+.med-empty p{font-size:.95rem;color:var(--ink3);max-width:520px;margin:0 auto 1.5rem;line-height:1.6}
+
+/* Modal */
+.med-modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.med-modal-bg.open{display:flex}
+.med-modal{background:#fff;border-radius:14px;padding:2rem;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.med-modal h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--ink);margin:0 0 1.4rem}
+.med-field{margin-bottom:1rem}
+.med-field label{display:block;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;letter-spacing:.04em}
+.med-field input, .med-field select, .med-field textarea {
+  width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:#fff;
+  transition:border-color .15s
+}
+.med-field input:focus, .med-field select:focus, .med-field textarea:focus {
+  outline:none;border-color:var(--gold)
+}
+.med-field textarea{min-height:70px;resize:vertical;font-family:'EB Garamond',serif;line-height:1.5}
+.med-field-hint{font-size:.72rem;color:var(--ink3);margin-top:.3rem;font-family:'Outfit',sans-serif}
+.med-field-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media (max-width:520px){ .med-field-row{grid-template-columns:1fr} }
+.med-modal-actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+.med-modal-actions button{font-family:'Outfit',sans-serif;font-size:.85rem;padding:.6rem 1.4rem;border-radius:8px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink);transition:all .15s}
+.med-modal-actions button:hover{border-color:var(--gold)}
+.med-modal-actions .ok{background:var(--gold);color:#fff;border-color:var(--gold)}
+.med-modal-actions .ok:hover{background:#a07f4a}
+
+/* CSS variables fallback */
+:root {
+  --gold: #b8860b;
+  --ink: #1c1814;
+  --ink3: #6b6258;
+  --border: #e5dcc8;
+  --gray: #8a7f72;
+}
+body { background: #f9f5ef; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.sec-hd { text-align: center; margin-bottom: 1.5rem; }
+.sec-eye { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .4rem; font-family: 'Outfit', sans-serif; }
+.sec-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--ink); margin: 0 0 .8rem; }
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-div { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; opacity: .6; }
+</style>
+</head>
+<body>
+
+<header id="site-header" style="position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.9rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+    <a href="index.html" style="display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);text-decoration:none">
+      <span style="font-size:1.4rem;color:var(--gold)">⬤</span>
+      <span>Olismo Integrato</span>
+    </a>
+    <nav style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <a href="consulente-mediatore.html" style="display:inline-flex;align-items:center;padding:.5rem 1rem;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;text-decoration:none">⚖ Consulente Mediatore</a>
+      <a href="index.html" style="display:inline-flex;align-items:center;padding:.5rem 1rem;background:var(--gold);color:white;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;text-decoration:none">← Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section style="padding:2rem 0 1rem">
+  <div class="container">
+    <div class="sec-hd">
+      <div class="sec-eye">⚖ Strumento professionale per il mediatore</div>
+      <h1 class="sec-title">Profili di <em>mediazione</em></h1>
+      <div class="sec-div"></div>
+    </div>
+    <div style="font-family:'EB Garamond',serif;font-size:1rem;line-height:1.7;color:var(--ink);max-width:780px;margin:0 auto 1.5rem">
+      <p>Crea un <strong>dossier</strong> per ogni caso di mediazione su cui stai lavorando. Aggiungi i <strong>soggetti coinvolti</strong> (parti, figli, congiunti, soci, altri portatori d'interesse) e per ciascuno annota — anche solo per ipotesi diagnostica — enneatipo, adattamento AT, stato dell'Io dominante, canale VAK, chakra di forza e di lavoro, copione, stile di conflitto. Quando il quadro è completo, premi <strong>Lettura sistemica</strong> per ricevere dal Consulente Mediatore AI un'analisi delle dinamiche d'incastro, delle aree di conflitto e di una strategia di mediazione concreta.</p>
+      <p style="font-size:.85rem;color:var(--ink3);margin-top:.8rem"><strong>Privacy.</strong> Tutti i dossier sono memorizzati esclusivamente nel <em>tuo</em> browser (localStorage). Nessun dato lascia il dispositivo, nessun server, nessun account. Se cambi computer o cancelli i dati del browser i dossier vengono persi: per archiviarli puoi esportarli in JSON.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:.5rem 0 3rem">
+  <div class="container" style="max-width:1100px">
+
+    <!-- Toolbar -->
+    <div class="med-toolbar">
+      <button type="button" class="med-primary" id="btn-nuovo">+ Nuovo dossier</button>
+      <select id="sel-dossier" aria-label="Cambia dossier"></select>
+      <button type="button" id="btn-rinomina">Rinomina</button>
+      <button type="button" id="btn-esporta">Esporta JSON</button>
+      <button type="button" id="btn-importa">Importa JSON</button>
+      <input type="file" id="file-importa" accept=".json" style="display:none">
+      <button type="button" class="med-danger" id="btn-elimina">Elimina dossier</button>
+    </div>
+
+    <!-- Stato vuoto -->
+    <div id="empty-state" class="med-empty" style="display:none">
+      <div class="med-empty-icon">📋</div>
+      <h2>Nessun dossier ancora creato</h2>
+      <p>Inizia creando il primo dossier di un caso di mediazione. Potrai aggiungere quanti soggetti vuoi (parti, figli, terzi coinvolti) e annotare per ciascuno il profilo psicologico ed energetico.</p>
+      <button type="button" class="med-primary" onclick="document.getElementById('btn-nuovo').click()" style="padding:.7rem 1.6rem;border-radius:24px;border:none;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer">+ Crea il primo dossier</button>
+    </div>
+
+    <!-- Dossier attivo -->
+    <div id="dossier-attivo" class="med-dossier" style="display:none">
+      <div class="med-dossier-hd">
+        <div>
+          <h2 class="med-dossier-title" id="d-nome">—</h2>
+          <div class="med-dossier-meta" id="d-meta">—</div>
+        </div>
+        <button type="button" class="med-dossier-edit" id="btn-note">Note di caso</button>
+      </div>
+
+      <div id="d-note-blob" style="display:none;background:#fdf6ec;border-left:3px solid var(--gold);padding:.8rem 1rem;margin-bottom:1.2rem;font-family:'EB Garamond',serif;font-size:.92rem;color:var(--ink);line-height:1.5"></div>
+
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin:0 0 1rem">Soggetti</h3>
+      <div id="lista-soggetti" class="med-soggetti"></div>
+      <div id="soggetti-empty" style="text-align:center;padding:1.5rem;background:#faf6ec;border:1px dashed var(--border);border-radius:10px;color:var(--ink3);font-style:italic;margin-bottom:1rem;display:none">
+        Nessun soggetto ancora. Aggiungi le persone coinvolte nel caso.
+      </div>
+
+      <div style="text-align:center;margin-bottom:1.5rem">
+        <button type="button" class="med-primary" id="btn-aggiungi-soggetto" style="padding:.65rem 1.4rem;border-radius:20px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer">+ Aggiungi soggetto</button>
+      </div>
+
+      <div class="med-cta-invio">
+        <h3>Lettura <em>sistemica</em> del caso</h3>
+        <p>Invia il dossier completo al <strong>Consulente Mediatore AI</strong> per un'analisi delle dinamiche d'incastro, delle aree di conflitto, di una strategia di colloqui e di eventuali red flag.</p>
+        <button type="button" id="btn-invia-mediatore">⚖ Invia al Consulente Mediatore</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- Modal: nuovo / modifica dossier -->
+<div class="med-modal-bg" id="modal-dossier">
+  <div class="med-modal">
+    <h3 id="modal-dossier-titolo">Nuovo dossier</h3>
+    <div class="med-field">
+      <label for="md-nome">Nome del caso</label>
+      <input type="text" id="md-nome" placeholder="es. Famiglia Rossi · Separazione Marco/Anna">
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="md-tipo">Tipo</label>
+        <select id="md-tipo">
+          <option value="famigliare">Mediazione famigliare</option>
+          <option value="coppia">Coppia / separazione</option>
+          <option value="civile">Mediazione civile</option>
+          <option value="commerciale">Mediazione commerciale</option>
+          <option value="condominiale">Condominiale</option>
+          <option value="altro">Altro</option>
+        </select>
+      </div>
+      <div class="med-field">
+        <label for="md-creato">Riferimento (facoltativo)</label>
+        <input type="text" id="md-creato" placeholder="es. CAM-2026-012">
+      </div>
+    </div>
+    <div class="med-field">
+      <label for="md-note">Note di caso</label>
+      <textarea id="md-note" placeholder="Antefatti, fase del procedimento, esigenze emerse, vincoli..."></textarea>
+      <div class="med-field-hint">Tutte le note restano sul tuo dispositivo. Suggerito: evita nomi/dati identificativi se preferisci.</div>
+    </div>
+    <div class="med-modal-actions">
+      <button type="button" onclick="chiudiModal('modal-dossier')">Annulla</button>
+      <button type="button" class="ok" id="md-salva">Crea dossier</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: nuovo / modifica soggetto -->
+<div class="med-modal-bg" id="modal-soggetto">
+  <div class="med-modal">
+    <h3 id="modal-soggetto-titolo">Nuovo soggetto</h3>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-nome">Nome / identificativo</label>
+        <input type="text" id="ms-nome" placeholder="es. Anna · Madre · Soggetto A">
+      </div>
+      <div class="med-field">
+        <label for="ms-ruolo">Ruolo nel caso</label>
+        <input type="text" id="ms-ruolo" placeholder="es. madre, padre, figlia, socio">
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-eta">Età</label>
+        <input type="text" id="ms-eta" placeholder="es. 42">
+      </div>
+      <div class="med-field">
+        <label for="ms-enneatipo">Enneatipo (ipotesi)</label>
+        <input type="text" id="ms-enneatipo" placeholder="es. T2 (con ala 1)">
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-adattamento">Adattamento AT</label>
+        <input type="text" id="ms-adattamento" placeholder="es. Eccessivo Reattivo (HR)">
+      </div>
+      <div class="med-field">
+        <label for="ms-stato-at">Stato dell'Io dominante</label>
+        <input type="text" id="ms-stato-at" placeholder="es. Genitore Critico">
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-vak">Canale VAK</label>
+        <select id="ms-vak">
+          <option value="">—</option>
+          <option>Visivo</option>
+          <option>Auditivo</option>
+          <option>Cinestesico</option>
+          <option>Misto V/A</option>
+          <option>Misto A/C</option>
+          <option>Misto V/C</option>
+        </select>
+      </div>
+      <div class="med-field">
+        <label for="ms-stile-conflitto">Stile di conflitto</label>
+        <select id="ms-stile-conflitto">
+          <option value="">—</option>
+          <option>Evitante</option>
+          <option>Competitivo</option>
+          <option>Accomodante</option>
+          <option>Collaborativo</option>
+          <option>Compromissorio</option>
+        </select>
+      </div>
+    </div>
+    <div class="med-field-row">
+      <div class="med-field">
+        <label for="ms-chakra-forte">Chakra di forza</label>
+        <input type="text" id="ms-chakra-forte" placeholder="es. 5° gola">
+      </div>
+      <div class="med-field">
+        <label for="ms-chakra-debole">Chakra da lavorare</label>
+        <input type="text" id="ms-chakra-debole" placeholder="es. 4° cuore">
+      </div>
+    </div>
+    <div class="med-field">
+      <label for="ms-copione">Copione di vita (ipotesi)</label>
+      <input type="text" id="ms-copione" placeholder="es. 'Non sarò mai abbastanza'">
+    </div>
+    <div class="med-field">
+      <label for="ms-svalutazione">Matrice di svalutazione ricorrente</label>
+      <input type="text" id="ms-svalutazione" placeholder="es. svaluta soluzioni; sopravvaluta problemi">
+    </div>
+    <div class="med-field">
+      <label for="ms-note">Note specifiche sul soggetto</label>
+      <textarea id="ms-note" placeholder="Comportamenti osservati in seduta, leve di motivazione, alleanze, paure..."></textarea>
+    </div>
+    <div class="med-modal-actions">
+      <button type="button" onclick="chiudiModal('modal-soggetto')">Annulla</button>
+      <button type="button" class="ok" id="ms-salva">Salva soggetto</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: note di caso -->
+<div class="med-modal-bg" id="modal-note">
+  <div class="med-modal">
+    <h3>Note di caso</h3>
+    <div class="med-field">
+      <textarea id="md-note-edit" style="min-height:200px"></textarea>
+    </div>
+    <div class="med-modal-actions">
+      <button type="button" onclick="chiudiModal('modal-note')">Annulla</button>
+      <button type="button" class="ok" id="md-note-salva">Salva note</button>
+    </div>
+  </div>
+</div>
+
+<footer style="background:var(--ink);color:rgba(255,255,255,.8);padding:2rem 0;margin-top:3rem;text-align:center;font-family:'Outfit',sans-serif;font-size:.82rem">
+  <div class="container">
+    <p style="margin:0 0 .5rem"><a href="index.html" style="color:var(--gold);text-decoration:none">Olismo Integrato</a> · © 2026 Avv. Carlo Alberto Calcagno</p>
+    <p style="margin:0;font-size:.74rem;opacity:.7">Tutti i dossier restano sul tuo dispositivo. Nessun dato trasmesso a server esterni.</p>
+  </div>
+</footer>
+
+<script src="olismo-profilo.js" defer></script>
+<script src="olismo-mediazione.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (!window.OlismoMediazione) {
+    document.body.insertAdjacentHTML('beforeend',
+      '<div style="position:fixed;bottom:1rem;left:1rem;background:#A32D2D;color:#fff;padding:.8rem 1.2rem;border-radius:8px;font-family:sans-serif">Errore: modulo Mediazione non caricato. Ricarica la pagina.</div>');
+    return;
+  }
+
+  var sogIdInEdit = null;
+
+  // ─── Render principale ───
+  function render() {
+    var lista = OlismoMediazione.listaDossier();
+    var sel = document.getElementById('sel-dossier');
+    var emptyState = document.getElementById('empty-state');
+    var dossierAttivo = document.getElementById('dossier-attivo');
+
+    if (!lista.length) {
+      emptyState.style.display = '';
+      dossierAttivo.style.display = 'none';
+      sel.innerHTML = '<option>Nessun dossier</option>';
+      sel.disabled = true;
+      ['btn-rinomina','btn-esporta','btn-elimina'].forEach(function(id){ document.getElementById(id).disabled = true; });
+      return;
+    }
+    emptyState.style.display = 'none';
+    dossierAttivo.style.display = '';
+    sel.disabled = false;
+    ['btn-rinomina','btn-esporta','btn-elimina'].forEach(function(id){ document.getElementById(id).disabled = false; });
+
+    var corrente = OlismoMediazione.getCorrente() || lista[0];
+    if (corrente && !OlismoMediazione.getCorrente()) OlismoMediazione.setCorrente(corrente.id);
+
+    sel.innerHTML = lista.map(function(d){
+      return '<option value="' + d.id + '"' + (d.id === corrente.id ? ' selected' : '') + '>' +
+        escapeHtml(d.nome) + '  (' + d.soggetti.length + ' soggetti)' +
+      '</option>';
+    }).join('');
+
+    document.getElementById('d-nome').textContent = corrente.nome;
+    document.getElementById('d-meta').textContent =
+      'Tipo: ' + corrente.tipo + '  ·  Creato: ' + corrente.creato + '  ·  Aggiornato: ' + corrente.aggiornato +
+      '  ·  ' + corrente.soggetti.length + ' soggett' + (corrente.soggetti.length === 1 ? 'o' : 'i');
+
+    var noteBlob = document.getElementById('d-note-blob');
+    if (corrente.note) {
+      noteBlob.textContent = corrente.note;
+      noteBlob.style.display = '';
+    } else {
+      noteBlob.style.display = 'none';
+    }
+
+    renderSoggetti(corrente);
+  }
+
+  function renderSoggetti(dossier) {
+    var box = document.getElementById('lista-soggetti');
+    var empty = document.getElementById('soggetti-empty');
+    if (!dossier.soggetti.length) {
+      box.innerHTML = '';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+    box.innerHTML = dossier.soggetti.map(function (s) {
+      var campi = [];
+      if (s.enneatipo)      campi.push('<div class="med-soggetto-campo"><b>Enneatipo</b> ' + escapeHtml(s.enneatipo) + '</div>');
+      if (s.adattamento)    campi.push('<div class="med-soggetto-campo"><b>AT</b> ' + escapeHtml(s.adattamento) + '</div>');
+      if (s.stato_at)       campi.push('<div class="med-soggetto-campo"><b>Stato Io</b> ' + escapeHtml(s.stato_at) + '</div>');
+      if (s.vak)            campi.push('<div class="med-soggetto-campo"><b>VAK</b> ' + escapeHtml(s.vak) + '</div>');
+      if (s.chakra_forte)   campi.push('<div class="med-soggetto-campo"><b>Chakra +</b> ' + escapeHtml(s.chakra_forte) + '</div>');
+      if (s.chakra_debole)  campi.push('<div class="med-soggetto-campo"><b>Chakra −</b> ' + escapeHtml(s.chakra_debole) + '</div>');
+      if (s.stile_conflitto) campi.push('<div class="med-soggetto-campo"><b>Conflitto</b> ' + escapeHtml(s.stile_conflitto) + '</div>');
+      if (s.copione)        campi.push('<div class="med-soggetto-campo"><b>Copione</b> ' + escapeHtml(s.copione) + '</div>');
+      if (s.svalutazione)   campi.push('<div class="med-soggetto-campo"><b>Svalutazione</b> ' + escapeHtml(s.svalutazione) + '</div>');
+      var body = campi.length ? campi.join('') : '<div class="med-soggetto-vuoto">Profilo non ancora compilato</div>';
+      var noteHtml = s.note ? '<div class="med-soggetto-campo" style="margin-top:.5rem;color:var(--ink3);font-style:italic">"' + escapeHtml(s.note) + '"</div>' : '';
+      return '<div class="med-soggetto">' +
+        '<div class="med-soggetto-nome">' + escapeHtml(s.nome) + (s.eta ? '  <span style="font-size:.85rem;color:var(--ink3);font-weight:400">(' + escapeHtml(String(s.eta)) + ')</span>' : '') + '</div>' +
+        (s.ruolo ? '<div class="med-soggetto-ruolo">' + escapeHtml(s.ruolo) + '</div>' : '') +
+        body +
+        noteHtml +
+        '<div class="med-soggetto-azioni">' +
+          '<button data-edit="' + s.id + '">Modifica</button>' +
+          '<button data-da-profilo="' + s.id + '" title="Riempi coi dati dei test che ho compilato">Da profilo</button>' +
+          '<button class="rm" data-rm="' + s.id + '">Rimuovi</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    // Wire azioni soggetti
+    box.querySelectorAll('[data-edit]').forEach(function(b){
+      b.addEventListener('click', function(){ apriModalSoggetto(b.getAttribute('data-edit')); });
+    });
+    box.querySelectorAll('[data-rm]').forEach(function(b){
+      b.addEventListener('click', function(){
+        if (!confirm('Rimuovere questo soggetto dal dossier?')) return;
+        var d = OlismoMediazione.getCorrente();
+        OlismoMediazione.rimuoviSoggetto(d.id, b.getAttribute('data-rm'));
+        render();
+      });
+    });
+    box.querySelectorAll('[data-da-profilo]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var d = OlismoMediazione.getCorrente();
+        var r = OlismoMediazione.riempiDaProfiloPersonale(d.id, b.getAttribute('data-da-profilo'));
+        if (!r) { alert('Nessun dato del tuo profilo personale disponibile. Compila prima qualche test sul portale.'); return; }
+        render();
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  // ─── Modal helpers ───
+  function apriModal(id) { document.getElementById(id).classList.add('open'); }
+  window.chiudiModal = function (id) { document.getElementById(id).classList.remove('open'); };
+
+  function apriModalDossier(modo, dossier) {
+    document.getElementById('modal-dossier-titolo').textContent = modo === 'edit' ? 'Modifica dossier' : 'Nuovo dossier';
+    document.getElementById('md-salva').textContent = modo === 'edit' ? 'Salva' : 'Crea dossier';
+    document.getElementById('md-nome').value = dossier ? dossier.nome : '';
+    document.getElementById('md-tipo').value = dossier ? dossier.tipo : 'famigliare';
+    document.getElementById('md-creato').value = '';
+    document.getElementById('md-note').value = dossier ? dossier.note : '';
+    document.getElementById('md-salva').onclick = function () {
+      var nome = document.getElementById('md-nome').value.trim();
+      if (!nome) { alert('Inserisci un nome di caso.'); return; }
+      var tipo = document.getElementById('md-tipo').value;
+      var note = document.getElementById('md-note').value.trim();
+      if (modo === 'edit' && dossier) {
+        dossier.nome = nome; dossier.tipo = tipo; dossier.note = note;
+        OlismoMediazione.salvaDossier(dossier);
+      } else {
+        var d = OlismoMediazione.creaDossier(nome, tipo, note);
+        if (d) OlismoMediazione.setCorrente(d.id);
+      }
+      chiudiModal('modal-dossier');
+      render();
+    };
+    apriModal('modal-dossier');
+  }
+
+  function apriModalSoggetto(idEdit) {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) { alert('Crea prima un dossier.'); return; }
+    sogIdInEdit = idEdit || null;
+    var s = idEdit ? d.soggetti.find(function(x){return x.id === idEdit;}) : null;
+    document.getElementById('modal-soggetto-titolo').textContent = idEdit ? 'Modifica soggetto' : 'Nuovo soggetto';
+    document.getElementById('ms-nome').value = s ? s.nome : '';
+    document.getElementById('ms-ruolo').value = s ? s.ruolo : '';
+    document.getElementById('ms-eta').value = s ? s.eta : '';
+    document.getElementById('ms-enneatipo').value = s ? s.enneatipo : '';
+    document.getElementById('ms-adattamento').value = s ? s.adattamento : '';
+    document.getElementById('ms-stato-at').value = s ? s.stato_at : '';
+    document.getElementById('ms-vak').value = s ? s.vak : '';
+    document.getElementById('ms-stile-conflitto').value = s ? s.stile_conflitto : '';
+    document.getElementById('ms-chakra-forte').value = s ? s.chakra_forte : '';
+    document.getElementById('ms-chakra-debole').value = s ? s.chakra_debole : '';
+    document.getElementById('ms-copione').value = s ? s.copione : '';
+    document.getElementById('ms-svalutazione').value = s ? s.svalutazione : '';
+    document.getElementById('ms-note').value = s ? s.note : '';
+    apriModal('modal-soggetto');
+  }
+
+  document.getElementById('ms-salva').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    var payload = {
+      nome: document.getElementById('ms-nome').value.trim(),
+      ruolo: document.getElementById('ms-ruolo').value.trim(),
+      eta: document.getElementById('ms-eta').value.trim(),
+      enneatipo: document.getElementById('ms-enneatipo').value.trim(),
+      adattamento: document.getElementById('ms-adattamento').value.trim(),
+      stato_at: document.getElementById('ms-stato-at').value.trim(),
+      vak: document.getElementById('ms-vak').value.trim(),
+      stile_conflitto: document.getElementById('ms-stile-conflitto').value.trim(),
+      chakra_forte: document.getElementById('ms-chakra-forte').value.trim(),
+      chakra_debole: document.getElementById('ms-chakra-debole').value.trim(),
+      copione: document.getElementById('ms-copione').value.trim(),
+      svalutazione: document.getElementById('ms-svalutazione').value.trim(),
+      note: document.getElementById('ms-note').value.trim()
+    };
+    if (!payload.nome) { alert('Inserisci un nome o identificativo.'); return; }
+    if (sogIdInEdit) {
+      OlismoMediazione.aggiornaSoggetto(d.id, sogIdInEdit, payload);
+    } else {
+      OlismoMediazione.aggiungiSoggetto(d.id, payload);
+    }
+    chiudiModal('modal-soggetto');
+    sogIdInEdit = null;
+    render();
+  };
+
+  // ─── Toolbar wiring ───
+  document.getElementById('btn-nuovo').onclick = function () { apriModalDossier('new'); };
+  document.getElementById('sel-dossier').onchange = function (e) {
+    OlismoMediazione.setCorrente(e.target.value);
+    render();
+  };
+  document.getElementById('btn-rinomina').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (d) apriModalDossier('edit', d);
+  };
+  document.getElementById('btn-elimina').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    if (!confirm('Eliminare il dossier "' + d.nome + '" con ' + d.soggetti.length + ' soggetti? L\'azione non è reversibile.')) return;
+    OlismoMediazione.cancellaDossier(d.id);
+    render();
+  };
+  document.getElementById('btn-esporta').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    var blob = new Blob([OlismoMediazione.esportaJSON(d.id)], {type: 'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'dossier-mediazione-' + d.nome.replace(/[^a-zA-Z0-9-]/g,'-').slice(0,40) + '.json';
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  };
+  document.getElementById('btn-importa').onclick = function () {
+    document.getElementById('file-importa').click();
+  };
+  document.getElementById('file-importa').onchange = function (e) {
+    var f = e.target.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var d = OlismoMediazione.importaJSON(r.result);
+      if (d) {
+        OlismoMediazione.setCorrente(d.id);
+        render();
+        alert('Dossier "' + d.nome + '" importato con successo.');
+      } else {
+        alert('File non valido o danneggiato.');
+      }
+    };
+    r.readAsText(f);
+    e.target.value = '';
+  };
+
+  document.getElementById('btn-aggiungi-soggetto').onclick = function () { apriModalSoggetto(null); };
+
+  document.getElementById('btn-note').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    document.getElementById('md-note-edit').value = d.note || '';
+    apriModal('modal-note');
+  };
+  document.getElementById('md-note-salva').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    d.note = document.getElementById('md-note-edit').value.trim();
+    OlismoMediazione.salvaDossier(d);
+    chiudiModal('modal-note');
+    render();
+  };
+
+  document.getElementById('btn-invia-mediatore').onclick = function () {
+    var d = OlismoMediazione.getCorrente();
+    if (!d) return;
+    if (!d.soggetti.length) { alert('Aggiungi almeno un soggetto al dossier prima di chiedere una lettura sistemica.'); return; }
+    OlismoMediazione.inviaAlConsulente(d.id);
+  };
+
+  // Click esterno chiude modal
+  document.querySelectorAll('.med-modal-bg').forEach(function (bg) {
+    bg.addEventListener('click', function (e) { if (e.target === bg) bg.classList.remove('open'); });
+  });
+
+  render();
+});
+</script>
+
+</body>
+</html>

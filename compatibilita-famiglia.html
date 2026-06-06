@@ -32,6 +32,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="olismo-profilo.js" defer></script>
+<script src="olismo-mediazione.js" defer></script>
 
 <style>
 .fc-hero{padding:1.5rem 0 1rem;text-align:center}
@@ -154,6 +156,7 @@
     <div style="text-align:center;margin:2rem 0 1rem;padding:1.2rem;background:#faf6ec;border:1px solid var(--border);border-radius:10px">
       <p style="font-size:.85rem;color:var(--ink3);margin:0 0 .8rem;font-style:italic">Vuoi un'analisi olistica integrata che colleghi enneatipi, AT, chakra, fiori di Bach e dinamiche di mediazione familiare?</p>
       <button id="cf-btn-ai" type="button" style="display:inline-block;padding:.55rem 1.3rem;background:var(--gold);border:none;color:#fff;border-radius:20px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.05em;transition:all .18s">🤖 Chiedi al Consulente AI →</button>
+      <button id="cf-btn-dossier" type="button" style="display:inline-block;margin-left:.5rem;padding:.55rem 1.3rem;background:#fff;border:1px solid var(--gold);color:var(--gold);border-radius:20px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.05em;transition:all .18s" title="Salva tutti i membri come soggetti in un dossier di mediazione familiare">📁 Salva nel dossier mediazione</button>
     </div>
 
   </div>
@@ -1297,6 +1300,8 @@ document.addEventListener("DOMContentLoaded", function(){
   if (btnPdf) btnPdf.addEventListener("click", generatePdf);
   var btnAi = document.getElementById("cf-btn-ai");
   if (btnAi) btnAi.addEventListener("click", askAI);
+  var btnDoss = document.getElementById("cf-btn-dossier");
+  if (btnDoss) btnDoss.addEventListener("click", salvaInDossier);
 
   var container = document.getElementById("members-container");
   if (container) {
@@ -1322,6 +1327,43 @@ document.addEventListener("DOMContentLoaded", function(){
 
   render();
 });
+
+function salvaInDossier(){
+  if(typeof OlismoMediazione === 'undefined'){
+    alert('Modulo mediazione non caricato. Ricarica la pagina.');
+    return;
+  }
+  var memberPhases = getMemberPhases();
+  if(memberPhases.length < 1){
+    alert('Aggiungi prima almeno un membro alla famiglia.');
+    return;
+  }
+  var dossier = OlismoMediazione.getCorrente();
+  if(!dossier){
+    var nome = prompt('Nessun dossier attivo. Nome del nuovo dossier (es. "Famiglia Rossi"):', 'Famiglia ' + new Date().toLocaleDateString('it-IT'));
+    if(!nome) return;
+    dossier = OlismoMediazione.creaDossier(nome);
+    OlismoMediazione.setCorrente(dossier.id);
+  } else {
+    if(!confirm('Aggiungere ' + memberPhases.length + ' membri al dossier corrente "' + dossier.nome + '"?\n\nPer scegliere un altro dossier vai prima alla pagina Profili di Mediazione.')) return;
+  }
+  memberPhases.forEach(function(mp){
+    var m = mp.member;
+    var enneStr = String(m.enneatipo || '');
+    if(m.ala && m.ala !== 'nessuna') enneStr += ' · Ala ' + m.ala;
+    if(m.sub) enneStr += ' · sottotipo ' + m.sub;
+    OlismoMediazione.aggiungiSoggetto(dossier.id, {
+      nome: m.nome || ('Membro ' + (m.id || '')),
+      ruolo: 'familiare',
+      eta: m.eta || '',
+      enneatipo: enneStr,
+      note: 'Da Compatibilità Famiglia · Percorso ' + (m.percorso || '?')
+    });
+  });
+  if(confirm(memberPhases.length + ' soggetti aggiunti al dossier "' + dossier.nome + '". Vuoi aprire la pagina Profili di Mediazione adesso?')){
+    window.location.href = 'mediazione-profili.html';
+  }
+}
 
 function askAI(){
   var memberPhases = getMemberPhases();

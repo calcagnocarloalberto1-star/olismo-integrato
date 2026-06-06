@@ -1237,6 +1237,27 @@ function showResults() {
   // Build profile text for AI
   buildUserProfile();
 
+  // ── Salva nel Profilo Integrato (storico) ──
+  try {
+    if (window.OlismoProfilo && OlismoProfilo.accumula) {
+      // Ricostruisci nomi leggibili delle pietre + temi selezionati
+      var nomiPietre = topStones.slice(0, 4).map(function(id){ return (STONE_DB[id] && STONE_DB[id].nome) || id; }).join(', ');
+      var temiScelti = [];
+      QUIZ_STEPS.forEach(function(step){
+        (selections[step.id]||[]).forEach(function(selId){
+          var opt = step.options.find(function(o){return o.id === selId;});
+          if (opt && opt.label) temiScelti.push(opt.label);
+        });
+      });
+      var problema = temiScelti.length ? temiScelti.join(' · ') : '(temi non specificati)';
+      OlismoProfilo.accumula('cristalli', {
+        problema: problema.slice(0, 240),
+        esito:    'Pietre guida: ' + nomiPietre,
+        extra:    { topStones: topStones }
+      });
+    }
+  } catch(e){ /* silent */ }
+
   // Render stones
   const grid = document.getElementById('stonesGrid');
   grid.innerHTML = '';

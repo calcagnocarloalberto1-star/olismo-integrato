@@ -1290,6 +1290,25 @@ Spiega brevemente in italiano il razionale olistico.`;
       outBox.classList.add('show');
       // Scroll to output
       setTimeout(() => outBox.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      // ── Salva nello storico del profilo integrato ──
+      try {
+        if (window.OlismoProfilo && OlismoProfilo.accumula) {
+          const disturbo = isBase
+            ? (document.getElementById('sb-disturbo')?.value || '')
+            : (document.getElementById('sa-disturbo-libero')?.value || document.getElementById('sa-disturbo')?.value || '');
+          const enneatipo = isBase
+            ? (document.getElementById('sb-enneatipo')?.value || '')
+            : (document.getElementById('sa-enneatipo')?.value || '');
+          // Cerca la frequenza Hz nel testo di risposta
+          const hzMatch = response.match(/(\d{3,4})\s*Hz/i);
+          const frequenza = hzMatch ? hzMatch[1] + ' Hz' : '';
+          OlismoProfilo.accumula('frequenze', {
+            problema: disturbo + (enneatipo ? ' (T' + enneatipo + ')' : '') + (isBase ? '' : ' [avanzato]'),
+            esito:    frequenza ? 'Suggerita ' + frequenza + ' — ' + response.slice(0, 220).replace(/\s+/g,' ') + '…' : response.slice(0, 240).replace(/\s+/g,' ') + '…',
+            extra:    { modo: mode, prompt_suno_excerpt: response.slice(0, 1200) }
+          });
+        }
+      } catch (errSave) { /* silent */ }
     } catch (e) {
       errBox.textContent = '⚠ ' + (e.message || 'Errore generico. Riprova tra qualche istante.');
       errBox.classList.add('show');

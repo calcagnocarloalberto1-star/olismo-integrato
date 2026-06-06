@@ -537,7 +537,7 @@
     var wrap = document.createElement("div");
     wrap.id = "case-dossier-panel";
     wrap.style.cssText =
-      "position:fixed;left:16px;bottom:16px;z-index:9997;width:264px;font-family:'Outfit',system-ui,sans-serif;" +
+      "position:fixed;left:16px;bottom:64px;z-index:9997;width:264px;font-family:'Outfit',system-ui,sans-serif;" +
       "background:" + NAVY + ";color:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);overflow:hidden";
     wrap.innerHTML =
       '<div id="case-dossier-head" style="display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;cursor:pointer;background:rgba(0,0,0,.18)">' +

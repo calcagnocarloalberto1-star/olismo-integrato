@@ -431,3 +431,19 @@
    (astrologia vedica + hardware/wetware): se il knowledge module è già
    in produzione, anche questo file funziona automaticamente.
    ════════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════════
+   LOADER — carica olismo-integrato.js (report olistico + dossier caso)
+   Incollare in CODA a gender-prefs.js. Copre ogni pagina che include
+   questo file. Idempotente: non ricarica se già presente.
+   © 2026 Avv. Carlo Alberto Calcagno
+   ════════════════════════════════════════════════════════════════════ */
+(function () {
+  var V = "2", BASE = "/";
+  if (window.OlismoReport || document.getElementById("olismo-integrato-js")) return;
+  var s = document.createElement("script");
+  s.id = "olismo-integrato-js";
+  s.src = BASE + "olismo-integrato.js?v=" + V;
+  s.defer = true;
+  (document.body || document.head || document.documentElement).appendChild(s);
+})();

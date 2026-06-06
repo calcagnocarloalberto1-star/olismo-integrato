@@ -384,11 +384,20 @@
 <script src="gender-prefs.js"></script>
 <script src="olismo-core.js" defer></script>
 
-<!-- Parser URL params: precompila la chat con ?prompt= (no auto-invio: l'utente decide se inviare) -->
+<!-- Sistema Profilo Integrato (helper condiviso) -->
+<script src="olismo-profilo.js" defer></script>
+
+<!-- Parser URL params: precompila la chat con ?prompt= o ?profilo=integrato/<motore> -->
 <script>
 document.addEventListener("DOMContentLoaded",function(){
   var p=new URLSearchParams(location.search);
   var prompt=p.get("prompt");
+
+  // Sorgente B (nuova): profilo integrato o singolo motore via sessionStorage
+  if(!prompt && p.get("profilo") && window.OlismoProfilo){
+    prompt = window.OlismoProfilo.recuperaPromptDaURL();
+  }
+
   if(!prompt)return;
   var ta=document.getElementById("chat-input");
   if(!ta)return;

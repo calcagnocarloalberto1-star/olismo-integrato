@@ -628,5 +628,17 @@
   </div>
 </footer>
 
+
+<!-- Sistema Profilo Integrato — olismo-profilo.js -->
+<script src="olismo-profilo.js" defer></script>
+<script>
+// Se il motore "enneagramma" ha gia un profilo salvato (via questa pagina o via olismo-core.js),
+// mostra automaticamente la CTA "Invia al Consulente AI"
+document.addEventListener("DOMContentLoaded", function(){
+  if(!window.OlismoProfilo) return;
+  var p = OlismoProfilo.leggi("enneagramma");
+  if(p) OlismoProfilo.montaPulsanteConsulente({motore:"enneagramma"});
+});
+</script>
 </body>
 </html>

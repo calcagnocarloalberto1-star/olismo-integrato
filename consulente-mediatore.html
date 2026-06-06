@@ -1401,5 +1401,17 @@ window.addEventListener('load', () => {
 </script>
 
 <script src="gender-prefs.js"></script>
+
+<!-- Sistema Profilo Integrato — olismo-profilo.js -->
+<script src="olismo-profilo.js" defer></script>
+<script>
+// Se il motore "consulente_mediatore" ha gia un profilo salvato (via questa pagina o via olismo-core.js),
+// mostra automaticamente la CTA "Invia al Consulente AI"
+document.addEventListener("DOMContentLoaded", function(){
+  if(!window.OlismoProfilo) return;
+  var p = OlismoProfilo.leggi("consulente_mediatore");
+  if(p) OlismoProfilo.montaPulsanteConsulente({motore:"consulente_mediatore"});
+});
+</script>
 </body>
 </html>

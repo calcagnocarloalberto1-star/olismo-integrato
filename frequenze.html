@@ -1305,5 +1305,17 @@ Spiega brevemente in italiano il razionale olistico.`;
 })();
 </script>
 
+
+<!-- Sistema Profilo Integrato — olismo-profilo.js -->
+<script src="olismo-profilo.js" defer></script>
+<script>
+// Se il motore "frequenze" ha gia un profilo salvato (via questa pagina o via olismo-core.js),
+// mostra automaticamente la CTA "Invia al Consulente AI"
+document.addEventListener("DOMContentLoaded", function(){
+  if(!window.OlismoProfilo) return;
+  var p = OlismoProfilo.leggi("frequenze");
+  if(p) OlismoProfilo.montaPulsanteConsulente({motore:"frequenze"});
+});
+</script>
 </body>
 </html>

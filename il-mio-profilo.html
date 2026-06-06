@@ -163,6 +163,7 @@
 </footer>
 
 <script src="olismo-core.js" defer></script>
+<script src="olismo-profilo.js" defer></script>
 
 <!-- Logica di rendering del profilo personale -->
 <script>
@@ -366,6 +367,63 @@ document.addEventListener("DOMContentLoaded", function(){
     integratedBtn.href = "consulente.html?prompt=" + encodeURIComponent(integratedPrompt);
 
     metaText.textContent = count + " test " + (count === 1 ? "completato" : "completati") + " su 7" + (lastDate ? " · ultimo aggiornamento " + lastDate : "");
+  }
+
+  // ─── ESTENSIONE: motori "nuovi" salvati via OlismoProfilo (oltre i 7 storici) ───
+  // Mostra card aggiuntive per qualunque motore che salvi tramite il nuovo helper
+  // (es. matrice-svalutazione, frequenze, carezze, copione, riconoscere-violenza, ecc.)
+  if (window.OlismoProfilo && typeof OlismoProfilo.leggiTutti === "function") {
+    var moduliExtra = OlismoProfilo.leggiTutti();
+    // Esclude quelli già mostrati dai 7 TESTS storici
+    var motoriStorici = { check:1, frutti:1, adattamenti:1, vak:1, egogramma:1, transazioni:1, diet:1 };
+    var nuovi = moduliExtra.filter(function (p) { return !motoriStorici[p.motore]; });
+    if (nuovi.length) {
+      // Mostra il container se era nascosto perché i 7 storici erano 0
+      if (container.style.display === "none") {
+        container.style.display = "";
+        emptyState.style.display = "none";
+        integratedBlock.style.display = "block";
+        metaBlock.style.display = "flex";
+      }
+      nuovi.forEach(function (p) {
+        var card = document.createElement("div");
+        card.className = "profilo-card";
+        var idMotore = p.motore;
+        card.innerHTML =
+          '<div class="profilo-card-hd">' +
+            '<span class="profilo-card-title" style="color:#8b6914">' + (p.emoji || "◉") + " " + p.titolo + '</span>' +
+            '<span class="profilo-card-date">' + (p.data || "") + '</span>' +
+          '</div>' +
+          '<div class="profilo-card-body">' + (p.sintesi || "<i>Profilo salvato</i>") + '</div>' +
+          '<a href="#" data-olismo-card-invia="' + idMotore + '" ' +
+             'class="profilo-card-btn" style="border-color:#b8860b;color:#b8860b">' +
+             '🤖 Chiedi all\'AI di approfondire' +
+          '</a>';
+        container.appendChild(card);
+      });
+      // Wire dei click sulle nuove card (usa sessionStorage → evita URL troppo lunghe)
+      container.querySelectorAll('[data-olismo-card-invia]').forEach(function (a) {
+        a.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          OlismoProfilo.inviaProfiloAlConsulente(a.getAttribute('data-olismo-card-invia'));
+        });
+      });
+      // Aggiorna count totale visibile nella CTA integrata
+      var totale = count + nuovi.length;
+      if (integratedCount) integratedCount.textContent = (totale === 1) ? "il" : "tutti i " + totale;
+    }
+
+    // ── Sostituisce il link integrato con la versione "tutti i motori" via OlismoProfilo
+    //    (preserva il fallback storico se OlismoProfilo non trovasse nulla)
+    if (moduliExtra.length) {
+      integratedBtn.addEventListener('click', function (ev) {
+        // Lascia la navigazione normale solo se la sessionStorage va male: qui forziamo il passaggio dall'API
+        ev.preventDefault();
+        OlismoProfilo.inviaTuttoAlConsulente();
+      });
+      // Aggiorna anche il testo del bottone se vogliamo riflettere il numero totale di motori
+      integratedBtn.setAttribute('aria-label', 'Invia ' + moduliExtra.length + ' profili al Consulente AI');
+    }
   }
 
   // Funzione globale per cancellare tutti i risultati

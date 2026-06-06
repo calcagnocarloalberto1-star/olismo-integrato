@@ -1625,5 +1625,17 @@ async function exportPdf(){
   if(btn){btn.textContent='\u2913 Scarica PDF';btn.disabled=false;}
 }
 </script>
+
+<!-- Sistema Profilo Integrato — olismo-profilo.js -->
+<script src="olismo-profilo.js" defer></script>
+<script>
+// Se il motore "cristalli" ha gia un profilo salvato (via questa pagina o via olismo-core.js),
+// mostra automaticamente la CTA "Invia al Consulente AI"
+document.addEventListener("DOMContentLoaded", function(){
+  if(!window.OlismoProfilo) return;
+  var p = OlismoProfilo.leggi("cristalli");
+  if(p) OlismoProfilo.montaPulsanteConsulente({motore:"cristalli"});
+});
+</script>
 </body>
 </html>

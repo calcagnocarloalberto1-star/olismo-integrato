@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <!--
 ═══════════════════════════════════════════════════════════════════════
   © 2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
@@ -97,6 +97,7 @@
 </script>
 <link href="https://fonts.googleapis.com/" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
 <link href="https://olismo-integrato.it/manifest.json" rel="manifest"/>
 <meta content="#b8935a" name="theme-color"/>
 <meta content="yes" name="mobile-web-app-capable"/>
@@ -153,7 +154,7 @@
 .book-promo__features li::before{content:'\2726';position:absolute;left:0;color:var(--gold)}
 .book-promo__cta{display:flex;flex-wrap:wrap;gap:.8rem}
 
-/* ═══ MEGA-MENU REDESIGN: striscia top "Inizia qui" + 5 colonne tematiche + striscia bottom ═══ */
+/* ═══ MEGA-MENU REDESIGN ═══ */
 .mega-menu-wrap.open .mega-panel--redesign{display:flex !important;flex-direction:column;gap:14px;grid-template-columns:none !important;padding:18px 20px;max-width:none}
 .mega-strip-start{background:#FAEEDA;border:1px solid #BA7517;border-radius:10px;padding:12px 14px}
 .mega-strip-start-title{font-size:.7rem;color:#854F0B;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:.4rem}
@@ -206,7 +207,7 @@
   #percorsi-home { padding: 2.5rem 0 !important; }
   .dash-hd { margin-bottom: 1.75rem !important; }
 
-  /* Sfondo: neutralizzo l'alternanza gold/bianco (evita "flicker" mentre scorri) */
+  /* Sfondo: neutralizzo l'alternanza gold/bianco */
   .dash-sec-gold { background: #fdfcf9 !important; }
   .dash-section + .dash-section,
   .dash-section + .book-promo,
@@ -214,7 +215,7 @@
     border-top: 1px solid rgba(184, 147, 90, 0.12);
   }
 
-  /* Carte più sobrie: niente barra oro superiore moltiplicata su 50+ carte */
+  /* Carte più sobrie */
   .dash-card { padding: 1.1rem 1.1rem 1rem !important; }
   .dash-card::before { display: none !important; }
   .dash-card.dc-star {
@@ -236,13 +237,13 @@
   .mega-strip-cards { gap: 0.6rem !important; }
   .mega-cols-redesign { gap: 0.75rem !important; }
 
-  /* Container narrow per testi (1200px è troppo largo per le descrizioni) */
+  /* Container narrow per testi */
   .dash-hd { max-width: 720px !important; }
   .hero-sub { max-width: 640px !important; margin-left: auto; margin-right: auto; }
   .book-promo__content { max-width: 580px !important; }
   .book-promo__desc { max-width: 540px; }
 
-  /* Tipografia: cap dei clamp per non esplodere su monitor 1440+ */
+  /* Tipografia: cap dei clamp */
   .hero-title { font-size: clamp(2.4rem, 4vw, 3.6rem) !important; line-height: 1.1 !important; }
   .dash-title { font-size: clamp(1.6rem, 2.4vw, 2rem) !important; }
   .book-promo__title { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
@@ -252,7 +253,7 @@
     letter-spacing: 0.13em !important;
   }
 
-  /* Book-promo: decorazioni più tranquille */
+  /* Book-promo */
   .book-promo {
     background: linear-gradient(180deg, #faf6ed 0%, #fdfcf8 100%) !important;
   }
@@ -264,7 +265,7 @@
   .book-promo__cover svg:hover { transform: rotate(0) scale(1.02) !important; }
   .book-promo__grid { gap: 2.25rem !important; }
 
-  /* Hero: pulizia decorazioni e CTA in fila (non stack) */
+  /* Hero */
   .hero-bg-circle { opacity: 0.35 !important; }
   .hero-ctas {
     display: flex !important;
@@ -275,7 +276,7 @@
     max-width: none !important;
   }
 
-  /* Perc-card (sezione "Da dove vuoi iniziare?") */
+  /* Perc-card */
   .perc-card {
     padding: 1.25rem 1.1rem !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
@@ -304,7 +305,6 @@
 
 @media (max-width: 768px) {
 
-  /* Hero: leggibilità del titolo su foto scura (Light 300 era troppo sottile) */
   h1.hero-title {
     font-size: clamp(2.2rem, 8vw, 3.8rem) !important;
     font-weight: 500 !important;
@@ -317,7 +317,6 @@
     line-height: 1.55 !important;
   }
 
-  /* Hero CTA: stacked compatti (3 bottoni full-width al 100% riempivano lo schermo) */
   .hero-ctas {
     flex-direction: column !important;
     gap: 0.6rem !important;
@@ -337,7 +336,6 @@
     box-sizing: border-box !important;
   }
 
-  /* Header: altezza coerente, mob-menu allineato (Safari iOS comprime l'header) */
   .hdr-inner {
     padding: 0 1rem !important;
     min-height: var(--header-h);
@@ -350,14 +348,12 @@
     top: var(--header-h) !important;
   }
 
-  /* Tap target accessibili (WCAG 2.5.5: minimo 44x44px) */
   .pill, .nav-link, .mob-link, .hamburger {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
   }
 
-  /* Sicurezza overflow orizzontale */
   img, iframe, video, table, pre {
     max-width: 100% !important;
     height: auto;
@@ -385,7 +381,7 @@
 }
 
 
-/* ─── FOOTER · cascade ordinata 640 → 480 → 400 ─────────────────────── */
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .footer-grid {
@@ -924,7 +920,6 @@
       <a class="f-link" href="#percorso-viaggio">🗺 Mappa del percorso</a>
       <a class="f-link" href="privacy.html">🛡 Privacy Policy</a>
       <a class="f-link" href="cookie.html">🍪 Cookie Policy</a>
-
     </div>
     <div>
       <div class="f-col-title" style="color:#c62828">🆘 Emergenza violenza</div>

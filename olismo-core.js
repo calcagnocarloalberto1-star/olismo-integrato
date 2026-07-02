@@ -6388,7 +6388,7 @@ async function sendDietMsg(){
     const reply=data.content?.[0]?.text||'Errore. Riprova.';
     window._dietChatHistory.push({role:'assistant',content:reply});
     document.getElementById(typId)?.remove();
-    msgs.innerHTML+=`<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">${reply.replace(/\n/g,'<br>')}</div></div>`;
+    msgs.innerHTML+=`<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">${(window.parseMdTables ? window.parseMdTables(reply) : reply).replace(/\n/g,'<br>')}</div></div>`;
     msgs.scrollTop=msgs.scrollHeight;
   }catch(e){
     console.error('[Dieta chat] Errore:', e);
@@ -6627,7 +6627,7 @@ async function fesSend() {
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
     fesHistory.push({ role: 'assistant', content: aiText });
-    const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + fmt;
   } catch(e) {
     console.error('[FES] Errore:', e);
@@ -6682,7 +6682,7 @@ async function bushSend() {
     const data = await res.json();
     const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
     bushHistory.push({ role: 'assistant', content: aiText });
-    const fmt = aiText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlp])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + fmt;
   } catch(e) {
     console.error('[Bush] Errore:', e);

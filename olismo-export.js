@@ -135,7 +135,7 @@
       bar = document.createElement("div");
       bar.id = "olismo-export-bar";
       bar.className = "olismo-export-bar";
-      bar.style.cssText = "position:fixed;right:14px;bottom:14px;z-index:9998;display:none;gap:8px;align-items:center;background:rgba(255,255,255,.94);border:1px solid #d8cdb8;border-radius:24px;padding:6px 8px;box-shadow:0 4px 16px rgba(0,0,0,.14)";
+      bar.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:9998;display:none;gap:8px;align-items:center;background:rgba(255,255,255,.94);border:1px solid #d8cdb8;border-radius:24px;padding:6px 8px;box-shadow:0 4px 16px rgba(0,0,0,.14)";
       var bs = "border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;padding:.5rem .95rem;border-radius:18px;color:#fff;white-space:nowrap";
       bar.innerHTML = '<span style="font-size:.7rem;color:#8b6914;font-weight:700;letter-spacing:.06em;padding-left:6px">ESPORTA</span>' +
         '<button id="olExpPdf" style="' + bs + 'background:#b8935a">PDF</button>' +

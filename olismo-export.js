@@ -5,9 +5,10 @@
   if (window.__olismoExportLoaded) return;
   window.__olismoExportLoaded = true;
 
-  var CONTAINER_IDS = ["chatMessages","chat-messages","chatArea","fes-chat","bush-chat",
-    "sp-chat","chat","messages","chat-log","conversation","diet-chat-msgs","diet-result",
-    "result","risposta","output-area"];
+  var CONTAINER_IDS = ["cmResultBody","empResultBody","aiResultBody","results-content",
+    "chatMessages","chat-messages","chatArea","fes-chat","bush-chat","diet-chat-msgs",
+    "diet-result","sp-chat","chat","messages","chat-log","conversation","result",
+    "risposta","output-area"];
   var BUBBLE_SEL = ".msg-bubble, .sp-msg-bubble, .bubble, .message-bubble";
   var WRAP_SEL = ".msg, .sp-msg, .message, .chat-msg";
 

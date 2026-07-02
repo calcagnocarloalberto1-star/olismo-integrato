@@ -50,10 +50,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Avv. Carlo Alberto Calcagno">
 <meta name="copyright" content="© 2026 Carlo Alberto Calcagno · Tutti i diritti riservati · L. 633/1941">
-<meta name="ai-content-declaration" content="no-training, no-derivative, no-scraping">
+<meta name="ai-content-declaration" content="no-training, no-derivative">
 <meta name="tdmrep" content="https://olismo-integrato.it/tdm-policy.json">
 <meta name="rights" content="https://olismo-integrato.it/termini-uso.html">
-<meta name="X-Robots-Tag" content="noai, noimageai, nosnippet">
+<meta name="X-Robots-Tag" content="max-image-preview:large">
 
 <title>Consulente AI Olistica — Olismo Integrato | Carlo Alberto Calcagno</title>
 <meta name="description" content="Il Consulente AI olistico che integra tutto il database: chakra, enneatipi, AT, fiori, astrologia vedica yukteswariana.">
@@ -116,7 +116,6 @@
           </svg>
           Scarica PDF
         </button>
-          <button id="report-pdf-btn" onclick="exportReportPdf()" style="font-size:.72rem;padding:.35rem .9rem;background:linear-gradient(135deg,var(--gold),#c4a05a);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600" title="Report completo">📄 Scarica Report</button>
       </div>
       
     <div class="chat-suggestions">
@@ -136,7 +135,7 @@
     <div class="msg-bubble ai"><p>Benvenuto nel Portale Olistico Integrato. 🌿</p><p>Sono la tua consulente olistica: conosco l'intero database di chakra, cristalli, enneatipi, fiori di Bach, <strong>Fiori Californiani FES</strong> (100 essenze), <strong>Fiori Australiani Bush</strong> (65 essenze), frequenze curative, alimentazione, esercizi terapeutici e — dalla primavera 2026 — la cornice della <strong>Jyotish yukteswariana</strong>, il ciclo dei <strong>Yuga</strong> e la fisiologia del cervello (hardware vs wetware).</p><p>Descrivimi la tua situazione — un disturbo fisico, una difficoltà emotiva, il tuo enneatipo, o semplicemente come ti senti oggi — e costruiremo insieme un percorso personalizzato che integra più discipline.</p></div>
     <div class="msg-time">14:31<div class="msg-rating"><button onclick="rateMsg(this,1)" title="Utile">👍</button><button onclick="rateMsg(this,-1)" title="Non utile">👎</button></div></div>
   </div></div></div>
-      <div id="chat-profile-badge" style="display: block; font-size: 0.72rem; color: var(--gold); background: rgba(184, 147, 90, 0.1); border: 1px solid rgba(184, 147, 90, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; margin: 0.4rem 0.8rem; text-align: center; line-height: 1.5;">📊 Profilo rilevato: Check · 9 Frutti · Test AT · VAK · Egogramma · Dieta</div>
+      <div id="chat-profile-badge" style="display: none; font-size: 0.72rem; color: var(--gold); background: rgba(184, 147, 90, 0.1); border: 1px solid rgba(184, 147, 90, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; margin: 0.4rem 0.8rem; text-align: center; line-height: 1.5;">📊 Profilo rilevato: Check · 9 Frutti · Test AT · VAK · Egogramma · Dieta</div>
 <div class="chat-input-area">
         <textarea id="chat-input" rows="1" placeholder="Descrivi la tua situazione o fai una domanda olistica…" onkeydown="handleKey(event)" oninput="autoResize(this)" style="height: auto;"></textarea>
         <button class="send-btn" id="send-btn" onclick="sendMsg()">

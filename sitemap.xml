@@ -319,4 +319,16 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://olismo-integrato.it/guida-mediazione-familiare.html</loc>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/mediazione-o-causa.html</loc>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olismo-integrato.it/enneagramma-evolutivo-9-tipi.html</loc>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
 </urlset>

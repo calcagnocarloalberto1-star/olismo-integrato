@@ -5,28 +5,24 @@
   if (window.__olismoExportLoaded) return;
   window.__olismoExportLoaded = true;
 
-  var CONTAINER_IDS = ["cmResultBody","empResultBody","aiResultBody","results-content",
-    "chatMessages","chat-messages","chatArea","fes-chat","bush-chat","diet-chat-msgs",
-    "diet-result","sp-chat","chat","messages","chat-log","conversation","result",
-    "risposta","output-area"];
+  var CONTAINER_IDS = ["cmResultBody","empResultBody","aiResultBody","chatMessages",
+    "chat-messages","chatArea","fes-chat","bush-chat","diet-chat-msgs","diet-result"];
   var BUBBLE_SEL = ".msg-bubble, .sp-msg-bubble, .bubble, .message-bubble";
   var WRAP_SEL = ".msg, .sp-msg, .message, .chat-msg";
 
+  function isVisible(el) {
+    if (!el) return false;
+    if (el.offsetParent !== null) return true;
+    var st = window.getComputedStyle(el);
+    return !!st && st.display !== "none" && st.visibility !== "hidden";
+  }
+
   function findContainer() {
-    var chosen = null, chosenLen = 0, i;
-    for (i = 0; i < CONTAINER_IDS.length; i++) {
+    for (var i = 0; i < CONTAINER_IDS.length; i++) {
       var el = document.getElementById(CONTAINER_IDS[i]);
-      if (!el) continue;
-      var len = (el.textContent || "").trim().length;
-      if (len > chosenLen) { chosenLen = len; chosen = el; }
+      if (el && isVisible(el) && (el.textContent || "").trim().length > 0) return el;
     }
-    if (chosen && chosenLen > 0) return chosen;
-    var best = null, bestN = 1, cands = document.querySelectorAll("div,section,main,ul");
-    for (var j = 0; j < cands.length; j++) {
-      var n = cands[j].querySelectorAll(WRAP_SEL + ", " + BUBBLE_SEL).length;
-      if (n > bestN) { bestN = n; best = cands[j]; }
-    }
-    return best;
+    return null;
   }
 
   function clean(node) {

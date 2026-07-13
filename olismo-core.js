@@ -1144,7 +1144,7 @@ const FAQ_DATA = [
   {cat:"Sito",q:"I contenuti del sito vengono usati per addestrare l'AI?",a:"No. Il portale riserva espressamente i diritti di estrazione di testo e dati per l'addestramento di sistemi di intelligenza artificiale (art. 70-quater L. 633/1941): i crawler di addestramento (GPTBot, CCBot, Google-Extended e simili) sono bloccati. Sono ammessi solo i motori che generano risposte citando la fonte (ChatGPT Search, Perplexity, Claude), così i contenuti ottengono visibilità senza essere ceduti per il training."},
   {cat:"Sito",q:"Posso usare gli strumenti dal telefono?",a:"Sì. Il portale è responsive: test, motori AI, database e manuale funzionano da smartphone, tablet e computer. Per i test più lunghi, come il Check Integrato, un tablet o un PC rendono la compilazione più comoda."},
   // ── Manuale ──
-  {cat:"Manuale",q:"Il manuale è gratuito? In che formato lo scarico?",a:"Sì, è gratuito e senza registrazione. Dalla pagina 📖 Il manuale scarichi «Leggere la persona, accompagnare il conflitto» (584 pagine, 18 parti) in PDF e in Word. È l'opera che fonda il metodo integrato del portale, con la cornice deontologica della mediazione e i sistemi olistici di lettura della persona."},
+  {cat:"Manuale",q:"Come posso avere il manuale?",a:"Il manuale «Leggere la persona, accompagnare il conflitto» (584 pagine, 18 parti) è in pubblicazione e non è più scaricabile. Dalla pagina 📖 Il manuale puoi richiederlo all'autore, che ne invia copia in sola lettura. È l'opera che fonda il metodo integrato del portale, con la cornice deontologica della mediazione e i sistemi olistici di lettura della persona."},
   // ── Mediazione ──
   {cat:"Mediazione",q:"Come richiedo una consulenza o un primo colloquio?",a:"Vai su 🤝 Richiedi una consulenza (prenota-consulenza.html) e invia la richiesta, oppure passa dalla pagina Professionisti della rete. Il primo colloquio conoscitivo è senza impegno e serve a valutare se e come un percorso di mediazione o di crescita può esserti utile."},
   {cat:"Mediazione",q:"Gli strumenti di mediazione sono per professionisti o anche per privati?",a:"Entrambi, con livelli diversi. I motori specialistici (Consulente per mediatori, Empowerment, Psicologia analogica, Matrice della svalutazione) sono pensati per mediatori, avvocati e counselor. Le pagine Mediazione civile e Mediazione familiare orientano anche il privato che sta affrontando una separazione o una controversia."},
@@ -7673,7 +7673,7 @@ async function exportBushPdf(){
           var link = document.createElement('a');
           link.className = 'mega-item mega-item-star';
           link.href = 'manuale.html';
-          link.innerHTML = '<span class="mi-ic">📖</span><span class="mi-body"><strong>Il manuale</strong><em>Download gratuito</em></span>';
+          link.innerHTML = '<span class="mi-ic">📖</span><span class="mi-body"><strong>Il manuale</strong><em>In pubblicazione</em></span>';
 
           // Inserisco prima il link, poi il titolo (così appaiono nell'ordine giusto)
           databaseLink.insertAdjacentElement('afterend', link);
@@ -7691,7 +7691,7 @@ async function exportBushPdf(){
           newLinkMob.style.color = 'var(--gold)';
           newLinkMob.style.fontWeight = '600';
           newLinkMob.href = 'manuale.html';
-          newLinkMob.innerHTML = '📖 Il manuale (gratis)';
+          newLinkMob.innerHTML = '📖 Il manuale';
           guidaLink.insertAdjacentElement('beforebegin', newLinkMob);
         }
       }

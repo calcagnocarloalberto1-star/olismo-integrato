@@ -2823,6 +2823,7 @@ body.mega-open .mega-backdrop{display:block}
 
 /* ══ PROGRESS WIDGET ══ */
 #progress-widget{position:fixed;bottom:18px;left:18px;z-index:200;width:min(360px,calc(100vw - 40px));background:white;border:1px solid var(--border2);border-radius:14px;box-shadow:0 12px 40px rgba(42,37,32,.18);padding:.9rem 1rem .85rem}
+body.mega-open #progress-widget{display:none!important}
 #progress-widget.pw-min{padding:.55rem .9rem;width:auto;min-width:180px;cursor:pointer}
 #progress-widget.pw-min .pw-bar,#progress-widget.pw-min .pw-chips{display:none}
 .pw-inner{position:relative}

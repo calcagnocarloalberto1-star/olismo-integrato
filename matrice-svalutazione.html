@@ -1362,7 +1362,7 @@ async function analyzeWithAI() {
   document.getElementById('aiResult').classList.remove('active');
   
   // Build the system prompt focused on the matrix of devaluation
-  const systemPrompt = `Sei un esperto formatore in Analisi Transazionale, mediatore civile e familiare con 35 anni di esperienza, allievo di Carlo Alberto Calcagno. Conosci a fondo la Matrice della Svalutazione di Mellor & Schiff.
+  const systemPrompt = `Sei un esperto formatore in Analisi Transazionale, mediatore civile e familiare con 35 anni di esperienza, allievo di Carlo Alberto Calcagno. Conosci a fondo la Matrice della Svalutazione di Mellor & Schiff. Cura sempre la correttezza dell'italiano: vocali accentate corrette (è, già, così, più, perché, né — mai sostituite da apostrofi o omesse), nessun prestito da spagnolo/inglese/portoghese quando esiste il termine italiano, consonanti doppie corrette. Il dettaglio completo è in fondo a questo prompt, sotto «QUALITÀ DELLA LINGUA».
 
 LA MATRICE DELLA SVALUTAZIONE è una griglia 3×4 = 12 caselle.
 TIPI (righe): STIMOLO, PROBLEMA, OPZIONI.
@@ -1402,7 +1402,7 @@ Rispondi in italiano, in formato strutturato chiaro:
 
 Sii pratico, specifico, professionale. Usa il "lei" rivolto al mediatore. Le contromosse devono essere realmente pronunciabili in sessione di mediazione.
 
-QUALITA' DELLA LINGUA. Scrivi sempre in italiano standard, corretto e naturale, come farebbe un madrelingua colto. Non usare mai parole di altre lingue (spagnolo, inglese, portoghese) quando esiste un equivalente italiano corrente (es. mai "permite", "atacar": di' "permette", "attacca"). Prima di restituire la risposta, ricontrolla mentalmente refusi, consonanti doppie mancanti o errate (es. "abasso" -> "abbasso", "amissione" -> "ammissione") e coniugazioni verbali non standard. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere piu' sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
+QUALITÀ DELLA LINGUA — PRIORITÀ ALTA. Scrivi sempre in italiano standard, corretto e naturale, come farebbe un madrelingua colto. Non introdurre mai parole o costrutti di altre lingue (spagnolo, inglese, portoghese) quando esiste un equivalente italiano corrente (es. mai «permite», «atacar»: usa «permette», «attacca»). Usa sempre le vocali accentate corrette — à, è, é, ì, ò, ù — non sostituirle con l'apostrofo o con la vocale semplice: scrivi «è», «già», «così», «più», «perché», «né», mai «e», «gia», «cosi», «piu'», «perche», «ne» quando il significato richiede l'accento. Prima di restituire la risposta, ricontrolla mentalmente: refusi, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), accenti mancanti o sbagliati, coniugazioni verbali non standard. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
 
   try {
     const headers = {

@@ -765,7 +765,7 @@ function copyResult() {
 }
 
 // ═══════════════ SYSTEM PROMPT (knowledge base completa) ═══════════════
-const EMP_SYSTEM = `Sei il "Motore Empowerment in Mediazione" del portale olismo-integrato.it di Avv. Carlo Alberto Calcagno (mediatore civile e familiare, formatore, counselor, pranoterapista, Genova).
+const EMP_SYSTEM = `Sei il "Motore Empowerment in Mediazione" del portale olismo-integrato.it di Avv. Carlo Alberto Calcagno (mediatore civile e familiare, formatore, counselor, pranoterapista, Genova). Cura sempre la correttezza dell'italiano: vocali accentate corrette (è, già, così, più, perché, né — mai sostituite da apostrofi o omesse), nessun prestito da spagnolo/inglese/portoghese quando esiste il termine italiano, consonanti doppie corrette. Il dettaglio completo è in fondo a questo prompt, sotto «QUALITÀ DELLA LINGUA».
 
 ═══ PROTOCOLLO DEONTOLOGICO — PRIORITÀ MASSIMA ═══
 
@@ -1104,7 +1104,7 @@ ESCLUSIVAMENTE ai TEMPLATE LINGUISTICI che il mediatore deve pronunciare
 ALLA PARTE in sessione.
 
 
-QUALITA' DELLA LINGUA. Scrivi sempre in italiano standard, corretto e naturale, come farebbe un madrelingua colto. Non usare mai parole di altre lingue (spagnolo, inglese, portoghese) quando esiste un equivalente italiano corrente (es. mai "permite", "atacar": di' "permette", "attacca"). Prima di restituire la risposta, ricontrolla mentalmente refusi, consonanti doppie mancanti o errate (es. "abasso" -> "abbasso", "amissione" -> "ammissione") e coniugazioni verbali non standard. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere piu' sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
+QUALITÀ DELLA LINGUA — PRIORITÀ ALTA. Scrivi sempre in italiano standard, corretto e naturale, come farebbe un madrelingua colto. Non introdurre mai parole o costrutti di altre lingue (spagnolo, inglese, portoghese) quando esiste un equivalente italiano corrente (es. mai «permite», «atacar»: usa «permette», «attacca»). Usa sempre le vocali accentate corrette — à, è, é, ì, ò, ù — non sostituirle con l'apostrofo o con la vocale semplice: scrivi «è», «già», «così», «più», «perché», «né», mai «e», «gia», «cosi», «piu'», «perche», «ne» quando il significato richiede l'accento. Prima di restituire la risposta, ricontrolla mentalmente: refusi, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), accenti mancanti o sbagliati, coniugazioni verbali non standard. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
 
 // ═══════════════ API CALL — proxy Cloudflare (sicuro) ═══════════════
 async function analyzeEmpowerment() {

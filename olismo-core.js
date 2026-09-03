@@ -2711,7 +2711,9 @@ LESSICO (mai un prestito quando esiste il termine italiano corrente): vietati in
 
 ACCENTI E ORTOGRAFIA: vocali accentate corrette — à, è, é, ì, ò, ù — mai sostituite da apostrofo o omesse: scrivi «è», «già», «così», «più», «perché», «né», mai «e», «gia», «cosi», «piu'», «perche», «ne» quando il significato lo richiede.
 
-Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.`
+Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.
+
+ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da evitare): sbagliato «il enneatipo, il adattamento» → corretto «l'enneatipo, l'adattamento»; sbagliato «il psicologo, i stati d'animo, i studi» → corretto «lo psicologo, gli stati d'animo, gli studi»; sbagliato «también il fiore permite di rilassarsi» → corretto «anche il fiore permette di rilassarsi».`
 
 let chatHistory = [];
 let isLoading = false;
@@ -2855,6 +2857,50 @@ function parseMdTables(text){
   });
 }
 if(typeof window !== 'undefined') window.parseMdTables = parseMdTables;
+
+// ── Correttore automatico italiano: articoli e prestiti linguistici ──
+// Gira sul testo generato dall'AI prima di mostrarlo, per garantire (non solo
+// chiedere) la correzione degli errori più frequenti: il/lo e i/gli davanti a
+// s+consonante/z/gn/pn/ps/x/y, elisione il/la davanti a vocale, prestiti spagnolo/inglese.
+function correggiItaliano(testo) {
+  if (!testo) return testo;
+  const LETTERA = "[A-Za-zÀ-ÖØ-öø-ÿ]";
+  function maiuscolaCome(originale, sostituto) {
+    if (originale[0] === originale[0].toUpperCase() && originale[0] !== originale[0].toLowerCase()) {
+      return sostituto.charAt(0).toUpperCase() + sostituto.slice(1);
+    }
+    return sostituto;
+  }
+  const PRESTITI = [
+    [/\btambién\b/gi, 'anche'], [/\bporque\b/gi, 'perché'],
+    [/\bnecesita\b/gi, 'ha bisogno di'], [/\bnecesito\b/gi, 'ho bisogno di'],
+    [/\bentonces\b/gi, 'allora'], [/\bpermite\b/gi, 'permette'],
+    [/\batacar\b/gi, 'attaccare'], [/\bactually\b/gi, 'in realtà'],
+    [/\bbasically\b/gi, 'fondamentalmente'], [/\bdefinitely\b/gi, 'sicuramente'],
+    [/\beventually\b/gi, 'alla fine'], [/\bfeedback\b/gi, 'riscontro'],
+  ];
+  for (const [re, sost] of PRESTITI) {
+    testo = testo.replace(re, (m) => maiuscolaCome(m, sost));
+  }
+  const RICHIEDE_LO = /^(s[bcdfgjklmnpqrstvwxz]|z|gn|pn|ps|x|y)/i;
+  const VOCALE = /^[aeiouAEIOU]/;
+  function correggiMaschile(testo, art, artGiusto, ancheVocale) {
+    const re = new RegExp('\\b(' + art + ')\\s+(' + LETTERA + '+)', 'gi');
+    return testo.replace(re, (m, artUsato, parola) => {
+      if (RICHIEDE_LO.test(parola) || (ancheVocale && VOCALE.test(parola))) {
+        return maiuscolaCome(artUsato, artGiusto) + ' ' + parola;
+      }
+      return m;
+    });
+  }
+  testo = correggiMaschile(testo, 'il', 'lo', false);
+  testo = correggiMaschile(testo, 'i', 'gli', true);
+  testo = testo.replace(new RegExp('\\b(il|la)\\s+(' + LETTERA + '+)', 'gi'), (m, art, parola) => {
+    if (VOCALE.test(parola)) return maiuscolaCome(art, "l'") + parola;
+    return m;
+  });
+  return testo;
+}
 
 function formatAiReply(text){
   // Tabelle Markdown -> HTML (tollerante, celle vuote preservate)
@@ -3106,6 +3152,7 @@ async function sendMsg(){
       body:JSON.stringify({
         model: "claude-haiku-4-5-20251001",
         max_tokens: 16000,
+        temperature: 0.35,
         system:buildUserProfile()+SYSTEM_PROMPT,
         messages:chatHistory
       })
@@ -3124,7 +3171,7 @@ async function sendMsg(){
       addMsg("ai","<em>⚠ "+(data.error.message||"Errore API")+"</em>");
       return;
     }
-    const reply=data.content?.[0]?.text||"Mi dispiace, non ho ricevuto una risposta. Riprova.";
+    const reply=correggiItaliano(data.content?.[0]?.text||"Mi dispiace, non ho ricevuto una risposta. Riprova.");
     chatHistory.push({role:"assistant",content:reply});
     addMsg("ai",formatAiReply(reply));
   }catch(e){
@@ -6402,11 +6449,11 @@ async function sendDietMsg(){
   msgs.scrollTop=msgs.scrollHeight;
   window._dietChatHistory.push({role:'user',content:msg});
   try{
-    const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo. Non prescrivere diete terapeutiche per malattie.`;
+    const system=`Sei un esperto di nutrizione olistica di olismo-integrato.it (Avv. Carlo Alberto Calcagno). Piano generato per: Enneatipo ${ctx.enn||'?'}, Adattamento AT ${ctx.adatt||'?'}. Principio: ${ctx.piano||''}. Rispondi in italiano, pratico e caldo, con italiano standard e corretto: articoli il/lo/la/i/gli/le concordati a genere e numero (es. lo psicologo, gli stati, l'enneatipo), nessun prestito da spagnolo/inglese quando esiste il termine italiano. Non prescrivere diete terapeutiche per malattie.`;
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
-    const resp=await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,system,messages})});
+    const resp=await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,temperature: 0.35,system,messages})});
     const data=await resp.json();
-    const reply=data.content?.[0]?.text||'Errore. Riprova.';
+    const reply=correggiItaliano(data.content?.[0]?.text||'Errore. Riprova.');
     window._dietChatHistory.push({role:'assistant',content:reply});
     document.getElementById(typId)?.remove();
     msgs.innerHTML+=`<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--gold3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold)">AI</div><div style="background:white;border:1px solid var(--ivory3);border-radius:8px;padding:.6rem .9rem;font-size:.82rem;color:var(--ink2);line-height:1.55">${(window.parseMdTables ? window.parseMdTables(reply) : reply).replace(/\n/g,'<br>')}</div></div>`;
@@ -6647,16 +6694,18 @@ LESSICO (mai un prestito quando esiste il termine italiano corrente): vietati in
 
 ACCENTI E ORTOGRAFIA: vocali accentate corrette — à, è, é, ì, ò, ù — mai sostituite da apostrofo o omesse: scrivi «è», «già», «così», «più», «perché», «né», mai «e», «gia», «cosi», «piu'», «perche», «ne» quando il significato lo richiede.
 
-Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
+Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.
+
+ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da evitare): sbagliato «il enneatipo, il adattamento» → corretto «l'enneatipo, l'adattamento»; sbagliato «il psicologo, i stati d'animo, i studi» → corretto «lo psicologo, gli stati d'animo, gli studi»; sbagliato «también il fiore permite di rilassarsi» → corretto «anche il fiore permette di rilassarsi».`;
   try {
     /* CHIAVE API RIMOSSA — gestita dal proxy Cloudflare */
     const res = await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01'},
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: FES_PROMPT, messages: fesHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, temperature: 0.35, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
-    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    const aiText = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
     fesHistory.push({ role: 'assistant', content: aiText });
     const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + fmt;
@@ -6712,16 +6761,18 @@ LESSICO (mai un prestito quando esiste il termine italiano corrente): vietati in
 
 ACCENTI E ORTOGRAFIA: vocali accentate corrette — à, è, é, ì, ò, ù — mai sostituite da apostrofo o omesse: scrivi «è», «già», «così», «più», «perché», «né», mai «e», «gia», «cosi», «piu'», «perche», «ne» quando il significato lo richiede.
 
-Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.`;
+Prima di restituire la risposta, ricontrolla mentalmente in quest'ordine: articoli concordati (vedi sopra), nessun prestito lessicale, accenti, consonanti doppie mancanti o errate (es. «abasso» → «abbasso», «amissione» → «ammissione»), coniugazioni verbali non standard, refusi. Se una risposta molto lunga rischia di introdurre imprecisioni linguistiche, preferisci essere più sintetico ma corretto piuttosto che esaustivo ma impreciso.
+
+ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da evitare): sbagliato «il enneatipo, il adattamento» → corretto «l'enneatipo, l'adattamento»; sbagliato «il psicologo, i stati d'animo, i studi» → corretto «lo psicologo, gli stati d'animo, gli studi»; sbagliato «también il fiore permite di rilassarsi» → corretto «anche il fiore permette di rilassarsi».`;
   try {
     /* CHIAVE API RIMOSSA — gestita dal proxy Cloudflare */
     const res = await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01'},
-      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, system: BUSH_PROMPT, messages: bushHistory })
+      body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, temperature: 0.35, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
-    const aiText = data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.';
+    const aiText = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
     bushHistory.push({ role: 'assistant', content: aiText });
     const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + fmt;

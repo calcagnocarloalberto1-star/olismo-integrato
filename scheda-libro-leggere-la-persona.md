@@ -16,7 +16,7 @@
 Un manuale operativo per chi accompagna il conflitto. L'avv. Carlo
 Alberto Calcagno — mediatore civile e familiare, Vicedirettore della Scuola U.N.A.M.,
 ideatore dell'Enneagramma Evolutivo — propone un metodo integrato
-in cui la cornice deontologica della mediazione (D.Lgs. 28/2010,
+in cui la cornice deontologica della mediazione (D.Lgs. 28/2010 per la mediazione civile; D.M. 151/2023 per la mediazione familiare;
 Riforma Cartabia, Convenzione di Istanbul) dialoga con sette sistemi
 di lettura della persona: chakra, enneatipi, adattamenti AT, fiori
 di Bach/FES/Bush, frequenze Solfeggio, sistema VAK, neuroscienze
@@ -96,7 +96,7 @@ anonimizzati e proposte di esercitazione per il professionista.
   solfeggio ↔ fiori di Bach** — strumento di sintesi unico nel
   panorama italiano
 
-✦ Glossario tecnico-giuridico (D.Lgs. 28/2010, Riforma Cartabia,
+✦ Glossario tecnico-giuridico (D.Lgs. 28/2010 mediazione civile; D.M. 151/2023 mediazione familiare; Riforma Cartabia,
   Convenzione di Istanbul) e glossario olistico
 
 ---

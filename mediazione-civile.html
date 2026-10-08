@@ -1031,7 +1031,7 @@ async function analyzeCivile() {
     });
     const data = await resp.json();
     if (data.error) throw new Error(data.error.message);
-    const txt = correggiItaliano(data.content?.[0]?.text || 'Errore nella risposta.');
+    const txt = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
     body.innerHTML = formatResponse(txt);
     result.classList.add('active');
     result.scrollIntoView({behavior:'smooth', block:'start'});

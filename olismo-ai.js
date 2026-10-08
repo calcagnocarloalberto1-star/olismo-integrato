@@ -26,13 +26,12 @@
       var res = await fetch(PROXY, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({
+        body: JSON.stringify(Object.assign({
           model: opts.model || 'claude-haiku-4-5-20251001',
           max_tokens: opts.maxTokens || 1200,
-          temperature: 0.35,
           system: opts.system,
           messages: opts.messages
-        }),
+        }, opts.model ? {} : { temperature: 0.35 })), /* i modelli Sonnet 5.x rifiutano "temperature" */
         signal: ctrl.signal
       });
       var data = null;

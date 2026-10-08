@@ -1024,7 +1024,7 @@ async function analyzeCivile() {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-5-5',
-        max_tokens: 5000, temperature: 0.35,
+        max_tokens: 5000,
         system: SYS_PROMPT,
         messages: [{role:'user', content: `Caso/domanda di mediazione civile:\n\n${q}\n\nElabora il piano operativo integrato seguendo ESATTAMENTE il formato richiesto.`}]
       })

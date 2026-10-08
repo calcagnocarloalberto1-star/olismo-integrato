@@ -1069,7 +1069,7 @@ async function analyzeFamiliare() {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-5-5',
-        max_tokens: 5000, temperature: 0.35,
+        max_tokens: 5000,
         system: SYS_PROMPT,
         messages: [{role:'user', content: `Caso di mediazione familiare:\n\n${q}\n\nElabora il piano sistemico integrato seguendo ESATTAMENTE il formato richiesto.`}]
       })

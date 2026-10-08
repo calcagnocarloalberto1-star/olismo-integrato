@@ -1091,6 +1091,7 @@ async function analyzeFamiliare() {
 
 function formatResponse(md) {
   let h = mdTables(md);
+  h = h.replace(/^-{3,}$/gm, '<hr>');
   h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>');
   h = h.replace(/^## (.+)$/gm, '<h2>$1</h2>');
   h = h.replace(/^# (.+)$/gm, '<h1>$1</h1>');

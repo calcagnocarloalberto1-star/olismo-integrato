@@ -1493,6 +1493,7 @@ ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da e
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
       .replace(/^### (.+)$/gm, '<h3>$1</h3>')
       .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^-{3,}$/gm, '<hr>')
       .replace(/\n/g, '<br>');
     
     document.getElementById('aiResultBody').innerHTML = formatted;

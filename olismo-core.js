@@ -6453,6 +6453,7 @@ async function sendDietMsg(){
     const messages = window._dietChatHistory.length===1 ? [{role:'user',content:`Contesto: Enneatipo ${ctx.enn}, AT ${ctx.adatt}. Domanda: ${msg}`}] : window._dietChatHistory;
     const resp=await fetchWithTimeout('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages',{method:'POST',headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens: 16000,temperature: 0.35,system,messages})});
     const data=await resp.json();
+    if(!resp.ok||data.error){ throw new Error((data.error&&data.error.message)||('Errore del servizio ('+resp.status+')')); }
     const reply=correggiItaliano(data.content?.[0]?.text||'Errore. Riprova.');
     window._dietChatHistory.push({role:'assistant',content:reply});
     document.getElementById(typId)?.remove();
@@ -6460,6 +6461,7 @@ async function sendDietMsg(){
     msgs.scrollTop=msgs.scrollHeight;
   }catch(e){
     console.error('[Dieta chat] Errore:', e);
+    if(window._dietChatHistory&&window._dietChatHistory.length&&window._dietChatHistory[window._dietChatHistory.length-1].role==='user') window._dietChatHistory.pop();
     document.getElementById(typId)?.remove();
     const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
     msgs.innerHTML += `<div style="display:flex;gap:.6rem"><div style="width:26px;height:26px;border-radius:50%;background:#fde8e8;border:1px solid #e09090;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#c04040">!</div><div style="background:#fef5f5;border:1px solid #f0c8c8;border-radius:8px;padding:.6rem .9rem;font-size:.78rem;color:#7a4040;line-height:1.5"><strong>Errore di connessione.</strong> ${errTxt} Riprova tra qualche secondo.</div></div>`;
@@ -6705,12 +6707,14 @@ ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da e
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, temperature: 0.35, system: FES_PROMPT, messages: fesHistory })
     });
     const data = await res.json();
+    if (!res.ok || data.error) { throw new Error((data.error && data.error.message) || ('Errore del servizio (' + res.status + ')')); }
     const aiText = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
     fesHistory.push({ role: 'assistant', content: aiText });
-    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^#{1,3} (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#c0b0f0;margin:.7rem 0 .2rem">$1</h4>').replace(/^-{3,}$/gm,'<hr style="border:0;border-top:1px solid rgba(255,255,255,.15);margin:.8rem 0">').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8b78e6;margin-bottom:.5rem">🌸 Assistente FES</div>' + fmt;
   } catch(e) {
     console.error('[FES] Errore:', e);
+    if (fesHistory.length && fesHistory[fesHistory.length-1].role === 'user') fesHistory.pop();
     const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c04040;margin-bottom:.5rem">⚠ Errore di connessione</div><p style="color:#7a4040"><strong>Non sono riuscito a contattare l\'assistente FES.</strong><br>' + errTxt + '<br><em>Riprova tra qualche secondo.</em></p>';
   }
@@ -6772,12 +6776,14 @@ ESEMPI (rispetta esattamente questi pattern, sono gli errori più frequenti da e
       body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 16000, temperature: 0.35, system: BUSH_PROMPT, messages: bushHistory })
     });
     const data = await res.json();
+    if (!res.ok || data.error) { throw new Error((data.error && data.error.message) || ('Errore del servizio (' + res.status + ')')); }
     const aiText = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
     bushHistory.push({ role: 'assistant', content: aiText });
-    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^### (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
+    const fmt = (window.parseMdTables ? window.parseMdTables(aiText) : aiText).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/^#{1,3} (.+)$/gm,'<h4 style="font-family:Cormorant Garamond,serif;font-size:1.05rem;color:#e8b070;margin:.7rem 0 .2rem">$1</h4>').replace(/^-{3,}$/gm,'<hr style="border:0;border-top:1px solid rgba(255,255,255,.15);margin:.8rem 0">').replace(/^[-•] (.+)$/gm,'<li style="margin:.2rem 0">$1</li>').replace(/\n\n/g,'</p><p>').replace(/^(?!<[hlptd\/])(.+)$/gm,'<p>$1</p>').replace(/<p><\/p>/g,'');
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8813a;margin-bottom:.5rem">🌿 Assistente Bush</div>' + fmt;
   } catch(e) {
     console.error('[Bush] Errore:', e);
+    if (bushHistory.length && bushHistory[bushHistory.length-1].role === 'user') bushHistory.pop();
     const errTxt = e && e.message ? e.message : 'Qualcosa è andato storto nella connessione.';
     typing.innerHTML = '<div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c04040;margin-bottom:.5rem">⚠ Errore di connessione</div><p style="color:#7a4040"><strong>Non sono riuscito a contattare l\'assistente Bush.</strong><br>' + errTxt + '<br><em>Riprova tra qualche secondo.</em></p>';
   }

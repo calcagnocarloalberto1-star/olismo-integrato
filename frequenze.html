@@ -1254,7 +1254,7 @@ Spiega brevemente in italiano il razionale olistico.`;
     });
     if (!res.ok) {
       let err = 'Errore server (' + res.status + ')';
-      try { const j = await res.json(); if (j.error) err = j.error; } catch(e){}
+      try { const j = await res.json(); if (j.error) err = (typeof j.error === 'string') ? j.error : (j.error.message || err); } catch(e){}
       throw new Error(err);
     }
     const data = await res.json();

@@ -1,0 +1,82 @@
+/*
+════════════════════════════════════════
+  OLISMO-TOUCH · correzioni per telefono e tablet
+  © 2026 Avv. Carlo Alberto Calcagno · olismo-integrato.it
+
+  Perché esiste:
+  - Su schermo touch lo stato :hover "resta appiccicato" dopo il tocco e le
+    card con transform/box-shadow in hover saltano o sfarfallano.
+  - Le card con backdrop-filter + transform ricomposte a ogni tocco fanno
+    sfarfallare Safari/Chrome mobile.
+  - Gli stili inline battono le @media, quindi alcune griglie restavano a
+    3 colonne su telefono e la pagina diventava più larga dello schermo.
+  Caricato da tutte le pagine dopo gli altri CSS.
+════════════════════════════════════════
+*/
+
+/* Nessun lampo grigio al tocco e nessun ritardo/zoom da doppio tap su card e pulsanti */
+a, button, [onclick], label, summary, select,
+.dash-card, .stone-card, .flower-card, .exp-card, .tool-card, .option-card,
+.qq-btn, .quick-tag, .topic-chip, .mega-strip-card, .parte-card, .download-card {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (hover: none), (pointer: coarse) {
+
+  /* 1 · Niente spostamenti/ingrandimenti da hover sulle card (il tocco li lascia "incollati") */
+  .dash-card:hover, .stone-card:hover, .flower-card:hover, .exp-card:hover,
+  .tool-card:hover, .parte-card:hover, .download-card:hover, .mega-strip-card:hover,
+  .comb-cell:hover, .cp-item:hover, .ex-item:hover, .topic-chip:hover,
+  .cc-action-btn-ai:hover, .fc-pdf-btn:hover, .profilo-integrated__btn:hover,
+  .btn-primary:hover, .btn-action:hover, .send-btn:hover, .analyze-btn:hover,
+  .ai-analyze-btn:hover, .result-btn:hover, #cmBtn:hover,
+  .copione-empty .btn-action:hover, .action-bar a:hover, .action-bar button:hover,
+  .top-home:hover, .book-promo__cover svg:hover {
+    transform: none !important;
+  }
+  /* card con hover impostato via onmouseover="this.style.transform=..." (stile inline) */
+  [onmouseover], [onmouseout] {
+    transform: none !important;
+  }
+
+  /* 2 · Le card selezionabili non restano evidenziate dal "hover" dopo il tocco */
+  .option-card:not(.selected):hover {
+    border-color: var(--border);
+    background: var(--bg2);
+  }
+
+  /* 3 · Niente transizioni "all" sulle card: sul touch causano ricomposizioni a ogni tocco */
+  .dash-card, .stone-card, .flower-card, .exp-card, .tool-card, .option-card,
+  .mega-strip-card, .parte-card, .download-card, .qq-btn, .quick-tag {
+    transition: border-color .15s ease, background-color .15s ease !important;
+  }
+
+  /* 4 · backdrop-filter sulle card = sfarfallio su iOS: lo sfondo è già semitrasparente */
+  [style*="backdrop-filter"] a, a[style*="backdrop-filter"],
+  .dash-card, .stone-card, .flower-card, .tool-card, .mega-strip-card {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Schermi stretti: nulla deve essere più largo dello schermo */
+@media (max-width: 640px) {
+  /* tabelle larghe: scorrono dentro il proprio riquadro invece di allargare la pagina */
+  table.table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* header con tre pulsanti: vanno a capo invece di sbordare */
+  #site-header > div {
+    flex-wrap: wrap !important;
+    row-gap: .5rem;
+  }
+  #site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+}

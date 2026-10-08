@@ -281,6 +281,7 @@ body {
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <style>.ai-table-wrap{overflow-x:auto;margin:.6rem 0}.ai-table{border-collapse:collapse;width:100%;font-size:.85rem}.ai-table th{background:#2d2a26;color:#f7f2ea;padding:.5rem .8rem;text-align:left;font-weight:600;font-size:.78rem}.ai-table td{padding:.45rem .8rem;border-bottom:1px solid #e8e0d4}.ai-table tr:last-child td{border-bottom:none}</style>
 <script>function mdTables(text){text=String(text).replace(/\r\n/g,"\n").replace(/\r/g,"\n");var re=/(^|\n)([ \t]*\|.+\|)[ \t]*\n[ \t]*\|[\s:|-]+\|[ \t]*\n((?:[ \t]*\|.+\|[ \t]*\n?)+)/g;return text.replace(re,function(m,pre,header,body){var sr=function(row){var t=row.trim();if(t.charAt(0)==="|")t=t.slice(1);if(t.charAt(t.length-1)==="|")t=t.slice(0,-1);return t.split("|").map(function(c){return c.trim();});};var h=sr(header);var rows=body.trim().split("\n").map(sr);var cols=h.length;var norm=rows.map(function(r){if(r.length<cols)return r.concat(new Array(cols-r.length).fill(""));if(r.length>cols)return r.slice(0,cols);return r;});var tbl=pre+'<div class="ai-table-wrap"><table class="ai-table"><thead><tr>';h.forEach(function(c){tbl+="<th>"+c+"</th>";});tbl+="</tr></thead><tbody>";norm.forEach(function(row){tbl+="<tr>";row.forEach(function(c){tbl+="<td>"+c+"</td>";});tbl+="</tr>";});return tbl+"</tbody></table></div>";});}</script>
+<link rel="stylesheet" href="olismo-touch.css">
 </head>
 <body>
 
@@ -520,15 +521,17 @@ function correggiItaliano(testo) {
 }
 
 async function sendMessage() {
+  if (window._olismoBusy) return;            // evita doppi invii (tap multipli su mobile)
   const input = document.getElementById('mainInput');
   const text = input.value.trim();
   if (!text) return;
 
+  window._olismoBusy = true;
   const sendBtn = document.getElementById('sendBtn');
   sendBtn.disabled = true;
+  olismoSetQuickDisabled(true);
   input.value = '';
 
-  // welcome card remove
   const wc = document.querySelector('.welcome-card');
   if (wc) wc.remove();
 
@@ -542,33 +545,27 @@ async function sendMessage() {
   showTyping();
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT,
-        messages: conversationHistory
-      })
-    });
-
-    const data = await response.json();
+    const testo = await olismoAiChat({ system: SYSTEM_PROMPT, messages: conversationHistory, maxTokens: 1500 });
     removeTyping();
 
-    const aiText = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
+    const aiText = correggiItaliano(testo);
     conversationHistory.push({ role: 'assistant', content: aiText });
 
     appendMsg('ai', formatResponse(aiText));
   } catch (err) {
     removeTyping();
-    appendMsg('ai', '<p>⚠️ Errore di connessione. Riprova tra un momento.</p>');
+    conversationHistory.pop();                // ritira la domanda rimasta senza risposta
+    input.value = text;                       // la domanda torna nella casella
+    appendMsg('ai', '<p>⚠️ ' + olismoAiErrorMessage(err) + '</p>');
+  } finally {
+    window._olismoBusy = false;
+    sendBtn.disabled = false;
+    olismoSetQuickDisabled(false);
+    if (!window.matchMedia('(hover: none)').matches) input.focus();  // su telefono non riaprire la tastiera
   }
-
-  sendBtn.disabled = false;
-  input.focus();
 }
 </script>
+<script src="olismo-ai.js"></script>
 <script src="olismo-export.js" defer></script>
 </body>
 </html>

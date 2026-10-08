@@ -278,7 +278,7 @@ footer a{color:var(--green-light);text-decoration:none}
 
 <!-- Footer dinamico -->
 <div id="olismo-footer"></div>
-<script src="olismo-ai.js"></script>
+<script src="olismo-ai.js?v=20261008b"></script>
 <script src="olismo-footer.js"></script>
 
 <script>
@@ -647,38 +647,47 @@ async function sendMessage(){
   const msg = input.value.trim();
   if(!msg) return;
   window._olismoBusy = true;
-  input.value=''; input.style.height='auto'; btn.disabled=true;
-  olismoSetQuickDisabled(true);
-  appendMsg('user', msg);
-  chatHistory.push({role:'user',content:msg});
-  const typingId = appendTyping();
+  let typingId = null, pushed = false;
   try{
+    input.value=''; input.style.height='auto'; btn.disabled=true;
+    if(window.olismoSetQuickDisabled) olismoSetQuickDisabled(true);
+    appendMsg('user', msg);
+    chatHistory.push({role:'user',content:msg});
+    pushed = true;
+    typingId = appendTyping();
     const messages = chatHistory.length===1
       ? [{role:'user',content:userProfile+'\n\nDomanda: '+msg}]
       : [...chatHistory.slice(0,-1).map((m,i)=>i===0?{...m,content:userProfile+'\n\nDomanda: '+m.content}:m),{role:'user',content:msg}];
     const testo = await olismoAiChat({ system: SYSTEM, messages: messages, maxTokens: 1500 });
-    removeTyping(typingId);
+    removeTyping(typingId); typingId = null;
     const reply = (typeof correggiItaliano==='function') ? correggiItaliano(testo) : testo;
     chatHistory.push({role:'assistant',content:reply});
     appendMsg('ai',reply);
   }catch(e){
-    removeTyping(typingId);
-    chatHistory.pop();                        // ritira la domanda rimasta senza risposta
+    if(typingId) removeTyping(typingId);
+    if(pushed && chatHistory.length && chatHistory[chatHistory.length-1].role==='user') chatHistory.pop();  // niente due turni 'user' di fila
     input.value = msg;                        // la domanda torna nella casella
-    appendMsg('ai', olismoAiErrorMessage(e));
+    try{ appendMsg('ai', window.olismoAiErrorMessage ? olismoAiErrorMessage(e) : 'Errore di connessione. Riprova.'); }catch(_){}
   }finally{
-    window._olismoBusy = false;
+    window._olismoBusy = false;               // sblocco garantito, qualunque cosa accada
     btn.disabled=false;
-    olismoSetQuickDisabled(false);
+    if(window.olismoSetQuickDisabled) olismoSetQuickDisabled(false);
     if (!window.matchMedia('(hover: none)').matches) input.focus();  // su telefono non riaprire la tastiera
   }
+}
+
+// Formattazione della bolla con fallback: se olismo-ai.js fosse in cache in versione vecchia, la chat non si blocca
+function _bubbleHtml(role, text){
+  try{ if(role==='ai' && window.olismoFormatReply) return olismoFormatReply(text); }catch(e){}
+  const esc = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return (role==='ai' ? mdTables(esc) : esc).replace(/\n/g,'<br>');
 }
 
 function appendMsg(role, text){
   const c=document.getElementById('chatMessages');
   const d=document.createElement('div');
   d.className='msg '+role;
-  d.innerHTML=`<div class="msg-avatar ${role}">${role==='ai'?'🌸':'Tu'}</div><div class="msg-bubble">${role==='ai' ? olismoFormatReply(text) : olismoEscape(text).replace(/\n/g,'<br>')}</div>`;
+  d.innerHTML=`<div class="msg-avatar ${role}">${role==='ai'?'🌸':'Tu'}</div><div class="msg-bubble">${_bubbleHtml(role, text)}</div>`;
   c.appendChild(d); c.scrollTop=c.scrollHeight;
 }
 function appendTyping(){

@@ -11,6 +11,7 @@
   In caso di errore lancia un Error con .status (HTTP) o .name === 'AbortError'.
       olismoAiErrorMessage(err)  → testo italiano leggibile per l'utente
       olismoSetQuickDisabled(b)  → blocca/sblocca i pulsanti delle domande fisse
+      olismoFormatReply(md)      → risposta AI in HTML sicuro (titoli, grassetti, elenchi, tabelle)
 ════════════════════════════════════════
 */
 (function () {
@@ -65,6 +66,39 @@
     }
     return 'Errore di connessione. Verifica la rete e riprova: la tua domanda è stata rimessa nella casella.';
   };
+
+  /* Risposta AI -> HTML sicuro: neutralizza l'HTML del modello, poi rende tabelle,
+     titoli, grassetti, corsivi ed elenchi markdown. */
+  window.olismoEscape = function (t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
+  window.olismoFormatReply = function (md) {
+    var h = window.olismoEscape(md).replace(/\r\n?/g, '\n');
+    if (typeof window.mdTables === 'function') { h = window.mdTables(h); }
+    h = h.replace(/^#{1,3} +(.+)$/gm, '<h4>$1</h4>')
+         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+         .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>')
+         .replace(/^-{3,}$/gm, '<hr>')
+         .replace(/^[ \t]*[-•*] +(.+)$/gm, '<li>$1</li>')
+         .replace(/^[ \t]*\d+[.)] +(.+)$/gm, '<li>$1</li>')
+         .replace(/(?:<li>.*<\/li>\n?)+/g, function (m) { return '<ul>' + m.replace(/\n/g, '') + '</ul>'; });
+    return h.split(/\n{2,}/).map(function (p) {
+      p = p.trim();
+      if (!p) { return ''; }
+      if (/^<(h4|ul|div|hr|table)/.test(p)) { return p; }
+      return '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+    }).join('');
+  };
+
+  /* Stile del contenuto formattato nelle bolle (solo pagine che caricano questo file) */
+  try {
+    var st = document.createElement('style');
+    st.textContent = '.msg-bubble p{margin:0 0 .6em}.msg-bubble p:last-child,.msg-bubble ul:last-child{margin-bottom:0}' +
+      '.msg-bubble ul{margin:.3em 0 .6em 1.2em;padding:0}.msg-bubble li{margin:0 0 .25em}' +
+      '.msg-bubble h4{margin:.2em 0 .45em;font-size:1em;font-weight:600}' +
+      '.msg-bubble hr{border:0;border-top:1px solid currentColor;opacity:.2;margin:.6em 0}';
+    document.head.appendChild(st);
+  } catch (e) { /* stile opzionale */ }
 
   window.olismoSetQuickDisabled = function (disabled) {
     document.querySelectorAll('.qq-btn, .quick-tag').forEach(function (b) {

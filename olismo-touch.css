@@ -80,3 +80,16 @@ a, button, [onclick], label, summary, select,
     gap: .4rem;
   }
 }
+
+/* Telefoni piccoli (320–380px): griglie a una colonna, niente parole/URL che allargano la pagina */
+@media (max-width: 380px) {
+  [class*="grid"]:not(.evo-timeline-grid):not(.adtest-grid), [class*="-list"], [class*="cards"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .adtest-grid { grid-template-columns: 1fr 1fr !important; }
+  .caio-resp { flex-wrap: wrap; }
+  .caio-resp .label { flex-shrink: 1; }
+  img, svg, video, iframe, canvas { max-width: 100%; }
+  p, li, h1, h2, h3, h4, td, th, a, em, strong, span, label, summary { overflow-wrap: anywhere; }
+  pre, code { white-space: pre-wrap; overflow-wrap: anywhere; }
+}

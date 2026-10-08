@@ -678,7 +678,7 @@ function appendMsg(role, text){
   const c=document.getElementById('chatMessages');
   const d=document.createElement('div');
   d.className='msg '+role;
-  d.innerHTML=`<div class="msg-avatar ${role}">${role==='ai'?'🌸':'Tu'}</div><div class="msg-bubble">${mdTables(text).replace(/\n/g,'<br>')}</div>`;
+  d.innerHTML=`<div class="msg-avatar ${role}">${role==='ai'?'🌸':'Tu'}</div><div class="msg-bubble">${role==='ai' ? olismoFormatReply(text) : olismoEscape(text).replace(/\n/g,'<br>')}</div>`;
   c.appendChild(d); c.scrollTop=c.scrollHeight;
 }
 function appendTyping(){

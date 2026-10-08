@@ -657,7 +657,7 @@
 
 <!-- Footer dinamico -->
 <div id="olismo-footer"></div>
-<script src="olismo-ai.js?v=20261008b"></script>
+<script src="olismo-ai.js?v=20261008c"></script>
 <script src="olismo-footer.js"></script>
 
 <script>
@@ -1546,7 +1546,7 @@ async function sendMessage() {
       ? [{ role: 'user', content: userProfile + '\n\nDomanda dell\'utente: ' + msg }]
       : [...chatHistory.slice(0, -1).map((m, i) => i === 0 ? { ...m, content: userProfile + '\n\nDomanda: ' + m.content } : m), { role: 'user', content: msg }];
 
-    const testo = await olismoAiChat({ system: SYSTEM_PROMPT, messages: messages, maxTokens: 1500 });
+    const testo = await olismoAiChat({ system: SYSTEM_PROMPT, messages: messages, maxTokens: 1500, model: 'claude-sonnet-5-5' });
     removeTyping(typingId); typingId = null;
 
     const reply = correggiItaliano(testo);

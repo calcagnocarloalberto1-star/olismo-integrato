@@ -93,3 +93,41 @@ a, button, [onclick], label, summary, select,
   p, li, h1, h2, h3, h4, td, th, a, em, strong, span, label, summary { overflow-wrap: anywhere; }
   pre, code { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
+
+/* ═══ Ottobre 2026 · pulizia mobile (Xiaomi / Chrome Android) ═══ */
+
+/* 5 · Aree di tocco: link e pulsanti alti almeno 40–44px (prima 15–30px: il dito sbagliava bersaglio) */
+@media (pointer: coarse) {
+  footer a:not(.footer-copy a), .f-link {
+    display: flex; align-items: center; min-height: 44px;
+  }
+  .footer-copy a, footer p a {
+    display: inline-block; padding: .65rem .25rem; min-height: 44px; box-sizing: border-box;
+  }
+  nav a { display: inline-flex; align-items: center; min-height: 40px; }
+  button, .faq-cat-btn, .qs-dismiss, .legal-nav a, .btn-ghost, .btn-primary, .btn-action {
+    min-height: 44px; box-sizing: border-box;
+  }
+  .pw-toggle { min-height: 0; }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select { min-height: 44px; font-size: 16px; }
+}
+
+@media (max-width: 640px) {
+  /* 6 · Cerchi decorativi dell'hero: escono dallo schermo e costringono la pagina a tagliare (overflow-x). Su telefono sono invisibili comunque */
+  .hbc1, .hbc2, .hbc3 { display: none !important; }
+
+  /* 7 · Widget «Il tuo percorso»: da riquadro 350×126 sempre in primo piano a pastiglia compatta */
+  #progress-widget {
+    left: 10px; bottom: 10px; width: auto; max-width: calc(100vw - 20px);
+    padding: .4rem .8rem; border-radius: 999px;
+  }
+  #progress-widget .pw-bar, #progress-widget .pw-chips { display: none; }
+  #progress-widget .pw-label { margin-bottom: 0; gap: .6rem; }
+  #progress-widget .pw-toggle { display: none; }
+
+  /* 8 · Tabelle della pagina legale (privacy, cookie, termini): scorrono nel riquadro */
+  .legal-wrap table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* 9 · Sfocature di sfondo: costose su GPU Android di fascia media, qui basta lo sfondo semitrasparente */
+  *, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}

@@ -1300,6 +1300,7 @@ function formatResponse(md) {
   h = h.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
   // Inline code
   h = h.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+  h = h.replace(/\[([^\]\n]+)\]\(((?:https?:\/\/|[\w\-\/]+\.html)[^)\s"'<>]*)\)/g, '<a href="$2" rel="noopener">$1</a>');
   // Blockquotes (> text)
   h = h.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
   h = h.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');

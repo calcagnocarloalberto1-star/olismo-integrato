@@ -408,6 +408,7 @@ function formatResponse(text) {
   return mdTables(text)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]\n]+)\]\(((?:https?:\/\/|[\w\-\/]+\.html)[^)\s"'<>]*)\)/g, '<a href="$2" rel="noopener">$1</a>')
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h3>$1</h3>')
     .replace(/^# (.+)$/gm, '<h3>$1</h3>')
@@ -566,7 +567,7 @@ async function sendMessage() {
   }
 }
 </script>
-<script src="olismo-ai.js?v=20261029"></script>
+<script src="olismo-ai.js?v=20261029b"></script>
 <script src="olismo-export.js" defer></script>
 </body>
 </html>

@@ -80,6 +80,7 @@
     h = h.replace(/^#{1,3} +(.+)$/gm, '<h4>$1</h4>')
          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
          .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>')
+         .replace(/\[([^\]\n]+)\]\(((?:https?:\/\/|[\w\-\/]+\.html)[^)\s"'<>]*)\)/g, '<a href="$2" rel="noopener">$1</a>')
          .replace(/^-{3,}$/gm, '<hr>')
          .replace(/^[ \t]*[-•*] +(.+)$/gm, '<li>$1</li>')
          .replace(/^[ \t]*\d+[.)] +(.+)$/gm, '<li>$1</li>')

@@ -1505,6 +1505,7 @@ function formatResponse(md){
   h = h.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
   // Inline code
   h = h.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+  h = h.replace(/\[([^\]\n]+)\]\(((?:https?:\/\/|[\w\-\/]+\.html)[^)\s"'<>]*)\)/g, '<a href="$2" rel="noopener">$1</a>');
   // Bullet lists
   h = h.replace(/^[\-•] (.+)$/gm, '<li>$1</li>');
   h = h.replace(/(<li>.*?<\/li>(\n|$))+/gs, m => '<ul>' + m.replace(/\n/g,'') + '</ul>');

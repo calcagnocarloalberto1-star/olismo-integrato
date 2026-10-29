@@ -1113,6 +1113,7 @@ function formatResponse(md) {
   h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   h = h.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
   h = h.replace(/`([^`\n]+?)`/g, '<code>$1</code>');
+  h = h.replace(/\[([^\]\n]+)\]\(((?:https?:\/\/|[\w\-\/]+\.html)[^)\s"'<>]*)\)/g, '<a href="$2" rel="noopener">$1</a>');
   h = h.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
   h = h.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
   h = h.replace(/\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g, (m, header, rows) => {

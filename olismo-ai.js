@@ -29,7 +29,7 @@
         body: JSON.stringify(Object.assign({
           model: opts.model || 'claude-haiku-4-5-20251001',
           /* il tetto costa solo ciò che viene generato: margine ampio, Sonnet consuma token anche nel ragionamento */
-          max_tokens: opts.model ? Math.max(opts.maxTokens || 0, 8192) : Math.max(opts.maxTokens || 0, 3000),
+          max_tokens: opts.model ? Math.max(opts.maxTokens || 0, 8192) : Math.max(opts.maxTokens || 0, 6000),
           system: opts.system,
           messages: opts.messages
         }, opts.model ? {} : { temperature: 0.35 })), /* i modelli Sonnet 5.x rifiutano "temperature" */

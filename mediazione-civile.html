@@ -1001,6 +1001,23 @@ function correggiItaliano(testo) {
   return testo;
 }
 
+async function chiediPiano(messages) {
+  const resp = await fetch('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: 'claude-sonnet-5-5',
+      max_tokens: 8192,
+      system: SYS_PROMPT,
+      messages: messages
+    })
+  });
+  const data = await resp.json();
+  if (data.error) throw new Error(data.error.message);
+  const testo = data.content?.find(b => b.type === 'text')?.text || '';
+  return { testo: testo, troncato: data.stop_reason === 'max_tokens' };
+}
+
 async function analyzeCivile() {
   const q = document.getElementById('aiInput').value.trim();
   if (!q || q.length < 30) {
@@ -1017,21 +1034,19 @@ async function analyzeCivile() {
   result.classList.remove('active');
 
   try {
-    const resp = await fetch('https://olismo-proxy.calcagnocarloalberto1.workers.dev/v1/messages', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-5-5',
-        max_tokens: 5000,
-        system: SYS_PROMPT,
-        messages: [{role:'user', content: `Caso/domanda di mediazione civile:\n\n${q}\n\nElabora il piano operativo integrato seguendo ESATTAMENTE il formato richiesto.`}]
-      })
-    });
-    const data = await resp.json();
-    if (data.error) throw new Error(data.error.message);
-    const txt = correggiItaliano(data.content?.find(b => b.type === 'text')?.text || 'Errore nella risposta.');
+    const userMsg = `Caso/domanda di mediazione civile:\n\n${q}\n\nElabora il piano operativo integrato seguendo ESATTAMENTE il formato richiesto.`;
+    let testoCompleto = await chiediPiano([{role:'user', content:userMsg}]);
+    if (testoCompleto.troncato) {
+      // risposta interrotta dal limite di token: una sola continuazione automatica
+      const seguito = await chiediPiano([
+        {role:'user', content:userMsg},
+        {role:'assistant', content:testoCompleto.testo},
+        {role:'user', content:'La risposta si è interrotta. Prosegui esattamente dal punto in cui ti sei fermato, senza ripetere nulla e senza preamboli, completando le sezioni mancanti del formato richiesto.'}
+      ]);
+      testoCompleto = {testo: testoCompleto.testo + (/\s$/.test(testoCompleto.testo) ? '' : ' ') + seguito.testo, troncato: seguito.troncato};
+    }
+    const txt = correggiItaliano(testoCompleto.testo || 'Errore nella risposta.') +
+      (testoCompleto.troncato ? '\n\n> ⚠ La risposta è molto lunga e potrebbe risultare incompleta: riformula il caso in modo più sintetico oppure rilancia l\'elaborazione.' : '');
     body.innerHTML = formatResponse(txt);
     result.classList.add('active');
     result.scrollIntoView({behavior:'smooth', block:'start'});

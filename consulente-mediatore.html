@@ -1463,7 +1463,7 @@ async function askConsulente(){
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 5000, temperature: 0.35,
+        max_tokens: 8192, temperature: 0.35,
         system: (typeof window.augmentSystemPrompt === "function" ? window.augmentSystemPrompt(CM_SYSTEM) : CM_SYSTEM),
         messages: [{role: 'user', content: userMsg}]
       })

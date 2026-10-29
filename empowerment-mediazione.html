@@ -1214,7 +1214,7 @@ Elabora il piano di empowerment integrato seguendo ESATTAMENTE la struttura rich
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 5000, temperature: 0.35,
+        max_tokens: 8192, temperature: 0.35,
         system: (typeof window.augmentSystemPrompt === "function" ? window.augmentSystemPrompt(EMP_SYSTEM) : EMP_SYSTEM),
         messages: [{role: 'user', content: userMsg}]
       })

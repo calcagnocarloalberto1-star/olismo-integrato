@@ -28,7 +28,8 @@
         headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01' },
         body: JSON.stringify(Object.assign({
           model: opts.model || 'claude-haiku-4-5-20251001',
-          max_tokens: opts.maxTokens || 1200,
+          /* il tetto costa solo ciò che viene generato: margine ampio, Sonnet consuma token anche nel ragionamento */
+          max_tokens: opts.model ? Math.max(opts.maxTokens || 0, 8192) : Math.max(opts.maxTokens || 0, 3000),
           system: opts.system,
           messages: opts.messages
         }, opts.model ? {} : { temperature: 0.35 })), /* i modelli Sonnet 5.x rifiutano "temperature" */
@@ -44,7 +45,9 @@
       }
       var block = (data.content || []).find(function (b) { return b.type === 'text' && b.text; });
       if (!block) { throw new Error('Risposta vuota dal consulente.'); }
-      return block.text;
+      return data.stop_reason === 'max_tokens'
+        ? block.text + '\n\n*(La risposta è stata interrotta perché molto lunga: scrivi «continua» per proseguire.)*'
+        : block.text;
     } finally {
       clearTimeout(timer);
     }
